@@ -8,6 +8,7 @@ export 'src/backgrounds/star_field/star_field_background.dart';
 export 'src/backgrounds/wave_background.dart';
 export 'src/dialogs/alert_dialog.dart';
 export 'src/dialogs/confirm_dialog.dart';
+export 'src/dialogs/keyboard_and_mouse_events.dart';
 export 'src/dialogs/simple_dialog.dart';
 export 'src/dialogs/string_dialog.dart';
 export 'src/dialogs/widget_dialog.dart';

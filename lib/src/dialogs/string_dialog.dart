@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/dialogs/keyboard_and_mouse_events.dart';
 import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 
@@ -88,20 +89,28 @@ class __DialogContentsState extends State<_DialogContents> {
         borderRadius: BorderRadius.circular(8),
       ),
       title: Text(widget.title),
-      content: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 600.0),
-        child: SingleChildScrollView(
-          child: ListBody(
-            children: <Widget>[
-              ..._message(),
-              TextField(
-                keyboardType: widget.keyboardType,
-                autofocus: true,
-                controller: _textController,
-                minLines: widget.minLines,
-                maxLines: widget.minLines,
-              ),
-            ],
+      content: KeyboardAndMouseEvents(
+        onEnterCallback: () {
+          Navigator.of(context).pop(_textController!.text);
+        },
+        onEscCallback: () {
+          Navigator.of(context).pop();
+        },
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 600.0),
+          child: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                ..._message(),
+                TextField(
+                  keyboardType: widget.keyboardType,
+                  autofocus: true,
+                  controller: _textController,
+                  minLines: widget.minLines,
+                  maxLines: widget.minLines,
+                ),
+              ],
+            ),
           ),
         ),
       ),
