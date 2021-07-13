@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 class DropStackButton extends StatefulWidget {
   const DropStackButton({required this.directory});
-  final ServerFile directory;
+  final ServerFile? directory;
 
   @override
   _DropStackButtonState createState() => _DropStackButtonState();
@@ -84,7 +84,7 @@ class _DropStackButtonState extends State<DropStackButton>
         titleStyle: const TextStyle(fontSize: fontSize, color: textColor),
         onPressed: () async {
           await dropStack.drop(
-              context: context, directory: widget.directory, topOnly: true);
+              context: context, directory: widget.directory!, topOnly: true);
 
           await _animationController?.reverse();
         },
@@ -99,7 +99,7 @@ class _DropStackButtonState extends State<DropStackButton>
       titleStyle: const TextStyle(fontSize: fontSize, color: textColor),
       onPressed: () async {
         await dropStack.drop(
-            context: context, directory: widget.directory, topOnly: false);
+            context: context, directory: widget.directory!, topOnly: false);
 
         await _animationController?.reverse();
       },
