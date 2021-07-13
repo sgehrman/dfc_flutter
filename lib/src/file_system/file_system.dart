@@ -352,14 +352,16 @@ class FileSystem {
     return mime(path);
   }
 
-  static Future<List<ServerFile?>> getStorageList() async {
+  static Future<List<ServerFile>> getStorageList() async {
     final List<String> dirs = await externalStorageDirectoryPaths;
-    final List<ServerFile?> result = <ServerFile?>[];
+    final List<ServerFile> result = <ServerFile>[];
 
     for (final String path in dirs) {
       final ServerFile? file = ServerFiles.serverFileForPath(path);
 
-      result.add(file);
+      if (file != null) {
+        result.add(file);
+      }
     }
 
     return result;
