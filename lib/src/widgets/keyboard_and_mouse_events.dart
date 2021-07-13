@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 class KeyboardAndMouseEvents extends StatelessWidget {
   const KeyboardAndMouseEvents({
     required this.child,
+    this.focusNode,
     this.onEscCallback,
     this.onTabCallback,
     this.onShiftTabCallback,
@@ -21,12 +22,14 @@ class KeyboardAndMouseEvents extends StatelessWidget {
   final Function? onArrowDownCallback;
   final ValueChanged<bool>? onHoverCallback;
   final Widget child;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) => FocusableActionDetector(
         actions: _initActions(),
         shortcuts: _initShortcuts(),
         onShowHoverHighlight: onHoverCallback,
+        focusNode: focusNode,
         child: child,
       );
 
