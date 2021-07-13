@@ -48,8 +48,8 @@ class FileSystem {
     }
   }
 
-  static Future<String> get documentsPath async {
-    String result;
+  static Future<String?> get documentsPath async {
+    String? result;
 
     if (Utils.isIOS) {
       // on Android this give us a data directory for some odd reason
@@ -57,9 +57,10 @@ class FileSystem {
 
       result = dir.path;
     } else if (Utils.isAndroid) {
-      final Directory dir =
-          await (getExternalStorageDirectory() as FutureOr<Directory>);
-      result = dir.path;
+      final Directory? dir = await getExternalStorageDirectory();
+      if (dir != null) {
+        result = dir.path;
+      }
     } else {
       // linux, windows, macOs
 
@@ -71,8 +72,8 @@ class FileSystem {
   }
 
   // need storage permission to view directory
-  static Future<String> get globalDocumentsPath async {
-    String result;
+  static Future<String?> get globalDocumentsPath async {
+    String? result;
 
     if (Utils.isIOS) {
       // on Android this give us a data directory for some odd reason
@@ -80,18 +81,20 @@ class FileSystem {
 
       result = dir.path;
     } else if (Utils.isAndroid) {
-      final Directory dir =
-          await (getExternalStorageDirectory() as FutureOr<Directory>);
-      result = dir.path;
+      final Directory? dir = await getExternalStorageDirectory();
 
-      String docsPath = _removeAndroidJunk(dir.path);
+      if (dir != null) {
+        result = dir.path;
 
-      // get the real documents directory
-      // if differnet, we know we are in the right place
-      if (docsPath != result) {
-        docsPath = p.join(docsPath, 'Documents');
-        if (Directory(docsPath).existsSync()) {
-          result = docsPath;
+        String docsPath = _removeAndroidJunk(dir.path);
+
+        // get the real documents directory
+        // if differnet, we know we are in the right place
+        if (docsPath != result) {
+          docsPath = p.join(docsPath, 'Documents');
+          if (Directory(docsPath).existsSync()) {
+            result = docsPath;
+          }
         }
       }
     } else {
@@ -112,11 +115,16 @@ class FileSystem {
     }
 
     // iOS
-    final String path = await FileSystem.documentsPath;
-    List<String> items = path.split('/');
-    items = items.sublist(0, items.length - 1);
+    final String? path = await FileSystem.documentsPath;
 
-    return items.join('/');
+    if (path != null) {
+      List<String> items = path.split('/');
+      items = items.sublist(0, items.length - 1);
+
+      return items.join('/');
+    }
+
+    return '/';
   }
 
   static Future<String> get dataDirectoryPath async {
@@ -175,10 +183,11 @@ class FileSystem {
   // Android only
   static Future<List<String>> get externalCacheDirectoryPaths async {
     if (Utils.isAndroid) {
-      final List<Directory> directories =
-          await (getExternalCacheDirectories() as FutureOr<List<Directory>>);
+      final List<Directory>? directories = await getExternalCacheDirectories();
 
-      return directories.map((dir) => dir.path).toList();
+      if (directories != null) {
+        return directories.map((dir) => dir.path).toList();
+      }
     }
 
     return [];
@@ -199,14 +208,14 @@ class FileSystem {
   static Future<List<String>> get externalStorageDirectoryPaths async {
     if (Utils.isAndroid) {
       // Android only call
-      final List<Directory> directories =
-          await (getExternalStorageDirectories() as FutureOr<List<Directory>>);
+      final List<Directory>? directories =
+          await getExternalStorageDirectories();
 
       // add data directory
       // directories.add(Directory(await dataDirectoryPath));
 
       // convert to paths
-      final List<String> paths = directories.map((dir) => dir.path).toList();
+      final List<String> paths = directories!.map((dir) => dir.path).toList();
 
       // remove android junk, remove dups with toSet()
       return paths
@@ -218,16 +227,19 @@ class FileSystem {
     }
 
     // iOS, not sure
-    return <String>[await documentsPath];
+    final docs = await documentsPath;
+
+    return <String>[docs!];
   }
 
   // Desktop only
   static Future<String?> get downloadsDirectoryPath async {
     if (!Utils.isMobile) {
-      final Directory directory =
-          await (getDownloadsDirectory() as FutureOr<Directory>);
+      final Directory? directory = await getDownloadsDirectory();
 
-      return directory.path;
+      if (directory != null) {
+        return directory.path;
+      }
     }
 
     return null;

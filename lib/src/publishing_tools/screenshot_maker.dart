@@ -242,7 +242,7 @@ class ScreenshotMaker {
   }
 
   Future<void> saveToFile(String? filename, CaptureResult capture) async {
-    String path = await FileSystem.documentsPath;
+    String? path = await FileSystem.documentsPath;
     path = '$path/${filename}_screenshot.png';
 
     print('saved to: $path');

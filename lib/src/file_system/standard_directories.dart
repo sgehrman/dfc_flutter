@@ -19,7 +19,7 @@ class StandardDirectories {
     if (_standardDirectories == null) {
       final List<String?> result = [];
       String? path;
-      final String documentsPath = await FileSystem.globalDocumentsPath;
+      final String? documentsPath = await FileSystem.globalDocumentsPath;
 
       // iOS uses the file_picker directory as it's home
       if (Utils.isIOS) {

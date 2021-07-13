@@ -12,7 +12,7 @@ class CreateIconScreen extends StatefulWidget {
 }
 
 class _CreateIconScreenState extends State<CreateIconScreen> {
-  late String iconPath;
+  late String? iconPath;
   Uint8List? iconData;
 
   @override
@@ -25,7 +25,7 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
     iconPath = await FileSystem.documentsPath;
     iconPath = '$iconPath/icon.png';
 
-    iconData = File(iconPath).readAsBytesSync();
+    iconData = File(iconPath!).readAsBytesSync();
 
     setState(() {});
   }
@@ -59,7 +59,7 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
                 onPressed: () async {
                   await saveImage();
 
-                  iconData = await File(iconPath).readAsBytes();
+                  iconData = await File(iconPath!).readAsBytes();
                   setState(() {});
                 },
                 title: 'Save Icon',
@@ -97,7 +97,7 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
   }
 
   Future<void> saveImage() async {
-    final File file = File(iconPath);
+    final File file = File(iconPath!);
     file.createSync(recursive: true);
 
     // final String svgString =
