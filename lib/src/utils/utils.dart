@@ -25,6 +25,9 @@ class Utils {
     return kDebugMode;
   }
 
+  // same as unawaited in Pedantic package
+  static void dontWait(Future<void> future) {}
+
   static String uniqueFirestoreId() {
     const int idLength = 20;
     const String alphabet =
