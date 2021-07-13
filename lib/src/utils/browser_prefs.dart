@@ -39,7 +39,7 @@ class BrowserPrefs {
 
 class BrowserUtils {
   static DirectoryListingSpec spec({
-    required ServerFile serverFile,
+    required ServerFile? serverFile,
     bool recursive = false,
     bool directoryCounts = false,
   }) {

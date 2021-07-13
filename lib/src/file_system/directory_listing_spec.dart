@@ -30,7 +30,7 @@ class DirectoryListingSpec {
   factory DirectoryListingSpec.fromJson(String source) =>
       DirectoryListingSpec.fromMap(json.decode(source) as Map<String, dynamic>);
 
-  final ServerFile serverFile;
+  final ServerFile? serverFile;
   final bool? recursive;
   final String? sortType;
   final bool? sortAscending;
@@ -71,7 +71,7 @@ class DirectoryListingSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serverFile': serverFile.toMap(),
+      'serverFile': serverFile?.toMap(),
       'recursive': recursive,
       'sortType': sortType,
       'sortFoldersFirst': sortFoldersFirst,
