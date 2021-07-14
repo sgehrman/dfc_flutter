@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/widgets/checkerboard_container.dart';
@@ -10,14 +11,14 @@ import 'package:native_pdf_renderer/native_pdf_renderer.dart';
 import 'package:dfc_flutter/src/extensions/num_ext.dart';
 
 class FileInfo extends StatefulWidget {
-  const FileInfo(
+  const FileInfo({
     this.map,
     this.serverFile,
     this.hostUrl,
-  );
+  });
 
-  final Map<String, dynamic> map;
-  final ServerFile serverFile;
+  final Map<String, dynamic>? map;
+  final ServerFile? serverFile;
   final String? hostUrl;
 
   @override
@@ -42,17 +43,19 @@ class _FileInfoState extends State<FileInfo> {
   }
 
   Future<void> _loadPDFImage() async {
-    if (!_onWeb) {
-      if (widget.serverFile.isPdf) {
-        // open pdf, make image of first page
-        final document = await PdfDocument.openFile(widget.serverFile.path!);
-        final page = await document.getPage(1);
-        final PdfPageImage? pageImage =
-            await page.render(width: page.width, height: page.height);
+    if (widget.serverFile != null) {
+      if (!_onWeb) {
+        if (widget.serverFile!.isPdf) {
+          // open pdf, make image of first page
+          final document = await PdfDocument.openFile(widget.serverFile!.path!);
+          final page = await document.getPage(1);
+          final PdfPageImage? pageImage =
+              await page.render(width: page.width, height: page.height);
 
-        setState(() {
-          _pdfImageData = pageImage!.bytes;
-        });
+          setState(() {
+            _pdfImageData = pageImage!.bytes;
+          });
+        }
       }
     }
   }
@@ -61,19 +64,19 @@ class _FileInfoState extends State<FileInfo> {
     final List<Widget> list = [];
     Widget child;
 
-    if (widget.serverFile.isFile) {
+    if (widget.serverFile!.isFile) {
       // svgs crash Image
-      if ((widget.serverFile.isImageDrawable || widget.serverFile.isPdf) &&
-          !widget.serverFile.isSvg) {
+      if ((widget.serverFile!.isImageDrawable || widget.serverFile!.isPdf) &&
+          !widget.serverFile!.isSvg) {
         if (_onWeb) {
-          String url = '${widget.hostUrl}?preview=${widget.serverFile.path}';
+          String url = '${widget.hostUrl}?preview=${widget.serverFile!.path}';
           url = Uri.encodeFull(url);
           child = Image.network(url);
         } else {
           if (_pdfImageData != null) {
             child = Image.memory(_pdfImageData!);
           } else {
-            child = Image.file(File(widget.serverFile.path!));
+            child = Image.file(File(widget.serverFile!.path!));
           }
         }
 
@@ -82,7 +85,7 @@ class _FileInfoState extends State<FileInfo> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: CheckerboardContainer(
-                color: widget.serverFile.isPdf ? Colors.white : null,
+                color: widget.serverFile!.isPdf ? Colors.white : null,
                 constraints:
                     const BoxConstraints(maxHeight: 1000, maxWidth: 1000),
                 child: child,
@@ -90,9 +93,9 @@ class _FileInfoState extends State<FileInfo> {
             ),
           ),
         );
-      } else if (widget.serverFile.isVideo) {
+      } else if (widget.serverFile!.isVideo) {
         if (_onWeb) {
-          String url = '${widget.hostUrl}?preview=${widget.serverFile.path}';
+          String url = '${widget.hostUrl}?preview=${widget.serverFile!.path}';
           url = Uri.encodeFull(url);
 
           list.add(VideoPlayerWidget(serverFile: null, hostUrl: url));
@@ -109,14 +112,14 @@ class _FileInfoState extends State<FileInfo> {
   List<Widget> _buildList(BuildContext context) {
     final List<Widget> list = [];
 
-    list.addAll(widget.map.keys.map((key) {
-      String valueString = widget.map[key].toString();
+    list.addAll(widget.map!.keys.map((key) {
+      String valueString = widget.map![key].toString();
 
       if (key == 'size' ||
           key == 'free space' ||
           key == 'used space' ||
           key == 'total space') {
-        final int size = widget.map[key] as int;
+        final int size = widget.map![key] as int;
         valueString = size.formatBytes(2);
       }
 
@@ -172,6 +175,12 @@ class _FileInfoState extends State<FileInfo> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> contents = [NothingWidget()];
+
+    if (widget.serverFile != null) {
+      contents = _contents(context);
+    }
+
     return Container(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -184,7 +193,7 @@ class _FileInfoState extends State<FileInfo> {
             ),
           ),
           const SizedBox(height: 10),
-          ..._contents(context),
+          ...contents,
         ],
       ),
     );
