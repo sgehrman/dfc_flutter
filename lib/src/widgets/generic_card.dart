@@ -235,6 +235,7 @@ class AddCard extends StatelessWidget {
         radius: Radius.circular(small ? kSmallBorderRadius : kBorderRadius),
         color: cardColor,
         child: BaseCard(
+          elevation: 0,
           fill: false,
           small: small,
           minHeight: minHeight,
@@ -266,6 +267,7 @@ class BaseCard extends StatelessWidget {
     this.minHeight = 100,
     this.fill = true,
     this.small = false,
+    this.elevation,
   });
 
   final Widget child;
@@ -274,10 +276,12 @@ class BaseCard extends StatelessWidget {
   final double minHeight;
   final bool fill;
   final bool small;
+  final double? elevation;
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: elevation,
       // null will use the default color
       color: fill ? null : Colors.transparent,
       shape: RoundedRectangleBorder(
