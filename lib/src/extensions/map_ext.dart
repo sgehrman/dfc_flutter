@@ -111,13 +111,13 @@ extension MapCasting on Map {
     return _findValueForKey(this as Map<String, dynamic>, key);
   }
 
-  dynamic _findValueForKey(Map<String, dynamic> map, String key) {
+  dynamic _findValueForKey(Map<String, dynamic> map, String matchKey) {
     dynamic result;
 
-    for (final k in map.keys) {
-      final dynamic value = map[k];
+    for (final key in map.keys) {
+      final dynamic value = map[key];
 
-      if (key == k) {
+      if (matchKey == key) {
         return value;
       }
 
