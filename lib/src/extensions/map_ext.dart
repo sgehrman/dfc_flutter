@@ -136,7 +136,7 @@ extension MapCasting on Map {
       }
 
       if (result != null) {
-        return value;
+        return result;
       }
     }
 
