@@ -122,11 +122,11 @@ extension MapCasting on Map {
       }
 
       if (value is Map<String, dynamic>) {
-        result = _findValueForKey(value, key);
+        result = _findValueForKey(value, matchKey);
       } else if (value is List) {
         for (final item in value) {
           if (item is Map<String, dynamic>) {
-            result = _findValueForKey(item, key);
+            result = _findValueForKey(item, matchKey);
 
             if (result != null) {
               return value;
