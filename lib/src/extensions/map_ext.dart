@@ -121,6 +121,8 @@ extension MapCasting on Map {
         return value;
       }
 
+      print(key);
+
       if (value is Map<String, dynamic>) {
         result = _findValueForKey(value, matchKey);
       } else if (value is List) {
@@ -133,8 +135,6 @@ extension MapCasting on Map {
             }
           }
         }
-      } else {
-        print(value.runtimeType);
       }
     }
 
