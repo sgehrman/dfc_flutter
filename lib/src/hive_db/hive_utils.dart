@@ -28,6 +28,12 @@ class HiveUtils {
         String path = appDir.path;
         path = p.join(path, 'app_data');
         Hive.init(path);
+      } else if (Utils.isDesktop) {
+        final Directory appDir = await getApplicationSupportDirectory();
+
+        String path = appDir.path;
+        path = p.join(path, 'app_data');
+        Hive.init(path);
       } else {
         // a server
         Hive.init('./hive');
