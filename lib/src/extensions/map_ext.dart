@@ -114,8 +114,12 @@ extension MapCasting on Map {
   dynamic _findValueForKey(Map<String, dynamic> map, String key) {
     dynamic result;
 
-    for (final key in map.keys) {
-      final dynamic value = map[key];
+    for (final k in map.keys) {
+      final dynamic value = map[k];
+
+      if (key == k) {
+        return value;
+      }
 
       if (value is Map<String, dynamic>) {
         result = _findValueForKey(value, key);
@@ -123,16 +127,12 @@ extension MapCasting on Map {
         for (final item in value) {
           if (item is Map<String, dynamic>) {
             result = _findValueForKey(item, key);
-          }
 
-          if (result != null) {
-            break;
+            if (result != null) {
+              return value;
+            }
           }
         }
-      }
-
-      if (result != null) {
-        return result;
       }
     }
 
