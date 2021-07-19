@@ -2,16 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 
 class SearchField extends StatefulWidget {
-  const SearchField(this.onChange);
+  const SearchField({
+    required this.onChange,
+    required this.onSubmit,
+  });
 
   final void Function(String) onChange;
+  final void Function(String) onSubmit;
 
   @override
   _SearchFieldState createState() => _SearchFieldState();
 }
 
 class _SearchFieldState extends State<SearchField> {
-  TextEditingController? _searchControllerConns;
+  late TextEditingController _searchControllerConns;
   FocusNode? _focusNode;
 
   @override
@@ -44,18 +48,18 @@ class _SearchFieldState extends State<SearchField> {
 
   @override
   void dispose() {
-    _searchControllerConns!.dispose();
+    _searchControllerConns.dispose();
     _focusNode!.removeListener(_listener);
 
     super.dispose();
   }
 
   void _setup() {
-    _searchControllerConns!.addListener(() {
-      if (_searchControllerConns!.text.isEmpty) {
+    _searchControllerConns.addListener(() {
+      if (_searchControllerConns.text.isEmpty) {
         widget.onChange('');
       } else {
-        widget.onChange(_searchControllerConns!.text.toLowerCase());
+        widget.onChange(_searchControllerConns.text.toLowerCase());
       }
     });
   }
@@ -65,6 +69,12 @@ class _SearchFieldState extends State<SearchField> {
     return TextField(
       focusNode: _focusNode,
       controller: _searchControllerConns,
+      onEditingComplete: () {
+        final result = _searchControllerConns.text;
+        _searchControllerConns.text = '';
+
+        widget.onSubmit(result);
+      },
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
@@ -82,11 +92,11 @@ class _SearchFieldState extends State<SearchField> {
         ),
         labelText: 'Search',
         suffixIcon: IconButton(
-          icon: Utils.isNotEmpty(_searchControllerConns!.text)
+          icon: Utils.isNotEmpty(_searchControllerConns.text)
               ? const Icon(Icons.close)
               : const Icon(Icons.search),
           onPressed: () {
-            _searchControllerConns!.text = '';
+            _searchControllerConns.text = '';
           },
         ),
       ),
