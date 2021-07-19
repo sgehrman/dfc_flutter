@@ -5,10 +5,12 @@ class SearchField extends StatefulWidget {
   const SearchField({
     required this.onChange,
     required this.onSubmit,
+    this.autofocus = false,
   });
 
   final void Function(String) onChange;
   final void Function(String) onSubmit;
+  final bool autofocus;
 
   @override
   _SearchFieldState createState() => _SearchFieldState();
@@ -68,6 +70,7 @@ class _SearchFieldState extends State<SearchField> {
   Widget build(BuildContext context) {
     return TextField(
       focusNode: _focusNode,
+      autofocus: widget.autofocus,
       controller: _searchControllerConns,
       onEditingComplete: () {
         final result = _searchControllerConns.text;
