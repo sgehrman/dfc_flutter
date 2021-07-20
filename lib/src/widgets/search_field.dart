@@ -6,11 +6,13 @@ class SearchField extends StatefulWidget {
     required this.onChange,
     required this.onSubmit,
     this.autofocus = false,
+    this.label = 'Search',
   });
 
   final void Function(String) onChange;
   final void Function(String) onSubmit;
   final bool autofocus;
+  final String label;
 
   @override
   _SearchFieldState createState() => _SearchFieldState();
@@ -63,6 +65,9 @@ class _SearchFieldState extends State<SearchField> {
       } else {
         widget.onChange(_searchControllerConns.text.toLowerCase());
       }
+
+      // for the x button to show and hide
+      setState(() {});
     });
   }
 
@@ -93,14 +98,27 @@ class _SearchFieldState extends State<SearchField> {
             color: Utils.isDarkMode(context) ? Colors.white24 : Colors.black12,
           ),
         ),
-        labelText: 'Search',
-        suffixIcon: IconButton(
-          icon: Utils.isNotEmpty(_searchControllerConns.text)
-              ? const Icon(Icons.close)
-              : const Icon(Icons.search),
-          onPressed: () {
-            _searchControllerConns.text = '';
-          },
+        labelText: widget.label,
+        suffixIcon: Row(
+          children: [
+            Visibility(
+              visible: Utils.isNotEmpty(_searchControllerConns.text),
+              child: IconButton(
+                constraints: BoxConstraints.loose(const Size(32, 32)),
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  widget.onSubmit(_searchControllerConns.text);
+                },
+              ),
+            ),
+            IconButton(
+              constraints: BoxConstraints.loose(const Size(32, 32)),
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                _searchControllerConns.text = '';
+              },
+            ),
+          ],
         ),
       ),
     );
