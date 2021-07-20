@@ -7,12 +7,14 @@ class SearchField extends StatefulWidget {
     required this.onSubmit,
     this.autofocus = false,
     this.label = 'Search',
+    this.hint = 'Search',
   });
 
   final void Function(String) onChange;
   final void Function(String) onSubmit;
   final bool autofocus;
   final String label;
+  final String hint;
 
   @override
   _SearchFieldState createState() => _SearchFieldState();
@@ -98,27 +100,40 @@ class _SearchFieldState extends State<SearchField> {
             color: Utils.isDarkMode(context) ? Colors.white24 : Colors.black12,
           ),
         ),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        hintText: widget.hint,
         labelText: widget.label,
-        suffixIcon: Row(
-          children: [
-            Visibility(
-              visible: Utils.isNotEmpty(_searchControllerConns.text),
-              child: IconButton(
-                constraints: BoxConstraints.loose(const Size(32, 32)),
+        suffixIcon: Padding(
+          padding: const EdgeInsetsDirectional.only(end: 28.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Visibility(
+                visible: Utils.isNotEmpty(_searchControllerConns.text),
+                child: IconButton(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  constraints:
+                      const BoxConstraints(maxHeight: 32, maxWidth: 32),
+                  icon: const Icon(Icons.close),
+                  onPressed: () {
+                    _searchControllerConns.text = '';
+                  },
+                ),
+              ),
+              IconButton(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                constraints: const BoxConstraints(maxHeight: 32, maxWidth: 32),
                 icon: const Icon(Icons.search),
                 onPressed: () {
                   widget.onSubmit(_searchControllerConns.text);
                 },
               ),
-            ),
-            IconButton(
-              constraints: BoxConstraints.loose(const Size(32, 32)),
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                _searchControllerConns.text = '';
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
