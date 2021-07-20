@@ -118,14 +118,14 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
         ),
         const SizedBox(height: 6),
         SwitchListTile(
-          value: ThemeSetManager().lightBackground!,
+          value: ThemeSetManager().lightBackground,
           onChanged: (bool newValue) {
             ThemeSetManager().lightBackground = newValue;
           },
           title: const Text('Light Background'),
         ),
         SwitchListTile(
-          value: ThemeSetManager().integratedAppBar!,
+          value: ThemeSetManager().integratedAppBar,
           onChanged: (bool newValue) {
             ThemeSetManager().integratedAppBar = newValue;
           },

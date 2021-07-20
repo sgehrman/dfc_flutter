@@ -132,22 +132,22 @@ class ThemeSetManager {
     currentTheme = newTheme;
   }
 
-  bool? get integratedAppBar => currentTheme!.integratedAppBar;
-  set integratedAppBar(bool? value) {
+  bool get integratedAppBar => currentTheme!.integratedAppBar!;
+  set integratedAppBar(bool value) {
     final newTheme = currentTheme!.copyWith(integratedAppBar: value);
 
     currentTheme = newTheme;
   }
 
-  bool? get lightBackground => currentTheme!.lightBackground;
-  set lightBackground(bool? value) {
+  bool get lightBackground => currentTheme!.lightBackground!;
+  set lightBackground(bool value) {
     final newTheme = currentTheme!.copyWith(lightBackground: value);
 
     currentTheme = newTheme;
   }
 
-  static TextStyle? header(BuildContext context) {
-    return Theme.of(context).textTheme.headline4;
+  static TextStyle header(BuildContext context) {
+    return Theme.of(context).textTheme.headline4!;
   }
 
   static List<ThemeSet> _defaultSets() {
