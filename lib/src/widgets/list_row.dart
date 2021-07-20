@@ -9,6 +9,7 @@ class ListRow extends StatelessWidget {
     this.subtitle,
     this.subWidget,
     this.onTap,
+    this.onDoubleTap,
     this.onLongPress,
     this.color,
     this.padding,
@@ -25,6 +26,7 @@ class ListRow extends StatelessWidget {
   final TextStyle? subtitleStyle;
   final Widget? subWidget;
   final void Function()? onTap;
+  final void Function()? onDoubleTap;
   final void Function()? onLongPress;
   final Color? color;
   final EdgeInsetsGeometry? padding;
@@ -99,6 +101,7 @@ class ListRow extends StatelessWidget {
       color: color,
       child: InkWell(
         onTap: onTap,
+        onDoubleTap: onDoubleTap,
         onLongPress: onLongPress,
         child: Padding(
           padding: padding ?? EdgeInsets.zero,
