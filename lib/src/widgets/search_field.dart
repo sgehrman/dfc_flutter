@@ -80,10 +80,10 @@ class _SearchFieldState extends State<SearchField> {
       autofocus: widget.autofocus,
       controller: _searchControllerConns,
       onEditingComplete: () {
-        final result = _searchControllerConns.text;
-        _searchControllerConns.text = '';
+        widget.onSubmit(_searchControllerConns.text);
 
-        widget.onSubmit(result);
+        // clear after submit, we don't want onChange to be called before submit
+        _searchControllerConns.text = '';
       },
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
