@@ -18,14 +18,15 @@ class DialogButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
           backgroundColor:
-              filled ? Theme.of(context).accentColor : Colors.white,
+              filled ? Theme.of(context).colorScheme.secondary : Colors.white,
           // borderSide: BorderSide(color: Theme.of(context).accentColor),
         ),
         onPressed: onPressed,
         child: Text(
           title!,
           style: TextStyle(
-            color: filled ? Colors.white : Theme.of(context).accentColor,
+            color:
+                filled ? Colors.white : Theme.of(context).colorScheme.secondary,
           ),
         ),
       ),

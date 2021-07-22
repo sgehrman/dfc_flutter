@@ -32,6 +32,7 @@ linter:
     avoid_function_literals_in_foreach_calls: false
     prefer_constructors_over_static_methods: false
     sort_pub_dependencies: false
+    directives_ordering: false
     # turn off if annoying
     # prefer_final_locals: false
     # prefer_const_constructors: false

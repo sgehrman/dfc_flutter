@@ -116,7 +116,7 @@ class __DialogContentsState extends State<_DialogContents> {
             Navigator.of(context).pop();
           },
           child: Text(widget.cancelButtonName,
-              style: TextStyle(color: Theme.of(context).accentColor)),
+              style: TextStyle(color: Theme.of(context).colorScheme.secondary)),
         ),
         TextButton(
           onPressed: () => _okClick(_textController!.text),

@@ -1,7 +1,6 @@
 name: dfc_flutter
 description: A new Flutter package project.
 version: 1.0.1
-author: null
 homepage: distantfutu.re
 publish_to: "none"
 
@@ -32,9 +31,8 @@ dependencies:
   flare_flutter: ^3.0.1
   flutter_archive: ^4.0.1
   flutter_barcode_scanner: ^2.0.0
-  # bug in new build, ^0.5.0
-  flutter_colorpicker: 0.4.0
-  flutter_keyboard_visibility: ^5.0.1
+  flutter_colorpicker: ^0.5.0
+  flutter_keyboard_visibility: ^5.0.3
   flutter_multi_formatter: ^2.3.1
   flutter_parsed_text: ^2.2.1
   flutter_svg: ^0.22.0
@@ -51,15 +49,15 @@ dependencies:
   path: ^1.8.0
   path_provider: ^2.0.2
   provider: ^5.0.0
-  random_string: ^2.2.0-nullsafety
+  random_string: ^2.3.1
   shared_preferences: ^2.0.6
   simple_animations: ^3.1.1
   url_launcher: ^6.0.8
   video_player: ^2.1.10
-  json_annotation: ^4.0.0
+  json_annotation: ^4.1.0
 
 dev_dependencies:
-  json_serializable: ^4.0.0
+  json_serializable: ^5.0.0
   build_runner: ^2.0.5
   lint: ^1.5.3
 

@@ -60,8 +60,6 @@ class AppTheme {
       bottomNavigationBarTheme: _bottomNavBarTheme(appColor),
       textTheme: _textTheme(darkMode!),
       iconTheme: iconTheme,
-
-      accentColor: params.accentColor,
       dividerColor: darkMode!
           ? Colors.white12
           : const Color.fromRGBO(
@@ -99,7 +97,6 @@ class AppTheme {
     if (darkMode!) {
       return baseTheme.copyWith(
         brightness: Brightness.dark,
-        accentColorBrightness: Brightness.dark,
         appBarTheme: _appBarTheme(true, params),
         buttonTheme: _buttonTheme(true),
         textButtonTheme: _textButtonTheme(true),
@@ -112,7 +109,6 @@ class AppTheme {
     }
     return baseTheme.copyWith(
       brightness: Brightness.light,
-      accentColorBrightness: Brightness.light,
       appBarTheme: _appBarTheme(params.darkModeAppBarText, params),
       buttonTheme: _buttonTheme(params.darkModeForButtonText),
       textButtonTheme: _textButtonTheme(params.darkModeForButtonText),

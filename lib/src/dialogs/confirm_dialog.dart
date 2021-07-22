@@ -36,7 +36,8 @@ Future<bool?> showConfirmDialog({
               Navigator.of(context).pop(false);
             },
             child: Text(cancelButtonName,
-                style: TextStyle(color: Theme.of(context).accentColor)),
+                style:
+                    TextStyle(color: Theme.of(context).colorScheme.secondary)),
           ),
           TextButton(
             onPressed: () {

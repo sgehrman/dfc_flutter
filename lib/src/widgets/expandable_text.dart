@@ -54,7 +54,10 @@ class _ExpandableTextState extends State<ExpandableText> {
                   expanded ? 'Show less' : 'Show more',
                   style: Theme.of(context).textTheme.caption!.copyWith(
                         fontSize: 12,
-                        color: Theme.of(context).accentColor.withOpacity(.8),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .secondary
+                            .withOpacity(.8),
                       ),
                 ),
               ),
