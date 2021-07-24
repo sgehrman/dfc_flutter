@@ -110,6 +110,13 @@ class Dates {
         print('Error-2: dateString: $dateString, err: $err');
       }
 
+      try {
+        // 2021-07-24 2:32
+        theDate = DateFormat('yyy-MM-dd HH:mm').parse(dateString);
+      } catch (err) {
+        print('Error-2: dateString: $dateString, err: $err');
+      }
+
       if (theDate != null) {
         return theDate;
       }
