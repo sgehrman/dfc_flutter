@@ -77,6 +77,7 @@ export 'src/widgets/form_builder/form_builder.dart';
 export 'src/widgets/form_builder/form_params.dart';
 export 'src/widgets/generic_card.dart';
 export 'src/widgets/gradient_text.dart';
+export 'src/widgets/triangle_painter.dart';
 export 'src/widgets/headers/action_header.dart';
 export 'src/widgets/headers/browser_header.dart';
 export 'src/widgets/headers/centered_header.dart';
