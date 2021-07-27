@@ -202,16 +202,12 @@ class AppTheme {
     return _fontChange(result);
   }
 
-  TextTheme _appBarTextTheme(bool darkMode, ColorParams params) {
-    final result = _textTheme(darkMode).copyWith(
-      headline6: TextStyle(
-        color: params.getBarTextColor(darkMode: darkMode),
-        fontSize: 18,
-        // fontWeight: FontWeight.bold,
-      ),
+  TextStyle _appBarTextStyle(bool darkMode, ColorParams params) {
+    return TextStyle(
+      color: params.getBarTextColor(darkMode: darkMode),
+      fontSize: 18,
+      // fontWeight: FontWeight.bold,
     );
-
-    return _fontChange(result);
   }
 
   ButtonThemeData _buttonTheme(bool darkMode) {
@@ -279,8 +275,7 @@ class AppTheme {
       actionsIconTheme: IconThemeData(
         color: params.getBarTextColor(darkMode: darkMode),
       ),
-      textTheme: _appBarTextTheme(darkMode, params),
-      brightness: darkMode ? Brightness.dark : Brightness.light,
+      titleTextStyle: _appBarTextStyle(darkMode, params),
     );
   }
 
