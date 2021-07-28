@@ -3,20 +3,26 @@ import 'package:flutter/material.dart';
 
 class FadeImage extends StatelessWidget {
   const FadeImage({
-    required this.image,
+    required this.url,
     required this.fit,
+    this.height,
+    this.width,
   });
 
-  final String image;
+  final String url;
   final BoxFit fit;
+  final double? height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return FadeInImage.memoryNetwork(
       placeholder: _transparentImage,
-      image: image,
+      image: url,
       fadeInDuration: const Duration(milliseconds: 400),
       fit: fit,
+      height: height,
+      width: width,
     );
   }
 }
