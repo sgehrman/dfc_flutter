@@ -65,7 +65,7 @@ class HiveBox<T> {
     return _box?.getAt(index);
   }
 
-  Future<void>? put(String key, T data) {
+  Future<void> put(String key, T data) async {
     assert(_box != null, 'Box is closed: $name');
 
     return _box?.put(key, data);
