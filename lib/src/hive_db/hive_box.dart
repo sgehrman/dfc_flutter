@@ -47,6 +47,12 @@ class HiveBox<T> {
     }
   }
 
+  bool containsKey(String key) {
+    assert(_box != null, 'Box is closed: $name');
+
+    return _box?.containsKey(key) ?? false;
+  }
+
   int? get length {
     assert(_box != null, 'Box is closed: $name');
 

@@ -6,7 +6,6 @@ class Debouncer {
   Debouncer({this.milliseconds = 500});
 
   final int milliseconds;
-  VoidCallback? action;
   Timer? _timer;
   bool _disposed = false;
 
