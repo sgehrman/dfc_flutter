@@ -47,9 +47,9 @@ class DynamicTheme with ChangeNotifier {
     }
 
     return _appTheme ??= AppTheme(
-        darkMode: darkMode,
-        integratedAppBar: ThemeSetManager().integratedAppBar,
-        transparentAppBar: transparentAppBar,
-        googleFont: ThemeSetManager().googleFont);
+      darkMode: darkMode,
+      transparentAppBar: transparentAppBar,
+      themeSet: ThemeSetManager().currentTheme!,
+    );
   }
 }

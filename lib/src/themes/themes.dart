@@ -8,22 +8,20 @@ import 'package:dfc_flutter/src/utils/utils.dart';
 
 class AppTheme {
   AppTheme({
-    this.darkMode,
-    this.integratedAppBar,
-    this.transparentAppBar,
-    this.googleFont,
+    required this.darkMode,
+    required this.transparentAppBar,
+    required this.themeSet,
   });
 
-  bool? integratedAppBar;
-  bool? darkMode;
-  bool? transparentAppBar;
-  String? googleFont;
+  bool darkMode;
+  bool transparentAppBar;
+  ThemeSet themeSet;
 
   ThemeData get theme {
     ColorParams params;
 
     params = ColorParams(
-        integratedAppBar: integratedAppBar,
+        integratedAppBar: themeSet.integratedAppBar,
         transparentAppBar: transparentAppBar);
 
     final Color? appColor = params.appColor;
@@ -42,25 +40,24 @@ class AppTheme {
       foregroundColor: Colors.white,
     );
 
-    final iconTheme =
-        IconThemeData(color: ThemeSetManager().currentTheme!.textColor);
+    final iconTheme = IconThemeData(color: themeSet.textColor);
 
     final popupMenuTheme = PopupMenuThemeData(
-      color: ThemeSetManager().currentTheme!.backgroundColor,
+      color: themeSet.backgroundColor,
     );
 
     final baseTheme = ThemeData(
       visualDensity: Utils.isWeb
           ? const VisualDensity(horizontal: 3, vertical: 3)
           : VisualDensity.adaptivePlatformDensity,
-      scaffoldBackgroundColor: ThemeSetManager().currentTheme!.backgroundColor,
+      scaffoldBackgroundColor: themeSet.backgroundColor,
       popupMenuTheme: popupMenuTheme,
       primaryColorBrightness: Brightness.dark,
-      bottomAppBarTheme: _bottomBarTheme(darkMode!),
+      bottomAppBarTheme: _bottomBarTheme(darkMode),
       bottomNavigationBarTheme: _bottomNavBarTheme(appColor),
-      textTheme: _textTheme(darkMode!),
+      textTheme: _textTheme(darkMode),
       iconTheme: iconTheme,
-      dividerColor: darkMode!
+      dividerColor: darkMode
           ? Colors.white12
           : const Color.fromRGBO(
               0, 0, 0, .05), // params.accentColor.withOpacity(.5),
@@ -68,33 +65,28 @@ class AppTheme {
       primaryColorLight: appColor, // circle avatar uses these light/dark
       primaryColorDark: appColor,
       toggleableActiveColor: appColor,
-      dialogBackgroundColor: ThemeSetManager().currentTheme!.backgroundColor,
+      dialogBackgroundColor: themeSet.backgroundColor,
       sliderTheme: sliderTheme,
       floatingActionButtonTheme: floatingActionButtonTheme,
       colorScheme: _colorScheme(
-        darkMode: darkMode!,
+        darkMode: darkMode,
         primary: appColor,
         secondary: params.accentColor,
       ),
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-              color: ThemeSetManager().currentTheme!.textAccentColor!),
+          borderSide: BorderSide(color: themeSet.textAccentColor!),
         ),
         border: UnderlineInputBorder(
-          borderSide: BorderSide(
-              color: ThemeSetManager().currentTheme!.textAccentColor!),
+          borderSide: BorderSide(color: themeSet.textAccentColor!),
         ),
-        hintStyle:
-            TextStyle(color: ThemeSetManager().currentTheme!.textAccentColor),
-        labelStyle:
-            TextStyle(color: ThemeSetManager().currentTheme!.textAccentColor),
-        helperStyle:
-            TextStyle(color: ThemeSetManager().currentTheme!.textAccentColor),
+        hintStyle: TextStyle(color: themeSet.textAccentColor),
+        labelStyle: TextStyle(color: themeSet.textAccentColor),
+        helperStyle: TextStyle(color: themeSet.textAccentColor),
       ),
     );
 
-    if (darkMode!) {
+    if (darkMode) {
       return baseTheme.copyWith(
         brightness: Brightness.dark,
         appBarTheme: _appBarTheme(true, params),
@@ -123,12 +115,12 @@ class AppTheme {
   // change the global font here
   TextTheme _fontChange(TextTheme theme) {
     // don't do it if Roboto or blank
-    if (Utils.isEmpty(googleFont) ||
-        googleFont == ThemeSetManager.defaultFont) {
+    if (Utils.isEmpty(themeSet.fontName) ||
+        themeSet.fontName == ThemeSetManager.defaultFont) {
       return theme;
     }
 
-    return themeWithGoogleFont(googleFont, theme);
+    return themeWithGoogleFont(themeSet.fontName, theme);
   }
 
   TextTheme _textTheme(bool darkMode) {
@@ -290,7 +282,7 @@ class AppTheme {
       selectedItemColor: itemColor,
       unselectedItemColor: itemColor,
       elevation: 8,
-      backgroundColor: ThemeSetManager().currentTheme!.backgroundColor,
+      backgroundColor: themeSet.backgroundColor,
     );
   }
 }
