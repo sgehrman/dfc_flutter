@@ -2,7 +2,11 @@ import 'package:hive/hive.dart';
 
 @HiveType(typeId: 0)
 class HiveData extends HiveObject {
-  HiveData({required this.name, required this.json, required this.date});
+  HiveData({
+    this.name,
+    this.json,
+    this.date,
+  });
 
   @HiveField(0)
   final String? name;
