@@ -21,8 +21,10 @@ class AppTheme {
     ColorParams params;
 
     params = ColorParams(
-        integratedAppBar: themeSet.integratedAppBar,
-        transparentAppBar: transparentAppBar);
+      integratedAppBar: themeSet.integratedAppBar!,
+      transparentAppBar: transparentAppBar,
+      themeSet: themeSet,
+    );
 
     final Color? appColor = params.appColor;
 
@@ -133,14 +135,10 @@ class AppTheme {
     Color? headerTextColor = Colors.grey;
     Color? buttonContentColor = Colors.white;
 
-    final ThemeSet? themeSet = ThemeSetManager().currentTheme;
-
-    if (themeSet != null) {
-      textColor = themeSet.textColor;
-      subtitleColor = themeSet.textAccentColor;
-      headerTextColor = themeSet.headerTextColor;
-      buttonContentColor = themeSet.buttonContentColor;
-    }
+    textColor = themeSet.textColor;
+    subtitleColor = themeSet.textAccentColor;
+    headerTextColor = themeSet.headerTextColor;
+    buttonContentColor = themeSet.buttonContentColor;
 
     TextTheme startTheme = ThemeData.light().textTheme;
 
@@ -223,11 +221,7 @@ class AppTheme {
       scheme = ThemeData.dark().colorScheme;
     }
 
-    Color? buttonContentColor;
-    final ThemeSet? themeSet = ThemeSetManager().currentTheme;
-    if (themeSet != null) {
-      buttonContentColor = themeSet.buttonContentColor;
-    }
+    final Color? buttonContentColor = themeSet.buttonContentColor;
 
     final result = scheme.copyWith(
       primary: primary,

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
-import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 
 class ColorParams {
-  ColorParams({this.integratedAppBar = true, this.transparentAppBar = false}) {
-    final ThemeSet themeSet = ThemeSetManager().currentTheme!;
-
+  ColorParams({
+    required this.themeSet,
+    required this.integratedAppBar,
+    required this.transparentAppBar,
+  }) {
     appColor = themeSet.primaryColor;
     accentColor = themeSet.accentColor;
 
     barColor = appColor;
     barColorDark = appColor;
 
-    if (integratedAppBar!) {
+    if (integratedAppBar) {
       barTextColor = themeSet.textColor;
       barTextColorDark = themeSet.textColor;
     } else {
@@ -27,13 +28,14 @@ class ColorParams {
     darkModeForButtonText = true;
 
     // modifications for integrated app bar
-    if (integratedAppBar!) {
+    if (integratedAppBar) {
       _withIntegratedAppBar(themeSet);
     }
   }
 
-  bool? integratedAppBar;
-  bool? transparentAppBar;
+  bool integratedAppBar;
+  bool transparentAppBar;
+  ThemeSet themeSet;
 
   Color? appColor;
   Color? accentColor;
@@ -49,7 +51,7 @@ class ColorParams {
   late bool darkModeForButtonText;
 
   double get barElevation {
-    if (integratedAppBar!) {
+    if (integratedAppBar) {
       return 0;
     }
 
@@ -61,7 +63,7 @@ class ColorParams {
   }
 
   void _withIntegratedAppBar(ThemeSet? themeSet) {
-    if (transparentAppBar!) {
+    if (transparentAppBar) {
       barColor = Colors.transparent;
       barColorDark = Colors.transparent;
     } else {
