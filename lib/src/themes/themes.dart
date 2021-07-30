@@ -52,7 +52,6 @@ class AppTheme {
           : VisualDensity.adaptivePlatformDensity,
       scaffoldBackgroundColor: themeSet.backgroundColor,
       popupMenuTheme: popupMenuTheme,
-      primaryColorBrightness: Brightness.dark,
       bottomAppBarTheme: _bottomBarTheme(darkMode),
       bottomNavigationBarTheme: _bottomNavBarTheme(appColor),
       textTheme: _textTheme(darkMode),
