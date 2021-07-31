@@ -7,18 +7,20 @@ class FadeImage extends StatelessWidget {
     required this.fit,
     this.height,
     this.width,
+    this.missingImage,
   });
 
   final String url;
   final BoxFit fit;
   final double? height;
   final double? width;
+  final Widget? missingImage;
 
   @override
   Widget build(BuildContext context) {
     return FadeInImage.memoryNetwork(
       imageErrorBuilder: (context, error, stackTrace) {
-        return const SizedBox();
+        return SizedBox(height: height, width: width, child: missingImage);
       },
       placeholder: _transparentImage,
       image: url,
