@@ -11,6 +11,7 @@ enum ThemeSetColor {
   textColor,
   buttonContentColor,
   headerTextColor,
+  cardColor,
 }
 
 class ThemeSet {
@@ -22,6 +23,8 @@ class ThemeSet {
     required this.textAccentColor,
     required this.textColor,
     required this.headerTextColor,
+    required this.cardColor,
+    required this.cardElevation,
     required this.buttonContentColor,
     required this.fontName,
     required this.integratedAppBar,
@@ -40,6 +43,8 @@ class ThemeSet {
       primaryColor: Colors.cyan,
       accentColor: Colors.pink[300],
       headerTextColor: Colors.grey,
+      cardColor: Colors.white,
+      cardElevation: 1,
       backgroundColor: ThemeData.dark().scaffoldBackgroundColor,
       textAccentColor: Colors.grey,
       textColor: Colors.white,
@@ -65,6 +70,8 @@ class ThemeSet {
       integratedAppBar: map['integratedAppBar'] as bool?,
       dividerLines: map['dividerLines'] as bool?,
       lightBackground: map['lightBackground'] as bool?,
+      cardColor: _colorFromInt(map['cardColor']),
+      cardElevation: map['buttonContentColor'] as double?,
     );
   }
 
@@ -94,6 +101,8 @@ class ThemeSet {
       'integratedAppBar': integratedAppBar,
       'dividerLines': dividerLines,
       'lightBackground': lightBackground,
+      'cardColor': cardColor?.value,
+      'cardElevation': cardElevation,
     };
   }
 
@@ -105,6 +114,8 @@ class ThemeSet {
   final Color? buttonContentColor;
   final Color? textAccentColor;
   final Color? backgroundColor;
+  final Color? cardColor;
+  final double? cardElevation;
 
   final String? fontName;
   final bool? integratedAppBar;
@@ -132,6 +143,8 @@ class ThemeSet {
         return backgroundColor;
       case ThemeSetColor.headerTextColor:
         return headerTextColor;
+      case ThemeSetColor.cardColor:
+        return cardColor;
     }
   }
 
@@ -154,6 +167,8 @@ class ThemeSet {
       integratedAppBar: integratedAppBar ?? this.integratedAppBar,
       dividerLines: dividerLines,
       lightBackground: lightBackground ?? this.lightBackground,
+      cardColor: cardColor,
+      cardElevation: cardElevation,
     );
   }
 
@@ -176,6 +191,8 @@ class ThemeSet {
       integratedAppBar: integratedAppBar,
       dividerLines: dividerLines,
       lightBackground: lightBackground,
+      cardColor: cardColor,
+      cardElevation: cardElevation,
     );
   }
 
@@ -195,6 +212,8 @@ class ThemeSet {
         return 'Background Color';
       case ThemeSetColor.headerTextColor:
         return 'Header Text Color';
+      case ThemeSetColor.cardColor:
+        return 'Card Color';
     }
   }
 
@@ -215,9 +234,11 @@ class ThemeSet {
           Utils.equalColors(backgroundColor, other.backgroundColor) &&
           Utils.equalColors(headerTextColor, other.headerTextColor) &&
           Utils.equalColors(textAccentColor, other.textAccentColor) &&
+          Utils.equalColors(cardColor, other.cardColor) &&
           other.fontName == fontName &&
           other.integratedAppBar == integratedAppBar &&
           other.dividerLines == dividerLines &&
+          other.cardElevation == cardElevation &&
           other.lightBackground == lightBackground) {
         return true;
       }
@@ -236,6 +257,8 @@ class ThemeSet {
         buttonContentColor,
         backgroundColor,
         headerTextColor,
+        cardColor,
+        cardElevation,
         fontName,
         integratedAppBar,
         dividerLines,

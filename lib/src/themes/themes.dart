@@ -85,6 +85,10 @@ class AppTheme {
         labelStyle: TextStyle(color: themeSet.textAccentColor),
         helperStyle: TextStyle(color: themeSet.textAccentColor),
       ),
+      cardTheme: CardTheme(
+        color: themeSet.cardColor,
+        elevation: themeSet.cardElevation ?? 1,
+      ),
     );
 
     if (darkMode) {
@@ -94,10 +98,6 @@ class AppTheme {
         buttonTheme: _buttonTheme(true),
         textButtonTheme: _textButtonTheme(true),
         elevatedButtonTheme: _elevatedButtonTheme(true),
-        cardTheme: const CardTheme(
-          color: Color.fromRGBO(255, 255, 255, .05),
-          elevation: 0,
-        ),
       );
     }
     return baseTheme.copyWith(
@@ -106,10 +106,6 @@ class AppTheme {
       buttonTheme: _buttonTheme(params.darkModeForButtonText),
       textButtonTheme: _textButtonTheme(params.darkModeForButtonText),
       elevatedButtonTheme: _elevatedButtonTheme(params.darkModeForButtonText),
-      cardTheme: const CardTheme(
-        color: Color.fromRGBO(0, 0, 0, .05),
-        elevation: 0,
-      ),
     );
   }
 
