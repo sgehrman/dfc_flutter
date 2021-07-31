@@ -17,6 +17,9 @@ class FadeImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FadeInImage.memoryNetwork(
+      imageErrorBuilder: (context, error, stackTrace) {
+        return const SizedBox();
+      },
       placeholder: _transparentImage,
       image: url,
       fadeInDuration: const Duration(milliseconds: 400),
