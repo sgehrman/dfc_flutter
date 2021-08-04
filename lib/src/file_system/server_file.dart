@@ -155,13 +155,17 @@ class ServerFile {
     // but setting _lastModified prevents futher calls
     _lastModified = DateTime.utc(1969);
 
-    // uses dart:io, not for web
-    if (!Utils.isWeb) {
-      if (isFile) {
-        _lastModified = File(path!).lastModifiedSync();
-      } else {
-        _lastModified = Directory(path!).statSync().modified;
+    try {
+      // uses dart:io, not for web
+      if (!Utils.isWeb) {
+        if (isFile) {
+          _lastModified = File(path!).lastModifiedSync();
+        } else {
+          _lastModified = Directory(path!).statSync().modified;
+        }
       }
+    } catch (err) {
+      print('server_file.lastModified: $err');
     }
 
     return _lastModified;
@@ -175,12 +179,17 @@ class ServerFile {
 
     _length = 0;
 
-    if (isFile) {
-      // uses dart:io, not for web
-      if (!Utils.isWeb) {
-        _length = File(path!).lengthSync();
+    try {
+      if (isFile) {
+        // uses dart:io, not for web
+        if (!Utils.isWeb) {
+          _length = File(path!).lengthSync();
+        }
       }
+    } catch (err) {
+      print('server_file.length: $err');
     }
+
     return _length;
   }
 
