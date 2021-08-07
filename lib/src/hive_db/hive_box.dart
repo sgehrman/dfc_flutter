@@ -17,10 +17,12 @@ class HiveBox<T> {
   int _refCount = 0;
   Box<T>? _box;
 
-  ValueListenable<Box<T>>? listenable() {
+  ValueListenable<Box<T>>? listenable({
+    List<String>? keys,
+  }) {
     assert(_box != null, 'Box is closed: $name');
 
-    return _box?.listenable();
+    return _box?.listenable(keys: keys);
   }
 
   // open first or it will crash
