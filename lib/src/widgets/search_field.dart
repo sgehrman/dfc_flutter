@@ -8,11 +8,13 @@ class SearchField extends StatefulWidget {
     this.autofocus = false,
     this.label = 'Search',
     this.hint = 'Search',
+    this.filled = false,
   });
 
   final void Function(String) onChange;
   final void Function(String) onSubmit;
   final bool autofocus;
+  final bool filled;
   final String label;
   final String hint;
 
@@ -75,6 +77,42 @@ class _SearchFieldState extends State<SearchField> {
 
   @override
   Widget build(BuildContext context) {
+    var filled = true;
+    Color? fillColor = Colors.white;
+    EdgeInsets? contentPadding = const EdgeInsets.only(
+      left: 30,
+    );
+
+    var focusedBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(100),
+    );
+
+    var enabledBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(100),
+    );
+
+    if (!widget.filled) {
+      filled = false;
+      fillColor = null;
+      contentPadding = null;
+
+      focusedBorder = OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          width: 2,
+          color: Theme.of(context).primaryColorLight,
+        ),
+      );
+
+      enabledBorder = OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          width: 2,
+          color: Utils.isDarkMode(context) ? Colors.white24 : Colors.black12,
+        ),
+      );
+    }
+
     return TextField(
       focusNode: _focusNode,
       autofocus: widget.autofocus,
@@ -85,54 +123,44 @@ class _SearchFieldState extends State<SearchField> {
         // clear after submit, we don't want onChange to be called before submit
         _searchControllerConns.text = '';
       },
+      style: TextStyle(
+        color: widget.filled ? Colors.black : Colors.white,
+      ),
       decoration: InputDecoration(
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            width: 2,
-            color: Theme.of(context).primaryColorLight,
-          ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            width: 2,
-            color: Utils.isDarkMode(context) ? Colors.white24 : Colors.black12,
-          ),
-        ),
+        filled: filled,
+        fillColor: fillColor,
+        contentPadding: contentPadding,
+        focusedBorder: focusedBorder,
+        enabledBorder: enabledBorder,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: widget.hint,
+        hintStyle:
+            TextStyle(color: widget.filled ? Colors.black : Colors.white),
         labelText: widget.label,
-        suffixIcon: Padding(
-          padding: const EdgeInsetsDirectional.only(end: 28.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Visibility(
-                visible: Utils.isNotEmpty(_searchControllerConns.text),
-                child: IconButton(
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                  constraints:
-                      const BoxConstraints(maxHeight: 32, maxWidth: 32),
-                  icon: const Icon(Icons.close),
-                  onPressed: () {
-                    _searchControllerConns.text = '';
-                  },
-                ),
-              ),
-              IconButton(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                constraints: const BoxConstraints(maxHeight: 32, maxWidth: 32),
-                icon: const Icon(Icons.search),
-                onPressed: () {
-                  widget.onSubmit(_searchControllerConns.text);
-                },
-              ),
-            ],
+        prefixIcon: IconButton(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+          color: Theme.of(context).primaryColor,
+          constraints: const BoxConstraints(maxHeight: 32, maxWidth: 32),
+          icon: const Icon(Icons.search),
+          onPressed: () {
+            widget.onSubmit(_searchControllerConns.text);
+          },
+        ),
+        suffixIcon: Visibility(
+          visible: Utils.isNotEmpty(_searchControllerConns.text),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                _searchControllerConns.text = '';
+              },
+            ),
           ),
         ),
       ),
