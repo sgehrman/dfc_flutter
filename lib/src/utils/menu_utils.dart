@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class MenuUtils {
   static void displayMenu<T>({
     required BuildContext context,
+    required Offset globalPosition,
     required Function(T value) onChange,
     required List<PopupMenuEntry<T>> menuItems,
   }) {
@@ -15,7 +16,8 @@ class MenuUtils {
     if (button != null && overlay != null) {
       final RelativeRect position = RelativeRect.fromRect(
         Rect.fromPoints(
-          button.localToGlobal(widgetOffset, ancestor: overlay),
+          globalPosition,
+          // button.localToGlobal(widgetOffset, ancestor: overlay),
           button.localToGlobal(
               button.size.bottomRight(Offset.zero) + widgetOffset,
               ancestor: overlay),
