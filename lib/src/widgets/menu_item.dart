@@ -21,9 +21,6 @@ class MenuItem extends StatelessWidget {
           child: Text(
             name,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              color: Colors.black,
-            ),
           ),
         ),
       ],
