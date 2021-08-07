@@ -9,9 +9,9 @@ enum SizeType {
 }
 
 class SizeMenuItem {
-  SizeMenuItem({this.title, this.type});
-  String? title;
-  SizeType? type;
+  SizeMenuItem({required this.title, required this.type});
+  String title;
+  SizeType type;
 
   static List<SizeMenuItem> items = <SizeMenuItem>[
     SizeMenuItem(title: 'Image Size', type: SizeType.imageSize),
@@ -36,7 +36,7 @@ class SizeMenu extends StatelessWidget {
           children: <Widget>[
             Flexible(
               child: Text(
-                selectedItem!.title!,
+                selectedItem!.title,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
@@ -57,7 +57,7 @@ class SizeMenu extends StatelessWidget {
       menuItems.add(PopupMenuItem<SizeMenuItem>(
         value: item,
         child: MenuItem(
-          iconData: Icons.compare,
+          icon: const Icon(Icons.compare),
           name: item.title,
         ),
       ));

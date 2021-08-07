@@ -58,7 +58,7 @@ class ThemeSet {
 
   factory ThemeSet.fromMap(Map<String, dynamic> map) {
     return ThemeSet(
-      name: map['name'] as String?,
+      name: map['name'] as String,
       primaryColor: _colorFromInt(map['primaryColor']),
       accentColor: _colorFromInt(map['accentColor']),
       headerTextColor: _colorFromInt(map['headerTextColor']),
@@ -106,7 +106,7 @@ class ThemeSet {
     };
   }
 
-  final String? name;
+  final String name;
   final Color? primaryColor;
   final Color? accentColor;
   final Color? headerTextColor;

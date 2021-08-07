@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class MenuItem extends StatelessWidget {
-  const MenuItem({this.name, this.iconData});
+  const MenuItem({
+    required this.name,
+    this.icon,
+  });
 
-  final String? name;
-  final IconData? iconData;
+  final String name;
+  final Icon? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +15,11 @@ class MenuItem extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.only(right: 12.0),
-          child: Icon(iconData, color: Colors.black87),
+          child: icon,
         ),
         Flexible(
           child: Text(
-            name ?? '',
+            name,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               color: Colors.black,
