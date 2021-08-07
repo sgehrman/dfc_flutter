@@ -92,7 +92,7 @@ class _ScreenshotMenuState extends State<ScreenshotMenu> {
       menuItems.add(PopupMenuItem<ScreenshotMenuItem>(
         value: item,
         child: MenuItem(
-          icon: const Icon(Icons.compare),
+          iconData: Icons.compare,
           name: item.title,
         ),
       ));

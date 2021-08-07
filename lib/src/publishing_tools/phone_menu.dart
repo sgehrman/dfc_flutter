@@ -61,7 +61,7 @@ class PhoneMenu extends StatelessWidget {
       menuItems.add(PopupMenuItem<PhoneMenuItem>(
         value: item,
         child: MenuItem(
-          icon: const Icon(Icons.compare),
+          iconData: Icons.compare,
           name: item.title,
         ),
       ));

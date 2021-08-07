@@ -71,7 +71,7 @@ class GenericCard extends StatelessWidget {
               value: 'edit',
               enabled: onEdit != null,
               child: const MenuItem(
-                icon: Icon(Icons.edit),
+                iconData: Icons.edit,
                 name: 'Edit',
               ),
             ),
@@ -84,7 +84,7 @@ class GenericCard extends StatelessWidget {
               value: 'delete',
               enabled: onDelete != null,
               child: const MenuItem(
-                icon: Icon(Icons.delete),
+                iconData: Icons.delete,
                 name: 'Delete',
               ),
             ),
