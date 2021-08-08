@@ -3,24 +3,28 @@ import 'package:flutter/material.dart';
 class MenuUtils {
   static Future<T?> displayMenu<T>({
     required BuildContext context,
-    required Offset globalPosition,
+    required Offset localPosition,
     required List<PopupMenuEntry<T>> menuItems,
   }) async {
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
     final RenderBox? button = context.findRenderObject() as RenderBox?;
-    const Offset widgetOffset = Offset(0, 32);
     final RenderBox? overlay =
         Navigator.of(context).overlay!.context.findRenderObject() as RenderBox?;
 
     if (button != null && overlay != null) {
-      final RelativeRect position = RelativeRect.fromRect(
-        Rect.fromPoints(
-          globalPosition,
-          // button.localToGlobal(widgetOffset, ancestor: overlay),
-          button.localToGlobal(
-              button.size.bottomRight(Offset.zero) + widgetOffset,
-              ancestor: overlay),
+      final buttonRect = Rect.fromPoints(
+        button.localToGlobal(
+          localPosition,
+          ancestor: overlay,
         ),
+        button.localToGlobal(
+          localPosition + const Offset(10, 10),
+          ancestor: overlay,
+        ),
+      );
+
+      final RelativeRect position = RelativeRect.fromRect(
+        buttonRect,
         Offset.zero & overlay.size,
       );
 
