@@ -11,19 +11,12 @@ class MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(right: 12.0),
-          child: icon,
-        ),
-        Flexible(
-          child: Text(
-            name,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ],
+    return ListTile(
+      leading: icon,
+      title: Text(
+        name,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }

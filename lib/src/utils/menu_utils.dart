@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MenuUtils {
-  static void displayMenu<T>({
+  static Future<T?> displayMenu<T>({
     required BuildContext context,
     required Offset globalPosition,
-    required Function(T value) onChange,
     required List<PopupMenuEntry<T>> menuItems,
-  }) {
+  }) async {
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
     final RenderBox? button = context.findRenderObject() as RenderBox?;
     const Offset widgetOffset = Offset(0, 32);
@@ -25,20 +24,18 @@ class MenuUtils {
         Offset.zero & overlay.size,
       );
 
-      showMenu<T>(
+      final result = await showMenu<T>(
         context: context,
         elevation: popupMenuTheme.elevation,
         items: menuItems,
         position: position,
         shape: popupMenuTheme.shape,
         color: popupMenuTheme.color,
-      ).then<void>((T? newValue) {
-        if (newValue == null) {
-          return null;
-        }
+      );
 
-        onChange(newValue);
-      });
+      return result;
     }
+
+    return null;
   }
 }
