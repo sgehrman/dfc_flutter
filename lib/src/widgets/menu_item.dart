@@ -12,7 +12,13 @@ class MenuItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: icon,
+      // IntrinsicWidth keeps the width of the icon without expanding endlessly
+      leading: IntrinsicWidth(
+        child: Container(
+          alignment: Alignment.centerLeft,
+          child: icon,
+        ),
+      ),
       title: Text(
         name,
         overflow: TextOverflow.ellipsis,
