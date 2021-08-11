@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/dialogs/widget_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:dfc_flutter/src/utils/string_utils.dart';
@@ -75,4 +76,16 @@ class JsonViewerScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> showJsonViewerDialog({
+  required BuildContext context,
+  required Map<String, dynamic> map,
+  required String title,
+}) {
+  return showWidgetDialog(
+    context: context,
+    title: 'Bookmark Info',
+    children: [JsonViewerWidget(map)],
+  );
 }
