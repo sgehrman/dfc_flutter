@@ -25,7 +25,7 @@ dependencies:
   collection: ^1.15.0-nullsafety.4
   crypto: ^3.0.0
   device_info: ^2.0.2
-  dotted_border: ^2.0.0
+  dotted_border: ^2.0.0+1
   email_validator: ^2.0.1
   extended_image: ^4.0.1
   flare_flutter: ^3.0.2
@@ -33,7 +33,7 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^0.5.0
   flutter_keyboard_visibility: ^5.0.3
-  flutter_multi_formatter: ^2.3.2
+  flutter_multi_formatter: ^2.3.3
   flutter_parsed_text: ^2.2.1
   flutter_svg: ^0.22.0
   google_fonts: ^2.0.0
@@ -58,7 +58,7 @@ dependencies:
 
 dev_dependencies:
   json_serializable: ^5.0.0
-  build_runner: ^2.1.0
+  build_runner: ^2.1.1
   lint: ^1.5.3
 
 flutter:
