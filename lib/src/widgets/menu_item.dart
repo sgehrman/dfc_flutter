@@ -15,7 +15,7 @@ class MenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.only(left: level * 20),
-      dense: true,
+      visualDensity: VisualDensity.compact,
       horizontalTitleGap: 0,
       // IntrinsicWidth keeps the width of the icon without expanding endlessly
       leading: icon != null
