@@ -13,23 +13,26 @@ class MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.only(left: level * 20),
-      visualDensity: VisualDensity.compact,
-      horizontalTitleGap: 0,
-      // IntrinsicWidth keeps the width of the icon without expanding endlessly
-      leading: icon != null
-          ? IntrinsicWidth(
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: icon,
-              ),
-            )
-          : null,
-      title: Text(
-        name,
-        style: const TextStyle(fontSize: 20),
-        overflow: TextOverflow.ellipsis,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: ListTile(
+        contentPadding: EdgeInsets.only(left: level * 20),
+        visualDensity: VisualDensity.compact,
+        horizontalTitleGap: 0,
+        // IntrinsicWidth keeps the width of the icon without expanding endlessly
+        leading: icon != null
+            ? IntrinsicWidth(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: icon,
+                ),
+              )
+            : null,
+        title: Text(
+          name,
+          style: const TextStyle(fontSize: 20),
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
     );
   }
