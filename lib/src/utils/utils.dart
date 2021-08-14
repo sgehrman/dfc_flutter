@@ -22,7 +22,7 @@ class Utils {
   static final Random _random = Random();
 
   static bool get debugBuild {
-    return kDebugMode;
+    return kDebugMode || kProfileMode;
   }
 
   // same as unawaited in Pedantic package
