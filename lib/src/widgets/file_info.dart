@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:dfc_flutter/src/widgets/fade_image.dart';
 import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/widgets/checkerboard_container.dart';
@@ -71,7 +72,7 @@ class _FileInfoState extends State<FileInfo> {
         if (_onWeb) {
           String url = '${widget.hostUrl}?preview=${widget.serverFile!.path}';
           url = Uri.encodeFull(url);
-          child = Image.network(url);
+          child = FadeImage(url: url, fit: BoxFit.contain);
         } else {
           if (_pdfImageData != null) {
             child = Image.memory(_pdfImageData!);
