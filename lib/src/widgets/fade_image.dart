@@ -28,6 +28,8 @@ class FadeImage extends StatelessWidget {
       fit: fit,
       height: height,
       width: width,
+      imageCacheWidth: width?.toInt(),
+      imageCacheHeight: height?.toInt(),
     );
   }
 }
