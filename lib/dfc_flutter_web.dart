@@ -87,6 +87,7 @@ export 'src/widgets/json_widget.dart';
 export 'src/widgets/keyboard_and_mouse_events.dart';
 export 'src/widgets/list_row.dart';
 export 'src/widgets/loading_widget.dart';
+export 'src/widgets/menu_button.dart';
 export 'src/widgets/measure_size.dart';
 export 'src/widgets/menu_item.dart';
 export 'src/widgets/phone_input_utils.dart';

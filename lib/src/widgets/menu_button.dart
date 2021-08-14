@@ -1,31 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
 
-enum SizeType {
-  imageSize,
-  ios_1284_2778,
-  ios_1242_2208,
-  ios_2048_2732,
-}
-
-class SizeMenuItem {
-  SizeMenuItem({required this.title, required this.type});
+class MenuButtonItem {
+  MenuButtonItem({
+    required this.title,
+    required this.value,
+  });
   String title;
-  SizeType type;
-
-  static List<SizeMenuItem> items = <SizeMenuItem>[
-    SizeMenuItem(title: 'Image Size', type: SizeType.imageSize),
-    SizeMenuItem(title: '6.5 1284x2778', type: SizeType.ios_1284_2778),
-    SizeMenuItem(title: '5.5 1242x2208', type: SizeType.ios_1242_2208),
-    SizeMenuItem(title: '12.9 2048x2732', type: SizeType.ios_2048_2732),
-  ];
+  dynamic value;
 }
 
-class SizeMenu extends StatelessWidget {
-  const SizeMenu({this.onItemSelected, this.selectedItem});
+class MenuButton extends StatelessWidget {
+  const MenuButton({
+    required this.items,
+    required this.onItemSelected,
+    required this.selectedItem,
+  });
 
-  final void Function(SizeMenuItem)? onItemSelected;
-  final SizeMenuItem? selectedItem;
+  final void Function(MenuButtonItem) onItemSelected;
+  final MenuButtonItem selectedItem;
+  final List<MenuButtonItem> items;
 
   Widget _menuButton(BuildContext context) {
     final button = Padding(
@@ -35,7 +29,7 @@ class SizeMenu extends StatelessWidget {
         children: <Widget>[
           Flexible(
             child: Text(
-              selectedItem!.title,
+              selectedItem.title,
               overflow: TextOverflow.ellipsis,
             ),
           ),
@@ -49,10 +43,10 @@ class SizeMenu extends StatelessWidget {
       ),
     );
 
-    final List<PopupMenuItem<SizeMenuItem>> menuItems = [];
+    final List<PopupMenuItem<MenuButtonItem>> menuItems = [];
 
-    for (final item in SizeMenuItem.items) {
-      menuItems.add(PopupMenuItem<SizeMenuItem>(
+    for (final item in items) {
+      menuItems.add(PopupMenuItem<MenuButtonItem>(
         value: item,
         child: MenuItem(
           icon: const Icon(Icons.compare),
@@ -61,12 +55,12 @@ class SizeMenu extends StatelessWidget {
       ));
     }
 
-    return PopupMenuButton<SizeMenuItem>(
+    return PopupMenuButton<MenuButtonItem>(
       itemBuilder: (context) {
         return menuItems;
       },
       onSelected: (selected) {
-        onItemSelected!(selected);
+        onItemSelected(selected);
       },
       child: button,
     );
