@@ -68,6 +68,7 @@ export 'src/widgets/datetime_form_field.dart';
 export 'src/widgets/dialog_button.dart';
 export 'src/widgets/double_thumbs_control.dart';
 export 'src/widgets/draggable_scrollbar.dart';
+export 'src/widgets/drag_scroll_widget.dart';
 export 'src/widgets/dropstack/drop_stack.dart';
 export 'src/widgets/dropstack/drop_stack_button.dart';
 export 'src/widgets/expandable_text.dart';
