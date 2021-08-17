@@ -6,7 +6,8 @@ import 'dart:io';
 
 Future main() async {
   final File file = File(
-      '/home/steve/.pub-cache/hosted/pub.dartlang.org/google_fonts-0.5.0+1/lib/google_fonts.dart');
+    '/home/steve/.pub-cache/hosted/pub.dartlang.org/google_fonts-0.5.0+1/lib/google_fonts.dart',
+  );
 
   final String content = await file.readAsString();
 
@@ -25,7 +26,9 @@ Future main() async {
       String substr = line.substring('  static TextTheme '.length);
 
       substr = substr.substring(
-          0, substr.length - '([TextTheme textTheme]) {'.length);
+        0,
+        substr.length - '([TextTheme textTheme]) {'.length,
+      );
 
       result += "\n case '$substr': return GoogleFonts.$substr(theme);";
       themeNames.add(substr);

@@ -130,8 +130,12 @@ class ScreenshotMaker {
     final ui.Image image =
         await pic.toImage(rect.width.toInt(), rect.height.toInt());
 
-    final ui.Image resizedImage = await _resizeImage(image, imageSize,
-        drawBackground: drawBackground, resultImageSize: resultImageSize);
+    final ui.Image resizedImage = await _resizeImage(
+      image,
+      imageSize,
+      drawBackground: drawBackground,
+      resultImageSize: resultImageSize,
+    );
 
     final data = await resizedImage.toByteData(format: ui.ImageByteFormat.png);
     final buffer = data?.buffer.asUint8List();
@@ -175,9 +179,10 @@ class ScreenshotMaker {
       text: title,
     );
     final TextPainter tp = TextPainter(
-        text: span,
-        textAlign: TextAlign.center,
-        textDirection: TextDirection.ltr);
+      text: span,
+      textAlign: TextAlign.center,
+      textDirection: TextDirection.ltr,
+    );
     tp.layout();
     final double w = tp.size.width / 2;
     double h = tp.size.height;
@@ -186,8 +191,12 @@ class ScreenshotMaker {
     tp.paint(canvas, Offset(centerX - w, startY + h));
   }
 
-  Future<ui.Image> _resizeImage(ui.Image image, Size? size,
-      {bool drawBackground = true, SizeType? resultImageSize}) async {
+  Future<ui.Image> _resizeImage(
+    ui.Image image,
+    Size? size, {
+    bool drawBackground = true,
+    SizeType? resultImageSize,
+  }) async {
     final pictureRecorder = ui.PictureRecorder();
     final canvas = Canvas(pictureRecorder);
 

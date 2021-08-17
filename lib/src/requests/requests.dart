@@ -28,7 +28,9 @@ class Response {
   void throwForStatus() {
     if (!success) {
       throw HTTPException(
-          'Invalid HTTP status code $statusCode for url $url', this);
+        'Invalid HTTP status code $statusCode for url $url',
+        this,
+      );
     }
   }
 
@@ -76,7 +78,8 @@ class Requests {
   };
 
   static Map<String, String> _extractResponseCookies(
-      Map<String, String> responseHeaders) {
+    Map<String, String> responseHeaders,
+  ) {
     final Map<String, String> cookies = {};
     for (final String key in responseHeaders.keys) {
       if (Common.equalsIgnoreCase(key, 'set-cookie')) {
@@ -97,7 +100,9 @@ class Requests {
   }
 
   static Future<Map<String, String>> _constructRequestHeaders(
-      String hostname, Map<String, String>? customHeaders) async {
+    String hostname,
+    Map<String, String>? customHeaders,
+  ) async {
     final cookies = await getStoredCookies(hostname);
     final String cookie =
         cookies.keys.map((key) => '$key=${cookies[key]}').join('; ');
@@ -129,7 +134,9 @@ class Requests {
   }
 
   static Future setStoredCookies(
-      String hostname, Map<String, String> cookies) async {
+    String hostname,
+    Map<String, String> cookies,
+  ) async {
     final String hostnameHash = Common.hashStringSHA256(hostname);
     final String cookiesJson = Common.toJson(cookies);
     await Common.storageSet('cookies-$hostnameHash', cookiesJson);
@@ -146,7 +153,10 @@ class Requests {
   }
 
   static Future<Response> _handleHttpResponse(
-      String hostname, http.Response rawResponse, bool persistCookies) async {
+    String hostname,
+    http.Response rawResponse,
+    bool persistCookies,
+  ) async {
     if (persistCookies) {
       final responseCookies = _extractResponseCookies(rawResponse.headers);
       if (responseCookies.isNotEmpty) {
@@ -165,14 +175,16 @@ class Requests {
     return response;
   }
 
-  static Future<Response> head(String url,
-      {Map<String, String>? headers,
-      Map<String, dynamic>? queryParameters,
-      int? port,
-      RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
-      int timeoutSeconds = defaultTimeoutSeconds,
-      bool persistCookies = true,
-      bool verify = true}) {
+  static Future<Response> head(
+    String url, {
+    Map<String, String>? headers,
+    Map<String, dynamic>? queryParameters,
+    int? port,
+    RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
+    int timeoutSeconds = defaultTimeoutSeconds,
+    bool persistCookies = true,
+    bool verify = true,
+  }) {
     return _httpRequest(
       HttpMethod.head,
       url,
@@ -186,14 +198,16 @@ class Requests {
     );
   }
 
-  static Future<Response> get(String url,
-      {Map<String, String>? headers,
-      Map<String, dynamic>? queryParameters,
-      int? port,
-      RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
-      int timeoutSeconds = defaultTimeoutSeconds,
-      bool persistCookies = true,
-      bool verify = true}) {
+  static Future<Response> get(
+    String url, {
+    Map<String, String>? headers,
+    Map<String, dynamic>? queryParameters,
+    int? port,
+    RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
+    int timeoutSeconds = defaultTimeoutSeconds,
+    bool persistCookies = true,
+    bool verify = true,
+  }) {
     return _httpRequest(
       HttpMethod.get,
       url,
@@ -207,16 +221,18 @@ class Requests {
     );
   }
 
-  static Future<Response> patch(String url,
-      {Map<String, String>? headers,
-      int? port,
-      Map<String, dynamic>? json,
-      dynamic body,
-      Map<String, dynamic>? queryParameters,
-      RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
-      int timeoutSeconds = defaultTimeoutSeconds,
-      bool persistCookies = true,
-      bool verify = true}) {
+  static Future<Response> patch(
+    String url, {
+    Map<String, String>? headers,
+    int? port,
+    Map<String, dynamic>? json,
+    dynamic body,
+    Map<String, dynamic>? queryParameters,
+    RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
+    int timeoutSeconds = defaultTimeoutSeconds,
+    bool persistCookies = true,
+    bool verify = true,
+  }) {
     return _httpRequest(
       HttpMethod.patch,
       url,
@@ -232,16 +248,18 @@ class Requests {
     );
   }
 
-  static Future<Response> delete(String url,
-      {Map<String, String>? headers,
-      Map<String, dynamic>? json,
-      dynamic body,
-      Map<String, dynamic>? queryParameters,
-      int? port,
-      RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
-      int timeoutSeconds = defaultTimeoutSeconds,
-      bool persistCookies = true,
-      bool verify = true}) {
+  static Future<Response> delete(
+    String url, {
+    Map<String, String>? headers,
+    Map<String, dynamic>? json,
+    dynamic body,
+    Map<String, dynamic>? queryParameters,
+    int? port,
+    RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
+    int timeoutSeconds = defaultTimeoutSeconds,
+    bool persistCookies = true,
+    bool verify = true,
+  }) {
     return _httpRequest(
       HttpMethod.delete,
       url,
@@ -257,16 +275,18 @@ class Requests {
     );
   }
 
-  static Future<Response> post(String url,
-      {Map<String, dynamic>? json,
-      int? port,
-      Map<String, dynamic>? body,
-      Map<String, dynamic>? queryParameters,
-      RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
-      Map<String, String>? headers,
-      int timeoutSeconds = defaultTimeoutSeconds,
-      bool persistCookies = true,
-      bool verify = true}) {
+  static Future<Response> post(
+    String url, {
+    Map<String, dynamic>? json,
+    int? port,
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? queryParameters,
+    RequestBodyEncoding bodyEncoding = defaultBodyEncoding,
+    Map<String, String>? headers,
+    int timeoutSeconds = defaultTimeoutSeconds,
+    bool persistCookies = true,
+    bool verify = true,
+  }) {
     return _httpRequest(
       HttpMethod.post,
       url,
@@ -341,7 +361,8 @@ class Requests {
 
     if (uri.scheme != 'http' && uri.scheme != 'https') {
       throw ArgumentError(
-          "invalid url, must start with 'http://' or 'https://' sheme (e.g. 'http://example.com')");
+        "invalid url, must start with 'http://' or 'https://' sheme (e.g. 'http://example.com')",
+      );
     }
 
     final String hostname = getHostname(url);
@@ -425,6 +446,9 @@ class Requests {
     }
 
     return _handleHttpResponse(
-        hostname, response as http.Response, persistCookies);
+      hostname,
+      response as http.Response,
+      persistCookies,
+    );
   }
 }

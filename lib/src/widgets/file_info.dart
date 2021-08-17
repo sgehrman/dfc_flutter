@@ -102,7 +102,8 @@ class _FileInfoState extends State<FileInfo> {
           list.add(VideoPlayerWidget(serverFile: null, hostUrl: url));
         } else {
           list.add(
-              VideoPlayerWidget(serverFile: widget.serverFile, hostUrl: null));
+            VideoPlayerWidget(serverFile: widget.serverFile, hostUrl: null),
+          );
         }
       }
     }
@@ -113,51 +114,53 @@ class _FileInfoState extends State<FileInfo> {
   List<Widget> _buildList(BuildContext context) {
     final List<Widget> list = [];
 
-    list.addAll(widget.map!.keys.map((key) {
-      String valueString = widget.map![key].toString();
+    list.addAll(
+      widget.map!.keys.map((key) {
+        String valueString = widget.map![key].toString();
 
-      if (key == 'size' ||
-          key == 'free space' ||
-          key == 'used space' ||
-          key == 'total space') {
-        final int size = widget.map![key] as int;
-        valueString = size.formatBytes(2);
-      }
+        if (key == 'size' ||
+            key == 'free space' ||
+            key == 'used space' ||
+            key == 'total space') {
+          final int size = widget.map![key] as int;
+          valueString = size.formatBytes(2);
+        }
 
-      if (key == 'changed') {
-        valueString =
-            DateFormat.yMMMEd().add_jms().format(DateTime.parse(valueString));
-      }
-      if (key == 'modified') {
-        valueString =
-            DateFormat.yMMMEd().add_jms().format(DateTime.parse(valueString));
-      }
-      if (key == 'accessed') {
-        valueString =
-            DateFormat.yMMMEd().add_jms().format(DateTime.parse(valueString));
-      }
+        if (key == 'changed') {
+          valueString =
+              DateFormat.yMMMEd().add_jms().format(DateTime.parse(valueString));
+        }
+        if (key == 'modified') {
+          valueString =
+              DateFormat.yMMMEd().add_jms().format(DateTime.parse(valueString));
+        }
+        if (key == 'accessed') {
+          valueString =
+              DateFormat.yMMMEd().add_jms().format(DateTime.parse(valueString));
+        }
 
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Text(
-                '$key:',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Flexible(
+                child: Text(
+                  '$key:',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Text(valueString),
-            ),
-          ],
-        ),
-      );
-    }).toList());
+              Expanded(
+                flex: 2,
+                child: Text(valueString),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
 
     return list;
   }

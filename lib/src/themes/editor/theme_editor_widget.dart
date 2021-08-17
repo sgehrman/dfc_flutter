@@ -49,8 +49,15 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
           final image = img.Image(320, 320);
           img.fill(image, img.getColor(255, 255, 255));
 
-          drawBarcode(image, Barcode.qrCode(), jsonStr,
-              width: 300, height: 300, x: 10, y: 10);
+          drawBarcode(
+            image,
+            Barcode.qrCode(),
+            jsonStr,
+            width: 300,
+            height: 300,
+            x: 10,
+            y: 10,
+          );
 
           final Directory directory = await getTemporaryDirectory();
 
@@ -64,9 +71,10 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
     ];
 
     showWidgetDialog(
-        context: context,
-        title: 'Scan the QRcode import the current theme.',
-        children: children);
+      context: context,
+      title: 'Scan the QRcode import the current theme.',
+      children: children,
+    );
   }
 
   @override
@@ -107,7 +115,9 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
                   Navigator.of(context).push<void>(
                     MaterialPageRoute(
                       builder: (context) => ThemeColorEditorScreen(
-                          themeSet: theme, field: colorFields[index]),
+                        themeSet: theme,
+                        field: colorFields[index],
+                      ),
                     ),
                   );
                 },
@@ -135,11 +145,13 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
           trailing: ThemeButton(
             title: 'Change Font',
             onPressed: () {
-              Navigator.of(context).push<void>(MaterialPageRoute(
-                builder: (context) {
-                  return GoogleFontsScreen();
-                },
-              ));
+              Navigator.of(context).push<void>(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return GoogleFontsScreen();
+                  },
+                ),
+              );
             },
           ),
           title: Text(
@@ -155,14 +167,19 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
                 onPressed: () async {
                   final String barcodeScanRes =
                       await FlutterBarcodeScanner.scanBarcode(
-                          '#ff6666', 'Cancel', true, ScanMode.DEFAULT);
+                    '#ff6666',
+                    'Cancel',
+                    true,
+                    ScanMode.DEFAULT,
+                  );
 
                   // "-1" gets returned on cancel or back
                   // we only want json back in this case
                   if (Utils.isNotEmpty(barcodeScanRes) &&
                       barcodeScanRes.firstChar == '{') {
                     final ThemeSet newTheme = ThemeSet.fromMap(
-                        json.decode(barcodeScanRes) as Map<String, dynamic>);
+                      json.decode(barcodeScanRes) as Map<String, dynamic>,
+                    );
 
                     ThemeSetManager.saveTheme(newTheme, scanned: true);
                   }

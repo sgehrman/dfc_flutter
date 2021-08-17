@@ -13,7 +13,10 @@ import 'package:hive/hive.dart';
 
 // web and mobile have different implementations, see DropStackImpMobile, DropStackImpWeb
 typedef DropStackImplementation = void Function(
-    BuildContext context, ServerFile serverFile, ServerFile directory);
+  BuildContext context,
+  ServerFile serverFile,
+  ServerFile directory,
+);
 
 class DropStack extends ChangeNotifier {
   factory DropStack() {
@@ -59,7 +62,10 @@ class DropStack extends ChangeNotifier {
 
   // _dropFile isn't async because we don't want to wait until completed
   void _dropFile(
-      BuildContext context, ServerFile serverFile, ServerFile directory) {
+    BuildContext context,
+    ServerFile serverFile,
+    ServerFile directory,
+  ) {
     if (DropStack.imp != null) {
       DropStack.imp!(context, serverFile, directory);
     } else {
@@ -94,8 +100,10 @@ class DropStack extends ChangeNotifier {
       title: 'Confirm Drop',
       okButtonName: 'Drop',
       children: <Widget>[
-        Text('Dropping:',
-            style: TextStyle(color: Theme.of(context).primaryColor)),
+        Text(
+          'Dropping:',
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        ),
         const SizedBox(height: 6),
         ...itemsDropping,
         const SizedBox(height: 10),
@@ -122,9 +130,11 @@ class DropStack extends ChangeNotifier {
                   onChanged: (bool newValue) {
                     BrowserPrefs.copyOnDrop = newValue;
                   },
-                  title: Text(BrowserPrefs.copyOnDrop!
-                      ? 'Perform a Copy'
-                      : 'Perform a Move'),
+                  title: Text(
+                    BrowserPrefs.copyOnDrop!
+                        ? 'Perform a Copy'
+                        : 'Perform a Move',
+                  ),
                 ),
                 SwitchListTile(
                   value: BrowserPrefs.replaceOnDrop!,
@@ -154,7 +164,10 @@ class DropStack extends ChangeNotifier {
     if (isNotEmpty) {
       if (directory.isDirectory!) {
         final bool? drop = await _confirmDrop(
-            context: context, directory: directory, topOnly: topOnly);
+          context: context,
+          directory: directory,
+          topOnly: topOnly,
+        );
 
         if (drop == true) {
           bool done = false;

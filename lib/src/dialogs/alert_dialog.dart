@@ -26,8 +26,10 @@ Future<void> showAlertDialog({
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text('OK',
-              style: TextStyle(color: Theme.of(context).primaryColor)),
+          child: Text(
+            'OK',
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
         ),
       ],
     ),

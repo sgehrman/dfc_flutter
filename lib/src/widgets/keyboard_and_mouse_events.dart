@@ -37,8 +37,8 @@ class KeyboardAndMouseEvents extends StatelessWidget {
         LogicalKeySet(LogicalKeyboardKey.escape): const _XIntent.esc(),
         LogicalKeySet(LogicalKeyboardKey.tab): const _XIntent.tab(),
         LogicalKeySet.fromSet(
-                {LogicalKeyboardKey.tab, LogicalKeyboardKey.shift}):
-            const _XIntent.shiftTab(),
+          {LogicalKeyboardKey.tab, LogicalKeyboardKey.shift},
+        ): const _XIntent.shiftTab(),
         LogicalKeySet(LogicalKeyboardKey.enter): const _XIntent.enter(),
         LogicalKeySet(LogicalKeyboardKey.arrowUp): const _XIntent.arrowUp(),
         LogicalKeySet(LogicalKeyboardKey.arrowDown): const _XIntent.arrowDown(),
@@ -47,34 +47,22 @@ class KeyboardAndMouseEvents extends StatelessWidget {
   void _actionHandler(_XIntent intent) {
     switch (intent.type) {
       case _XIntentType.esc:
-        if (onEscCallback != null) {
-          onEscCallback!();
-        }
+        onEscCallback?.call();
         break;
       case _XIntentType.tab:
-        if (onTabCallback != null) {
-          onTabCallback!();
-        }
+        onTabCallback?.call();
         break;
       case _XIntentType.shifTab:
-        if (onShiftTabCallback != null) {
-          onShiftTabCallback!();
-        }
+        onShiftTabCallback?.call();
         break;
       case _XIntentType.enter:
-        if (onEnterCallback != null) {
-          onEnterCallback!();
-        }
+        onEnterCallback?.call();
         break;
       case _XIntentType.arrowUp:
-        if (onArrowUpCallback != null) {
-          onArrowUpCallback!();
-        }
+        onArrowUpCallback?.call();
         break;
       case _XIntentType.arrowDown:
-        if (onArrowDownCallback != null) {
-          onArrowDownCallback!();
-        }
+        onArrowDownCallback?.call();
         break;
     }
   }

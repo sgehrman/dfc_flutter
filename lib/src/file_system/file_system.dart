@@ -19,8 +19,11 @@ class FileSystem {
   // set to true during statup. We could use different starting paths if not granted
   static bool storagePermissionGranted = false;
 
-  static Future<void> printAssets(BuildContext context,
-      {String? directoryName, String? ext}) async {
+  static Future<void> printAssets(
+    BuildContext context, {
+    String? directoryName,
+    String? ext,
+  }) async {
     String matchDir = '';
     String matchExt = '';
 
@@ -336,8 +339,10 @@ class FileSystem {
     }
   }
 
-  static Future<String> compress(ServerFile serverFile,
-      {String destinationDir = ''}) async {
+  static Future<String> compress(
+    ServerFile serverFile, {
+    String destinationDir = '',
+  }) async {
     return ZipArchive.compress(serverFile, destinationDir);
   }
 

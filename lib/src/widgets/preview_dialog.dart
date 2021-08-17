@@ -37,7 +37,8 @@ class CDialog extends StatelessWidget {
 
   static const RoundedRectangleBorder _defaultDialogShape =
       RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4.0)));
+    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+  );
   static const double _defaultElevation = 24.0;
 
   @override
@@ -55,8 +56,9 @@ class CDialog extends StatelessWidget {
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * .90,
-              maxWidth: MediaQuery.of(context).size.width * .95),
+            maxHeight: MediaQuery.of(context).size.height * .90,
+            maxWidth: MediaQuery.of(context).size.width * .95,
+          ),
           child: Material(
             color: Colors.transparent,
             elevation: dialogTheme.elevation ?? _defaultElevation,

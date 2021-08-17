@@ -82,12 +82,14 @@ class SuperImage extends StatelessWidget {
 
           result = GestureDetector(
             onTap: () {
-              Navigator.of(context).push(TransparentPageRoute<void>(
-                builder: (BuildContext context) => ImageViewer(
-                  index: index,
-                  swiperItems: swiperItems,
+              Navigator.of(context).push(
+                TransparentPageRoute<void>(
+                  builder: (BuildContext context) => ImageViewer(
+                    index: index,
+                    swiperItems: swiperItems,
+                  ),
                 ),
-              ));
+              );
             },
             child: Hero(
               tag: swiperItem.heroTag,

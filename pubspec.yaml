@@ -8,16 +8,6 @@ environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
-  flutter_icons:
-    git:
-      url: git://github.com/adarsh-technocrat/flutter-icons.git
-      branch: null-safety-migration
-  open_file:
-    git: git://github.com/crazecoder/open_file
-  share_extend:
-    git: git://github.com/finroly/ShareExtend.git
   barcode_image: ^2.0.0
   barcode_widget: ^2.0.0
   bonsoir: ^1.0.0+1
@@ -29,9 +19,15 @@ dependencies:
   email_validator: ^2.0.1
   extended_image: ^4.0.1
   flare_flutter: ^3.0.2
+  flutter:
+    sdk: flutter
   flutter_archive: ^4.0.1
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^0.5.0
+  flutter_icons:
+    git:
+      url: git://github.com/adarsh-technocrat/flutter-icons.git
+      branch: null-safety-migration
   flutter_keyboard_visibility: ^5.0.3
   flutter_multi_formatter: ^2.3.3
   flutter_parsed_text: ^2.2.1
@@ -43,22 +39,29 @@ dependencies:
   http: ^0.13.3
   image: ^3.0.1
   intl: ^0.17.0
+  json_annotation: ^4.1.0
   mime_type: ^1.0.0
   native_pdf_renderer: ^3.1.0
+  open_file:
+    git: git://github.com/crazecoder/open_file
   package_info: ^2.0.2
   path: ^1.8.0
   path_provider: ^2.0.2
   provider: ^5.0.0
   random_string: ^2.3.1
+  share_extend:
+    git: git://github.com/finroly/ShareExtend.git
   shared_preferences: ^2.0.6
   simple_animations: ^3.1.1
+  supercharged: ^2.0.0
   url_launcher: ^6.0.8
+  vector_math: ^2.1.0
   video_player: ^2.1.12
-  json_annotation: ^4.1.0
+  xml: ^5.2.0
 
 dev_dependencies:
-  json_serializable: ^5.0.0
   build_runner: ^2.1.1
+  json_serializable: ^5.0.0
   lint: ^1.5.3
 
 flutter:

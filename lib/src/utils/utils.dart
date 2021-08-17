@@ -56,8 +56,11 @@ class Utils {
     );
   }
 
-  static Future<void> printAssets(BuildContext context,
-      {String? directoryName, String? ext}) async {
+  static Future<void> printAssets(
+    BuildContext context, {
+    String? directoryName,
+    String? ext,
+  }) async {
     String matchDir = '';
     String matchExt = '';
 
@@ -210,8 +213,13 @@ class Utils {
     return packageInfo.appName;
   }
 
-  static void showSnackbar(BuildContext context, String message,
-      {bool error = false, String? action, void Function()? onPressed}) {
+  static void showSnackbar(
+    BuildContext context,
+    String message, {
+    bool error = false,
+    String? action,
+    void Function()? onPressed,
+  }) {
     final snackBar = SnackBar(
       backgroundColor: error ? Colors.red[700] : Colors.green[800],
       content: TText(
@@ -232,10 +240,12 @@ class Utils {
   }
 
   static Future<void> showCopiedToast(BuildContext context) async {
-    await Navigator.of(context).push<void>(PageRouteBuilder(
-      opaque: false,
-      pageBuilder: (BuildContext context, _, __) => _Toast(),
-    ));
+    await Navigator.of(context).push<void>(
+      PageRouteBuilder(
+        opaque: false,
+        pageBuilder: (BuildContext context, _, __) => _Toast(),
+      ),
+    );
   }
 
   static Future<ui.Image> loadUiImage(String imageAssetPath) async {
@@ -266,10 +276,15 @@ class Utils {
     return color1?.value == color2?.value;
   }
 
-  static Size mediaSquareSize(BuildContext context,
-      {double percent = 0.5, double? maxDimension}) {
+  static Size mediaSquareSize(
+    BuildContext context, {
+    double percent = 0.5,
+    double? maxDimension,
+  }) {
     double dimension = min(
-        MediaQuery.of(context).size.width, MediaQuery.of(context).size.height);
+      MediaQuery.of(context).size.width,
+      MediaQuery.of(context).size.height,
+    );
 
     dimension = dimension * percent;
     if (maxDimension != null) {
@@ -283,8 +298,7 @@ class Utils {
     assert(amount >= 0 && amount <= 1);
 
     final hsl = HSLColor.fromColor(color);
-    final hslDark =
-        hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0).toDouble());
+    final hslDark = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
 
     return hslDark.toColor();
   }
@@ -294,7 +308,7 @@ class Utils {
 
     final hsl = HSLColor.fromColor(color);
     final hslLight =
-        hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0).toDouble());
+        hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
 
     return hslLight.toColor();
   }
@@ -324,8 +338,10 @@ class Utils {
     return Theme.of(context).brightness == Brightness.dark;
   }
 
-  static void scrollToEndAnimated(ScrollController scrollController,
-      {bool reversed = false}) {
+  static void scrollToEndAnimated(
+    ScrollController scrollController, {
+    bool reversed = false,
+  }) {
     scrollController.animateTo(
       reversed
           ? scrollController.position.minScrollExtent
@@ -335,8 +351,10 @@ class Utils {
     );
   }
 
-  static void scrollToEnd(ScrollController scrollController,
-      {bool reversed = false}) {
+  static void scrollToEnd(
+    ScrollController scrollController, {
+    bool reversed = false,
+  }) {
     scrollController.jumpTo(
       reversed
           ? scrollController.position.minScrollExtent
@@ -364,39 +382,48 @@ class Utils {
     return '0$n';
   }
 
-  static List<MatchText> matchArray(
-      {bool email = true, bool phone = true, bool url = true}) {
+  static List<MatchText> matchArray({
+    bool email = true,
+    bool phone = true,
+    bool url = true,
+  }) {
     final result = <MatchText>[];
 
     if (email) {
-      result.add(MatchText(
-        type: ParsedType.EMAIL,
-        style: const TextStyle(
-          color: Colors.blue,
-          fontSize: 24,
+      result.add(
+        MatchText(
+          type: ParsedType.EMAIL,
+          style: const TextStyle(
+            color: Colors.blue,
+            fontSize: 24,
+          ),
+          onTap: (String r) => Utils.matchCallback('email', r),
         ),
-        onTap: (String r) => Utils.matchCallback('email', r),
-      ));
+      );
     }
 
     if (phone) {
-      result.add(MatchText(
-        type: ParsedType.PHONE,
-        style: const TextStyle(
-          color: Colors.blue,
+      result.add(
+        MatchText(
+          type: ParsedType.PHONE,
+          style: const TextStyle(
+            color: Colors.blue,
+          ),
+          onTap: (String r) => Utils.matchCallback('phone', r),
         ),
-        onTap: (String r) => Utils.matchCallback('phone', r),
-      ));
+      );
     }
 
     if (url) {
-      result.add(MatchText(
-        type: ParsedType.URL,
-        style: const TextStyle(
-          color: Colors.blue,
+      result.add(
+        MatchText(
+          type: ParsedType.URL,
+          style: const TextStyle(
+            color: Colors.blue,
+          ),
+          onTap: (String r) => Utils.matchCallback('url', r),
         ),
-        onTap: (String r) => Utils.matchCallback('url', r),
-      ));
+      );
     }
 
     return result;
@@ -471,8 +498,9 @@ class Utils {
       return null;
     }
 
-    return enumValues.singleWhereOrNull((enumItem) =>
-        enumToString(enumItem).toLowerCase() == value.toLowerCase());
+    return enumValues.singleWhereOrNull(
+      (enumItem) => enumToString(enumItem).toLowerCase() == value.toLowerCase(),
+    );
   }
 
   // removes null value, empty strings, empty lists, empty maps
@@ -574,14 +602,19 @@ class ScrollWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraint) {
-      return SingleChildScrollView(
-        child: ConstrainedBox(
+    return LayoutBuilder(
+      builder: (context, constraint) {
+        return SingleChildScrollView(
+          child: ConstrainedBox(
             constraints: BoxConstraints(
-                maxHeight: constraint.maxHeight, maxWidth: constraint.maxWidth),
-            child: child),
-      );
-    });
+              maxHeight: constraint.maxHeight,
+              maxWidth: constraint.maxWidth,
+            ),
+            child: child,
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -624,8 +657,10 @@ class __ToastState extends State<_Toast> {
               borderRadius: BorderRadius.circular(12),
             ),
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-            child: const Text('Copied',
-                style: TextStyle(color: Colors.white, fontSize: 18)),
+            child: const Text(
+              'Copied',
+              style: TextStyle(color: Colors.white, fontSize: 18),
+            ),
           ),
         ),
       ),

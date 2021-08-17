@@ -58,7 +58,9 @@ class ZipArchive {
 
     try {
       await ZipFile.extractToDirectory(
-          zipFile: zipFile, destinationDir: tmpDir);
+        zipFile: zipFile,
+        destinationDir: tmpDir,
+      );
 
       for (final entity in tmpDir.listSync()) {
         final bool isDirectory = entity is Directory;

@@ -19,7 +19,10 @@ Random starRandom = Random.secure();
 
 class Star {
   final Vector3 position = Vector3(
-      getNormalizedRandom(), getNormalizedRandom(), getNormalizedRandom());
+    getNormalizedRandom(),
+    getNormalizedRandom(),
+    getNormalizedRandom(),
+  );
   final int alpha = starRandom.nextInt(128) + 128;
   final int red = starRandom.nextInt(50) + 205;
   final int green = starRandom.nextInt(50) + 205;

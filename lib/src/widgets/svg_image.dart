@@ -52,10 +52,11 @@ class _SvgImageState extends State<SvgImage> {
 
     if (failed) {
       return const Center(
-          child: Padding(
-        padding: EdgeInsets.all(20.0),
-        child: Text('Failed to load SVG image.'),
-      ));
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Text('Failed to load SVG image.'),
+        ),
+      );
     }
 
     return const Center(child: CircularProgressIndicator());

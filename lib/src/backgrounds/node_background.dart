@@ -50,10 +50,12 @@ class AnimationVal {
     );
 
     gradientPaint = Paint();
-    gradientPaint.shader = gradient.createShader(Rect.fromCircle(
-      center: Offset.zero,
-      radius: radius,
-    ));
+    gradientPaint.shader = gradient.createShader(
+      Rect.fromCircle(
+        center: Offset.zero,
+        radius: radius,
+      ),
+    );
   }
 
   final Animation<Offset> animation;
@@ -92,14 +94,16 @@ class _NodeBackgroundAnimationState extends State<NodeBackgroundAnimation>
 
     controllers = List.generate(total, (i) {
       return AnimationController(
-          vsync: this,
-          duration: Duration(seconds: 15, milliseconds: random.nextInt(5000)));
+        vsync: this,
+        duration: Duration(seconds: 15, milliseconds: random.nextInt(5000)),
+      );
     });
 
     animations = List.generate(total, (i) {
       final tween = Tween<Offset>(
-          begin: Offset(random.nextDouble(), random.nextDouble()),
-          end: Offset(random.nextDouble(), random.nextDouble()));
+        begin: Offset(random.nextDouble(), random.nextDouble()),
+        end: Offset(random.nextDouble(), random.nextDouble()),
+      );
       final a = tween.animate(controllers[i]);
       a
         ..addListener(() {
@@ -191,12 +195,21 @@ class BackgroundPainter extends CustomPainter {
     }
 
     for (int i = 3; i < animations!.length; i += 3) {
-      canvas.drawLine(getOffset(animations![i - 3].animation, size),
-          getOffset(animations![i].animation, size), paintLine);
-      canvas.drawLine(getOffset(animations![i - 2].animation, size),
-          getOffset(animations![i].animation, size), paintLine);
-      canvas.drawLine(getOffset(animations![i - 1].animation, size),
-          getOffset(animations![i].animation, size), paintLine);
+      canvas.drawLine(
+        getOffset(animations![i - 3].animation, size),
+        getOffset(animations![i].animation, size),
+        paintLine,
+      );
+      canvas.drawLine(
+        getOffset(animations![i - 2].animation, size),
+        getOffset(animations![i].animation, size),
+        paintLine,
+      );
+      canvas.drawLine(
+        getOffset(animations![i - 1].animation, size),
+        getOffset(animations![i].animation, size),
+        paintLine,
+      );
     }
   }
 

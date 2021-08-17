@@ -29,8 +29,9 @@ class DynamicTheme with ChangeNotifier {
 
   ThemeData transparentTheme(BuildContext context) {
     return appTheme(
-            transparentAppBar: true, darkMode: Utils.isDarkMode(context))
-        .theme;
+      transparentAppBar: true,
+      darkMode: Utils.isDarkMode(context),
+    ).theme;
   }
 
   // for game window with black background

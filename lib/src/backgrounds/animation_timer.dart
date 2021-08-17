@@ -28,6 +28,6 @@ class AnimationTimer {
   }
 
   double progress(Duration now) {
-    return _progress(now).clamp(0.0, 1.0).toDouble();
+    return _progress(now).clamp(0.0, 1.0);
   }
 }

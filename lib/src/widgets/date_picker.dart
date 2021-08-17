@@ -84,9 +84,7 @@ class _DatePickerState extends State<DatePicker> {
             selectionColor: widget.selectionColor,
             isSelected: isSelected,
             onDateSelected: (selectedDate) {
-              if (widget.onDateChange != null) {
-                widget.onDateChange!(selectedDate);
-              }
+              widget.onDateChange?.call(selectedDate);
               setState(() {
                 _currentDate = selectedDate;
               });
@@ -106,37 +104,54 @@ class DatePickerController {
   }
 
   DateTime? get currentDate {
-    assert(_datePickerState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+    assert(
+      _datePickerState != null,
+      'DatePickerController is not attached to any DatePicker View.',
+    );
 
     return _datePickerState!._currentDate;
   }
 
   void jumpToSelection() {
-    assert(_datePickerState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+    assert(
+      _datePickerState != null,
+      'DatePickerController is not attached to any DatePicker View.',
+    );
 
     _datePickerState!._controller.jumpTo(_calculateDateOffset(currentDate!));
   }
 
-  void animateToSelection(
-      {Duration duration = const Duration(milliseconds: 500),
-      Curve curve = Curves.linear}) {
-    assert(_datePickerState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+  void animateToSelection({
+    Duration duration = const Duration(milliseconds: 500),
+    Curve curve = Curves.linear,
+  }) {
+    assert(
+      _datePickerState != null,
+      'DatePickerController is not attached to any DatePicker View.',
+    );
 
-    _datePickerState!._controller.animateTo(_calculateDateOffset(currentDate!),
-        duration: duration, curve: curve);
+    _datePickerState!._controller.animateTo(
+      _calculateDateOffset(currentDate!),
+      duration: duration,
+      curve: curve,
+    );
   }
 
-  void animateToDate(DateTime date,
-      {Duration duration = const Duration(milliseconds: 500),
-      Curve curve = Curves.linear}) {
-    assert(_datePickerState != null,
-        'DatePickerController is not attached to any DatePicker View.');
+  void animateToDate(
+    DateTime date, {
+    Duration duration = const Duration(milliseconds: 500),
+    Curve curve = Curves.linear,
+  }) {
+    assert(
+      _datePickerState != null,
+      'DatePickerController is not attached to any DatePicker View.',
+    );
 
-    _datePickerState!._controller.animateTo(_calculateDateOffset(date),
-        duration: duration, curve: curve);
+    _datePickerState!._controller.animateTo(
+      _calculateDateOffset(date),
+      duration: duration,
+      curve: curve,
+    );
   }
 
   double _calculateDateOffset(DateTime date) {
@@ -172,9 +187,7 @@ class _DateWidget extends StatelessWidget {
       onTap: disabled!
           ? null
           : () {
-              if (onDateSelected != null) {
-                onDateSelected!(date);
-              }
+              onDateSelected?.call(date);
             },
       child: Container(
         width: width,
@@ -191,15 +204,23 @@ class _DateWidget extends StatelessWidget {
               Text(
                 DateFormat('MMM', locale).format(date).toUpperCase(),
                 style: defaultMonthTextStyle(
-                    disabled: disabled!, isSelected: isSelected),
+                  disabled: disabled!,
+                  isSelected: isSelected,
+                ),
               ),
-              Text(date.day.toString(),
-                  style: defaultDateTextStyle(
-                      disabled: disabled!, isSelected: isSelected)),
+              Text(
+                date.day.toString(),
+                style: defaultDateTextStyle(
+                  disabled: disabled!,
+                  isSelected: isSelected,
+                ),
+              ),
               Text(
                 DateFormat('E', locale).format(date).toUpperCase(),
                 style: defaultDayTextStyle(
-                    disabled: disabled!, isSelected: isSelected),
+                  disabled: disabled!,
+                  isSelected: isSelected,
+                ),
               )
             ],
           ),

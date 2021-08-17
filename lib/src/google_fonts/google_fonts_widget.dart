@@ -48,12 +48,14 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
 
       final bool fav = favs.contains(f);
 
-      result.add(_FontObj(
-        name: f,
-        displayName: fixed.fromCamelCase(),
-        fav: fav,
-        firstChar: f.toUpperCase().firstChar,
-      ));
+      result.add(
+        _FontObj(
+          name: f,
+          displayName: fixed.fromCamelCase(),
+          fav: fav,
+          firstChar: f.toUpperCase().firstChar,
+        ),
+      );
     }
 
     return result;

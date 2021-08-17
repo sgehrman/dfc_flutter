@@ -19,19 +19,19 @@ class BottomNavBarController {
 }
 
 class BottomNavBar extends StatefulWidget {
-  BottomNavBar(
-      {required this.tabs,
-      required this.onTabChangedListener,
-      this.controller,
-      this.initialSelection = 0,
-      this.circleColor,
-      this.activeIconColor,
-      this.inactiveIconColor,
-      this.textColor,
-      this.gradient,
-      this.barBackgroundColor,
-      this.barHeight = 60})
-      : assert(tabs.isNotEmpty && tabs.length < 5);
+  BottomNavBar({
+    required this.tabs,
+    required this.onTabChangedListener,
+    this.controller,
+    this.initialSelection = 0,
+    this.circleColor,
+    this.activeIconColor,
+    this.inactiveIconColor,
+    this.textColor,
+    this.gradient,
+    this.barBackgroundColor,
+    this.barHeight = 60,
+  }) : assert(tabs.isNotEmpty && tabs.length < 5);
 
   final BottomNavBarController? controller;
   final Function(int position) onTabChangedListener;
@@ -140,10 +140,16 @@ class BottomNavBarState extends State<BottomNavBar>
       children: <Widget>[
         Container(
           height: widget.barHeight,
-          decoration: BoxDecoration(color: barBackgroundColor, boxShadow: [
-            BoxShadow(
-                color: shadowColor, offset: const Offset(0, -1), blurRadius: 8)
-          ]),
+          decoration: BoxDecoration(
+            color: barBackgroundColor,
+            boxShadow: [
+              BoxShadow(
+                color: shadowColor,
+                offset: const Offset(0, -1),
+                blurRadius: 8,
+              )
+            ],
+          ),
           child: Row(
             children: widget.tabs
                 .map(
@@ -201,21 +207,23 @@ class BottomNavBarState extends State<BottomNavBar>
                       ),
                     ),
                     SizedBox(
-                        height: arcHeight,
-                        width: arcWidth,
-                        child: CustomPaint(
-                          painter: HalfPainter(barBackgroundColor!),
-                        )),
+                      height: arcHeight,
+                      width: arcWidth,
+                      child: CustomPaint(
+                        painter: HalfPainter(barBackgroundColor!),
+                      ),
+                    ),
                     SizedBox(
                       height: circleSize - 5,
                       width: circleSize - 5,
                       child: Container(
                         decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: gradient,
-                            color: circleColor),
+                          shape: BoxShape.circle,
+                          gradient: gradient,
+                          color: circleColor,
+                        ),
                         child: Padding(
-                          padding: const EdgeInsets.all(0.0),
+                          padding: EdgeInsets.zero,
                           child: AnimatedOpacity(
                             duration:
                                 const Duration(milliseconds: animDuration ~/ 5),

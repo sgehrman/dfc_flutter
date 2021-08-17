@@ -26,8 +26,12 @@ class ScreenshotMenuItem {
     // add no title choice
     result.add(ScreenshotMenuItem());
     for (final x in dataList) {
-      result.add(ScreenshotMenuItem(
-          title: x['title'] as String?, filename: x['filename'] as String?));
+      result.add(
+        ScreenshotMenuItem(
+          title: x['title'] as String?,
+          filename: x['filename'] as String?,
+        ),
+      );
     }
 
     return result;
@@ -89,13 +93,15 @@ class _ScreenshotMenuState extends State<ScreenshotMenu> {
     final List<PopupMenuItem<ScreenshotMenuItem>> menuItems = [];
 
     for (final item in items) {
-      menuItems.add(PopupMenuItem<ScreenshotMenuItem>(
-        value: item,
-        child: MenuItem(
-          icon: const Icon(Icons.compare),
-          name: item.title!,
+      menuItems.add(
+        PopupMenuItem<ScreenshotMenuItem>(
+          value: item,
+          child: MenuItem(
+            icon: const Icon(Icons.compare),
+            name: item.title!,
+          ),
         ),
-      ));
+      );
     }
 
     return PopupMenuButton<ScreenshotMenuItem>(

@@ -97,9 +97,7 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
           _streamSubscription!.pause();
 
           Future.delayed(const Duration(milliseconds: 1000), () {
-            if (widget.onDone != null) {
-              widget.onDone!();
-            }
+            widget.onDone?.call();
           });
         } else {
           _mainStream.add(value);
@@ -118,8 +116,11 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
         final List<int Function(DateTime)> digits = [];
 
         for (int i = timeLeft.inDays.toString().length - 1; i >= 0; i--) {
-          digits.add((DateTime time) =>
-              ((timeLeft.inDays) ~/ math.pow(10, i) % math.pow(10, 1)).toInt());
+          digits.add(
+            (DateTime time) =>
+                ((timeLeft.inDays) ~/ math.pow(10, i) % math.pow(10, 1))
+                    .toInt(),
+          );
         }
 
         dayDigits =
@@ -146,12 +147,14 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
         }
       }
 
-      result.add(_buildDigit(
-        (DateTime time) => (timeLeft.inHours % 24) ~/ 10,
-        (DateTime time) => (timeLeft.inHours % 24) % 10,
-        DateTime.now(),
-        'Hours',
-      ));
+      result.add(
+        _buildDigit(
+          (DateTime time) => (timeLeft.inHours % 24) ~/ 10,
+          (DateTime time) => (timeLeft.inHours % 24) % 10,
+          DateTime.now(),
+          'Hours',
+        ),
+      );
     }
 
     if (result.isNotEmpty) {
@@ -163,12 +166,14 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
       }
     }
 
-    result.add(_buildDigit(
-      (DateTime time) => (timeLeft.inMinutes % 60) ~/ 10,
-      (DateTime time) => (timeLeft.inMinutes % 60) % 10,
-      DateTime.now(),
-      'minutes',
-    ));
+    result.add(
+      _buildDigit(
+        (DateTime time) => (timeLeft.inMinutes % 60) ~/ 10,
+        (DateTime time) => (timeLeft.inMinutes % 60) % 10,
+        DateTime.now(),
+        'minutes',
+      ),
+    );
 
     result.add(_buildSpace());
     final sep = _buildSeparator();
@@ -177,12 +182,14 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
       result.add(_buildSpace());
     }
 
-    result.add(_buildDigit(
-      (DateTime time) => (timeLeft.inSeconds % 60) ~/ 10,
-      (DateTime time) => (timeLeft.inSeconds % 60) % 10,
-      DateTime.now(),
-      'seconds',
-    ));
+    result.add(
+      _buildDigit(
+        (DateTime time) => (timeLeft.inSeconds % 60) ~/ 10,
+        (DateTime time) => (timeLeft.inSeconds % 60) % 10,
+        DateTime.now(),
+        'seconds',
+      ),
+    );
 
     return result;
   }
@@ -217,7 +224,7 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
   ) {
     final String timeLeftString = timeLeft.inDays.toString();
     final List<Widget> rows = [];
-    for (int i = 0; i < timeLeftString.toString().length; i++) {
+    for (int i = 0; i < timeLeftString.length; i++) {
       rows.add(
         Container(
           decoration: widget.decoration,

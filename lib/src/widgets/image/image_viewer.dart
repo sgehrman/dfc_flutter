@@ -64,7 +64,9 @@ class _ImageSwiperState extends State<ImageViewer>
   void initState() {
     currentIndex = widget.index;
     _animationController = AnimationController(
-        duration: const Duration(milliseconds: 150), vsync: this);
+      duration: const Duration(milliseconds: 150),
+      vsync: this,
+    );
     super.initState();
   }
 
@@ -96,10 +98,13 @@ class _ImageSwiperState extends State<ImageViewer>
 
     if (state.extendedImageInfo != null) {
       initialScale = initScale(
-          size: size,
-          initialScale: initialScale,
-          imageSize: Size(state.extendedImageInfo!.image.width.toDouble(),
-              state.extendedImageInfo!.image.height.toDouble()));
+        size: size,
+        initialScale: initialScale,
+        imageSize: Size(
+          state.extendedImageInfo!.image.width.toDouble(),
+          state.extendedImageInfo!.image.height.toDouble(),
+        ),
+      );
     }
     return GestureConfig(
       inPageView: true,
@@ -128,7 +133,9 @@ class _ImageSwiperState extends State<ImageViewer>
 
     animationListener = () {
       state.handleDoubleTap(
-          scale: _animation!.value, doubleTapPosition: pointerDownPosition);
+        scale: _animation!.value,
+        doubleTapPosition: pointerDownPosition,
+      );
     };
     _animation =
         _animationController!.drive(Tween<double>(begin: begin, end: end));
@@ -208,46 +215,49 @@ class _ImageSwiperState extends State<ImageViewer>
   }
 
   Widget _toolsButton() {
-    return Builder(builder: (BuildContext context) {
-      final SuperImageSource imageSrc =
-          widget.swiperItems[currentIndex].imageSrc;
+    return Builder(
+      builder: (BuildContext context) {
+        final SuperImageSource imageSrc =
+            widget.swiperItems[currentIndex].imageSrc;
 
-      if (imageSrc.isFileImage) {
-        return IconButton(
-          iconSize: 44,
-          icon: const Icon(Icons.open_in_browser),
-          onPressed: () {
-            final String? url = widget.swiperItems[currentIndex].imageSrc.path;
-            OpenFile.open(url);
-          },
-        );
-      } else if (imageSrc.isNetworkImage) {
-        return PopupMenuButton<String>(
-          icon: const Icon(Icons.more_vert),
-          onSelected: (String result) {
-            switch (result) {
-              case 'copy':
-                final String? url =
-                    widget.swiperItems[currentIndex].imageSrc.url;
-                Clipboard.setData(ClipboardData(text: url));
+        if (imageSrc.isFileImage) {
+          return IconButton(
+            iconSize: 44,
+            icon: const Icon(Icons.open_in_browser),
+            onPressed: () {
+              final String? url =
+                  widget.swiperItems[currentIndex].imageSrc.path;
+              OpenFile.open(url);
+            },
+          );
+        } else if (imageSrc.isNetworkImage) {
+          return PopupMenuButton<String>(
+            icon: const Icon(Icons.more_vert),
+            onSelected: (String result) {
+              switch (result) {
+                case 'copy':
+                  final String? url =
+                      widget.swiperItems[currentIndex].imageSrc.url;
+                  Clipboard.setData(ClipboardData(text: url));
 
-                Utils.showSnackbar(context, 'URL copied to clipboard');
-                break;
-            }
-          },
-          itemBuilder: (BuildContext context) {
-            return [
-              const PopupMenuItem<String>(
-                value: 'copy',
-                child: Text('Copy URL'),
-              ),
-            ];
-          },
-        );
-      }
+                  Utils.showSnackbar(context, 'URL copied to clipboard');
+                  break;
+              }
+            },
+            itemBuilder: (BuildContext context) {
+              return [
+                const PopupMenuItem<String>(
+                  value: 'copy',
+                  child: Text('Copy URL'),
+                ),
+              ];
+            },
+          );
+        }
 
-      return NothingWidget();
-    });
+        return NothingWidget();
+      },
+    );
   }
 
   bool _defaultCanMovePage(GestureDetails? gestureDetails) =>

@@ -42,7 +42,7 @@ class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {
   late Animation<Offset> _slideUpAnimation;
 
   final Animatable<Offset> _slideDownTween = Tween<Offset>(
-    begin: const Offset(0.0, 0.0),
+    begin: Offset.zero,
     end: const Offset(0.0, 1.0),
   );
   late Animation<Offset> _slideDownAnimation;
@@ -57,7 +57,9 @@ class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 450));
+      vsync: this,
+      duration: const Duration(milliseconds: 450),
+    );
     _slideUpAnimation = _controller.drive(_slideUpTween);
     _slideDownAnimation = _controller.drive(_slideDownTween);
     _opacityAnimation = _controller.drive(_opacityTween);

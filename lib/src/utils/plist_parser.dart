@@ -87,7 +87,8 @@ class ManifestFile {
         return manifest.items.first.metadata.bundleVersion;
       } else {
         print(
-            '(get) Request failed with status: ${response.statusCode}. Url: $url');
+          '(get) Request failed with status: ${response.statusCode}. Url: $url',
+        );
       }
     } catch (err) {
       print(err);

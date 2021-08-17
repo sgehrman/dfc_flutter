@@ -7,8 +7,11 @@ class GradientText extends StatelessWidget {
     this.textStyle,
   });
 
-  factory GradientText.rainbow(String text,
-      {GradientTransform? transform, TextStyle? textStyle}) {
+  factory GradientText.rainbow(
+    String text, {
+    GradientTransform? transform,
+    TextStyle? textStyle,
+  }) {
     final gradient = LinearGradient(
       colors: const <Color>[
         Colors.red,

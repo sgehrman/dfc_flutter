@@ -151,7 +151,8 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            Platform.isAndroid ? 'Android Device Info' : 'iOS Device Info'),
+          Platform.isAndroid ? 'Android Device Info' : 'iOS Device Info',
+        ),
       ),
       body: ListView.separated(
         physics: const BouncingScrollPhysics(),

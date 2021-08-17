@@ -44,17 +44,20 @@ Future<bool?> showWidgetDialog({
             onPressed: () {
               Navigator.of(context).pop(false);
             },
-            child: Text(cancelButtonName,
-                style:
-                    TextStyle(color: Theme.of(context).colorScheme.secondary)),
+            child: Text(
+              cancelButtonName,
+              style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+            ),
           ),
         ),
         TextButton(
           onPressed: () {
             Navigator.of(context).pop(true);
           },
-          child: Text(okButtonName,
-              style: TextStyle(color: Theme.of(context).primaryColor)),
+          child: Text(
+            okButtonName,
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
         ),
       ],
     ),

@@ -59,11 +59,13 @@ class StarFieldPainter extends CustomPainter {
           star.screenOffset = Offset(star.screenVector.x, star.screenVector.y);
           return star;
         })
-        .where((star) =>
-            star.screenOffset.dx > 0 &&
-            star.screenOffset.dy > 0 &&
-            star.screenOffset.dx < size.width &&
-            star.screenOffset.dy < size.height)
+        .where(
+          (star) =>
+              star.screenOffset.dx > 0 &&
+              star.screenOffset.dy > 0 &&
+              star.screenOffset.dx < size.width &&
+              star.screenOffset.dy < size.height,
+        )
         .forEach(
           (star) {
             coloredStars(star, canvas);

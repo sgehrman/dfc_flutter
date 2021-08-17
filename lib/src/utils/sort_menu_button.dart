@@ -29,39 +29,47 @@ class BrowserSortMenuButton extends StatelessWidget {
       sortType: null,
     );
 
-    menuItems.add(CheckedPopupMenuItem<BrowserSortMenuItem>(
-      value: foldersFirst,
-      checked: BrowserPrefs.sortFoldersFirst!,
-      child: MenuItem(
-        name: foldersFirst.name,
+    menuItems.add(
+      CheckedPopupMenuItem<BrowserSortMenuItem>(
+        value: foldersFirst,
+        checked: BrowserPrefs.sortFoldersFirst!,
+        child: MenuItem(
+          name: foldersFirst.name,
+        ),
       ),
-    ));
+    );
 
     final ascendingItem = BrowserSortMenuItem(
       name: 'Ascending',
       itemType: SortMenuItemType.ascendingItem,
       sortType: null,
     );
-    menuItems.add(CheckedPopupMenuItem<BrowserSortMenuItem>(
-      value: ascendingItem,
-      checked: BrowserPrefs.sortAscending!,
-      child: MenuItem(
-        name: ascendingItem.name,
+    menuItems.add(
+      CheckedPopupMenuItem<BrowserSortMenuItem>(
+        value: ascendingItem,
+        checked: BrowserPrefs.sortAscending!,
+        child: MenuItem(
+          name: ascendingItem.name,
+        ),
       ),
-    ));
+    );
 
-    menuItems.add(const PopupMenuDivider(
-      height: 4,
-    ));
+    menuItems.add(
+      const PopupMenuDivider(
+        height: 4,
+      ),
+    );
 
     for (final item in items) {
-      menuItems.add(CheckedPopupMenuItem<BrowserSortMenuItem>(
-        value: item,
-        checked: item.sortType!.id == BrowserPrefs.sortType,
-        child: MenuItem(
-          name: item.name,
+      menuItems.add(
+        CheckedPopupMenuItem<BrowserSortMenuItem>(
+          value: item,
+          checked: item.sortType!.id == BrowserPrefs.sortType,
+          child: MenuItem(
+            name: item.name,
+          ),
         ),
-      ));
+      );
     }
 
     return Container(

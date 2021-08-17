@@ -20,10 +20,12 @@ class _TreasureAnimationState extends State<TreasureAnimation> {
       child: SizedBox(
         height: 300,
         width: 300,
-        child: FlareActor('packages/dfc_flutter/assets/animations/treasure.flr',
-            controller: _controller,
-            color: Theme.of(context).primaryColor,
-            animation: 'box'),
+        child: FlareActor(
+          'packages/dfc_flutter/assets/animations/treasure.flr',
+          controller: _controller,
+          color: Theme.of(context).primaryColor,
+          animation: 'box',
+        ),
       ),
     );
   }

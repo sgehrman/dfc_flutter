@@ -58,13 +58,15 @@ class PhoneMenu extends StatelessWidget {
     final List<PopupMenuItem<PhoneMenuItem>> menuItems = [];
 
     for (final item in PhoneMenuItem.items) {
-      menuItems.add(PopupMenuItem<PhoneMenuItem>(
-        value: item,
-        child: MenuItem(
-          icon: const Icon(Icons.compare),
-          name: item.title!,
+      menuItems.add(
+        PopupMenuItem<PhoneMenuItem>(
+          value: item,
+          child: MenuItem(
+            icon: const Icon(Icons.compare),
+            name: item.title!,
+          ),
         ),
-      ));
+      );
     }
 
     return PopupMenuButton<PhoneMenuItem>(

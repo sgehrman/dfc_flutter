@@ -52,13 +52,15 @@ class SizeMenu extends StatelessWidget {
     final List<PopupMenuItem<SizeMenuItem>> menuItems = [];
 
     for (final item in SizeMenuItem.items) {
-      menuItems.add(PopupMenuItem<SizeMenuItem>(
-        value: item,
-        child: MenuItem(
-          icon: const Icon(Icons.compare),
-          name: item.title,
+      menuItems.add(
+        PopupMenuItem<SizeMenuItem>(
+          value: item,
+          child: MenuItem(
+            icon: const Icon(Icons.compare),
+            name: item.title,
+          ),
         ),
-      ));
+      );
     }
 
     return PopupMenuButton<SizeMenuItem>(

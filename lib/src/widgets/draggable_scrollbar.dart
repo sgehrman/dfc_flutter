@@ -89,7 +89,8 @@ class DraggableScrollbar extends StatefulWidget {
         child: Container(
           padding: const EdgeInsets.only(left: 4),
           constraints: BoxConstraints.loose(
-              const Size(widthScrollThumb, heightScrollThumb)),
+            const Size(widthScrollThumb, heightScrollThumb),
+          ),
           child: const Icon(Icons.reorder, color: Colors.white),
         ),
       );
@@ -199,40 +200,42 @@ class _DraggableScrollbarState extends State<DraggableScrollbar>
     }
 
     return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      return NotificationListener<ScrollNotification>(
-        onNotification: (ScrollNotification notification) {
-          changePosition(notification);
+      builder: (BuildContext context, BoxConstraints constraints) {
+        return NotificationListener<ScrollNotification>(
+          onNotification: (ScrollNotification notification) {
+            changePosition(notification);
 
-          // false allows other listeners to get notifications
-          return false;
-        },
-        child: Stack(
-          children: <Widget>[
-            RepaintBoundary(
-              child: widget.child,
-            ),
-            RepaintBoundary(
+            // false allows other listeners to get notifications
+            return false;
+          },
+          child: Stack(
+            children: <Widget>[
+              RepaintBoundary(
+                child: widget.child,
+              ),
+              RepaintBoundary(
                 child: GestureDetector(
-              onVerticalDragStart: _onVerticalDragStart,
-              onVerticalDragUpdate: _onVerticalDragUpdate,
-              onVerticalDragEnd: _onVerticalDragEnd,
-              child: Container(
-                alignment: Alignment.topRight,
-                margin: EdgeInsets.only(top: _barOffset),
-                padding: widget.padding,
-                child: widget.scrollThumbBuilder(
-                  widget.backgroundColor,
-                  _thumbAnimation,
-                  _labelAnimation,
-                  labelText: labelText,
+                  onVerticalDragStart: _onVerticalDragStart,
+                  onVerticalDragUpdate: _onVerticalDragUpdate,
+                  onVerticalDragEnd: _onVerticalDragEnd,
+                  child: Container(
+                    alignment: Alignment.topRight,
+                    margin: EdgeInsets.only(top: _barOffset),
+                    padding: widget.padding,
+                    child: widget.scrollThumbBuilder(
+                      widget.backgroundColor,
+                      _thumbAnimation,
+                      _labelAnimation,
+                      labelText: labelText,
+                    ),
+                  ),
                 ),
               ),
-            )),
-          ],
-        ),
-      );
-    });
+            ],
+          ),
+        );
+      },
+    );
   }
 
   void changePosition(ScrollNotification notification) {
@@ -320,7 +323,10 @@ class _DraggableScrollbarState extends State<DraggableScrollbar>
         }
 
         final double viewDelta = getScrollViewDelta(
-            details.delta.dy, barMaxScrollExtent, viewMaxScrollExtent);
+          details.delta.dy,
+          barMaxScrollExtent,
+          viewMaxScrollExtent,
+        );
 
         _viewOffset = widget.controller.position.pixels + viewDelta;
         if (_viewOffset < widget.controller.position.minScrollExtent) {
@@ -365,7 +371,7 @@ class SlideFadeTransition extends StatelessWidget {
       child: SlideTransition(
         position: Tween(
           begin: const Offset(0.3, 0.0),
-          end: const Offset(0.0, 0.0),
+          end: Offset.zero,
         ).animate(animation!),
         child: FadeTransition(
           opacity: animation!,

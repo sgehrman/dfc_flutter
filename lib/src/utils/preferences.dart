@@ -67,7 +67,8 @@ class Preferences extends ChangeNotifier {
   }
 
   List<String?> getFavoriteGoogleFonts() => List<String?>.from(
-      prefs.get('favoriteGoogleFonts', defaultValue: <String>[]) as List);
+        prefs.get('favoriteGoogleFonts', defaultValue: <String>[]) as List,
+      );
 
   void setFavoriteGoogleFonts(List<String?> value) {
     if (getFavoriteGoogleFonts() != value) {
@@ -107,7 +108,8 @@ class Preferences extends ChangeNotifier {
 
       final List<ThemeSet> themeSets = jsonList
           .map(
-              (jsonMap) => ThemeSet.fromMap(Map<String, dynamic>.from(jsonMap)))
+            (jsonMap) => ThemeSet.fromMap(Map<String, dynamic>.from(jsonMap)),
+          )
           .toList();
 
       return themeSets;
@@ -134,8 +136,9 @@ class Preferences extends ChangeNotifier {
       final jsonList = List<Map>.from(pref as List);
 
       final List<ServerFile> serverFiles = jsonList
-          .map((jsonMap) =>
-              ServerFile.fromMap(Map<String, dynamic>.from(jsonMap)))
+          .map(
+            (jsonMap) => ServerFile.fromMap(Map<String, dynamic>.from(jsonMap)),
+          )
           .toList();
 
       return serverFiles;

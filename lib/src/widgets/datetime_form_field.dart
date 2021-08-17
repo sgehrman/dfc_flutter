@@ -44,7 +44,9 @@ class DateTimeFormField extends StatelessWidget {
   final DateTime lastDate;
 
   Future<void> _tap(
-      BuildContext context, FormFieldState<DateTime> state) async {
+    BuildContext context,
+    FormFieldState<DateTime> state,
+  ) async {
     DateTime? date;
     TimeOfDay? time = const TimeOfDay(hour: 0, minute: 0);
     if (onlyDate) {
@@ -83,13 +85,15 @@ class DateTimeFormField extends StatelessWidget {
           initialTime: TimeOfDay.fromDateTime(state.value!),
         );
         if (time != null) {
-          state.didChange(DateTime(
-            initialValue.year,
-            initialValue.month,
-            initialValue.day,
-            time.hour,
-            time.minute,
-          ));
+          state.didChange(
+            DateTime(
+              initialValue.year,
+              initialValue.month,
+              initialValue.day,
+              time.hour,
+              time.minute,
+            ),
+          );
         }
       } else {
         await showModalBottomSheet<void>(
@@ -122,13 +126,15 @@ class DateTimeFormField extends StatelessWidget {
             initialTime: TimeOfDay.fromDateTime(state.value!),
           );
           if (time != null) {
-            state.didChange(DateTime(
-              date.year,
-              date.month,
-              date.day,
-              time.hour,
-              time.minute,
-            ));
+            state.didChange(
+              DateTime(
+                date.year,
+                date.month,
+                date.day,
+                time.hour,
+                time.minute,
+              ),
+            );
           }
         }
       } else {

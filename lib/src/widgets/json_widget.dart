@@ -28,7 +28,9 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
       );
     }
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start, children: _getList());
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: _getList(),
+    );
   }
 
   Widget _ex(bool ex, MapEntry entry) {
@@ -118,8 +120,10 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     if (content is List) {
       return JsonArrayViewerWidget(content, notRoot: true);
     } else {
-      return JsonViewerWidget(Map<String, dynamic>.from(content as Map),
-          notRoot: true);
+      return JsonViewerWidget(
+        Map<String, dynamic>.from(content as Map),
+        notRoot: true,
+      );
     }
   }
 
@@ -145,34 +149,39 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
   Widget getValueWidget(MapEntry entry) {
     if (entry.value == null) {
       return const Expanded(
-          child: Text(
-        'undefined',
-        style: TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          'undefined',
+          style: TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (entry.value is int) {
       return Expanded(
-          child: Text(
-        entry.value.toString(),
-        style: const TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          entry.value.toString(),
+          style: const TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (entry.value is String) {
       return Expanded(
-          child: Text(
-        '"${entry.value}"',
-        style: const TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          '"${entry.value}"',
+          style: const TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (entry.value is bool) {
       return Expanded(
-          child: Text(
-        entry.value.toString(),
-        style: const TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          entry.value.toString(),
+          style: const TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (entry.value is DateTime) {
       return Expanded(
-          child: Text(
-        entry.value.toString(),
-        style: const TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          entry.value.toString(),
+          style: const TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (entry.value is double) {
       return Expanded(
         child: Text(
@@ -274,13 +283,17 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
   Widget build(BuildContext context) {
     if (widget.notRoot ?? false) {
       return Container(
-          padding: const EdgeInsets.only(left: 14.0),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: _getList()));
+        padding: const EdgeInsets.only(left: 14.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: _getList(),
+        ),
+      );
     }
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start, children: _getList());
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: _getList(),
+    );
   }
 
   Widget _ex(bool ex, int i) {
@@ -376,34 +389,39 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
   Widget getValueWidget(dynamic content, int index) {
     if (content == null) {
       return const Expanded(
-          child: Text(
-        'undefined',
-        style: TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          'undefined',
+          style: TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (content is int) {
       return Expanded(
-          child: Text(
-        content.toString(),
-        style: const TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          content.toString(),
+          style: const TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (content is String) {
       return Expanded(
-          child: Text(
-        '"$content"',
-        style: const TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          '"$content"',
+          style: const TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (content is bool) {
       return Expanded(
-          child: Text(
-        content.toString(),
-        style: const TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          content.toString(),
+          style: const TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (content is double) {
       return Expanded(
-          child: Text(
-        content.toString(),
-        style: const TextStyle(color: Colors.grey),
-      ));
+        child: Text(
+          content.toString(),
+          style: const TextStyle(color: Colors.grey),
+        ),
+      );
     } else if (content is List) {
       if (content.isEmpty) {
         return const Text(

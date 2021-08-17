@@ -21,13 +21,15 @@ class ThemeSetButton extends StatelessWidget {
     final menuItems = <PopupMenuItem<ThemeSet>>[];
 
     for (final item in items) {
-      menuItems.add(PopupMenuItem<ThemeSet>(
-        value: item,
-        child: MenuItem(
-          icon: const Icon(Icons.add_to_home_screen),
-          name: item.name,
+      menuItems.add(
+        PopupMenuItem<ThemeSet>(
+          value: item,
+          child: MenuItem(
+            icon: const Icon(Icons.add_to_home_screen),
+            name: item.name,
+          ),
         ),
-      ));
+      );
     }
 
     return Center(
@@ -101,14 +103,16 @@ class ThemeSetButton extends StatelessWidget {
                   visualDensity: VisualDensity.compact,
                   onPressed: () async {
                     final String? name = await showStringDialog(
-                        context: context,
-                        title: 'Name Theme',
-                        defaultName: currentTheme!.name,
-                        message: 'Give the theme a unique name.');
+                      context: context,
+                      title: 'Name Theme',
+                      defaultName: currentTheme!.name,
+                      message: 'Give the theme a unique name.',
+                    );
 
                     if (Utils.isNotEmpty(name)) {
                       ThemeSetManager.saveTheme(
-                          currentTheme.copyWith(name: name));
+                        currentTheme.copyWith(name: name),
+                      );
                     }
                   },
                   icon: const Icon(Icons.save),

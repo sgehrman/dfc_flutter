@@ -46,13 +46,15 @@ class MenuButton extends StatelessWidget {
     final List<PopupMenuItem<MenuButtonItem>> menuItems = [];
 
     for (final item in items) {
-      menuItems.add(PopupMenuItem<MenuButtonItem>(
-        value: item,
-        child: MenuItem(
-          icon: const Icon(Icons.compare),
-          name: item.title,
+      menuItems.add(
+        PopupMenuItem<MenuButtonItem>(
+          value: item,
+          child: MenuItem(
+            icon: const Icon(Icons.compare),
+            name: item.title,
+          ),
         ),
-      ));
+      );
     }
 
     return PopupMenuButton<MenuButtonItem>(

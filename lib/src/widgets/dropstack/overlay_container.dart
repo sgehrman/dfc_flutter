@@ -37,9 +37,11 @@ class _OverlayContainerState extends State<OverlayContainer> {
     Future.delayed(const Duration(milliseconds: 1), () {
       _hide();
 
-      _overlayEntry = OverlayEntry(builder: (context) {
-        return widget.child;
-      });
+      _overlayEntry = OverlayEntry(
+        builder: (context) {
+          return widget.child;
+        },
+      );
 
       Overlay.of(context)!.insert(_overlayEntry!);
     });

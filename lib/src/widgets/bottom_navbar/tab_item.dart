@@ -10,15 +10,16 @@ const double alphaOn = 1;
 const int animDuration = 400;
 
 class TabItem extends StatelessWidget {
-  const TabItem(
-      {required this.uniqueKey,
-      required this.selected,
-      required this.iconData,
-      required this.title,
-      required this.callbackFunction,
-      required this.textColor,
-      required this.iconColor,
-      this.gradient});
+  const TabItem({
+    required this.uniqueKey,
+    required this.selected,
+    required this.iconData,
+    required this.title,
+    required this.callbackFunction,
+    required this.textColor,
+    required this.iconColor,
+    this.gradient,
+  });
 
   final UniqueKey uniqueKey;
   final String title;
@@ -66,13 +67,16 @@ class TabItem extends StatelessWidget {
                 child: IconButton(
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent,
-                  padding: const EdgeInsets.all(0),
+                  padding: EdgeInsets.zero,
                   icon: gradient != null
                       ? ShaderMask(
                           blendMode: BlendMode.srcIn,
                           shaderCallback: (Rect bounds) {
-                            return ui.Gradient.linear(const Offset(4.0, 24.0),
-                                const Offset(24.0, 4.0), gradient!.colors);
+                            return ui.Gradient.linear(
+                              const Offset(4.0, 24.0),
+                              const Offset(24.0, 4.0),
+                              gradient!.colors,
+                            );
                           },
                           child: Icon(iconData),
                         )

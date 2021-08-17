@@ -26,13 +26,15 @@ class FieldBuilder {
             result.add(Text(formParam.label()!));
           }
 
-          result.add(stringField(
-            context: context,
-            mapKey: mapKey,
-            formParam: formParam,
-            autovalidate: autovalidate,
-            outlinedBorders: outlinedBorders,
-          ));
+          result.add(
+            stringField(
+              context: context,
+              mapKey: mapKey,
+              formParam: formParam,
+              autovalidate: autovalidate,
+              outlinedBorders: outlinedBorders,
+            ),
+          );
         } else {
           final Widget? customWidget = formParams[mapKey]!.createWidget();
           if (customWidget != null) {
@@ -56,24 +58,27 @@ class FieldBuilder {
         ? OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
             borderSide: BorderSide(
-                color: Utils.isDarkMode(context)
-                    ? Colors.white10
-                    : Colors.black12))
+              color:
+                  Utils.isDarkMode(context) ? Colors.white10 : Colors.black12,
+            ),
+          )
         : null;
 
     final focusedBorder = outlinedBorders
         ? OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
             borderSide: BorderSide(
-                color: Utils.isDarkMode(context)
-                    ? Colors.white54
-                    : Colors.black45))
+              color:
+                  Utils.isDarkMode(context) ? Colors.white54 : Colors.black45,
+            ),
+          )
         : null;
 
     final errorBorder = outlinedBorders
         ? OutlineInputBorder(
             borderRadius: BorderRadius.circular(6),
-            borderSide: BorderSide(color: Colors.red[300]!))
+            borderSide: BorderSide(color: Colors.red[300]!),
+          )
         : null;
 
     return Container(

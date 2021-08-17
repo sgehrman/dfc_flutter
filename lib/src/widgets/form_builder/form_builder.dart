@@ -107,14 +107,16 @@ class _FormBuilderState extends State<FormBuilder> {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
 
-          Navigator.of(context).push<void>(MaterialPageRoute(
-            builder: (context) {
-              return JsonViewerScreen(
-                map: widget.params.map,
-                title: 'Form Data',
-              );
-            },
-          ));
+          Navigator.of(context).push<void>(
+            MaterialPageRoute(
+              builder: (context) {
+                return JsonViewerScreen(
+                  map: widget.params.map,
+                  title: 'Form Data',
+                );
+              },
+            ),
+          );
         }
       },
       child: const Text('Json'),

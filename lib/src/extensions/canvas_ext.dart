@@ -15,19 +15,20 @@ extension ExtendedCanvas on Canvas {
     final double strokeWidth = radius / 107;
 
     final petalShader = RadialGradient(
-          colors: [
-            highlightColor.withOpacity(.5),
-            color.withOpacity(.5),
-          ],
-          stops: const [
-            0,
-            .5,
-          ],
-        ).createShader(Rect.fromCircle(center: Offset.zero, radius: radius)),
-        paint = Paint()
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = strokeWidth
-          ..shader = petalShader;
+      colors: [
+        highlightColor.withOpacity(.5),
+        color.withOpacity(.5),
+      ],
+      stops: const [
+        0,
+        .5,
+      ],
+    ).createShader(Rect.fromCircle(center: Offset.zero, radius: radius));
+
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth
+      ..shader = petalShader;
 
     for (var i = 0; i < petals; i++) {
       save();

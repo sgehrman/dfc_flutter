@@ -96,15 +96,17 @@ class ParticleModel {
 
     tween = MultiTween<_AniProps>()
       ..add(
-          _AniProps.x,
-          Tween<double>(begin: startPosition.dx, end: endPosition.dx),
-          duration,
-          Curves.easeInOutSine)
+        _AniProps.x,
+        Tween<double>(begin: startPosition.dx, end: endPosition.dx),
+        duration,
+        Curves.easeInOutSine,
+      )
       ..add(
-          _AniProps.y,
-          Tween<double>(begin: startPosition.dy, end: endPosition.dy),
-          duration,
-          Curves.easeIn);
+        _AniProps.y,
+        Tween<double>(begin: startPosition.dy, end: endPosition.dy),
+        duration,
+        Curves.easeIn,
+      );
 
     timer.restart(duration);
 
@@ -144,10 +146,13 @@ class ParticlePainter extends CustomPainter {
           radius: 5,
           colors: [color.withAlpha(alpha ~/ 5), color.withAlpha(alpha)],
           stops: const [0, .4],
-        ).createShader(Rect.fromCenter(
+        ).createShader(
+          Rect.fromCenter(
             center: position,
             width: size.width * 0.2 * particle.size,
-            height: size.width * 0.2 * particle.size));
+            height: size.width * 0.2 * particle.size,
+          ),
+        );
 
       canvas.drawCircle(position, size.width * 0.2 * particle.size, paint);
     }

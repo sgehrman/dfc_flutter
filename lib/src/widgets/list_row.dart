@@ -47,12 +47,14 @@ class ListRow extends StatelessWidget {
     final List<Widget> titleChildren = [];
 
     if (Utils.isNotEmpty(title)) {
-      titleChildren.add(Text(
-        title!,
-        overflow: TextOverflow.ellipsis,
-        softWrap: false, // keeps title on one line
-        style: titleStyle ?? Theme.of(context).textTheme.bodyText2,
-      ));
+      titleChildren.add(
+        Text(
+          title!,
+          overflow: TextOverflow.ellipsis,
+          softWrap: false, // keeps title on one line
+          style: titleStyle ?? Theme.of(context).textTheme.bodyText2,
+        ),
+      );
     }
 
     // space between title and subtitle

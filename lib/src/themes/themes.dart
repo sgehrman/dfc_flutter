@@ -61,7 +61,11 @@ class AppTheme {
       dividerColor: darkMode
           ? Colors.white12
           : const Color.fromRGBO(
-              0, 0, 0, .05), // params.accentColor.withOpacity(.5),
+              0,
+              0,
+              0,
+              .05,
+            ), // params.accentColor.withOpacity(.5),
       primaryColor: appColor,
       primaryColorLight: appColor, // circle avatar uses these light/dark
       primaryColorDark: appColor,
@@ -210,8 +214,11 @@ class AppTheme {
     return result;
   }
 
-  ColorScheme _colorScheme(
-      {required bool darkMode, Color? primary, Color? secondary}) {
+  ColorScheme _colorScheme({
+    required bool darkMode,
+    Color? primary,
+    Color? secondary,
+  }) {
     ColorScheme scheme = ThemeData.light().colorScheme;
     if (darkMode) {
       scheme = ThemeData.dark().colorScheme;

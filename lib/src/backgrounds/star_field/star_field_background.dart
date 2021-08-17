@@ -62,8 +62,9 @@ class StarFieldState extends State<StarFieldContainingStatefulWidget>
     return AnimatedBuilder(
       animation: controller,
       builder: (_, child) => CustomPaint(
-          painter: StarFieldPainter(viewModel.starField, viewModel.count),
-          size: Size.infinite),
+        painter: StarFieldPainter(viewModel.starField, viewModel.count),
+        size: Size.infinite,
+      ),
     );
   }
 }

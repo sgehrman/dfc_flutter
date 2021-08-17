@@ -44,7 +44,8 @@ class GenericCard extends StatelessWidget {
   }
 
   List<PopupMenuEntry<String>> _addMenuSeparators(
-      List<PopupMenuEntry<String>> menuItems) {
+    List<PopupMenuEntry<String>> menuItems,
+  ) {
     final List<PopupMenuEntry<String>> result = [];
 
     if (Utils.isNotEmpty(menuItems)) {
@@ -98,14 +99,10 @@ class GenericCard extends StatelessWidget {
       onSelected: (selected) async {
         switch (selected) {
           case 'edit':
-            if (onEdit != null) {
-              onEdit!();
-            }
+            onEdit?.call();
             break;
           case 'delete':
-            if (onDelete != null) {
-              onDelete!();
-            }
+            onDelete?.call();
             break;
         }
       },
@@ -243,14 +240,15 @@ class AddCard extends StatelessWidget {
             onTap();
           },
           child: Center(
-              child: Padding(
-            padding: const EdgeInsets.all(6.0),
-            child: Icon(
-              Icons.add_circle_outline,
-              color: cardColor,
-              size: iconSize,
+            child: Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: Icon(
+                Icons.add_circle_outline,
+                color: cardColor,
+                size: iconSize,
+              ),
             ),
-          )),
+          ),
         ),
       ),
     );

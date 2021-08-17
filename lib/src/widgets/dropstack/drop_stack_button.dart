@@ -63,47 +63,59 @@ class _DropStackButtonState extends State<DropStackButton>
 
     final List<ActionBubble> result = <ActionBubble>[];
 
-    result.add(ActionBubble(
-      title: 'Clear Stack',
-      iconColor: textColor,
-      bubbleColor: bubbleColor,
-      icon: Icons.clear_all,
-      titleStyle: const TextStyle(fontSize: fontSize, color: textColor),
-      onPressed: () {
-        dropStack.clear();
-        _animationController?.reverse();
-      },
-    ));
+    result.add(
+      ActionBubble(
+        title: 'Clear Stack',
+        iconColor: textColor,
+        bubbleColor: bubbleColor,
+        icon: Icons.clear_all,
+        titleStyle: const TextStyle(fontSize: fontSize, color: textColor),
+        onPressed: () {
+          dropStack.clear();
+          _animationController?.reverse();
+        },
+      ),
+    );
 
     if (dropStack.count > 1) {
-      result.add(ActionBubble(
-        title: 'Drop Top Only',
+      result.add(
+        ActionBubble(
+          title: 'Drop Top Only',
+          iconColor: textColor,
+          bubbleColor: bubbleColor,
+          icon: Icons.file_download,
+          titleStyle: const TextStyle(fontSize: fontSize, color: textColor),
+          onPressed: () async {
+            await dropStack.drop(
+              context: context,
+              directory: widget.directory!,
+              topOnly: true,
+            );
+
+            await _animationController?.reverse();
+          },
+        ),
+      );
+    }
+
+    result.add(
+      ActionBubble(
+        title: 'Drop Here',
         iconColor: textColor,
         bubbleColor: bubbleColor,
         icon: Icons.file_download,
         titleStyle: const TextStyle(fontSize: fontSize, color: textColor),
         onPressed: () async {
           await dropStack.drop(
-              context: context, directory: widget.directory!, topOnly: true);
+            context: context,
+            directory: widget.directory!,
+            topOnly: false,
+          );
 
           await _animationController?.reverse();
         },
-      ));
-    }
-
-    result.add(ActionBubble(
-      title: 'Drop Here',
-      iconColor: textColor,
-      bubbleColor: bubbleColor,
-      icon: Icons.file_download,
-      titleStyle: const TextStyle(fontSize: fontSize, color: textColor),
-      onPressed: () async {
-        await dropStack.drop(
-            context: context, directory: widget.directory!, topOnly: false);
-
-        await _animationController?.reverse();
-      },
-    ));
+      ),
+    );
 
     return result;
   }

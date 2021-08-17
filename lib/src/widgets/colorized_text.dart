@@ -25,8 +25,9 @@ class _RotatingRainbowTextState extends State<RotatingRainbowText>
     super.initState();
 
     controller = AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 600) * widget.text.length);
+      vsync: this,
+      duration: const Duration(milliseconds: 600) * widget.text.length,
+    );
 
     controller.repeat(reverse: true);
   }

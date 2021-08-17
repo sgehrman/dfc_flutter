@@ -68,7 +68,8 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
               const Text('\$ adb root'),
               const Text('\$ adb shell'),
               const Text(
-                  '\$ adb pull /sdcard/Android/data/re.distantfutu.journal/files/icon.png'),
+                '\$ adb pull /sdcard/Android/data/re.distantfutu.journal/files/icon.png',
+              ),
             ],
           ),
         ),
@@ -134,7 +135,10 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
     // canvas.drawRect(rect, paint);
 
     final Rect imageRect = Rect.fromCenter(
-        center: rect.center, width: iconRect.width, height: iconRect.height);
+      center: rect.center,
+      width: iconRect.width,
+      height: iconRect.height,
+    );
     // canvas.drawImage(iconImage, imageRect.topLeft, paint);
 
     TextPainter textPainter = _iconPainter(
@@ -159,6 +163,7 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
     final buffer = data.buffer;
 
     await file.writeAsBytes(
-        buffer.asUint8List(data.offsetInBytes, data.lengthInBytes));
+      buffer.asUint8List(data.offsetInBytes, data.lengthInBytes),
+    );
   }
 }

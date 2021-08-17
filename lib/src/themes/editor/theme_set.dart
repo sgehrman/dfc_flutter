@@ -35,7 +35,8 @@ class ThemeSet {
   factory ThemeSet.defaultSet() {
     if (Utils.isNotEmpty(_appDefaultSet)) {
       return ThemeSet.fromMap(
-          Map<String, dynamic>.from(json.decode(_appDefaultSet!) as Map));
+        Map<String, dynamic>.from(json.decode(_appDefaultSet!) as Map),
+      );
     }
 
     return ThemeSet(

@@ -173,8 +173,12 @@ class PhoneShapes {
 
     // mute switch
     if (drawMuteSwitch) {
-      rect = Rect.fromLTWH(params.phoneRect.left - stickout, volButtonY,
-          volButtonW, muteButtonH);
+      rect = Rect.fromLTWH(
+        params.phoneRect.left - stickout,
+        volButtonY,
+        volButtonW,
+        muteButtonH,
+      );
       canvas.drawRRect(RRect.fromRectAndRadius(rect, r), paint);
     }
 
@@ -184,7 +188,11 @@ class PhoneShapes {
 
       // volume top
       rect = Rect.fromLTWH(
-          params.phoneRect.left - stickout, volButtonY, volButtonW, volButtonH);
+        params.phoneRect.left - stickout,
+        volButtonY,
+        volButtonW,
+        volButtonH,
+      );
       canvas.drawRRect(RRect.fromRectAndRadius(rect, r), paint);
 
       volButtonY += volButtonH;
@@ -192,7 +200,11 @@ class PhoneShapes {
 
       // volume bottom
       rect = Rect.fromLTWH(
-          params.phoneRect.left - stickout, volButtonY, volButtonW, volButtonH);
+        params.phoneRect.left - stickout,
+        volButtonY,
+        volButtonW,
+        volButtonH,
+      );
       canvas.drawRRect(RRect.fromRectAndRadius(rect, r), paint);
 
       // power button

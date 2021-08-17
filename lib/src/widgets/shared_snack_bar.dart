@@ -21,11 +21,13 @@ class SharedSnackBars {
     required String message,
     bool error = false,
   }) {
-    _pending.add(_StandardSnackBar(
-      title: title,
-      message: message,
-      error: error,
-    ));
+    _pending.add(
+      _StandardSnackBar(
+        title: title,
+        message: message,
+        error: error,
+      ),
+    );
   }
 
   Future<void> _processStream() async {
@@ -129,7 +131,7 @@ class _SharedSnackBarState extends State<SharedSnackBar>
 
     final Tween<Offset> offsetTween = Tween<Offset>(
       begin: Offset(0.0, widget.onTop ? -1.0 : 1.0),
-      end: const Offset(0.0, 0.0),
+      end: Offset.zero,
     );
 
     offsetAnimation = offsetTween.animate(
@@ -221,8 +223,11 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           child: Row(
             children: [
-              Icon(widget.error ? Feather.alert_triangle : Feather.check_circle,
-                  color: Colors.white, size: 36),
+              Icon(
+                widget.error ? Feather.alert_triangle : Feather.check_circle,
+                color: Colors.white,
+                size: 36,
+              ),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
@@ -232,9 +237,10 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
                     Text(
                       widget.title,
                       style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(

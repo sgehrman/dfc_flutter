@@ -20,23 +20,29 @@ class WaveBackground extends StatelessWidget {
     return Stack(
       children: <Widget>[
         // Positioned.fill(child: AnimatedBackground()),
-        onBottom(AnimatedWave(
-          height: baseHeight + 160.0,
-          speed: 1.0,
-          color: color,
-        )),
-        onBottom(AnimatedWave(
-          height: baseHeight + 100,
-          speed: 0.9,
-          offset: pi,
-          color: color,
-        )),
-        onBottom(AnimatedWave(
-          height: baseHeight + 200,
-          speed: 1.2,
-          offset: pi / 2,
-          color: color,
-        )),
+        onBottom(
+          AnimatedWave(
+            height: baseHeight + 160.0,
+            speed: 1.0,
+            color: color,
+          ),
+        ),
+        onBottom(
+          AnimatedWave(
+            height: baseHeight + 100,
+            speed: 0.9,
+            offset: pi,
+            color: color,
+          ),
+        ),
+        onBottom(
+          AnimatedWave(
+            height: baseHeight + 200,
+            speed: 1.2,
+            offset: pi / 2,
+            color: color,
+          ),
+        ),
         Positioned.fill(child: child),
       ],
     );
@@ -65,21 +71,23 @@ class AnimatedWave extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return SizedBox(
-        height: height,
-        width: constraints.biggest.width,
-        child: LoopAnimation<double>(
-          duration: Duration(milliseconds: (10000 / speed).round()),
-          tween: Tween(begin: 0.0, end: 2 * pi),
-          builder: (context, _, value) {
-            return CustomPaint(
-              foregroundPainter: CurvePainter(value + offset, color),
-            );
-          },
-        ),
-      );
-    });
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SizedBox(
+          height: height,
+          width: constraints.biggest.width,
+          child: LoopAnimation<double>(
+            duration: Duration(milliseconds: (10000 / speed).round()),
+            tween: Tween(begin: 0.0, end: 2 * pi),
+            builder: (context, _, value) {
+              return CustomPaint(
+                foregroundPainter: CurvePainter(value + offset, color),
+              );
+            },
+          ),
+        );
+      },
+    );
   }
 }
 
@@ -104,7 +112,11 @@ class CurvePainter extends CustomPainter {
 
     path.moveTo(size.width * 0, startPointY);
     path.quadraticBezierTo(
-        size.width * 0.5, controlPointY, size.width, endPointY);
+      size.width * 0.5,
+      controlPointY,
+      size.width,
+      endPointY,
+    );
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     path.close();

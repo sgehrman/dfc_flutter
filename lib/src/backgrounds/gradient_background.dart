@@ -36,7 +36,10 @@ class GradientBackground extends StatelessWidget {
       builder: (BuildContext context, _, double value) {
         return CustomPaint(
           painter: GradientPainter(
-              value: value, startColor: startColor, endColor: endColor),
+            value: value,
+            startColor: startColor,
+            endColor: endColor,
+          ),
         );
       },
     );
