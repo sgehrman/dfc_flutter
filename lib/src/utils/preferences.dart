@@ -48,6 +48,12 @@ class Preferences extends ChangeNotifier {
     }
   }
 
+  // tooltips
+  static bool get disableTooltips =>
+      HiveBox.prefsBox.get('disableTooltips', defaultValue: false) as bool;
+  static set disableTooltips(bool? flag) =>
+      HiveBox.prefsBox.put('disableTooltips', flag);
+
   bool? get showCheckerboardImages =>
       prefs.get('checkerboardImages', defaultValue: false) as bool?;
 
