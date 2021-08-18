@@ -85,6 +85,7 @@ export 'src/widgets/headers/browser_header.dart';
 export 'src/widgets/headers/centered_header.dart';
 export 'src/widgets/json_viewer_screen.dart';
 export 'src/widgets/json_widget.dart';
+export 'src/widgets/help_tip.dart';
 export 'src/widgets/keyboard_and_mouse_events.dart';
 export 'src/widgets/list_row.dart';
 export 'src/widgets/loading_widget.dart';
