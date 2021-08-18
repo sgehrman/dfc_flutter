@@ -4,16 +4,23 @@ import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_tooltip/simple_tooltip.dart';
 
+enum HelpTipDirection {
+  up,
+  down,
+  right,
+  left,
+}
+
 class HelpTip extends StatefulWidget {
   const HelpTip({
     required this.message,
     required this.child,
-    this.side = TooltipDirection.down,
+    this.direction = HelpTipDirection.down,
   });
 
   final String message;
   final Widget child;
-  final TooltipDirection side;
+  final HelpTipDirection direction;
 
   @override
   State<HelpTip> createState() => _HelpTipState();
@@ -57,6 +64,23 @@ class _HelpTipState extends State<HelpTip> {
       return widget.child;
     }
 
+    TooltipDirection direction;
+
+    switch (widget.direction) {
+      case HelpTipDirection.down:
+        direction = TooltipDirection.down;
+        break;
+      case HelpTipDirection.up:
+        direction = TooltipDirection.up;
+        break;
+      case HelpTipDirection.right:
+        direction = TooltipDirection.right;
+        break;
+      case HelpTipDirection.left:
+        direction = TooltipDirection.left;
+        break;
+    }
+
     return MouseRegion(
       onEnter: (event) {
         _showTimer = Timer(const Duration(milliseconds: 800), () {
@@ -81,7 +105,7 @@ class _HelpTipState extends State<HelpTip> {
               borderColor: Colors.black54,
               animationDuration: const Duration(milliseconds: 300),
               show: _show,
-              tooltipDirection: widget.side,
+              tooltipDirection: direction,
               content: Text(
                 msg,
                 style: const TextStyle(
