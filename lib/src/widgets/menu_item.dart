@@ -6,20 +6,27 @@ class MenuItem extends StatelessWidget {
     this.icon,
     this.level = 0,
     this.onTap, // not needed in a PopupMenuItem
+    this.horizontalPadding = 10,
   });
 
   final String name;
   final Icon? icon;
   final int level;
   final void Function()? onTap;
+  final double horizontalPadding;
 
   @override
   Widget build(BuildContext context) {
+    final contentPadding = EdgeInsets.only(
+      right: horizontalPadding,
+      left: horizontalPadding + (level * 20),
+    );
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: ListTile(
         onTap: onTap,
-        contentPadding: EdgeInsets.only(left: level * 20),
+        contentPadding: contentPadding,
         visualDensity: VisualDensity.compact,
         horizontalTitleGap: 0,
         // IntrinsicWidth keeps the width of the icon without expanding endlessly
