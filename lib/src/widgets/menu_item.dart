@@ -22,27 +22,24 @@ class MenuItem extends StatelessWidget {
       left: horizontalPadding + (level * 20),
     );
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-      child: ListTile(
-        onTap: onTap,
-        contentPadding: contentPadding,
-        visualDensity: VisualDensity.compact,
-        horizontalTitleGap: 0,
-        // IntrinsicWidth keeps the width of the icon without expanding endlessly
-        leading: icon != null
-            ? IntrinsicWidth(
-                child: Container(
-                  alignment: Alignment.centerLeft,
-                  child: icon,
-                ),
-              )
-            : null,
-        title: Text(
-          name,
-          style: const TextStyle(fontSize: 20),
-          overflow: TextOverflow.ellipsis,
-        ),
+    return ListTile(
+      onTap: onTap,
+      contentPadding: contentPadding,
+      visualDensity: VisualDensity.compact,
+      horizontalTitleGap: 0,
+      // IntrinsicWidth keeps the width of the icon without expanding endlessly
+      leading: icon != null
+          ? IntrinsicWidth(
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: icon,
+              ),
+            )
+          : null,
+      title: Text(
+        name,
+        style: const TextStyle(fontSize: 20),
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
