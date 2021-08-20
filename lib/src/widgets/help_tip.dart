@@ -100,7 +100,7 @@ class _HelpTipState extends State<HelpTip> {
               // arrowLength: 30,
               // arrowTipDistance: 10,
               ballonPadding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               backgroundColor: Colors.black87,
               borderColor: Colors.black54,
               animationDuration: const Duration(milliseconds: 300),
@@ -110,7 +110,7 @@ class _HelpTipState extends State<HelpTip> {
                 msg,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: 14,
                   decoration: TextDecoration.none,
                 ),
               ),
