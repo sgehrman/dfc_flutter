@@ -12,12 +12,12 @@ class HiveUtils {
   HiveUtils._();
 
   static Future<void> init() async {
+    WidgetsFlutterBinding.ensureInitialized();
+
     // store this in the application support on iOS
     // await Hive.initFlutter('hive'); doesn't allow picking location
     if (!Utils.isWeb) {
       if (Utils.isMobile) {
-        WidgetsFlutterBinding.ensureInitialized();
-
         // data directory on android
         Directory appDir = await getApplicationDocumentsDirectory();
 
