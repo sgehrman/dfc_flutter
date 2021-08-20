@@ -38,7 +38,7 @@ class MenuItem extends StatelessWidget {
           : null,
       title: Text(
         name,
-        style: const TextStyle(fontSize: 20),
+        style: const TextStyle(fontSize: 18),
         overflow: TextOverflow.ellipsis,
       ),
     );
