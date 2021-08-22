@@ -120,14 +120,20 @@ class __DialogContentsState extends State<_DialogContents> {
           },
           child: Text(
             widget.cancelButtonName,
-            style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.secondary,
+              fontSize: 20,
+            ),
           ),
         ),
         TextButton(
           onPressed: () => _okClick(_textController!.text),
           child: Text(
             widget.okButtonName,
-            style: TextStyle(color: Theme.of(context).primaryColor),
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 20,
+            ),
           ),
         ),
       ],

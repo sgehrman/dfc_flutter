@@ -43,7 +43,10 @@ Future<void> showAlertDialog({
               },
               child: Text(
                 'OK',
-                style: TextStyle(color: Theme.of(context).primaryColor),
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 20,
+                ),
               ),
             ),
           ],

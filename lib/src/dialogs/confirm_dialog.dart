@@ -51,8 +51,10 @@ Future<bool?> showConfirmDialog({
               },
               child: Text(
                 cancelButtonName,
-                style:
-                    TextStyle(color: Theme.of(context).colorScheme.secondary),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                  fontSize: 20,
+                ),
               ),
             ),
             TextButton(
@@ -61,7 +63,10 @@ Future<bool?> showConfirmDialog({
               },
               child: Text(
                 okButtonName,
-                style: TextStyle(color: Theme.of(context).primaryColor),
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 20,
+                ),
               ),
             ),
           ],
