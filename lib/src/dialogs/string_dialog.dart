@@ -87,7 +87,7 @@ class __DialogContentsState extends State<_DialogContents> {
 
   @override
   Widget build(BuildContext context) {
-    const EdgeInsets actionsPadding = EdgeInsets.only(bottom: 14);
+    const EdgeInsets actionsPadding = EdgeInsets.only(right: 10, bottom: 10);
 
     return AlertDialog(
       shape: RoundedRectangleBorder(

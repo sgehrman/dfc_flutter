@@ -10,11 +10,10 @@ Future<bool?> showWidgetDialog({
   String okButtonName = 'OK',
   String cancelButtonName = 'Cancel',
   bool barrierDismissible = true,
-  EdgeInsets? buttonPadding,
   EdgeInsets insetPadding =
       const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
   EdgeInsets? titlePadding,
-  EdgeInsets actionsPadding = const EdgeInsets.only(bottom: 14),
+  EdgeInsets actionsPadding = const EdgeInsets.only(right: 10, bottom: 10),
   EdgeInsets contentPadding = const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 24.0),
 }) {
   return showDialog<bool>(
@@ -32,7 +31,6 @@ Future<bool?> showWidgetDialog({
         },
 
         child: AlertDialog(
-          buttonPadding: buttonPadding,
           insetPadding: insetPadding,
           titlePadding: titlePadding,
           actionsPadding: actionsPadding,
