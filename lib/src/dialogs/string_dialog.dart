@@ -115,26 +115,26 @@ class __DialogContentsState extends State<_DialogContents> {
       ),
       actions: <Widget>[
         TextButton(
+          style: TextButton.styleFrom(
+            textStyle: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 18,
+            ),
+          ),
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text(
-            widget.cancelButtonName,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.secondary,
-              fontSize: 20,
-            ),
-          ),
+          child: Text(widget.cancelButtonName),
         ),
         TextButton(
-          onPressed: () => _okClick(_textController!.text),
-          child: Text(
-            widget.okButtonName,
-            style: TextStyle(
+          style: TextButton.styleFrom(
+            textStyle: TextStyle(
               color: Theme.of(context).primaryColor,
-              fontSize: 20,
+              fontSize: 18,
             ),
           ),
+          onPressed: () => _okClick(_textController!.text),
+          child: Text(widget.okButtonName),
         ),
       ],
     );

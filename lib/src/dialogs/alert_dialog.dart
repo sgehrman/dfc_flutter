@@ -38,16 +38,16 @@ Future<void> showAlertDialog({
           ),
           actions: <Widget>[
             TextButton(
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 18,
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
-                'OK',
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 20,
-                ),
-              ),
+              child: const Text('OK'),
             ),
           ],
         ),

@@ -51,29 +51,29 @@ Future<bool?> showWidgetDialog({
             Visibility(
               visible: showCancel,
               child: TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 18,
+                  ),
+                ),
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
-                child: Text(
-                  cancelButtonName,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.secondary,
-                    fontSize: 20,
-                  ),
-                ),
+                child: Text(cancelButtonName),
               ),
             ),
             TextButton(
+              style: TextButton.styleFrom(
+                textStyle: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 18,
+                ),
+              ),
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
-              child: Text(
-                okButtonName,
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 20,
-                ),
-              ),
+              child: Text(okButtonName),
             ),
           ],
         ),
