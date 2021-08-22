@@ -95,31 +95,25 @@ class _HelpTipState extends State<HelpTip> {
         _show = false;
         setState(() {});
       },
-      child: _show
-          ? SimpleTooltip(
-              tooltipTap: () {
-                print('tooltip');
-              },
-              // arrowLength: 30,
-              // arrowTipDistance: 10,
-              ballonPadding:
-                  const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-              backgroundColor: Colors.black87,
-              borderColor: Colors.black54,
-              animationDuration: const Duration(milliseconds: 300),
-              show: _show,
-              tooltipDirection: direction,
-              content: Text(
-                msg,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-              child: widget.child,
-            )
-          : widget.child,
+      child: SimpleTooltip(
+        // arrowLength: 30,
+        // arrowTipDistance: 10,
+        ballonPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+        backgroundColor: Colors.black87,
+        borderColor: Colors.black54,
+        animationDuration: const Duration(milliseconds: 300),
+        show: _show,
+        tooltipDirection: direction,
+        content: Text(
+          msg,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            decoration: TextDecoration.none,
+          ),
+        ),
+        child: widget.child,
+      ),
     );
   }
 }
