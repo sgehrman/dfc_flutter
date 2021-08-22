@@ -8,6 +8,8 @@ Future<void> showAlertDialog({
   required String message,
   bool barrierDismissible = true,
 }) {
+  const EdgeInsets actionsPadding = EdgeInsets.only(right: 20, bottom: 14);
+
   return showDialog<void>(
     context: context,
     barrierDismissible: barrierDismissible,
@@ -23,6 +25,7 @@ Future<void> showAlertDialog({
         },
 
         child: AlertDialog(
+          actionsPadding: actionsPadding,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

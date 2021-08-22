@@ -11,6 +11,8 @@ Future<bool?> showConfirmDialog({
   String cancelButtonName = 'Cancel',
   bool barrierDismissible = true,
 }) async {
+  const EdgeInsets actionsPadding = EdgeInsets.only(right: 20, bottom: 14);
+
   return showDialog<bool>(
     context: context,
     barrierDismissible: barrierDismissible, // can return null
@@ -26,6 +28,7 @@ Future<bool?> showConfirmDialog({
         },
 
         child: AlertDialog(
+          actionsPadding: actionsPadding,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

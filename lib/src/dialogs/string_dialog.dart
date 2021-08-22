@@ -87,10 +87,13 @@ class __DialogContentsState extends State<_DialogContents> {
 
   @override
   Widget build(BuildContext context) {
+    const EdgeInsets actionsPadding = EdgeInsets.only(right: 20, bottom: 14);
+
     return AlertDialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
+      actionsPadding: actionsPadding,
       title: Text(widget.title),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 600.0),
