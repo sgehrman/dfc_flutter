@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future<bool?> showWidgetDialog({
   required BuildContext context,
@@ -19,47 +20,61 @@ Future<bool?> showWidgetDialog({
   return showDialog<bool>(
     context: context,
     barrierDismissible: barrierDismissible,
-    builder: (context) => AlertDialog(
-      buttonPadding: buttonPadding,
-      insetPadding: insetPadding,
-      titlePadding: titlePadding,
-      actionsPadding: actionsPadding,
-      contentPadding: contentPadding,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      title: title == null ? null : Text(title),
-      content: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 600.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: children,
+    builder: (context) {
+      return RawKeyboardListener(
+        // its better to initialize and dispose of the focus node only for this alert dialog
+        focusNode: FocusNode(),
+        autofocus: true,
+        onKey: (v) {
+          if (v.logicalKey == LogicalKeyboardKey.enter) {
+            Navigator.of(context).pop(true);
+          }
+        },
+
+        child: AlertDialog(
+          buttonPadding: buttonPadding,
+          insetPadding: insetPadding,
+          titlePadding: titlePadding,
+          actionsPadding: actionsPadding,
+          contentPadding: contentPadding,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
           ),
-        ),
-      ),
-      actions: <Widget>[
-        Visibility(
-          visible: showCancel,
-          child: TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(false);
-            },
-            child: Text(
-              cancelButtonName,
-              style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+          title: title == null ? null : Text(title),
+          content: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600.0),
+            child: SingleChildScrollView(
+              child: Column(
+                children: children,
+              ),
             ),
           ),
+          actions: <Widget>[
+            Visibility(
+              visible: showCancel,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+                child: Text(
+                  cancelButtonName,
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.secondary),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: Text(
+                okButtonName,
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              ),
+            ),
+          ],
         ),
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop(true);
-          },
-          child: Text(
-            okButtonName,
-            style: TextStyle(color: Theme.of(context).primaryColor),
-          ),
-        ),
-      ],
-    ),
+      );
+    },
   );
 }

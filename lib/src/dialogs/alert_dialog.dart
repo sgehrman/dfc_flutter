@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future<void> showAlertDialog({
   required BuildContext context,
@@ -10,28 +11,41 @@ Future<void> showAlertDialog({
   return showDialog<void>(
     context: context,
     barrierDismissible: barrierDismissible,
-    builder: (context) => AlertDialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      title: Text(title),
-      content: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 600.0),
-        child: SingleChildScrollView(
-          child: Text(message),
-        ),
-      ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
+    builder: (context) {
+      return RawKeyboardListener(
+        // its better to initialize and dispose of the focus node only for this alert dialog
+        focusNode: FocusNode(),
+        autofocus: true,
+        onKey: (v) {
+          if (v.logicalKey == LogicalKeyboardKey.enter) {
             Navigator.of(context).pop();
-          },
-          child: Text(
-            'OK',
-            style: TextStyle(color: Theme.of(context).primaryColor),
+          }
+        },
+
+        child: AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
           ),
+          title: Text(title),
+          content: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 600.0),
+            child: SingleChildScrollView(
+              child: Text(message),
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'OK',
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              ),
+            ),
+          ],
         ),
-      ],
-    ),
+      );
+    },
   );
 }
