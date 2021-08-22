@@ -96,29 +96,28 @@ class _HelpTipState extends State<HelpTip> {
         setState(() {});
       },
       child: _show
-          ? IgnorePointer(
-              // sometime the click is intercepted while it's animating open
-              // added IgnorePointer above
-              child: SimpleTooltip(
-                // arrowLength: 30,
-                // arrowTipDistance: 10,
-                ballonPadding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                backgroundColor: Colors.black87,
-                borderColor: Colors.black54,
-                animationDuration: const Duration(milliseconds: 300),
-                show: _show,
-                tooltipDirection: direction,
-                content: Text(
-                  msg,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 14,
-                    decoration: TextDecoration.none,
-                  ),
+          ? SimpleTooltip(
+              tooltipTap: () {
+                print('tooltip');
+              },
+              // arrowLength: 30,
+              // arrowTipDistance: 10,
+              ballonPadding:
+                  const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              backgroundColor: Colors.black87,
+              borderColor: Colors.black54,
+              animationDuration: const Duration(milliseconds: 300),
+              show: _show,
+              tooltipDirection: direction,
+              content: Text(
+                msg,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  decoration: TextDecoration.none,
                 ),
-                child: widget.child,
               ),
+              child: widget.child,
             )
           : widget.child,
     );
