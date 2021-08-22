@@ -14,7 +14,7 @@ Future<bool?> showWidgetDialog({
   EdgeInsets insetPadding =
       const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
   EdgeInsets? titlePadding,
-  EdgeInsets actionsPadding = const EdgeInsets.only(right: 20, bottom: 14),
+  EdgeInsets actionsPadding = const EdgeInsets.only(bottom: 14),
   EdgeInsets contentPadding = const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 24.0),
 }) {
   return showDialog<bool>(
