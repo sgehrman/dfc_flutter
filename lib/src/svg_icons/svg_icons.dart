@@ -4159,6 +4159,7 @@ class SvgIcons {
 
   static const everyIcon = [
     SvgIcons.fileMinusFill,
+    /* used for development, keep binary small, don't include otherwise
     SvgIcons.exclude,
     SvgIcons.mouse2,
     SvgIcons.people,
@@ -5544,10 +5545,12 @@ class SvgIcons {
     SvgIcons.textareaT,
     SvgIcons.questionOctagon,
     SvgIcons.shiftFill,
+    */
   ];
 
   static const iconNames = [
     'fileMinusFill',
+    /* used for development, keep binary small, don't include otherwise
     'exclude',
     'mouse2',
     'people',
@@ -6933,5 +6936,6 @@ class SvgIcons {
     'textareaT',
     'questionOctagon',
     'shiftFill',
+    */
   ];
 }
