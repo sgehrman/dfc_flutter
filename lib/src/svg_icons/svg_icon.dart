@@ -31,13 +31,21 @@ class SvgIcon extends StatelessWidget {
       String hexString = color.value.toRadixString(16).padLeft(6, '0');
       hexString = hexString.substring(2, hexString.length);
 
-      String opacity = (color.opacity * 10).toInt().toString();
-      opacity = '0.$opacity';
-
       svgString = svgString.replaceAll(
         'fill="#000000"',
-        'fill-opacity="$opacity" fill="#$hexString"',
+        'fill="#$hexString"',
       );
+
+      // fill-opacity doesn't seem to work globally like the fill, so we add it to each path
+      if (color.opacity < 1.0) {
+        String opacity = (color.opacity * 10).toInt().toString();
+        opacity = '0.$opacity';
+
+        svgString = svgString.replaceAll(
+          '<path ',
+          '<path fill-opacity="$opacity" ',
+        );
+      }
     }
 
     return Row(

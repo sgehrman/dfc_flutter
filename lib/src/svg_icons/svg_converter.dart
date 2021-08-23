@@ -1,6 +1,9 @@
 // icons from:
 // https://github.com/twbs/icons/tree/main/icons
 
+// Regex to remove class garbage
+// class=(["'])(?:(?=(\\?))\2.)*?\1
+
 import 'dart:io';
 
 import 'package:dfc_flutter/src/extensions/string_ext.dart';

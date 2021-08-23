@@ -13,7 +13,7 @@ class SvgScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final icons = SvgIcons.everyIcon;
+    const icons = SvgIcons.everyIcon;
 
     return Scaffold(
       appBar: AppBar(title: const Text('SVG Icons')),
