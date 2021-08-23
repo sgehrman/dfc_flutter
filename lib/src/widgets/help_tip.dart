@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:dfc_flutter/dfc_flutter_web.dart';
+import 'package:dfc_flutter/src/utils/preferences.dart';
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_tooltip/simple_tooltip.dart';
 
