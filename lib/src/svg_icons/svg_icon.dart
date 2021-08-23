@@ -23,29 +23,47 @@ class SvgIcon extends StatelessWidget {
   final Duration animationDuration;
   final Curve animationCurve;
 
+  String _webFix(String svg) {
+    String svgString = svg;
+
+    String hexString = color.value.toRadixString(16).padLeft(6, '0');
+    hexString = hexString.substring(2, hexString.length);
+
+    svgString = svgString.replaceAll(
+      'fill="#000000"',
+      'fill="#$hexString"',
+    );
+
+    // fill-opacity doesn't seem to work globally like the fill, so we add it to each path
+    if (color.opacity < 1.0) {
+      String opacity = (color.opacity * 10).toInt().toString();
+      opacity = '0.$opacity';
+
+      svgString = svgString.replaceAll(
+        '<path ',
+        '<path fill-opacity="$opacity" ',
+      );
+
+      svgString = svgString.replaceAll(
+        '<rect ',
+        '<rect fill-opacity="$opacity" ',
+      );
+
+      svgString = svgString.replaceAll(
+        '<circle ',
+        '<rect fill-opacity="$opacity" ',
+      );
+    }
+
+    return svgString;
+  }
+
   @override
   Widget build(BuildContext context) {
     String svgString = icon;
 
     if (Utils.isWeb) {
-      String hexString = color.value.toRadixString(16).padLeft(6, '0');
-      hexString = hexString.substring(2, hexString.length);
-
-      svgString = svgString.replaceAll(
-        'fill="#000000"',
-        'fill="#$hexString"',
-      );
-
-      // fill-opacity doesn't seem to work globally like the fill, so we add it to each path
-      if (color.opacity < 1.0) {
-        String opacity = (color.opacity * 10).toInt().toString();
-        opacity = '0.$opacity';
-
-        svgString = svgString.replaceAll(
-          '<path ',
-          '<path fill-opacity="$opacity" ',
-        );
-      }
+      svgString = _webFix(svgString);
     }
 
     return Row(

@@ -68,6 +68,26 @@ Future<void> svgConvert() async {
       '\n\n];',
       mode: FileMode.append,
     );
+
+    // ============================
+    // name map
+
+    await outFile.writeAsString(
+      '\n\nconst names = [',
+      mode: FileMode.append,
+    );
+
+    for (final name in names) {
+      await outFile.writeAsString(
+        "'$name', ",
+        mode: FileMode.append,
+      );
+    }
+
+    await outFile.writeAsString(
+      '\n\n];',
+      mode: FileMode.append,
+    );
   }
 }
 
