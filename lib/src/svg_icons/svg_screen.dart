@@ -3,14 +3,20 @@ import 'package:dfc_flutter/src/svg_icons/svg_icons.dart';
 import 'package:flutter/material.dart';
 
 class SvgScreen extends StatelessWidget {
-  const SvgScreen({Key? key}) : super(key: key);
+  const SvgScreen({
+    this.color = Colors.grey,
+    this.size = 50,
+  });
+
+  final Color color;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
     final icons = SvgIcons.everyIcon;
 
     return Scaffold(
-      backgroundColor: Colors.grey,
+      appBar: AppBar(title: const Text('SVG Icons')),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 9,
@@ -22,8 +28,8 @@ class SvgScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return SvgIcon(
             icons[index],
-            size: 50,
-            color: Colors.red.withOpacity(.9),
+            size: size,
+            color: color,
           );
         },
       ),
