@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:dfc_flutter/src/svg_icons/material_svgs.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:dfc_flutter/src/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';

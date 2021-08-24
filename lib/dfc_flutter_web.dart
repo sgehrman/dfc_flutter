@@ -114,6 +114,4 @@ export 'src/widgets/transparent_route.dart';
 export 'src/widgets/ttext.dart';
 export 'src/widgets/video_player_widget.dart';
 export 'src/svg_icons/svg_icon.dart';
-export 'src/svg_icons/bootstrap_svgs.dart';
-export 'src/svg_icons/material_svgs.dart';
 export 'src/svg_icons/svg_screen.dart';

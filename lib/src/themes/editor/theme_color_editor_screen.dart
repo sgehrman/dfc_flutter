@@ -1,6 +1,6 @@
+import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/widgets/headers/browser_header.dart';
@@ -68,7 +68,7 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: ListRow(
                   title: 'Example List item',
-                  leading: Icon(Feather.folder),
+                  leading: SvgIcon(FontAwesomeSvgs.regularFolder),
                   subtitle: 'Subtitle example',
                 ),
               ),
@@ -76,7 +76,7 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: ListRow(
                   title: 'Example List item',
-                  leading: Icon(Feather.folder),
+                  leading: SvgIcon(FontAwesomeSvgs.regularFolder),
                   subtitle: 'Subtitle example',
                 ),
               ),
