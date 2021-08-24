@@ -4159,7 +4159,7 @@ class BootstrapSvgs {
 
   static const everyIcon = [
     BootstrapSvgs.fileMinusFill,
-    /* used for development, keep binary small, don't include otherwise
+    // /* used for development, keep binary small, don't include otherwise
     BootstrapSvgs.exclude,
     BootstrapSvgs.mouse2,
     BootstrapSvgs.people,
@@ -5545,12 +5545,12 @@ class BootstrapSvgs {
     BootstrapSvgs.textareaT,
     BootstrapSvgs.questionOctagon,
     BootstrapSvgs.shiftFill,
-    */
+    // */
   ];
 
   static const iconNames = [
     'fileMinusFill',
-    /* used for development, keep binary small, don't include otherwise
+    // /* used for development, keep binary small, don't include otherwise
     'exclude',
     'mouse2',
     'people',
@@ -6936,6 +6936,6 @@ class BootstrapSvgs {
     'textareaT',
     'questionOctagon',
     'shiftFill',
-    */
+    // */
   ];
 }
