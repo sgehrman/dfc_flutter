@@ -1,4 +1,5 @@
 import 'package:dfc_flutter/src/svg_icons/bootstrap_svgs.dart';
+import 'package:dfc_flutter/src/svg_icons/fontawesome_svgs.dart';
 import 'package:dfc_flutter/src/svg_icons/material_svgs.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_bootstrap.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_fontawesome.dart';
@@ -49,8 +50,8 @@ class _SvgScreenState extends State<SvgScreen> {
 
         break;
       case SVGSource.fontawesome:
-        icons = BootstrapSvgs.everyIcon;
-        iconNames = BootstrapSvgs.iconNames;
+        icons = FontAwesomeSvgs.everyIcon;
+        iconNames = FontAwesomeSvgs.iconNames;
 
         break;
     }
