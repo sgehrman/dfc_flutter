@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dfc_flutter/src/widgets/shared_context.dart';
 
 class SharedSnackBars {
@@ -223,8 +223,10 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           child: Row(
             children: [
-              Icon(
-                widget.error ? Feather.alert_triangle : Feather.check_circle,
+              SvgIcon(
+                widget.error
+                    ? CommunitySvgs.alertWarningAmberMaterialiconsround24px
+                    : CommunitySvgs.actionCheckCircleMaterialicons24px,
                 color: Colors.white,
                 size: 36,
               ),

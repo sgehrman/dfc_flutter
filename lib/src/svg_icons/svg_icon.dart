@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 export 'package:dfc_flutter/src/svg_icons/fontawesome_svgs.dart';
 export 'package:dfc_flutter/src/svg_icons/material_svgs.dart';
 export 'package:dfc_flutter/src/svg_icons/bootstrap_svgs.dart';
+export 'package:dfc_flutter/src/svg_icons/community_svgs.dart';
 
 class SvgIcon extends StatelessWidget {
   const SvgIcon(
