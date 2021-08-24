@@ -7,6 +7,7 @@ import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/search_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 enum SVGSource {
   fontawesome,
@@ -127,17 +128,26 @@ class _SvgScreenState extends State<SvgScreen> {
                   ),
                   itemCount: items.length,
                   itemBuilder: (context, index) {
+                    final item = items[index];
+
                     return Column(
                       children: [
                         const SizedBox(height: 20),
-                        SvgIcon(
-                          items[index].icon,
-                          size: widget.size,
-                          color: widget.color,
+                        InkWell(
+                          onTap: () {
+                            Clipboard.setData(ClipboardData(text: item.name));
+
+                            Utils.showCopiedToast(context);
+                          },
+                          child: SvgIcon(
+                            item.icon,
+                            size: widget.size,
+                            color: widget.color,
+                          ),
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          items[index].name,
+                          item.name,
                         ),
                       ],
                     );
