@@ -4834,6 +4834,8 @@ class FontAwesomeSvgs {
 
   static const everyIcon = [
     FontAwesomeSvgs.brandsFly,
+        /* used for development, keep binary small, don't include otherwise
+
     FontAwesomeSvgs.brandsCcMastercard,
     FontAwesomeSvgs.brandsAlgolia,
     FontAwesomeSvgs.brandsDev,
@@ -6444,10 +6446,13 @@ class FontAwesomeSvgs {
     FontAwesomeSvgs.solidChevronCircleLeft,
     FontAwesomeSvgs.solidDemocrat,
     FontAwesomeSvgs.solidPrint,
+    */
   ];
 
   static const iconNames = [
     'brandsFly',
+        /* used for development, keep binary small, don't include otherwise
+
     'brandsCcMastercard',
     'brandsAlgolia',
     'brandsDev',
@@ -8058,5 +8063,6 @@ class FontAwesomeSvgs {
     'solidChevronCircleLeft',
     'solidDemocrat',
     'solidPrint',
+    */
   ];
 }
