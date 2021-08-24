@@ -87,7 +87,7 @@ class _SvgScreenState extends State<SvgScreen> {
         children: [
           SearchField(
             onChange: (value) {
-              _filter = value;
+              _filter = value.toLowerCase();
               setState(() {});
             },
             onSubmit: (value) {},
@@ -101,7 +101,7 @@ class _SvgScreenState extends State<SvgScreen> {
 
                 for (int i = 0; i < iconNames.length; i++) {
                   if (Utils.isNotEmpty(_filter)) {
-                    if (iconNames[i].contains(_filter)) {
+                    if (iconNames[i].toLowerCase().contains(_filter)) {
                       items.add(_NameAndIcon(iconNames[i], icons[i]));
                     }
                   } else {

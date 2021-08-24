@@ -124,7 +124,11 @@ class _SearchFieldState extends State<SearchField> {
         _searchControllerConns.text = '';
       },
       style: TextStyle(
-        color: widget.filled ? Colors.black : Colors.white,
+        color: widget.filled
+            ? Colors.black
+            : Utils.isDarkMode(context)
+                ? Colors.white
+                : Colors.black,
       ),
       decoration: InputDecoration(
         filled: filled,
@@ -134,8 +138,13 @@ class _SearchFieldState extends State<SearchField> {
         enabledBorder: enabledBorder,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: widget.hint,
-        hintStyle:
-            TextStyle(color: widget.filled ? Colors.black : Colors.white),
+        hintStyle: TextStyle(
+          color: widget.filled
+              ? Colors.black
+              : Utils.isDarkMode(context)
+                  ? Colors.white
+                  : Colors.black,
+        ),
         labelText: widget.label,
         prefixIcon: IconButton(
           splashColor: Colors.transparent,
