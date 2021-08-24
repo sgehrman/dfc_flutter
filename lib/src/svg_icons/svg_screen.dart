@@ -1,4 +1,6 @@
+import 'package:dfc_flutter/src/svg_icons/community_svgs.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_bootstrap.dart';
+import 'package:dfc_flutter/src/svg_icons/svg_converter_community.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_fontawesome.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_material.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
@@ -10,6 +12,7 @@ enum SVGSource {
   fontawesome,
   material,
   bootstrap,
+  community,
 }
 
 class SvgScreen extends StatefulWidget {
@@ -39,17 +42,18 @@ class _SvgScreenState extends State<SvgScreen> {
       case SVGSource.material:
         icons = MaterialSvgs.everyIcon;
         iconNames = MaterialSvgs.iconNames;
-
         break;
       case SVGSource.bootstrap:
         icons = BootstrapSvgs.everyIcon;
         iconNames = BootstrapSvgs.iconNames;
-
         break;
       case SVGSource.fontawesome:
         icons = FontAwesomeSvgs.everyIcon;
         iconNames = FontAwesomeSvgs.iconNames;
-
+        break;
+      case SVGSource.community:
+        icons = CommunitySvgs.everyIcon;
+        iconNames = CommunitySvgs.iconNames;
         break;
     }
 
@@ -65,6 +69,9 @@ class _SvgScreenState extends State<SvgScreen> {
               break;
             case SVGSource.fontawesome:
               fontawesomeConvert();
+              break;
+            case SVGSource.community:
+              communityConvert();
               break;
           }
         },

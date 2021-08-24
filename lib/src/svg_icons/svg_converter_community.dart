@@ -4,10 +4,9 @@
 import 'package:dfc_flutter/src/svg_icons/svg_converter_utils.dart';
 
 // icons from:
-// https://fontawesome.com/ download
-Future<void> fontawesomeConvert() async {
-  final result =
-      dirListing('/home/steve/expr/fontawesome-free-5.15.4-desktop/svgs');
+// git clone git@github.com:google/material-design-icons.git
+Future<void> communityConvert() async {
+  final result = dirListing('/home/steve/expr/material-design-icons/src');
 
   final map = await buildIconMap(
     result,
@@ -15,7 +14,7 @@ Future<void> fontawesomeConvert() async {
   );
 
   await writeSvgOutput(
-    '/home/steve/expr/fontawesome-free-5.15.4-desktop/output.dart',
+    '/home/steve/expr/material-design-icons/output.dart',
     map,
   );
 }
