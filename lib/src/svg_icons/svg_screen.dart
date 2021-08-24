@@ -1,7 +1,8 @@
+import 'package:dfc_flutter/src/svg_icons/bootstrap_svgs.dart';
 import 'package:dfc_flutter/src/svg_icons/material_svgs.dart';
+import 'package:dfc_flutter/src/svg_icons/svg_converter_bootstrap.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_material.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
-// import 'package:dfc_flutter/src/svg_icons/svg_icons.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/search_field.dart';
 import 'package:flutter/material.dart';
@@ -10,10 +11,12 @@ class SvgScreen extends StatefulWidget {
   const SvgScreen({
     this.color = Colors.grey,
     this.size = 50,
+    this.materialSvgs = true,
   });
 
   final Color color;
   final double size;
+  final bool materialSvgs;
 
   @override
   State<SvgScreen> createState() => _SvgScreenState();
@@ -24,16 +27,25 @@ class _SvgScreenState extends State<SvgScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // const icons = BootstrapSvgs.everyIcon;
-    const icons = MaterialSvgs.everyIcon;
-    // const iconNames = BootstrapSvgs.iconNames;
-    const iconNames = MaterialSvgs.iconNames;
+    List<String> icons;
+    List<String> iconNames;
+
+    if (widget.materialSvgs) {
+      icons = MaterialSvgs.everyIcon;
+      iconNames = MaterialSvgs.iconNames;
+    } else {
+      icons = BootstrapSvgs.everyIcon;
+      iconNames = BootstrapSvgs.iconNames;
+    }
 
     final actions = [
       IconButton(
         onPressed: () {
-          // bootStrapConvert();
-          materialConvert();
+          if (widget.materialSvgs) {
+            materialConvert();
+          } else {
+            bootStrapConvert();
+          }
         },
         icon: const Icon(Icons.connected_tv_sharp),
       ),

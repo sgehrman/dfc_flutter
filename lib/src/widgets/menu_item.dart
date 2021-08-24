@@ -10,7 +10,7 @@ class MenuItem extends StatelessWidget {
   });
 
   final String name;
-  final Icon? icon;
+  final Widget? icon;
   final int level;
   final void Function()? onTap;
   final double horizontalPadding;
