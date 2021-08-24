@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SvgIcon extends StatelessWidget {
   const SvgIcon(
-    this.icon, {
+    this.svg, {
     this.size = 24,
     this.fit = BoxFit.contain,
     this.allowDrawingOutsideViewBox = false,
@@ -19,7 +19,7 @@ class SvgIcon extends StatelessWidget {
   final BoxFit fit;
   final bool allowDrawingOutsideViewBox;
   final MainAxisAlignment mainAxisAlignment;
-  final String icon;
+  final String svg;
   final Duration animationDuration;
   final Curve animationCurve;
 
@@ -60,7 +60,7 @@ class SvgIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String svgString = icon;
+    String svgString = svg;
 
     if (Utils.isWeb) {
       svgString = _webFix(svgString);
