@@ -37,21 +37,26 @@ class _SvgScreenState extends State<SvgScreen> {
   Widget build(BuildContext context) {
     List<String> icons;
     List<String> iconNames;
+    String title = 'Icon Library';
 
     switch (widget.source) {
       case SVGSource.material:
+        title = 'Material Icon Library';
         icons = MaterialSvgs.everyIcon;
         iconNames = MaterialSvgs.iconNames;
         break;
       case SVGSource.bootstrap:
+        title = 'Bootstrap Icon Library';
         icons = BootstrapSvgs.everyIcon;
         iconNames = BootstrapSvgs.iconNames;
         break;
       case SVGSource.fontawesome:
+        title = 'Fontawesome Icon Library';
         icons = FontAwesomeSvgs.everyIcon;
         iconNames = FontAwesomeSvgs.iconNames;
         break;
       case SVGSource.community:
+        title = 'Community Icon Library';
         icons = CommunitySvgs.everyIcon;
         iconNames = CommunitySvgs.iconNames;
         break;
@@ -84,7 +89,7 @@ class _SvgScreenState extends State<SvgScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SVG Icons'),
+        title: Text(title),
         actions: actions,
       ),
       body: Column(
