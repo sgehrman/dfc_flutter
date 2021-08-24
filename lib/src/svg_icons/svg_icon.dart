@@ -58,6 +58,11 @@ class SvgIcon extends StatelessWidget {
         '<circle ',
         '<rect fill-opacity="$opacity" ',
       );
+
+      svgString = svgString.replaceAll(
+        '<polygon ',
+        '<polygon fill-opacity="$opacity" ',
+      );
     }
 
     return svgString;
