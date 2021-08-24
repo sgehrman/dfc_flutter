@@ -1,22 +1,29 @@
 import 'package:dfc_flutter/src/svg_icons/bootstrap_svgs.dart';
 import 'package:dfc_flutter/src/svg_icons/material_svgs.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_bootstrap.dart';
+import 'package:dfc_flutter/src/svg_icons/svg_converter_fontawesome.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_material.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/search_field.dart';
 import 'package:flutter/material.dart';
 
+enum SVGSource {
+  fontawesome,
+  material,
+  bootstrap,
+}
+
 class SvgScreen extends StatefulWidget {
   const SvgScreen({
     this.color = Colors.grey,
     this.size = 50,
-    this.materialSvgs = true,
+    this.source = SVGSource.material,
   });
 
   final Color color;
   final double size;
-  final bool materialSvgs;
+  final SVGSource source;
 
   @override
   State<SvgScreen> createState() => _SvgScreenState();
@@ -30,21 +37,37 @@ class _SvgScreenState extends State<SvgScreen> {
     List<String> icons;
     List<String> iconNames;
 
-    if (widget.materialSvgs) {
-      icons = MaterialSvgs.everyIcon;
-      iconNames = MaterialSvgs.iconNames;
-    } else {
-      icons = BootstrapSvgs.everyIcon;
-      iconNames = BootstrapSvgs.iconNames;
+    switch (widget.source) {
+      case SVGSource.material:
+        icons = MaterialSvgs.everyIcon;
+        iconNames = MaterialSvgs.iconNames;
+
+        break;
+      case SVGSource.bootstrap:
+        icons = BootstrapSvgs.everyIcon;
+        iconNames = BootstrapSvgs.iconNames;
+
+        break;
+      case SVGSource.fontawesome:
+        icons = BootstrapSvgs.everyIcon;
+        iconNames = BootstrapSvgs.iconNames;
+
+        break;
     }
 
     final actions = [
       IconButton(
         onPressed: () {
-          if (widget.materialSvgs) {
-            materialConvert();
-          } else {
-            bootStrapConvert();
+          switch (widget.source) {
+            case SVGSource.material:
+              materialConvert();
+              break;
+            case SVGSource.bootstrap:
+              bootStrapConvert();
+              break;
+            case SVGSource.fontawesome:
+              fontawesomeConvert();
+              break;
           }
         },
         icon: const Icon(Icons.connected_tv_sharp),

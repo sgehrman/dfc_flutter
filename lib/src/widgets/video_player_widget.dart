@@ -1,10 +1,10 @@
 import 'dart:io';
 
+import 'package:dfc_flutter/dfc_flutter.dart';
+import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:dfc_flutter/src/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
-import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/preview_dialog.dart';
 
 import 'package:open_file/open_file.dart';
@@ -188,8 +188,8 @@ class _PlayPauseOverlay extends StatelessWidget {
                 onTap: () {
                   OpenFile.open(Uri.parse(controller.dataSource).path);
                 },
-                child: Icon(
-                  Utils.isIOS ? Ionicons.ios_open : Ionicons.md_open,
+                child: const SvgIcon(
+                  MaterialSvgs.openInNewBaseline,
                   color: Colors.white54,
                   size: 32,
                 ),
