@@ -1,5 +1,6 @@
+import 'package:dfc_flutter/src/svg_icons/fontawesome_svgs.dart';
+import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dfc_flutter/src/utils/rect_clipper.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 
@@ -19,8 +20,8 @@ class ThumbWidget extends StatelessWidget {
   Widget _thumb(int index) {
     const Color unselectedColor = Color.fromRGBO(180, 180, 180, 1);
 
-    IconData icon;
-    IconData outlinedIcon;
+    String icon;
+    String outlinedIcon;
 
     final bool isSelected = selectedIndex == index;
 
@@ -29,13 +30,13 @@ class ThumbWidget extends StatelessWidget {
     double yOffset = 1;
 
     if (index < 2) {
-      icon = FontAwesome.thumbs_down;
-      outlinedIcon = FontAwesome.thumbs_down;
+      icon = FontAwesomeSvgs.solidThumbsDown;
+      outlinedIcon = FontAwesomeSvgs.solidThumbsDown;
 
       iconColor = Colors.red[600];
     } else {
-      icon = FontAwesome.thumbs_up;
-      outlinedIcon = FontAwesome.thumbs_up;
+      icon = FontAwesomeSvgs.solidThumbsUp;
+      outlinedIcon = FontAwesomeSvgs.solidThumbsUp;
       yOffset *= -1;
 
       iconColor = Colors.green[600];
@@ -54,9 +55,9 @@ class ThumbWidget extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Icon(
+          SvgIcon(
             isSelected ? icon : outlinedIcon,
-            color: firstIconColor,
+            color: firstIconColor!,
             size: iconSize,
           ),
           // white shadow
@@ -67,7 +68,7 @@ class ThumbWidget extends StatelessWidget {
               bottom: yOffset,
               child: ClipRect(
                 clipper: const RectClipper(),
-                child: Icon(
+                child: SvgIcon(
                   isSelected ? icon : outlinedIcon,
                   color: Colors.black54,
                   size: iconSize,
@@ -80,9 +81,9 @@ class ThumbWidget extends StatelessWidget {
             child: Positioned(
               right: xOffset,
               bottom: yOffset,
-              child: Icon(
+              child: SvgIcon(
                 isSelected ? icon : outlinedIcon,
-                color: isSelected ? iconColor : unselectedColor,
+                color: isSelected ? iconColor! : unselectedColor,
                 size: iconSize,
               ),
             ),
