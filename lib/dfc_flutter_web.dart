@@ -113,7 +113,6 @@ export 'src/widgets/transparent_appBar_theme.dart';
 export 'src/widgets/transparent_route.dart';
 export 'src/widgets/ttext.dart';
 export 'src/widgets/video_player_widget.dart';
-export 'src/svg_icons/svg_converter.dart';
 export 'src/svg_icons/svg_icon.dart';
 export 'src/svg_icons/svg_icons.dart';
 export 'src/svg_icons/svg_screen.dart';

@@ -1,6 +1,7 @@
-import 'package:dfc_flutter/src/svg_icons/svg_converter.dart';
+import 'package:dfc_flutter/src/svg_icons/material_svg.dart';
+import 'package:dfc_flutter/src/svg_icons/svg_converter_material.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
-import 'package:dfc_flutter/src/svg_icons/svg_icons.dart';
+// import 'package:dfc_flutter/src/svg_icons/svg_icons.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/search_field.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +24,10 @@ class _SvgScreenState extends State<SvgScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const icons = SvgIcons.everyIcon;
-    const iconNames = SvgIcons.iconNames;
+    // const icons = SvgIcons.everyIcon;
+    const icons = MaterialSvgs.everyIcon;
+    // const iconNames = SvgIcons.iconNames;
+    const iconNames = MaterialSvgs.iconNames;
 
     final actions = [
       IconButton(
