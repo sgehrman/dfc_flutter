@@ -1,6 +1,3 @@
-// icons from:
-// https://github.com/twbs/icons/tree/main/icons
-
 // Regex to remove class garbage
 // class=(["'])(?:(?=(\\?))\2.)*?\1
 
@@ -8,8 +5,11 @@ import 'dart:io';
 
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
+import 'package:dfc_flutter/src/utils/utils.dart';
 
-Future<void> svgConvert() async {
+// icons from:
+// https://github.com/twbs/icons/tree/main/icons
+Future<void> bootStrapConvert() async {
   final List<ServerFile> result = [];
 
   final dir = Directory('/home/steve/expr/icons/icons');
@@ -89,6 +89,124 @@ Future<void> svgConvert() async {
       mode: FileMode.append,
     );
   }
+}
+
+List<ServerFile> _dirListing(String path) {
+  final List<ServerFile> result = [];
+
+  final dir = Directory(path);
+  if (dir.existsSync()) {
+    for (final file in dir.listSync()) {
+      final bool isDirectory = file is Directory;
+
+      final ServerFile serverFile = ServerFile(
+        path: file.path,
+        isDirectory: isDirectory,
+      );
+
+      result.add(serverFile);
+    }
+  } else {
+    print('$path doesnt exist');
+  }
+  return result;
+}
+
+Future<Map<String, String>> _buildIconMap(
+  List<ServerFile> files,
+  String prefixName,
+) async {
+  final map = <String, String>{};
+
+  for (final file in files) {
+    String newName = file.name.replaceAll('-', '_');
+
+    if (Utils.isNotEmpty(prefixName)) {
+      newName = '${prefixName}_$newName';
+    }
+
+    newName = _ReCase(newName.removeTrailing('.svg')).camelCase;
+
+    if (file.isDirectory!) {
+      final subMap = await _buildIconMap(
+        _dirListing(file.path!),
+        newName,
+      );
+
+      map.addAll(subMap);
+    } else {
+      final f = File(file.path!);
+
+      final contents = await f.readAsString();
+
+      map[newName] = contents;
+    }
+  }
+
+  return map;
+}
+
+// icons from:
+// https://github.com/material-icons/material-icons
+Future<void> materialConvert() async {
+  final result = _dirListing('/home/steve/expr/material-icons/svg');
+
+  final map = await _buildIconMap(
+    result,
+    '',
+  );
+
+  final outFile = File('/home/steve/expr/material-icons/output.dart');
+  outFile.createSync();
+
+  final List<String> names = [];
+
+  for (final item in map.entries) {
+    final nameCamel = item.key;
+    names.add(nameCamel);
+
+    await outFile.writeAsString(
+      "static const String $nameCamel = '${item.value.replaceAll('\n', '')}';\n\n",
+      mode: FileMode.append,
+    );
+  }
+
+  await outFile.writeAsString(
+    '\n\n[',
+    mode: FileMode.append,
+  );
+
+  for (final name in names) {
+    await outFile.writeAsString(
+      'SvgIcons.$name, ',
+      mode: FileMode.append,
+    );
+  }
+
+  await outFile.writeAsString(
+    '\n\n];',
+    mode: FileMode.append,
+  );
+
+  // ============================
+  // name map
+
+  await outFile.writeAsString(
+    '\n\nconst names = [',
+    mode: FileMode.append,
+  );
+
+  for (final name in names) {
+    await outFile.writeAsString(
+      "'$name', ",
+      mode: FileMode.append,
+    );
+  }
+
+  await outFile.writeAsString(
+    '\n\n];',
+    mode: FileMode.append,
+  );
 }
 
 /// An instance of text to be re-cased.
