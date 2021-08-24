@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:barcode_image/barcode_image.dart';
 import 'package:barcode_widget/barcode_widget.dart';
+import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dfc_flutter/src/dialogs/widget_dialog.dart';
 import 'package:dfc_flutter/src/google_fonts/google_fonts_screen.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_color_editor_screen.dart';
@@ -163,7 +163,7 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
           children: [
             // scanning only on mobile
             if (Utils.isMobile)
-              ThemeButton(
+              ElevatedButton.icon(
                 onPressed: () async {
                   final String barcodeScanRes =
                       await FlutterBarcodeScanner.scanBarcode(
@@ -184,8 +184,8 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
                     ThemeSetManager.saveTheme(newTheme, scanned: true);
                   }
                 },
-                title: 'Scan Theme',
-                icon: const Icon(FontAwesome.qrcode),
+                label: const Text('Scan Theme'),
+                icon: const SvgIcon(FontAwesomeSvgs.solidQrcode),
               ),
             ThemeButton(
               onPressed: () async {

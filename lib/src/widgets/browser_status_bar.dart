@@ -1,5 +1,5 @@
+import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 
 class BrowserStatusBar extends StatelessWidget {
@@ -43,8 +43,8 @@ class BrowserStatusBar extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Padding(
                     padding: EdgeInsets.only(left: 10),
-                    child: Icon(
-                      Entypo.lock,
+                    child: SvgIcon(
+                      FontAwesomeSvgs.solidLock,
                       size: 16,
                       color: Colors.white,
                     ),
@@ -98,8 +98,8 @@ class BrowserStatusBar extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Padding(
                   padding: EdgeInsets.only(left: 10),
-                  child: Icon(
-                    Entypo.lock,
+                  child: SvgIcon(
+                    FontAwesomeSvgs.solidLock,
                     size: 14,
                   ),
                 ),

@@ -20,7 +20,7 @@ class SvgIcon extends StatelessWidget {
     this.animationCurve = Curves.fastOutSlowIn,
   });
 
-  final double size;
+  final double? size;
   final Color color;
   final BoxFit fit;
   final bool allowDrawingOutsideViewBox;

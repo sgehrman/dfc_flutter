@@ -24,10 +24,6 @@ dependencies:
   flutter_archive: ^4.0.1
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^0.5.0
-  flutter_icons:
-    git:
-      url: git://github.com/adarsh-technocrat/flutter-icons.git
-      branch: null-safety-migration
   flutter_keyboard_visibility: ^5.0.3
   flutter_multi_formatter: ^2.3.3
   flutter_parsed_text: ^2.2.1

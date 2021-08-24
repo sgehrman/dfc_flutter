@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:mime_type/mime_type.dart';
 import 'package:path/path.dart' as p;
@@ -308,35 +308,35 @@ class ServerFile {
   }
 
   Widget icon({double? size}) {
-    IconData iconData;
+    String iconData;
 
     Color color = Colors.cyan;
 
     if (isDirectory!) {
-      iconData = FontAwesome5.folder;
+      iconData = FontAwesomeSvgs.regularFolder;
       color = Colors.blue;
     } else if (isArchive) {
-      iconData = FontAwesome5.file_archive;
+      iconData = FontAwesomeSvgs.regularFileArchive;
     } else if (isPdf) {
-      iconData = FontAwesome5.file_pdf;
+      iconData = FontAwesomeSvgs.regularFilePdf;
       color = Colors.deepOrange;
     } else if (isImage) {
-      iconData = FontAwesome5.file_image;
+      iconData = FontAwesomeSvgs.regularImage;
       color = Colors.green;
     } else if (type == ServerFileType.text) {
-      iconData = FontAwesome5.file_code;
+      iconData = FontAwesomeSvgs.regularFileCode;
       color = Colors.pink;
     } else if (type == ServerFileType.video) {
-      iconData = FontAwesome5.file_video;
+      iconData = FontAwesomeSvgs.regularFileVideo;
       color = Colors.brown;
     } else if (type == ServerFileType.audio) {
-      iconData = FontAwesome5.file_audio;
+      iconData = FontAwesomeSvgs.regularFileAudio;
       color = Colors.brown;
     } else {
-      iconData = FontAwesome5.file;
+      iconData = FontAwesomeSvgs.regularFile;
     }
 
-    return Icon(iconData, size: size, color: color);
+    return SvgIcon(iconData, size: size, color: color);
   }
 
   @override
