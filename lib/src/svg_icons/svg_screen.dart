@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/svg_icons/material_svg.dart';
+import 'package:dfc_flutter/src/svg_icons/material_svgs.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_material.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 // import 'package:dfc_flutter/src/svg_icons/svg_icons.dart';
@@ -24,9 +24,9 @@ class _SvgScreenState extends State<SvgScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // const icons = SvgIcons.everyIcon;
+    // const icons = BootstrapSvgs.everyIcon;
     const icons = MaterialSvgs.everyIcon;
-    // const iconNames = SvgIcons.iconNames;
+    // const iconNames = BootstrapSvgs.iconNames;
     const iconNames = MaterialSvgs.iconNames;
 
     final actions = [

@@ -307,7 +307,7 @@ class ServerFile {
     return result;
   }
 
-  Icon icon({double? size}) {
+  Widget icon({double? size}) {
     IconData iconData;
 
     Color color = Colors.cyan;
