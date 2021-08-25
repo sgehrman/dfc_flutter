@@ -21,28 +21,29 @@ class MenuItem extends StatelessWidget {
     final contentPadding = EdgeInsets.only(
       right: horizontalPadding,
       left: horizontalPadding + (level * 20),
+      top: 6,
+      bottom: 6,
     );
 
-    return ListTile(
+    Widget leading = const SizedBox();
+    if (icon != null) {
+      leading = icon!;
+    }
+
+    return InkWell(
       onTap: onTap,
-      contentPadding: contentPadding,
-      minVerticalPadding: 0,
-      dense: true,
-      visualDensity: VisualDensity.compact,
-      horizontalTitleGap: 0,
-      // IntrinsicWidth keeps the width of the icon without expanding endlessly
-      leading: icon != null
-          ? IntrinsicWidth(
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: icon,
-              ),
-            )
-          : null,
-      title: Text(
-        name,
-        style: TextStyle(fontSize: kFontSize.m),
-        overflow: TextOverflow.ellipsis,
+      child: Container(
+        padding: contentPadding,
+        child: Row(
+          children: [
+            leading,
+            Text(
+              name,
+              style: TextStyle(fontSize: kFontSize.m),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
       ),
     );
   }
