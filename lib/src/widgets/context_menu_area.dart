@@ -42,7 +42,7 @@ Future<void> showContextMenu(
 
   for (final itemData in menuData) {
     if (Utils.isEmpty(itemData.title)) {
-      menuItems.add(const PopupMenuDivider());
+      menuItems.add(const PopupMenuDivider(height: 2));
     } else {
       menuItems.add(
         PopupMenuItem<MenuItemData>(
