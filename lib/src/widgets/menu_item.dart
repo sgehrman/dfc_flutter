@@ -7,7 +7,7 @@ class MenuItem extends StatelessWidget {
     this.icon,
     this.level = 0,
     this.onTap, // not needed in a PopupMenuItem
-    this.horizontalPadding = 10,
+    this.horizontalPadding = 20,
   });
 
   final String name;
@@ -20,9 +20,9 @@ class MenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final contentPadding = EdgeInsets.only(
       right: horizontalPadding,
-      left: horizontalPadding + (level * 20),
-      top: 6,
-      bottom: 6,
+      left: horizontalPadding + (level * horizontalPadding),
+      top: 4,
+      bottom: 4,
     );
 
     Widget leading = const SizedBox();
@@ -37,6 +37,9 @@ class MenuItem extends StatelessWidget {
         child: Row(
           children: [
             leading,
+            const SizedBox(
+              width: 10,
+            ),
             Text(
               name,
               style: TextStyle(fontSize: kFontSize.m),

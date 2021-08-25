@@ -42,12 +42,15 @@ Future<void> showContextMenu(
 
   for (final itemData in menuData) {
     if (Utils.isEmpty(itemData.title)) {
-      menuItems.add(const PopupMenuDivider(height: 2));
+      menuItems.add(const PopupMenuDivider());
     } else {
       menuItems.add(
         PopupMenuItem<MenuItemData>(
           value: itemData,
           enabled: itemData.enabled,
+          padding: EdgeInsets.zero,
+          // set height otherwise it's huge
+          height: 10,
           child: MenuItem(
             icon: itemData.icon,
             name: itemData.title,
