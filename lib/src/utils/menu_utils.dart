@@ -29,7 +29,7 @@ class MenuUtils {
         Offset.zero & overlay.size,
       );
 
-      final result = await showMenuu<T>(
+      final result = await showMenu<T>(
         context: context,
         elevation: popupMenuTheme.elevation,
         items: menuItems,
