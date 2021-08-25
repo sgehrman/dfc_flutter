@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-const Duration _kMenuDuration = Duration.zero;
 const double _kMenuCloseIntervalEnd = 2.0 / 3.0;
 const double _kMenuMaxWidth = 5.0 * _kMenuWidthStep;
 const double _kMenuMinWidth = 2.0 * _kMenuWidthStep;
@@ -266,7 +265,7 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
   }
 
   @override
-  Duration get transitionDuration => _kMenuDuration;
+  Duration get transitionDuration => Duration.zero;
 
   @override
   bool get barrierDismissible => true;
