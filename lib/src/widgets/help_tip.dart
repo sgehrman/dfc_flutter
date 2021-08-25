@@ -84,7 +84,7 @@ class _HelpTipState extends State<HelpTip> {
 
     return MouseRegion(
       onEnter: (event) {
-        _showTimer = Timer(const Duration(milliseconds: 900), () {
+        _showTimer = Timer(const Duration(milliseconds: 1200), () {
           _show = true;
 
           setState(() {});
