@@ -147,8 +147,8 @@ class _PopupMenu<T> extends StatelessWidget {
             elevation: route.elevation ?? popupMenuTheme.elevation ?? 8.0,
             child: Align(
               alignment: AlignmentDirectional.topEnd,
-              // widthFactor: width.evaluate(route.animation!),
-              // heightFactor: height.evaluate(route.animation!),
+              widthFactor: 1, // width.evaluate(route.animation!),
+              heightFactor: 1, // height.evaluate(route.animation!),
               child: child,
             ),
           ),
