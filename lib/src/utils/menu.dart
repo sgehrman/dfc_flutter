@@ -107,12 +107,6 @@ class _PopupMenu<T> extends StatelessWidget {
       );
     }
 
-    final CurveTween opacity =
-        CurveTween(curve: const Interval(0.0, 1.0 / 3.0));
-    final CurveTween width = CurveTween(curve: Interval(0.0, unit));
-    final CurveTween height =
-        CurveTween(curve: Interval(0.0, unit * route.items.length));
-
     final Widget child = ConstrainedBox(
       constraints: const BoxConstraints(
         minWidth: _kMenuMinWidth,
@@ -135,26 +129,17 @@ class _PopupMenu<T> extends StatelessWidget {
       ),
     );
 
-    return AnimatedBuilder(
-      animation: route.animation!,
-      builder: (BuildContext context, Widget? child) {
-        return Opacity(
-          opacity: opacity.evaluate(route.animation!),
-          child: Material(
-            shape: route.shape ?? popupMenuTheme.shape,
-            color: route.color ?? popupMenuTheme.color,
-            type: MaterialType.card,
-            elevation: route.elevation ?? popupMenuTheme.elevation ?? 8.0,
-            child: Align(
-              alignment: AlignmentDirectional.topEnd,
-              widthFactor: 1, // width.evaluate(route.animation!),
-              heightFactor: 1, // height.evaluate(route.animation!),
-              child: child,
-            ),
-          ),
-        );
-      },
-      child: child,
+    return Material(
+      shape: route.shape ?? popupMenuTheme.shape,
+      color: route.color ?? popupMenuTheme.color,
+      type: MaterialType.card,
+      elevation: route.elevation ?? popupMenuTheme.elevation ?? 8.0,
+      child: Align(
+        alignment: AlignmentDirectional.topEnd,
+        widthFactor: 1,
+        heightFactor: 1,
+        child: child,
+      ),
     );
   }
 }
