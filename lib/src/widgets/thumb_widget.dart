@@ -56,7 +56,7 @@ class ThumbWidget extends StatelessWidget {
         children: [
           SvgIcon(
             isSelected ? icon : outlinedIcon,
-            color: firstIconColor!,
+            color: firstIconColor,
             size: iconSize,
           ),
           // white shadow
