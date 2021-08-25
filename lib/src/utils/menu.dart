@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 
 const Duration _kMenuDuration = Duration.zero;
 const double _kMenuCloseIntervalEnd = 2.0 / 3.0;
-const double _kMenuHorizontalPadding = 16.0;
 const double _kMenuMaxWidth = 5.0 * _kMenuWidthStep;
 const double _kMenuMinWidth = 2.0 * _kMenuWidthStep;
 const double _kMenuVerticalPadding = 8.0;
@@ -59,176 +58,6 @@ class _RenderMenuItem extends RenderShiftedBox {
       childParentData.offset = Offset.zero;
     }
     onLayout(size);
-  }
-}
-
-class PopupMenuItem<T> extends PopupMenuEntry<T> {
-  const PopupMenuItem({
-    Key? key,
-    this.value,
-    this.onTap,
-    this.enabled = true,
-    this.height = kMinInteractiveDimension,
-    this.padding,
-    this.textStyle,
-    this.mouseCursor,
-    required this.child,
-  }) : super(key: key);
-
-  final T? value;
-
-  final VoidCallback? onTap;
-
-  final bool enabled;
-
-  @override
-  final double height;
-
-  final EdgeInsets? padding;
-
-  final TextStyle? textStyle;
-
-  final MouseCursor? mouseCursor;
-
-  final Widget? child;
-
-  @override
-  bool represents(T? value) => value == this.value;
-
-  @override
-  PopupMenuItemState<T, PopupMenuItem<T>> createState() =>
-      PopupMenuItemState<T, PopupMenuItem<T>>();
-}
-
-class PopupMenuItemState<T, W extends PopupMenuItem<T>> extends State<W> {
-  @protected
-  Widget? buildChild() => widget.child;
-
-  @protected
-  void handleTap() {
-    widget.onTap?.call();
-
-    Navigator.pop<T>(context, widget.value);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
-    TextStyle style = widget.textStyle ??
-        popupMenuTheme.textStyle ??
-        theme.textTheme.subtitle1!;
-
-    if (!widget.enabled) {
-      style = style.copyWith(color: theme.disabledColor);
-    }
-
-    Widget item = AnimatedDefaultTextStyle(
-      style: style,
-      duration: kThemeChangeDuration,
-      child: Container(
-        alignment: AlignmentDirectional.centerStart,
-        constraints: BoxConstraints(minHeight: widget.height),
-        padding: widget.padding ??
-            const EdgeInsets.symmetric(horizontal: _kMenuHorizontalPadding),
-        child: buildChild(),
-      ),
-    );
-
-    if (!widget.enabled) {
-      final bool isDark = theme.brightness == Brightness.dark;
-      item = IconTheme.merge(
-        data: IconThemeData(opacity: isDark ? 0.5 : 0.38),
-        child: item,
-      );
-    }
-    final MouseCursor effectiveMouseCursor =
-        MaterialStateProperty.resolveAs<MouseCursor>(
-      widget.mouseCursor ?? MaterialStateMouseCursor.clickable,
-      <MaterialState>{
-        if (!widget.enabled) MaterialState.disabled,
-      },
-    );
-
-    return MergeSemantics(
-      child: Semantics(
-        enabled: widget.enabled,
-        button: true,
-        child: InkWell(
-          onTap: widget.enabled ? handleTap : null,
-          canRequestFocus: widget.enabled,
-          mouseCursor: effectiveMouseCursor,
-          child: item,
-        ),
-      ),
-    );
-  }
-}
-
-class CheckedPopupMenuItem<T> extends PopupMenuItem<T> {
-  const CheckedPopupMenuItem({
-    Key? key,
-    T? value,
-    this.checked = false,
-    bool enabled = true,
-    EdgeInsets? padding,
-    double height = kMinInteractiveDimension,
-    Widget? child,
-  }) : super(
-          key: key,
-          value: value,
-          enabled: enabled,
-          padding: padding,
-          height: height,
-          child: child,
-        );
-
-  final bool checked;
-
-  @override
-  Widget? get child => super.child;
-
-  @override
-  PopupMenuItemState<T, CheckedPopupMenuItem<T>> createState() =>
-      _CheckedPopupMenuItemState<T>();
-}
-
-class _CheckedPopupMenuItemState<T>
-    extends PopupMenuItemState<T, CheckedPopupMenuItem<T>>
-    with SingleTickerProviderStateMixin {
-  static const Duration _fadeDuration = Duration(milliseconds: 150);
-  late AnimationController _controller;
-  Animation<double> get _opacity => _controller.view;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(duration: _fadeDuration, vsync: this)
-      ..value = widget.checked ? 1.0 : 0.0
-      ..addListener(() => setState(() {/* animation changed */}));
-  }
-
-  @override
-  void handleTap() {
-    // This fades the checkmark in or out when tapped.
-    if (widget.checked) {
-      _controller.reverse();
-    } else {
-      _controller.forward();
-    }
-    super.handleTap();
-  }
-
-  @override
-  Widget buildChild() {
-    return ListTile(
-      enabled: widget.enabled,
-      leading: FadeTransition(
-        opacity: _opacity,
-        child: Icon(_controller.isDismissed ? null : Icons.done),
-      ),
-      title: widget.child,
-    );
   }
 }
 
@@ -318,8 +147,8 @@ class _PopupMenu<T> extends StatelessWidget {
             elevation: route.elevation ?? popupMenuTheme.elevation ?? 8.0,
             child: Align(
               alignment: AlignmentDirectional.topEnd,
-              widthFactor: width.evaluate(route.animation!),
-              heightFactor: height.evaluate(route.animation!),
+              // widthFactor: width.evaluate(route.animation!),
+              // heightFactor: height.evaluate(route.animation!),
               child: child,
             ),
           ),
@@ -549,11 +378,3 @@ Future<T?> showMenuu<T>({
     ),
   );
 }
-
-typedef PopupMenuItemSelected<T> = void Function(T value);
-
-typedef PopupMenuCanceled = void Function();
-
-typedef PopupMenuItemBuilder<T> = List<PopupMenuEntry<T>> Function(
-  BuildContext context,
-);
