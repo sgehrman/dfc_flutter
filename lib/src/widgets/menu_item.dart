@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/themes/platform_sizes.dart';
 import 'package:flutter/material.dart';
 
 class MenuItem extends StatelessWidget {
@@ -38,7 +39,7 @@ class MenuItem extends StatelessWidget {
           : null,
       title: Text(
         name,
-        style: const TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: kFontSize.m),
         overflow: TextOverflow.ellipsis,
       ),
     );
