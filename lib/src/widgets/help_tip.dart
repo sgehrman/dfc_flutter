@@ -87,14 +87,18 @@ class _HelpTipState extends State<HelpTip> {
         _showTimer = Timer(const Duration(milliseconds: 1200), () {
           _show = true;
 
-          setState(() {});
+          if (mounted) {
+            setState(() {});
+          }
         });
       },
       onExit: (event) {
         _showTimer?.cancel();
 
         _show = false;
-        setState(() {});
+        if (mounted) {
+          setState(() {});
+        }
       },
       child: SimpleTooltip(
         // arrowLength: 30,
