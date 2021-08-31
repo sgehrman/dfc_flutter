@@ -90,8 +90,14 @@ class ContextMenuArea extends StatelessWidget {
       // we never want the secondary key to start a drag
       // so we implement these to keep it from getting to the drag widget if any
       onSecondaryLongPress: () {},
-      onSecondaryLongPressDown: (details) {},
       onSecondaryLongPressStart: (details) {},
+      onSecondaryLongPressDown: (details) {
+        showContextMenu(
+          details.localPosition,
+          context,
+          buildMenu(),
+        );
+      },
       onSecondaryTapDown: (details) {
         showContextMenu(
           details.localPosition,
