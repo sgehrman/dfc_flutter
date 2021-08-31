@@ -99,13 +99,13 @@ class ContextMenuArea extends StatelessWidget {
           buildMenu(),
         );
       },
-      onLongPressStart: (details) {
-        showContextMenu(
-          details.localPosition,
-          context,
-          buildMenu(),
-        );
-      },
+      // onLongPressStart: (details) {
+      //   showContextMenu(
+      //     details.localPosition,
+      //     context,
+      //     buildMenu(),
+      //   );
+      // },
       child: child,
     );
   }
