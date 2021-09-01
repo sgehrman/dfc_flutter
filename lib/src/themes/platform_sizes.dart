@@ -17,7 +17,10 @@ class Sizes {
 
   factory Sizes.fonts() {
     final window = WidgetsBinding.instance?.window ?? ui.window;
-    final pixelRatio = window.devicePixelRatio;
+    double pixelRatio = window.devicePixelRatio;
+    if (pixelRatio > 1.0) {
+      pixelRatio = 1.25;
+    }
 
     // // smaller fonts for mac desktop
     // if (Utils.isMacOS) {
@@ -39,7 +42,10 @@ class Sizes {
 
   factory Sizes.icons() {
     final window = WidgetsBinding.instance?.window ?? ui.window;
-    final pixelRatio = window.devicePixelRatio;
+    double pixelRatio = window.devicePixelRatio;
+    if (pixelRatio > 1.0) {
+      pixelRatio = 1.25;
+    }
 
     // smaller fonts for mac desktop
     // if (Utils.isMacOS) {
