@@ -509,10 +509,12 @@ packages:
   just_the_tooltip:
     dependency: "direct main"
     description:
-      name: just_the_tooltip
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.7+3"
+      path: "."
+      ref: HEAD
+      resolved-ref: "8771b40df85eec2750f01e64191e4c4e4b4a5a47"
+      url: "git://github.com/sgehrman/just_the_tooltip"
+    source: git
+    version: "0.0.7+2"
   lint:
     dependency: "direct dev"
     description:
