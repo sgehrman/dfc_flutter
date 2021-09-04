@@ -2,20 +2,23 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class DialogContent<T> {
-  const DialogContent({
-    required this.navigationResult,
-    required this.widget,
-  });
+class DialogContentController<T> {
+  Widget? widget;
 
-  final T? Function() navigationResult;
-  final Widget widget;
+  // Widget must set this
+  T? Function()? resultCallback;
+
+  void okTap(BuildContext context) {
+    final result = resultCallback?.call();
+
+    Navigator.of(context).pop(result);
+  }
 }
 
 Future<T?> showContentDialog<T>({
   required BuildContext context,
   required String? title,
-  required DialogContent content,
+  required DialogContentController controller,
   bool showCancel = false,
   String okButtonName = 'OK',
   String cancelButtonName = 'Cancel',
@@ -49,7 +52,7 @@ Future<T?> showContentDialog<T>({
             borderRadius: BorderRadius.circular(8),
           ),
           title: title == null ? null : Text(title),
-          content: content.widget,
+          content: controller.widget,
           actions: <Widget>[
             Visibility(
               visible: showCancel,
@@ -74,7 +77,7 @@ Future<T?> showContentDialog<T>({
                 ),
               ),
               onPressed: () {
-                Navigator.of(context).pop(content.navigationResult());
+                controller.okTap();
               },
               child: Text(okButtonName),
             ),
