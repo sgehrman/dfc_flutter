@@ -77,7 +77,7 @@ Future<T?> showContentDialog<T>({
                 ),
               ),
               onPressed: () {
-                controller.okTap();
+                controller.okTap(context);
               },
               child: Text(okButtonName),
             ),
