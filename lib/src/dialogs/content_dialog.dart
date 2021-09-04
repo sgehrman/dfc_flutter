@@ -2,10 +2,20 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-Future<bool?> showContentDialog({
+abstract class DialogContent<T> {
+  const DialogContent({
+    required this.navigationResult,
+    required this.widget,
+  });
+
+  final T Function() navigationResult;
+  final Widget widget;
+}
+
+Future<T?> showContentDialog<T>({
   required BuildContext context,
   required String? title,
-  required Widget content,
+  required DialogContent content,
   bool showCancel = false,
   String okButtonName = 'OK',
   String cancelButtonName = 'Cancel',
@@ -16,7 +26,7 @@ Future<bool?> showContentDialog({
   EdgeInsets actionsPadding = const EdgeInsets.only(right: 10, bottom: 10),
   EdgeInsets contentPadding = const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 24.0),
 }) {
-  return showDialog<bool>(
+  return showDialog<T>(
     context: context,
     barrierDismissible: barrierDismissible,
     builder: (context) {
@@ -39,7 +49,7 @@ Future<bool?> showContentDialog({
             borderRadius: BorderRadius.circular(8),
           ),
           title: title == null ? null : Text(title),
-          content: content,
+          content: content.widget,
           actions: <Widget>[
             Visibility(
               visible: showCancel,
@@ -51,7 +61,7 @@ Future<bool?> showContentDialog({
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context).pop(false);
+                  Navigator.of(context).pop();
                 },
                 child: Text(cancelButtonName),
               ),
@@ -64,7 +74,7 @@ Future<bool?> showContentDialog({
                 ),
               ),
               onPressed: () {
-                Navigator.of(context).pop(true);
+                Navigator.of(context).pop(content.navigationResult());
               },
               child: Text(okButtonName),
             ),
