@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-abstract class DialogContent<T> {
+class DialogContent<T> {
   const DialogContent({
     required this.navigationResult,
     required this.widget,
