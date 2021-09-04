@@ -109,6 +109,7 @@ export 'src/widgets/svg_image.dart';
 export 'src/widgets/theme_button.dart';
 export 'src/widgets/thumb_widget.dart';
 export 'src/widgets/thumbs_up_control.dart';
+export 'src/dialogs/content_dialog.dart';
 export 'src/widgets/title_detail_row.dart';
 export 'src/widgets/transparent_appBar_theme.dart';
 export 'src/widgets/transparent_route.dart';
