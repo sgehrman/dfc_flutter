@@ -8,7 +8,7 @@ abstract class DialogContent<T> {
     required this.widget,
   });
 
-  final T Function() navigationResult;
+  final T? Function() navigationResult;
   final Widget widget;
 }
 
