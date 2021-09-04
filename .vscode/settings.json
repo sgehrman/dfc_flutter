@@ -7,4 +7,6 @@
   "explorer.compactFolders": false,
   "workbench.editor.limit.enabled": true,
   "dart.closingLabels": false,
+
+  "editor.bracketPairColorization.enabled": true
 }
