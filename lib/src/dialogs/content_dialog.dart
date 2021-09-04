@@ -39,7 +39,7 @@ Future<T?> showContentDialog<T>({
         autofocus: true,
         onKey: (v) {
           if (v.logicalKey == LogicalKeyboardKey.enter) {
-            Navigator.of(context).pop(true);
+            controller.okTap(context);
           }
         },
 
