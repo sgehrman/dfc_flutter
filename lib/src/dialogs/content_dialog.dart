@@ -41,6 +41,8 @@ Future<T?> showContentDialog<T>({
         focusNode: focusNode,
         autofocus: true,
         onKeyEvent: (v) {
+          print(focusNode.hasFocus);
+
           if (v.logicalKey == LogicalKeyboardKey.enter) {
             controller.okTap(context);
           }
