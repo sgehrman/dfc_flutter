@@ -4,16 +4,17 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:dfc_flutter/src/widgets/shared_snack_bar.dart';
 import 'package:dfc_flutter/src/widgets/ttext.dart';
-import 'package:path/path.dart' as p;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_parsed_text/flutter_parsed_text.dart';
 import 'package:package_info/package_info.dart';
+import 'package:path/path.dart' as p;
 import 'package:url_launcher/url_launcher.dart';
 
 // Some globals I may want to experiment with
@@ -211,6 +212,28 @@ class Utils {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
     return packageInfo.appName;
+  }
+
+  static void showBanner(
+    BuildContext context,
+    String message, {
+    bool error = false,
+    String buttonName = 'Dismiss',
+  }) {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: Text(message),
+        leading: const Icon(Icons.info),
+        backgroundColor: error ? Colors.red[700] : Colors.green[800],
+        actions: [
+          TextButton(
+            child: Text(buttonName),
+            onPressed: () =>
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+          ),
+        ],
+      ),
+    );
   }
 
   static void showSnackbar(
