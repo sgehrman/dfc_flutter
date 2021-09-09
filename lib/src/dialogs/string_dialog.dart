@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 Future<String?> showStringDialog({
   required BuildContext context,
@@ -7,7 +7,7 @@ Future<String?> showStringDialog({
   String? message,
   String okButtonName = 'OK',
   String cancelButtonName = 'Cancel',
-  String? defaultName = '',
+  String defaultName = '',
   TextInputType keyboardType = TextInputType.text,
   bool barrierDismissible = true,
   int minLines = 1,
@@ -45,7 +45,7 @@ class _DialogContents extends StatefulWidget {
 
   final String title;
   final String? message;
-  final String? defaultName;
+  final String defaultName;
   final String okButtonName;
   final String cancelButtonName;
   final TextInputType keyboardType;
@@ -64,6 +64,11 @@ class __DialogContentsState extends State<_DialogContents> {
     super.initState();
 
     _textController = TextEditingController(text: widget.defaultName);
+
+    _textController!.selection = TextSelection(
+      baseOffset: 0,
+      extentOffset: widget.defaultName.length,
+    );
   }
 
   @override

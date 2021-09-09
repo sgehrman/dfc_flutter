@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'dart:ui' as ui;
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:dfc_flutter/src/dialogs/string_dialog.dart';
 
+import 'package:dfc_flutter/src/dialogs/string_dialog.dart';
 import 'package:dfc_flutter/src/publishing_tools/phone_menu.dart';
 import 'package:dfc_flutter/src/publishing_tools/screenshot_maker.dart';
 import 'package:dfc_flutter/src/publishing_tools/screenshot_menu.dart';
 import 'package:dfc_flutter/src/publishing_tools/size_menu.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/colored_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class ScreenshotsScreen extends StatefulWidget {
   const ScreenshotsScreen({
@@ -68,7 +68,7 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
       context: context,
       title: 'Filename',
       message: 'Choose a file name',
-      defaultName: selectedScreenshotItem.filename,
+      defaultName: selectedScreenshotItem.filename!,
     );
 
     if (Utils.isNotEmpty(fileName)) {
