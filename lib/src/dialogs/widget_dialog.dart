@@ -21,16 +21,17 @@ Future<bool?> showWidgetDialog({
     context: context,
     barrierDismissible: barrierDismissible,
     builder: (context) {
+      final focusNode = FocusNode();
+      focusNode.attach(context);
+
       return KeyboardListener(
-        // its better to initialize and dispose of the focus node only for this alert dialog
-        focusNode: FocusNode(),
+        focusNode: focusNode,
         autofocus: true,
         onKeyEvent: (v) {
           if (v.logicalKey == LogicalKeyboardKey.enter) {
             Navigator.of(context).pop(true);
           }
         },
-
         child: AlertDialog(
           insetPadding: insetPadding,
           titlePadding: titlePadding,

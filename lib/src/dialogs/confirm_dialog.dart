@@ -17,16 +17,17 @@ Future<bool?> showConfirmDialog({
     context: context,
     barrierDismissible: barrierDismissible, // can return null
     builder: (BuildContext context) {
+      final focusNode = FocusNode();
+      focusNode.attach(context);
+
       return KeyboardListener(
-        // its better to initialize and dispose of the focus node only for this alert dialog
-        focusNode: FocusNode(),
+        focusNode: focusNode,
         autofocus: true,
         onKeyEvent: (v) {
           if (v.logicalKey == LogicalKeyboardKey.enter) {
             Navigator.of(context).pop(true);
           }
         },
-
         child: AlertDialog(
           actionsPadding: actionsPadding,
           shape: RoundedRectangleBorder(
