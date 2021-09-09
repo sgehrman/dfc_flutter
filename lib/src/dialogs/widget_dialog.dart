@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -20,11 +21,11 @@ Future<bool?> showWidgetDialog({
     context: context,
     barrierDismissible: barrierDismissible,
     builder: (context) {
-      return RawKeyboardListener(
+      return KeyboardListener(
         // its better to initialize and dispose of the focus node only for this alert dialog
         focusNode: FocusNode(),
         autofocus: true,
-        onKey: (v) {
+        onKeyEvent: (v) {
           if (v.logicalKey == LogicalKeyboardKey.enter) {
             Navigator.of(context).pop(true);
           }

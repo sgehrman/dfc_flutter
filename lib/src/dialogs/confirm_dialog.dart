@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 Future<bool?> showConfirmDialog({
@@ -17,11 +17,11 @@ Future<bool?> showConfirmDialog({
     context: context,
     barrierDismissible: barrierDismissible, // can return null
     builder: (BuildContext context) {
-      return RawKeyboardListener(
+      return KeyboardListener(
         // its better to initialize and dispose of the focus node only for this alert dialog
         focusNode: FocusNode(),
         autofocus: true,
-        onKey: (v) {
+        onKeyEvent: (v) {
           if (v.logicalKey == LogicalKeyboardKey.enter) {
             Navigator.of(context).pop(true);
           }
