@@ -49,12 +49,61 @@ class _HelpTipState extends State<HelpTip> {
     }
 
     // rss feed descriptions can be html, convert to markdown
-    final markdown = html2md.convert('<p>$msg</p>');
+    final markdown = html2md.convert(msg);
     const TextStyle style = TextStyle(
-      color: Colors.white,
+      color: Colors.red,
+      fontSize: 18,
+      decoration: TextDecoration.none,
     );
 
-    print(markdown);
+    const decoration = BoxDecoration(
+      color: Colors.red,
+    );
+
+    Widget tooltipBody;
+
+    if (msg == markdown) {
+      // markdown was expanded vertically for one line content
+      tooltipBody = Text(
+        msg,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 14,
+          decoration: TextDecoration.none,
+        ),
+      );
+    } else {
+      tooltipBody = MarkdownBody(
+        softLineBreak: true,
+        styleSheet: MarkdownStyleSheet(
+          a: style,
+          img: style,
+          p: style,
+          h1: style,
+          checkbox: style,
+          del: style,
+          em: style,
+          h2: style,
+          h3: style,
+          h4: style,
+          h5: style,
+          h6: style,
+          listBullet: style,
+          tableHead: style,
+          strong: style,
+          code: style,
+          horizontalRuleDecoration: decoration,
+          codeblockDecoration: decoration,
+          blockquoteDecoration: decoration,
+          tableCellsDecoration: decoration,
+          blockquote: style,
+          tableBody: style,
+        ),
+        data: markdown,
+      );
+
+      print(markdown);
+    }
 
     return JustTheTooltip(
       preferredDirection: widget.direction,
@@ -65,17 +114,9 @@ class _HelpTipState extends State<HelpTip> {
       fadeOutDuration: const Duration(milliseconds: 400),
       tailBaseWidth: 18,
       content: Container(
-        constraints: const BoxConstraints(maxHeight: 1000, maxWidth: 1000),
+        constraints: const BoxConstraints(maxHeight: 800, maxWidth: 600),
         padding: const EdgeInsets.all(12.0),
-        child: MarkdownBody(
-          softLineBreak: true,
-          styleSheet: MarkdownStyleSheet(
-            a: style,
-            p: style,
-            h1: style,
-          ),
-          data: markdown,
-        ),
+        child: tooltipBody,
       ),
       child: widget.child,
     );

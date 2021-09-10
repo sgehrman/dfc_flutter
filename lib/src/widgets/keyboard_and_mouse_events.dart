@@ -14,12 +14,12 @@ class KeyboardAndMouseEvents extends StatelessWidget {
     this.onArrowDownCallback,
   });
 
-  final Function? onEscCallback;
-  final Function? onTabCallback;
-  final Function? onShiftTabCallback;
-  final Function? onEnterCallback;
-  final Function? onArrowUpCallback;
-  final Function? onArrowDownCallback;
+  final void Function()? onEscCallback;
+  final void Function()? onTabCallback;
+  final void Function()? onShiftTabCallback;
+  final void Function()? onEnterCallback;
+  final void Function()? onArrowUpCallback;
+  final void Function()? onArrowDownCallback;
   final ValueChanged<bool>? onHoverCallback;
   final Widget child;
   final FocusNode? focusNode;
