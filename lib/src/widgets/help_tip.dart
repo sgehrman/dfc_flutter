@@ -55,7 +55,6 @@ class _HelpTipState extends State<HelpTip> {
     );
 
     return JustTheTooltip(
-      // hoverShowDuration: const Duration(milliseconds: 200),dddd
       preferredDirection: widget.direction,
       waitDuration: const Duration(milliseconds: 1200),
       tailLength: 20,
@@ -66,23 +65,14 @@ class _HelpTipState extends State<HelpTip> {
       content: Container(
         constraints: const BoxConstraints(maxHeight: 1000, maxWidth: 1000),
         padding: const EdgeInsets.all(12.0),
-        child: Markdown(
+        child: MarkdownBody(
           styleSheet: MarkdownStyleSheet(
             a: style,
             p: style,
             h1: style,
           ),
           data: markdown,
-          shrinkWrap: true,
         ),
-        // Text(
-        //   msg,
-        //   style: const TextStyle(
-        //     color: Colors.white,
-        //     fontSize: 14,
-        //     decoration: TextDecoration.none,
-        //   ),
-        // ),
       ),
       child: widget.child,
     );
