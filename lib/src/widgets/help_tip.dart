@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/themes/platform_sizes.dart';
 import 'package:dfc_flutter/src/utils/preferences.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 
-class HelpTip extends StatefulWidget {
+class HelpTip extends StatelessWidget {
   const HelpTip({
     required this.message,
     required this.child,
@@ -17,10 +18,74 @@ class HelpTip extends StatefulWidget {
   final AxisDirection direction;
 
   @override
-  State<HelpTip> createState() => _HelpTipState();
+  Widget build(BuildContext context) {
+    if (Preferences.disableTooltips || Utils.isEmpty(message)) {
+      return child;
+    }
+
+    return JustTheTooltip(
+      preferredDirection: direction,
+      waitDuration: const Duration(milliseconds: 1200),
+      tailLength: 20,
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      fadeInDuration: const Duration(milliseconds: 400),
+      fadeOutDuration: const Duration(milliseconds: 400),
+      tailBaseWidth: 18,
+      content: HelpTipContent(message: message),
+      child: child,
+    );
+  }
 }
 
-class _HelpTipState extends State<HelpTip> {
+// ===========================================================
+
+class HelpTipContent extends StatefulWidget {
+  const HelpTipContent({
+    required this.message,
+  });
+
+  final String message;
+
+  @override
+  State<HelpTipContent> createState() => _HelpTipContentState();
+}
+
+class _HelpTipContentState extends State<HelpTipContent> {
+  static final TextStyle style = TextStyle(
+    color: Colors.white,
+    fontSize: kFontSize.s,
+    decoration: TextDecoration.none,
+  );
+
+  static const decoration = BoxDecoration(
+    color: Colors.white,
+  );
+
+  static final markdownStyleSheet = MarkdownStyleSheet(
+    a: style,
+    img: style,
+    p: style,
+    h1: style,
+    checkbox: style,
+    del: style,
+    em: style,
+    h2: style,
+    h3: style,
+    h4: style,
+    h5: style,
+    h6: style,
+    listBullet: style,
+    tableHead: style,
+    strong: style,
+    code: style,
+    horizontalRuleDecoration: decoration,
+    codeblockDecoration: decoration,
+    blockquoteDecoration: decoration,
+    tableCellsDecoration: decoration,
+    blockquote: style,
+    tableBody: style,
+  );
+
   // String _wrapString(String message) {
   //   final words = message.split(' ');
 
@@ -44,81 +109,40 @@ class _HelpTipState extends State<HelpTip> {
   Widget build(BuildContext context) {
     final msg = widget.message; // _wrapString();
 
-    if (Preferences.disableTooltips || Utils.isEmpty(msg)) {
-      return widget.child;
-    }
-
     // rss feed descriptions can be html, convert to markdown
     final markdown = html2md.convert(msg);
-    const TextStyle style = TextStyle(
-      color: Colors.red,
-      fontSize: 18,
-      decoration: TextDecoration.none,
-    );
-
-    const decoration = BoxDecoration(
-      color: Colors.red,
-    );
 
     Widget tooltipBody;
 
     if (msg == markdown) {
       // markdown was expanded vertically for one line content
+      // so we just use a Text
       tooltipBody = Text(
         msg,
-        style: const TextStyle(
+        softWrap: true,
+        style: TextStyle(
           color: Colors.white,
-          fontSize: 14,
+          fontSize: kFontSize.s,
           decoration: TextDecoration.none,
         ),
       );
     } else {
       tooltipBody = MarkdownBody(
+        imageBuilder: (uri, title, alt) {
+          return const SizedBox();
+        },
         softLineBreak: true,
-        styleSheet: MarkdownStyleSheet(
-          a: style,
-          img: style,
-          p: style,
-          h1: style,
-          checkbox: style,
-          del: style,
-          em: style,
-          h2: style,
-          h3: style,
-          h4: style,
-          h5: style,
-          h6: style,
-          listBullet: style,
-          tableHead: style,
-          strong: style,
-          code: style,
-          horizontalRuleDecoration: decoration,
-          codeblockDecoration: decoration,
-          blockquoteDecoration: decoration,
-          tableCellsDecoration: decoration,
-          blockquote: style,
-          tableBody: style,
-        ),
+        styleSheet: markdownStyleSheet,
         data: markdown,
       );
-
-      print(markdown);
     }
 
-    return JustTheTooltip(
-      preferredDirection: widget.direction,
-      waitDuration: const Duration(milliseconds: 1200),
-      tailLength: 20,
-      borderRadius: const BorderRadius.all(Radius.circular(10)),
-      fadeInDuration: const Duration(milliseconds: 400),
-      fadeOutDuration: const Duration(milliseconds: 400),
-      tailBaseWidth: 18,
-      content: Container(
-        constraints: const BoxConstraints(maxHeight: 800, maxWidth: 600),
-        padding: const EdgeInsets.all(12.0),
-        child: tooltipBody,
-      ),
-      child: widget.child,
+    // StrUtils.print(markdown);
+
+    return Container(
+      constraints: const BoxConstraints(maxHeight: 800, maxWidth: 600),
+      padding: const EdgeInsets.all(12.0),
+      child: tooltipBody,
     );
   }
 }

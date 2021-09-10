@@ -1,4 +1,5 @@
 import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 
 final Sizes kFontSize = Sizes.fonts();
@@ -58,8 +59,8 @@ class Sizes {
     // }
 
     return Sizes(
-      s: 18 / pixelRatio,
-      m: 22 / pixelRatio,
+      s: 20 / pixelRatio,
+      m: 24 / pixelRatio,
       l: 32 / pixelRatio,
       xl: 42 / pixelRatio,
     );
