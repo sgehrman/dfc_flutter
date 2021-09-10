@@ -1,6 +1,8 @@
 import 'package:dfc_flutter/src/utils/preferences.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:html2md/html2md.dart' as html2md;
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 
 class HelpTip extends StatefulWidget {
@@ -46,6 +48,9 @@ class _HelpTipState extends State<HelpTip> {
       return widget.child;
     }
 
+    // rss feed descriptions can be html, convert to markdown
+    final markdown = html2md.convert(msg);
+
     return JustTheTooltip(
       // hoverShowDuration: const Duration(milliseconds: 200),dddd
       preferredDirection: widget.direction,
@@ -57,14 +62,15 @@ class _HelpTipState extends State<HelpTip> {
       tailBaseWidth: 18,
       content: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Text(
-          msg,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-            decoration: TextDecoration.none,
-          ),
-        ),
+        child: Markdown(data: markdown),
+        // Text(
+        //   msg,
+        //   style: const TextStyle(
+        //     color: Colors.white,
+        //     fontSize: 14,
+        //     decoration: TextDecoration.none,
+        //   ),
+        // ),
       ),
       child: widget.child,
     );
