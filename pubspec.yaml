@@ -54,10 +54,7 @@ dependencies:
   vector_math: ^2.1.0
   video_player: ^2.1.12
   xml: ^5.2.0
-  # just_the_tooltip: ^0.0.7+3
-  just_the_tooltip:  
-    git: git://github.com/sgehrman/just_the_tooltip
-    # path: ../../forks/just_the_tooltip
+  just_the_tooltip: ^0.0.7+6
 
 dev_dependencies:
   build_runner: ^2.1.1
