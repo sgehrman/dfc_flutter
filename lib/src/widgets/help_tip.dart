@@ -50,6 +50,9 @@ class _HelpTipState extends State<HelpTip> {
 
     // rss feed descriptions can be html, convert to markdown
     final markdown = html2md.convert(msg);
+    const TextStyle style = TextStyle(
+      color: Colors.white,
+    );
 
     return JustTheTooltip(
       // hoverShowDuration: const Duration(milliseconds: 200),dddd
@@ -63,7 +66,15 @@ class _HelpTipState extends State<HelpTip> {
       content: Container(
         constraints: const BoxConstraints(maxHeight: 1000, maxWidth: 1000),
         padding: const EdgeInsets.all(12.0),
-        child: Markdown(data: markdown),
+        child: Markdown(
+          styleSheet: MarkdownStyleSheet(
+            a: style,
+            p: style,
+            h1: style,
+          ),
+          data: markdown,
+          shrinkWrap: true,
+        ),
         // Text(
         //   msg,
         //   style: const TextStyle(
