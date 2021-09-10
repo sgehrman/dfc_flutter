@@ -54,6 +54,8 @@ class _HelpTipState extends State<HelpTip> {
       color: Colors.white,
     );
 
+    print(markdown);
+
     return JustTheTooltip(
       preferredDirection: widget.direction,
       waitDuration: const Duration(milliseconds: 1200),
