@@ -21,28 +21,28 @@ class HelpTip extends StatefulWidget {
 }
 
 class _HelpTipState extends State<HelpTip> {
-  String _wrapString(String message) {
-    final words = message.split(' ');
+  // String _wrapString(String message) {
+  //   final words = message.split(' ');
 
-    final buffer = StringBuffer();
+  //   final buffer = StringBuffer();
 
-    int cnt = 0;
-    for (final word in words) {
-      cnt += word.length;
-      buffer.write('$word ');
+  //   int cnt = 0;
+  //   for (final word in words) {
+  //     cnt += word.length;
+  //     buffer.write('$word ');
 
-      if (cnt > 40) {
-        cnt = 0;
-        buffer.write('\n');
-      }
-    }
+  //     if (cnt > 40) {
+  //       cnt = 0;
+  //       buffer.write('\n');
+  //     }
+  //   }
 
-    return buffer.toString().trim();
-  }
+  //   return buffer.toString().trim();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    final msg = _wrapString(widget.message);
+    final msg = widget.message; // _wrapString();
 
     if (Preferences.disableTooltips || Utils.isEmpty(msg)) {
       return widget.child;
@@ -66,6 +66,7 @@ class _HelpTipState extends State<HelpTip> {
         constraints: const BoxConstraints(maxHeight: 1000, maxWidth: 1000),
         padding: const EdgeInsets.all(12.0),
         child: MarkdownBody(
+          softLineBreak: true,
           styleSheet: MarkdownStyleSheet(
             a: style,
             p: style,
