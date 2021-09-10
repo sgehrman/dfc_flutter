@@ -49,13 +49,10 @@ class _HelpTipState extends State<HelpTip> {
     }
 
     // rss feed descriptions can be html, convert to markdown
-    final markdown = html2md.convert(msg);
+    final markdown = html2md.convert('<div>$msg</div>');
     const TextStyle style = TextStyle(
       color: Colors.white,
     );
-
-    print(markdown);
-    print(msg);
 
     return JustTheTooltip(
       preferredDirection: widget.direction,
