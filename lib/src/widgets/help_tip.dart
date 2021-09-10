@@ -61,9 +61,7 @@ class _HelpTipState extends State<HelpTip> {
       fadeOutDuration: const Duration(milliseconds: 400),
       tailBaseWidth: 18,
       content: Container(
-        // constraints: BoxConstraints(maxHeight: 1000, maxWidth: 1000),
-        height: 999,
-        width: 888,
+        constraints: const BoxConstraints(maxHeight: 1000, maxWidth: 1000),
         padding: const EdgeInsets.all(12.0),
         child: Markdown(data: markdown),
         // Text(
