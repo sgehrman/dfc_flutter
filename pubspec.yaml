@@ -17,7 +17,7 @@ dependencies:
   device_info: ^2.0.2
   dotted_border: ^2.0.0+1
   email_validator: ^2.0.1
-  extended_image: ^4.0.1
+  extended_image: ^5.1.2
   flare_flutter: ^3.0.2
   flutter:
     sdk: flutter
@@ -48,7 +48,7 @@ dependencies:
   share_extend:
     git: git://github.com/finroly/ShareExtend.git
   shared_preferences: ^2.0.6
-  simple_animations: ^3.1.1
+  simple_animations: ^4.0.1
   supercharged: ^2.0.0
   url_launcher: ^6.0.8
   vector_math: ^2.1.0
