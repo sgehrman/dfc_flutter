@@ -3,15 +3,15 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
+import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:dfc_flutter/src/widgets/image/super_image_source.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart' hide Image;
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:dfc_flutter/src/widgets/image/super_image_source.dart';
 import 'package:open_file/open_file.dart';
 import 'package:random_string/random_string.dart';
-import 'package:dfc_flutter/src/extensions/string_ext.dart';
 
 double initScale({Size? imageSize, Size? size, double? initialScale}) {
   // final n1 = imageSize.height / imageSize.width;
@@ -260,9 +260,6 @@ class _ImageSwiperState extends State<ImageViewer>
     );
   }
 
-  bool _defaultCanMovePage(GestureDetails? gestureDetails) =>
-      widget.swiperItems.length > 1;
-
   @override
   Widget build(BuildContext context) {
     final Widget imagePage = Scaffold(
@@ -270,14 +267,13 @@ class _ImageSwiperState extends State<ImageViewer>
       body: Stack(
         children: <Widget>[
           ExtendedImageGesturePageView.builder(
-            canMovePage: _defaultCanMovePage,
             itemBuilder: _itemBuilder,
             itemCount: widget.swiperItems.length,
             onPageChanged: (int index) {
               currentIndex = index;
               rebuildIndex.add(index);
             },
-            controller: PageController(
+            controller: ExtendedPageController(
               initialPage: currentIndex,
             ),
             physics: const BouncingScrollPhysics(),
