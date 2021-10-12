@@ -260,6 +260,9 @@ class _ImageSwiperState extends State<ImageViewer>
     );
   }
 
+  bool _defaultCanMovePage(GestureDetails? gestureDetails) =>
+      widget.swiperItems.length > 1;
+
   @override
   Widget build(BuildContext context) {
     final Widget imagePage = Scaffold(
@@ -267,13 +270,14 @@ class _ImageSwiperState extends State<ImageViewer>
       body: Stack(
         children: <Widget>[
           ExtendedImageGesturePageView.builder(
+            canMovePage: _defaultCanMovePage,
             itemBuilder: _itemBuilder,
             itemCount: widget.swiperItems.length,
             onPageChanged: (int index) {
               currentIndex = index;
               rebuildIndex.add(index);
             },
-            controller: ExtendedPageController(
+            controller: PageController(
               initialPage: currentIndex,
             ),
             physics: const BouncingScrollPhysics(),
