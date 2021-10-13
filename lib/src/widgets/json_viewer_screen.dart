@@ -1,9 +1,9 @@
 import 'package:dfc_flutter/src/dialogs/widget_dialog.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/json_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class JsonViewerScreen extends StatelessWidget {
   const JsonViewerScreen({
@@ -85,7 +85,7 @@ Future<void> showJsonViewerDialog({
 }) {
   return showWidgetDialog(
     context: context,
-    title: 'Bookmark Info',
+    title: title,
     children: [JsonViewerWidget(map)],
   );
 }
