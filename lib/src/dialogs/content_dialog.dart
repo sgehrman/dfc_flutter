@@ -26,7 +26,7 @@ Future<T?> showContentDialog<T>({
   bool barrierDismissible = true,
   EdgeInsets insetPadding =
       const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
-  EdgeInsets titlePadding = const EdgeInsets.only(left: 30, top: 10),
+  EdgeInsets titlePadding = const EdgeInsets.only(left: 30, top: 20),
   EdgeInsets actionsPadding = const EdgeInsets.only(right: 10, bottom: 10),
   EdgeInsets contentPadding = const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
 }) {
