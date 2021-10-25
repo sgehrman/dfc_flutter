@@ -102,7 +102,22 @@ Future<void> showJsonViewerDialog({
     width: 600,
     child: SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      child: JsonViewerWidget(map),
+      child: Column(
+        children: [
+          Expanded(child: JsonViewerWidget(map)),
+          IconButton(
+            onPressed: () {
+              final String jsonStr = StrUtils.toPrettyString(map);
+              Clipboard.setData(ClipboardData(text: jsonStr));
+
+              Utils.showCopiedToast(context);
+            },
+            icon: const Icon(
+              Icons.content_copy,
+            ),
+          ),
+        ],
+      ),
     ),
   );
 
