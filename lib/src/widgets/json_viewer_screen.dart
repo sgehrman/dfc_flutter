@@ -97,7 +97,9 @@ Future<void> showJsonViewerDialog({
 }) {
   final controller = DialogContentController<void>();
 
-  controller.widget = SizedBox(
+  controller.widget = Container(
+    color: Colors.black12,
+    padding: const EdgeInsets.all(10),
     height: 700,
     width: 600,
     child: SingleChildScrollView(
