@@ -100,14 +100,18 @@ Future<void> showJsonViewerDialog({
   controller.widget = SizedBox(
     height: 700,
     width: 600,
-    child: Column(
+    child: SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: JsonViewerWidget(map),
+    ),
+  );
+
+  return showContentDialog<void>(
+    context: context,
+    title: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: JsonViewerWidget(map),
-          ),
-        ),
+        const Text('Webhook'),
         IconButton(
           onPressed: () {
             final String jsonStr = StrUtils.toPrettyString(map);
@@ -119,11 +123,6 @@ Future<void> showJsonViewerDialog({
         ),
       ],
     ),
-  );
-
-  return showContentDialog<void>(
-    context: context,
-    title: title,
     okButtonName: 'Close',
     showCancel: false,
     controller: controller,

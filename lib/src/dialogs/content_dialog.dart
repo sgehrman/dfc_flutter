@@ -18,7 +18,7 @@ class DialogContentController<T> {
 
 Future<T?> showContentDialog<T>({
   required BuildContext context,
-  required String? title,
+  required Widget? title,
   required DialogContentController controller,
   bool showCancel = false,
   String okButtonName = 'OK',
@@ -53,7 +53,7 @@ Future<T?> showContentDialog<T>({
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          title: title == null ? null : Text(title),
+          title: title,
           content: controller.widget,
           actions: <Widget>[
             Visibility(
