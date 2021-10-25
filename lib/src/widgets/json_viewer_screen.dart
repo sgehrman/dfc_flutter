@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/dialogs/widget_dialog.dart';
+import 'package:dfc_flutter/src/dialogs/content_dialog.dart';
 import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/json_widget.dart';
@@ -78,14 +78,39 @@ class JsonViewerScreen extends StatelessWidget {
   }
 }
 
+// Future<void> showJsonViewerDialog({
+//   required BuildContext context,
+//   required Map<String, dynamic> map,
+//   required String title,
+// }) {
+//   return showWidgetDialog(
+//     context: context,
+//     title: title,
+//     children: [JsonViewerWidget(map)],
+//   );
+// }
+
 Future<void> showJsonViewerDialog({
   required BuildContext context,
   required Map<String, dynamic> map,
   required String title,
 }) {
-  return showWidgetDialog(
+  final controller = DialogContentController<void>();
+
+  controller.widget = SizedBox(
+    height: 700,
+    width: 600,
+    child: SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: JsonViewerWidget(map),
+    ),
+  );
+
+  return showContentDialog<void>(
     context: context,
     title: title,
-    children: [JsonViewerWidget(map)],
+    okButtonName: 'Close',
+    showCancel: false,
+    controller: controller,
   );
 }
