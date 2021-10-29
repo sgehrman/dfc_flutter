@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 const double arrowIconSize = 26;
 
@@ -14,7 +14,7 @@ class JsonViewerWidget extends StatefulWidget {
 }
 
 class JsonViewerWidgetState extends State<JsonViewerWidget> {
-  final Set<String> _openFlag = {};
+  final Set<String> _closedFlag = {};
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
 
   Widget _ex(bool ex, MapEntry entry) {
     if (ex) {
-      final icon = _openFlag.contains(entry.key)
+      final icon = !_closedFlag.contains(entry.key)
           ? const Icon(
               Icons.arrow_drop_down,
               size: arrowIconSize,
@@ -108,7 +108,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
         ),
       );
       list.add(const SizedBox(height: 4));
-      if (_openFlag.contains(entry.key)) {
+      if (!_closedFlag.contains(entry.key)) {
         list.add(getContentWidget(entry.value));
       }
     }
@@ -257,10 +257,10 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
   }
 
   void _toggleOpen(String index) {
-    if (_openFlag.contains(index)) {
-      _openFlag.remove(index);
+    if (_closedFlag.contains(index)) {
+      _closedFlag.remove(index);
     } else {
-      _openFlag.add(index);
+      _closedFlag.add(index);
     }
   }
 }
@@ -277,7 +277,7 @@ class JsonArrayViewerWidget extends StatefulWidget {
 }
 
 class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
-  final Set<int> _openFlag = {};
+  final Set<int> _closedFlag = {};
 
   @override
   Widget build(BuildContext context) {
@@ -298,7 +298,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
 
   Widget _ex(bool ex, int i) {
     if (ex) {
-      final icon = _openFlag.contains(i)
+      final icon = !_closedFlag.contains(i)
           ? const Icon(
               Icons.arrow_drop_down,
               size: arrowIconSize,
@@ -359,7 +359,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
         ),
       );
       list.add(const SizedBox(height: 4));
-      if (_openFlag.contains(i)) {
+      if (!_closedFlag.contains(i)) {
         list.add(JsonViewerWidgetState.getContentWidget(content));
       }
       i++;
@@ -368,10 +368,10 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
   }
 
   void _toggleOpen(int index) {
-    if (_openFlag.contains(index)) {
-      _openFlag.remove(index);
+    if (_closedFlag.contains(index)) {
+      _closedFlag.remove(index);
     } else {
-      _openFlag.add(index);
+      _closedFlag.add(index);
     }
   }
 
