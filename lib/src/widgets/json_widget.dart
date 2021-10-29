@@ -109,7 +109,9 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
       );
       list.add(const SizedBox(height: 4));
       if (!_closedFlag.contains(entry.key)) {
-        list.add(getContentWidget(entry.value));
+        if (entry.value is List || entry.value is Map) {
+          list.add(getContentWidget(entry.value));
+        }
       }
     }
 
