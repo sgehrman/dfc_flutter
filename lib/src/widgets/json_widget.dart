@@ -362,7 +362,9 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
       );
       list.add(const SizedBox(height: 4));
       if (!_closedFlag.contains(i)) {
-        list.add(JsonViewerWidgetState.getContentWidget(content));
+        if (content is List || content is Map) {
+          list.add(JsonViewerWidgetState.getContentWidget(content));
+        }
       }
       i++;
     }
