@@ -94,6 +94,7 @@ Future<void> showJsonViewerDialog({
   required BuildContext context,
   required Map<String, dynamic> map,
   required String title,
+  Function()? onDelete,
 }) {
   final controller = DialogContentController<void>();
 
@@ -113,7 +114,12 @@ Future<void> showJsonViewerDialog({
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text('Webhook'),
+        Text(title),
+        IconButton(
+          onPressed: onDelete,
+          tooltip: 'Delete',
+          icon: const Icon(Icons.delete_forever_outlined),
+        ),
         IconButton(
           onPressed: () {
             final String jsonStr = StrUtils.toPrettyString(map);
@@ -121,6 +127,7 @@ Future<void> showJsonViewerDialog({
 
             Utils.showCopiedToast(context);
           },
+          tooltip: 'Copy Json',
           icon: const Icon(Icons.content_copy),
         ),
       ],
