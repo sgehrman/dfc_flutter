@@ -112,9 +112,9 @@ Future<void> showJsonViewerDialog({
   return showContentDialog<void>(
     context: context,
     title: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(title),
+        const Spacer(),
         IconButton(
           onPressed: onDelete,
           tooltip: 'Delete',
