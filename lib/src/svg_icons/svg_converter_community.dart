@@ -4,7 +4,7 @@
 import 'package:dfc_flutter/src/svg_icons/svg_converter_utils.dart';
 
 // icons from:
-// git clone git@github.com:google/material-design-icons.git
+// git clone https://github.com/google/material-design-icons.git
 Future<void> communityConvert() async {
   final result = dirListing('/home/steve/expr/material-design-icons/src');
 
