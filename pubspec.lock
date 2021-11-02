@@ -281,6 +281,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  dfc_lints:
+    dependency: "direct dev"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: baba09b073254410ba09fa9b42e69fa0f3a5a4da
+      url: "git@github.com:sgehrman/dfc_lints"
+    source: git
+    version: "1.0.5"
   dotted_border:
     dependency: "direct main"
     description:
@@ -590,13 +599,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.9+1"
-  lint:
-    dependency: "direct dev"
-    description:
-      name: lint
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.7.2"
   lints:
     dependency: transitive
     description:
