@@ -666,7 +666,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: "2cadda6d282935afce8b02aefe41a198f0c49c0c"
-      url: "git://github.com/crazecoder/open_file"
+      url: "git@github.com:crazecoder/open_file"
     source: git
     version: "3.2.1"
   package_config:
@@ -815,7 +815,7 @@ packages:
       path: "."
       ref: HEAD
       resolved-ref: "8d5a1d01ef4c9404906602e2ad83a0d59cb6aba4"
-      url: "git://github.com/finroly/ShareExtend.git"
+      url: "git@github.com:finroly/ShareExtend.git"
     source: git
     version: "1.1.9"
   shared_preferences:
