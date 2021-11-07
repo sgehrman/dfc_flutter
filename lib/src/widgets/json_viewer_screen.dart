@@ -99,9 +99,12 @@ Future<void> showJsonViewerDialog({
   final controller = DialogContentController<void>();
 
   controller.widget = Container(
-    color: Utils.isDarkMode(context)
-        ? Colors.white.withOpacity(.09)
-        : Colors.black.withOpacity(.09),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(12),
+      color: Utils.isDarkMode(context)
+          ? Colors.white.withOpacity(.07)
+          : Colors.black.withOpacity(.07),
+    ),
     padding: const EdgeInsets.all(10),
     height: 700,
     width: 600,
@@ -120,7 +123,7 @@ Future<void> showJsonViewerDialog({
         IconButton(
           onPressed: onDelete,
           tooltip: 'Delete',
-          icon: const Icon(Icons.delete_forever_outlined),
+          icon: const Icon(Icons.delete_outlined),
         ),
         IconButton(
           onPressed: () {
