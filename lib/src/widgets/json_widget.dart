@@ -334,7 +334,11 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
     return Text(
       '[$i]',
       style: TextStyle(
-        color: content == null ? Colors.grey : Colors.purple[900],
+        color: content == null
+            ? Colors.grey
+            : Utils.isDarkMode(context)
+                ? Colors.white
+                : Colors.black,
       ),
     );
   }
@@ -386,7 +390,12 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
           _toggleOpen(index);
         });
       },
-      child: Text('[$index]', style: TextStyle(color: Colors.purple[900])),
+      child: Text(
+        '[$index]',
+        style: TextStyle(
+          color: Utils.isDarkMode(context) ? Colors.white : Colors.black,
+        ),
+      ),
     );
   }
 

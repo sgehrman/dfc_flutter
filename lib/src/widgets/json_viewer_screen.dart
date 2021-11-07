@@ -99,7 +99,9 @@ Future<void> showJsonViewerDialog({
   final controller = DialogContentController<void>();
 
   controller.widget = Container(
-    color: Colors.black12,
+    color: Utils.isDarkMode(context)
+        ? Colors.white.withOpacity(.9)
+        : Colors.black.withOpacity(.9),
     padding: const EdgeInsets.all(10),
     height: 700,
     width: 600,
