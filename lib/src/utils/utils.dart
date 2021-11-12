@@ -256,6 +256,8 @@ class Utils {
           : null,
     );
 
+    // remove any existing snackbars first otherwise they can queue up and take forever to finish
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
