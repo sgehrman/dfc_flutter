@@ -14,11 +14,6 @@ extension StringUtils on String {
     return '';
   }
 
-  // case insensitive compare
-  bool equals(String other) {
-    return toLowerCase() == other.toLowerCase();
-  }
-
   String get capitalize {
     if (Utils.isEmpty(this)) {
       return this;
