@@ -125,17 +125,21 @@ class MenuPopupButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Offset offset = Offset(0, MediaQuery.of(context).size.height);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final Offset offset = Offset(0, constraints.maxHeight);
 
-    return GestureDetector(
-      onTapDown: (details) {
-        showContextMenu(
-          offset,
-          context,
-          buildMenu(),
+        return GestureDetector(
+          onTapDown: (details) {
+            showContextMenu(
+              offset,
+              context,
+              buildMenu(),
+            );
+          },
+          child: child,
         );
       },
-      child: child,
     );
   }
 }
