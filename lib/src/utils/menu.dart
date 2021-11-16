@@ -4,7 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 const double _kMenuCloseIntervalEnd = 2.0 / 3.0;
-const double _kMenuMaxWidth = 5.0 * _kMenuWidthStep;
+const double _kMenuMaxWidth = 12.0 * _kMenuWidthStep; // was 5
 const double _kMenuMinWidth = 2.0 * _kMenuWidthStep;
 const double _kMenuVerticalPadding = 8.0;
 const double _kMenuWidthStep = 56.0;
