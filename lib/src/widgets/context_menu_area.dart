@@ -110,3 +110,30 @@ class ContextMenuArea extends StatelessWidget {
     );
   }
 }
+
+// =================================================================
+// =================================================================
+
+class MenuPopupButton extends StatelessWidget {
+  const MenuPopupButton({
+    required this.child,
+    required this.buildMenu,
+  });
+
+  final Widget child;
+  final List<MenuItemData> Function() buildMenu;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: (details) {
+        showContextMenu(
+          const Offset(0, 30),
+          context,
+          buildMenu(),
+        );
+      },
+      child: child,
+    );
+  }
+}
