@@ -1,6 +1,6 @@
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
-import 'package:dfc_flutter/src/utils/utils.dart';
 
 class PhoneInputUtils {
   static List<TextInputFormatter> inputFormatters() {

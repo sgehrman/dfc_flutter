@@ -1,11 +1,11 @@
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/widgets/headers/browser_header.dart';
 import 'package:dfc_flutter/src/widgets/list_row.dart';
 import 'package:dfc_flutter/src/widgets/theme_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class ThemeColorEditorScreen extends StatefulWidget {
   const ThemeColorEditorScreen({required this.themeSet, required this.field});

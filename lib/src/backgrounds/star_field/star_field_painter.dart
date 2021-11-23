@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/backgrounds/star_field/star_field.dart';
+import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' hide Colors;
 
 class StarFieldPainter extends CustomPainter {

@@ -1,9 +1,9 @@
 import 'dart:convert';
-
 import 'dart:typed_data';
+
 import 'package:dfc_flutter/src/models/manifest_model.dart';
-import 'package:xml/xml.dart';
 import 'package:dfc_flutter/src/requests/requests.dart';
+import 'package:xml/xml.dart';
 
 class Plist {
   static Object parse(String xml) {

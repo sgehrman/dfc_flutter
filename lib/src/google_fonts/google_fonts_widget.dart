@@ -1,12 +1,12 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/google_fonts/google_font_library.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/utils/preferences.dart';
-import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/widgets/draggable_scrollbar.dart';
 import 'package:dfc_flutter/src/widgets/theme_button.dart';
+import 'package:flutter/material.dart';
 
 class _FontObj {
   _FontObj({this.name, this.displayName, this.fav, this.firstChar});

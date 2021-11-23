@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/widgets/shared_context.dart';
+import 'package:flutter/material.dart';
 
 class SharedSnackBars {
   factory SharedSnackBars() {

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
+import 'package:dfc_flutter/src/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:dfc_flutter/src/widgets/menu_item.dart';
 
 class ScreenshotMenuItem {
   ScreenshotMenuItem({this.title = kNoTextTitle, this.filename = 'no-title'});

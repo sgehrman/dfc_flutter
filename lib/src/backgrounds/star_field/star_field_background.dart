@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/backgrounds/star_field/star_field.dart';
 import 'package:dfc_flutter/src/backgrounds/star_field/star_field_painter.dart';
+import 'package:flutter/material.dart';
 
 class StarfieldBackground extends StatelessWidget {
   const StarfieldBackground({required this.child});

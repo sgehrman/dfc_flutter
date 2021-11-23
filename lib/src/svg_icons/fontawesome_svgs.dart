@@ -4834,7 +4834,7 @@ class FontAwesomeSvgs {
 
   static const everyIcon = [
     FontAwesomeSvgs.brandsFly,
-        /* used for development, keep binary small, don't include otherwise
+    /* used for development, keep binary small, don't include otherwise
 
     FontAwesomeSvgs.brandsCcMastercard,
     FontAwesomeSvgs.brandsAlgolia,
@@ -6451,7 +6451,7 @@ class FontAwesomeSvgs {
 
   static const iconNames = [
     'brandsFly',
-        /* used for development, keep binary small, don't include otherwise
+    /* used for development, keep binary small, don't include otherwise
 
     'brandsCcMastercard',
     'brandsAlgolia',

@@ -1,14 +1,13 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/dialogs/confirm_dialog.dart';
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
 import 'package:dfc_flutter/src/utils/browser_prefs.dart';
 import 'package:dfc_flutter/src/utils/stack.dart';
-import 'package:dfc_flutter/src/extensions/string_ext.dart';
-
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 // web and mobile have different implementations, see DropStackImpMobile, DropStackImpWeb

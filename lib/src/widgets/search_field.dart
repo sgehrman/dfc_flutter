@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({

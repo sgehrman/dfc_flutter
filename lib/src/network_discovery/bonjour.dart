@@ -1,6 +1,6 @@
 import 'package:bonsoir/bonsoir.dart';
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/network_discovery/network_client.dart';
+import 'package:flutter/material.dart';
 
 class Bonjour extends ChangeNotifier {
   Bonjour({

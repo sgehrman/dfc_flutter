@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/expandable_text.dart';
+import 'package:flutter/material.dart';
 
 class ActionHeader extends StatelessWidget {
   const ActionHeader({

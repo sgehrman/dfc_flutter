@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/google_fonts/google_font_library.dart';
-
 import 'package:dfc_flutter/src/themes/color_params.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 class AppTheme {
   AppTheme({

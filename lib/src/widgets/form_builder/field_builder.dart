@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
-
 import 'package:dfc_flutter/src/widgets/form_builder/form_params.dart';
 import 'package:dfc_flutter/src/widgets/phone_input_utils.dart';
-import 'package:dfc_flutter/src/extensions/string_ext.dart';
+import 'package:flutter/material.dart';
 
 class FieldBuilder {
   static List<Widget> fields({

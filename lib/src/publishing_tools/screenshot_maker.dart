@@ -2,15 +2,14 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
-import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:dfc_flutter/src/file_system/file_system.dart';
-import 'package:dfc_flutter/src/publishing_tools/screenshot_params.dart';
-
 import 'package:dfc_flutter/src/publishing_tools/phone_menu.dart';
 import 'package:dfc_flutter/src/publishing_tools/phone_shapes.dart';
+import 'package:dfc_flutter/src/publishing_tools/screenshot_params.dart';
 import 'package:dfc_flutter/src/publishing_tools/size_menu.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 class CaptureResult {
   const CaptureResult(this.data, this.width, this.height);

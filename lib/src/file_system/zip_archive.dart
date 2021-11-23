@@ -1,9 +1,9 @@
 import 'dart:io';
+
 import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:path/path.dart' as p;
-
 import 'package:flutter_archive/flutter_archive.dart';
+import 'package:path/path.dart' as p;
 
 class ZipArchive {
   static Future<String> compress(

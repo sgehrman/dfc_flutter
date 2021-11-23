@@ -1,7 +1,6 @@
+import 'package:dfc_flutter/src/publishing_tools/phone_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-
-import 'package:dfc_flutter/src/publishing_tools/phone_menu.dart';
 
 class ScreenshotParams {
   ScreenshotParams({

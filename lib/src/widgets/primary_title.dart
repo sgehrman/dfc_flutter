@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/ttext.dart';
+import 'package:flutter/material.dart';
 
 class PrimaryTitle extends StatelessWidget {
   const PrimaryTitle({

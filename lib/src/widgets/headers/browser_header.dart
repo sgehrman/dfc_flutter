@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/expandable_text.dart';
 import 'package:dfc_flutter/src/widgets/headers/action_header.dart';
+import 'package:flutter/material.dart';
 
 class BrowserHeader extends StatelessWidget {
   const BrowserHeader(

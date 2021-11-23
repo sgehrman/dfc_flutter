@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
 import 'package:dfc_flutter/src/utils/browser_prefs.dart';
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
-
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class BrowserSortMenuButton extends StatelessWidget {

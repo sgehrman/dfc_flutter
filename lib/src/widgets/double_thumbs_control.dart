@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/widgets/thumb_widget.dart';
+import 'package:flutter/material.dart';
 
 class DoubleThumbsControl extends StatefulWidget {
   const DoubleThumbsControl({

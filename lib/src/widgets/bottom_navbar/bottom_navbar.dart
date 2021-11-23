@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/widgets/bottom_navbar/bottom_navbar_painter.dart';
 import 'package:dfc_flutter/src/widgets/bottom_navbar/tab_item.dart';
+import 'package:flutter/material.dart';
 
 const double circleSize = 60;
 const double arcHeight = 70;

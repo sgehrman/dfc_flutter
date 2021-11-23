@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/dialogs/confirm_dialog.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/utils/preferences.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/list_row.dart';
+import 'package:flutter/material.dart';
 
 class ThemeEditorScreen extends StatelessWidget {
   Widget _body(BuildContext context) {

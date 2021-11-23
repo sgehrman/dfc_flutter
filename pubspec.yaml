@@ -10,7 +10,7 @@ environment:
 dependencies:
   barcode_image: ^2.0.0
   barcode_widget: ^2.0.0
-  bonsoir: ^1.0.0+1
+  bonsoir: ^1.0.1+2
   characters: ^1.1.0
   collection: ^1.15.0-nullsafety.4
   crypto: ^3.0.0
@@ -42,24 +42,24 @@ dependencies:
     git: https://github.com/crazecoder/open_file
   package_info: ^2.0.2
   path: ^1.8.0
-  path_provider: ^2.0.2
+  path_provider: ^2.0.7
   provider: ^6.0.0
   random_string: ^2.3.1
   share_extend:
     git: https://github.com/finroly/ShareExtend.git
-  shared_preferences: ^2.0.6
+  shared_preferences: ^2.0.9
   simple_animations: ^4.0.1
   supercharged: ^2.0.0
-  url_launcher: ^6.0.8
+  url_launcher: ^6.0.15
   vector_math: ^2.1.0
-  video_player: ^2.1.12
+  video_player: ^2.2.7
   xml: ^5.2.0
-  just_the_tooltip: ^0.0.7+6
+  just_the_tooltip: ^0.0.10
   html2md: ^1.2.5
   flutter_markdown: ^0.6.6
 
 dev_dependencies:
-  build_runner: ^2.1.1
+  build_runner: ^2.1.5
   json_serializable: ^6.0.0
   dfc_lints:
     git: https://github.com/sgehrman/dfc_lints

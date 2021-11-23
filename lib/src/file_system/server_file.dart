@@ -1,11 +1,11 @@
 import 'dart:io';
 
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 import 'package:mime_type/mime_type.dart';
 import 'package:path/path.dart' as p;
-import 'package:dfc_flutter/src/extensions/string_ext.dart';
 
 enum ServerFileType {
   unknown,

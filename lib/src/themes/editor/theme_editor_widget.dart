@@ -3,11 +3,10 @@ import 'dart:io';
 
 import 'package:barcode_image/barcode_image.dart';
 import 'package:barcode_widget/barcode_widget.dart';
-import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:dfc_flutter/src/dialogs/widget_dialog.dart';
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/google_fonts/google_fonts_screen.dart';
+import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_color_editor_screen.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_button.dart';
@@ -15,12 +14,12 @@ import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/list_row.dart';
 import 'package:dfc_flutter/src/widgets/theme_button.dart';
-
-import 'package:path_provider/path_provider.dart';
-import 'package:share_extend/share_extend.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:image/image.dart' as img;
 import 'package:path/path.dart' as p;
-import 'package:dfc_flutter/src/extensions/string_ext.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_extend/share_extend.dart';
 
 class ThemeEditorWidget extends StatefulWidget {
   @override

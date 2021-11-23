@@ -1,12 +1,12 @@
 import 'dart:async';
-
 import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:device_info/device_info.dart';
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/list_row.dart';
-import 'package:dfc_flutter/src/extensions/string_ext.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class DeviceInfoScreen extends StatefulWidget {
   @override
@@ -69,7 +69,7 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
   List<Map<String, dynamic>> convertMap(Map<String, dynamic> map) {
     final List<Map<String, dynamic>> result = <Map<String, dynamic>>[];
 
-    map.keys.forEach((String key) {
+    for (final key in map.keys) {
       final dynamic value = map[key];
 
       if (value is List) {
@@ -79,7 +79,7 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
       } else {
         result.add(<String, dynamic>{'key': key, 'value': value});
       }
-    });
+    }
 
     result.sort((Map a, Map b) {
       int res = _rankForItem(a).compareTo(_rankForItem(b));

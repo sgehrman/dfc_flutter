@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
+import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 
 class ExpandableText extends StatefulWidget {
   const ExpandableText(

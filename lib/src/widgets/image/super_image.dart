@@ -1,13 +1,12 @@
 import 'dart:io';
 
-import 'package:extended_image/extended_image.dart';
-import 'package:flutter/material.dart';
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/image/image_viewer.dart';
-
 import 'package:dfc_flutter/src/widgets/image/super_image_source.dart';
 import 'package:dfc_flutter/src/widgets/transparent_route.dart';
-import 'package:dfc_flutter/src/extensions/string_ext.dart';
+import 'package:extended_image/extended_image.dart';
+import 'package:flutter/material.dart';
 
 class SuperImage extends StatelessWidget {
   const SuperImage(

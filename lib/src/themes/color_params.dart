@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
+import 'package:flutter/material.dart';
 
 class ColorParams {
   ColorParams({

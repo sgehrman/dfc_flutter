@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:dfc_flutter/src/widgets/slide_down_clock/slide_direction.dart';
+import 'package:flutter/material.dart';
 
 class ClipHalfRect extends CustomClipper<Rect> {
   ClipHalfRect({

@@ -192,7 +192,9 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
         ),
       );
     } else if (entry.value is List) {
-      if ((entry.value as List).isEmpty) {
+      final List list = entry.value as List;
+
+      if (list.isEmpty) {
         return const Text(
           'Array[0]',
           style: TextStyle(color: Colors.grey),
@@ -205,7 +207,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
             });
           },
           child: Text(
-            'Array<${getTypeName(entry.value[0])}>[${entry.value.length}]',
+            'Array<${getTypeName(list[0])}>[${list.length}]',
             style: const TextStyle(color: Colors.grey),
           ),
         );
