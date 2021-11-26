@@ -206,10 +206,11 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
     return Material(
       type: MaterialType.transparency,
       child: Container(
+        constraints: const BoxConstraints(maxWidth: 1000),
         decoration: BoxDecoration(
           color: widget.error
               ? Colors.red[800]!.withOpacity(.9)
-              : Colors.green[800]!.withOpacity(.9),
+              : Colors.orange[800]!.withOpacity(.9),
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           boxShadow: const [
             BoxShadow(
