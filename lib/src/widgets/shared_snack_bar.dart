@@ -208,6 +208,8 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
     return Material(
       type: MaterialType.transparency,
       child: Container(
+        constraints:
+            BoxConstraints(minWidth: MediaQuery.of(context).size.width / 2),
         decoration: BoxDecoration(
           color: widget.error
               ? Colors.red[800]!.withOpacity(.9)
