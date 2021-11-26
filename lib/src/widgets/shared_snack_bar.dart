@@ -165,15 +165,18 @@ class _SharedSnackBarState extends State<SharedSnackBar>
       top: widget.onTop ? topPosition : null,
       bottom: !widget.onTop ? topPosition : null,
       left: 16,
+      right: 16,
       child: SlideTransition(
         position: offsetAnimation as Animation<Offset>,
         child: SafeArea(
-          child: _TapBounceContainer(
-            onTap: () {
-              widget.onTap?.call();
-              animationController.reverse();
-            },
-            child: widget.child,
+          child: Center(
+            child: _TapBounceContainer(
+              onTap: () {
+                widget.onTap?.call();
+                animationController.reverse();
+              },
+              child: widget.child,
+            ),
           ),
         ),
       ),
