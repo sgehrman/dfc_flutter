@@ -218,8 +218,8 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
             ),
           ],
         ),
-        constraints: const BoxConstraints(maxWidth: 1000),
-        child: Padding(
+        child: Container(
+          constraints: const BoxConstraints(maxWidth: 1000),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           child: Row(
             children: [
