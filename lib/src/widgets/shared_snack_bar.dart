@@ -42,6 +42,8 @@ class SharedSnackBars {
   }
 }
 
+// ===================================================================
+
 class SharedSnackBar extends StatefulWidget {
   const SharedSnackBar({
     required this.child,
@@ -218,10 +220,10 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
             ),
           ],
         ),
-        child: Container(
-          constraints: const BoxConstraints(maxWidth: 1000),
+        child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               SvgIcon(
                 widget.error
