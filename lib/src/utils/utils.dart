@@ -11,7 +11,6 @@ import 'package:dfc_flutter/src/widgets/ttext.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_parsed_text/flutter_parsed_text.dart';
 import 'package:package_info/package_info.dart';
 import 'package:path/path.dart' as p;

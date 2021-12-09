@@ -5,7 +5,6 @@ import 'dart:ui' as ui;
 import 'package:dfc_flutter/src/file_system/file_system.dart';
 import 'package:dfc_flutter/src/widgets/colored_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class CreateIconScreen extends StatefulWidget {
   @override

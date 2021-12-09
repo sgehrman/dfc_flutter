@@ -6,7 +6,6 @@ import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
 import 'package:dfc_flutter/src/utils/browser_prefs.dart';
 import 'package:dfc_flutter/src/utils/stack.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 

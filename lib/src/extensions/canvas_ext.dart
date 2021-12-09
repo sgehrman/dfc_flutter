@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 
 extension ExtendedCanvas on Canvas {
   void drawPetals({

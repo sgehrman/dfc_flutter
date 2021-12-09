@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/svg_icons/community_svgs.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_bootstrap.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_community.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_fontawesome.dart';

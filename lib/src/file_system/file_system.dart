@@ -7,7 +7,6 @@ import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/file_system/server_files.dart';
 import 'package:dfc_flutter/src/file_system/zip_archive.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mime_type/mime_type.dart';
 import 'package:path/path.dart' as p;

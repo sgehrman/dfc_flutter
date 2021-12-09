@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 const double _kMenuCloseIntervalEnd = 2.0 / 3.0;
 const double _kMenuMaxWidth = 12.0 * _kMenuWidthStep; // was 5
