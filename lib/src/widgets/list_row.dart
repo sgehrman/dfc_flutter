@@ -6,6 +6,7 @@ class ListRow extends StatelessWidget {
     this.leading,
     this.trailing,
     this.title,
+    this.titleWidget,
     this.subtitle,
     this.subWidget,
     this.onTap,
@@ -24,6 +25,7 @@ class ListRow extends StatelessWidget {
   final String? subtitle;
   final TextStyle? titleStyle;
   final TextStyle? subtitleStyle;
+  final Widget? titleWidget;
   final Widget? subWidget;
   final void Function()? onTap;
   final void Function()? onDoubleTap;
@@ -45,6 +47,10 @@ class ListRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> titleChildren = [];
+
+    if (titleWidget != null) {
+      titleChildren.add(titleWidget!);
+    }
 
     if (Utils.isNotEmpty(title)) {
       titleChildren.add(
