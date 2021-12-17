@@ -11,11 +11,13 @@ class HelpTip extends StatelessWidget {
     required this.message,
     required this.child,
     this.direction = AxisDirection.down,
+    this.maxWidth = 600,
   });
 
   final String message;
   final Widget child;
   final AxisDirection direction;
+  final double maxWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,10 @@ class HelpTip extends StatelessWidget {
       fadeInDuration: const Duration(milliseconds: 400),
       fadeOutDuration: const Duration(milliseconds: 400),
       tailBaseWidth: 18,
-      content: HelpTipContent(message: message),
+      content: HelpTipContent(
+        message: message,
+        maxWidth: maxWidth,
+      ),
       child: child,
     );
   }
@@ -42,9 +47,11 @@ class HelpTip extends StatelessWidget {
 class HelpTipContent extends StatefulWidget {
   const HelpTipContent({
     required this.message,
+    required this.maxWidth,
   });
 
   final String message;
+  final double maxWidth;
 
   @override
   State<HelpTipContent> createState() => _HelpTipContentState();
@@ -140,7 +147,7 @@ class _HelpTipContentState extends State<HelpTipContent> {
     // StrUtils.print(markdown);
 
     return Container(
-      constraints: const BoxConstraints(maxHeight: 800, maxWidth: 600),
+      constraints: BoxConstraints(maxHeight: 800, maxWidth: widget.maxWidth),
       padding: const EdgeInsets.all(12.0),
       child: tooltipBody,
     );
