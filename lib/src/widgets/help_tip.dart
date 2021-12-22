@@ -26,6 +26,7 @@ class HelpTip extends StatelessWidget {
     }
 
     return JustTheTooltip(
+      backgroundColor: Colors.black,
       preferredDirection: direction,
       waitDuration: const Duration(milliseconds: 1200),
       tailLength: 20,
