@@ -12,12 +12,14 @@ class HelpTip extends StatelessWidget {
     required this.child,
     this.direction = AxisDirection.down,
     this.maxWidth = 600,
+    this.waitDuration,
   });
 
   final String message;
   final Widget child;
   final AxisDirection direction;
   final double maxWidth;
+  final Duration? waitDuration;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class HelpTip extends StatelessWidget {
     return JustTheTooltip(
       backgroundColor: Colors.black,
       preferredDirection: direction,
-      waitDuration: const Duration(milliseconds: 1200),
+      waitDuration: waitDuration ?? const Duration(milliseconds: 1200),
       tailLength: 20,
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       fadeInDuration: const Duration(milliseconds: 400),
