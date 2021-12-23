@@ -92,11 +92,9 @@ class ListRow extends StatelessWidget {
     }
 
     rowChildren.addAll([
-      Flexible(
-        flex: 4,
+      Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: titleChildren,
         ),
       ),
