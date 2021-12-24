@@ -142,7 +142,6 @@ class _HelpTipContentState extends State<HelpTipContent> {
           return const SizedBox();
         },
         softLineBreak: true,
-        fitContent: false,
         styleSheet: markdownStyleSheet,
         data: markdown,
       );
@@ -153,7 +152,7 @@ class _HelpTipContentState extends State<HelpTipContent> {
     return Container(
       constraints: BoxConstraints(maxHeight: 800, maxWidth: widget.maxWidth),
       padding: const EdgeInsets.all(12.0),
-      child: Flexible(child: tooltipBody),
+      child: tooltipBody,
     );
   }
 }
