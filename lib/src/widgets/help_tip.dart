@@ -2,8 +2,6 @@ import 'package:dfc_flutter/src/themes/platform_sizes.dart';
 import 'package:dfc_flutter/src/utils/preferences.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:html2md/html2md.dart' as html2md;
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 
 class HelpTip extends StatelessWidget {
@@ -61,40 +59,40 @@ class HelpTipContent extends StatefulWidget {
 }
 
 class _HelpTipContentState extends State<HelpTipContent> {
-  static final TextStyle style = TextStyle(
-    color: Colors.white,
-    fontSize: kFontSize.s,
-    decoration: TextDecoration.none,
-  );
+  // static final TextStyle style = TextStyle(
+  //   color: Colors.white,
+  //   fontSize: kFontSize.s,
+  //   decoration: TextDecoration.none,
+  // );
 
-  static const decoration = BoxDecoration(
-    color: Colors.white,
-  );
+  // static const decoration = BoxDecoration(
+  //   color: Colors.white,
+  // );
 
-  static final markdownStyleSheet = MarkdownStyleSheet(
-    a: style,
-    img: style,
-    p: style,
-    h1: style,
-    checkbox: style,
-    del: style,
-    em: style,
-    h2: style,
-    h3: style,
-    h4: style,
-    h5: style,
-    h6: style,
-    listBullet: style,
-    tableHead: style,
-    strong: style,
-    code: style,
-    horizontalRuleDecoration: decoration,
-    codeblockDecoration: decoration,
-    blockquoteDecoration: decoration,
-    tableCellsDecoration: decoration,
-    blockquote: style,
-    tableBody: style,
-  );
+  // static final markdownStyleSheet = MarkdownStyleSheet(
+  //   a: style,
+  //   img: style,
+  //   p: style,
+  //   h1: style,
+  //   checkbox: style,
+  //   del: style,
+  //   em: style,
+  //   h2: style,
+  //   h3: style,
+  //   h4: style,
+  //   h5: style,
+  //   h6: style,
+  //   listBullet: style,
+  //   tableHead: style,
+  //   strong: style,
+  //   code: style,
+  //   horizontalRuleDecoration: decoration,
+  //   codeblockDecoration: decoration,
+  //   blockquoteDecoration: decoration,
+  //   tableCellsDecoration: decoration,
+  //   blockquote: style,
+  //   tableBody: style,
+  // );
 
   // String _wrapString(String message) {
   //   final words = message.split(' ');
@@ -120,34 +118,32 @@ class _HelpTipContentState extends State<HelpTipContent> {
     final msg = widget.message; // _wrapString();
 
     // rss feed descriptions can be html, convert to markdown
-    final markdown = html2md.convert(msg);
+    // final markdown = html2md.convert(msg);
 
     Widget tooltipBody;
 
-    if (msg == markdown) {
-      // markdown was expanded vertically for one line content
-      // so we just use a Text
-      tooltipBody = Text(
-        msg,
-        softWrap: true,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: kFontSize.s,
-          decoration: TextDecoration.none,
-        ),
-      );
-    } else {
-      tooltipBody = MarkdownBody(
-        imageBuilder: (uri, title, alt) {
-          return const SizedBox();
-        },
-        // softLineBreak: true,
-        fitContent: false,
-        // shrinkWrap: true,
-        styleSheet: markdownStyleSheet,
-        data: markdown,
-      );
-    }
+    // if (msg == markdown) {
+    // markdown was expanded vertically for one line content
+    // so we just use a Text
+    tooltipBody = Text(
+      msg,
+      softWrap: true,
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: kFontSize.s,
+        decoration: TextDecoration.none,
+      ),
+    );
+    // } else {
+    //   tooltipBody = MarkdownBody(
+    //     imageBuilder: (uri, title, alt) {
+    //       return const SizedBox();
+    //     },
+    //     softLineBreak: true,
+    //     styleSheet: markdownStyleSheet,
+    //     data: markdown,
+    //   );
+    // }
 
     // StrUtils.print(markdown);
 
