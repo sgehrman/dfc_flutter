@@ -92,15 +92,14 @@ class ListRow extends StatelessWidget {
     }
 
     rowChildren.addAll([
-      Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: titleChildren,
-        ),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: titleChildren,
       ),
     ]);
 
     if (trailing != null) {
+      rowChildren.add(const Spacer());
       rowChildren.add(trailing!);
     }
 
