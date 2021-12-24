@@ -141,7 +141,8 @@ class _HelpTipContentState extends State<HelpTipContent> {
         imageBuilder: (uri, title, alt) {
           return const SizedBox();
         },
-        // softLineBreak: true,
+        softLineBreak: true,
+        fitContent: false,
         styleSheet: markdownStyleSheet,
         data: markdown,
       );
