@@ -94,7 +94,6 @@ class ListRow extends StatelessWidget {
     rowChildren.addAll([
       Expanded(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: titleChildren,
         ),
@@ -114,7 +113,6 @@ class ListRow extends StatelessWidget {
         child: Padding(
           padding: padding ?? EdgeInsets.zero,
           child: Row(
-            mainAxisSize: MainAxisSize.min,
             children: rowChildren,
           ),
         ),
