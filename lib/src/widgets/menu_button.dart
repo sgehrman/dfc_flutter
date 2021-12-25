@@ -71,10 +71,6 @@ class MenuButton<T> extends StatelessWidget {
     }
 
     return PopupMenuButton<MenuButtonItem<T>>(
-      icon: Icon(
-        selectedItem.iconData,
-        size: iconSize,
-      ),
       initialValue: selectedItem,
       offset: const Offset(0, 40),
       itemBuilder: (context) {
