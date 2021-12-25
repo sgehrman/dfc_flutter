@@ -12,20 +12,22 @@ class MenuButtonItem<T> {
   final IconData iconData;
 }
 
-class MenuButton extends StatelessWidget {
+class MenuButton<T> extends StatelessWidget {
   const MenuButton({
     required this.items,
     required this.onItemSelected,
     required this.selectedItem,
     this.size = 16,
     this.iconSize = 24,
+    this.arrowSize = 48,
   });
 
-  final void Function(MenuButtonItem) onItemSelected;
-  final MenuButtonItem selectedItem;
-  final List<MenuButtonItem> items;
+  final void Function(MenuButtonItem<T>) onItemSelected;
+  final MenuButtonItem<T> selectedItem;
+  final List<MenuButtonItem<T>> items;
   final double size;
   final double iconSize;
+  final double arrowSize;
 
   Widget _menuButton(BuildContext context) {
     final button = Padding(
@@ -44,18 +46,18 @@ class MenuButton extends StatelessWidget {
             fit: BoxFit.fill,
             child: Icon(
               Icons.arrow_drop_down,
-              size: size,
+              size: arrowSize,
             ),
           ),
         ],
       ),
     );
 
-    final List<PopupMenuItem<MenuButtonItem>> menuItems = [];
+    final List<PopupMenuItem<MenuButtonItem<T>>> menuItems = [];
 
     for (final item in items) {
       menuItems.add(
-        PopupMenuItem<MenuButtonItem>(
+        PopupMenuItem<MenuButtonItem<T>>(
           value: item,
           child: MenuItem(
             icon: Icon(
@@ -68,7 +70,13 @@ class MenuButton extends StatelessWidget {
       );
     }
 
-    return PopupMenuButton<MenuButtonItem>(
+    return PopupMenuButton<MenuButtonItem<T>>(
+      icon: Icon(
+        selectedItem.iconData,
+        size: iconSize,
+      ),
+      initialValue: selectedItem,
+      offset: const Offset(0, 40),
       itemBuilder: (context) {
         return menuItems;
       },
