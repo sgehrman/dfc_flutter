@@ -1,13 +1,15 @@
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 
-class MenuButtonItem {
+class MenuButtonItem<T> {
   MenuButtonItem({
     required this.title,
     required this.value,
+    required this.iconData,
   });
-  String title;
-  dynamic value;
+  final String title;
+  final T value;
+  final IconData iconData;
 }
 
 class MenuButton extends StatelessWidget {
@@ -15,11 +17,15 @@ class MenuButton extends StatelessWidget {
     required this.items,
     required this.onItemSelected,
     required this.selectedItem,
+    this.size = 16,
+    this.iconSize = 24,
   });
 
   final void Function(MenuButtonItem) onItemSelected;
   final MenuButtonItem selectedItem;
   final List<MenuButtonItem> items;
+  final double size;
+  final double iconSize;
 
   Widget _menuButton(BuildContext context) {
     final button = Padding(
@@ -31,12 +37,14 @@ class MenuButton extends StatelessWidget {
             child: Text(
               selectedItem.title,
               overflow: TextOverflow.ellipsis,
+              style: TextStyle(fontSize: size),
             ),
           ),
-          const FittedBox(
+          FittedBox(
             fit: BoxFit.fill,
             child: Icon(
               Icons.arrow_drop_down,
+              size: size,
             ),
           ),
         ],
@@ -50,7 +58,10 @@ class MenuButton extends StatelessWidget {
         PopupMenuItem<MenuButtonItem>(
           value: item,
           child: MenuItem(
-            icon: const Icon(Icons.compare),
+            icon: Icon(
+              item.iconData,
+              size: iconSize,
+            ),
             name: item.title,
           ),
         ),
