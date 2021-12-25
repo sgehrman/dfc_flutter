@@ -19,7 +19,7 @@ class MenuButton<T> extends StatelessWidget {
     required this.selectedItem,
     this.size = 16,
     this.iconSize = 24,
-    this.arrowSize = 48,
+    this.arrowSize = 38,
   });
 
   final void Function(MenuButtonItem<T>) onItemSelected;
