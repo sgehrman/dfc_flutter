@@ -6,14 +6,12 @@ class MenuItem extends StatelessWidget {
     this.icon,
     this.level = 0,
     this.onTap, // not needed in a PopupMenuItem
-    this.horizontalPadding = 16,
+    this.horizontalPadding = 10,
     this.levelPadding = 20,
-    this.enabled = true,
   });
 
   final String name;
   final Widget? icon;
-  final bool enabled;
   final int level;
   final void Function()? onTap;
   final double horizontalPadding;
@@ -33,16 +31,8 @@ class MenuItem extends StatelessWidget {
       leading = icon!;
     }
 
-    Color textColor =
-        Theme.of(context).textTheme.bodyText1?.color ?? Colors.black;
-
-    if (!enabled) {
-      textColor = textColor.withOpacity(.5);
-    }
-
     return InkWell(
-      onTap: enabled ? onTap : null,
-      canRequestFocus: enabled,
+      onTap: onTap,
       child: Container(
         padding: contentPadding,
         child: Row(
@@ -54,9 +44,6 @@ class MenuItem extends StatelessWidget {
             Flexible(
               child: Text(
                 name,
-                style: TextStyle(
-                  color: textColor,
-                ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
