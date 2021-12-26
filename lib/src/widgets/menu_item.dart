@@ -42,6 +42,7 @@ class MenuItem extends StatelessWidget {
 
     return InkWell(
       onTap: enabled ? onTap : null,
+      canRequestFocus: enabled,
       child: Container(
         padding: contentPadding,
         child: Row(
