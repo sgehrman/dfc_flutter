@@ -6,7 +6,8 @@ class MenuItem extends StatelessWidget {
     this.icon,
     this.level = 0,
     this.onTap, // not needed in a PopupMenuItem
-    this.horizontalPadding = 20,
+    this.horizontalPadding = 16,
+    this.levelPadding = 20,
     this.enabled = true,
   });
 
@@ -16,12 +17,13 @@ class MenuItem extends StatelessWidget {
   final int level;
   final void Function()? onTap;
   final double horizontalPadding;
+  final double levelPadding;
 
   @override
   Widget build(BuildContext context) {
     final contentPadding = EdgeInsets.only(
       right: horizontalPadding,
-      left: horizontalPadding + (level * horizontalPadding),
+      left: horizontalPadding + (level * levelPadding),
       top: 4,
       bottom: 4,
     );
@@ -46,14 +48,17 @@ class MenuItem extends StatelessWidget {
           children: [
             leading,
             const SizedBox(
-              width: 10,
+              width: 14,
             ),
-            Text(
-              name,
-              style: TextStyle(
-                color: textColor,
+            Flexible(
+              child: Text(
+                name,
+                style: TextStyle(
+                  color: textColor,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
-              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),
