@@ -6,21 +6,27 @@ class MenuItem extends StatelessWidget {
     this.icon,
     this.level = 0,
     this.onTap, // not needed in a PopupMenuItem
-    this.horizontalPadding = 10,
-    this.verticalPadding = 4,
-    this.levelPadding = 20,
+    this.large = false,
   });
 
   final String name;
   final Widget? icon;
   final int level;
   final void Function()? onTap;
-  final double horizontalPadding;
-  final double verticalPadding;
-  final double levelPadding;
+  final bool large;
 
   @override
   Widget build(BuildContext context) {
+    double horizontalPadding = 10;
+    double verticalPadding = 4;
+    double levelPadding = 20;
+
+    if (large) {
+      horizontalPadding = 20;
+      verticalPadding = 10;
+      levelPadding = 20;
+    }
+
     final contentPadding = EdgeInsets.only(
       right: horizontalPadding,
       left: horizontalPadding + (level * levelPadding),

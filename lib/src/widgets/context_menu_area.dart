@@ -33,11 +33,12 @@ class MenuItemData {
 // =================================================================
 // =================================================================
 
-Future<void> showContextMenu(
-  Offset localPosition,
-  BuildContext context,
-  List<MenuItemData> menuData,
-) async {
+Future<void> showContextMenu({
+  required BuildContext context,
+  required Offset localPosition,
+  required List<MenuItemData> menuData,
+  bool large = false,
+}) async {
   final List<PopupMenuEntry<MenuItemData>> menuItems = [];
 
   for (final itemData in menuData) {
@@ -48,13 +49,14 @@ Future<void> showContextMenu(
         PopupMenuItem<MenuItemData>(
           value: itemData,
           enabled: itemData.enabled,
-          // padding: EdgeInsets.zero,
+          padding: EdgeInsets.zero,
           // set height otherwise it's huge
           height: 10,
           child: MenuItem(
             icon: itemData.icon,
             name: itemData.title,
             level: itemData.level,
+            large: large,
           ),
         ),
       );
@@ -94,9 +96,9 @@ class ContextMenuArea extends StatelessWidget {
       onSecondaryLongPressStart: (details) {},
       onSecondaryTapDown: (details) {
         showContextMenu(
-          details.localPosition,
-          context,
-          buildMenu(),
+          localPosition: details.localPosition,
+          context: context,
+          menuData: buildMenu(),
         );
       },
       // onLongPressStart: (details) {
@@ -118,19 +120,22 @@ class MenuPopupButton extends StatelessWidget {
   const MenuPopupButton({
     required this.child,
     required this.buildMenu,
+    this.large = true,
   });
 
   final Widget child;
   final List<MenuItemData> Function() buildMenu;
+  final bool large;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         showContextMenu(
-          Offset(0, context.size?.height ?? 0),
-          context,
-          buildMenu(),
+          localPosition: Offset(0, context.size?.height ?? 0),
+          context: context,
+          menuData: buildMenu(),
+          large: large,
         );
       },
       child: child,
