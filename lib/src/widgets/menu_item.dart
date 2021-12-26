@@ -7,6 +7,7 @@ class MenuItem extends StatelessWidget {
     this.level = 0,
     this.onTap, // not needed in a PopupMenuItem
     this.horizontalPadding = 10,
+    this.verticalPadding = 4,
     this.levelPadding = 20,
   });
 
@@ -15,6 +16,7 @@ class MenuItem extends StatelessWidget {
   final int level;
   final void Function()? onTap;
   final double horizontalPadding;
+  final double verticalPadding;
   final double levelPadding;
 
   @override
@@ -22,8 +24,8 @@ class MenuItem extends StatelessWidget {
     final contentPadding = EdgeInsets.only(
       right: horizontalPadding,
       left: horizontalPadding + (level * levelPadding),
-      top: 4,
-      bottom: 4,
+      top: verticalPadding,
+      bottom: verticalPadding,
     );
 
     Widget leading = const SizedBox();
