@@ -125,7 +125,7 @@ class MenuPopupButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTapDown: (details) {
         showContextMenu(
           Offset(0, context.size?.height ?? 0),
