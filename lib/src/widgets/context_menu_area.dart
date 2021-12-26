@@ -127,9 +127,6 @@ class MenuPopupButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // do nothing, we just need this set to get the click
-      },
-      onTapDown: (details) {
         showContextMenu(
           Offset(0, context.size?.height ?? 0),
           context,
