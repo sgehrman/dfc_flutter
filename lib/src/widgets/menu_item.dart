@@ -41,7 +41,7 @@ class MenuItem extends StatelessWidget {
     }
 
     return InkWell(
-      onTap: onTap,
+      onTap: enabled ? onTap : null,
       child: Container(
         padding: contentPadding,
         child: Row(
