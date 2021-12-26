@@ -22,7 +22,7 @@ class MenuItem extends StatelessWidget {
     double levelPadding = 20;
 
     if (large) {
-      horizontalPadding = 20;
+      horizontalPadding = 24;
       verticalPadding = 14;
       levelPadding = 20;
     }
