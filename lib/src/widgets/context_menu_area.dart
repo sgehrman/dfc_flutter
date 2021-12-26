@@ -129,22 +129,16 @@ class MenuPopupButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final double xOffset = constraints.maxWidth / 2;
-
-        return InkWell(
-          onTap: () {
-            showContextMenu(
-              localPosition: Offset(xOffset, constraints.maxHeight),
-              context: context,
-              menuData: buildMenu(),
-              large: large,
-            );
-          },
-          child: child,
+    return InkWell(
+      onTap: () {
+        showContextMenu(
+          localPosition: Offset(0, context.size?.height ?? 0),
+          context: context,
+          menuData: buildMenu(),
+          large: large,
         );
       },
+      child: child,
     );
   }
 }
