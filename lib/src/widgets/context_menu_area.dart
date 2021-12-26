@@ -48,7 +48,7 @@ Future<void> showContextMenu(
         PopupMenuItem<MenuItemData>(
           value: itemData,
           enabled: itemData.enabled,
-          padding: EdgeInsets.zero,
+          // padding: EdgeInsets.zero,
           // set height otherwise it's huge
           height: 10,
           child: MenuItem(
