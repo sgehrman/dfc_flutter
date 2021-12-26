@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/themes/platform_sizes.dart';
 import 'package:flutter/material.dart';
 
 class MenuItem extends StatelessWidget {
@@ -8,10 +7,12 @@ class MenuItem extends StatelessWidget {
     this.level = 0,
     this.onTap, // not needed in a PopupMenuItem
     this.horizontalPadding = 20,
+    this.disabled = false,
   });
 
   final String name;
   final Widget? icon;
+  final bool disabled;
   final int level;
   final void Function()? onTap;
   final double horizontalPadding;
@@ -30,6 +31,13 @@ class MenuItem extends StatelessWidget {
       leading = icon!;
     }
 
+    Color textColor =
+        Theme.of(context).textTheme.bodyText1?.color ?? Colors.black;
+
+    if (disabled) {
+      textColor = textColor.withOpacity(.5);
+    }
+
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -42,7 +50,9 @@ class MenuItem extends StatelessWidget {
             ),
             Text(
               name,
-              style: TextStyle(fontSize: kFontSize.m),
+              style: TextStyle(
+                color: textColor,
+              ),
               overflow: TextOverflow.ellipsis,
             ),
           ],
