@@ -7,12 +7,12 @@ class MenuItem extends StatelessWidget {
     this.level = 0,
     this.onTap, // not needed in a PopupMenuItem
     this.horizontalPadding = 20,
-    this.disabled = false,
+    this.enabled = true,
   });
 
   final String name;
   final Widget? icon;
-  final bool disabled;
+  final bool enabled;
   final int level;
   final void Function()? onTap;
   final double horizontalPadding;
@@ -34,7 +34,7 @@ class MenuItem extends StatelessWidget {
     Color textColor =
         Theme.of(context).textTheme.bodyText1?.color ?? Colors.black;
 
-    if (disabled) {
+    if (!enabled) {
       textColor = textColor.withOpacity(.5);
     }
 
