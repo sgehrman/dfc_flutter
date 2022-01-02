@@ -104,7 +104,7 @@ class ListRow extends StatelessWidget {
       rowChildren.add(trailing!);
     }
 
-    return Container(
+    return Ink(
       color: color,
       child: InkWell(
         onTap: onTap,
