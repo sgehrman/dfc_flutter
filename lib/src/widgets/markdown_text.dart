@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class MarkdownText extends StatelessWidget {
-  const MarkdownText(this.text);
+  const MarkdownText(
+    this.text, {
+    this.fontSize = 16,
+  });
 
   final String? text;
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +19,9 @@ class MarkdownText extends StatelessWidget {
       },
       styleSheet: MarkdownStyleSheet(
         blockSpacing: 8,
-        p: const TextStyle(fontSize: 16),
-        h3: const TextStyle(
-          fontSize: 16,
+        p: TextStyle(fontSize: fontSize),
+        h3: TextStyle(
+          fontSize: fontSize,
           fontWeight: FontWeight.bold,
         ),
       ),
