@@ -17,6 +17,7 @@ class ListRow extends StatelessWidget {
     this.titleStyle,
     this.subtitleStyle,
     this.maxSubtitleLines = 2,
+    this.disableHoverColor = false,
   });
 
   final Widget? leading;
@@ -33,6 +34,7 @@ class ListRow extends StatelessWidget {
   final Color? color;
   final EdgeInsetsGeometry? padding;
   final int maxSubtitleLines;
+  final bool disableHoverColor;
 
   static Color? backgroundForIndex({
     required int index,
@@ -110,6 +112,7 @@ class ListRow extends StatelessWidget {
         onTap: onTap,
         onDoubleTap: onDoubleTap,
         onLongPress: onLongPress,
+        hoverColor: disableHoverColor ? Colors.transparent : null,
         child: Padding(
           padding: padding ?? EdgeInsets.zero,
           child: Row(
