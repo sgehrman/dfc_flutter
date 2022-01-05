@@ -6,17 +6,20 @@ class MarkdownText extends StatelessWidget {
   const MarkdownText(
     this.text, {
     this.fontSize = 16,
+    this.onTapLink,
   });
 
   final String? text;
   final double fontSize;
+  final void Function(String text, String? href, String title)? onTapLink;
 
   @override
   Widget build(BuildContext context) {
     return MarkdownBody(
-      onTapLink: (text, href, title) {
-        Utils.launchUrl(href!);
-      },
+      onTapLink: onTapLink ??
+          (text, href, title) {
+            Utils.launchUrl(href!);
+          },
       styleSheet: MarkdownStyleSheet(
         blockSpacing: 8,
         p: TextStyle(fontSize: fontSize),
