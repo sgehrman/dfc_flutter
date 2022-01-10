@@ -52,13 +52,17 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
           child: Column(
             children: <Widget>[
               const SizedBox(height: 10),
-              HsvColorPicker(
-                showLabel: false,
+              ColorPicker(
+                labelTypes: const [],
                 pickerAreaBorderRadius:
                     const BorderRadius.all(Radius.circular(8)),
                 enableAlpha: false,
-                pickerColor: currentColor,
-                onColorChanged: changeColorHsv,
+                pickerColor: currentColor.toColor(),
+                pickerHsvColor: currentColor,
+                onHsvColorChanged: changeColorHsv,
+                onColorChanged: (color) {
+                  // using the hsv color above? test this.
+                },
               ),
               const SizedBox(height: 20),
               const BrowserHeader(
