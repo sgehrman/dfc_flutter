@@ -44,7 +44,7 @@ dependencies:
   open_file:
     git: https://github.com/crazecoder/open_file
   package_info: ^2.0.2
-  path: ^1.8.1
+  path: ^1.8.0
   path_provider: ^2.0.7
   provider: ^6.0.2
   random_string: ^2.3.1
