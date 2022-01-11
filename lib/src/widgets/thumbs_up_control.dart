@@ -42,7 +42,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 8.0,
+              vertical: 8,
               horizontal: 14,
             ),
             child: ThumbWidget(
@@ -65,7 +65,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 8.0,
+              vertical: 8,
               horizontal: 14,
             ),
             child: ThumbWidget(

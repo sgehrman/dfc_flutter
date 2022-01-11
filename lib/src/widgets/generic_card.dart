@@ -115,7 +115,7 @@ class GenericCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double horizontal = 16.0;
+    double horizontal = 16;
     double vertical = 14;
     if (small) {
       horizontal = 12.0;
@@ -240,7 +240,7 @@ class AddCard extends StatelessWidget {
           },
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.all(6.0),
+              padding: const EdgeInsets.all(6),
               child: Icon(
                 Icons.add_circle_outline,
                 color: cardColor,

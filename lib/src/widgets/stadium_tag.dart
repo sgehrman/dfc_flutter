@@ -10,7 +10,7 @@ class StadiumTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8),
       child: Container(
         decoration: const ShapeDecoration(
           shape: StadiumBorder(
@@ -22,7 +22,7 @@ class StadiumTag extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(
             vertical: 6,
-            horizontal: 14.0,
+            horizontal: 14,
           ),
           child: Text(
             tag!,

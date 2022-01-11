@@ -83,7 +83,7 @@ class ThemeSetButton extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: Padding(
-            padding: const EdgeInsets.only(right: 16.0),
+            padding: const EdgeInsets.only(right: 16),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

@@ -42,7 +42,7 @@ extension MapCasting on Map {
     final dynamic result = this[key];
 
     if (result == null) {
-      return 0.0;
+      return 0;
     }
 
     if (result is double) {
@@ -51,7 +51,7 @@ extension MapCasting on Map {
       print('double: not double $result');
     }
 
-    return 0.0;
+    return 0;
   }
 
   int intVal(String key) {

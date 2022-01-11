@@ -22,8 +22,8 @@ class WaveBackground extends StatelessWidget {
         // Positioned.fill(child: AnimatedBackground()),
         onBottom(
           AnimatedWave(
-            height: baseHeight + 160.0,
-            speed: 1.0,
+            height: baseHeight + 160,
+            speed: 1,
             color: color,
           ),
         ),
@@ -61,7 +61,7 @@ class AnimatedWave extends StatelessWidget {
     required this.height,
     required this.speed,
     required this.color,
-    this.offset = 0.0,
+    this.offset = 0,
   });
 
   final double height;
@@ -78,7 +78,7 @@ class AnimatedWave extends StatelessWidget {
           width: constraints.biggest.width,
           child: LoopAnimation<double>(
             duration: Duration(milliseconds: (10000 / speed).round()),
-            tween: Tween(begin: 0.0, end: 2 * pi),
+            tween: Tween(begin: 0, end: 2 * pi),
             builder: (context, _, value) {
               return CustomPaint(
                 foregroundPainter: CurvePainter(value + offset, color),

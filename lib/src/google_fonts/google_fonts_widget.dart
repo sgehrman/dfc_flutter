@@ -101,7 +101,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 12.0),
+                          padding: const EdgeInsets.only(left: 12),
                           child: Text(
                             fontObj.displayName!,
                             style: theme.headline6!.copyWith(

@@ -41,11 +41,10 @@ class _RotatingRainbowTextState extends State<RotatingRainbowText>
 
   @override
   Widget build(BuildContext context) {
-    final Animation<double> animation =
-        Tween<double>(begin: 0.0, end: 1.0).animate(
+    final Animation<double> animation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: controller,
-        curve: const Interval(0.0, 1.0, curve: Curves.easeInOut),
+        curve: const Interval(0, 1, curve: Curves.easeInOut),
       ),
     );
 

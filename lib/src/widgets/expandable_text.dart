@@ -49,7 +49,7 @@ class _ExpandableTextState extends State<ExpandableText> {
               },
               child: Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.only(top: 6.0),
+                padding: const EdgeInsets.only(top: 6),
                 child: Text(
                   expanded ? 'Show less' : 'Show more',
                   style: Theme.of(context).textTheme.caption!.copyWith(

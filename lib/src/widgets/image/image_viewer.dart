@@ -51,7 +51,7 @@ class _ImageSwiperState extends State<ImageViewer>
   AnimationController? _animationController;
   Animation<double>? _animation;
   late void Function() animationListener;
-  List<double> doubleTapScales = <double>[.9, 3.0];
+  List<double> doubleTapScales = <double>[.9, 3];
   GlobalKey<ExtendedImageSlidePageState> slidePagekey =
       GlobalKey<ExtendedImageSlidePageState>();
   late int currentIndex;
@@ -91,7 +91,7 @@ class _ImageSwiperState extends State<ImageViewer>
     ExtendedImageState state,
     Size size,
   ) {
-    double initialScale = 1.0;
+    double initialScale = 1;
 
     if (state.extendedImageInfo != null) {
       initialScale = initScale(
@@ -106,8 +106,8 @@ class _ImageSwiperState extends State<ImageViewer>
     return GestureConfig(
       inPageView: true,
       initialScale: initialScale,
-      maxScale: 10.0,
-      animationMaxScale: 10.0,
+      maxScale: 10,
+      animationMaxScale: 10,
     );
   }
 

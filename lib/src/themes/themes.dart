@@ -152,19 +152,19 @@ class AppTheme {
 
       // used for ListTile title in drawer
       bodyText1: startTheme.bodyText1!.copyWith(
-        fontSize: 17.0,
+        fontSize: 17,
         color: textColor,
       ),
 
       // used for ListTile subtitle in non-drawer list
       bodyText2: startTheme.bodyText2!.copyWith(
         color: textColor,
-        fontSize: 16.0,
+        fontSize: 16,
       ),
 
       // used for control text
       subtitle1: startTheme.bodyText1!.copyWith(
-        fontSize: 16.0,
+        fontSize: 16,
         color: textColor,
       ),
 
@@ -172,7 +172,7 @@ class AppTheme {
       headline4: TextStyle(
         color: headerTextColor,
         fontWeight: FontWeight.bold,
-        fontSize: 17.0,
+        fontSize: 17,
       ),
 
       // Google fonts list and others
@@ -182,7 +182,7 @@ class AppTheme {
 
       // used for listTile subtitle
       caption: startTheme.bodyText1!.copyWith(
-        fontSize: 15.0,
+        fontSize: 15,
         color: subtitleColor,
       ),
     );

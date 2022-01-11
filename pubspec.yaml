@@ -25,6 +25,7 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^1.0.3
   flutter_keyboard_visibility: ^5.0.3
+  flutter_markdown: ^0.6.9
   flutter_multi_formatter: ^2.5.1
   flutter_parsed_text: ^2.2.1
   flutter_svg: ^1.0.0
@@ -32,10 +33,12 @@ dependencies:
   hex: ^0.2.0
   hive: ^2.0.5
   hive_flutter: ^1.1.0
+  html2md: ^1.2.5
   http: ^0.13.3
   image: ^3.0.1
   intl: ^0.17.0
   json_annotation: ^4.3.0
+  just_the_tooltip: ^0.0.11+1
   mime_type: ^1.0.0
   native_pdf_renderer: ^4.0.0
   open_file:
@@ -54,15 +57,12 @@ dependencies:
   vector_math: ^2.1.0
   video_player: ^2.2.10
   xml: ^5.2.0
-  just_the_tooltip: ^0.0.11+1
-  html2md: ^1.2.5
-  flutter_markdown: ^0.6.9
 
 dev_dependencies:
   build_runner: ^2.1.5
-  json_serializable: ^6.0.0
   dfc_lints:
     git: https://github.com/sgehrman/dfc_lints
+  json_serializable: ^6.0.0
 
 flutter:
   uses-material-design: true

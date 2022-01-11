@@ -101,7 +101,7 @@ class __DialogContentsState extends State<_DialogContents> {
       actionsPadding: actionsPadding,
       title: Text(widget.title),
       content: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 600.0),
+        constraints: const BoxConstraints(maxWidth: 600),
         child: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[

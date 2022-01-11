@@ -20,7 +20,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
   Widget build(BuildContext context) {
     if (widget.notRoot ?? false) {
       return Container(
-        padding: const EdgeInsets.only(left: 14.0),
+        padding: const EdgeInsets.only(left: 14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _getList(),
@@ -287,7 +287,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
   Widget build(BuildContext context) {
     if (widget.notRoot ?? false) {
       return Container(
-        padding: const EdgeInsets.only(left: 14.0),
+        padding: const EdgeInsets.only(left: 14),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: _getList(),

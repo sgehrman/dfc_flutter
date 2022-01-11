@@ -5,9 +5,9 @@ import 'package:flutter/rendering.dart';
 const double _kMenuCloseIntervalEnd = 2.0 / 3.0;
 const double _kMenuMaxWidth = 12.0 * _kMenuWidthStep; // was 5
 const double _kMenuMinWidth = 2.0 * _kMenuWidthStep;
-const double _kMenuVerticalPadding = 8.0;
-const double _kMenuWidthStep = 56.0;
-const double _kMenuScreenPadding = 8.0;
+const double _kMenuVerticalPadding = 8;
+const double _kMenuWidthStep = 56;
+const double _kMenuScreenPadding = 8;
 
 class _MenuItem extends SingleChildRenderObjectWidget {
   const _MenuItem({
@@ -259,7 +259,7 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
     return CurvedAnimation(
       parent: super.createAnimation(),
       curve: Curves.linear,
-      reverseCurve: const Interval(0.0, _kMenuCloseIntervalEnd),
+      reverseCurve: const Interval(0, _kMenuCloseIntervalEnd),
     );
   }
 

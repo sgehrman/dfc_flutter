@@ -71,7 +71,7 @@ extension ExtendedCanvas on Canvas {
 
     path.close();
 
-    drawShadow(path, Colors.black, 1.0, false);
+    drawShadow(path, Colors.black, 1, false);
     drawPath(path, paint);
   }
 }

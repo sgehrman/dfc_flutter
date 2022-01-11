@@ -38,9 +38,9 @@ class CDialog extends StatelessWidget {
 
   static const RoundedRectangleBorder _defaultDialogShape =
       RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+    borderRadius: BorderRadius.all(Radius.circular(4)),
   );
-  static const double _defaultElevation = 24.0;
+  static const double _defaultElevation = 24;
 
   @override
   Widget build(BuildContext context) {

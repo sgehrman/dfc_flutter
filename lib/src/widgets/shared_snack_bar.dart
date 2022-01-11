@@ -132,7 +132,7 @@ class _SharedSnackBarState extends State<SharedSnackBar>
     );
 
     final Tween<Offset> offsetTween = Tween<Offset>(
-      begin: Offset(0.0, widget.onTop ? -1.0 : 1.0),
+      begin: Offset(0, widget.onTop ? -1.0 : 1.0),
       end: Offset.zero,
     );
 
@@ -218,7 +218,7 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
           boxShadow: const [
             BoxShadow(
               color: Colors.black26,
-              offset: Offset(0.0, 8.0),
+              offset: Offset(0, 8),
               spreadRadius: 1,
               blurRadius: 30,
             ),

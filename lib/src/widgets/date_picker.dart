@@ -191,9 +191,9 @@ class _DateWidget extends StatelessWidget {
             },
       child: Container(
         width: width,
-        margin: const EdgeInsets.all(3.0),
+        margin: const EdgeInsets.all(3),
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
           color: isSelected ? selectionColor : Colors.transparent,
         ),
         child: Padding(

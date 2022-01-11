@@ -12,10 +12,10 @@ Future<bool?> showWidgetDialog({
   String cancelButtonName = 'Cancel',
   bool barrierDismissible = true,
   EdgeInsets insetPadding =
-      const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+      const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
   EdgeInsets? titlePadding,
   EdgeInsets actionsPadding = const EdgeInsets.only(right: 10, bottom: 10),
-  EdgeInsets contentPadding = const EdgeInsets.fromLTRB(24.0, 20.0, 24.0, 24.0),
+  EdgeInsets contentPadding = const EdgeInsets.fromLTRB(24, 20, 24, 24),
 }) {
   return showDialog<bool>(
     context: context,
@@ -42,7 +42,7 @@ Future<bool?> showWidgetDialog({
           ),
           title: title == null ? null : Text(title),
           content: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 600.0),
+            constraints: const BoxConstraints(maxWidth: 600),
             child: SingleChildScrollView(
               child: Column(
                 children: children,

@@ -69,7 +69,7 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
                 'Example Header',
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: ListRow(
                   title: 'Example List item',
                   leading: SvgIcon(FontAwesomeSvgs.regularFolder),
@@ -77,7 +77,7 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: ListRow(
                   title: 'Example List item',
                   leading: SvgIcon(FontAwesomeSvgs.regularFolder),

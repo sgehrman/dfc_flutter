@@ -36,14 +36,14 @@ class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {
   bool haveData = false;
 
   final Animatable<Offset> _slideUpTween = Tween<Offset>(
-    begin: const Offset(0.0, -1.0),
+    begin: const Offset(0, -1),
     end: Offset.zero,
   );
   late Animation<Offset> _slideUpAnimation;
 
   final Animatable<Offset> _slideDownTween = Tween<Offset>(
     begin: Offset.zero,
-    end: const Offset(0.0, 1.0),
+    end: const Offset(0, 1),
   );
   late Animation<Offset> _slideDownAnimation;
 
@@ -118,11 +118,11 @@ class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final fakeWidget = Opacity(
-      opacity: 0.0,
+      opacity: 0,
       child: Text(
         '9',
         style: widget.textStyle,
-        textScaleFactor: 1.0,
+        textScaleFactor: 1,
         textAlign: TextAlign.center,
       ),
     );
@@ -153,7 +153,7 @@ class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {
                       child: Text(
                         '$_nextValue',
                         textAlign: TextAlign.center,
-                        textScaleFactor: 1.0,
+                        textScaleFactor: 1,
                         style: widget.textStyle,
                       ),
                     ),
@@ -172,7 +172,7 @@ class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {
                   child: Text(
                     '$_currentValue',
                     textAlign: TextAlign.center,
-                    textScaleFactor: 1.0,
+                    textScaleFactor: 1,
                     style: widget.textStyle,
                   ),
                 ),

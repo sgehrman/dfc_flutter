@@ -38,7 +38,7 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
               const SizedBox(

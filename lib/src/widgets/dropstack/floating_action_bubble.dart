@@ -24,8 +24,8 @@ class FloatingActionBubble extends AnimatedWidget {
     final transform = Matrix4.translationValues(
       -(screenWidth - _animation.value * screenWidth) *
           ((items.length - index) / 4),
-      0.0,
-      0.0,
+      0,
+      0,
     );
 
     return Align(
@@ -53,13 +53,13 @@ class FloatingActionBubble extends AnimatedWidget {
             child: ListView.separated(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              separatorBuilder: (_, __) => const SizedBox(height: 4.0),
+              separatorBuilder: (_, __) => const SizedBox(height: 4),
               padding: const EdgeInsets.symmetric(vertical: 12),
               itemCount: items.length,
               itemBuilder: buildItem,
             ),
           ),
-          const SizedBox(height: 6.0),
+          const SizedBox(height: 6),
           FloatingActionButton.extended(
             onPressed: onPressed,
             label: Text(title),
@@ -124,7 +124,7 @@ class BubbleMenu extends StatelessWidget {
             item.title,
             style: item.titleStyle,
           ),
-          const SizedBox(width: 14.0),
+          const SizedBox(width: 14),
           Icon(
             item.icon,
             color: item.iconColor,

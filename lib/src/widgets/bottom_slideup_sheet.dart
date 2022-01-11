@@ -16,8 +16,8 @@ abstract class SliderContent {
 }
 
 const BorderRadius _borderRadius = BorderRadius.only(
-  topLeft: Radius.circular(30.0),
-  topRight: Radius.circular(30.0),
+  topLeft: Radius.circular(30),
+  topRight: Radius.circular(30),
 );
 
 class BottomSlideupSheet {
@@ -55,7 +55,7 @@ class _SheetList extends StatelessWidget {
       decoration: BoxDecoration(
         color: Utils.isDarkMode(context) ? Colors.grey[600] : Colors.grey[400],
         borderRadius: const BorderRadius.all(
-          Radius.circular(12.0),
+          Radius.circular(12),
         ),
       ),
     );
@@ -102,7 +102,7 @@ class _SheetList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 12.0, right: 20, left: 20),
+      padding: const EdgeInsets.only(top: 12, right: 20, left: 20),
       child: DraggableScrollableSheet(
         expand: false,
         initialChildSize: sliderContent!.initialChildSize,

@@ -157,7 +157,7 @@ class _PlayPauseOverlay extends StatelessWidget {
                     child: Icon(
                       Icons.play_circle_outline,
                       color: Colors.white54,
-                      size: 80.0,
+                      size: 80,
                     ),
                   ),
                 ),
@@ -181,7 +181,7 @@ class _PlayPauseOverlay extends StatelessWidget {
             top: 0,
             left: 10,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: InkWell(
                 onTap: () {
                   OpenFile.open(Uri.parse(controller.dataSource).path);
@@ -203,7 +203,7 @@ class _PlayPauseOverlay extends StatelessWidget {
             child: controller.value.isPlaying
                 ? const SizedBox.shrink()
                 : Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8),
                     child: InkWell(
                       onTap: () {
                         onClose!();

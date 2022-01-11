@@ -77,13 +77,13 @@ class DraggableScrollbar extends StatefulWidget {
       Text? labelText,
     }) {
       final scrollThumb = Material(
-        elevation: 4.0,
+        elevation: 4,
         color: backgroundColor,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(heightScrollThumb),
           bottomLeft: Radius.circular(heightScrollThumb),
-          topRight: Radius.circular(4.0),
-          bottomRight: Radius.circular(4.0),
+          topRight: Radius.circular(4),
+          bottomRight: Radius.circular(4),
         ),
         child: Container(
           padding: const EdgeInsets.only(left: 4),
@@ -113,18 +113,17 @@ class ScrollLabel extends StatelessWidget {
   final Animation<double>? animation;
   final Text child;
 
-  static BoxConstraints constraints =
-      BoxConstraints.loose(const Size(48.0, 48.0));
+  static BoxConstraints constraints = BoxConstraints.loose(const Size(48, 48));
 
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: animation!,
       child: Container(
-        margin: const EdgeInsets.only(right: 22.0),
+        margin: const EdgeInsets.only(right: 22),
         child: Material(
           color: Colors.grey,
-          borderRadius: const BorderRadius.all(Radius.circular(6.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(6)),
           child: Container(
             constraints: constraints,
             alignment: Alignment.center,
@@ -151,8 +150,8 @@ class _DraggableScrollbarState extends State<DraggableScrollbar>
   @override
   void initState() {
     super.initState();
-    _barOffset = 0.0;
-    _viewOffset = 0.0;
+    _barOffset = 0;
+    _viewOffset = 0;
     _isDragInProcess = false;
 
     _thumbAnimationController = AnimationController(
@@ -184,7 +183,7 @@ class _DraggableScrollbarState extends State<DraggableScrollbar>
   }
 
   double get barMaxScrollExtent => context.size!.height - heightScrollThumb;
-  double get barMinScrollExtent => 0.0;
+  double get barMinScrollExtent => 0;
   double get viewMaxScrollExtent => widget.controller.position.maxScrollExtent;
   double get viewMinScrollExtent => widget.controller.position.minScrollExtent;
 
@@ -369,7 +368,7 @@ class SlideFadeTransition extends StatelessWidget {
           animation!.value == 0.0 ? Container() : child!,
       child: SlideTransition(
         position: Tween(
-          begin: const Offset(0.3, 0.0),
+          begin: const Offset(0.3, 0),
           end: Offset.zero,
         ).animate(animation!),
         child: FadeTransition(

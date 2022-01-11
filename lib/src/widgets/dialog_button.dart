@@ -15,7 +15,7 @@ class DialogButton extends StatelessWidget {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(5),
           ),
           backgroundColor:
               filled ? Theme.of(context).colorScheme.secondary : Colors.white,

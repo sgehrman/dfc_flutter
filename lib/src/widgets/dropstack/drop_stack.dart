@@ -81,7 +81,7 @@ class DropStack extends ChangeNotifier {
     for (final serverFile in _stack.list) {
       itemsDropping.add(
         Padding(
-          padding: const EdgeInsets.only(left: 12.0),
+          padding: const EdgeInsets.only(left: 12),
           child: Text(
             serverFile.name.preTruncate(),
           ),
@@ -108,7 +108,7 @@ class DropStack extends ChangeNotifier {
         Text('To:', style: TextStyle(color: Theme.of(context).primaryColor)),
         const SizedBox(height: 6),
         Padding(
-          padding: const EdgeInsets.only(left: 12.0),
+          padding: const EdgeInsets.only(left: 12),
           child: Text(directory.name.preTruncate()),
         ),
         ValueListenableBuilder<Box>(

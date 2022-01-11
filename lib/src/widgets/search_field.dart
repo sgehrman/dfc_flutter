@@ -160,7 +160,7 @@ class _SearchFieldState extends State<SearchField> {
         suffixIcon: Visibility(
           visible: Utils.isNotEmpty(_searchControllerConns.text),
           child: Padding(
-            padding: const EdgeInsets.only(right: 8.0),
+            padding: const EdgeInsets.only(right: 8),
             child: IconButton(
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,

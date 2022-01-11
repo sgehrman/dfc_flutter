@@ -35,7 +35,7 @@ Future<bool?> showConfirmDialog({
           ),
           title: Text(title),
           content: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 600.0),
+            constraints: const BoxConstraints(maxWidth: 600),
             child: SingleChildScrollView(
               child: ListBody(
                 children: <Widget>[

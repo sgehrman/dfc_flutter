@@ -151,7 +151,7 @@ class _HelpTipContentState extends State<HelpTipContent> {
 
     return Container(
       constraints: BoxConstraints(maxHeight: 800, maxWidth: widget.maxWidth),
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(12),
       child: tooltipBody,
     );
   }

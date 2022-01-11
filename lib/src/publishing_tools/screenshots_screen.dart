@@ -196,9 +196,9 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
           textAlign: TextAlign.center,
         ),
         Container(
-          margin: const EdgeInsets.all(2.0),
+          margin: const EdgeInsets.all(2),
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade300, width: 2.0),
+            border: Border.all(color: Colors.grey.shade300, width: 2),
           ),
           child: Image.memory(
             snapshot.data!.data,

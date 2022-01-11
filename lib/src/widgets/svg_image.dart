@@ -53,7 +53,7 @@ class _SvgImageState extends State<SvgImage> {
     if (failed) {
       return const Center(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(20),
           child: Text('Failed to load SVG image.'),
         ),
       );

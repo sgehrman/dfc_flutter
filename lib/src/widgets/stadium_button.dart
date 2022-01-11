@@ -18,12 +18,12 @@ class StadiumButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double vertical = 2;
-    double horizontal = 14.0;
+    double horizontal = 14;
     double fontSize = 14;
 
     if (large) {
       vertical = 8;
-      horizontal = 16.0;
+      horizontal = 16;
       fontSize = 16;
     }
 

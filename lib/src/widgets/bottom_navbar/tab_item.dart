@@ -44,7 +44,7 @@ class TabItem extends StatelessWidget {
               duration: const Duration(milliseconds: animDuration),
               alignment: Alignment(0, selected ? textOn : textOff),
               child: Padding(
-                padding: const EdgeInsets.all(5.0),
+                padding: const EdgeInsets.all(5),
                 child: Text(
                   title,
                   overflow: TextOverflow.ellipsis,
@@ -74,8 +74,8 @@ class TabItem extends StatelessWidget {
                           blendMode: BlendMode.srcIn,
                           shaderCallback: (Rect bounds) {
                             return ui.Gradient.linear(
-                              const Offset(4.0, 24.0),
-                              const Offset(24.0, 4.0),
+                              const Offset(4, 24),
+                              const Offset(24, 4),
                               gradient!.colors,
                             );
                           },

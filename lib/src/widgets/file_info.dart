@@ -84,7 +84,7 @@ class _FileInfoState extends State<FileInfo> {
         list.add(
           Align(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: CheckerboardContainer(
                 color: widget.serverFile!.isPdf ? Colors.white : null,
                 constraints:
@@ -140,7 +140,7 @@ class _FileInfoState extends State<FileInfo> {
         }
 
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
