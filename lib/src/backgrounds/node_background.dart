@@ -125,6 +125,7 @@ class _NodeBackgroundAnimationState extends State<NodeBackgroundAnimation>
     }
 
     // disabled
+    // ignore: literal_only_boolean_expressions
     if ('x' == 's') {
       _loadImage();
     }

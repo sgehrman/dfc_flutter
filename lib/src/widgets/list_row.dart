@@ -43,7 +43,7 @@ class ListRow extends StatelessWidget {
     final Color c = darkMode
         ? Colors.white.withOpacity(.02)
         : Colors.black.withOpacity(.01);
-    return index % 2 == 0 ? c : null;
+    return index.isEven ? c : null;
   }
 
   @override

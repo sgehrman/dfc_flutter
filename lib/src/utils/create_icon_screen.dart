@@ -65,10 +65,10 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
                 title: 'Save Icon',
               ),
               const SizedBox(height: 20),
-              const Text('\$ adb root'),
-              const Text('\$ adb shell'),
+              const Text(r'$ adb root'),
+              const Text(r'$ adb shell'),
               const Text(
-                '\$ adb pull /sdcard/Android/data/re.distantfutu.journal/files/icon.png',
+                r'$ adb pull /sdcard/Android/data/re.distantfutu.journal/files/icon.png',
               ),
             ],
           ),

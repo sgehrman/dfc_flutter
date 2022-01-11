@@ -139,7 +139,7 @@ class ReCase {
 
   final RegExp _upperAlphaRegex = RegExp('[A-Z]');
 
-  final symbolSet = {' ', '.', '/', '_', '\\', '-'};
+  final symbolSet = {' ', '.', '/', '_', r'\', '-'};
 
   late String originalText;
   late List<String> _words;

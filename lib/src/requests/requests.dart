@@ -2,11 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dfc_flutter/src/requests/common.dart';
+import 'package:dfc_flutter/src/requests/event.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart' as io_client;
-
-import 'common.dart';
-import 'event.dart';
 
 enum RequestBodyEncoding { json, formURLEncoded, plainText }
 enum HttpMethod { get, put, patch, post, delete, head }

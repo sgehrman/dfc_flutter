@@ -27,7 +27,7 @@ extension ExtendedInt on int {
 
   String formatCentsAsDollars() {
     if (this == 0) {
-      return '\$0';
+      return r'$0';
     }
 
     final val = this / 100;
