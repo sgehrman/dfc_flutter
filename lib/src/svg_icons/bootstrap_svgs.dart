@@ -1,3 +1,5 @@
+import 'package:dfc_flutter/src/svg_icons/svg_dev_mode.dart';
+
 class BootstrapSvgs {
   static const String fileMinusFill =
       '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" viewBox="0 0 16 16"> <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM6 7.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1z"/></svg>';
@@ -4157,11 +4159,9 @@ class BootstrapSvgs {
   static const String shiftFill =
       '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" viewBox="0 0 16 16"> <path d="M7.27 2.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v3a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-3H1.654C.78 10.5.326 9.455.924 8.816L7.27 2.047z"/></svg>';
 
-  static const bool devMode = false;
-
   static const everyIcon = [
     BootstrapSvgs.fileMinusFill,
-    if (devMode) ...[
+    if (svgDevMode) ...[
       BootstrapSvgs.exclude,
       BootstrapSvgs.mouse2,
       BootstrapSvgs.people,
@@ -5552,7 +5552,7 @@ class BootstrapSvgs {
 
   static const iconNames = [
     'fileMinusFill',
-    if (devMode) ...[
+    if (svgDevMode) ...[
       'exclude',
       'mouse2',
       'people',
