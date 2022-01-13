@@ -39,6 +39,7 @@ dependencies:
   intl: ^0.17.0
   json_annotation: ^4.3.0
   just_the_tooltip: ^0.0.11+1
+  loading_animation_widget: ^1.0.0+1
   mime_type: ^1.0.0
   native_pdf_renderer: ^4.0.0
   open_file:
