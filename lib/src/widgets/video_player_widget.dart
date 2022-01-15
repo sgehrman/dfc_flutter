@@ -123,7 +123,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       );
     }
 
-    return LoadingWidget();
+    return const LoadingWidget();
   }
 }
 
