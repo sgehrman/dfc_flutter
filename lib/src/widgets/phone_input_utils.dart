@@ -1,29 +1,28 @@
-import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 class PhoneInputUtils {
   static List<TextInputFormatter> inputFormatters() {
     return <TextInputFormatter>[
-      TextInputFormatter.withFunction(
-          (TextEditingValue oldValue, TextEditingValue newValue) {
-        String newText = newValue.text;
+      // TextInputFormatter.withFunction(
+      //     (TextEditingValue oldValue, TextEditingValue newValue) {
+      //   String newText = newValue.text;
 
-        TextSelection selection = newValue.selection;
+      //   TextSelection selection = newValue.selection;
 
-        if (Utils.isNotEmpty(newText)) {
-          if (newText[0] != '+') {
-            newText = '+1$newText';
+      //   if (Utils.isNotEmpty(newText)) {
+      //     if (newText[0] != '+') {
+      //       newText = '+1$newText';
 
-            selection = TextSelection.collapsed(offset: newText.length);
-          }
-        }
+      //       selection = TextSelection.collapsed(offset: newText.length);
+      //     }
+      //   }
 
-        return newValue.copyWith(
-          text: newText,
-          selection: selection,
-        );
-      }),
+      //   return newValue.copyWith(
+      //     text: newText,
+      //     selection: selection,
+      //   );
+      // }),
       PhoneInputFormatter(
         onCountrySelected: (PhoneCountryData? countryData) =>
             print(countryData?.country),
