@@ -15,7 +15,7 @@ class PhoneInputUtils {
           if (newText[0] != '+') {
             newText = '+1$newText';
 
-            selection = TextSelection.collapsed(offset: newText.length);
+            selection = TextSelection.collapsed(offset: selection.end + 2);
           }
         }
 
