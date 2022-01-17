@@ -11,7 +11,7 @@ class PhoneInputUtils {
 
         TextSelection selection = newValue.selection;
 
-        if (Utils.isNotEmpty(newText) && newText.length > 1) {
+        if (Utils.isNotEmpty(newText) && newText.length > 4) {
           if (newText[0] != '+') {
             newText = '+1$newText';
 
