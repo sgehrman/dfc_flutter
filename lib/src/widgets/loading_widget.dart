@@ -9,7 +9,7 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: LoadingAnimationWidget.fourRotatingDots(
+      child: LoadingAnimationWidget.staggeredDotsWave(
         color: Theme.of(context).primaryColor,
         size: size,
       ),
