@@ -15,6 +15,10 @@ class MarkdownText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = Theme.of(context).textTheme.bodyText1!.copyWith(
+          fontSize: fontSize,
+        );
+
     return MarkdownBody(
       onTapLink: onTapLink ??
           (text, href, title) {
@@ -22,11 +26,13 @@ class MarkdownText extends StatelessWidget {
           },
       styleSheet: MarkdownStyleSheet(
         blockSpacing: 8,
-        p: TextStyle(fontSize: fontSize),
-        h3: TextStyle(
-          fontSize: fontSize,
-          fontWeight: FontWeight.bold,
-        ),
+        a: textStyle,
+        p: textStyle,
+        h1: Theme.of(context).textTheme.headline1,
+        h2: Theme.of(context).textTheme.headline2,
+        h3: Theme.of(context).textTheme.headline3,
+        h4: Theme.of(context).textTheme.headline4,
+        h5: Theme.of(context).textTheme.headline5,
       ),
       data: text!,
     );
