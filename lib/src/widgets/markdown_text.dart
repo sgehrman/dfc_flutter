@@ -23,6 +23,7 @@ class MarkdownText extends StatelessWidget {
 
     final aStyle = textStyle.copyWith(
       decorationColor: Theme.of(context).primaryColor,
+      color: Theme.of(context).primaryColor,
     );
 
     return MarkdownBody(
