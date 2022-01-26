@@ -31,6 +31,7 @@ class Dates {
   static String formatLocalDateTime({
     required DateTime? date,
     bool addDay = false,
+    bool addSeconds = false,
   }) {
     if (date != null) {
       String day = '';
@@ -39,7 +40,13 @@ class Dates {
         day = 'E, ';
       }
 
-      final DateFormat formatter = DateFormat('${day}MMM dd, h:mm a');
+      String secs = '';
+
+      if (addSeconds) {
+        secs = ':ss';
+      }
+
+      final DateFormat formatter = DateFormat('${day}MMM dd, h:mm$secs a');
 
       return formatter.format(date.toLocal());
     }
