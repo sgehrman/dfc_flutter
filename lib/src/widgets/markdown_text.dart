@@ -17,7 +17,8 @@ class MarkdownText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.bodyText1!.copyWith(
+    // bodyText2 since bodyText1 might be bold
+    final textStyle = Theme.of(context).textTheme.bodyText2!.copyWith(
           fontSize: fontSize,
         );
 
