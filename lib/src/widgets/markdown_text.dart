@@ -26,6 +26,10 @@ class MarkdownText extends StatelessWidget {
       color: Theme.of(context).primaryColor,
     );
 
+    final boldStyle = textStyle.copyWith(
+      fontWeight: FontWeight.bold,
+    );
+
     return MarkdownBody(
       onTapLink: onTapLink ??
           (text, href, title) {
@@ -36,6 +40,7 @@ class MarkdownText extends StatelessWidget {
         textAlign: textAlign,
         a: aStyle,
         p: textStyle,
+        strong: boldStyle,
         h1: Theme.of(context).textTheme.headline1,
         h2: Theme.of(context).textTheme.headline2,
         h3: Theme.of(context).textTheme.headline3,
