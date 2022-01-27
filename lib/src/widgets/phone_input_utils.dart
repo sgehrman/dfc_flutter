@@ -3,6 +3,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 class PhoneInputUtils {
+  static String formatPhone(String phone) {
+    String? result;
+
+    if (Utils.isNotEmpty(phone)) {
+      result = formatAsPhoneNumber(phone);
+    }
+
+    return result ?? '';
+  }
+
   static List<TextInputFormatter> inputFormatters() {
     return <TextInputFormatter>[
       TextInputFormatter.withFunction(
