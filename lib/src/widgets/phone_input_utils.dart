@@ -8,6 +8,24 @@ class PhoneInputUtils {
 
     if (Utils.isNotEmpty(phone)) {
       result = formatAsPhoneNumber(phone!);
+
+      if (Utils.isNotEmpty(result)) {
+        // result not valid? Try adding a +1 and trying again
+        if (!isPhoneValid(result!)) {
+          // nothing changed?
+          if (phone == result) {
+            // add the +1 and try that
+            if (!result.startsWith('+')) {
+              result = formatAsPhoneNumber('+1$phone');
+
+              if (Utils.isNotEmpty(result) && !isPhoneValid(result!)) {
+                // still not valid? just return the passed in phone
+                result = phone;
+              }
+            }
+          }
+        }
+      }
     }
 
     return result ?? '';
