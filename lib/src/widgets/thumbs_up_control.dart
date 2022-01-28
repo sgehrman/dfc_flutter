@@ -20,7 +20,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
   Widget build(BuildContext context) {
     int? groupValue;
     if (widget.value != null) {
-      groupValue = widget.value == true ? 1 : 0;
+      groupValue = widget.value ?? false ? 1 : 0;
     } else {
       groupValue = null;
     }

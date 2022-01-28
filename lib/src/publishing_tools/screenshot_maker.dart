@@ -119,9 +119,9 @@ class ScreenshotMaker {
 
   Future<CaptureResult> _pictureToResults({
     required ui.PictureRecorder pictureRecorder,
+    required Rect rect,
     Size? imageSize,
     SizeType? resultImageSize,
-    required Rect rect,
     bool drawBackground = false,
   }) async {
     final pic = pictureRecorder.endRecording();

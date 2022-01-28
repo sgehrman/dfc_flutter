@@ -63,7 +63,7 @@ class GenericCard extends StatelessWidget {
   Widget _popupMenu() {
     return PopupMenuButton<String>(
       itemBuilder: (context) {
-        List<PopupMenuEntry<String>> menuItems = [];
+        final List<PopupMenuEntry<String>> menuItems = [];
 
         if (onEdit != null) {
           menuItems.add(
@@ -91,9 +91,7 @@ class GenericCard extends StatelessWidget {
           );
         }
 
-        menuItems = _addMenuSeparators(menuItems);
-
-        return menuItems;
+        return _addMenuSeparators(menuItems);
       },
       onSelected: (selected) async {
         switch (selected) {

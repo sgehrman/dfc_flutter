@@ -19,7 +19,7 @@ class DateTimeFormField extends StatelessWidget {
     this.onlyTime = false,
     DateTime? firstDate,
     DateTime? lastDate,
-  })  : assert(!onlyDate || !onlyTime),
+  })  : assert(!onlyDate || !onlyTime, 'date or time'),
         initialValue = initialValue ?? DateTime.now(),
         label = label ?? 'Date Time',
         formatter = formatter ??

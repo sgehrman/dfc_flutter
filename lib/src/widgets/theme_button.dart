@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class ThemeButton extends StatelessWidget {
   const ThemeButton({
-    this.title,
     required this.onPressed,
+    this.title,
     this.icon,
     this.disabled = false,
     this.padding,

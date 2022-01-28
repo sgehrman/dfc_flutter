@@ -167,7 +167,7 @@ class DropStack extends ChangeNotifier {
           topOnly: topOnly,
         );
 
-        if (drop == true) {
+        if (drop ?? false) {
           bool done = false;
 
           while (!done) {

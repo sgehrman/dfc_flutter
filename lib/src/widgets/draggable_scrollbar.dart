@@ -19,7 +19,6 @@ const widthScrollThumb = heightScrollThumb * 0.6;
 
 class DraggableScrollbar extends StatefulWidget {
   DraggableScrollbar({
-    Key? key,
     required this.child,
     required this.controller,
     this.backgroundColor = Colors.white,
@@ -27,7 +26,8 @@ class DraggableScrollbar extends StatefulWidget {
     this.scrollbarAnimationDuration = const Duration(milliseconds: 300),
     this.scrollbarTimeToFade = const Duration(milliseconds: 600),
     this.labelTextBuilder,
-  })  : assert(child.scrollDirection == Axis.vertical),
+    Key? key,
+  })  : assert(child.scrollDirection == Axis.vertical, 'direction bad'),
         scrollThumbBuilder = _thumbSemicircleBuilder(),
         super(key: key);
 
@@ -352,9 +352,9 @@ class _DraggableScrollbarState extends State<DraggableScrollbar>
 
 class SlideFadeTransition extends StatelessWidget {
   const SlideFadeTransition({
-    Key? key,
     required this.animation,
     required this.child,
+    Key? key,
   }) : super(key: key);
 
   final Animation<double>? animation;

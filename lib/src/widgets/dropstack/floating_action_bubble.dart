@@ -80,12 +80,12 @@ class FloatingActionBubble extends AnimatedWidget {
 class ActionBubble {
   const ActionBubble({
     required this.title,
-    this.subtitle,
     required this.titleStyle,
     required this.iconColor,
     required this.bubbleColor,
     required this.icon,
     required this.onPressed,
+    this.subtitle,
   });
 
   final IconData icon;

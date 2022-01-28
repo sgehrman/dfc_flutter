@@ -140,6 +140,7 @@ class ServerFile {
     }
 
     // Removes potential prepended permission bits, such as '(suid)' and '(guid)'.
+    // ignore: join_return_with_assignment
     _modeString = modeStr.substring(modeStr.length - 9);
 
     return _modeString;

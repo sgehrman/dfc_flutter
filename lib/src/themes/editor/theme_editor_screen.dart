@@ -34,7 +34,7 @@ class ThemeEditorScreen extends StatelessWidget {
                     'Do you want to delete the theme named: "${themes[index].name}"',
               );
 
-              if (result == true) {
+              if (result ?? false) {
                 ThemeSetManager.deleteTheme(themes[index]);
               }
             },

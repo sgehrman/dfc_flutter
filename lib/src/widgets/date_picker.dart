@@ -165,8 +165,8 @@ class DatePickerController {
 class _DateWidget extends StatelessWidget {
   const _DateWidget({
     required this.date,
-    this.disabled,
     required this.isSelected,
+    this.disabled,
     this.width,
     this.onDateSelected,
     this.locale,

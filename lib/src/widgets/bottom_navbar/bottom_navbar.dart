@@ -31,7 +31,7 @@ class BottomNavBar extends StatefulWidget {
     this.gradient,
     this.barBackgroundColor,
     this.barHeight = 60,
-  }) : assert(tabs.isNotEmpty && tabs.length < 5);
+  }) : assert(tabs.isNotEmpty && tabs.length < 5, 'tab length bad');
 
   final BottomNavBarController? controller;
   final Function(int position) onTabChangedListener;

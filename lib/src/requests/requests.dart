@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dfc_flutter/src/requests/common.dart';
-import 'package:dfc_flutter/src/requests/event.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart' as io_client;
 
@@ -59,7 +58,6 @@ class HTTPException implements Exception {
 class Requests {
   const Requests();
 
-  static final Event onError = Event();
   static const int defaultTimeoutSeconds = 10;
 
   static const RequestBodyEncoding defaultBodyEncoding =
@@ -164,11 +162,6 @@ class Requests {
       }
     }
     final response = Response(rawResponse);
-
-    if (response.hasError) {
-      final errorEvent = {'response': response};
-      onError.publish(errorEvent);
-    }
 
     return response;
   }

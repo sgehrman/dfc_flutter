@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class ColoredButton extends StatelessWidget {
   const ColoredButton({
+    required this.onPressed,
     this.title,
     this.label,
-    required this.onPressed,
     this.padding,
     this.color,
     this.textColor,

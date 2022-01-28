@@ -11,9 +11,9 @@ const double _kMenuScreenPadding = 8;
 
 class _MenuItem extends SingleChildRenderObjectWidget {
   const _MenuItem({
-    Key? key,
     required this.onLayout,
     required Widget? child,
+    Key? key,
   }) : super(key: key, child: child);
 
   final ValueChanged<Size> onLayout;
@@ -61,9 +61,9 @@ class _RenderMenuItem extends RenderShiftedBox {
 
 class _PopupMenu<T> extends StatelessWidget {
   const _PopupMenu({
-    Key? key,
     required this.route,
     required this.semanticLabel,
+    Key? key,
   }) : super(key: key);
 
   final _PopupMenuRoute<T> route;
@@ -221,7 +221,10 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
 
   @override
   bool shouldRelayout(_PopupMenuRouteLayout oldDelegate) {
-    assert(itemSizes.length == oldDelegate.itemSizes.length);
+    assert(
+      itemSizes.length == oldDelegate.itemSizes.length,
+      'shouldRelayout length bad',
+    );
 
     return position != oldDelegate.position ||
         selectedItemIndex != oldDelegate.selectedItemIndex ||
@@ -235,13 +238,13 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
   _PopupMenuRoute({
     required this.position,
     required this.items,
+    required this.barrierLabel,
+    required this.capturedThemes,
     this.initialValue,
     this.elevation,
-    required this.barrierLabel,
     this.semanticLabel,
     this.shape,
     this.color,
-    required this.capturedThemes,
   }) : itemSizes = List<Size?>.filled(items.length, null);
 
   final RelativeRect position;
@@ -330,8 +333,8 @@ Future<T?> showMenuu<T>({
   Color? color,
   bool useRootNavigator = false,
 }) {
-  assert(items.isNotEmpty);
-  assert(debugCheckHasMaterialLocalizations(context));
+  assert(items.isNotEmpty, 'items empty');
+  assert(debugCheckHasMaterialLocalizations(context), 'no localizaions');
 
   switch (Theme.of(context).platform) {
     case TargetPlatform.iOS:

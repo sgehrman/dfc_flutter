@@ -110,10 +110,8 @@ class FileSystem {
   // used for iOS sharing
   static Future<String> get filePickerPath async {
     if (Utils.isAndroid) {
-      String path = await FileSystem.dataDirectoryPath;
-      path += '/cache/file_picker/';
-
-      return path;
+      final String path = await FileSystem.dataDirectoryPath;
+      return '$path/cache/file_picker/';
     }
 
     // iOS

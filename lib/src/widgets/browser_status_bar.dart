@@ -37,7 +37,7 @@ class BrowserStatusBar extends StatelessWidget {
                 ),
               ),
             ),
-            if (locked == true) // could be null
+            if (locked ?? false) // could be null
               const Positioned.fill(
                 child: Align(
                   alignment: Alignment.centerLeft,
@@ -92,7 +92,7 @@ class BrowserStatusBar extends StatelessWidget {
               child: const Icon(Icons.more_horiz),
             ),
           ),
-          if (locked == true) // could be null
+          if (locked ?? false) // could be null
             const Positioned.fill(
               child: Align(
                 alignment: Alignment.centerLeft,
