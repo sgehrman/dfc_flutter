@@ -5,7 +5,7 @@ homepage: distantfutu.re
 publish_to: "none"
 
 environment:
-  sdk: ">=2.15.0 <3.0.0"
+  sdk: ">=2.16.0 <3.0.0"
 
 dependencies:
   barcode_image: ^2.0.0
