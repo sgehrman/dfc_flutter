@@ -8,10 +8,12 @@ class MarkdownText extends StatelessWidget {
     this.fontSize = 16,
     this.onTapLink,
     this.textAlign = WrapAlignment.start,
+    this.softLineBreak = false,
   });
 
   final String? text;
   final double fontSize;
+  final bool softLineBreak;
   final void Function(String text, String? href, String title)? onTapLink;
   final WrapAlignment textAlign;
 
@@ -36,6 +38,7 @@ class MarkdownText extends StatelessWidget {
           (text, href, title) {
             Utils.launchUrl(href!);
           },
+      softLineBreak: softLineBreak,
       styleSheet: MarkdownStyleSheet(
         blockSpacing: 8,
         textAlign: textAlign,
