@@ -24,7 +24,7 @@ class MenuItemData {
         action = null;
 
   final String title;
-  final Icon? icon;
+  final Widget? icon;
   final bool enabled;
   final int level;
   final void Function()? action;
