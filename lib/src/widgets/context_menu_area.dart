@@ -130,6 +130,7 @@ class MenuPopupButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      radius: Material.defaultSplashRadius,
       onTap: () {
         showContextMenu(
           localPosition: Offset(0, context.size?.height ?? 0),
