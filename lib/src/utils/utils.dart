@@ -185,8 +185,14 @@ class Utils {
       return '1.0.2';
     }
 
-    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    return packageInfo.version;
+    try {
+      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      return packageInfo.version;
+    } catch (err) {
+      print(err);
+    }
+
+    return '1.0.2';
   }
 
   static Future<String> getAppID() async {
@@ -194,8 +200,14 @@ class Utils {
       return '0.0.7';
     }
 
-    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    return packageInfo.packageName;
+    try {
+      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      return packageInfo.packageName;
+    } catch (err) {
+      print(err);
+    }
+
+    return '0.0.7';
   }
 
   static String? _webAppName;
@@ -205,9 +217,14 @@ class Utils {
       return _webAppName ?? 'web';
     }
 
-    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    try {
+      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      return packageInfo.appName;
+    } catch (err) {
+      print(err);
+    }
 
-    return packageInfo.appName;
+    return 'unknown';
   }
 
   static void showBanner(
