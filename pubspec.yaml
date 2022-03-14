@@ -44,7 +44,7 @@ dependencies:
   native_pdf_renderer: ^5.0.0+1
   open_file:
     git: https://github.com/crazecoder/open_file
-  package_info: ^2.0.2
+  package_info_plus: ^1.4.0
   path: ^1.8.0
   path_provider: ^2.0.9
   provider: ^6.0.2
