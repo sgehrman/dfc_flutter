@@ -48,9 +48,7 @@ class AppTheme {
     );
 
     final baseTheme = ThemeData(
-      visualDensity: Utils.isWeb
-          ? const VisualDensity(horizontal: 3, vertical: 3)
-          : VisualDensity.adaptivePlatformDensity,
+      visualDensity: VisualDensity.adaptivePlatformDensity,
       scaffoldBackgroundColor: themeSet.backgroundColor,
       popupMenuTheme: popupMenuTheme,
       bottomAppBarTheme: _bottomBarTheme(darkMode),
