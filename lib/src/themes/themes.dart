@@ -55,14 +55,18 @@ class AppTheme {
       bottomNavigationBarTheme: _bottomNavBarTheme(appColor),
       textTheme: _textTheme(darkMode),
       iconTheme: iconTheme,
-      dividerColor: darkMode
-          ? Colors.white12
-          : const Color.fromRGBO(
-              0,
-              0,
-              0,
-              .05,
-            ), // params.accentColor.withOpacity(.5),
+      dividerTheme: DividerThemeData(
+        thickness: 1, // web needs this, otherwise invisible
+        space: 2,
+        color: darkMode
+            ? Colors.white12
+            : const Color.fromRGBO(
+                0,
+                0,
+                0,
+                .05,
+              ),
+      ),
       primaryColor: appColor,
       primaryColorLight: appColor, // circle avatar uses these light/dark
       primaryColorDark: appColor,
