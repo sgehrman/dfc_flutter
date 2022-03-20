@@ -45,20 +45,21 @@ class _FileInfoState extends State<FileInfo> {
 
   Future<void> _loadPDFImage() async {
     if (widget.serverFile != null) {
-      // SNG not sure why this was here
-      // if (!_onWeb) {
-      if (widget.serverFile!.isPdf) {
-        // open pdf, make image of first page
-        final document = await PdfDocument.openFile(widget.serverFile!.path!);
-        final page = await document.getPage(1);
-        final PdfPageImage? pageImage =
-            await page.render(width: page.width, height: page.height);
+      // web ui doesn't handle openFile, need to move this to the server preview
+      // if we want this to work
+      if (!_onWeb) {
+        if (widget.serverFile!.isPdf) {
+          // open pdf, make image of first page
+          final document = await PdfDocument.openFile(widget.serverFile!.path!);
+          final page = await document.getPage(1);
+          final PdfPageImage? pageImage =
+              await page.render(width: page.width, height: page.height);
 
-        setState(() {
-          _pdfImageData = pageImage!.bytes;
-        });
+          setState(() {
+            _pdfImageData = pageImage!.bytes;
+          });
+        }
       }
-      // }
     }
   }
 
