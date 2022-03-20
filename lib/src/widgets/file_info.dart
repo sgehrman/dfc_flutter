@@ -9,7 +9,7 @@ import 'package:dfc_flutter/src/widgets/fade_image.dart';
 import 'package:dfc_flutter/src/widgets/video_player_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:native_pdf_renderer/native_pdf_renderer.dart';
+import 'package:pdfx/pdfx.dart';
 
 class FileInfo extends StatefulWidget {
   const FileInfo({
