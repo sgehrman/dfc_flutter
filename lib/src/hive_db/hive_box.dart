@@ -66,6 +66,12 @@ class HiveBox<T> {
     _box?.add(data);
   }
 
+  void putAt(int index, T data) {
+    assert(_box != null, 'Box is closed: $name');
+
+    _box?.putAt(index, data);
+  }
+
   T? getAt(int index) {
     assert(_box != null, 'Box is closed: $name');
 
