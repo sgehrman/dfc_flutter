@@ -48,7 +48,7 @@ class HiveBox<T> {
     }
   }
 
-  bool containsKey(dynamic key) {
+  bool containsKey(Object key) {
     assert(_box != null, 'Box is closed: $name');
 
     return _box?.containsKey(key) ?? false;
@@ -66,13 +66,13 @@ class HiveBox<T> {
     _box?.add(data);
   }
 
-  Future<void> put(dynamic key, T data) async {
+  Future<void> put(Object key, T data) async {
     assert(_box != null, 'Box is closed: $name');
 
     return _box?.put(key, data);
   }
 
-  T? get(dynamic key, {T? defaultValue}) {
+  T? get(Object key, {T? defaultValue}) {
     assert(_box != null, 'Box is closed: $name');
 
     return _box?.get(key, defaultValue: defaultValue);
@@ -90,7 +90,7 @@ class HiveBox<T> {
     return _box?.clear();
   }
 
-  Future<void>? delete(dynamic key) async {
+  Future<void>? delete(Object key) async {
     assert(_box != null, 'Box is closed: $name');
 
     return _box?.delete(key);
