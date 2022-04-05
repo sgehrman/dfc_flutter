@@ -60,10 +60,16 @@ class HiveBox<T> {
     return _box?.length;
   }
 
-  void add(T data) {
+  Future<void> add(T data) async {
     assert(_box != null, 'Box is closed: $name');
 
-    _box?.add(data);
+    await _box?.add(data);
+  }
+
+  Future<void> addAll(List<T> data) async {
+    assert(_box != null, 'Box is closed: $name');
+
+    await _box?.addAll(data);
   }
 
   Future<void> put(Object key, T data) async {
