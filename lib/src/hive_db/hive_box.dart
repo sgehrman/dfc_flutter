@@ -90,7 +90,7 @@ class HiveBox<T> {
     return _box?.clear();
   }
 
-  Future<void>? delete(String key) async {
+  Future<void>? delete(dynamic key) async {
     assert(_box != null, 'Box is closed: $name');
 
     return _box?.delete(key);
