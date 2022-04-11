@@ -97,6 +97,7 @@ export 'src/widgets/markdown_text.dart';
 export 'src/widgets/measure_size.dart';
 export 'src/widgets/menu_button.dart';
 export 'src/widgets/menu_item.dart';
+export 'src/widgets/page_fader.dart';
 export 'src/widgets/phone_input_utils.dart';
 export 'src/widgets/preview_dialog.dart';
 export 'src/widgets/primary_title.dart';
