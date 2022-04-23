@@ -352,9 +352,8 @@ class Utils {
   }
 
   static Future<void> launchUrl(String url, {bool newTab = true}) async {
-    if (await canLaunch(url)) {
-      // the default is newTab, '_blank', set _self for same window on web
-      await launch(url, webOnlyWindowName: newTab ? null : '_self');
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(url, newTab: newTab);
     } else {
       print('Could not launch $url');
     }
