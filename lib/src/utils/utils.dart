@@ -14,7 +14,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_parsed_text/flutter_parsed_text.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart' as p;
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart' as launcher;
 
 // Some globals I may want to experiment with
 
@@ -352,8 +352,11 @@ class Utils {
   }
 
   static Future<void> launchUrl(String url, {bool newTab = true}) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(url, newTab: newTab);
+    if (await launcher.canLaunchUrl(Uri.parse(url))) {
+      await launcher.launchUrl(
+        Uri.parse(url),
+        webOnlyWindowName: newTab ? null : '_self',
+      );
     } else {
       print('Could not launch $url');
     }
