@@ -37,6 +37,12 @@ class FadeImage extends StatelessWidget {
 
 // =================================================================
 
+Uint8List transparentImage() {
+  return _transparentImage;
+}
+
+// =================================================================
+
 final Uint8List _transparentImage = Uint8List.fromList(<int>[
   0x89,
   0x50,
