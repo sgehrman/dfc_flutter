@@ -55,7 +55,7 @@ class SizeMenu extends StatelessWidget {
       menuItems.add(
         PopupMenuItem<SizeMenuItem>(
           value: item,
-          child: MenuItem(
+          child: MenuItemSpec(
             icon: const Icon(Icons.compare),
             name: item.title,
           ),

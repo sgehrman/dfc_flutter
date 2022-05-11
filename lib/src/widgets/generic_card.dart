@@ -70,7 +70,7 @@ class GenericCard extends StatelessWidget {
             PopupMenuItem<String>(
               value: 'edit',
               enabled: onEdit != null,
-              child: const MenuItem(
+              child: const MenuItemSpec(
                 icon: Icon(Icons.edit),
                 name: 'Edit',
               ),
@@ -83,7 +83,7 @@ class GenericCard extends StatelessWidget {
             PopupMenuItem<String>(
               value: 'delete',
               enabled: onDelete != null,
-              child: const MenuItem(
+              child: const MenuItemSpec(
                 icon: Icon(Icons.delete),
                 name: 'Delete',
               ),

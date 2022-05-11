@@ -59,7 +59,7 @@ class MenuButton<T> extends StatelessWidget {
       menuItems.add(
         PopupMenuItem<MenuButtonItem<T>>(
           value: item,
-          child: MenuItem(
+          child: MenuItemSpec(
             icon: Icon(
               item.iconData,
               size: iconSize,

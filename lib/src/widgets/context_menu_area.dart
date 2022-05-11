@@ -52,7 +52,7 @@ Future<void> showContextMenu({
           padding: EdgeInsets.zero,
           // set height otherwise it's huge
           height: 10,
-          child: MenuItem(
+          child: MenuItemSpec(
             icon: itemData.icon,
             name: itemData.title,
             level: itemData.level,

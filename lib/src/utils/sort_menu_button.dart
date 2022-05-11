@@ -32,7 +32,7 @@ class BrowserSortMenuButton extends StatelessWidget {
       CheckedPopupMenuItem<BrowserSortMenuItem>(
         value: foldersFirst,
         checked: BrowserPrefs.sortFoldersFirst!,
-        child: MenuItem(
+        child: MenuItemSpec(
           name: foldersFirst.name,
         ),
       ),
@@ -47,7 +47,7 @@ class BrowserSortMenuButton extends StatelessWidget {
       CheckedPopupMenuItem<BrowserSortMenuItem>(
         value: ascendingItem,
         checked: BrowserPrefs.sortAscending!,
-        child: MenuItem(
+        child: MenuItemSpec(
           name: ascendingItem.name,
         ),
       ),
@@ -64,7 +64,7 @@ class BrowserSortMenuButton extends StatelessWidget {
         CheckedPopupMenuItem<BrowserSortMenuItem>(
           value: item,
           checked: item.sortType!.id == BrowserPrefs.sortType,
-          child: MenuItem(
+          child: MenuItemSpec(
             name: item.name,
           ),
         ),

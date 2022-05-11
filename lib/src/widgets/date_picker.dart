@@ -65,9 +65,9 @@ class _DatePickerState extends State<DatePicker> {
         scrollDirection: Axis.horizontal,
         controller: _controller,
         itemBuilder: (context, index) {
-          DateTime date;
-          final DateTime _date = widget.startDate.add(Duration(days: index));
-          date = DateTime(_date.year, _date.month, _date.day);
+          final DateTime tmpDate = widget.startDate.add(Duration(days: index));
+          final DateTime date =
+              DateTime(tmpDate.year, tmpDate.month, tmpDate.day);
 
           final bool isSelected = date == _currentDate;
 

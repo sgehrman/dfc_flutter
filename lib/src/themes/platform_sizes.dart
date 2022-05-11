@@ -1,5 +1,3 @@
-import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
 
 final Sizes kFontSize = Sizes.fonts();
@@ -17,7 +15,7 @@ class Sizes {
   // ex: const bool isProduction = bool.fromEnvironment('dart.vm.product');
 
   factory Sizes.fonts() {
-    final window = WidgetsBinding.instance?.window ?? ui.window;
+    final window = WidgetsBinding.instance.window;
     double pixelRatio = window.devicePixelRatio;
     if (pixelRatio > 1.0) {
       pixelRatio = 1.25;
@@ -42,7 +40,7 @@ class Sizes {
   }
 
   factory Sizes.icons() {
-    final window = WidgetsBinding.instance?.window ?? ui.window;
+    final window = WidgetsBinding.instance.window;
     double pixelRatio = window.devicePixelRatio;
     if (pixelRatio > 1.0) {
       pixelRatio = 1.25;
