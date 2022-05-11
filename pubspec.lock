@@ -28,7 +28,7 @@ packages:
       name: args
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.1"
   async:
     dependency: transitive
     description:
@@ -272,7 +272,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: a4855f8356f0ff416062c8aeb0cdb59f263e71c7
+      resolved-ref: "9a61e68ffb53334d4101d69e8ff25a3e5dfb1e2a"
       url: "https://github.com/sgehrman/dfc_lints"
     source: git
     version: "1.0.6"
@@ -1178,5 +1178,5 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
-  dart: ">=2.17.0-0 <3.0.0"
+  dart: ">=2.17.0 <3.0.0"
   flutter: ">=2.10.0"
