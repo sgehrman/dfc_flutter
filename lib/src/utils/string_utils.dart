@@ -53,13 +53,21 @@ class StrUtils {
     return EmailValidator.validate(trimmedEmail);
   }
 
-  static String stringToHex(String inString) {
-    return hexFromData(inString.codeUnits);
+  static String stringToHex(String? inString) {
+    if (inString != null) {
+      return hexFromData(inString.codeUnits);
+    }
+
+    return '';
   }
 
-  static String hexToString(String hexString) {
-    final charCodes = dataFromHex(hexString);
-    return String.fromCharCodes(charCodes);
+  static String hexToString(String? hexString) {
+    if (hexString != null) {
+      final charCodes = dataFromHex(hexString);
+      return String.fromCharCodes(charCodes);
+    }
+
+    return '';
   }
 
   static String hexFromData(List<int> data) {
