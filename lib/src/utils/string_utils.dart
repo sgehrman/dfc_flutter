@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:crypto/crypto.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hex/hex.dart';
 
 class StrUtils {
   static void print(String output) {
@@ -49,5 +51,28 @@ class StrUtils {
     }
 
     return EmailValidator.validate(trimmedEmail);
+  }
+
+  static String stringToHex(String inString) {
+    return hexFromData(inString.codeUnits);
+  }
+
+  static String hexToString(String hexString) {
+    final charCodes = dataFromHex(hexString);
+    return String.fromCharCodes(charCodes);
+  }
+
+  static String hexFromData(List<int> data) {
+    return HEX.encode(data);
+  }
+
+  static List<int> dataFromHex(String hexString) {
+    return HEX.decode(hexString);
+  }
+
+  static String hashStringSHA256(String input) {
+    final bytes = utf8.encode(input);
+    final digest = sha256.convert(bytes);
+    return hexFromData(digest.bytes);
   }
 }

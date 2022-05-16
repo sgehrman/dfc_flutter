@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:crypto/crypto.dart';
-import 'package:hex/hex.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Common {
@@ -42,20 +40,6 @@ class Common {
 
   static bool hasKeyIgnoreCase(Map map, String key) {
     return map.keys.any((dynamic x) => equalsIgnoreCase(x as String, key));
-  }
-
-  static String toHexString(List<int> data) {
-    return HEX.encode(data);
-  }
-
-  static List fromHexString(String hexString) {
-    return HEX.decode(hexString);
-  }
-
-  static String hashStringSHA256(String input) {
-    final bytes = utf8.encode(input);
-    final digest = sha256.convert(bytes);
-    return toHexString(digest.bytes);
   }
 
   static String encodeMap(Map data) {

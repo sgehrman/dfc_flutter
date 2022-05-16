@@ -3,10 +3,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dfc_flutter/src/requests/common.dart';
+import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/io_client.dart' as io_client;
 
 enum RequestBodyEncoding { json, formURLEncoded, plainText }
+
 enum HttpMethod { get, put, patch, post, delete, head }
 
 class Response {
@@ -113,7 +115,7 @@ class Requests {
 
   static Future<Map<String, String>> getStoredCookies(String hostname) async {
     try {
-      final String hostnameHash = Common.hashStringSHA256(hostname);
+      final String hostnameHash = StrUtils.hashStringSHA256(hostname);
       final String? cookiesJson =
           await Common.storageGet('cookies-$hostnameHash');
 
@@ -133,13 +135,13 @@ class Requests {
     String hostname,
     Map<String, String> cookies,
   ) async {
-    final String hostnameHash = Common.hashStringSHA256(hostname);
+    final String hostnameHash = StrUtils.hashStringSHA256(hostname);
     final String cookiesJson = Common.toJson(cookies);
     await Common.storageSet('cookies-$hostnameHash', cookiesJson);
   }
 
   static Future clearStoredCookies(String hostname) async {
-    final String hostnameHash = Common.hashStringSHA256(hostname);
+    final String hostnameHash = StrUtils.hashStringSHA256(hostname);
     await Common.storageRemove('cookies-$hostnameHash');
   }
 
