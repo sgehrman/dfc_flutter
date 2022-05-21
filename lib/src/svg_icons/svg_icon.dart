@@ -75,12 +75,12 @@ class SvgIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final String svgString = svg;
 
-    Color svgColor = color ?? Colors.black;
+    // Color svgColor = color ?? Colors.black;
 
-    // if no color passed in, use the current theme color
-    if (color == null) {
-      svgColor = Theme.of(context).iconTheme.color ?? Colors.black;
-    }
+    // // if no color passed in, use the current theme color
+    // if (color == null) {
+    //   svgColor = Theme.of(context).iconTheme.color ?? Colors.black;
+    // }
 
     // if (Utils.isWeb) {
     //   svgString = _webFix(svgString, svgColor);
@@ -89,12 +89,14 @@ class SvgIcon extends StatelessWidget {
     return Row(
       mainAxisAlignment: mainAxisAlignment,
       children: [
-        SizedBox(
+        AnimatedContainer(
           height: size,
           width: size,
+          duration: animationDuration,
+          curve: animationCurve,
           child: SvgPicture.string(
             svgString,
-            color: svgColor,
+            // color: svgColor,
             width: size,
             fit: fit,
             allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
