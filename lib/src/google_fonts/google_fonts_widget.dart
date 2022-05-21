@@ -9,12 +9,17 @@ import 'package:dfc_flutter/src/widgets/theme_button.dart';
 import 'package:flutter/material.dart';
 
 class _FontObj {
-  _FontObj({this.name, this.displayName, this.fav, this.firstChar});
+  _FontObj({
+    required this.name,
+    required this.displayName,
+    required this.fav,
+    required this.firstChar,
+  });
 
-  final String? name;
-  final String? displayName;
-  final String? firstChar;
-  bool? fav;
+  final String name;
+  final String displayName;
+  final String firstChar;
+  bool fav;
 }
 
 class GoogleFontsWidget extends StatefulWidget {
@@ -70,7 +75,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
         index = min(index, _fontList.length - 1);
 
         return Text(
-          _fontList[index].firstChar!,
+          _fontList[index].firstChar,
           style: const TextStyle(color: Colors.white, fontSize: 24),
         );
       },
@@ -103,7 +108,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12),
                           child: Text(
-                            fontObj.displayName!,
+                            fontObj.displayName,
                             style: theme.headline6!.copyWith(
                               color: fontObj.name == currentFont
                                   ? Theme.of(context).primaryColor
@@ -116,13 +121,13 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
                         iconSize: 18,
                         onPressed: () {
                           setState(() {
-                            fontObj.fav = !fontObj.fav!;
+                            fontObj.fav = !fontObj.fav;
 
                             // save in prefs
                             final List<String?> favs =
                                 Preferences().getFavoriteGoogleFonts();
 
-                            if (fontObj.fav!) {
+                            if (fontObj.fav) {
                               favs.add(fontObj.name);
                             } else {
                               favs.remove(fontObj.name);
@@ -131,7 +136,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
                             Preferences().setFavoriteGoogleFonts(favs);
                           });
                         },
-                        icon: fontObj.fav!
+                        icon: fontObj.fav
                             ? const Icon(
                                 Icons.favorite,
                                 color: Colors.red,

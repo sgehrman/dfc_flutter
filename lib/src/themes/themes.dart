@@ -122,7 +122,7 @@ class AppTheme {
       return theme;
     }
 
-    return themeWithGoogleFont(themeSet.fontName, theme);
+    return themeWithGoogleFont(themeSet.fontName!, theme);
   }
 
   TextTheme _textTheme(bool darkMode) {
