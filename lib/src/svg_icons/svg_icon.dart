@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -78,18 +79,18 @@ class SvgIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String svgString = svg;
+    String svgString = svg;
 
-    final Color svgColor = color ?? Colors.black;
+    Color svgColor = color ?? Colors.black;
 
     // if no color passed in, use the current theme color
-    // if (color == null) {
-    //   svgColor = Theme.of(context).iconTheme.color ?? Colors.black;
-    // }
+    if (color == null) {
+      svgColor = Theme.of(context).iconTheme.color ?? Colors.black;
+    }
 
-    // if (Utils.isWeb) {
-    //   svgString = _webFix(svgString, svgColor);
-    // }
+    if (Utils.isWeb) {
+      svgString = _webFix(svgString, svgColor);
+    }
 
     return Row(
       mainAxisAlignment: mainAxisAlignment,

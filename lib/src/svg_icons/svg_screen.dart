@@ -134,7 +134,7 @@ class _SvgScreenState extends State<SvgScreen> {
                         const SizedBox(height: 20),
                         InkWell(
                           onTap: () {
-                            Clipboard.setData(ClipboardData(text: item.icon));
+                            Clipboard.setData(ClipboardData(text: item.name));
 
                             Utils.showCopiedToast(context);
                           },
