@@ -25,12 +25,12 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^1.0.3
   flutter_keyboard_visibility: ^5.2.0
-  flutter_markdown: ^0.6.10
+  flutter_markdown: ^0.6.10+1
   flutter_multi_formatter: ^2.5.1
   flutter_parsed_text: ^2.2.1
   flutter_svg:
     git: https://github.com/dnfield/flutter_svg.git
-  google_fonts: ^3.0.0
+  google_fonts: ^3.0.1
   hex: ^0.2.0
   hive: ^2.2.1
   hive_flutter: ^1.1.0
@@ -48,7 +48,7 @@ dependencies:
   path: ^1.8.0
   path_provider: ^2.0.9
   pdfx: ^2.0.1+1
-  provider: ^6.0.2
+  provider: ^6.0.3
   random_string: ^2.3.1
   share_extend:
     git: https://github.com/finroly/ShareExtend.git
