@@ -9,7 +9,8 @@ class FadeImage extends StatelessWidget {
     this.height,
     this.width,
     this.missingImage,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final String url;
   final BoxFit fit;
