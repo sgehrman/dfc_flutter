@@ -50,6 +50,9 @@ class AppTheme {
     final baseTheme = ThemeData(
       visualDensity: VisualDensity.adaptivePlatformDensity,
       scaffoldBackgroundColor: themeSet.backgroundColor,
+      drawerTheme: DrawerThemeData(
+        backgroundColor: themeSet.backgroundColor,
+      ),
       popupMenuTheme: popupMenuTheme,
       bottomAppBarTheme: _bottomBarTheme(darkMode),
       bottomNavigationBarTheme: _bottomNavBarTheme(appColor),
