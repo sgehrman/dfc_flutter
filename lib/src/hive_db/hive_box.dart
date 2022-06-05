@@ -54,10 +54,10 @@ class HiveBox<T> {
     return _box?.containsKey(key) ?? false;
   }
 
-  int? get length {
+  int get length {
     assert(_box != null, 'Box is closed: $name');
 
-    return _box?.length;
+    return _box?.length ?? 0;
   }
 
   Future<void> add(T data) async {
@@ -84,19 +84,19 @@ class HiveBox<T> {
     return _box?.get(key, defaultValue: defaultValue);
   }
 
-  List<T>? getAll() {
+  List<T> getAll() {
     assert(_box != null, 'Box is closed: $name');
 
-    return _box?.values.toList();
+    return _box?.values.toList() ?? [];
   }
 
-  Future<int?> clear() async {
+  Future<int> clear() async {
     assert(_box != null, 'Box is closed: $name');
 
-    return _box?.clear();
+    return _box != null ? (await _box!.clear()) : 0;
   }
 
-  Future<void>? delete(Object key) async {
+  Future<void> delete(Object key) async {
     assert(_box != null, 'Box is closed: $name');
 
     return _box?.delete(key);
@@ -105,10 +105,10 @@ class HiveBox<T> {
   // ------------------------------------
   // by index
 
-  void putAt(int index, T data) {
+  Future<void> putAt(int index, T data) async {
     assert(_box != null, 'Box is closed: $name');
 
-    _box?.putAt(index, data);
+    return _box?.putAt(index, data);
   }
 
   T? getAt(int index) {
@@ -117,7 +117,7 @@ class HiveBox<T> {
     return _box?.getAt(index);
   }
 
-  Future<void>? deleteAt(int index) async {
+  Future<void> deleteAt(int index) async {
     assert(_box != null, 'Box is closed: $name');
 
     return _box?.deleteAt(index);
