@@ -104,23 +104,22 @@ class HiveBox<T> {
 
   // ------------------------------------
   // by index
-  // not sure if this is used, may delete
 
-  // void putAt(int index, T data) {
-  //   assert(_box != null, 'Box is closed: $name');
+  void putAt(int index, T data) {
+    assert(_box != null, 'Box is closed: $name');
 
-  //   _box?.putAt(index, data);
-  // }
+    _box?.putAt(index, data);
+  }
 
-  // T? getAt(int index) {
-  //   assert(_box != null, 'Box is closed: $name');
+  T? getAt(int index) {
+    assert(_box != null, 'Box is closed: $name');
 
-  //   return _box?.getAt(index);
-  // }
+    return _box?.getAt(index);
+  }
 
-  // Future<void>? deleteAt(int index) async {
-  //   assert(_box != null, 'Box is closed: $name');
+  Future<void>? deleteAt(int index) async {
+    assert(_box != null, 'Box is closed: $name');
 
-  //   return _box?.deleteAt(index);
-  // }
+    return _box?.deleteAt(index);
+  }
 }
