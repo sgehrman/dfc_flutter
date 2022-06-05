@@ -22,7 +22,15 @@ class FadeImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return FadeInImage.memoryNetwork(
       imageErrorBuilder: (context, error, stackTrace) {
-        return SizedBox(height: height, width: width, child: missingImage);
+        if (missingImage != null) {
+          if (height != null && width != null) {
+            return SizedBox(height: height, width: width, child: missingImage);
+          } else {
+            return missingImage!;
+          }
+        }
+
+        return const Icon(Icons.warning);
       },
       placeholder: _transparentImage,
       image: url,

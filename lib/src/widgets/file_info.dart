@@ -72,6 +72,7 @@ class _FileInfoState extends State<FileInfo> {
       if ((widget.serverFile!.isImageDrawable || widget.serverFile!.isPdf) &&
           !widget.serverFile!.isSvg) {
         if (_onWeb) {
+          // SNG this url is for our server, should be passed in?
           String url = '${widget.hostUrl}?preview=${widget.serverFile!.path}';
           url = Uri.encodeFull(url);
           child = FadeImage(url: url, fit: BoxFit.contain);
@@ -98,6 +99,7 @@ class _FileInfoState extends State<FileInfo> {
         );
       } else if (widget.serverFile!.isVideo) {
         if (_onWeb) {
+          // SNG this url is for our server, should be passed in?
           String url = '${widget.hostUrl}?preview=${widget.serverFile!.path}';
           url = Uri.encodeFull(url);
 
