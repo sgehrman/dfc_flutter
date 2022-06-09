@@ -1,6 +1,5 @@
-import 'package:flare_flutter/flare_actor.dart';
-import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/material.dart';
+import 'package:rive/rive.dart';
 
 class TreasureAnimation extends StatefulWidget {
   @override
@@ -8,23 +7,30 @@ class TreasureAnimation extends StatefulWidget {
 }
 
 class _TreasureAnimationState extends State<TreasureAnimation> {
-  final FlareControls _controller = FlareControls();
+  late RiveAnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = SimpleAnimation('box');
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       highlightColor: Colors.transparent,
       onTap: () {
-        _controller.play('box');
+        // _controller.play('box');
       },
       child: SizedBox(
         height: 300,
         width: 300,
-        child: FlareActor(
-          'packages/dfc_flutter/assets/animations/treasure.flr',
-          controller: _controller,
-          color: Theme.of(context).primaryColor,
-          animation: 'box',
+        child: RiveAnimation.asset(
+          'assets/animations/treasure.flr',
+          // color: Theme.of(context).primaryColor,
+          controllers: [_controller],
+          // Update the play state when the widget's initialized
+          // onInit: (_) => setState(() { _isPlaying = false}),
         ),
       ),
     );
