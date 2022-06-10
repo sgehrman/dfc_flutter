@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/image/image_viewer.dart';

@@ -296,7 +296,7 @@ packages:
       name: extended_image
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.2.1"
+    version: "6.2.1"
   extended_image_library:
     dependency: transitive
     description:
@@ -410,11 +410,9 @@ packages:
   flutter_svg:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "1e053b954b0b7c8f2a0777850dac11616c5aa9a3"
-      url: "https://github.com/dnfield/flutter_svg.git"
-    source: git
+      name: flutter_svg
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "1.1.0"
   flutter_web_plugins:
     dependency: transitive
@@ -627,11 +625,9 @@ packages:
   open_file:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "2cadda6d282935afce8b02aefe41a198f0c49c0c"
-      url: "https://github.com/crazecoder/open_file"
-    source: git
+      name: open_file
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "3.2.1"
   package_config:
     dependency: transitive
@@ -846,12 +842,10 @@ packages:
   share_extend:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "8d5a1d01ef4c9404906602e2ad83a0d59cb6aba4"
-      url: "https://github.com/finroly/ShareExtend.git"
-    source: git
-    version: "1.1.9"
+      name: share_extend
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   shared_preferences:
     dependency: "direct main"
     description:
