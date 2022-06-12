@@ -94,3 +94,46 @@ class Debouncer {
     }
   }
 }
+
+// =================================================================
+
+class DebounceLast<T> {
+  DebounceLast({
+    required this.action,
+    this.milliseconds = 500,
+  });
+
+  final int milliseconds;
+  final Function(T value) action;
+  Timer? _timer;
+  bool _disposed = false;
+  T? _last;
+
+  void dispose() {
+    _disposed = true;
+  }
+
+  void run(T data) {
+    _last = data;
+
+    if (_timer == null) {
+      // print('## Debooster already running');
+    } else {
+      _timer = Timer(
+        Duration(milliseconds: milliseconds),
+        () {
+          _timer!.cancel();
+          _timer = null;
+
+          if (!_disposed) {
+            if (_last != null) {
+              action(_last as T);
+            }
+
+            _last = null;
+          }
+        },
+      );
+    }
+  }
+}
