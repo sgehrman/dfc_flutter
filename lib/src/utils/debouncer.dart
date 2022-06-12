@@ -116,7 +116,7 @@ class DebounceLast<T> {
   void run(T data) {
     _last = data;
 
-    if (_timer == null) {
+    if (_timer != null) {
       // print('## Debooster already running');
     } else {
       _timer = Timer(
