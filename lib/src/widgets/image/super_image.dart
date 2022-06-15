@@ -103,6 +103,7 @@ class SuperImage extends StatelessWidget {
                 final Hero hero = flightDirection != HeroFlightDirection.push
                     ? fromHeroContext.widget as Hero
                     : toHeroContext.widget as Hero;
+
                 return hero.child;
               },
               child: child,

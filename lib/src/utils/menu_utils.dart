@@ -29,7 +29,7 @@ class MenuUtils {
         Offset.zero & overlay.size,
       );
 
-      final result = await showMenuu<T>(
+      return showMenuu<T>(
         context: context,
         elevation: popupMenuTheme.elevation,
         items: menuItems,
@@ -37,8 +37,6 @@ class MenuUtils {
         shape: popupMenuTheme.shape,
         color: popupMenuTheme.color,
       );
-
-      return result;
     }
 
     return null;

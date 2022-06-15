@@ -68,21 +68,17 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
               const BrowserHeader(
                 'Example Header',
               ),
-              const Padding(
+              const ListRow(
                 padding: EdgeInsets.symmetric(horizontal: 16),
-                child: ListRow(
-                  title: 'Example List item',
-                  leading: SvgIcon(FontAwesomeSvgs.regularFolder),
-                  subtitle: 'Subtitle example',
-                ),
+                title: 'Example List item',
+                leading: SvgIcon(FontAwesomeSvgs.regularFolder),
+                subtitle: 'Subtitle example',
               ),
-              const Padding(
+              const ListRow(
                 padding: EdgeInsets.symmetric(horizontal: 16),
-                child: ListRow(
-                  title: 'Example List item',
-                  leading: SvgIcon(FontAwesomeSvgs.regularFolder),
-                  subtitle: 'Subtitle example',
-                ),
+                title: 'Example List item',
+                leading: SvgIcon(FontAwesomeSvgs.regularFolder),
+                subtitle: 'Subtitle example',
               ),
               const SizedBox(height: 10),
               ThemeButton(
@@ -90,7 +86,7 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
                 onPressed: () {
                   changeColorHsv(HSVColor.fromColor(themeSet!.primaryColor!));
                 },
-              )
+              ),
             ],
           ),
         ),

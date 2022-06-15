@@ -215,7 +215,7 @@ class ScreenshotMaker {
           {
             // enforce 2:1 Google play max aspect ratio
             final double aspectRatio = size!.width / size.height;
-            if (aspectRatio < .5) {
+            if (aspectRatio < 0.5) {
               newSize = Size(size.height / 2, size.height);
             }
           }
@@ -242,10 +242,8 @@ class ScreenshotMaker {
     );
 
     final pic = pictureRecorder.endRecording();
-    final ui.Image result =
-        await pic.toImage(newSize.width.toInt(), newSize.height.toInt());
 
-    return result;
+    return pic.toImage(newSize.width.toInt(), newSize.height.toInt());
   }
 
   Future<void> saveToFile(String? filename, CaptureResult capture) async {
@@ -358,7 +356,7 @@ class ScreenshotMaker {
       screenshotRect.height - (topBezelHeight + bottomBezelHeight),
     );
 
-    final ScreenshotParams params = ScreenshotParams(
+    return ScreenshotParams(
       imageAspectRatio: imageAspectRatio,
       titleBoxHeight: titleBoxHeight,
       footerBoxHeight: footerBoxHeight,
@@ -375,7 +373,5 @@ class ScreenshotMaker {
       phoneColor: phoneColor,
       phoneFrameColor: phoneFrameColor,
     );
-
-    return params;
   }
 }

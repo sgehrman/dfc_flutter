@@ -42,6 +42,7 @@ class _RenderMenuItem extends RenderShiftedBox {
     if (child == null) {
       return Size.zero;
     }
+
     return child!.getDryLayout(constraints);
   }
 
@@ -216,6 +217,7 @@ class _PopupMenuRouteLayout extends SingleChildLayoutDelegate {
         size.height - _kMenuScreenPadding - padding.bottom) {
       y = size.height - padding.bottom - _kMenuScreenPadding - childSize.height;
     }
+
     return Offset(x, y);
   }
 
@@ -298,6 +300,7 @@ class _PopupMenuRoute<T> extends PopupRoute<T> {
     final Widget menu =
         _PopupMenu<T>(route: this, semanticLabel: semanticLabel);
     final MediaQueryData mediaQuery = MediaQuery.of(context);
+
     return MediaQuery.removePadding(
       context: context,
       removeTop: true,
@@ -349,6 +352,7 @@ Future<T?> showMenuu<T>({
 
   final NavigatorState navigator =
       Navigator.of(context, rootNavigator: useRootNavigator);
+
   return navigator.push(
     _PopupMenuRoute<T>(
       position: position,

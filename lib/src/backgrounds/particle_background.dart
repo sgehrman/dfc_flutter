@@ -145,7 +145,7 @@ class ParticlePainter extends CustomPainter {
         ..shader = RadialGradient(
           radius: 5,
           colors: [color.withAlpha(alpha ~/ 5), color.withAlpha(alpha)],
-          stops: const [0, .4],
+          stops: const [0, 0.4],
         ).createShader(
           Rect.fromCenter(
             center: position,

@@ -66,7 +66,7 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
 
           await ShareExtend.share(path, 'image');
         },
-      )
+      ),
     ];
 
     showWidgetDialog(

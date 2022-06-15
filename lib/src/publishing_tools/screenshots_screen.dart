@@ -38,12 +38,16 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
   void initState() {
     super.initState();
 
-    Utils.loadImageFromPath(widget.imagePath).then((ui.Image image) {
-      uiImage = image;
-      setState(() {});
+    _setup();
+  }
 
-      refreshPreview();
-    });
+  Future<void> _setup() async {
+    final image = await Utils.loadImageFromPath(widget.imagePath);
+
+    uiImage = image;
+    setState(() {});
+
+    await refreshPreview();
   }
 
   Future<void> refreshPreview() async {
@@ -185,7 +189,7 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
       return const [
         Center(
           child: CircularProgressIndicator(),
-        )
+        ),
       ];
     }
 

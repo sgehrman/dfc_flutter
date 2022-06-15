@@ -91,7 +91,7 @@ class TabItem extends StatelessWidget {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

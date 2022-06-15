@@ -43,9 +43,7 @@ class ActionHeader extends StatelessWidget {
   }
 
   static TextStyle? defaultSubtitleStyle(BuildContext context) {
-    final TextStyle? textStyle = Theme.of(context).textTheme.caption;
-
-    return textStyle;
+    return Theme.of(context).textTheme.caption;
   }
 
   @override
@@ -61,6 +59,7 @@ class ActionHeader extends StatelessWidget {
         maxLength: 220,
       );
     }
+
     return Padding(
       padding: EdgeInsets.only(bottom: bottom, top: top),
       child: Row(

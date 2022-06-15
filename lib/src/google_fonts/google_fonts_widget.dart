@@ -229,6 +229,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
         ],
       );
     }
+
     return _contents(normalColor, currentFont);
   }
 }

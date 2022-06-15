@@ -42,7 +42,7 @@ class FloatingActionBubble extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget child = Padding(
+    return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -72,8 +72,6 @@ class FloatingActionBubble extends AnimatedWidget {
         ],
       ),
     );
-
-    return child;
   }
 }
 

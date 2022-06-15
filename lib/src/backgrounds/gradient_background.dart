@@ -86,7 +86,7 @@ class GradientBackground4 extends StatelessWidget {
                     end: Alignment.bottomCenter,
                     colors: [
                       value.get(_AniProps.startColor),
-                      value.get(_AniProps.endColor)
+                      value.get(_AniProps.endColor),
                     ],
                   ),
                 ),

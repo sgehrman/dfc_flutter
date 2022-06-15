@@ -45,7 +45,7 @@ class ThumbWidget extends StatelessWidget {
 
     Color? firstIconColor = isSelected ? iconColor : unselectedColor;
     if (isDouble) {
-      firstIconColor = Utils.darken(firstIconColor!, .05);
+      firstIconColor = Utils.darken(firstIconColor!, 0.05);
     }
 
     return Padding(

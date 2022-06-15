@@ -67,7 +67,7 @@ class AppTheme {
                 0,
                 0,
                 0,
-                .05,
+                0.05,
               ),
       ),
       primaryColor: appColor,
@@ -108,6 +108,7 @@ class AppTheme {
         elevatedButtonTheme: _elevatedButtonTheme(true),
       );
     }
+
     return baseTheme.copyWith(
       brightness: Brightness.light,
       appBarTheme: _appBarTheme(params.darkModeAppBarText, params),
@@ -209,13 +210,11 @@ class AppTheme {
       startTheme = ThemeData.dark().buttonTheme;
     }
 
-    final result = startTheme.copyWith(
+    return startTheme.copyWith(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
     );
-
-    return result;
   }
 
   ColorScheme _colorScheme({
@@ -230,14 +229,12 @@ class AppTheme {
 
     final Color? buttonContentColor = themeSet.buttonContentColor;
 
-    final result = scheme.copyWith(
+    return scheme.copyWith(
       primary: primary,
       secondary: secondary,
       onPrimary: buttonContentColor,
       brightness: darkMode ? Brightness.dark : Brightness.light,
     );
-
-    return result;
   }
 
   ElevatedButtonThemeData _elevatedButtonTheme(bool darkMode) {

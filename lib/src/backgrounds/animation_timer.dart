@@ -17,7 +17,7 @@ class AnimationTimer {
     }
 
     if (scatter) {
-      now = now - (duration * (random.nextDouble() * .8));
+      now = now - (duration * (random.nextDouble() * 0.8));
     }
 
     _duration = duration;

@@ -25,6 +25,7 @@ List<ServerFile> dirListing(String path) {
   } else {
     print('$path doesnt exist');
   }
+
   return result;
 }
 
@@ -205,7 +206,7 @@ class ReCase {
   String _getCamelCase({String separator = ''}) {
     final List<String> words = _words.map(_upperCaseFirstLetter).toList();
     if (_words.isNotEmpty) {
-      words[0] = words[0].toLowerCase();
+      words.first = words.first.toLowerCase();
     }
 
     return words.join(separator);
@@ -228,7 +229,7 @@ class ReCase {
     final List<String> words =
         _words.map((word) => word.toLowerCase()).toList();
     if (_words.isNotEmpty) {
-      words[0] = _upperCaseFirstLetter(words[0]);
+      words.first = _upperCaseFirstLetter(words.first);
     }
 
     return words.join(separator);

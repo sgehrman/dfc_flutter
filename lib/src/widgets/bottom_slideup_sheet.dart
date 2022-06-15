@@ -106,8 +106,8 @@ class _SheetList extends StatelessWidget {
       child: DraggableScrollableSheet(
         expand: false,
         initialChildSize: sliderContent!.initialChildSize,
-        maxChildSize: .9,
-        minChildSize: .2,
+        maxChildSize: 0.9,
+        minChildSize: 0.2,
         builder: (BuildContext context, ScrollController controller) {
           // Material is needed for Ink splashes
           return Material(

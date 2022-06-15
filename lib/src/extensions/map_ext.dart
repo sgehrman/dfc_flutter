@@ -30,6 +30,7 @@ extension MapCasting on Map {
       if (mapResult is! Map<K, V>) {
         mapResult = Map<K, V>.from(mapResult);
       }
+
       return mapResult;
     } else {
       print('mapVal: not map $result');
@@ -99,6 +100,7 @@ extension MapCasting on Map {
       if (listResult is! List<T>) {
         listResult = List<T>.from(listResult);
       }
+
       return listResult;
     } else {
       print('listVal: not List $result');

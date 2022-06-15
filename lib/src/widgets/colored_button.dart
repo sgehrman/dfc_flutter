@@ -26,6 +26,7 @@ class ColoredButton extends StatelessWidget {
     if (label != null) {
       return label;
     }
+
     return Text(
       title!,
       textAlign: TextAlign.center,
@@ -50,6 +51,7 @@ class ColoredButton extends StatelessWidget {
         icon: icon!,
       );
     }
+
     return TextButton(
       style: TextButton.styleFrom(
         backgroundColor: color ?? Theme.of(context).primaryColor,

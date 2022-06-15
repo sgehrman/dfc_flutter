@@ -10,9 +10,7 @@ extension ExtendedDuration on Duration {
 
     final int hours = e.inHours;
 
-    final String hoursString = hours.remainder(24).twoDigitTime;
-
-    return hoursString;
+    return hours.remainder(24).twoDigitTime;
   }
 
   String get secondsString {
@@ -20,9 +18,7 @@ extension ExtendedDuration on Duration {
 
     final int secs = e.inSeconds;
 
-    final String secString = secs.remainder(60).twoDigitTime;
-
-    return secString;
+    return secs.remainder(60).twoDigitTime;
   }
 
   String get minutesString {
@@ -30,9 +26,7 @@ extension ExtendedDuration on Duration {
 
     final int mins = e.inMinutes;
 
-    final String minString = mins.remainder(60).twoDigitTime;
-
-    return minString;
+    return mins.remainder(60).twoDigitTime;
   }
 
   String get tenthsString {
@@ -43,9 +37,7 @@ extension ExtendedDuration on Duration {
     num tens = tenths.remainder(1000);
     tens = tens ~/ 10;
 
-    final String tenthsString = tens.toInt().twoDigitTime;
-
-    return tenthsString;
+    return tens.toInt().twoDigitTime;
   }
 
   int get hours {

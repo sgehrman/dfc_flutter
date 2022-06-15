@@ -72,7 +72,7 @@ class Requests {
     'max-age',
     'expires',
     'secure',
-    'httponly'
+    'httponly',
   };
 
   static Map<String, String> _extractResponseCookies(
@@ -87,8 +87,10 @@ class Requests {
               .split(';')
               .map((x) => x.trim().split('='))
               .where((x) => x.length == 2)
-              .where((x) => !_cookiesKeysToIgnore.contains(x[0].toLowerCase()))
-              .forEach((x) => cookies[x[0]] = x[1]);
+              .where(
+                (x) => !_cookiesKeysToIgnore.contains(x.first.toLowerCase()),
+              )
+              .forEach((x) => cookies[x.first] = x[1]);
         });
         break;
       }
@@ -110,6 +112,7 @@ class Requests {
     if (customHeaders != null) {
       requestHeaders.addAll(customHeaders);
     }
+
     return requestHeaders;
   }
 
@@ -121,12 +124,14 @@ class Requests {
 
       if (cookiesJson != null) {
         final Map cookies = Common.fromJson(cookiesJson) as Map;
+
         return Map<String, String>.from(cookies);
       }
 
       return <String, String>{};
     } catch (e) {
       print('problem reading stored cookies. fallback with empty cookies $e');
+
       return <String, String>{};
     }
   }
@@ -147,6 +152,7 @@ class Requests {
 
   static String getHostname(String url) {
     final uri = Uri.parse(url);
+
     return '${uri.host}:${uri.port}';
   }
 
@@ -163,9 +169,8 @@ class Requests {
         await setStoredCookies(hostname, storedCookies);
       }
     }
-    final response = Response(rawResponse);
 
-    return response;
+    return Response(rawResponse);
   }
 
   static Future<Response> head(

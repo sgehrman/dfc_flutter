@@ -45,6 +45,7 @@ class ClipHalfRect extends CustomClipper<Rect> {
         );
       }
     }
+
     return rect;
   }
 

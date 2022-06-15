@@ -34,24 +34,25 @@ class PhoneInputUtils {
   static List<TextInputFormatter> inputFormatters() {
     return <TextInputFormatter>[
       TextInputFormatter.withFunction(
-          (TextEditingValue oldValue, TextEditingValue newValue) {
-        String newText = newValue.text;
+        (TextEditingValue oldValue, TextEditingValue newValue) {
+          String newText = newValue.text;
 
-        TextSelection selection = newValue.selection;
+          TextSelection selection = newValue.selection;
 
-        if (Utils.isNotEmpty(newText) && newText.length > 4) {
-          if (newText[0] != '+') {
-            newText = '+1$newText';
+          if (Utils.isNotEmpty(newText) && newText.length > 4) {
+            if (newText[0] != '+') {
+              newText = '+1$newText';
 
-            selection = TextSelection.collapsed(offset: selection.end + 2);
+              selection = TextSelection.collapsed(offset: selection.end + 2);
+            }
           }
-        }
 
-        return newValue.copyWith(
-          text: newText,
-          selection: selection,
-        );
-      }),
+          return newValue.copyWith(
+            text: newText,
+            selection: selection,
+          );
+        },
+      ),
       PhoneInputFormatter(
         onCountrySelected: (PhoneCountryData? countryData) =>
             print(countryData?.country),

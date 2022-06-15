@@ -12,6 +12,7 @@ Future<T?> showSimpleDialog<T>({
     context: context,
     transitionBuilder: (context, a1, a2, widget) {
       final curvedValue = Curves.easeOut.transform(a1.value) - 1.0;
+
       return Transform(
         transform: Matrix4.translationValues(0, -curvedValue * 200, 0),
         child: Opacity(

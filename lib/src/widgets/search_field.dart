@@ -159,17 +159,15 @@ class _SearchFieldState extends State<SearchField> {
         ),
         suffixIcon: Visibility(
           visible: Utils.isNotEmpty(_searchControllerConns.text),
-          child: Padding(
+          child: IconButton(
             padding: const EdgeInsets.only(right: 8),
-            child: IconButton(
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              icon: const Icon(Icons.close),
-              onPressed: () {
-                _searchControllerConns.text = '';
-              },
-            ),
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            icon: const Icon(Icons.close),
+            onPressed: () {
+              _searchControllerConns.text = '';
+            },
           ),
         ),
       ),

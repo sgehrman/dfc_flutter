@@ -8063,6 +8063,6 @@ class FontAwesomeSvgs {
       'solidChevronCircleLeft',
       'solidDemocrat',
       'solidPrint',
-    ]
+    ],
   ];
 }

@@ -207,7 +207,7 @@ class AddCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color cardColor =
-        Theme.of(context).textTheme.bodyText1!.color!.withOpacity(.1);
+        Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.1);
 
     double strokeWidth = 5;
     List<double> dashPattern = [12, 10];
@@ -219,31 +219,29 @@ class AddCard extends StatelessWidget {
       iconSize = 24;
     }
 
-    return Padding(
+    return DottedBorder(
       padding: EdgeInsets.all(strokeWidth / 2),
-      child: DottedBorder(
-        dashPattern: dashPattern,
-        strokeWidth: strokeWidth,
-        strokeCap: StrokeCap.round,
-        borderType: BorderType.RRect,
-        radius: Radius.circular(small ? kSmallBorderRadius : kBorderRadius),
-        color: cardColor,
-        child: BaseCard(
-          elevation: 0,
-          fill: false,
-          small: small,
-          minHeight: minHeight,
-          onTap: () {
-            onTap();
-          },
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(6),
-              child: Icon(
-                Icons.add_circle_outline,
-                color: cardColor,
-                size: iconSize,
-              ),
+      dashPattern: dashPattern,
+      strokeWidth: strokeWidth,
+      strokeCap: StrokeCap.round,
+      borderType: BorderType.RRect,
+      radius: Radius.circular(small ? kSmallBorderRadius : kBorderRadius),
+      color: cardColor,
+      child: BaseCard(
+        elevation: 0,
+        fill: false,
+        small: small,
+        minHeight: minHeight,
+        onTap: () {
+          onTap();
+        },
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(6),
+            child: Icon(
+              Icons.add_circle_outline,
+              color: cardColor,
+              size: iconSize,
             ),
           ),
         ),

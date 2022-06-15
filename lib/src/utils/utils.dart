@@ -139,6 +139,7 @@ class Utils {
     if (isWeb) {
       return false;
     }
+
     return Platform.isIOS;
   }
 
@@ -155,6 +156,7 @@ class Utils {
     if (isWeb) {
       return false;
     }
+
     return Platform.isMacOS;
   }
 
@@ -163,6 +165,7 @@ class Utils {
     if (isWeb) {
       return false;
     }
+
     return Platform.isLinux;
   }
 
@@ -171,6 +174,7 @@ class Utils {
     if (isWeb) {
       return false;
     }
+
     return Platform.isWindows;
   }
 
@@ -187,6 +191,7 @@ class Utils {
 
     try {
       final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
       return packageInfo.version;
     } catch (err) {
       print(err);
@@ -202,6 +207,7 @@ class Utils {
 
     try {
       final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
       return packageInfo.packageName;
     } catch (err) {
       print(err);
@@ -219,6 +225,7 @@ class Utils {
 
     try {
       final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
       return packageInfo.appName;
     } catch (err) {
       print(err);
@@ -292,6 +299,7 @@ class Utils {
     ui.decodeImageFromList(Uint8List.view(data.buffer), (ui.Image img) {
       return completer.complete(img);
     });
+
     return completer.future;
   }
 
@@ -302,6 +310,7 @@ class Utils {
     ui.decodeImageFromList(file.readAsBytesSync(), (ui.Image img) {
       return completer.complete(img);
     });
+
     return completer.future;
   }
 
@@ -332,7 +341,7 @@ class Utils {
     return Size(dimension, dimension);
   }
 
-  static Color darken(Color color, [double amount = .1]) {
+  static Color darken(Color color, [double amount = 0.1]) {
     assert(amount >= 0 && amount <= 1, 'amount bad');
 
     final hsl = HSLColor.fromColor(color);
@@ -341,7 +350,7 @@ class Utils {
     return hslDark.toColor();
   }
 
-  static Color lighten(Color color, [double amount = .1]) {
+  static Color lighten(Color color, [double amount = 0.1]) {
     assert(amount >= 0 && amount <= 1, 'amount bad');
 
     final hsl = HSLColor.fromColor(color);
@@ -419,6 +428,7 @@ class Utils {
     if (n < 0) {
       return '-0${n.abs()}';
     }
+
     return '0$n';
   }
 
@@ -582,6 +592,7 @@ class Utils {
 
       return null;
     }
+
     return params;
   }
 
@@ -610,11 +621,7 @@ class Utils {
     }).toList();
 
     if (paths.length == 1) {
-      final contents = await bundle.loadString(paths[0]);
-
-      // debugPrint(contents, wrapWidth: 555);
-
-      return contents;
+      return bundle.loadString(paths.first);
     }
 
     print('jsonAssets: not found');
@@ -666,6 +673,7 @@ class HexColor extends Color {
     if (hc.length == 6) {
       hc = 'FF$hc';
     }
+
     return int.parse(hc, radix: 16);
   }
 }

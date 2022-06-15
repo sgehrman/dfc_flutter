@@ -69,7 +69,7 @@ class BrowserStatusBar extends StatelessWidget {
                 : const Color(0x60000000),
             blurRadius: 4,
             // offset: Offset(0, 0),
-          )
+          ),
         ],
       ),
       child: Stack(

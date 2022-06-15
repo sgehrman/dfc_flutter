@@ -65,7 +65,7 @@ class Bonjour extends ChangeNotifier {
         }
       } else if (event.type ==
           BonsoirDiscoveryEventType.DISCOVERY_SERVICE_LOST) {
-        _resolvedServices.remove(event.service);
+        _resolvedServices.remove(event.service as ResolvedBonsoirService?);
         notifyListeners();
 
         print('Service lost : ${event.service!.toJson()}');

@@ -116,7 +116,7 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
     // draw in canvas
     const kWidth = 1024;
     final Rect rect = Offset.zero & Size(kWidth.toDouble(), kWidth.toDouble());
-    const double kIconSize = kWidth * .90;
+    const double kIconSize = kWidth * 0.9;
     const Color iconColor = Colors.white;
     final Rect iconRect = Offset.zero & const Size(kIconSize, kIconSize);
 

@@ -212,8 +212,8 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
             BoxConstraints(minWidth: MediaQuery.of(context).size.width / 3),
         decoration: BoxDecoration(
           color: widget.error
-              ? Colors.red[800]!.withOpacity(.9)
-              : Colors.green[800]!.withOpacity(.9),
+              ? Colors.red[800]!.withOpacity(0.9)
+              : Colors.green[800]!.withOpacity(0.9),
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           boxShadow: const [
             BoxShadow(

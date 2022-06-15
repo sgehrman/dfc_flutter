@@ -96,7 +96,7 @@ class PhoneShapes {
     camPaint.strokeWidth = 5;
 
     final Paint camFillPaint = Paint();
-    camFillPaint.color = const Color.fromRGBO(0, 0, 0, .35);
+    camFillPaint.color = const Color.fromRGBO(0, 0, 0, 0.35);
 
     canvas.drawRRect(speakerRRect, camPaint);
 

@@ -51,6 +51,7 @@ class TransparentMaterialPageRoute<T> extends MaterialPageRoute<T> {
     Widget child,
   ) {
     final theme = Theme.of(context).pageTransitionsTheme;
+
     return theme.buildTransitions<T>(
       this,
       context,

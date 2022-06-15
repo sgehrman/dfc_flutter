@@ -64,6 +64,7 @@ class StrUtils {
   static String hexToString(String? hexString) {
     if (hexString != null) {
       final charCodes = dataFromHex(hexString);
+
       return String.fromCharCodes(charCodes);
     }
 
@@ -81,6 +82,7 @@ class StrUtils {
   static String hashStringSHA256(String input) {
     final bytes = utf8.encode(input);
     final digest = sha256.convert(bytes);
+
     return hexFromData(digest.bytes);
   }
 }

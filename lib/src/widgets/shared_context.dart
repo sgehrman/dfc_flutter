@@ -43,6 +43,7 @@ class SharedMainContext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SharedContext().mainContext = context;
+
     return child;
   }
 }
@@ -58,6 +59,7 @@ class SharedScaffoldContext extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SharedContext().scaffoldContext = context;
+
     return child;
   }
 }

@@ -41,8 +41,9 @@ class ListRow extends StatelessWidget {
     required bool darkMode,
   }) {
     final Color c = darkMode
-        ? Colors.white.withOpacity(.02)
-        : Colors.black.withOpacity(.01);
+        ? Colors.white.withOpacity(0.02)
+        : Colors.black.withOpacity(0.01);
+
     return index.isEven ? c : null;
   }
 

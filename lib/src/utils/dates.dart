@@ -24,6 +24,7 @@ class Dates {
         return formatter.format(date);
       }
     }
+
     return '';
   }
 

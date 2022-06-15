@@ -57,8 +57,8 @@ class CDialog extends StatelessWidget {
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * .90,
-            maxWidth: MediaQuery.of(context).size.width * .95,
+            maxHeight: MediaQuery.of(context).size.height * 0.9,
+            maxWidth: MediaQuery.of(context).size.width * 0.95,
           ),
           child: Material(
             color: Colors.transparent,
@@ -68,7 +68,8 @@ class CDialog extends StatelessWidget {
             clipBehavior: clipBehavior,
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: color, width: 4),
+                border:
+                    Border.fromBorderSide(BorderSide(color: color, width: 4)),
                 color: Colors.black,
               ),
               child: child,

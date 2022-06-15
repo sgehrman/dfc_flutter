@@ -73,7 +73,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
               index: 1,
             ),
           ),
-        )
+        ),
       ],
     );
   }

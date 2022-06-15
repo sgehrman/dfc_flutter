@@ -6,11 +6,14 @@ import 'package:dfc_flutter/src/requests/requests.dart';
 import 'package:xml/xml.dart';
 
 class Plist {
+  // ignore: no-object-declaration
   static Object parse(String xml) {
     final doc = XmlDocument.parse(xml);
+
     return _handleElem(doc.rootElement.children.where(_isElement).first);
   }
 
+  // ignore: no-object-declaration
   static Object _handleElem(XmlNode node) {
     XmlElement element;
 

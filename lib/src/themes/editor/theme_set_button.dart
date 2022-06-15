@@ -48,7 +48,7 @@ class ThemeSetButton extends StatelessWidget {
   }
 
   Widget _menuButton(BuildContext context) {
-    final Widget button = Padding(
+    return Padding(
       padding: const EdgeInsets.only(left: 16, right: 11),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -70,8 +70,6 @@ class ThemeSetButton extends StatelessWidget {
         ],
       ),
     );
-
-    return button;
   }
 
   @override

@@ -27,13 +27,14 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
         ),
       );
     }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: _getList(),
     );
   }
 
-  Widget _ex(bool ex, MapEntry entry) {
+  Widget _ex(bool ex, MapEntry<String, dynamic> entry) {
     if (ex) {
       final icon = !_closedFlag.contains(entry.key)
           ? const Icon(
@@ -48,7 +49,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
       return InkWell(
         onTap: () {
           setState(() {
-            _toggleOpen(entry.key as String);
+            _toggleOpen(entry.key);
           });
         },
         child: icon,
@@ -103,7 +104,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
               style: TextStyle(color: Colors.grey),
             ),
             const SizedBox(width: 3),
-            getValueWidget(entry)
+            getValueWidget(entry),
           ],
         ),
       );
@@ -145,6 +146,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     } else if (content is List) {
       return true;
     }
+
     return true;
   }
 
@@ -207,12 +209,13 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
             });
           },
           child: Text(
-            'Array<${getTypeName(list[0])}>[${list.length}]',
+            'Array<${getTypeName(list.first)}>[${list.length}]',
             style: const TextStyle(color: Colors.grey),
           ),
         );
       }
     }
+
     return InkWell(
       onTap: () {
         setState(() {
@@ -240,6 +243,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     } else if (content is double) {
       return false;
     }
+
     return true;
   }
 
@@ -257,6 +261,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     } else if (content is DateTime) {
       return 'DateTime';
     }
+
     return 'Object';
   }
 
@@ -294,6 +299,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
         ),
       );
     }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: _getList(),
@@ -333,6 +339,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
     if (ex && ink) {
       return getInkWell(i);
     }
+
     return Text(
       '[$i]',
       style: TextStyle(
@@ -362,7 +369,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
               style: TextStyle(color: Colors.grey),
             ),
             const SizedBox(width: 3),
-            getValueWidget(content, i)
+            getValueWidget(content, i),
           ],
         ),
       );
@@ -374,6 +381,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
       }
       i++;
     }
+
     return list;
   }
 
@@ -457,6 +465,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
         );
       }
     }
+
     return InkWell(
       onTap: () {
         setState(() {

@@ -45,8 +45,8 @@ class CheckerboardPainter extends CustomPainter {
 
     final Color fillColor = darkMode! ? Colors.black : Colors.white;
     final Color blockColor = darkMode!
-        ? const Color.fromRGBO(255, 255, 255, .08)
-        : const Color.fromRGBO(0, 0, 0, .08);
+        ? const Color.fromRGBO(255, 255, 255, 0.08)
+        : const Color.fromRGBO(0, 0, 0, 0.08);
 
     final paint = Paint()
       ..strokeWidth = 1.0

@@ -86,10 +86,7 @@ class Preferences extends ChangeNotifier {
     final jsonMap = prefs.get('themeSet') as Map?;
 
     if (jsonMap != null) {
-      final ThemeSet themeSet =
-          ThemeSet.fromMap(Map<String, dynamic>.from(jsonMap));
-
-      return themeSet;
+      return ThemeSet.fromMap(Map<String, dynamic>.from(jsonMap));
     }
 
     return null;
@@ -112,13 +109,11 @@ class Preferences extends ChangeNotifier {
     if (pref != null) {
       final jsonList = List<Map>.from(pref as List);
 
-      final List<ThemeSet> themeSets = jsonList
+      return jsonList
           .map(
             (jsonMap) => ThemeSet.fromMap(Map<String, dynamic>.from(jsonMap)),
           )
           .toList();
-
-      return themeSets;
     }
 
     return null;
@@ -141,13 +136,11 @@ class Preferences extends ChangeNotifier {
     if (pref != null) {
       final jsonList = List<Map>.from(pref as List);
 
-      final List<ServerFile> serverFiles = jsonList
+      return jsonList
           .map(
             (jsonMap) => ServerFile.fromMap(Map<String, dynamic>.from(jsonMap)),
           )
           .toList();
-
-      return serverFiles;
     }
 
     return null;

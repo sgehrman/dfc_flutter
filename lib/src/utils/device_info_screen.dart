@@ -38,7 +38,7 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
       deviceInfo = convertMap(deviceData);
     } on PlatformException {
       deviceData = <String, dynamic>{
-        'Error:': 'Failed to get platform version.'
+        'Error:': 'Failed to get platform version.',
       };
     }
 

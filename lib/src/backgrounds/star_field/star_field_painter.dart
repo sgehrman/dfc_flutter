@@ -49,6 +49,7 @@ class StarFieldPainter extends CustomPainter {
           currentPoint.add(cameraPosition);
           currentPoint.multiply(localScale);
           currentPoint.applyMatrix4(camera);
+
           return star;
         })
         .where((pos) => pos.screenVector.z > -0)
@@ -57,6 +58,7 @@ class StarFieldPainter extends CustomPainter {
           star.screenVector.applyProjection(perspective);
           star.screenVector.add(screenOffset);
           star.screenOffset = Offset(star.screenVector.x, star.screenVector.y);
+
           return star;
         })
         .where(

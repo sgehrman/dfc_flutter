@@ -80,6 +80,7 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
     initStream =
         Stream<DateTime>.periodic(const Duration(milliseconds: 1000), (_) {
       timeLeft -= const Duration(seconds: 1);
+
       return time;
     });
 

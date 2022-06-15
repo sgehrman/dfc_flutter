@@ -29,7 +29,7 @@ double initScale({Size? imageSize, Size? size, double? initialScale}) {
   //   return size.height / destinationSize.height;
   // }
 
-  return .9;
+  return 0.9;
 }
 
 class ImageViewer extends StatefulWidget {
@@ -52,7 +52,7 @@ class _ImageSwiperState extends State<ImageViewer>
   AnimationController? _animationController;
   Animation<double>? _animation;
   late void Function() animationListener;
-  List<double> doubleTapScales = <double>[.9, 3];
+  List<double> doubleTapScales = <double>[0.9, 3];
   GlobalKey<ExtendedImageSlidePageState> slidePagekey =
       GlobalKey<ExtendedImageSlidePageState>();
   late int currentIndex;
@@ -104,6 +104,7 @@ class _ImageSwiperState extends State<ImageViewer>
         ),
       );
     }
+
     return GestureConfig(
       inPageView: true,
       initialScale: initialScale,
@@ -123,10 +124,10 @@ class _ImageSwiperState extends State<ImageViewer>
 
     _animationController!.reset();
 
-    if (begin == doubleTapScales[0]) {
+    if (begin == doubleTapScales.first) {
       end = doubleTapScales[1];
     } else {
-      end = doubleTapScales[0];
+      end = doubleTapScales.first;
     }
 
     animationListener = () {
@@ -278,7 +279,7 @@ class _ImageSwiperState extends State<ImageViewer>
             left: 0,
             right: 0,
             child: _toolsButton(),
-          )
+          ),
         ],
       ),
     );

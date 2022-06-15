@@ -111,6 +111,7 @@ class FileSystem {
   static Future<String> get filePickerPath async {
     if (Utils.isAndroid) {
       final String path = await FileSystem.dataDirectoryPath;
+
       return '$path/cache/file_picker/';
     }
 
@@ -198,7 +199,7 @@ class FileSystem {
     if (FileSystem.storagePermissionGranted) {
       if (path.contains('Android')) {
         // remove trailing slash Directory.path and File.path return / at end
-        return path.split('Android')[0].removeTrailing('/');
+        return path.split('Android').first.removeTrailing('/');
       }
     }
 
@@ -247,11 +248,13 @@ class FileSystem {
 
   static Future<File> fileInDocuments(String fileName) async {
     final documents = await documentsPath;
+
     return File('$documents/$fileName');
   }
 
   static Future<Directory> recordingDirectory() async {
     final documents = await documentsPath;
+
     return Directory('$documents/recordings');
   }
 
@@ -270,9 +273,8 @@ class FileSystem {
   // we only save the file name, and get the path fresh each time.
   static Future<String> bookPath(String filename) async {
     final Directory dir = await FileSystem.booksDirectory();
-    final String path = '${dir.path}/$filename';
 
-    return path;
+    return '${dir.path}/$filename';
   }
 
   static Future<List<String>> recordingPaths() async {

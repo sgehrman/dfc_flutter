@@ -221,7 +221,7 @@ class _DateWidget extends StatelessWidget {
                   disabled: disabled!,
                   isSelected: isSelected,
                 ),
-              )
+              ),
             ],
           ),
         ),

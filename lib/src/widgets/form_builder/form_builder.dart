@@ -60,7 +60,7 @@ class _FormBuilderState extends State<FormBuilder> {
       _formKey.currentState!.save();
 
       final success = widget.onSubmit(widget.params);
-      if (success == true) {
+      if (success) {
         Navigator.of(context).pop();
       }
     } else {
@@ -86,7 +86,7 @@ class _FormBuilderState extends State<FormBuilder> {
         TextButton(
           onPressed: _save,
           child: const Text('Save'),
-        )
+        ),
       ];
     }
 

@@ -53,6 +53,7 @@ class ThemeButton extends StatelessWidget {
         icon: icon!,
       );
     }
+
     return TextButton(
       style: TextButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,

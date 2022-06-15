@@ -22,6 +22,7 @@ class Common {
   static Future<String?> storageGet(String key) async {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
+
     return sharedPreferences.getString(key);
   }
 
@@ -31,6 +32,7 @@ class Common {
 
   static String toJson(dynamic object) {
     const encoder = JsonEncoder.withIndent('     ');
+
     return encoder.convert(object);
   }
 
@@ -46,6 +48,7 @@ class Common {
     return data.keys.map<String>((dynamic key) {
       final k = Uri.encodeComponent(key.toString());
       final v = Uri.encodeComponent(data[key].toString());
+
       return '$k=$v';
     }).join('&');
   }

@@ -227,7 +227,7 @@ class ServerFile {
         final String? mimeType = mimeFromExtension(noDot);
 
         if (mimeType != null) {
-          switch (mimeType.split('/')[0]) {
+          switch (mimeType.split('/').first) {
             case 'image':
               // might want to set the type as an image, but filter when being drawn
               // psd for example crashes

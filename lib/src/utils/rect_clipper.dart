@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RectClipper extends CustomClipper<Rect> {
   const RectClipper({
     this.clipLeft = true,
-    this.percentage = .5,
+    this.percentage = 0.5,
   });
 
   final bool clipLeft;

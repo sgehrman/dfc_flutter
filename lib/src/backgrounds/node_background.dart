@@ -32,14 +32,14 @@ Random random = Random();
 
 class AnimationVal {
   AnimationVal(this.animation) {
-    const double maxOpacity = .3;
+    const double maxOpacity = 0.3;
     final radiusVal = random.nextDouble();
     radius = 4 + radiusVal * 8;
 
     final double opac = radiusVal * maxOpacity;
 
     paintCircle = Paint()
-      ..color = Colors.blue.withOpacity(max(.05, opac))
+      ..color = Colors.blue.withOpacity(max(0.05, opac))
       ..isAntiAlias = true;
 
     const gradient = RadialGradient(
@@ -71,7 +71,8 @@ class _NodeBackgroundAnimationState extends State<NodeBackgroundAnimation>
   final Random random = Random();
 
   final Color backgroudPatternBlue = Colors.blue.withAlpha(20);
-  final Color backgroudCirclePatternBlue = const Color.fromRGBO(0, 55, 255, .1);
+  final Color backgroudCirclePatternBlue =
+      const Color.fromRGBO(0, 55, 255, 0.1);
   final Color backgroudPatternBlueDark = const Color(0x05FFFFFF);
   final Color backgroudCirclePatternBlueDark = const Color(0x10FFFFFF);
   ui.Image? image;
@@ -117,6 +118,7 @@ class _NodeBackgroundAnimationState extends State<NodeBackgroundAnimation>
             controllers[i].forward();
           }
         });
+
       return AnimationVal(a);
     });
 
@@ -215,8 +217,8 @@ class BackgroundPainter extends CustomPainter {
   }
 
   Offset getOffset(Animation<Offset> offset, Size size) => Offset(
-        (offset.value.dx * (size.width * 1.3)) - (size.width * .15),
-        (offset.value.dy * (size.height * 1.3)) - (size.height * .15),
+        (offset.value.dx * (size.width * 1.3)) - (size.width * 0.15),
+        (offset.value.dy * (size.height * 1.3)) - (size.height * 0.15),
       );
 
   @override

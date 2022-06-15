@@ -15,7 +15,7 @@ class WaveBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final double baseHeight = size.height * .2;
+    final double baseHeight = size.height * 0.2;
 
     return Stack(
       children: <Widget>[

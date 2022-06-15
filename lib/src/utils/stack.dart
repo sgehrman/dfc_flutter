@@ -24,6 +24,7 @@ class ListStack<T> {
 
     final T res = _list.last;
     _list.removeLast();
+
     return res;
   }
 

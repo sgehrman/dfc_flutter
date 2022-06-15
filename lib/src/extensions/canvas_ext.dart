@@ -16,12 +16,12 @@ extension ExtendedCanvas on Canvas {
 
     final petalShader = RadialGradient(
       colors: [
-        highlightColor.withOpacity(.5),
-        color.withOpacity(.5),
+        highlightColor.withOpacity(0.5),
+        color.withOpacity(0.5),
       ],
       stops: const [
         0,
-        .5,
+        0.5,
       ],
     ).createShader(Rect.fromCircle(center: Offset.zero, radius: radius));
 

@@ -147,7 +147,7 @@ class BottomNavBarState extends State<BottomNavBar>
                 color: shadowColor,
                 offset: const Offset(0, -1),
                 blurRadius: 8,
-              )
+              ),
             ],
           ),
           child: Row(
@@ -199,7 +199,7 @@ class BottomNavBarState extends State<BottomNavBar>
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               boxShadow: [
-                                BoxShadow(color: shadowColor, blurRadius: 8)
+                                BoxShadow(color: shadowColor, blurRadius: 8),
                               ],
                             ),
                           ),
@@ -235,29 +235,29 @@ class BottomNavBarState extends State<BottomNavBar>
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
 
-  void _initAnimationAndStart(double from, double to) {
+  Future<void> _initAnimationAndStart(double from, double to) async {
     _circleIconAlpha = 0;
 
-    Future.delayed(const Duration(milliseconds: animDuration ~/ 5), () {
+    await Future.delayed(const Duration(milliseconds: animDuration ~/ 5), () {
       setState(() {
         activeIcon = nextIcon;
       });
-    }).then((_) {
-      Future.delayed(const Duration(milliseconds: animDuration ~/ 5 * 3), () {
-        setState(() {
-          _circleIconAlpha = 1;
-        });
+    });
+
+    Future.delayed(const Duration(milliseconds: animDuration ~/ 5 * 3), () {
+      setState(() {
+        _circleIconAlpha = 1;
       });
     });
   }
