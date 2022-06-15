@@ -272,7 +272,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "9a61e68ffb53334d4101d69e8ff25a3e5dfb1e2a"
+      resolved-ref: d0b69b190ff00da7d4bfd94ce1f5dcf97e446562
       url: "https://github.com/sgehrman/dfc_lints"
     source: git
     version: "1.0.6"
@@ -364,7 +364,7 @@ packages:
       name: flutter_keyboard_visibility
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.0"
+    version: "5.3.0"
   flutter_keyboard_visibility_platform_interface:
     dependency: transitive
     description:
@@ -460,7 +460,7 @@ packages:
       name: hive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "2.2.2"
   hive_flutter:
     dependency: "direct main"
     description:
@@ -719,7 +719,7 @@ packages:
       name: path_provider_ios
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.9"
+    version: "2.0.10"
   path_provider_linux:
     dependency: transitive
     description:
@@ -838,7 +838,7 @@ packages:
       name: rive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.4"
+    version: "0.9.0"
   share_extend:
     dependency: "direct main"
     description:
@@ -1074,7 +1074,7 @@ packages:
       name: url_launcher_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.11"
+    version: "2.0.12"
   url_launcher_windows:
     dependency: transitive
     description:

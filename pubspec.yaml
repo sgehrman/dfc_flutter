@@ -47,7 +47,7 @@ dependencies:
   pdfx: ^2.0.1+1
   provider: ^6.0.3
   random_string: ^2.3.1
-  rive: ^0.8.4
+  rive: ^0.9.0
   share_extend: ^2.0.0
   shared_preferences: ^2.0.13
   simple_animations: ^4.0.1
