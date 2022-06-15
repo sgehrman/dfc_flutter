@@ -6,7 +6,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
 import 'package:just_the_tooltip_fork/just_the_tooltip_fork.dart';
 
-class HelpTip extends StatelessWidget {
+class HelpTip extends StatefulWidget {
   const HelpTip({
     required this.message,
     required this.child,
@@ -22,25 +22,52 @@ class HelpTip extends StatelessWidget {
   final Duration? waitDuration;
 
   @override
+  State<HelpTip> createState() => _HelpTipState();
+}
+
+class _HelpTipState extends State<HelpTip> {
+  late Widget _content;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _updateContent();
+  }
+
+  void _updateContent() {
+    _content = HelpTipContent(
+      message: widget.message,
+      maxWidth: widget.maxWidth,
+    );
+  }
+
+  @override
+  void didUpdateWidget(covariant HelpTip oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.message != widget.message) {
+      _updateContent();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (Preferences.disableTooltips || Utils.isEmpty(message)) {
-      return child;
+    if (Preferences.disableTooltips || Utils.isEmpty(widget.message)) {
+      return widget.child;
     }
 
     return JustTheTooltip(
       backgroundColor: Colors.black,
-      preferredDirection: direction,
-      waitDuration: waitDuration ?? const Duration(milliseconds: 1200),
+      preferredDirection: widget.direction,
+      waitDuration: widget.waitDuration ?? const Duration(milliseconds: 1200),
       tailLength: 20,
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       fadeInDuration: const Duration(milliseconds: 400),
       fadeOutDuration: const Duration(milliseconds: 400),
       tailBaseWidth: 18,
-      content: HelpTipContent(
-        message: message,
-        maxWidth: maxWidth,
-      ),
-      child: child,
+      content: _content,
+      child: widget.child,
     );
   }
 }
