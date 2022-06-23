@@ -32,7 +32,7 @@ class FadeImage extends StatelessWidget {
 
         return const Icon(Icons.warning);
       },
-      placeholder: _transparentImage,
+      placeholder: transparentImage(),
       image: url,
       fadeInDuration: const Duration(milliseconds: 400),
       fit: fit,
@@ -50,8 +50,7 @@ Uint8List transparentImage() {
   return _transparentImage;
 }
 
-// =================================================================
-
+// variable so it only gets built once
 final Uint8List _transparentImage = Uint8List.fromList(<int>[
   0x89,
   0x50,
