@@ -55,10 +55,20 @@ class _FormBuilderState extends State<FormBuilder> {
     setState(() {});
   }
 
-  void _save() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
+  bool _validateAndSave() {
+    if (_formKey.currentState != null) {
+      if (_formKey.currentState!.validate()) {
+        _formKey.currentState!.save();
 
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  void _save() {
+    if (_validateAndSave()) {
       final success = widget.onSubmit(widget.params);
       if (success) {
         Navigator.of(context).pop();
@@ -103,9 +113,7 @@ class _FormBuilderState extends State<FormBuilder> {
     // ignore: dead_code
     return TextButton(
       onPressed: () {
-        if (_formKey.currentState!.validate()) {
-          _formKey.currentState!.save();
-
+        if (_validateAndSave()) {
           Navigator.of(context).push<void>(
             MaterialPageRoute(
               builder: (context) {
