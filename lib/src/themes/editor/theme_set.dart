@@ -50,7 +50,7 @@ class ThemeSet {
       textAccentColor: Colors.grey,
       textColor: Colors.white,
       buttonContentColor: Colors.white,
-      fontName: 'robotoTextTheme',
+      fontName: 'roboto',
       integratedAppBar: true,
       dividerLines: false,
       lightBackground: false,
