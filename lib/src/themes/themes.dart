@@ -47,12 +47,19 @@ class AppTheme {
       color: themeSet.backgroundColor,
     );
 
+    const tabBarTheme = TabBarTheme(
+      indicator: BoxDecoration(color: Colors.orange),
+      labelColor: Colors.red,
+      unselectedLabelColor: Colors.yellow,
+    );
+
     final baseTheme = ThemeData(
       visualDensity: VisualDensity.adaptivePlatformDensity,
       scaffoldBackgroundColor: themeSet.backgroundColor,
       drawerTheme: DrawerThemeData(
         backgroundColor: themeSet.backgroundColor,
       ),
+      tabBarTheme: tabBarTheme,
       popupMenuTheme: popupMenuTheme,
       bottomAppBarTheme: _bottomBarTheme(darkMode),
       bottomNavigationBarTheme: _bottomNavBarTheme(appColor),
