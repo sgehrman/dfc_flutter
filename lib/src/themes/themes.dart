@@ -46,10 +46,10 @@ class AppTheme {
       color: themeSet.backgroundColor,
     );
 
-    const tabBarTheme = TabBarTheme(
-      indicator: BoxDecoration(color: Colors.orange),
-      labelColor: Colors.red,
-      unselectedLabelColor: Colors.yellow,
+    final tabBarTheme = TabBarTheme(
+      indicator: BoxDecoration(color: appColor),
+      // labelColor: Colors.red[800],
+      // unselectedLabelColor: Colors.blue[800],
     );
 
     final baseTheme = ThemeData(
