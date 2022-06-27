@@ -101,7 +101,7 @@ class AppTheme {
       ),
       cardTheme: CardTheme(
         color: themeSet.cardColor,
-        elevation: themeSet.cardElevation ?? 1,
+        elevation: themeSet.cardElevation,
       ),
     );
 
