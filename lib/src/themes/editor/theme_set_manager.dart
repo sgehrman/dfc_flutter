@@ -18,8 +18,6 @@ class ThemeSetManager {
 
   ThemeSet? _currentTheme;
 
-  static String get defaultFont => 'robotoTextTheme';
-
   ThemeSet? get currentTheme => _currentTheme;
   set currentTheme(ThemeSet? themeSet) {
     _currentTheme = themeSet;
@@ -122,21 +120,21 @@ class ThemeSetManager {
     Preferences().themeSets = newSets;
   }
 
-  String get googleFont => _currentTheme!.fontName ?? defaultFont;
-  set googleFont(String? fontName) {
-    final newTheme = currentTheme!.copyWith(fontName: fontName ?? defaultFont);
+  String get googleFont => _currentTheme!.fontName;
+  set googleFont(String fontName) {
+    final newTheme = currentTheme!.copyWith(fontName: fontName);
 
     currentTheme = newTheme;
   }
 
-  bool get integratedAppBar => currentTheme!.integratedAppBar!;
+  bool get integratedAppBar => currentTheme!.integratedAppBar;
   set integratedAppBar(bool value) {
     final newTheme = currentTheme!.copyWith(integratedAppBar: value);
 
     currentTheme = newTheme;
   }
 
-  bool get lightBackground => currentTheme!.lightBackground!;
+  bool get lightBackground => currentTheme!.lightBackground;
   set lightBackground(bool value) {
     final newTheme = currentTheme!.copyWith(lightBackground: value);
 

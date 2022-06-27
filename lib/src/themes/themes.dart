@@ -1,7 +1,6 @@
 import 'package:dfc_flutter/src/google_fonts/google_font_library.dart';
 import 'package:dfc_flutter/src/themes/color_params.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
-import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +19,7 @@ class AppTheme {
     ColorParams params;
 
     params = ColorParams(
-      integratedAppBar: themeSet.integratedAppBar!,
+      integratedAppBar: themeSet.integratedAppBar,
       transparentAppBar: transparentAppBar,
       themeSet: themeSet,
     );
@@ -91,10 +90,10 @@ class AppTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: themeSet.textAccentColor!),
+          borderSide: BorderSide(color: themeSet.textAccentColor),
         ),
         border: UnderlineInputBorder(
-          borderSide: BorderSide(color: themeSet.textAccentColor!),
+          borderSide: BorderSide(color: themeSet.textAccentColor),
         ),
         hintStyle: TextStyle(color: themeSet.textAccentColor),
         labelStyle: TextStyle(color: themeSet.textAccentColor),
@@ -127,13 +126,7 @@ class AppTheme {
 
   // change the global font here
   TextTheme _fontChange(TextTheme theme) {
-    // don't do it if Roboto or blank
-    if (Utils.isEmpty(themeSet.fontName) ||
-        themeSet.fontName == ThemeSetManager.defaultFont) {
-      return theme;
-    }
-
-    return themeWithGoogleFont(themeSet.fontName!, theme);
+    return themeWithGoogleFont(themeSet.fontName, theme);
   }
 
   TextTheme _textTheme(bool darkMode) {
@@ -234,7 +227,7 @@ class AppTheme {
       scheme = ThemeData.dark().colorScheme;
     }
 
-    final Color? buttonContentColor = themeSet.buttonContentColor;
+    final Color buttonContentColor = themeSet.buttonContentColor;
 
     return scheme.copyWith(
       primary: primary,

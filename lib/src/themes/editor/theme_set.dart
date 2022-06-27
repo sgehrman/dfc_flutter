@@ -42,7 +42,7 @@ class ThemeSet {
     return ThemeSet(
       name: 'Default',
       primaryColor: Colors.cyan,
-      accentColor: Colors.pink[300],
+      accentColor: Colors.pink[300]!,
       headerTextColor: Colors.grey,
       cardColor: Colors.white,
       cardElevation: 1,
@@ -58,21 +58,30 @@ class ThemeSet {
   }
 
   factory ThemeSet.fromMap(Map<String, dynamic> map) {
+    final defaults = ThemeSet.defaultSet();
+
     return ThemeSet(
       name: map['name'] as String,
-      primaryColor: _colorFromInt(map['primaryColor']),
-      accentColor: _colorFromInt(map['accentColor']),
-      headerTextColor: _colorFromInt(map['headerTextColor']),
-      backgroundColor: _colorFromInt(map['backgroundColor']),
-      textAccentColor: _colorFromInt(map['textAccentColor']),
-      textColor: _colorFromInt(map['textColor']),
-      buttonContentColor: _colorFromInt(map['buttonContentColor']),
-      fontName: map['fontName'] as String?,
-      integratedAppBar: map['integratedAppBar'] as bool?,
-      dividerLines: map['dividerLines'] as bool?,
-      lightBackground: map['lightBackground'] as bool?,
-      cardColor: _colorFromInt(map['cardColor']),
-      cardElevation: map['buttonContentColor'] as double?,
+      primaryColor: _colorFromInt(map['primaryColor']) ?? defaults.primaryColor,
+      accentColor: _colorFromInt(map['accentColor']) ?? defaults.accentColor,
+      headerTextColor:
+          _colorFromInt(map['headerTextColor']) ?? defaults.headerTextColor,
+      backgroundColor:
+          _colorFromInt(map['backgroundColor']) ?? defaults.backgroundColor,
+      textAccentColor:
+          _colorFromInt(map['textAccentColor']) ?? defaults.textAccentColor,
+      textColor: _colorFromInt(map['textColor']) ?? defaults.textColor,
+      buttonContentColor: _colorFromInt(map['buttonContentColor']) ??
+          defaults.buttonContentColor,
+      fontName: map['fontName'] as String? ?? defaults.fontName,
+      integratedAppBar:
+          map['integratedAppBar'] as bool? ?? defaults.integratedAppBar,
+      dividerLines: map['dividerLines'] as bool? ?? defaults.dividerLines,
+      lightBackground:
+          map['lightBackground'] as bool? ?? defaults.lightBackground,
+      cardColor: _colorFromInt(map['cardColor']) ?? defaults.cardColor,
+      cardElevation:
+          map['buttonContentColor'] as double? ?? defaults.cardElevation,
     );
   }
 
@@ -91,37 +100,37 @@ class ThemeSet {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'primaryColor': primaryColor?.value,
-      'accentColor': accentColor?.value,
-      'headerTextColor': headerTextColor?.value,
-      'backgroundColor': backgroundColor?.value,
-      'textAccentColor': textAccentColor?.value,
-      'textColor': textColor?.value,
-      'buttonContentColor': buttonContentColor?.value,
+      'primaryColor': primaryColor.value,
+      'accentColor': accentColor.value,
+      'headerTextColor': headerTextColor.value,
+      'backgroundColor': backgroundColor.value,
+      'textAccentColor': textAccentColor.value,
+      'textColor': textColor.value,
+      'buttonContentColor': buttonContentColor.value,
       'fontName': fontName,
       'integratedAppBar': integratedAppBar,
       'dividerLines': dividerLines,
       'lightBackground': lightBackground,
-      'cardColor': cardColor?.value,
+      'cardColor': cardColor.value,
       'cardElevation': cardElevation,
     };
   }
 
   final String name;
-  final Color? primaryColor;
-  final Color? accentColor;
-  final Color? headerTextColor;
-  final Color? textColor;
-  final Color? buttonContentColor;
-  final Color? textAccentColor;
-  final Color? backgroundColor;
-  final Color? cardColor;
-  final double? cardElevation;
+  final Color primaryColor;
+  final Color accentColor;
+  final Color headerTextColor;
+  final Color textColor;
+  final Color buttonContentColor;
+  final Color textAccentColor;
+  final Color backgroundColor;
+  final Color cardColor;
+  final double cardElevation;
 
-  final String? fontName;
-  final bool? integratedAppBar;
-  final bool? dividerLines;
-  final bool? lightBackground;
+  final String fontName;
+  final bool integratedAppBar;
+  final bool dividerLines;
+  final bool lightBackground;
 
   @override
   String toString() {

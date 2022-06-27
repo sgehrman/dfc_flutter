@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/google_fonts/google_font_library.dart';
+import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/utils/preferences.dart';
 import 'package:dfc_flutter/src/widgets/draggable_scrollbar.dart';
@@ -158,10 +159,9 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
   }
 
   void useDefault() {
-    // clear the pref
-    ThemeSetManager().googleFont = null;
+    final String fontName = ThemeSet.defaultSet().fontName;
 
-    final String fontName = ThemeSetManager.defaultFont;
+    ThemeSetManager().googleFont = fontName;
 
     // scroll to default
     int index = 0;
