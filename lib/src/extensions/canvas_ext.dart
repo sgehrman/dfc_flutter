@@ -11,13 +11,14 @@ extension ExtendedCanvas on Canvas {
     double xPetalWeightDivisor = 2.0,
     double yPetalWeightDivisor = 2.0,
     double radiusDivisor = 2.2,
+    double opacity = 0.5,
   }) {
     final double strokeWidth = radius / 107;
 
     final petalShader = RadialGradient(
       colors: [
-        highlightColor.withOpacity(0.5),
-        color.withOpacity(0.5),
+        highlightColor.withOpacity(opacity),
+        color.withOpacity(opacity),
       ],
       stops: const [
         0,
