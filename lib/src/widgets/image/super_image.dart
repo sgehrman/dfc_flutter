@@ -152,6 +152,6 @@ class SuperImage extends StatelessWidget {
       );
     }
 
-    return NothingWidget();
+    return const NothingWidget();
   }
 }

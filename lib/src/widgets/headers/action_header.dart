@@ -48,7 +48,7 @@ class ActionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget? subtitleWidget = NothingWidget();
+    Widget? subtitleWidget = const NothingWidget();
 
     if (subWidget != null) {
       subtitleWidget = subWidget;

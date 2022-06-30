@@ -107,7 +107,7 @@ class _FormBuilderState extends State<FormBuilder> {
     const bool disabled = true;
 
     if (disabled) {
-      return NothingWidget();
+      return const NothingWidget();
     }
 
     // ignore: dead_code

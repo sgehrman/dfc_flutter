@@ -26,7 +26,7 @@ class PrimaryTitle extends StatelessWidget {
                   ),
             ),
           ),
-          action ?? NothingWidget(),
+          action ?? const NothingWidget(),
         ],
       ),
     );

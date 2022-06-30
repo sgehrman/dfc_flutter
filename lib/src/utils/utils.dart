@@ -631,11 +631,10 @@ class Utils {
 }
 
 class NothingWidget extends StatelessWidget {
+  const NothingWidget();
+
   @override
   Widget build(BuildContext context) {
-    // could also try this
-    // return SizedBox(width: 0, height: 0);
-
     // error message says this takes up as little space as possible
     return const SizedBox(width: 0, height: 0);
   }

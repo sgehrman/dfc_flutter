@@ -36,7 +36,7 @@ class GenericCard extends StatelessWidget {
 
   Widget _titleBar(BuildContext context) {
     if (Utils.isEmpty(title)) {
-      return NothingWidget();
+      return const NothingWidget();
     }
 
     return PrimaryTitle(title: title, action: titleAction);
@@ -155,7 +155,7 @@ class GenericCard extends StatelessWidget {
           child: Positioned(
             right: 8,
             top: 12,
-            child: action ?? NothingWidget(),
+            child: action ?? const NothingWidget(),
           ),
         ),
         Visibility(

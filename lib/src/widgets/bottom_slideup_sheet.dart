@@ -62,7 +62,7 @@ class _SheetList extends StatelessWidget {
   }
 
   Widget _buttonBar(BuildContext context) {
-    Widget copyButton = NothingWidget();
+    Widget copyButton = const NothingWidget();
 
     if (sliderContent!.enableCopyButton()) {
       copyButton = InkWell(

@@ -254,7 +254,7 @@ class _ImageSwiperState extends State<ImageViewer>
           );
         }
 
-        return NothingWidget();
+        return const NothingWidget();
       },
     );
   }

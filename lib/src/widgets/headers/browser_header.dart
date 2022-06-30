@@ -31,7 +31,7 @@ class BrowserHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget subWidget = NothingWidget();
+    Widget subWidget = const NothingWidget();
 
     if (Utils.isNotEmpty(subtitle)) {
       subWidget = ExpandableText(

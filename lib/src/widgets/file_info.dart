@@ -183,7 +183,7 @@ class _FileInfoState extends State<FileInfo> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> contents = [NothingWidget()];
+    List<Widget> contents = [const NothingWidget()];
 
     if (widget.serverFile != null) {
       contents = _contents(context);

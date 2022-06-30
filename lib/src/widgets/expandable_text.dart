@@ -67,6 +67,6 @@ class _ExpandableTextState extends State<ExpandableText> {
       );
     }
 
-    return NothingWidget();
+    return const NothingWidget();
   }
 }

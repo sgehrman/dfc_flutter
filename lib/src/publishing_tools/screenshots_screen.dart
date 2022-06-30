@@ -212,7 +212,7 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
       ];
     }
 
-    return [NothingWidget()];
+    return [const NothingWidget()];
   }
 
   @override
