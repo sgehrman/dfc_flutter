@@ -7,6 +7,8 @@ import 'package:dfc_flutter/src/widgets/list_row.dart';
 import 'package:flutter/material.dart';
 
 class ThemeEditorScreen extends StatelessWidget {
+  const ThemeEditorScreen();
+
   Widget _body(BuildContext context) {
     final List<ThemeSet>? themes = Preferences().themeSets;
 

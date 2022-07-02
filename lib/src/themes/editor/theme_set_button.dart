@@ -91,7 +91,7 @@ class ThemeSetButton extends StatelessWidget {
                     Navigator.push<void>(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ThemeEditorScreen(),
+                        builder: (context) => const ThemeEditorScreen(),
                       ),
                     );
                   },

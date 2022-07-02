@@ -177,6 +177,8 @@ class GenericCard extends StatelessWidget {
 // ==========================================================
 
 class CardDivider extends StatelessWidget {
+  const CardDivider();
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(height: dividerHeight());
