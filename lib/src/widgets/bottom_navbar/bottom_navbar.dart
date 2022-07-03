@@ -119,7 +119,7 @@ class BottomNavBarState extends State<BottomNavBar>
     super.dispose();
   }
 
-  void _setSelected(UniqueKey key) {
+  Future<void> _setSelected(UniqueKey key) async {
     final int selected =
         widget.tabs.indexWhere((tabData) => tabData.key == key);
 

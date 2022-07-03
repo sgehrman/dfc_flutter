@@ -1,10 +1,8 @@
+import 'package:dfc_flutter/dfc_flutter.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_bootstrap.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_community.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_fontawesome.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_converter_material.dart';
-import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
-import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:dfc_flutter/src/widgets/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -32,36 +30,62 @@ class SvgScreen extends StatefulWidget {
 
 class _SvgScreenState extends State<SvgScreen> {
   String _filter = '';
+  List<_NameAndIcon> _items = [];
+  List<String> _icons = [];
+  String _title = 'Icon Library';
+  final _updater = Debouncer(milliseconds: 200);
 
-  @override
-  Widget build(BuildContext context) {
-    List<String> icons;
+  Future<void> _updateItems() async {
     List<String> iconNames;
-    String title = 'Icon Library';
 
     switch (widget.source) {
       case SVGSource.material:
-        title = 'Material Icon Library';
-        icons = MaterialSvgs.everyIcon;
+        _title = 'Material Icon Library';
+        _icons = MaterialSvgs.everyIcon;
         iconNames = MaterialSvgs.iconNames;
         break;
       case SVGSource.bootstrap:
-        title = 'Bootstrap Icon Library';
-        icons = BootstrapSvgs.everyIcon;
+        _title = 'Bootstrap Icon Library';
+        _icons = BootstrapSvgs.everyIcon;
         iconNames = BootstrapSvgs.iconNames;
         break;
       case SVGSource.fontawesome:
-        title = 'Fontawesome Icon Library';
-        icons = FontAwesomeSvgs.everyIcon;
+        _title = 'Fontawesome Icon Library';
+        _icons = FontAwesomeSvgs.everyIcon;
         iconNames = FontAwesomeSvgs.iconNames;
         break;
       case SVGSource.community:
-        title = 'Community Icon Library';
-        icons = CommunitySvgs.everyIcon;
+        _title = 'Community Icon Library';
+        _icons = CommunitySvgs.everyIcon;
         iconNames = CommunitySvgs.iconNames;
         break;
     }
 
+    final List<_NameAndIcon> items = [];
+
+    for (int i = 0; i < iconNames.length; i++) {
+      if (Utils.isNotEmpty(_filter)) {
+        if (iconNames[i].toLowerCase().contains(_filter)) {
+          items.add(_NameAndIcon(iconNames[i], _icons[i]));
+        }
+      } else {
+        items.add(_NameAndIcon(iconNames[i], _icons[i]));
+      }
+    }
+
+    _items = items;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _updateItems();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final actions = [
       IconButton(
         onPressed: () {
@@ -89,7 +113,7 @@ class _SvgScreenState extends State<SvgScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(_title),
         actions: actions,
       ),
       body: Column(
@@ -97,7 +121,7 @@ class _SvgScreenState extends State<SvgScreen> {
           SearchField(
             onChange: (value) {
               _filter = value.toLowerCase();
-              setState(() {});
+              _updater.run(_updateItems);
             },
             onSubmit: (value) {},
             hint: 'Filter',
@@ -106,18 +130,6 @@ class _SvgScreenState extends State<SvgScreen> {
           Expanded(
             child: LayoutBuilder(
               builder: (context, constraints) {
-                final List<_NameAndIcon> items = [];
-
-                for (int i = 0; i < iconNames.length; i++) {
-                  if (Utils.isNotEmpty(_filter)) {
-                    if (iconNames[i].toLowerCase().contains(_filter)) {
-                      items.add(_NameAndIcon(iconNames[i], icons[i]));
-                    }
-                  } else {
-                    items.add(_NameAndIcon(iconNames[i], icons[i]));
-                  }
-                }
-
                 return GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: constraints.maxWidth ~/ gridItemWidth,
@@ -125,9 +137,9 @@ class _SvgScreenState extends State<SvgScreen> {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
-                  itemCount: items.length,
+                  itemCount: _items.length,
                   itemBuilder: (context, index) {
-                    final item = items[index];
+                    final item = _items[index];
 
                     return Column(
                       children: [
