@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class LoadingWidget extends StatelessWidget {
-  const LoadingWidget({this.size = 140});
+  const LoadingWidget({
+    this.size = 64,
+  });
 
   final double size;
 
@@ -10,11 +12,11 @@ class LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        height: 64,
-        width: 64,
+        height: size,
+        width: size,
         child: CircularProgressIndicator(
           color: Theme.of(context).primaryColor,
-          strokeWidth: 6,
+          strokeWidth: size * 0.1,
         ),
       ),
     );
