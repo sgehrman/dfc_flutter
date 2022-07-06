@@ -27,10 +27,10 @@ dependencies:
   flutter_markdown: ^0.6.10+1
   flutter_multi_formatter: ^2.5.1
   flutter_parsed_text: ^2.2.1
-  flutter_svg: ^1.1.0
+  flutter_svg: ^1.1.1+1
   google_fonts: ^3.0.1
   hex: ^0.2.0
-  hive: ^2.2.1
+  hive: ^2.2.3
   hive_flutter: ^1.1.0
   html2md: ^1.2.5
   http: ^0.13.3
@@ -44,7 +44,7 @@ dependencies:
   package_info_plus: ^1.4.2
   path: ^1.8.0
   path_provider: ^2.0.9
-  pdfx: 2.0.1+2
+  pdfx: ^2.1.1
   provider: ^6.0.3
   random_string: ^2.3.1
   rive: ^0.9.0
