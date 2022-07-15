@@ -42,7 +42,7 @@ dependencies:
   mime_type: ^1.0.0
   open_file: ^3.2.1
   package_info_plus: ^1.4.2
-  path: ^1.8.0
+  path: ^1.8.1
   path_provider: ^2.0.9
   pdfx: 2.0.1+2
   provider: ^6.0.3
