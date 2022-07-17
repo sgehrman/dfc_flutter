@@ -1,1 +1,1 @@
-const svgDevMode = false;
+const svgDevMode = true;
