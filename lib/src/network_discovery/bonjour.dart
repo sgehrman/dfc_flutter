@@ -54,7 +54,7 @@ class Bonjour extends ChangeNotifier {
     await discovery!.start();
 
     discovery!.eventStream!.listen((event) {
-      if (event.type == BonsoirDiscoveryEventType.DISCOVERY_SERVICE_RESOLVED) {
+      if (event.type == BonsoirDiscoveryEventType.discoveryServiceResolved) {
         final ResolvedBonsoirService? service =
             event.service as ResolvedBonsoirService?;
 
@@ -63,8 +63,7 @@ class Bonjour extends ChangeNotifier {
           _resolvedServices.add(service);
           notifyListeners();
         }
-      } else if (event.type ==
-          BonsoirDiscoveryEventType.DISCOVERY_SERVICE_LOST) {
+      } else if (event.type == BonsoirDiscoveryEventType.discoveryServiceLost) {
         _resolvedServices.remove(event.service as ResolvedBonsoirService?);
         notifyListeners();
 
