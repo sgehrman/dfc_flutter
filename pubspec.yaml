@@ -16,7 +16,7 @@ dependencies:
   crypto: ^3.0.0
   device_info: ^2.0.2
   dotted_border: ^2.0.0+2
-  email_validator: ^2.1.16
+  email_validator: ^2.1.17
   extended_image: ^6.2.1
   flutter:
     sdk: flutter
@@ -27,13 +27,13 @@ dependencies:
   flutter_markdown: ^0.6.10+1
   flutter_multi_formatter: ^2.5.1
   flutter_parsed_text: ^2.2.1
-  flutter_svg: ^1.1.1+1
+  flutter_svg: ^1.1.2
   google_fonts: ^3.0.1
   hex: ^0.2.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   html2md: ^1.2.5
-  http: ^0.13.3
+  http: ^0.13.5
   image: ^3.2.0
   intl: ^0.17.0
   json_annotation: ^4.3.0
