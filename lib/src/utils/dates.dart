@@ -1,5 +1,7 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:relative_time/relative_time.dart';
 
 class Dates {
   static String formatDateString(String iso) {
@@ -23,6 +25,22 @@ class Dates {
       } else {
         return formatter.format(date);
       }
+    }
+
+    return '';
+  }
+
+  static String relativeDateString(BuildContext context, DateTime? date) {
+    if (date != null) {
+      return RelativeTime(
+        context,
+        timeUnits: const <TimeUnit>[
+          TimeUnit.week,
+          TimeUnit.month,
+          TimeUnit.day,
+          TimeUnit.year,
+        ],
+      ).format(date);
     }
 
     return '';
