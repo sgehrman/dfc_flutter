@@ -35,8 +35,6 @@ class Dates {
       return RelativeTime(
         context,
         timeUnits: const <TimeUnit>[
-          TimeUnit.week,
-          TimeUnit.month,
           TimeUnit.day,
           TimeUnit.year,
         ],
