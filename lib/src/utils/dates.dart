@@ -30,15 +30,25 @@ class Dates {
     return '';
   }
 
+  // returns "in 344 days"
   static String relativeDateString(BuildContext context, DateTime? date) {
     if (date != null) {
       return RelativeTime(
         context,
         timeUnits: const <TimeUnit>[
           TimeUnit.day,
-          TimeUnit.year,
         ],
       ).format(date);
+    }
+
+    return '';
+  }
+
+  static String formatLongDate(DateTime? date) {
+    if (date != null) {
+      final formatter = DateFormat('EE, MMM d, yyyy');
+
+      return formatter.format(date);
     }
 
     return '';
