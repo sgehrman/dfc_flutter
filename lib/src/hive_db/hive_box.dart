@@ -54,6 +54,13 @@ class HiveBox<T> {
     return _box?.containsKey(key) ?? false;
   }
 
+  // used for debugging only
+  Map<dynamic, dynamic> toMap() {
+    assert(_box != null, 'Box is closed: $name');
+
+    return _box?.toMap() ?? {};
+  }
+
   int get length {
     assert(_box != null, 'Box is closed: $name');
 
