@@ -125,7 +125,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
                             fontObj.fav = !fontObj.fav;
 
                             // save in prefs
-                            final List<String?> favs =
+                            final List<String> favs =
                                 Preferences().getFavoriteGoogleFonts();
 
                             if (fontObj.fav) {

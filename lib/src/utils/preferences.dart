@@ -24,23 +24,23 @@ class Preferences extends ChangeNotifier {
     prefs.clear();
   }
 
-  static String? get loginEmail =>
-      HiveBox.prefsBox.get('loginEmail', defaultValue: null) as String?;
+  static String get loginEmail =>
+      HiveBox.prefsBox.get('loginEmail', defaultValue: '') as String;
   static set loginEmail(String? email) =>
       HiveBox.prefsBox.put('loginEmail', email);
 
-  static String? get loginName =>
-      HiveBox.prefsBox.get('loginName', defaultValue: null) as String?;
+  static String get loginName =>
+      HiveBox.prefsBox.get('loginName', defaultValue: '') as String;
   static set loginName(String? email) =>
       HiveBox.prefsBox.put('loginName', email);
 
-  static String? get loginPhone =>
-      HiveBox.prefsBox.get('loginPhone', defaultValue: null) as String?;
+  static String get loginPhone =>
+      HiveBox.prefsBox.get('loginPhone', defaultValue: '') as String;
   static set loginPhone(String? phone) =>
       HiveBox.prefsBox.put('loginPhone', phone);
 
-  bool? get showPerformanceOverlay =>
-      prefs.get('perfOverlay', defaultValue: false) as bool?;
+  bool get showPerformanceOverlay =>
+      prefs.get('perfOverlay', defaultValue: false) as bool;
 
   set showPerformanceOverlay(bool? value) {
     if (showPerformanceOverlay != value) {
@@ -54,8 +54,8 @@ class Preferences extends ChangeNotifier {
   static set disableTooltips(bool? flag) =>
       HiveBox.prefsBox.put('disableTooltips', flag);
 
-  bool? get showCheckerboardImages =>
-      prefs.get('checkerboardImages', defaultValue: false) as bool?;
+  bool get showCheckerboardImages =>
+      prefs.get('checkerboardImages', defaultValue: false) as bool;
 
   set showCheckerboardImages(bool? value) {
     if (showCheckerboardImages != value) {
@@ -63,8 +63,8 @@ class Preferences extends ChangeNotifier {
     }
   }
 
-  bool? get showCheckerboardLayers =>
-      prefs.get('checkerboardLayers', defaultValue: false) as bool?;
+  bool get showCheckerboardLayers =>
+      prefs.get('checkerboardLayers', defaultValue: false) as bool;
 
   set showCheckerboardLayers(bool? value) {
     if (showCheckerboardLayers != value) {
@@ -72,11 +72,11 @@ class Preferences extends ChangeNotifier {
     }
   }
 
-  List<String?> getFavoriteGoogleFonts() => List<String?>.from(
+  List<String> getFavoriteGoogleFonts() => List<String>.from(
         prefs.get('favoriteGoogleFonts', defaultValue: <String>[]) as List,
       );
 
-  void setFavoriteGoogleFonts(List<String?> value) {
+  void setFavoriteGoogleFonts(List<String> value) {
     if (getFavoriteGoogleFonts() != value) {
       prefs.put('favoriteGoogleFonts', value);
     }
@@ -130,7 +130,7 @@ class Preferences extends ChangeNotifier {
     }
   }
 
-  List<ServerFile>? get favorites {
+  List<ServerFile> get favorites {
     final dynamic pref = prefs.get('favorites');
 
     if (pref != null) {
@@ -143,7 +143,7 @@ class Preferences extends ChangeNotifier {
           .toList();
     }
 
-    return null;
+    return [];
   }
 
   // pass null to delete
