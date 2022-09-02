@@ -357,7 +357,7 @@ class ServerFile {
   }
 
   @override
-  int get hashCode => hashValues(
+  int get hashCode => Object.hash(
         path,
         isDirectory,
       );
