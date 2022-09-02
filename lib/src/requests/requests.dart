@@ -123,7 +123,8 @@ class Requests {
           await Common.storageGet('cookies-$hostnameHash');
 
       if (cookiesJson != null) {
-        final Map cookies = Common.fromJson(cookiesJson) as Map;
+        final Map<dynamic, dynamic> cookies =
+            Common.fromJson(cookiesJson) as Map;
 
         return Map<String, String>.from(cookies);
       }
@@ -136,7 +137,7 @@ class Requests {
     }
   }
 
-  static Future setStoredCookies(
+  static Future<void> setStoredCookies(
     String hostname,
     Map<String, String> cookies,
   ) async {
@@ -145,7 +146,7 @@ class Requests {
     await Common.storageSet('cookies-$hostnameHash', cookiesJson);
   }
 
-  static Future clearStoredCookies(String hostname) async {
+  static Future<void> clearStoredCookies(String hostname) async {
     final String hostnameHash = StrUtils.hashStringSHA256(hostname);
     await Common.storageRemove('cookies-$hostnameHash');
   }
@@ -407,7 +408,7 @@ class Requests {
       }
     }
 
-    late Future future;
+    late Future<dynamic> future;
 
     switch (method) {
       case HttpMethod.get:

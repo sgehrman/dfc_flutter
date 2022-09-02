@@ -40,11 +40,11 @@ class Common {
     return json.decode(jsonString);
   }
 
-  static bool hasKeyIgnoreCase(Map map, String key) {
+  static bool hasKeyIgnoreCase(Map<dynamic, dynamic> map, String key) {
     return map.keys.any((dynamic x) => equalsIgnoreCase(x as String, key));
   }
 
-  static String encodeMap(Map data) {
+  static String encodeMap(Map<dynamic, dynamic> data) {
     return data.keys.map<String>((dynamic key) {
       final k = Uri.encodeComponent(key.toString());
       final v = Uri.encodeComponent(data[key].toString());

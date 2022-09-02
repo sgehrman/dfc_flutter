@@ -19,7 +19,7 @@ class DialogContentController<T> {
 Future<T?> showContentDialog<T>({
   required BuildContext context,
   required Widget? title,
-  required DialogContentController controller,
+  required DialogContentController<dynamic> controller,
   bool showCancel = false,
   String okButtonName = 'OK',
   String cancelButtonName = 'Cancel',

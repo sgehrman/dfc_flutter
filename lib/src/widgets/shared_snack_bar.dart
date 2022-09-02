@@ -112,7 +112,7 @@ class SharedSnackBar extends StatefulWidget {
 
 class _SharedSnackBarState extends State<SharedSnackBar>
     with SingleTickerProviderStateMixin {
-  late Animation offsetAnimation;
+  late Animation<Offset> offsetAnimation;
   late AnimationController animationController;
   double? topPosition;
 
@@ -167,7 +167,7 @@ class _SharedSnackBarState extends State<SharedSnackBar>
       left: 16,
       right: 16,
       child: SlideTransition(
-        position: offsetAnimation as Animation<Offset>,
+        position: offsetAnimation,
         child: SafeArea(
           child: Center(
             child: _TapBounceContainer(
@@ -338,7 +338,7 @@ class _TapBounceContainerState extends State<_TapBounceContainer>
     await _closeSnackBar();
   }
 
-  Future _closeSnackBar() async {
+  Future<void> _closeSnackBar() async {
     await _controller.reverse();
     await Future<dynamic>.delayed(animationDuration);
     widget.onTap?.call();

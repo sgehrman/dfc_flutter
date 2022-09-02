@@ -44,8 +44,8 @@ class ThemeButton extends StatelessWidget {
     if (icon != null) {
       return TextButton.icon(
         style: TextButton.styleFrom(
+          foregroundColor: textColor ?? Colors.white,
           backgroundColor: Theme.of(context).primaryColor,
-          primary: textColor ?? Colors.white,
           padding: padding,
         ),
         onPressed: disabled ? null : onPressed,
@@ -57,7 +57,7 @@ class ThemeButton extends StatelessWidget {
     return TextButton(
       style: TextButton.styleFrom(
         backgroundColor: Theme.of(context).primaryColor,
-        primary: textColor ?? Colors.white,
+        foregroundColor: textColor ?? Colors.white,
         padding: padding,
       ),
       onPressed: disabled ? null : onPressed,

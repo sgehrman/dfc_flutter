@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension ExtendedList on List {
+extension ExtendedList on List<dynamic> {
   List<Widget> addDividers() {
     final List<Widget> result = [];
 

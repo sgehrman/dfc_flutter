@@ -63,7 +63,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     }
   }
 
-  Widget _exAndInk(bool ex, bool ink, MapEntry entry) {
+  Widget _exAndInk(bool ex, bool ink, MapEntry<dynamic, dynamic> entry) {
     if (ex && ink) {
       return InkWell(
         onTap: () {
@@ -150,7 +150,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     return true;
   }
 
-  Widget getValueWidget(MapEntry entry) {
+  Widget getValueWidget(MapEntry<dynamic, dynamic> entry) {
     if (entry.value == null) {
       return const Expanded(
         child: Text(
@@ -194,7 +194,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
         ),
       );
     } else if (entry.value is List) {
-      final List list = entry.value as List;
+      final List<dynamic> list = entry.value as List;
 
       if (list.isEmpty) {
         return const Text(

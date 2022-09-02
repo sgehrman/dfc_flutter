@@ -9,7 +9,6 @@ Future<bool?> showPreviewDialog({
 }) {
   return showDialog<bool>(
     context: context,
-    barrierDismissible: true,
     builder: (context) => CDialog(
       backgroundColor: backgroundColor,
       child: Column(

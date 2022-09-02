@@ -16,7 +16,7 @@ class Preferences extends ChangeNotifier {
 
   static Preferences? _instance;
 
-  HiveBox get prefs {
+  HiveBox<dynamic> get prefs {
     return HiveBox.prefsBox;
   }
 
@@ -107,7 +107,7 @@ class Preferences extends ChangeNotifier {
     final dynamic pref = prefs.get('themeSets');
 
     if (pref != null) {
-      final jsonList = List<Map>.from(pref as List);
+      final jsonList = List<Map<dynamic, dynamic>>.from(pref as List);
 
       return jsonList
           .map(
@@ -124,7 +124,8 @@ class Preferences extends ChangeNotifier {
     if (newThemes == null) {
       prefs.delete('themeSets');
     } else {
-      final List<Map> maps = newThemes.map((x) => x.toMap()).toList();
+      final List<Map<dynamic, dynamic>> maps =
+          newThemes.map((x) => x.toMap()).toList();
 
       prefs.put('themeSets', maps);
     }
@@ -134,7 +135,7 @@ class Preferences extends ChangeNotifier {
     final dynamic pref = prefs.get('favorites');
 
     if (pref != null) {
-      final jsonList = List<Map>.from(pref as List);
+      final jsonList = List<Map<dynamic, dynamic>>.from(pref as List);
 
       return jsonList
           .map(
@@ -151,7 +152,8 @@ class Preferences extends ChangeNotifier {
     if (favs == null) {
       prefs.delete('favorites');
     } else {
-      final List<Map> maps = favs.map((x) => x.toMap()).toList();
+      final List<Map<dynamic, dynamic>> maps =
+          favs.map((x) => x.toMap()).toList();
 
       prefs.put('favorites', maps);
     }

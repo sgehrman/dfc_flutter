@@ -1,4 +1,4 @@
-extension MapCasting on Map {
+extension MapCasting on Map<dynamic, dynamic> {
   // casts dynamic value to String
   // returns '' on failure or null
   String strVal(String key) {
@@ -25,7 +25,7 @@ extension MapCasting on Map {
     }
 
     if (result is Map) {
-      Map mapResult = result;
+      Map<dynamic, dynamic> mapResult = result;
 
       if (mapResult is! Map<K, V>) {
         mapResult = Map<K, V>.from(mapResult);
@@ -95,7 +95,7 @@ extension MapCasting on Map {
     }
 
     if (result is List) {
-      List listResult = result;
+      List<dynamic> listResult = result;
 
       if (listResult is! List<T>) {
         listResult = List<T>.from(listResult);

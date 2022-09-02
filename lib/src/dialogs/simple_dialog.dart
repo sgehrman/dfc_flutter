@@ -28,7 +28,6 @@ Future<T?> showSimpleDialog<T>({
     },
     barrierDismissible: barrierDismissible,
     barrierLabel: '',
-    transitionDuration: const Duration(milliseconds: 200),
     pageBuilder: (context, animation1, animation2) {
       return Container();
     },

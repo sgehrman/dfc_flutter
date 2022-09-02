@@ -95,7 +95,7 @@ class BrowserSortMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<Box>(
+    return ValueListenableBuilder<Box<dynamic>>(
       valueListenable: HiveBox.prefsBox.listenable()!,
       builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
         return _popupMenu(context);

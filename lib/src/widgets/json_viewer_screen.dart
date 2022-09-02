@@ -138,7 +138,6 @@ Future<void> showJsonViewerDialog({
       ],
     ),
     okButtonName: 'Close',
-    showCancel: false,
     controller: controller,
   );
 }

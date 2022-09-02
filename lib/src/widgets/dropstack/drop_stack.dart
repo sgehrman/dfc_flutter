@@ -111,7 +111,7 @@ class DropStack extends ChangeNotifier {
           padding: const EdgeInsets.only(left: 12),
           child: Text(directory.name.preTruncate()),
         ),
-        ValueListenableBuilder<Box>(
+        ValueListenableBuilder<Box<dynamic>>(
           valueListenable: HiveBox.prefsBox.listenable()!,
           builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
             final color = Theme.of(context).primaryColor;

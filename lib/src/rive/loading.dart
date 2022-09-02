@@ -7,7 +7,7 @@ class LoadingAnimation extends StatefulWidget {
 }
 
 class _LoadingAnimationState extends State<LoadingAnimation> {
-  late RiveAnimationController _controller;
+  late RiveAnimationController<dynamic> _controller;
 
   @override
   void initState() {

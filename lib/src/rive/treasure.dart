@@ -7,7 +7,7 @@ class TreasureAnimation extends StatefulWidget {
 }
 
 class _TreasureAnimationState extends State<TreasureAnimation> {
-  late RiveAnimationController _controller;
+  late RiveAnimationController<dynamic> _controller;
 
   @override
   void initState() {

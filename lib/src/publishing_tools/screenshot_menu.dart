@@ -21,7 +21,7 @@ class ScreenshotMenuItem {
     final Map<String, dynamic> jsonMap =
         json.decode(data) as Map<String, dynamic>;
 
-    final dataList = List<Map>.from(jsonMap['data'] as List);
+    final dataList = List<Map<dynamic, dynamic>>.from(jsonMap['data'] as List);
 
     // add no title choice
     result.add(ScreenshotMenuItem());

@@ -5,7 +5,7 @@ class HiveOpener extends StatefulWidget {
   const HiveOpener({required this.child, required this.box});
 
   final Widget child;
-  final HiveBox box;
+  final HiveBox<dynamic> box;
 
   @override
   _HiveOpenerState createState() => _HiveOpenerState();

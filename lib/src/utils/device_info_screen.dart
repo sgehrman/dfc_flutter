@@ -49,7 +49,7 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
     }
   }
 
-  int _rankForItem(Map map) {
+  int _rankForItem(Map<dynamic, dynamic> map) {
     switch (map['key'] as String?) {
       case 'product':
         return 0;
@@ -81,7 +81,7 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
       }
     }
 
-    result.sort((Map a, Map b) {
+    result.sort((Map<dynamic, dynamic> a, Map<dynamic, dynamic> b) {
       int res = _rankForItem(a).compareTo(_rankForItem(b));
 
       if (res == 0) {
