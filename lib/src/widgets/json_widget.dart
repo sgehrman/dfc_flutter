@@ -13,6 +13,19 @@ class JsonViewerWidget extends StatefulWidget {
   JsonViewerWidgetState createState() => JsonViewerWidgetState();
 }
 
+String _intToString(int content) {
+  // convert to date if number is large
+  // chargebee is seconds, usually milliseconds
+  print(content);
+  String contentStr = content.toString();
+  if (content > 100000000) {
+    contentStr = DateTime(content * 1000).toIso8601String();
+  }
+  print(contentStr);
+
+  return contentStr;
+}
+
 class JsonViewerWidgetState extends State<JsonViewerWidget> {
   final Set<String> _closedFlag = {};
 
@@ -161,7 +174,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     } else if (entry.value is int) {
       return Expanded(
         child: Text(
-          entry.value.toString(),
+          _intToString(entry.value as int),
           style: const TextStyle(color: Colors.grey),
         ),
       );
@@ -420,7 +433,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
     } else if (content is int) {
       return Expanded(
         child: Text(
-          content.toString(),
+          _intToString(content),
           style: const TextStyle(color: Colors.grey),
         ),
       );
