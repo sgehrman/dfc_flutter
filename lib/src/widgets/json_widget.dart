@@ -14,15 +14,21 @@ class JsonViewerWidget extends StatefulWidget {
 }
 
 String _intToString(int content) {
-  // convert to date if number is large
-  // chargebee is seconds, usually milliseconds
   print(content);
   String contentStr = content.toString();
-  if (content > 1000000000) {
-    contentStr =
-        DateTime.fromMillisecondsSinceEpoch(content * 1000).toIso8601String();
+
+  // convert to date if number is large
+  // chargebee is seconds, so we check for that too
+  DateTime? date;
+  if (content > 1000000000000) {
+    date = DateTime.fromMillisecondsSinceEpoch(content);
+  } else if (content > 1000000000) {
+    date = DateTime.fromMillisecondsSinceEpoch(content * 1000);
   }
-  print(contentStr);
+
+  if (date != null && date.year > 1700 && date.year < 3000) {
+    contentStr = date.toString();
+  }
 
   return contentStr;
 }
