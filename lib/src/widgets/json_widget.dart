@@ -14,7 +14,6 @@ class JsonViewerWidget extends StatefulWidget {
 }
 
 String _intToString(int content) {
-  print(content);
   String contentStr = content.toString();
 
   // convert to date if number is large
