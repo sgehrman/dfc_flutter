@@ -18,8 +18,9 @@ String _intToString(int content) {
   // chargebee is seconds, usually milliseconds
   print(content);
   String contentStr = content.toString();
-  if (content > 100000000) {
-    contentStr = DateTime(content * 1000).toIso8601String();
+  if (content > 1000000000) {
+    contentStr =
+        DateTime.fromMillisecondsSinceEpoch(content * 1000).toIso8601String();
   }
   print(contentStr);
 
