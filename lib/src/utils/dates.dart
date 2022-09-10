@@ -38,6 +38,17 @@ class Dates {
     return '';
   }
 
+  // 2022-10-31
+  static String formatShortDate(DateTime? date) {
+    if (date != null) {
+      final formatter = DateFormat('y-M-d');
+
+      return formatter.format(date);
+    }
+
+    return '';
+  }
+
   // if date is in UTC, use this to get local
   static String formatLocalDateTime({
     required DateTime? date,
