@@ -32,7 +32,7 @@ class Plist {
         case 'false':
           return false;
         case 'date':
-          return DateTime.parse(element.text);
+          return DateTime.tryParse(element.text) ?? DateTime(0);
         case 'data':
           return Uint8List.fromList(base64Decode(element.text));
         case 'array':

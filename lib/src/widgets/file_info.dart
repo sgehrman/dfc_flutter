@@ -131,16 +131,19 @@ class _FileInfoState extends State<FileInfo> {
         }
 
         if (key == 'changed') {
-          valueString =
-              DateFormat.yMMMEd().add_jms().format(DateTime.parse(valueString));
+          valueString = DateFormat.yMMMEd()
+              .add_jms()
+              .format(DateTime.tryParse(valueString) ?? DateTime(0));
         }
         if (key == 'modified') {
-          valueString =
-              DateFormat.yMMMEd().add_jms().format(DateTime.parse(valueString));
+          valueString = DateFormat.yMMMEd()
+              .add_jms()
+              .format(DateTime.tryParse(valueString) ?? DateTime(0));
         }
         if (key == 'accessed') {
-          valueString =
-              DateFormat.yMMMEd().add_jms().format(DateTime.parse(valueString));
+          valueString = DateFormat.yMMMEd()
+              .add_jms()
+              .format(DateTime.tryParse(valueString) ?? DateTime(0));
         }
 
         return Padding(

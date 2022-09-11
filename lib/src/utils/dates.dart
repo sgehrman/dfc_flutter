@@ -3,9 +3,7 @@ import 'package:intl/intl.dart';
 
 class Dates {
   static String formatDateString(String iso) {
-    final DateTime date = DateTime.parse(iso);
-
-    return formatDateTime(date);
+    return formatDateTime(DateTime.tryParse(iso));
   }
 
   static String formatDateTime(DateTime? date) {
@@ -120,13 +118,7 @@ class Dates {
   // not a perfect solution, but enough for now
   static DateTime? parseDate(String dateString) {
     if (Utils.isNotEmpty(dateString)) {
-      DateTime? theDate;
-
-      try {
-        theDate = DateTime.parse(dateString);
-      } catch (err) {
-        print('Error: dateString: $dateString, err: $err');
-      }
+      DateTime? theDate = DateTime.tryParse(dateString);
 
       if (theDate != null) {
         return theDate;

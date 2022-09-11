@@ -39,7 +39,7 @@ class ServerFile {
 
     final mod = map['lastModified'] as String?;
     if (mod != null) {
-      result._lastModified = DateTime.parse(mod);
+      result._lastModified = DateTime.tryParse(mod);
     }
 
     return result;
