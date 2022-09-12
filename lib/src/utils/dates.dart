@@ -39,7 +39,7 @@ class Dates {
   // 2022-10-31
   static String formatShortDate(DateTime? date) {
     if (date != null) {
-      final formatter = DateFormat('y-MM-d');
+      final formatter = DateFormat('y-MM-dd');
 
       return formatter.format(date);
     }
