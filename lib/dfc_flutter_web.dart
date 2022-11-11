@@ -46,6 +46,7 @@ export 'src/rive/treasure.dart';
 export 'src/svg_icons/svg_icon.dart';
 export 'src/svg_icons/svg_screen.dart';
 export 'src/themes/dynamic_theme.dart';
+export 'src/themes/editor/theme_color_editor_screen.dart';
 export 'src/themes/editor/theme_set.dart';
 export 'src/themes/editor/theme_set_button.dart';
 export 'src/themes/editor/theme_set_manager.dart';
