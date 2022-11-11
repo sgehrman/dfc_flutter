@@ -148,10 +148,10 @@ class ThemeSetManager {
   static List<ThemeSet> _defaultSets() {
     // json for sets, output to console to create new defaults
     final List<String> jsonSets = [
-      '{"name":"CyberPunk","primaryColor":4278238420,"accentColor":4293943954,"headerTextColor":4288585374,"backgroundColor":4279379760,"textAccentColor":4288585374,"textColor":4294967295,"buttonContentColor":4294967295,"fontName":"audiowideTextTheme","integratedAppBar":true,"dividerLines":false,"lightBackground":false}',
+      '{"name":"CyberPunk","primaryColor":4278238420,"accentColor":4293943954,"headerTextColor":4288585374,"backgroundColor":4279379760,"textAccentColor":4288585374,"textColor":4294967295,"buttonContentColor":4294967295,"fontName":"Audiowide","integratedAppBar":true,"dividerLines":false,"lightBackground":false}',
       '{"name":"Terminal","primaryColor":4281167409,"accentColor":4281896508,"headerTextColor":4283215696,"backgroundColor":4278395161,"textAccentColor":4284523363,"textColor":4278775826,"buttonContentColor":4294967295,"fontName":null,"integratedAppBar":true,"dividerLines":false,"lightBackground":false}',
-      '{"name":"Boomer","primaryColor":4279716220,"accentColor":4284643568,"headerTextColor":4288585374,"backgroundColor":4294966781,"textAccentColor":4288585374,"textColor":4278190080,"buttonContentColor":4294967295,"fontName":"robotoTextTheme","integratedAppBar":false,"dividerLines":false,"lightBackground":true}',
-      '{"name":"Pink Lady","primaryColor":4290782133,"accentColor":4294540773,"headerTextColor":4294801123,"backgroundColor":4292624561,"textAccentColor":4294024701,"textColor":4294967295,"buttonContentColor":4294967295,"fontName":"robotoTextTheme","integratedAppBar":true,"dividerLines":false,"lightBackground":false}',
+      '{"name":"Boomer","primaryColor":4279716220,"accentColor":4284643568,"headerTextColor":4288585374,"backgroundColor":4294966781,"textAccentColor":4288585374,"textColor":4278190080,"buttonContentColor":4294967295,"fontName":"Heebo","integratedAppBar":false,"dividerLines":false,"lightBackground":true}',
+      '{"name":"Pink Lady","primaryColor":4290782133,"accentColor":4294540773,"headerTextColor":4294801123,"backgroundColor":4292624561,"textAccentColor":4294024701,"textColor":4294967295,"buttonContentColor":4294967295,"fontName":"Roboto","integratedAppBar":true,"dividerLines":false,"lightBackground":false}',
     ];
 
     // strings to maps
