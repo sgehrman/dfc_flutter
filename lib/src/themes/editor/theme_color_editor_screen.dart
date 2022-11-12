@@ -7,19 +7,45 @@ import 'package:dfc_flutter/src/widgets/theme_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
-class ThemeColorEditorScreen extends StatefulWidget {
-  const ThemeColorEditorScreen({required this.themeSet, required this.field});
+class ThemeColorEditorScreen extends StatelessWidget {
+  const ThemeColorEditorScreen({
+    required this.themeSet,
+    required this.field,
+  });
 
-  final ThemeSet? themeSet;
+  final ThemeSet themeSet;
   final ThemeSetColor field;
 
   @override
-  _ThemeColorEditorScreenState createState() => _ThemeColorEditorScreenState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(themeSet.nameForField(field))),
+      body: ThemeColorEditorWidget(
+        themeSet: themeSet,
+        field: field,
+      ),
+    );
+  }
 }
 
-class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
+// ===============================================================
+
+class ThemeColorEditorWidget extends StatefulWidget {
+  const ThemeColorEditorWidget({
+    required this.themeSet,
+    required this.field,
+  });
+
+  final ThemeSet themeSet;
+  final ThemeSetColor field;
+
+  @override
+  _ThemeColorEditorWidgetState createState() => _ThemeColorEditorWidgetState();
+}
+
+class _ThemeColorEditorWidgetState extends State<ThemeColorEditorWidget> {
   late HSVColor currentColor;
-  ThemeSet? themeSet;
+  late ThemeSet themeSet;
 
   @override
   void initState() {
@@ -28,7 +54,7 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
     themeSet = widget.themeSet;
 
     // color picker crashes if you send nil.  An invalid themeset might have null colors from bad scan etc.
-    final Color color = themeSet!.colorForField(widget.field) ?? Colors.black;
+    final Color color = themeSet.colorForField(widget.field) ?? Colors.black;
     currentColor = HSVColor.fromColor(color);
   }
 
@@ -37,7 +63,7 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
       currentColor = hsvColor;
 
       final Color color = hsvColor.toColor();
-      themeSet = themeSet!.copyWithColor(widget.field, color);
+      themeSet = themeSet.copyWithColor(widget.field, color);
 
       ThemeSetManager().currentTheme = themeSet;
     });
@@ -45,50 +71,47 @@ class _ThemeColorEditorScreenState extends State<ThemeColorEditorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(themeSet!.nameForField(widget.field))),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              const SizedBox(height: 10),
-              ColorPicker(
-                labelTypes: const [],
-                pickerAreaBorderRadius:
-                    const BorderRadius.all(Radius.circular(8)),
-                enableAlpha: false,
-                pickerColor: currentColor.toColor(),
-                pickerHsvColor: currentColor,
-                onHsvColorChanged: changeColorHsv,
-                onColorChanged: (color) {
-                  // using the hsv color above? test this.
-                },
-              ),
-              const SizedBox(height: 20),
-              const BrowserHeader(
-                'Example Header',
-              ),
-              const ListRow(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                title: 'Example List item',
-                leading: SvgIcon(FontAwesomeSvgs.regularFolder),
-                subtitle: 'Subtitle example',
-              ),
-              const ListRow(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                title: 'Example List item',
-                leading: SvgIcon(FontAwesomeSvgs.regularFolder),
-                subtitle: 'Subtitle example',
-              ),
-              const SizedBox(height: 10),
-              ThemeButton(
-                title: 'Sample Button',
-                onPressed: () {
-                  changeColorHsv(HSVColor.fromColor(themeSet!.primaryColor));
-                },
-              ),
-            ],
-          ),
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: <Widget>[
+            const SizedBox(height: 10),
+            ColorPicker(
+              labelTypes: const [],
+              pickerAreaBorderRadius:
+                  const BorderRadius.all(Radius.circular(8)),
+              enableAlpha: false,
+              pickerColor: currentColor.toColor(),
+              pickerHsvColor: currentColor,
+              onHsvColorChanged: changeColorHsv,
+              onColorChanged: (color) {
+                // using the hsv color above? test this.
+              },
+            ),
+            const SizedBox(height: 20),
+            const BrowserHeader(
+              'Example Header',
+            ),
+            const ListRow(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              title: 'Example List item',
+              leading: SvgIcon(FontAwesomeSvgs.regularFolder),
+              subtitle: 'Subtitle example',
+            ),
+            const ListRow(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              title: 'Example List item',
+              leading: SvgIcon(FontAwesomeSvgs.regularFolder),
+              subtitle: 'Subtitle example',
+            ),
+            const SizedBox(height: 10),
+            ThemeButton(
+              title: 'Sample Button',
+              onPressed: () {
+                changeColorHsv(HSVColor.fromColor(themeSet.primaryColor));
+              },
+            ),
+          ],
         ),
       ),
     );
