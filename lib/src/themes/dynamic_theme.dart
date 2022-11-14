@@ -9,7 +9,8 @@ class DynamicTheme with ChangeNotifier {
   DynamicTheme() {
     _themeSet = ThemeSetManager().currentTheme;
 
-    Preferences().addListener(() {
+    // SNG listens to all prefs, not great
+    Preferences().prefs.listenable()!.addListener(() {
       final ThemeSet? newTheme = ThemeSetManager().currentTheme;
       if (_themeSet != newTheme) {
         _themeSet = newTheme;

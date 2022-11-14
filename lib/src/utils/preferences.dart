@@ -1,18 +1,17 @@
+import 'dart:convert';
+
 import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
-class Preferences extends ChangeNotifier {
+class Preferences {
   factory Preferences() {
     return _instance ??= Preferences._();
   }
 
-  Preferences._() {
-    prefs.listenable()!.addListener(() {
-      notifyListeners();
-    });
-  }
+  Preferences._();
 
   static Preferences? _instance;
 
@@ -24,20 +23,14 @@ class Preferences extends ChangeNotifier {
     prefs.clear();
   }
 
-  static String get loginEmail =>
-      HiveBox.prefsBox.get('loginEmail', defaultValue: '') as String;
-  static set loginEmail(String? email) =>
-      HiveBox.prefsBox.put('loginEmail', email);
+  String get loginEmail => prefs.get('loginEmail', defaultValue: '') as String;
+  set loginEmail(String? email) => prefs.put('loginEmail', email);
 
-  static String get loginName =>
-      HiveBox.prefsBox.get('loginName', defaultValue: '') as String;
-  static set loginName(String? email) =>
-      HiveBox.prefsBox.put('loginName', email);
+  String get loginName => prefs.get('loginName', defaultValue: '') as String;
+  set loginName(String? email) => prefs.put('loginName', email);
 
-  static String get loginPhone =>
-      HiveBox.prefsBox.get('loginPhone', defaultValue: '') as String;
-  static set loginPhone(String? phone) =>
-      HiveBox.prefsBox.put('loginPhone', phone);
+  String get loginPhone => prefs.get('loginPhone', defaultValue: '') as String;
+  set loginPhone(String? phone) => prefs.put('loginPhone', phone);
 
   bool get showPerformanceOverlay =>
       prefs.get('perfOverlay', defaultValue: false) as bool;
@@ -49,10 +42,9 @@ class Preferences extends ChangeNotifier {
   }
 
   // tooltips
-  static bool get disableTooltips =>
-      HiveBox.prefsBox.get('disableTooltips', defaultValue: false) as bool;
-  static set disableTooltips(bool? flag) =>
-      HiveBox.prefsBox.put('disableTooltips', flag);
+  bool get disableTooltips =>
+      prefs.get('disableTooltips', defaultValue: false) as bool;
+  set disableTooltips(bool? flag) => prefs.put('disableTooltips', flag);
 
   bool get showCheckerboardImages =>
       prefs.get('checkerboardImages', defaultValue: false) as bool;
@@ -157,5 +149,107 @@ class Preferences extends ChangeNotifier {
 
       prefs.put('favorites', maps);
     }
+  }
+
+  // ========================================================
+  //  generic
+
+  // --------------
+  // boolPref
+  bool boolPref({
+    required String key,
+    bool defaultValue = false,
+  }) =>
+      prefs.get(key, defaultValue: defaultValue) as bool;
+  Future<void> setBoolPref({
+    required String key,
+    required bool? flag,
+  }) =>
+      prefs.put(key, flag);
+
+  // --------------
+  // intPref
+
+  int intPref({
+    required String key,
+    int defaultValue = 0,
+  }) =>
+      prefs.get(key, defaultValue: defaultValue) as int;
+  Future<void> setIntPref({
+    required String key,
+    required int? value,
+  }) =>
+      prefs.put(key, value);
+
+  // --------------
+  // stringPref
+  String stringPref({
+    required String key,
+    String defaultValue = '',
+  }) =>
+      prefs.get(key, defaultValue: defaultValue) as String;
+  Future<void> setStringPref({
+    required String key,
+    required String? value,
+  }) =>
+      prefs.put(key, value);
+
+  // --------------
+  // mapPref
+  Map<String, dynamic> mapPref({
+    required String key,
+    Map<String, dynamic> defaultValue = const {},
+  }) =>
+      prefs.get(key, defaultValue: defaultValue) as Map<String, dynamic>;
+  Future<void> setMapPref({
+    required String key,
+    required Map<String, dynamic>? value,
+  }) =>
+      prefs.put('$key-Map', value);
+
+  // --------------
+  // listPref
+  List<T> listPref<T>({
+    required String key,
+    List<T> defaultValue = const [],
+  }) {
+    final result = prefs.get(key, defaultValue: defaultValue) as List;
+
+    // hive sucks, I was getting back List<LinkedMap> which wasn't castable?
+    // so I had to add this json convert
+    final jstr = json.encode(result);
+    final converted = json.decode(jstr) as List;
+
+    return List<T>.from(converted);
+  }
+
+  Future<void> setListPref<T>({
+    required String key,
+    required List<T> value,
+  }) =>
+      prefs.put(key, value);
+}
+
+// ===================================================================
+class PreferencesListener extends StatelessWidget {
+  const PreferencesListener({
+    required this.builder,
+    required this.keys,
+  });
+
+  final Widget Function(BuildContext context) builder;
+
+  final List<String> keys;
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<Box<dynamic>>(
+      valueListenable: HiveBox.prefsBox.listenable(
+        keys: keys.isEmpty ? null : keys,
+      )!,
+      builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
+        return builder(context);
+      },
+    );
   }
 }

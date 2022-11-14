@@ -53,7 +53,7 @@ class _HelpTipState extends State<HelpTip> {
 
   @override
   Widget build(BuildContext context) {
-    if (Preferences.disableTooltips || Utils.isEmpty(widget.message)) {
+    if (Preferences().disableTooltips || Utils.isEmpty(widget.message)) {
       return widget.child;
     }
 
