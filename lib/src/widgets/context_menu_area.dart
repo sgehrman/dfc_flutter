@@ -114,7 +114,6 @@ class ContextMenuArea extends StatelessWidget {
 }
 
 // =================================================================
-// =================================================================
 
 class MenuPopupButton extends StatelessWidget {
   const MenuPopupButton({
@@ -142,6 +141,40 @@ class MenuPopupButton extends StatelessWidget {
         );
       },
       child: child,
+    );
+  }
+}
+
+// =================================================================
+
+class IconMenuButton extends StatelessWidget {
+  const IconMenuButton({
+    required this.menuItems,
+    this.iconData,
+    this.color,
+  });
+
+  final List<MenuItemData> menuItems;
+  final Color? color;
+  final IconData? iconData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      type: MaterialType.transparency,
+      clipBehavior: Clip.antiAlias,
+      shape: const CircleBorder(),
+      child: MenuPopupButton(
+        buildMenu: () => menuItems,
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Icon(
+            iconData ?? Icons.more_vert,
+            size: 32,
+            color: color,
+          ),
+        ),
+      ),
     );
   }
 }
