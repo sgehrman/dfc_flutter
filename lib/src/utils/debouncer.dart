@@ -51,8 +51,6 @@ class Debouncer {
       if (!_disposed) {
         _debugLog('## debouncer running');
 
-        action();
-
         _timer = Timer(
           Duration(milliseconds: milliseconds),
           () {
@@ -62,6 +60,8 @@ class Debouncer {
             _debugLog('## debouncer done');
           },
         );
+
+        action();
       }
     }
   }
