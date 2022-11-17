@@ -237,7 +237,7 @@ class PreferencesListener extends StatefulWidget {
   const PreferencesListener({
     required this.builder,
     required this.keys,
-    this.debounceMilliseconds = 200,
+    this.debounceMilliseconds = 300,
   });
 
   final Widget Function(BuildContext context) builder;
@@ -273,7 +273,7 @@ class _PreferencesListenerState extends State<PreferencesListener> {
   }
 
   void listener() {
-    _updater.run(
+    _updater.runImmediate(
       () => setState(() {}),
     );
   }
