@@ -278,13 +278,6 @@ class _PreferencesListenerState extends State<PreferencesListener> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<Box<dynamic>>(
-      valueListenable: HiveBox.prefsBox.listenable(
-        keys: widget.keys.isEmpty ? null : widget.keys,
-      )!,
-      builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
-        return widget.builder(context);
-      },
-    );
+    return widget.builder(context);
   }
 }
