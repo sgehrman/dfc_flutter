@@ -237,10 +237,11 @@ class PreferencesListener extends StatefulWidget {
   const PreferencesListener({
     required this.builder,
     required this.keys,
+    this.debounceMilliseconds = 200,
   });
 
   final Widget Function(BuildContext context) builder;
-
+  final int debounceMilliseconds;
   final List<String> keys;
 
   @override
@@ -249,11 +250,13 @@ class PreferencesListener extends StatefulWidget {
 
 class _PreferencesListenerState extends State<PreferencesListener> {
   late ValueListenable<Box<dynamic>> _listenable;
-  final _updater = Debouncer(milliseconds: 300);
+  late Debouncer _updater;
 
   @override
   void initState() {
     super.initState();
+
+    _updater = Debouncer(milliseconds: widget.debounceMilliseconds);
 
     _listenable = HiveBox.prefsBox.listenable(
       keys: widget.keys.isEmpty ? null : widget.keys,
@@ -270,7 +273,6 @@ class _PreferencesListenerState extends State<PreferencesListener> {
   }
 
   void listener() {
-    // debounce this
     _updater.run(
       () => setState(() {}),
     );
@@ -278,6 +280,17 @@ class _PreferencesListenerState extends State<PreferencesListener> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder(context);
+    if (widget.debounceMilliseconds == 0) {
+      return widget.builder(context);
+    }
+
+    return ValueListenableBuilder<Box<dynamic>>(
+      valueListenable: HiveBox.prefsBox.listenable(
+        keys: widget.keys.isEmpty ? null : widget.keys,
+      )!,
+      builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
+        return widget.builder(context);
+      },
+    );
   }
 }
