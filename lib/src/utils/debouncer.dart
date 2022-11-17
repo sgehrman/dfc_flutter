@@ -14,7 +14,7 @@ class Debouncer {
   }
 
   void _debugLog(String message) {
-    const debug = false;
+    const debug = true;
 
     // ignore: dead_code
     if (debug) {
