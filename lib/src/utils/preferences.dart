@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
+import 'package:dfc_flutter/src/utils/debouncer.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -231,7 +233,7 @@ class Preferences {
 }
 
 // ===================================================================
-class PreferencesListener extends StatelessWidget {
+class PreferencesListener extends StatefulWidget {
   const PreferencesListener({
     required this.builder,
     required this.keys,
@@ -242,13 +244,46 @@ class PreferencesListener extends StatelessWidget {
   final List<String> keys;
 
   @override
+  State<PreferencesListener> createState() => _PreferencesListenerState();
+}
+
+class _PreferencesListenerState extends State<PreferencesListener> {
+  late ValueListenable<Box<dynamic>> _listenable;
+  final _updater = Debouncer(milliseconds: 300);
+
+  @override
+  void initState() {
+    super.initState();
+
+    _listenable = HiveBox.prefsBox.listenable(
+      keys: widget.keys.isEmpty ? null : widget.keys,
+    )!;
+
+    _listenable.addListener(listener);
+  }
+
+  @override
+  void dispose() {
+    _listenable.removeListener(listener);
+
+    super.dispose();
+  }
+
+  void listener() {
+    // debounce this
+    _updater.run(
+      () => setState(() {}),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<dynamic>>(
       valueListenable: HiveBox.prefsBox.listenable(
-        keys: keys.isEmpty ? null : keys,
+        keys: widget.keys.isEmpty ? null : widget.keys,
       )!,
       builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
-        return builder(context);
+        return widget.builder(context);
       },
     );
   }
