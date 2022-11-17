@@ -237,7 +237,7 @@ class PreferencesListener extends StatefulWidget {
   const PreferencesListener({
     required this.builder,
     required this.keys,
-    this.debounceMilliseconds = 200,
+    this.debounceMilliseconds = 1200,
   });
 
   final Widget Function(BuildContext context) builder;
