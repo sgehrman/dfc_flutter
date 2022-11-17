@@ -3,11 +3,14 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 class Debouncer {
-  Debouncer({this.milliseconds = 500});
+  Debouncer({this.milliseconds = 500}) {
+    _duration = Duration(milliseconds: milliseconds);
+  }
 
   final int milliseconds;
   Timer? _timer;
   bool _disposed = false;
+  late Duration _duration;
 
   void dispose() {
     _disposed = true;
@@ -29,7 +32,7 @@ class Debouncer {
       _debugLog('## debouncer running');
 
       _timer = Timer(
-        Duration(milliseconds: milliseconds),
+        _duration,
         () {
           _timer!.cancel();
           _timer = null;
@@ -49,10 +52,8 @@ class Debouncer {
       _debugLog('## debouncer already running');
     } else {
       if (!_disposed) {
-        _debugLog('## debouncer running');
-
         _timer = Timer(
-          Duration(milliseconds: milliseconds),
+          _duration,
           () {
             _timer!.cancel();
             _timer = null;
@@ -61,6 +62,7 @@ class Debouncer {
           },
         );
 
+        _debugLog('## debouncer running');
         action();
       }
     }
@@ -73,7 +75,7 @@ class Debouncer {
       _debugLog('## debouncer running');
 
       _timer = Timer(
-        Duration(milliseconds: milliseconds),
+        _duration,
         () async {
           if (!_disposed) {
             try {
