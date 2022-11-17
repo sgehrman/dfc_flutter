@@ -237,7 +237,7 @@ class PreferencesListener extends StatefulWidget {
   const PreferencesListener({
     required this.builder,
     required this.keys,
-    this.debounceMilliseconds = 1200,
+    this.debounceMilliseconds = 200,
   });
 
   final Widget Function(BuildContext context) builder;
@@ -280,7 +280,7 @@ class _PreferencesListenerState extends State<PreferencesListener> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.debounceMilliseconds == 0) {
+    if (widget.debounceMilliseconds > 0) {
       return widget.builder(context);
     }
 
