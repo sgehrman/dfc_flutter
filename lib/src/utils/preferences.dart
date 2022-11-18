@@ -184,6 +184,20 @@ class Preferences {
       prefs.put(key, value);
 
   // --------------
+  // doublePref
+
+  double doublePref({
+    required String key,
+    double defaultValue = 0,
+  }) =>
+      prefs.get(key, defaultValue: defaultValue) as double;
+  Future<void> setDoublePref({
+    required String key,
+    required double? value,
+  }) =>
+      prefs.put(key, value);
+
+  // --------------
   // stringPref
   String stringPref({
     required String key,
