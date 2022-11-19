@@ -15,7 +15,7 @@ class HelpTip extends StatefulWidget {
     this.waitDuration,
   });
 
-  final String message;
+  final String? message;
   final Widget child;
   final AxisDirection direction;
   final double maxWidth;
@@ -36,10 +36,14 @@ class _HelpTipState extends State<HelpTip> {
   }
 
   void _updateContent() {
-    _content = HelpTipContent(
-      message: widget.message,
-      maxWidth: widget.maxWidth,
-    );
+    if (Utils.isEmpty(widget.message)) {
+      _content = const NothingWidget();
+    } else {
+      _content = HelpTipContent(
+        message: widget.message!,
+        maxWidth: widget.maxWidth,
+      );
+    }
   }
 
   @override
