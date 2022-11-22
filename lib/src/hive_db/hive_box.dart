@@ -91,6 +91,12 @@ class HiveBox<T> {
     return _box?.put(key, data);
   }
 
+  Future<void> putAll(Map<dynamic, T> entries) async {
+    assert(_box != null, 'Box is closed: $name');
+
+    return _box?.putAll(entries);
+  }
+
   T? get(Object key, {T? defaultValue}) {
     assert(_box != null, 'Box is closed: $name');
 
