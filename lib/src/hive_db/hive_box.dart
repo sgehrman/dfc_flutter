@@ -48,6 +48,12 @@ class HiveBox<T> {
     }
   }
 
+  List<dynamic> get keys {
+    assert(_box != null, 'Box is closed: $name');
+
+    return _box?.keys.toList() ?? [];
+  }
+
   bool containsKey(Object key) {
     assert(_box != null, 'Box is closed: $name');
 
