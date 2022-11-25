@@ -6,6 +6,9 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
 import 'package:just_the_tooltip_fork/just_the_tooltip_fork.dart';
 
+const Color _textColor = Colors.black;
+const Color _backColor = Colors.white;
+
 class HelpTip extends StatefulWidget {
   const HelpTip({
     required this.message,
@@ -62,10 +65,10 @@ class _HelpTipState extends State<HelpTip> {
     }
 
     return JustTheTooltip(
-      backgroundColor: Colors.black,
+      backgroundColor: _backColor,
       preferredDirection: widget.direction,
       waitDuration: widget.waitDuration ?? const Duration(milliseconds: 1200),
-      tailLength: 20,
+      tailLength: 14,
       borderRadius: const BorderRadius.all(Radius.circular(10)),
       fadeInDuration: const Duration(milliseconds: 400),
       fadeOutDuration: const Duration(milliseconds: 400),
@@ -93,13 +96,13 @@ class HelpTipContent extends StatefulWidget {
 
 class _HelpTipContentState extends State<HelpTipContent> {
   static final TextStyle style = TextStyle(
-    color: Colors.white,
+    color: _textColor,
     fontSize: kFontSize.s,
     decoration: TextDecoration.none,
   );
 
   static const decoration = BoxDecoration(
-    color: Colors.white,
+    color: _textColor,
   );
 
   static final markdownStyleSheet = MarkdownStyleSheet(
@@ -162,7 +165,7 @@ class _HelpTipContentState extends State<HelpTipContent> {
         msg,
         softWrap: true,
         style: TextStyle(
-          color: Colors.white,
+          color: _textColor,
           fontSize: kFontSize.s,
           decoration: TextDecoration.none,
         ),
