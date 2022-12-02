@@ -66,6 +66,7 @@ export 'src/utils/utils.dart';
 export 'src/widgets/bottom_navbar/bottom_navbar.dart';
 export 'src/widgets/bottom_slideup_sheet.dart';
 export 'src/widgets/browser_status_bar.dart';
+export 'src/widgets/buttons.dart';
 export 'src/widgets/checkerboard_container.dart';
 export 'src/widgets/colored_button.dart';
 export 'src/widgets/colorized_text.dart';
