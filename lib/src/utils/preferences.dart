@@ -165,9 +165,9 @@ class Preferences {
       prefs.get(key, defaultValue: defaultValue) as bool;
   Future<void> setBoolPref({
     required String key,
-    required bool? flag,
+    required bool? value,
   }) =>
-      prefs.put(key, flag);
+      prefs.put(key, value);
 
   // --------------
   // intPref
