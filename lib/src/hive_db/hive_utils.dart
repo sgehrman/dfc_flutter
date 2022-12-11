@@ -29,6 +29,10 @@ class HiveUtils {
         path = p.join(path, 'app_data');
         Hive.init(path);
       } else if (Utils.isDesktop) {
+        // flatpak:
+        // /home/steve/.var/app/com.cocoatech.Driftwood/data/driftwood
+        // normal:
+        // /home/steve/.local/share/re.distantfutu.dashboard
         final Directory appDir = await getApplicationSupportDirectory();
 
         String path = appDir.path;
