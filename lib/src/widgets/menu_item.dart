@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:flutter/material.dart';
 
 class MenuItemSpec extends StatelessWidget {
@@ -7,6 +8,7 @@ class MenuItemSpec extends StatelessWidget {
     this.level = 0,
     this.onTap, // not needed in a PopupMenuItem
     this.large = false,
+    this.tooltip,
   });
 
   final String name;
@@ -14,6 +16,7 @@ class MenuItemSpec extends StatelessWidget {
   final int level;
   final void Function()? onTap;
   final bool large;
+  final String? tooltip;
 
   @override
   Widget build(BuildContext context) {
@@ -39,24 +42,28 @@ class MenuItemSpec extends StatelessWidget {
       leading = icon!;
     }
 
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: contentPadding,
-        child: Row(
-          children: [
-            leading,
-            const SizedBox(
-              width: 14,
-            ),
-            Flexible(
-              child: Text(
-                name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+    return HelpTip(
+      message: tooltip,
+      waitDuration: const Duration(milliseconds: 500),
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+          padding: contentPadding,
+          child: Row(
+            children: [
+              leading,
+              const SizedBox(
+                width: 14,
               ),
-            ),
-          ],
+              Flexible(
+                child: Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
