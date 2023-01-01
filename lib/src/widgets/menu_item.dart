@@ -42,7 +42,7 @@ class MenuItemSpec extends StatelessWidget {
     }
 
     return Tooltip(
-      message: tooltip,
+      message: tooltip ?? '',
       waitDuration: const Duration(milliseconds: 500),
       child: InkWell(
         onTap: onTap,
