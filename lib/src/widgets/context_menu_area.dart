@@ -10,6 +10,7 @@ class MenuItemData {
     this.action,
     this.level = 0,
     this.enabled = true,
+    this.tooltip,
   });
 
   factory MenuItemData.divider() {
@@ -19,6 +20,7 @@ class MenuItemData {
   MenuItemData._divider()
       : title = '',
         icon = null,
+        tooltip = null,
         enabled = false,
         level = 0,
         action = null;
@@ -27,6 +29,7 @@ class MenuItemData {
   final Widget? icon;
   final bool enabled;
   final int level;
+  final String? tooltip;
   final void Function()? action;
 }
 
