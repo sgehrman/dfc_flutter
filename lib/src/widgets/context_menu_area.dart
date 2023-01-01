@@ -59,6 +59,7 @@ Future<void> showContextMenu({
             icon: itemData.icon,
             name: itemData.title,
             level: itemData.level,
+            tooltip: itemData.tooltip,
             large: large,
           ),
         ),
