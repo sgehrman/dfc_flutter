@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:flutter/material.dart';
 
 class MenuItemSpec extends StatelessWidget {
@@ -42,7 +41,7 @@ class MenuItemSpec extends StatelessWidget {
       leading = icon!;
     }
 
-    return HelpTip(
+    return Tooltip(
       message: tooltip,
       waitDuration: const Duration(milliseconds: 500),
       child: InkWell(
