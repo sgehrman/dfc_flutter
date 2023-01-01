@@ -601,13 +601,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.5.4"
-  just_the_tooltip:
+  just_the_tooltip_fork:
     dependency: "direct main"
     description:
-      name: just_the_tooltip
+      name: just_the_tooltip_fork
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.12"
+    version: "0.0.11+3"
   loading_animation_widget:
     dependency: "direct main"
     description:

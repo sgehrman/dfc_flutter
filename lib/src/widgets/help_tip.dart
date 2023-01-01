@@ -4,7 +4,7 @@ import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
-import 'package:just_the_tooltip/just_the_tooltip.dart';
+import 'package:just_the_tooltip_fork/just_the_tooltip_fork.dart';
 
 const Color _textColor = Colors.black;
 const Color _backColor = Colors.white;
