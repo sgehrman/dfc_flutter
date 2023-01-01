@@ -1,4 +1,5 @@
 import 'package:dfc_flutter/src/google_fonts/google_fonts_widget.dart';
+import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
 import 'package:flutter/material.dart';
 
 class GoogleFontsScreen extends StatelessWidget {
@@ -8,7 +9,7 @@ class GoogleFontsScreen extends StatelessWidget {
 
   Widget useDefaultAction(BuildContext context) {
     return IconButton(
-      tooltip: 'Use default font',
+      tooltip: tipString('Use default font'),
       onPressed: () {
         _widgetKey.currentState!.useDefault();
       },

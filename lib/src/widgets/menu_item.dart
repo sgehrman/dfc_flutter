@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/dfc_flutter_web.dart';
+import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
 import 'package:flutter/material.dart';
 
 class MenuItemSpec extends StatelessWidget {
@@ -42,13 +42,8 @@ class MenuItemSpec extends StatelessWidget {
       leading = icon!;
     }
 
-    String tooltipValue = tooltip ?? '';
-    if (Preferences().disableTooltips) {
-      tooltipValue = '';
-    }
-
     return Tooltip(
-      message: tooltipValue,
+      message: tipString(tooltip),
       waitDuration: const Duration(milliseconds: 500),
       child: InkWell(
         onTap: onTap,
