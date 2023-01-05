@@ -232,7 +232,7 @@ class Txt {
         // text color doesn't work with this.  I assume the button is setting
         // the default styles and has already copied the button style
         // but this might only work inside a button
-        // Theme.of(context).textTheme.button!.copyWith(
+        // Theme.of(context).textTheme.labelLarge!.copyWith(
         //       fontSize: small ? Font.small : null ,
         //     );
 
