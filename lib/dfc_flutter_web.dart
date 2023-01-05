@@ -122,4 +122,5 @@ export 'src/widgets/transparent_appbar_theme.dart';
 export 'src/widgets/transparent_route.dart';
 export 'src/widgets/triangle_painter.dart';
 export 'src/widgets/ttext.dart';
+export 'src/widgets/txt.dart';
 export 'src/widgets/video_player_widget.dart';
