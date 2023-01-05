@@ -17,7 +17,6 @@ dependencies:
   device_info: ^2.0.2
   dotted_border: ^2.0.0+2
   email_validator: ^2.1.17
-  extended_image: ^6.2.1
   flutter:
     sdk: flutter
   flutter_archive: ^5.0.0

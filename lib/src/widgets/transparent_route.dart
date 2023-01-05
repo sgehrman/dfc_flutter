@@ -25,8 +25,6 @@ class TransparentPageRoute<T> extends TransparentMaterialPageRoute<T> {
   }
 }
 
-// SNG this was removed from extended_image, this is a replacement that probably doesn't work
-// perfectly, fix later
 class TransparentMaterialPageRoute<T> extends MaterialPageRoute<T> {
   TransparentMaterialPageRoute({
     required WidgetBuilder builder,
