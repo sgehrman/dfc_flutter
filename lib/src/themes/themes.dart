@@ -155,25 +155,25 @@ class AppTheme {
       ),
 
       // used for ListTile title in drawer
-      bodyText1: startTheme.bodyText1!.copyWith(
+      bodyLarge: startTheme.bodyLarge!.copyWith(
         fontSize: 17,
         color: textColor,
       ),
 
       // used for ListTile subtitle in non-drawer list
-      bodyText2: startTheme.bodyText2!.copyWith(
+      bodyMedium: startTheme.bodyMedium!.copyWith(
         color: textColor,
         fontSize: 16,
       ),
 
       // used for control text
-      subtitle1: startTheme.bodyText1!.copyWith(
+      titleMedium: startTheme.bodyLarge!.copyWith(
         fontSize: 16,
         color: textColor,
       ),
 
       // used for header title
-      headline4: TextStyle(
+      headlineMedium: TextStyle(
         color: headerTextColor,
         fontWeight: FontWeight.bold,
         fontSize: 17,
@@ -185,7 +185,7 @@ class AppTheme {
       ),
 
       // used for listTile subtitle
-      caption: startTheme.bodyText1!.copyWith(
+      bodySmall: startTheme.bodyLarge!.copyWith(
         fontSize: 15,
         color: subtitleColor,
       ),

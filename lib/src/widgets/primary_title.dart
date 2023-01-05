@@ -20,7 +20,7 @@ class PrimaryTitle extends StatelessWidget {
           Expanded(
             child: TText(
               title,
-              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     color: Theme.of(context).primaryColor,
                     fontWeight: FontWeight.bold,
                   ),

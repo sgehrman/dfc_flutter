@@ -211,7 +211,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final Color? normalColor = Theme.of(context).textTheme.bodyText2!.color;
+    final Color? normalColor = Theme.of(context).textTheme.bodyMedium!.color;
     final String currentFont = ThemeSetManager().googleFont;
 
     if (widget.showNext) {

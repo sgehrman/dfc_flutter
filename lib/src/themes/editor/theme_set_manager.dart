@@ -142,7 +142,7 @@ class ThemeSetManager {
   }
 
   static TextStyle header(BuildContext context) {
-    return Theme.of(context).textTheme.headline4!;
+    return Theme.of(context).textTheme.headlineMedium!;
   }
 
   static List<ThemeSet> _defaultSets() {

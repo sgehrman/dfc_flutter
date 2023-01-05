@@ -209,7 +209,7 @@ class AddCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color cardColor =
-        Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.1);
+        Theme.of(context).textTheme.bodyLarge!.color!.withOpacity(0.1);
 
     double strokeWidth = 5;
     List<double> dashPattern = [12, 10];
