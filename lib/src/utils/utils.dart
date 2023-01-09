@@ -355,7 +355,7 @@ class Utils {
 
     final hsl = HSLColor.fromColor(color);
     final hslLight =
-        hsl.withLightness((hsl.lightness + (1 + amount)).clamp(0.0, 1.0));
+        hsl.withLightness((hsl.lightness * (1 + amount)).clamp(0.0, 1.0));
 
     return hslLight.toColor();
   }
