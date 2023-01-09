@@ -19,8 +19,8 @@ class MarkdownText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // bodyText2 since bodyText1 might be bold
-    final textStyle = Theme.of(context).textTheme.bodyText2!.copyWith(
+    // bodyMedium since bodyLarge might be bold
+    final textStyle = Theme.of(context).textTheme.bodyMedium!.copyWith(
           fontSize: fontSize,
         );
 
@@ -52,11 +52,11 @@ class MarkdownText extends StatelessWidget {
         h6Padding: const EdgeInsets.only(bottom: 6),
         pPadding: const EdgeInsets.only(bottom: 6),
         strong: boldStyle,
-        h1: Theme.of(context).textTheme.headline1,
-        h2: Theme.of(context).textTheme.headline2,
-        h3: Theme.of(context).textTheme.headline3,
-        h4: Theme.of(context).textTheme.headline4,
-        h5: Theme.of(context).textTheme.headline5,
+        h1: Theme.of(context).textTheme.displayLarge,
+        h2: Theme.of(context).textTheme.displayMedium,
+        h3: Theme.of(context).textTheme.displaySmall,
+        h4: Theme.of(context).textTheme.headlineMedium,
+        h5: Theme.of(context).textTheme.headlineSmall,
       ),
       data: text!,
     );

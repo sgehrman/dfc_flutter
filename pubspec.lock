@@ -182,7 +182,7 @@ packages:
       name: checked_yaml
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   clock:
     dependency: transitive
     description:
@@ -231,7 +231,14 @@ packages:
       name: dart_code_metrics
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.3.0"
+    version: "5.4.0"
+  dart_code_metrics_presets:
+    dependency: transitive
+    description:
+      name: dart_code_metrics_presets
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   dart_style:
     dependency: transitive
     description:
@@ -300,7 +307,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "2743a7ff92cf4da15e1945904dccb65bc7eb59ce"
+      resolved-ref: "095e20f7ec56b4b660406ef371f29aea17e3f6e3"
       url: "https://github.com/sgehrman/dfc_lints"
     source: git
     version: "1.0.6"
@@ -318,20 +325,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.17"
-  extended_image:
-    dependency: "direct main"
-    description:
-      name: extended_image
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "6.3.4"
-  extended_image_library:
-    dependency: transitive
-    description:
-      name: extended_image_library
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.4.1"
   extension:
     dependency: transitive
     description:
@@ -441,7 +434,7 @@ packages:
       name: flutter_multi_formatter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.10.0"
+    version: "2.10.1"
   flutter_parsed_text:
     dependency: "direct main"
     description:
@@ -538,13 +531,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.13.5"
-  http_client_helper:
-    dependency: transitive
-    description:
-      name: http_client_helper
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.3"
   http_multi_server:
     dependency: transitive
     description:
@@ -1238,4 +1224,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.18.0 <3.0.0"
-  flutter: ">=3.3.0"
+  flutter: ">=3.0.0"

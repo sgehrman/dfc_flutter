@@ -33,7 +33,7 @@ class _ExpandableTextState extends State<ExpandableText> {
             truncNotes,
             overflow: TextOverflow.ellipsis,
             softWrap: false, // need this?
-            style: widget.style ?? Theme.of(context).textTheme.caption,
+            style: widget.style ?? Theme.of(context).textTheme.bodySmall,
             // we use truncate above to control size
             // otherwise won't get ... on line breaks that don't hit the end
             // maxlines does help limit an extremely long string, but nothing else
@@ -52,7 +52,7 @@ class _ExpandableTextState extends State<ExpandableText> {
                 padding: const EdgeInsets.only(top: 6),
                 child: Text(
                   expanded ? 'Show less' : 'Show more',
-                  style: Theme.of(context).textTheme.caption!.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontSize: 12,
                         color: Theme.of(context)
                             .colorScheme

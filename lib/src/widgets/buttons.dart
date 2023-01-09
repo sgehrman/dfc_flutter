@@ -89,7 +89,6 @@ class DFButton extends StatelessWidget {
     required this.label,
     this.tooltip,
     this.secondary = false,
-    this.color,
     this.icon,
     Key? key,
   }) : super(key: key);
@@ -97,7 +96,6 @@ class DFButton extends StatelessWidget {
   final Function()? onPressed;
   final String label;
   final bool secondary;
-  final Color? color;
   final String? tooltip;
   final Icon? icon;
 
@@ -144,14 +142,12 @@ class DFOutlineButton extends StatelessWidget {
     required this.onPressed,
     required this.label,
     this.tooltip,
-    this.color,
     this.icon,
     Key? key,
   }) : super(key: key);
 
   final Function()? onPressed;
   final String label;
-  final Color? color;
   final String? tooltip;
   final Icon? icon;
 
@@ -204,6 +200,7 @@ class IconMenuButton extends StatelessWidget {
           large: true,
         );
       },
+      color: color,
       icon: const Icon(Icons.more_vert),
     );
   }

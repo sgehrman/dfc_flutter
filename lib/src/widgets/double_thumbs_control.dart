@@ -89,7 +89,7 @@ class _DoubleThumbsControlState extends State<DoubleThumbsControl> {
               children: [
                 Text(
                   textResult,
-                  style: Theme.of(context).textTheme.caption!.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 22,
                       ),

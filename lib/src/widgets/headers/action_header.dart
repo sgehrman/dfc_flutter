@@ -43,7 +43,7 @@ class ActionHeader extends StatelessWidget {
   }
 
   static TextStyle? defaultSubtitleStyle(BuildContext context) {
-    return Theme.of(context).textTheme.caption;
+    return Theme.of(context).textTheme.bodySmall;
   }
 
   @override

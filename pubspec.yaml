@@ -17,7 +17,6 @@ dependencies:
   device_info: ^2.0.2
   dotted_border: ^2.0.0+2
   email_validator: ^2.1.17
-  extended_image: ^6.2.1
   flutter:
     sdk: flutter
   flutter_archive: ^5.0.0
@@ -60,10 +59,10 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.3.3
   # must include this with dfc_lints. see https://github.com/dart-code-checker/dart-code-metrics/issues/254
-  dart_code_metrics: ^5.2.1
+  dart_code_metrics: ^5.4.0
   dfc_lints:
     git: https://github.com/sgehrman/dfc_lints
-  json_serializable: ^6.5.1
+  json_serializable: ^6.5.4
 
 flutter:
   uses-material-design: true
