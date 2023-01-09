@@ -344,7 +344,8 @@ class Utils {
     assert(amount >= 0 && amount <= 1, 'amount bad');
 
     final hsl = HSLColor.fromColor(color);
-    final hslDark = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
+    final hslDark =
+        hsl.withLightness((hsl.lightness * (1 - amount)).clamp(0.0, 1.0));
 
     return hslDark.toColor();
   }
@@ -354,7 +355,7 @@ class Utils {
 
     final hsl = HSLColor.fromColor(color);
     final hslLight =
-        hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+        hsl.withLightness((hsl.lightness + (1 + amount)).clamp(0.0, 1.0));
 
     return hslLight.toColor();
   }
