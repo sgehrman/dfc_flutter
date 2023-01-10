@@ -15,19 +15,13 @@ class SvgIcon extends StatelessWidget {
     this.fit = BoxFit.contain,
     this.allowDrawingOutsideViewBox = false,
     this.color,
-    this.mainAxisAlignment = MainAxisAlignment.center,
-    this.animationDuration = const Duration(milliseconds: 300),
-    this.animationCurve = Curves.fastOutSlowIn,
   });
 
   final double? size;
   final Color? color;
   final BoxFit fit;
   final bool allowDrawingOutsideViewBox;
-  final MainAxisAlignment mainAxisAlignment;
   final String svg;
-  final Duration animationDuration;
-  final Curve animationCurve;
 
   String _webFix(
     String svg,
@@ -92,23 +86,16 @@ class SvgIcon extends StatelessWidget {
       svgString = _webFix(svgString, svgColor);
     }
 
-    return Row(
-      mainAxisAlignment: mainAxisAlignment,
-      children: [
-        AnimatedContainer(
-          height: size,
-          width: size,
-          duration: animationDuration,
-          curve: animationCurve,
-          child: SvgPicture.string(
-            svgString,
-            color: svgColor,
-            width: size,
-            fit: fit,
-            allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
-          ),
-        ),
-      ],
+    return SizedBox(
+      height: size,
+      width: size,
+      child: SvgPicture.string(
+        svgString,
+        color: svgColor,
+        width: size,
+        fit: fit,
+        allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      ),
     );
   }
 }
