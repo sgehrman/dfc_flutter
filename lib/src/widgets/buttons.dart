@@ -55,7 +55,7 @@ class DFTextButton extends StatelessWidget {
   final Function()? onPressed;
   final String label;
   final String? tooltip;
-  final Icon? icon;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class DFButton extends StatelessWidget {
   final String label;
   final bool secondary;
   final String? tooltip;
-  final Icon? icon;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -149,7 +149,7 @@ class DFOutlineButton extends StatelessWidget {
   final Function()? onPressed;
   final String label;
   final String? tooltip;
-  final Icon? icon;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
