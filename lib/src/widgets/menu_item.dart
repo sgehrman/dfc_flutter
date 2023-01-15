@@ -17,7 +17,7 @@ class MenuItemSpec extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const double horizontalPadding = 10;
-    const double verticalPadding = 12;
+    const double verticalPadding = 22;
     const double levelPadding = 20;
 
     final contentPadding = EdgeInsets.only(
@@ -41,13 +41,14 @@ class MenuItemSpec extends StatelessWidget {
           children: [
             leading,
             const SizedBox(
-              width: 14,
+              width: 34,
             ),
             Flexible(
               child: Text(
                 name,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
+                style: const TextStyle(color: Colors.red),
               ),
             ),
           ],
