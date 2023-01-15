@@ -17,7 +17,7 @@ class MenuItemSpec extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const double horizontalPadding = 10;
-    const double verticalPadding = 1;
+    const double verticalPadding = 12;
     const double levelPadding = 20;
 
     final contentPadding = EdgeInsets.only(
