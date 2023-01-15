@@ -40,7 +40,6 @@ Future<void> showContextMenu({
   required BuildContext context,
   required Offset localPosition,
   required List<MenuItemData> menuData,
-  bool large = false,
 }) async {
   final List<PopupMenuEntry<MenuItemData>> menuItems = [];
 
@@ -57,7 +56,6 @@ Future<void> showContextMenu({
             name: itemData.title,
             level: itemData.level,
             tooltip: itemData.tooltip,
-            large: large,
           ),
         ),
       );
@@ -120,13 +118,11 @@ class MenuPopupButton extends StatelessWidget {
   const MenuPopupButton({
     required this.child,
     required this.buildMenu,
-    this.large = true,
     this.radius = Material.defaultSplashRadius,
   });
 
   final Widget child;
   final List<MenuItemData> Function() buildMenu;
-  final bool large;
   final double radius;
 
   @override
@@ -138,7 +134,6 @@ class MenuPopupButton extends StatelessWidget {
           localPosition: Offset(0, context.size?.height ?? 0),
           context: context,
           menuData: buildMenu(),
-          large: large,
         );
       },
       child: child,

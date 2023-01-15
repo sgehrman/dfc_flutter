@@ -197,7 +197,6 @@ class IconMenuButton extends StatelessWidget {
           localPosition: Offset(0, context.size?.height ?? 0),
           context: context,
           menuData: menuItems,
-          large: true,
         );
       },
       color: color,
