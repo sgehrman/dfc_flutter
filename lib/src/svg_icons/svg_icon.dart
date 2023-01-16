@@ -74,12 +74,18 @@ class SvgIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String svgString = svg;
+    final iconTheme = Theme.of(context).iconTheme;
 
     Color svgColor = color ?? Colors.black;
 
     // if no color passed in, use the current theme color
     if (color == null) {
-      svgColor = Theme.of(context).iconTheme.color ?? Colors.black;
+      svgColor = iconTheme.color ?? Colors.black;
+    }
+
+    final double iconOpacity = iconTheme.opacity ?? 1.0;
+    if (iconOpacity != 1.0) {
+      svgColor = svgColor.withOpacity(svgColor.opacity * iconOpacity);
     }
 
     if (Utils.isWeb) {
