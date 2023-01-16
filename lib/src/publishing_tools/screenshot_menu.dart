@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -94,7 +95,7 @@ class _ScreenshotMenuState extends State<ScreenshotMenu> {
 
     for (final item in items) {
       menuItems.add(
-        PopupMenuItem<ScreenshotMenuItem>(
+        popupMenuItem<ScreenshotMenuItem>(
           value: item,
           child: MenuItemSpec(
             icon: const Icon(Icons.compare),

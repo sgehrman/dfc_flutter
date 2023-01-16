@@ -48,7 +48,7 @@ Future<void> showContextMenu({
       menuItems.add(const PopupMenuDivider());
     } else {
       menuItems.add(
-        PopupMenuItem<MenuItemData>(
+        popupMenuItem<MenuItemData>(
           value: itemData,
           enabled: itemData.enabled,
           child: MenuItemSpec(

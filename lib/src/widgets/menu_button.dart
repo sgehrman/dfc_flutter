@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +58,7 @@ class MenuButton<T> extends StatelessWidget {
 
     for (final item in items) {
       menuItems.add(
-        PopupMenuItem<MenuButtonItem<T>>(
+        popupMenuItem<MenuButtonItem<T>>(
           value: item,
           child: MenuItemSpec(
             icon: Icon(

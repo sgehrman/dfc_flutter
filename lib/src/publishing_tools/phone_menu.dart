@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +60,7 @@ class PhoneMenu extends StatelessWidget {
 
     for (final item in PhoneMenuItem.items) {
       menuItems.add(
-        PopupMenuItem<PhoneMenuItem>(
+        popupMenuItem<PhoneMenuItem>(
           value: item,
           child: MenuItemSpec(
             icon: const Icon(Icons.compare),

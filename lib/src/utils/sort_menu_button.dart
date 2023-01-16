@@ -1,5 +1,6 @@
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
 import 'package:dfc_flutter/src/utils/browser_prefs.dart';
+import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
 import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class BrowserSortMenuButton extends StatelessWidget {
     );
 
     menuItems.add(
-      CheckedPopupMenuItem<BrowserSortMenuItem>(
+      checkedPopupMenuItem<BrowserSortMenuItem>(
         value: foldersFirst,
         checked: BrowserPrefs.sortFoldersFirst!,
         child: MenuItemSpec(
@@ -45,7 +46,7 @@ class BrowserSortMenuButton extends StatelessWidget {
       sortType: null,
     );
     menuItems.add(
-      CheckedPopupMenuItem<BrowserSortMenuItem>(
+      checkedPopupMenuItem<BrowserSortMenuItem>(
         value: ascendingItem,
         checked: BrowserPrefs.sortAscending!,
         child: MenuItemSpec(
@@ -62,7 +63,7 @@ class BrowserSortMenuButton extends StatelessWidget {
 
     for (final item in items) {
       menuItems.add(
-        CheckedPopupMenuItem<BrowserSortMenuItem>(
+        checkedPopupMenuItem<BrowserSortMenuItem>(
           value: item,
           checked: item.sortType!.id == BrowserPrefs.sortType,
           child: MenuItemSpec(
