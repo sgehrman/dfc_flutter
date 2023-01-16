@@ -19,6 +19,11 @@ class MenuItemSpec extends StatelessWidget {
   final int level;
   final String? tooltip;
 
+  static const double iconSize = 24;
+
+  // use this for items without an icon, but needs to line up with items that do (checkmarks)
+  static Widget blankIcon = const SizedBox(height: iconSize, width: iconSize);
+
   @override
   Widget build(BuildContext context) {
     const double horizontalPadding = 10;
@@ -31,7 +36,7 @@ class MenuItemSpec extends StatelessWidget {
 
     Widget leading = const SizedBox();
     if (iconData != null) {
-      leading = Icon(iconData, size: 24);
+      leading = Icon(iconData, size: iconSize);
     } else if (iconWidget != null) {
       leading = iconWidget!;
     }
