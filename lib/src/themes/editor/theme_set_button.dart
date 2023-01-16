@@ -27,7 +27,7 @@ class ThemeSetButton extends StatelessWidget {
         popupMenuItem<ThemeSet>(
           value: item,
           child: MenuItemSpec(
-            icon: const Icon(Icons.add_to_home_screen),
+            iconData: Icons.add_to_home_screen,
             name: item.name,
           ),
         ),

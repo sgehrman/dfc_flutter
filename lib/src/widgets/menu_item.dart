@@ -4,13 +4,18 @@ import 'package:flutter/material.dart';
 class MenuItemSpec extends StatelessWidget {
   const MenuItemSpec({
     required this.name,
-    this.icon,
+    this.iconWidget,
+    this.iconData,
     this.level = 0,
     this.tooltip,
   });
 
+  // we want to standardize the iconSize, so just pass in the iconData
+  // if you are using another widget (like SvgIcon) pass in the iconWidget
+  final IconData? iconData;
+  final Widget? iconWidget;
+
   final String name;
-  final Widget? icon;
   final int level;
   final String? tooltip;
 
@@ -25,8 +30,10 @@ class MenuItemSpec extends StatelessWidget {
     );
 
     Widget leading = const SizedBox();
-    if (icon != null) {
-      leading = icon!;
+    if (iconData != null) {
+      leading = Icon(iconData, size: 24);
+    } else if (iconWidget != null) {
+      leading = iconWidget!;
     }
 
     return Tooltip(
