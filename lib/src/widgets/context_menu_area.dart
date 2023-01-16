@@ -29,7 +29,7 @@ class MenuItemData {
 
   final String title;
   final IconData? iconData;
-  final IconData? iconWidget;
+  final Widget? iconWidget;
   final bool enabled;
   final int level;
   final String? tooltip;
@@ -56,6 +56,7 @@ Future<void> showContextMenu({
           enabled: itemData.enabled,
           child: MenuItemSpec(
             iconData: itemData.iconData,
+            iconWidget: itemData.iconWidget,
             name: itemData.title,
             level: itemData.level,
             tooltip: itemData.tooltip,
