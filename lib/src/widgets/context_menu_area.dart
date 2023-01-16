@@ -7,6 +7,7 @@ class MenuItemData {
   MenuItemData({
     required this.title,
     this.iconData,
+    this.iconWidget,
     this.action,
     this.level = 0,
     this.enabled = true,
@@ -20,6 +21,7 @@ class MenuItemData {
   MenuItemData._divider()
       : title = '',
         iconData = null,
+        iconWidget = null,
         tooltip = null,
         enabled = false,
         level = 0,
@@ -27,6 +29,7 @@ class MenuItemData {
 
   final String title;
   final IconData? iconData;
+  final IconData? iconWidget;
   final bool enabled;
   final int level;
   final String? tooltip;
