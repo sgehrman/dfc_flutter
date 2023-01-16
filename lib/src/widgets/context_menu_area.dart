@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 class MenuItemData {
   MenuItemData({
     required this.title,
-    this.icon,
+    this.iconData,
+    this.iconWidget,
     this.action,
     this.level = 0,
     this.enabled = true,
@@ -19,14 +20,16 @@ class MenuItemData {
 
   MenuItemData._divider()
       : title = '',
-        icon = null,
+        iconData = null,
+        iconWidget = null,
         tooltip = null,
         enabled = false,
         level = 0,
         action = null;
 
   final String title;
-  final Widget? icon;
+  final IconData? iconData;
+  final Widget? iconWidget;
   final bool enabled;
   final int level;
   final String? tooltip;
@@ -48,11 +51,12 @@ Future<void> showContextMenu({
       menuItems.add(const PopupMenuDivider());
     } else {
       menuItems.add(
-        PopupMenuItem<MenuItemData>(
+        popupMenuItem<MenuItemData>(
           value: itemData,
           enabled: itemData.enabled,
           child: MenuItemSpec(
-            icon: itemData.icon,
+            iconData: itemData.iconData,
+            iconWidget: itemData.iconWidget,
             name: itemData.title,
             level: itemData.level,
             tooltip: itemData.tooltip,

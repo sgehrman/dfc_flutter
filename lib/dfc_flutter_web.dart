@@ -56,6 +56,7 @@ export 'src/utils/browser_prefs.dart';
 export 'src/utils/dates.dart';
 export 'src/utils/debouncer.dart';
 export 'src/utils/menu_utils.dart';
+export 'src/utils/menu_utils.dart';
 export 'src/utils/plist_parser.dart';
 export 'src/utils/preferences.dart';
 export 'src/utils/rect_clipper.dart';

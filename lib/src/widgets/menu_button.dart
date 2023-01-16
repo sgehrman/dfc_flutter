@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 
@@ -17,16 +18,14 @@ class MenuButton<T> extends StatelessWidget {
     required this.items,
     required this.onItemSelected,
     required this.selectedItem,
-    this.size = 16,
-    this.iconSize = 24,
+    this.fontSize = 16,
     this.arrowSize = 38,
   });
 
   final void Function(MenuButtonItem<T>) onItemSelected;
   final MenuButtonItem<T> selectedItem;
   final List<MenuButtonItem<T>> items;
-  final double size;
-  final double iconSize;
+  final double fontSize;
   final double arrowSize;
 
   Widget _menuButton(BuildContext context) {
@@ -39,7 +38,7 @@ class MenuButton<T> extends StatelessWidget {
             child: Text(
               selectedItem.title,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: size),
+              style: TextStyle(fontSize: fontSize),
             ),
           ),
           FittedBox(
@@ -57,13 +56,10 @@ class MenuButton<T> extends StatelessWidget {
 
     for (final item in items) {
       menuItems.add(
-        PopupMenuItem<MenuButtonItem<T>>(
+        popupMenuItem<MenuButtonItem<T>>(
           value: item,
           child: MenuItemSpec(
-            icon: Icon(
-              item.iconData,
-              size: iconSize,
-            ),
+            iconData: item.iconData,
             name: item.title,
           ),
         ),

@@ -2,6 +2,7 @@ import 'package:dfc_flutter/src/dialogs/string_dialog.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_editor_screen.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
+import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
 import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
@@ -23,10 +24,10 @@ class ThemeSetButton extends StatelessWidget {
 
     for (final item in items) {
       menuItems.add(
-        PopupMenuItem<ThemeSet>(
+        popupMenuItem<ThemeSet>(
           value: item,
           child: MenuItemSpec(
-            icon: const Icon(Icons.add_to_home_screen),
+            iconData: Icons.add_to_home_screen,
             name: item.name,
           ),
         ),
