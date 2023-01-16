@@ -86,15 +86,17 @@ class SvgIcon extends StatelessWidget {
       svgString = _webFix(svgString, svgColor);
     }
 
-    return SizedBox(
-      height: size,
-      width: size,
-      child: SvgPicture.string(
-        svgString,
-        color: svgColor,
+    return Center(
+      child: SizedBox(
+        height: size,
         width: size,
-        fit: fit,
-        allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+        child: SvgPicture.string(
+          svgString,
+          color: svgColor,
+          width: size,
+          fit: fit,
+          allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+        ),
       ),
     );
   }
