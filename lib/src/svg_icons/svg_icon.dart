@@ -95,6 +95,8 @@ class SvgIcon extends StatelessWidget {
     print('iconTheme.color');
     print(iconTheme.color);
     print(iconTheme.opacity);
+    print(color);
+    print(svgString);
 
     return Center(
       child: SizedBox(
