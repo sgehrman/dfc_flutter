@@ -92,6 +92,10 @@ class SvgIcon extends StatelessWidget {
       svgString = _webFix(svgString, svgColor);
     }
 
+    print('iconTheme.color');
+    print(iconTheme.color);
+    print(iconTheme.opacity);
+
     return Center(
       child: SizedBox(
         height: size,
