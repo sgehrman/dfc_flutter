@@ -42,31 +42,32 @@ class SvgIcon extends StatelessWidget {
       '',
     );
 
+    // not sure why we added this, the color already has an opacity, this will appy it twice?
     // fill-opacity doesn't seem to work globally like the fill, so we add it to each path
-    if (svgColor.opacity < 1.0) {
-      String opacity = (svgColor.opacity * 10).toInt().toString();
-      opacity = '0.$opacity';
+    // if (svgColor.opacity < 1.0) {
+    //   String opacity = (svgColor.opacity * 10).toInt().toString();
+    //   opacity = '0.$opacity';
 
-      svgString = svgString.replaceAll(
-        '<path ',
-        '<path fill-opacity="$opacity" ',
-      );
+    //   svgString = svgString.replaceAll(
+    //     '<path ',
+    //     '<path fill-opacity="$opacity" ',
+    //   );
 
-      svgString = svgString.replaceAll(
-        '<rect ',
-        '<rect fill-opacity="$opacity" ',
-      );
+    //   svgString = svgString.replaceAll(
+    //     '<rect ',
+    //     '<rect fill-opacity="$opacity" ',
+    //   );
 
-      svgString = svgString.replaceAll(
-        '<circle ',
-        '<rect fill-opacity="$opacity" ',
-      );
+    //   svgString = svgString.replaceAll(
+    //     '<circle ',
+    //     '<rect fill-opacity="$opacity" ',
+    //   );
 
-      svgString = svgString.replaceAll(
-        '<polygon ',
-        '<polygon fill-opacity="$opacity" ',
-      );
-    }
+    //   svgString = svgString.replaceAll(
+    //     '<polygon ',
+    //     '<polygon fill-opacity="$opacity" ',
+    //   );
+    // }
 
     return svgString;
   }
@@ -87,8 +88,6 @@ class SvgIcon extends StatelessWidget {
     if (iconOpacity != 1.0) {
       svgColor = svgColor.withOpacity(iconOpacity);
     }
-
-    print(svgColor.opacity);
 
     if (Utils.isWeb) {
       svgString = _webFix(svgString, svgColor);
