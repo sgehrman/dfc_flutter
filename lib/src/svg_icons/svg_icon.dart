@@ -88,6 +88,8 @@ class SvgIcon extends StatelessWidget {
       svgColor = svgColor.withOpacity(iconOpacity);
     }
 
+    print(svgColor.opacity);
+
     if (Utils.isWeb) {
       svgString = _webFix(svgString, svgColor);
     }
