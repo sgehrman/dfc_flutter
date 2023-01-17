@@ -85,7 +85,7 @@ class SvgIcon extends StatelessWidget {
 
     final double iconOpacity = iconTheme.opacity ?? 1.0;
     if (iconOpacity != 1.0) {
-      svgColor = svgColor.withOpacity(svgColor.opacity * iconOpacity);
+      svgColor = svgColor.withOpacity(iconOpacity);
     }
 
     if (Utils.isWeb) {
