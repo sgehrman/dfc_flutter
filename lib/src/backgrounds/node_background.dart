@@ -26,13 +26,13 @@ class NodeBackgroundAnimation extends StatefulWidget {
       _NodeBackgroundAnimationState();
 }
 
-const total = 22;
-Random random = Random();
+const _total = 22;
+Random _random = Random();
 
 class AnimationVal {
   AnimationVal(this.animation) {
     const double maxOpacity = 0.3;
-    final radiusVal = random.nextDouble();
+    final radiusVal = _random.nextDouble();
     radius = 4 + radiusVal * 8;
 
     final double opac = radiusVal * maxOpacity;
@@ -83,23 +83,25 @@ class _NodeBackgroundAnimationState extends State<NodeBackgroundAnimation>
     final ui.Codec codec = await ui.instantiateImageCodec(bytes);
     final ui.Image img = (await codec.getNextFrame()).image;
 
-    setState(() {
-      image = img;
-    });
+    if (mounted) {
+      setState(() {
+        image = img;
+      });
+    }
   }
 
   @override
   void initState() {
     super.initState();
 
-    controllers = List.generate(total, (i) {
+    controllers = List.generate(_total, (i) {
       return AnimationController(
         vsync: this,
         duration: Duration(seconds: 15, milliseconds: random.nextInt(5000)),
       );
     });
 
-    animations = List.generate(total, (i) {
+    animations = List.generate(_total, (i) {
       final tween = Tween<Offset>(
         begin: Offset(random.nextDouble(), random.nextDouble()),
         end: Offset(random.nextDouble(), random.nextDouble()),

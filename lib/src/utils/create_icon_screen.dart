@@ -27,7 +27,9 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
 
     iconData = File(iconPath!).readAsBytesSync();
 
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   @override
@@ -60,7 +62,10 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
                   await saveImage();
 
                   iconData = await File(iconPath!).readAsBytes();
-                  setState(() {});
+
+                  if (mounted) {
+                    setState(() {});
+                  }
                 },
                 title: 'Save Icon',
               ),

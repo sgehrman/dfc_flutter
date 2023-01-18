@@ -341,7 +341,7 @@ class FileSystem {
   static Future<String> compress(
     ServerFile serverFile, {
     String destinationDir = '',
-  }) async {
+  }) {
     return ZipArchive.compress(serverFile, destinationDir);
   }
 

@@ -45,7 +45,10 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
     final image = await Utils.loadImageFromPath(widget.imagePath);
 
     uiImage = image;
-    setState(() {});
+
+    if (mounted) {
+      setState(() {});
+    }
 
     await refreshPreview();
   }
@@ -54,15 +57,17 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
     // delay since we could modify a state var that won't be synced until next refresh
     await Future.delayed(Duration.zero, () {});
 
-    setState(() {
-      _image = maker.createImage(
-        uiImage,
-        _title ?? selectedScreenshotItem.displayTitle,
-        selectedItem.type,
-        showBackground: _showBackground!,
-        resultImageSize: sizeMenuItem.type,
-      );
-    });
+    _image = maker.createImage(
+      uiImage,
+      _title ?? selectedScreenshotItem.displayTitle,
+      selectedItem.type,
+      showBackground: _showBackground!,
+      resultImageSize: sizeMenuItem.type,
+    );
+
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<void> _saveClicked() async {
@@ -136,7 +141,9 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
             if (result != null) {
               _title = result;
 
-              setState(() {});
+              if (mounted) {
+                setState(() {});
+              }
 
               await refreshPreview();
             }

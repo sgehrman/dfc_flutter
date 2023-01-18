@@ -38,7 +38,7 @@ class _SvgScreenState extends State<SvgScreen> {
   String _title = 'Icon Library';
   final _updater = Debouncer(milliseconds: 200);
 
-  Future<void> _updateItems() async {
+  void _updateItems() {
     List<String> iconNames;
 
     switch (widget.source) {

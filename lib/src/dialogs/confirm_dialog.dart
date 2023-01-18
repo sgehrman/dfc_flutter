@@ -30,8 +30,8 @@ Future<bool?> showConfirmDialog({
         },
         child: AlertDialog(
           actionsPadding: actionsPadding,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
           title: Text(title),
           content: ConstrainedBox(

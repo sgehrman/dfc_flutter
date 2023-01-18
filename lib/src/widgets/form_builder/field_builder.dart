@@ -55,7 +55,7 @@ class FieldBuilder {
   }) {
     final border = outlinedBorders
         ? OutlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: const BorderRadius.all(Radius.circular(6)),
             borderSide: BorderSide(
               color:
                   Utils.isDarkMode(context) ? Colors.white10 : Colors.black12,
@@ -65,7 +65,7 @@ class FieldBuilder {
 
     final focusedBorder = outlinedBorders
         ? OutlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: const BorderRadius.all(Radius.circular(6)),
             borderSide: BorderSide(
               color:
                   Utils.isDarkMode(context) ? Colors.white54 : Colors.black45,
@@ -75,7 +75,7 @@ class FieldBuilder {
 
     final errorBorder = outlinedBorders
         ? OutlineInputBorder(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: const BorderRadius.all(Radius.circular(6)),
             borderSide: BorderSide(color: Colors.red[300]!),
           )
         : null;

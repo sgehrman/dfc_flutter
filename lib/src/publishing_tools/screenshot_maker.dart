@@ -25,7 +25,7 @@ class ScreenshotMaker {
     PhoneType? type, {
     bool showBackground = true,
     SizeType? resultImageSize,
-  }) async {
+  }) {
     final Size imageSize = Size(
       assetImage.width.toDouble(),
       assetImage.height.toDouble(),
@@ -194,7 +194,7 @@ class ScreenshotMaker {
     Size? size, {
     bool drawBackground = true,
     SizeType? resultImageSize,
-  }) async {
+  }) {
     final pictureRecorder = ui.PictureRecorder();
     final canvas = Canvas(pictureRecorder);
 

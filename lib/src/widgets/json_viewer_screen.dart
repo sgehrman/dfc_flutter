@@ -101,7 +101,7 @@ Future<void> showJsonViewerDialog({
 
   controller.widget = Container(
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: const BorderRadius.all(Radius.circular(12)),
       color: Utils.isDarkMode(context)
           ? Colors.white.withOpacity(0.07)
           : Colors.black.withOpacity(0.07),

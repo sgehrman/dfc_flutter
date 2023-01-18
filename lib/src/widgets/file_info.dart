@@ -55,9 +55,11 @@ class _FileInfoState extends State<FileInfo> {
           final PdfPageImage? pageImage =
               await page.render(width: page.width, height: page.height);
 
-          setState(() {
-            _pdfImageData = pageImage!.bytes;
-          });
+          if (mounted) {
+            setState(() {
+              _pdfImageData = pageImage!.bytes;
+            });
+          }
         }
       }
     }

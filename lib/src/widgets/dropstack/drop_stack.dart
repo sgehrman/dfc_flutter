@@ -49,7 +49,7 @@ class DropStack extends ChangeNotifier {
     return false;
   }
 
-  Future<void> add(ServerFile serverFile) async {
+  void add(ServerFile serverFile) {
     // don't add duplicates
     if (!_inStack(serverFile)) {
       _stack.push(serverFile);

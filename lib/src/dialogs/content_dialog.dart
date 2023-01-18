@@ -50,8 +50,8 @@ Future<T?> showContentDialog<T>({
           titlePadding: titlePadding,
           actionsPadding: actionsPadding,
           contentPadding: contentPadding,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
           title: title,
           content: controller.widget,

@@ -187,7 +187,7 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
                 icon: const SvgIcon(FontAwesomeSvgs.solidQrcode),
               ),
             ThemeButton(
-              onPressed: () async {
+              onPressed: () {
                 _showQRCodeDialog(context);
               },
               title: 'Share Theme',

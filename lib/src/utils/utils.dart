@@ -699,9 +699,9 @@ class __ToastState extends State<_Toast> {
         backgroundColor: Colors.transparent,
         body: Center(
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.black87,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
             ),
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
             child: const Text(

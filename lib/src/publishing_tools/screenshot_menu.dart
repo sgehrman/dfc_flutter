@@ -62,7 +62,9 @@ class _ScreenshotMenuState extends State<ScreenshotMenu> {
   Future<void> _setup() async {
     items = await ScreenshotMenuItem.items;
 
-    setState(() {});
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Widget _menuButton(BuildContext context) {

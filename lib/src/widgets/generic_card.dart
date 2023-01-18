@@ -94,7 +94,7 @@ class GenericCard extends StatelessWidget {
 
         return _addMenuSeparators(menuItems);
       },
-      onSelected: (selected) async {
+      onSelected: (selected) {
         switch (selected) {
           case 'edit':
             onEdit?.call();

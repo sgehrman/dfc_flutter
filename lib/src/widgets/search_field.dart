@@ -83,12 +83,12 @@ class _SearchFieldState extends State<SearchField> {
       left: 30,
     );
 
-    var focusedBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(100),
+    var focusedBorder = const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(100)),
     );
 
-    var enabledBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(100),
+    var enabledBorder = const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(100)),
     );
 
     if (!widget.filled) {
@@ -97,7 +97,7 @@ class _SearchFieldState extends State<SearchField> {
       contentPadding = null;
 
       focusedBorder = OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         borderSide: BorderSide(
           width: 2,
           color: Theme.of(context).primaryColorLight,
@@ -105,7 +105,7 @@ class _SearchFieldState extends State<SearchField> {
       );
 
       enabledBorder = OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         borderSide: BorderSide(
           width: 2,
           color: Utils.isDarkMode(context) ? Colors.white24 : Colors.black12,

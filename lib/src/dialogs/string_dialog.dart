@@ -95,8 +95,8 @@ class __DialogContentsState extends State<_DialogContents> {
     const EdgeInsets actionsPadding = EdgeInsets.only(right: 10, bottom: 10);
 
     return AlertDialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       actionsPadding: actionsPadding,
       title: Text(widget.title),
