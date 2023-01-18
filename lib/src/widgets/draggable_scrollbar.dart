@@ -26,10 +26,9 @@ class DraggableScrollbar extends StatefulWidget {
     this.scrollbarAnimationDuration = const Duration(milliseconds: 300),
     this.scrollbarTimeToFade = const Duration(milliseconds: 600),
     this.labelTextBuilder,
-    Key? key,
+    super.key,
   })  : assert(child.scrollDirection == Axis.vertical, 'direction bad'),
-        scrollThumbBuilder = _thumbSemicircleBuilder(),
-        super(key: key);
+        scrollThumbBuilder = _thumbSemicircleBuilder();
 
   final BoxScrollView child;
   final ScrollThumbBuilder scrollThumbBuilder;
@@ -354,8 +353,8 @@ class SlideFadeTransition extends StatelessWidget {
   const SlideFadeTransition({
     required this.animation,
     required this.child,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Animation<double>? animation;
   final Widget child;

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class SlideCountdownClock extends StatefulWidget {
   const SlideCountdownClock({
     required this.duration,
-    Key? key,
+    super.key,
     this.textStyle = const TextStyle(
       fontSize: 30,
       color: Colors.black,
@@ -23,7 +23,7 @@ class SlideCountdownClock extends StatefulWidget {
     this.shouldShowDays = false,
     this.shouldShowHours = true,
     this.padding = EdgeInsets.zero,
-  }) : super(key: key);
+  });
 
   final Duration duration;
   final TextStyle textStyle;

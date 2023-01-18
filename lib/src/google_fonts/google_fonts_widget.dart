@@ -25,9 +25,9 @@ class _FontObj {
 
 class GoogleFontsWidget extends StatefulWidget {
   const GoogleFontsWidget({
-    Key? key,
+    super.key,
     this.showNext = false,
-  }) : super(key: key);
+  });
 
   final bool showNext;
 

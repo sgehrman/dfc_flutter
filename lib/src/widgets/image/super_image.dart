@@ -11,13 +11,13 @@
 // class SuperImage extends StatelessWidget {
 //   const SuperImage(
 //     this.imageSrc, {
-//     Key? key,
+//     super.key,
 //     this.width,
 //     this.height,
 //     this.fit = BoxFit.cover,
 //     this.enableViewer = false,
 //     this.swiperImageSrcs,
-//   }) : super(key: key);
+//   });
 
 //   final SuperImageSource imageSrc;
 //   final double? width;

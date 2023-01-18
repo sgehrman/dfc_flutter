@@ -42,9 +42,8 @@ class BottomSlideupSheet {
 
 class _SheetList extends StatelessWidget {
   const _SheetList({
-    Key? key,
     this.sliderContent,
-  }) : super(key: key);
+  });
 
   final SliderContent? sliderContent;
 

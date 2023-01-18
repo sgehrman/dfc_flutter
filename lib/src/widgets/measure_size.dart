@@ -31,8 +31,8 @@ class MeasureSize extends SingleChildRenderObjectWidget {
   const MeasureSize({
     required this.onChange,
     required Widget child,
-    Key? key,
-  }) : super(key: key, child: child);
+    super.key,
+  }) : super(child: child);
 
   final OnWidgetSizeChange onChange;
 

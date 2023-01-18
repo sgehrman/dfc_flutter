@@ -7,7 +7,7 @@ class DatePicker extends StatefulWidget {
     required this.startDate,
     required this.initialSelectedDate,
     this.selectableDayPredicate,
-    Key? key,
+    super.key,
     this.width = 60,
     this.height = 100,
     this.controller,
@@ -15,7 +15,7 @@ class DatePicker extends StatefulWidget {
     this.daysCount = 60,
     this.onDateChange,
     this.locale = 'en_US',
-  }) : super(key: key);
+  });
 
   final DateTime startDate;
   final DateTime initialSelectedDate;

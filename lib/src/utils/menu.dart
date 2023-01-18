@@ -13,8 +13,7 @@ class _MenuItem extends SingleChildRenderObjectWidget {
   const _MenuItem({
     required this.onLayout,
     required Widget? child,
-    Key? key,
-  }) : super(key: key, child: child);
+  }) : super(child: child);
 
   final ValueChanged<Size> onLayout;
 
@@ -64,8 +63,8 @@ class _PopupMenu<T> extends StatelessWidget {
   const _PopupMenu({
     required this.route,
     required this.semanticLabel,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final _PopupMenuRoute<T> route;
   final String? semanticLabel;
