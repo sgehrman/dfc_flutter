@@ -14,6 +14,8 @@ class SharedContext {
 
   BuildContext get mainContext {
     // Will crash if null, this should never be null
+    assert(_mainContext != null, 'mainContext is null');
+
     return _mainContext!;
   }
 
@@ -24,6 +26,8 @@ class SharedContext {
   // use this if you need a dialog or toast
   BuildContext get scaffoldContext {
     // Will crash if null, this should never be null
+    assert(_scaffoldContext != null, 'scaffoldContext is null');
+
     return _scaffoldContext!;
   }
 
