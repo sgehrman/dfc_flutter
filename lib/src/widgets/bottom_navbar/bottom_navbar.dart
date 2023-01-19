@@ -216,7 +216,7 @@ class BottomNavBarState extends State<BottomNavBar>
                     SizedBox(
                       height: circleSize - 5,
                       width: circleSize - 5,
-                      child: Container(
+                      child: DecoratedBox(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: gradient,

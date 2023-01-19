@@ -65,7 +65,7 @@ class CDialog extends StatelessWidget {
             shape: dialogTheme.shape ?? _defaultDialogShape,
             type: MaterialType.card,
             clipBehavior: clipBehavior,
-            child: Container(
+            child: DecoratedBox(
               decoration: BoxDecoration(
                 border:
                     Border.fromBorderSide(BorderSide(color: color, width: 4)),

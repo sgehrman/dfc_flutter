@@ -79,7 +79,7 @@ class GradientBackground4 extends StatelessWidget {
             tween: _tween, // Pass in tween
             duration: _tween.duration, // Obtain duration from MultiTween
             builder: (context, child, value) {
-              return Container(
+              return DecoratedBox(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,

@@ -37,9 +37,7 @@ class TabItem extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          SizedBox(
-            height: double.infinity,
-            width: double.infinity,
+          SizedBox.expand(
             child: AnimatedAlign(
               duration: const Duration(milliseconds: animDuration),
               alignment: Alignment(0, selected ? textOn : textOff),
@@ -55,9 +53,7 @@ class TabItem extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: double.infinity,
-            width: double.infinity,
+          SizedBox.expand(
             child: AnimatedAlign(
               duration: const Duration(milliseconds: animDuration),
               curve: Curves.easeIn,
