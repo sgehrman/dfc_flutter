@@ -183,6 +183,36 @@ class Utils {
     return kIsWeb;
   }
 
+  // used for web to find out underlying host OS
+  static bool onWindows(BuildContext context) {
+    return Theme.of(context).platform == TargetPlatform.windows;
+  }
+
+  // used for web to find out underlying host OS
+  static bool onMac(BuildContext context) {
+    return Theme.of(context).platform == TargetPlatform.macOS;
+  }
+
+  // used for web to find out underlying host OS
+  static bool onLinux(BuildContext context) {
+    return Theme.of(context).platform == TargetPlatform.linux;
+  }
+
+  // used for web to find out underlying host OS
+  static bool oniOS(BuildContext context) {
+    return Theme.of(context).platform == TargetPlatform.iOS;
+  }
+
+  // used for web to find out underlying host OS
+  static bool onAndroid(BuildContext context) {
+    return Theme.of(context).platform == TargetPlatform.android;
+  }
+
+  // used for web to find out underlying host OS
+  static bool onFuchsia(BuildContext context) {
+    return Theme.of(context).platform == TargetPlatform.fuchsia;
+  }
+
   static Future<String> getAppVersion() async {
     if (isWeb) {
       return '1.0.2';
