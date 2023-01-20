@@ -19,7 +19,7 @@ class MenuButton<T> extends StatelessWidget {
     required this.onItemSelected,
     required this.selectedItem,
     this.fontSize = 16,
-    this.arrowSize = 38,
+    this.arrowSize = 32,
   });
 
   final void Function(MenuButtonItem<T>) onItemSelected;
@@ -28,9 +28,10 @@ class MenuButton<T> extends StatelessWidget {
   final double fontSize;
   final double arrowSize;
 
-  Widget _menuButton(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     final button = Padding(
-      padding: const EdgeInsets.only(left: 16, right: 11),
+      padding: const EdgeInsets.only(left: 16),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -38,7 +39,10 @@ class MenuButton<T> extends StatelessWidget {
             child: Text(
               selectedItem.title,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: fontSize),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           FittedBox(
@@ -77,10 +81,5 @@ class MenuButton<T> extends StatelessWidget {
       },
       child: button,
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _menuButton(context);
   }
 }
