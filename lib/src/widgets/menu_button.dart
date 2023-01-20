@@ -31,7 +31,7 @@ class MenuButton<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final button = Padding(
-      padding: const EdgeInsets.only(left: 16),
+      padding: const EdgeInsets.only(left: 14),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
