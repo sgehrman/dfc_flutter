@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:dfc_flutter/src/utils/rect_clipper.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +18,8 @@ class ThumbWidget extends StatelessWidget {
   Widget _thumb(int index) {
     const Color unselectedColor = Color.fromRGBO(180, 180, 180, 1);
 
-    String icon;
-    String outlinedIcon;
+    IconData icon;
+    IconData outlinedIcon;
 
     final bool isSelected = selectedIndex == index;
 
@@ -29,13 +28,13 @@ class ThumbWidget extends StatelessWidget {
     double yOffset = 1;
 
     if (index < 2) {
-      icon = FontAwesomeSvgs.solidThumbsDown;
-      outlinedIcon = FontAwesomeSvgs.solidThumbsDown;
+      icon = Icons.thumb_down;
+      outlinedIcon = Icons.thumb_down;
 
       iconColor = Colors.red[600];
     } else {
-      icon = FontAwesomeSvgs.solidThumbsUp;
-      outlinedIcon = FontAwesomeSvgs.solidThumbsUp;
+      icon = Icons.thumb_up;
+      outlinedIcon = Icons.thumb_up;
       yOffset *= -1;
 
       iconColor = Colors.green[600];
@@ -54,7 +53,7 @@ class ThumbWidget extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          SvgIcon(
+          Icon(
             isSelected ? icon : outlinedIcon,
             color: firstIconColor,
             size: iconSize,
@@ -67,7 +66,7 @@ class ThumbWidget extends StatelessWidget {
               bottom: yOffset,
               child: ClipRect(
                 clipper: const RectClipper(),
-                child: SvgIcon(
+                child: Icon(
                   isSelected ? icon : outlinedIcon,
                   color: Colors.black54,
                   size: iconSize,
@@ -80,7 +79,7 @@ class ThumbWidget extends StatelessWidget {
             child: Positioned(
               right: xOffset,
               bottom: yOffset,
-              child: SvgIcon(
+              child: Icon(
                 isSelected ? icon : outlinedIcon,
                 color: isSelected ? iconColor! : unselectedColor,
                 size: iconSize,
