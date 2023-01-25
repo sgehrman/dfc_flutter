@@ -77,7 +77,6 @@ class AppTheme {
       primaryColor: appColor,
       primaryColorLight: appColor, // circle avatar uses these light/dark
       primaryColorDark: appColor,
-      toggleableActiveColor: appColor,
       dialogBackgroundColor: themeSet.backgroundColor,
       sliderTheme: sliderTheme,
       floatingActionButtonTheme: floatingActionButtonTheme,
@@ -150,7 +149,7 @@ class AppTheme {
     }
 
     final result = startTheme.copyWith(
-      button: TextStyle(
+      labelLarge: TextStyle(
         color: buttonContentColor,
       ),
 
@@ -180,7 +179,7 @@ class AppTheme {
       ),
 
       // Google fonts list and others
-      headline6: startTheme.headline6!.copyWith(
+      titleLarge: startTheme.titleLarge!.copyWith(
         color: textColor,
       ),
 

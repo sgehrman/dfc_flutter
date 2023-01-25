@@ -76,32 +76,27 @@ class SharedSnackBar extends StatefulWidget {
     final overlayState = Overlay.of(context);
     final Completer<bool> result = Completer<bool>();
 
-    if (overlayState != null) {
-      late OverlayEntry overlayEntry;
+    late OverlayEntry overlayEntry;
 
-      overlayEntry = OverlayEntry(
-        builder: (context) {
-          return SharedSnackBar(
-            // this means the keyboard is visible
-            onTop: MediaQuery.of(context).viewInsets.bottom != 0,
-            onDismissed: () {
-              overlayEntry.remove();
-              result.complete(true);
-            },
-            showOutAnimationDuration: showOutAnimationDuration,
-            hideOutAnimationDuration: hideOutAnimationDuration,
-            displayDuration: displayDuration,
-            additionalTopPadding: additionalTopPadding,
-            child: child,
-          );
-        },
-      );
+    overlayEntry = OverlayEntry(
+      builder: (context) {
+        return SharedSnackBar(
+          // this means the keyboard is visible
+          onTop: MediaQuery.of(context).viewInsets.bottom != 0,
+          onDismissed: () {
+            overlayEntry.remove();
+            result.complete(true);
+          },
+          showOutAnimationDuration: showOutAnimationDuration,
+          hideOutAnimationDuration: hideOutAnimationDuration,
+          displayDuration: displayDuration,
+          additionalTopPadding: additionalTopPadding,
+          child: child,
+        );
+      },
+    );
 
-      overlayState.insert(overlayEntry);
-    } else {
-      result.complete(false);
-      print('showTopSnackBar: No overlay state');
-    }
+    overlayState.insert(overlayEntry);
 
     return result.future;
   }

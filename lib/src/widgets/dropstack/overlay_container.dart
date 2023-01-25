@@ -43,7 +43,7 @@ class _OverlayContainerState extends State<OverlayContainer> {
         },
       );
 
-      Overlay.of(context)!.insert(_overlayEntry!);
+      Overlay.of(context).insert(_overlayEntry!);
     });
   }
 

@@ -110,7 +110,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
                           padding: const EdgeInsets.only(left: 12),
                           child: Text(
                             fontObj.displayName,
-                            style: theme.headline6!.copyWith(
+                            style: theme.titleLarge!.copyWith(
                               color: fontObj.name == currentFont
                                   ? Theme.of(context).primaryColor
                                   : null,
