@@ -19,7 +19,9 @@ class Dates {
       } else if (date.compareTo(yyDay) != -1) {
         return 'Yesterday ${formatter.format(date)}';
       } else {
-        return formatter.format(date);
+        final yearFormatter = DateFormat.yMMMd().add_jm();
+
+        return yearFormatter.format(date);
       }
     }
 
