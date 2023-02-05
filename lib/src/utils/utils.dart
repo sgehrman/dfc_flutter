@@ -213,6 +213,19 @@ class Utils {
     return Theme.of(context).platform == TargetPlatform.fuchsia;
   }
 
+  // use this function for proper version with build number
+  // ex. 1.0.2+69
+  static Future<String> appVersion() async {
+    final v = await getAppVersion();
+    final b = await getAppBuildNumber();
+
+    if (b.isNotEmpty) {
+      return '$v+$b';
+    }
+
+    return v;
+  }
+
   static Future<String> getAppVersion() async {
     if (isWeb) {
       return '1.0.2';
