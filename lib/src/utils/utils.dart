@@ -229,6 +229,22 @@ class Utils {
     return '1.0.2';
   }
 
+  static Future<String> getAppBuildNumber() async {
+    if (isWeb) {
+      return '48';
+    }
+
+    try {
+      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+      return packageInfo.buildNumber;
+    } catch (err) {
+      print(err);
+    }
+
+    return '48';
+  }
+
   static Future<String> getAppID() async {
     if (isWeb) {
       return '0.0.7';
