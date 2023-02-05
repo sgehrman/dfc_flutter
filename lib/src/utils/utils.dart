@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
+import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:collection/collection.dart' show IterableExtension;
@@ -18,7 +18,7 @@ import 'package:url_launcher/url_launcher.dart' as launcher;
 // Some globals I may want to experiment with
 
 class Utils {
-  static final Random _random = Random();
+  static final math.Random _random = math.Random();
 
   static bool get debugBuild {
     return kDebugMode || kProfileMode;
@@ -213,6 +213,32 @@ class Utils {
     return Theme.of(context).platform == TargetPlatform.fuchsia;
   }
 
+  static bool versionOutOfDate({
+    required String oldVersion,
+    required String newVersion,
+  }) {
+    // version can be 1.2.3.4, or 1.2.3+4
+    final String oldV = oldVersion.replaceAll('+', '.');
+    final String newV = newVersion.replaceAll('+', '.');
+
+    final oldDigits = oldV.split('.').map((e) => int.tryParse(e) ?? 0).toList();
+    final newDigits = newV.split('.').map((e) => int.tryParse(e) ?? 0).toList();
+
+    final int cnt = math.min(oldDigits.length, newDigits.length);
+
+    for (int i = 0; i < cnt; i++) {
+      if (newDigits[i] > oldDigits[i]) {
+        return true;
+      }
+    }
+
+    if (newDigits.length > oldDigits.length) {
+      return true;
+    }
+
+    return false;
+  }
+
   // use this function for proper version with build number
   // ex. 1.0.2+69
   static Future<String> appVersion() async {
@@ -386,14 +412,14 @@ class Utils {
     double percent = 0.5,
     double? maxDimension,
   }) {
-    double dimension = min(
+    double dimension = math.min(
       MediaQuery.of(context).size.width,
       MediaQuery.of(context).size.height,
     );
 
     dimension = dimension * percent;
     if (maxDimension != null) {
-      dimension = min(maxDimension, dimension);
+      dimension = math.min(maxDimension, dimension);
     }
 
     return Size(dimension, dimension);
