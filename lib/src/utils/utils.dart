@@ -253,10 +253,6 @@ class Utils {
   }
 
   static Future<String> getAppVersion() async {
-    // if (isWeb) {
-    //   return '1.0.2';
-    // }
-
     try {
       final PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
@@ -269,10 +265,6 @@ class Utils {
   }
 
   static Future<String> getAppBuildNumber() async {
-    // if (isWeb) {
-    //   return '48';
-    // }
-
     try {
       final PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
@@ -285,10 +277,6 @@ class Utils {
   }
 
   static Future<String> getAppID() async {
-    if (isWeb) {
-      return '0.0.7';
-    }
-
     try {
       final PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
