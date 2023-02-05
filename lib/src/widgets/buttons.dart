@@ -64,13 +64,13 @@ class DFTextButton extends StatelessWidget {
     if (icon != null) {
       b = TextButton.icon(
         onPressed: onPressed,
-        label: Text(label),
+        label: _ButtonText(label),
         icon: icon!,
       );
     } else {
       b = TextButton(
         onPressed: onPressed,
-        child: Text(label),
+        child: _ButtonText(label),
       );
     }
 
@@ -106,7 +106,7 @@ class DFButton extends StatelessWidget {
     if (icon != null) {
       b = ElevatedButton.icon(
         onPressed: onPressed,
-        label: Text(label),
+        label: _ButtonText(label),
         icon: icon!,
         style: secondary
             ? ElevatedButton.styleFrom(
@@ -124,7 +124,7 @@ class DFButton extends StatelessWidget {
                 foregroundColor: Colors.black,
               )
             : null,
-        child: Text(label),
+        child: _ButtonText(label),
       );
     }
 
@@ -158,13 +158,13 @@ class DFOutlineButton extends StatelessWidget {
     if (icon != null) {
       b = OutlinedButton.icon(
         onPressed: onPressed,
-        label: Text(label),
+        label: _ButtonText(label),
         icon: icon!,
       );
     } else {
       b = OutlinedButton(
         onPressed: onPressed,
-        child: Text(label),
+        child: _ButtonText(label),
       );
     }
 
@@ -201,6 +201,22 @@ class IconMenuButton extends StatelessWidget {
       },
       color: color,
       icon: const Icon(Icons.more_vert),
+    );
+  }
+}
+
+// ===========================================================
+
+class _ButtonText extends StatelessWidget {
+  const _ButtonText(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 1),
+      child: Text(text),
     );
   }
 }
