@@ -1,4 +1,5 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
@@ -30,7 +31,7 @@ class MarkdownText extends StatelessWidget {
     );
 
     final boldStyle = textStyle.copyWith(
-      fontWeight: FontWeight.bold,
+      fontWeight: Font.bold,
     );
 
     return MarkdownBody(

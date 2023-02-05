@@ -1,5 +1,6 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/ttext.dart';
+import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryTitle extends StatelessWidget {
@@ -22,7 +23,7 @@ class PrimaryTitle extends StatelessWidget {
               title,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: Font.bold,
                   ),
             ),
           ),

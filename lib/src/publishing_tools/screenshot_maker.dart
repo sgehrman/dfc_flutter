@@ -8,6 +8,7 @@ import 'package:dfc_flutter/src/publishing_tools/phone_shapes.dart';
 import 'package:dfc_flutter/src/publishing_tools/screenshot_params.dart';
 import 'package:dfc_flutter/src/publishing_tools/size_menu.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
 
 class CaptureResult {
@@ -172,7 +173,7 @@ class ScreenshotMaker {
       style: const TextStyle(
         color: Colors.white,
         fontSize: 84,
-        fontWeight: FontWeight.bold,
+        fontWeight: Font.bold,
       ),
       text: title,
     );

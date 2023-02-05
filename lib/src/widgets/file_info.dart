@@ -6,6 +6,7 @@ import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/checkerboard_container.dart';
 import 'package:dfc_flutter/src/widgets/fade_image.dart';
+import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:dfc_flutter/src/widgets/video_player_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -157,7 +158,7 @@ class _FileInfoState extends State<FileInfo> {
                 child: Text(
                   '$key:',
                   style: const TextStyle(
-                    fontWeight: FontWeight.bold,
+                    fontWeight: Font.bold,
                   ),
                 ),
               ),
@@ -201,7 +202,7 @@ class _FileInfoState extends State<FileInfo> {
           const Text(
             'File Info',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
+              fontWeight: Font.bold,
               fontSize: 18,
             ),
           ),

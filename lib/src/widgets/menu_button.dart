@@ -1,5 +1,6 @@
 import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item.dart';
+import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
 
 class MenuButtonItem<T> {
@@ -41,7 +42,7 @@ class MenuButton<T> extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: fontSize,
-                fontWeight: FontWeight.bold,
+                fontWeight: Font.bold,
               ),
             ),
           ),

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:dfc_flutter/src/widgets/shared_context.dart';
+import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
 
 class SharedSnackBars {
@@ -240,7 +241,7 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
                     widget.title,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: Font.bold,
                       fontSize: 18,
                     ),
                     overflow: TextOverflow.ellipsis,

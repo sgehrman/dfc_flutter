@@ -1,4 +1,5 @@
 import 'package:dfc_flutter/src/widgets/thumb_widget.dart';
+import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
 
 class DoubleThumbsControl extends StatefulWidget {
@@ -90,7 +91,7 @@ class _DoubleThumbsControlState extends State<DoubleThumbsControl> {
                 Text(
                   textResult,
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontWeight: FontWeight.bold,
+                        fontWeight: Font.bold,
                         fontSize: 22,
                       ),
                 ),

@@ -19,7 +19,7 @@ class Font {
   static const small = medium - 2;
   static const tiny = small - 1;
 
-  static const bold = FontWeight.bold;
+  static const bold = FontWeight.w600;
   static const normal = FontWeight.normal;
 }
 
