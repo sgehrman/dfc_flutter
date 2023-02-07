@@ -434,13 +434,21 @@ class Utils {
   }
 
   static Future<void> launchUrl(String url, {bool newTab = true}) async {
-    if (await launcher.canLaunchUrl(Uri.parse(url))) {
-      await launcher.launchUrl(
+    // canLaunchUrl doesn't work with flatpak on linux
+    // https://github.com/flutter/flutter/issues/88463
+    // could throw PlatformException on some platforms
+    // if (await launcher.canLaunchUrl(Uri.parse(url))) {
+    try {
+      final result = await launcher.launchUrl(
         Uri.parse(url),
         webOnlyWindowName: newTab ? null : '_self',
       );
-    } else {
-      print('Could not launch $url');
+
+      if (!result) {
+        print('Could not launch $url');
+      }
+    } catch (err) {
+      print(err);
     }
   }
 
