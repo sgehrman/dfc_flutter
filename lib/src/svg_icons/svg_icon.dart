@@ -99,7 +99,7 @@ class SvgIcon extends StatelessWidget {
         width: size,
         child: SvgPicture.string(
           svgString,
-          color: svgColor,
+          colorFilter: ColorFilter.mode(svgColor, BlendMode.srcIn),
           width: size,
           fit: fit,
           allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
