@@ -34,7 +34,7 @@ dependencies:
   html2md: ^1.2.5
   http: ^0.13.5
   image: ^3.2.0
-  intl: ^0.18.0
+  intl: ^0.17.0
   json_annotation: ^4.3.0
   just_the_tooltip: ^0.0.12
   loading_animation_widget: ^1.2.0+4
