@@ -81,7 +81,6 @@ export 'src/widgets/dropstack/drop_stack.dart';
 export 'src/widgets/dropstack/drop_stack_button.dart';
 export 'src/widgets/expandable_text.dart';
 export 'src/widgets/fade_image.dart';
-export 'src/widgets/file_info.dart';
 export 'src/widgets/form_builder/field_builder.dart';
 export 'src/widgets/form_builder/form_builder.dart';
 export 'src/widgets/form_builder/form_params.dart';

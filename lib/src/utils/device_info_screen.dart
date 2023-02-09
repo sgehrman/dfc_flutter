@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:device_info/device_info.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/list_row.dart';
@@ -124,7 +124,6 @@ class _DeviceInfoScreenState extends State<DeviceInfoScreen> {
       'tags': build.tags,
       'type': build.type,
       'isPhysicalDevice': build.isPhysicalDevice,
-      'androidId': build.androidId,
       'systemFeatures': build.systemFeatures,
     };
   }
