@@ -32,14 +32,16 @@ class MenuButton<T> extends StatelessWidget {
 
   Widget _button() {
     if (iconOnly) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 6,
-        ),
-        child: Icon(
-          Icons.arrow_drop_down,
-          size: arrowSize,
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 4,
+            vertical: 2,
+          ),
+          child: Icon(
+            Icons.arrow_drop_down,
+            size: arrowSize,
+          ),
         ),
       );
     }
