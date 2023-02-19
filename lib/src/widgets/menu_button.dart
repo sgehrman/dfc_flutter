@@ -41,6 +41,7 @@ class MenuButton<T> extends StatelessWidget {
           child: Icon(
             Icons.arrow_drop_down,
             size: arrowSize,
+            color: Colors.white,
           ),
         ),
       );
