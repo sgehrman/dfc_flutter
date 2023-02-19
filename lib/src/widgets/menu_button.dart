@@ -30,13 +30,13 @@ class MenuButton<T> extends StatelessWidget {
   final double arrowSize;
   final bool iconOnly;
 
-  Widget _button() {
+  Widget _button(BuildContext context) {
     if (iconOnly) {
       return Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 4,
-            vertical: 2,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
+            color: Theme.of(context).primaryColor,
           ),
           child: Icon(
             Icons.arrow_drop_down,
@@ -97,7 +97,7 @@ class MenuButton<T> extends StatelessWidget {
       onSelected: (selected) {
         onItemSelected(selected);
       },
-      child: _button(),
+      child: _button(context),
     );
   }
 }
