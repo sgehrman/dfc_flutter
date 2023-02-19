@@ -20,6 +20,7 @@ class MenuButton<T> extends StatelessWidget {
     required this.selectedItem,
     this.fontSize = 16,
     this.arrowSize = 32,
+    this.iconOnly = false,
   });
 
   final void Function(MenuButtonItem<T>) onItemSelected;
@@ -27,10 +28,23 @@ class MenuButton<T> extends StatelessWidget {
   final List<MenuButtonItem<T>> items;
   final double fontSize;
   final double arrowSize;
+  final bool iconOnly;
 
-  @override
-  Widget build(BuildContext context) {
-    final button = Padding(
+  Widget _button() {
+    if (iconOnly) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8,
+          vertical: 6,
+        ),
+        child: Icon(
+          Icons.arrow_drop_down,
+          size: arrowSize,
+        ),
+      );
+    }
+
+    return Padding(
       padding: const EdgeInsets.only(left: 14),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -54,7 +68,10 @@ class MenuButton<T> extends StatelessWidget {
         ],
       ),
     );
+  }
 
+  @override
+  Widget build(BuildContext context) {
     final List<PopupMenuItem<MenuButtonItem<T>>> menuItems = [];
 
     for (final item in items) {
@@ -78,7 +95,7 @@ class MenuButton<T> extends StatelessWidget {
       onSelected: (selected) {
         onItemSelected(selected);
       },
-      child: button,
+      child: _button(),
     );
   }
 }
