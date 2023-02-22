@@ -21,8 +21,9 @@ Future<void> showAlertDialog({
       return KeyboardListener(
         focusNode: focusNode,
         autofocus: true,
-        onKeyEvent: (v) {
-          if (v.logicalKey == LogicalKeyboardKey.enter) {
+        onKeyEvent: (keyEvent) {
+          if (keyEvent is KeyDownEvent &&
+              keyEvent.logicalKey == LogicalKeyboardKey.enter) {
             Navigator.of(context).pop();
           }
         },
