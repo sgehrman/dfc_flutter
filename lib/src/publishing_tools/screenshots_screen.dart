@@ -18,7 +18,7 @@ class ScreenshotsScreen extends StatefulWidget {
   final String imagePath;
 
   @override
-  _ScreenshotsScreenState createState() => _ScreenshotsScreenState();
+  State<ScreenshotsScreen> createState() => _ScreenshotsScreenState();
 }
 
 class _ScreenshotsScreenState extends State<ScreenshotsScreen> {

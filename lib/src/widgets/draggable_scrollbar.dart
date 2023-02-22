@@ -40,7 +40,7 @@ class DraggableScrollbar extends StatefulWidget {
   final ScrollController controller;
 
   @override
-  _DraggableScrollbarState createState() => _DraggableScrollbarState();
+  State<DraggableScrollbar> createState() => _DraggableScrollbarState();
 
   static Widget buildScrollThumbAndLabel({
     required Widget scrollThumb,

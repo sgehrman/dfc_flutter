@@ -22,7 +22,7 @@ class NodeBackground extends StatelessWidget {
 
 class NodeBackgroundAnimation extends StatefulWidget {
   @override
-  _NodeBackgroundAnimationState createState() =>
+  State<NodeBackgroundAnimation> createState() =>
       _NodeBackgroundAnimationState();
 }
 

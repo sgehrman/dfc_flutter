@@ -46,7 +46,7 @@ class ScreenshotMenu extends StatefulWidget {
   final ScreenshotMenuItem? selectedItem;
 
   @override
-  _ScreenshotMenuState createState() => _ScreenshotMenuState();
+  State<ScreenshotMenu> createState() => _ScreenshotMenuState();
 }
 
 class _ScreenshotMenuState extends State<ScreenshotMenu> {

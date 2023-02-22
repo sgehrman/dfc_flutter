@@ -19,7 +19,7 @@ class SearchField extends StatefulWidget {
   final String hint;
 
   @override
-  _SearchFieldState createState() => _SearchFieldState();
+  State<SearchField> createState() => _SearchFieldState();
 }
 
 class _SearchFieldState extends State<SearchField> {

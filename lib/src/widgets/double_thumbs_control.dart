@@ -15,7 +15,7 @@ class DoubleThumbsControl extends StatefulWidget {
   final bool showText;
 
   @override
-  _DoubleThumbsControlState createState() => _DoubleThumbsControlState();
+  State<DoubleThumbsControl> createState() => _DoubleThumbsControlState();
 }
 
 class _DoubleThumbsControlState extends State<DoubleThumbsControl> {

@@ -3,7 +3,7 @@ import 'package:rive/rive.dart';
 
 class LoadingAnimation extends StatefulWidget {
   @override
-  _LoadingAnimationState createState() => _LoadingAnimationState();
+  State<LoadingAnimation> createState() => _LoadingAnimationState();
 }
 
 class _LoadingAnimationState extends State<LoadingAnimation> {

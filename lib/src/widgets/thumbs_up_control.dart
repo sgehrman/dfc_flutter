@@ -12,7 +12,7 @@ class ThumbsUpControl extends StatefulWidget {
   final ValueChanged<bool?> onChanged;
 
   @override
-  _ThumbsUpControlState createState() => _ThumbsUpControlState();
+  State<ThumbsUpControl> createState() => _ThumbsUpControlState();
 }
 
 class _ThumbsUpControlState extends State<ThumbsUpControl> {

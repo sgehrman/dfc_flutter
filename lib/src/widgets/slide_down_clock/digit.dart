@@ -24,7 +24,7 @@ class Digit extends StatefulWidget {
   final EdgeInsets padding;
 
   @override
-  _DigitState createState() => _DigitState();
+  State<Digit> createState() => _DigitState();
 }
 
 class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {

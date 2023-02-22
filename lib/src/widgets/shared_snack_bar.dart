@@ -103,7 +103,7 @@ class SharedSnackBar extends StatefulWidget {
   }
 
   @override
-  _SharedSnackBarState createState() => _SharedSnackBarState();
+  State<SharedSnackBar> createState() => _SharedSnackBarState();
 }
 
 class _SharedSnackBarState extends State<SharedSnackBar>

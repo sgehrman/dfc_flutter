@@ -3,7 +3,7 @@ import 'package:rive/rive.dart';
 
 class TreasureAnimation extends StatefulWidget {
   @override
-  _TreasureAnimationState createState() => _TreasureAnimationState();
+  State<TreasureAnimation> createState() => _TreasureAnimationState();
 }
 
 class _TreasureAnimationState extends State<TreasureAnimation> {

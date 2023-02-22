@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 class CreateIconScreen extends StatefulWidget {
   @override
-  _CreateIconScreenState createState() => _CreateIconScreenState();
+  State<CreateIconScreen> createState() => _CreateIconScreenState();
 }
 
 class _CreateIconScreenState extends State<CreateIconScreen> {

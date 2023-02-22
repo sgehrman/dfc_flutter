@@ -40,7 +40,7 @@ class ThemeColorEditorWidget extends StatefulWidget {
   final ThemeSetColor field;
 
   @override
-  _ThemeColorEditorWidgetState createState() => _ThemeColorEditorWidgetState();
+  State<ThemeColorEditorWidget> createState() => _ThemeColorEditorWidgetState();
 }
 
 class _ThemeColorEditorWidgetState extends State<ThemeColorEditorWidget> {

@@ -8,7 +8,7 @@ class OverlayContainer extends StatefulWidget {
   final Widget child;
 
   @override
-  _OverlayContainerState createState() => _OverlayContainerState();
+  State<OverlayContainer> createState() => _OverlayContainerState();
 }
 
 class _OverlayContainerState extends State<OverlayContainer> {

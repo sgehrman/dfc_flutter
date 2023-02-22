@@ -16,7 +16,7 @@ class FormBuilder extends StatefulWidget {
   final bool Function(FormBuilderParams params) onSubmit;
 
   @override
-  _FormBuilderState createState() => _FormBuilderState();
+  State<FormBuilder> createState() => _FormBuilderState();
 }
 
 class _FormBuilderState extends State<FormBuilder> {

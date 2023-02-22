@@ -8,7 +8,7 @@ class HiveOpener extends StatefulWidget {
   final HiveBox<dynamic> box;
 
   @override
-  _HiveOpenerState createState() => _HiveOpenerState();
+  State<HiveOpener> createState() => _HiveOpenerState();
 }
 
 class _HiveOpenerState extends State<HiveOpener> {

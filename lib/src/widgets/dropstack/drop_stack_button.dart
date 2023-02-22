@@ -11,7 +11,7 @@ class DropStackButton extends StatefulWidget {
   final ServerFile? directory;
 
   @override
-  _DropStackButtonState createState() => _DropStackButtonState();
+  State<DropStackButton> createState() => _DropStackButtonState();
 }
 
 class _DropStackButtonState extends State<DropStackButton>

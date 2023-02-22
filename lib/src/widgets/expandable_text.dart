@@ -14,7 +14,7 @@ class ExpandableText extends StatefulWidget {
   final TextStyle? style;
 
   @override
-  _ExpandableTextState createState() => _ExpandableTextState();
+  State<ExpandableText> createState() => _ExpandableTextState();
 }
 
 class _ExpandableTextState extends State<ExpandableText> {

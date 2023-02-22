@@ -23,7 +23,7 @@ import 'package:share_extend/share_extend.dart';
 
 class ThemeEditorWidget extends StatefulWidget {
   @override
-  _ThemeEditorWidgetState createState() => _ThemeEditorWidgetState();
+  State<ThemeEditorWidget> createState() => _ThemeEditorWidgetState();
 }
 
 class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {

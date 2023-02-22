@@ -13,7 +13,7 @@ class RotatingRainbowText extends StatefulWidget {
   final TextStyle? textStyle;
 
   @override
-  _RotatingRainbowTextState createState() => _RotatingRainbowTextState();
+  State<RotatingRainbowText> createState() => _RotatingRainbowTextState();
 }
 
 class _RotatingRainbowTextState extends State<RotatingRainbowText>

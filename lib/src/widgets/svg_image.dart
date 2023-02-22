@@ -8,7 +8,7 @@ class SvgImage extends StatefulWidget {
   final String url;
 
   @override
-  _SvgImageState createState() => _SvgImageState();
+  State<SvgImage> createState() => _SvgImageState();
 }
 
 class _SvgImageState extends State<SvgImage> {

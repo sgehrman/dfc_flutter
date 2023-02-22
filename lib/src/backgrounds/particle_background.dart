@@ -36,7 +36,7 @@ class Particles extends StatefulWidget {
   final Color color;
 
   @override
-  _ParticlesState createState() => _ParticlesState();
+  State<Particles> createState() => _ParticlesState();
 }
 
 class _ParticlesState extends State<Particles> {
@@ -82,7 +82,7 @@ class ParticleModel {
   ParticleModel(this.random) {
     restart();
   }
-  late MultiTween<_AniProps> tween;
+  late MultiTween<_AniProps> _tween;
 
   late double size;
   Random random;
@@ -94,7 +94,7 @@ class ParticleModel {
     final endPosition = Offset(-0.2 + 1.4 * random.nextDouble(), -0.2);
     final duration = Duration(milliseconds: 10000 + random.nextInt(20000));
 
-    tween = MultiTween<_AniProps>()
+    _tween = MultiTween<_AniProps>()
       ..add(
         _AniProps.x,
         Tween<double>(begin: startPosition.dx, end: endPosition.dx),
@@ -132,7 +132,7 @@ class ParticlePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     for (final particle in particles) {
       final progress = particle.timer.progress(time);
-      final animation = particle.tween.transform(progress);
+      final animation = particle._tween.transform(progress);
 
       final position = Offset(
         animation.get<double>(_AniProps.x) * size.width,

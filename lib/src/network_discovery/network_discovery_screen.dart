@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class NetworkDiscoveryScreen extends StatefulWidget {
   @override
-  _NetworkDiscoveryScreenState createState() => _NetworkDiscoveryScreenState();
+  State<NetworkDiscoveryScreen> createState() => _NetworkDiscoveryScreenState();
 }
 
 class _NetworkDiscoveryScreenState extends State<NetworkDiscoveryScreen> {

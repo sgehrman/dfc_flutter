@@ -10,7 +10,7 @@ import 'package:flutter/services.dart';
 
 class DeviceInfoScreen extends StatefulWidget {
   @override
-  _DeviceInfoScreenState createState() => _DeviceInfoScreenState();
+  State<DeviceInfoScreen> createState() => _DeviceInfoScreenState();
 }
 
 class _DeviceInfoScreenState extends State<DeviceInfoScreen> {

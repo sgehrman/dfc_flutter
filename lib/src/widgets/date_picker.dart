@@ -30,7 +30,7 @@ class DatePicker extends StatefulWidget {
   final String locale;
 
   @override
-  State<StatefulWidget> createState() => _DatePickerState();
+  State<DatePicker> createState() => _DatePickerState();
 }
 
 class _DatePickerState extends State<DatePicker> {

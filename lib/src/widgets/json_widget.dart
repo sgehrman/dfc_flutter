@@ -301,7 +301,7 @@ class JsonArrayViewerWidget extends StatefulWidget {
   final bool? notRoot;
 
   @override
-  _JsonArrayViewerWidgetState createState() => _JsonArrayViewerWidgetState();
+  State<JsonArrayViewerWidget> createState() => _JsonArrayViewerWidgetState();
 }
 
 class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
