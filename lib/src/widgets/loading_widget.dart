@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:supercharged/supercharged.dart';
 
 class LoadingWidget extends StatefulWidget {
   const LoadingWidget({
@@ -15,7 +16,7 @@ class LoadingWidget extends StatefulWidget {
 }
 
 class _LoadingWidgetState extends State<LoadingWidget>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> _colorTween;
 
@@ -25,20 +26,18 @@ class _LoadingWidgetState extends State<LoadingWidget>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 3),
     );
 
+    final frontDelay =
+        _controller.interval(0, 1, curve: const Interval(0.5, 1));
+
     // fades in so it's not jarring
-    _colorTween = _controller.drive<Color?>(
+    _colorTween = frontDelay.drive<Color?>(
       ColorTween(end: widget.color),
     );
 
-    // delay start of animation
-    Future.delayed(const Duration(seconds: 1), () {
-      if (mounted) {
-        return _controller.forward();
-      }
-    });
+    _controller.forward();
   }
 
   @override
