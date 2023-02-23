@@ -33,7 +33,12 @@ class _LoadingWidgetState extends State<LoadingWidget>
       ColorTween(end: widget.color),
     );
 
-    _controller.forward();
+    // delay start of animation
+    Future.delayed(const Duration(seconds: 1), () {
+      if (mounted) {
+        return _controller.forward();
+      }
+    });
   }
 
   @override
