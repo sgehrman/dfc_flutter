@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:supercharged/supercharged.dart';
 
 class LoadingWidget extends StatefulWidget {
   const LoadingWidget({
@@ -29,11 +28,19 @@ class _LoadingWidgetState extends State<LoadingWidget>
       duration: const Duration(seconds: 3),
     );
 
-    final frontDelay =
-        _controller.interval(0, 1, curve: const Interval(0.5, 1));
+    // is there a better way to this?
+    final customTween = Animatable<double>.fromCallback((double value) {
+      if (value <= 0.5) {
+        return 0;
+      }
+
+      return (value - 0.5) * 2;
+    });
+
+    final animation = _controller.drive<double>(customTween);
 
     // fades in so it's not jarring
-    _colorTween = frontDelay.drive<Color?>(
+    _colorTween = animation.drive<Color?>(
       ColorTween(end: widget.color),
     );
 
