@@ -1,7 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:barcode_image/barcode_image.dart';
+// import 'package:barcode_image/barcode_image.dart';
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:dfc_flutter/src/dialogs/widget_dialog.dart';
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
@@ -16,10 +15,6 @@ import 'package:dfc_flutter/src/widgets/list_row.dart';
 import 'package:dfc_flutter/src/widgets/theme_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:image/image.dart' as img;
-import 'package:path/path.dart' as p;
-import 'package:path_provider/path_provider.dart';
-import 'package:share_extend/share_extend.dart';
 
 class ThemeEditorWidget extends StatefulWidget {
   @override
@@ -42,31 +37,31 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
         padding: const EdgeInsets.all(10),
         data: jsonStr,
       ),
-      IconButton(
-        icon: const Icon(Icons.share),
-        onPressed: () async {
-          final image = img.Image(320, 320);
-          img.fill(image, img.getColor(255, 255, 255));
+      // IconButton(
+      //   icon: const Icon(Icons.share),
+      //   onPressed: () async {
+      //     final image = img.Image(320, 320);
+      //     img.fill(image, img.getColor(255, 255, 255));
 
-          drawBarcode(
-            image,
-            Barcode.qrCode(),
-            jsonStr,
-            width: 300,
-            height: 300,
-            x: 10,
-            y: 10,
-          );
+      //     drawBarcode(
+      //       image,
+      //       Barcode.qrCode(),
+      //       jsonStr,
+      //       width: 300,
+      //       height: 300,
+      //       x: 10,
+      //       y: 10,
+      //     );
 
-          final Directory directory = await getTemporaryDirectory();
+      //     final Directory directory = await getTemporaryDirectory();
 
-          final String path = p.join(directory.path, 'shareTheme.png');
+      //     final String path = p.join(directory.path, 'shareTheme.png');
 
-          File(path).writeAsBytesSync(img.encodePng(image));
+      //     File(path).writeAsBytesSync(img.encodePng(image));
 
-          await ShareExtend.share(path, 'image');
-        },
-      ),
+      //     await ShareExtend.share(path, 'image');
+      //   },
+      // ),
     ];
 
     showWidgetDialog(
