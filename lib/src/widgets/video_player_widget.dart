@@ -123,7 +123,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       );
     }
 
-    return const LoadingWidget();
+    return LoadingWidget(color: Theme.of(context).primaryColor);
   }
 }
 
