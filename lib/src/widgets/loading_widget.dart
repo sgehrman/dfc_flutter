@@ -31,7 +31,7 @@ class _LoadingWidgetState extends State<LoadingWidget>
     // is there a better way to this?
     final customTween = Animatable<double>.fromCallback((double value) {
       if (value <= 0.5) {
-        return 0;
+        return 0.000001; // returning 0 didn't work?
       }
 
       return (value - 0.5) * 2;
