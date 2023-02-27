@@ -10,6 +10,7 @@
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true,
-    "source.fixAll": true,
+    "source.fixAll": true
   },
+  "editor.formatOnSave": true
 }
