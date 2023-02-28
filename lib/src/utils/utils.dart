@@ -10,7 +10,6 @@ import 'package:dfc_flutter/src/widgets/ttext.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_parsed_text/flutter_parsed_text.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart' as p;
 import 'package:url_launcher/url_launcher.dart' as launcher;
@@ -511,67 +510,6 @@ class Utils {
     }
 
     return '0$n';
-  }
-
-  static List<MatchText> matchArray({
-    bool email = true,
-    bool phone = true,
-    bool url = true,
-  }) {
-    final result = <MatchText>[];
-
-    if (email) {
-      result.add(
-        MatchText(
-          type: ParsedType.EMAIL,
-          style: const TextStyle(
-            color: Colors.blue,
-            fontSize: 24,
-          ),
-          onTap: (String r) => Utils.matchCallback('email', r),
-        ),
-      );
-    }
-
-    if (phone) {
-      result.add(
-        MatchText(
-          type: ParsedType.PHONE,
-          style: const TextStyle(
-            color: Colors.blue,
-          ),
-          onTap: (String r) => Utils.matchCallback('phone', r),
-        ),
-      );
-    }
-
-    if (url) {
-      result.add(
-        MatchText(
-          type: ParsedType.URL,
-          style: const TextStyle(
-            color: Colors.blue,
-          ),
-          onTap: (String r) => Utils.matchCallback('url', r),
-        ),
-      );
-    }
-
-    return result;
-  }
-
-  static void matchCallback(String type, String payload) {
-    switch (type) {
-      case 'email':
-        Utils.launchUrl('mailto:$payload');
-        break;
-      case 'phone':
-        Utils.launchUrl('tel:$payload');
-        break;
-      case 'url':
-        Utils.launchUrl(payload);
-        break;
-    }
   }
 
   static bool isNotEmpty(dynamic input) {

@@ -97,10 +97,12 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
         print(e);
       }
 
-      Utils.showSnackbar(
-        context,
-        'Generate Complete',
-      );
+      if (context.mounted) {
+        Utils.showSnackbar(
+          context,
+          'Generate Complete',
+        );
+      }
     }
   }
 

@@ -120,7 +120,7 @@ class DateTimeFormField extends StatelessWidget {
           firstDate: firstDate,
           lastDate: lastDate,
         );
-        if (date != null) {
+        if (date != null && context.mounted) {
           time = await showTimePicker(
             context: context,
             initialTime: TimeOfDay.fromDateTime(state.value!),

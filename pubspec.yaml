@@ -23,9 +23,9 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^1.0.3
   flutter_keyboard_visibility: ^5.2.0
+  flutter_linkify: ^5.0.2
   flutter_markdown: ^0.6.13
   flutter_multi_formatter: ^2.9.11
-  flutter_parsed_text: ^2.2.1
   flutter_svg: ^2.0.0+1
   google_fonts: ^4.0.3
   hex: ^0.2.0

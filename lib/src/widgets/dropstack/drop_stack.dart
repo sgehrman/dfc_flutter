@@ -173,7 +173,7 @@ class DropStack extends ChangeNotifier {
           while (!done) {
             final ServerFile? serverFile = _stack.pop();
 
-            if (serverFile != null) {
+            if (serverFile != null && context.mounted) {
               _dropFile(context, serverFile, directory);
             } else {
               done = true;
