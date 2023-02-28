@@ -1,5 +1,6 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_parsed_text/flutter_parsed_text.dart';
 
 const double arrowIconSize = 26;
 
@@ -186,9 +187,12 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
       );
     } else if (entry.value is String) {
       return Expanded(
-        child: Text(
-          '"${entry.value}"',
-          style: const TextStyle(color: Colors.grey),
+        child: ParsedText(
+          parse: Utils.matchArray(),
+          text: entry.value as String,
+          style: const TextStyle(
+            color: Colors.grey,
+          ),
         ),
       );
     } else if (entry.value is bool) {
@@ -445,9 +449,12 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
       );
     } else if (content is String) {
       return Expanded(
-        child: Text(
-          '"$content"',
-          style: const TextStyle(color: Colors.grey),
+        child: ParsedText(
+          parse: Utils.matchArray(),
+          text: content,
+          style: const TextStyle(
+            color: Colors.grey,
+          ),
         ),
       );
     } else if (content is bool) {
