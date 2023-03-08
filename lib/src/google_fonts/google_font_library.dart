@@ -12,3 +12,8 @@ TextStyle styleWithGoogleFont(String fontName, TextStyle textStyle) {
 List<String> googleFonts() {
   return GoogleFonts.asMap().keys.toList();
 }
+
+// call this in main() to turn off http font fetching
+void allowRuntimeFetching({required bool allow}) {
+  GoogleFonts.config.allowRuntimeFetching = allow;
+}
