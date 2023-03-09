@@ -182,6 +182,7 @@ class IconMenuButton extends StatelessWidget {
     required this.menuItems,
     this.iconData,
     this.iconSize,
+    this.icon,
     this.color,
     super.key,
   });
@@ -189,6 +190,7 @@ class IconMenuButton extends StatelessWidget {
   final List<MenuItemData> menuItems;
   final Color? color;
   final IconData? iconData;
+  final Widget? icon;
   final double? iconSize;
 
   @override
@@ -203,7 +205,7 @@ class IconMenuButton extends StatelessWidget {
       },
       color: color,
       iconSize: iconSize,
-      icon: Icon(iconData ?? Icons.more_vert),
+      icon: icon ?? Icon(iconData ?? Icons.more_vert),
     );
   }
 }
