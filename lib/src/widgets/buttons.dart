@@ -181,6 +181,7 @@ class IconMenuButton extends StatelessWidget {
   const IconMenuButton({
     required this.menuItems,
     this.iconData,
+    this.iconSize,
     this.color,
     super.key,
   });
@@ -188,6 +189,7 @@ class IconMenuButton extends StatelessWidget {
   final List<MenuItemData> menuItems;
   final Color? color;
   final IconData? iconData;
+  final double? iconSize;
 
   @override
   Widget build(BuildContext context) {
@@ -200,6 +202,7 @@ class IconMenuButton extends StatelessWidget {
         );
       },
       color: color,
+      iconSize: iconSize,
       icon: Icon(iconData ?? Icons.more_vert),
     );
   }
