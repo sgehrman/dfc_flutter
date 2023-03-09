@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 class TrianglePainter extends CustomPainter {
   const TrianglePainter({
     required this.color,
+    this.downArrow = false,
   });
 
   final Color color;
+  final bool downArrow;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -18,9 +20,15 @@ class TrianglePainter extends CustomPainter {
 
     final Path path = Path();
 
-    path.moveTo(rect.topLeft.dx, rect.topLeft.dy);
-    path.lineTo(rect.topRight.dx, rect.centerRight.dy);
-    path.lineTo(rect.bottomLeft.dx, rect.bottomLeft.dy);
+    if (downArrow) {
+      path.moveTo(rect.topLeft.dx, rect.topLeft.dy);
+      path.lineTo(rect.topRight.dx, rect.topRight.dy);
+      path.lineTo(rect.bottomCenter.dx, rect.bottomCenter.dy);
+    } else {
+      path.moveTo(rect.topLeft.dx, rect.topLeft.dy);
+      path.lineTo(rect.topRight.dx, rect.centerRight.dy);
+      path.lineTo(rect.bottomLeft.dx, rect.bottomLeft.dy);
+    }
 
     canvas.drawPath(path, paint);
   }
