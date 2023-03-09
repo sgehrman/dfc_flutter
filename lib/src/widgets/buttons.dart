@@ -200,7 +200,7 @@ class IconMenuButton extends StatelessWidget {
         );
       },
       color: color,
-      icon: const Icon(Icons.more_vert),
+      icon: Icon(iconData ?? Icons.more_vert),
     );
   }
 }
