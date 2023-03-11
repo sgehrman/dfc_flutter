@@ -207,8 +207,13 @@ class Preferences {
   Future<void> setStringPref({
     required String key,
     required String? value,
-  }) =>
-      prefs.put(key, value);
+  }) {
+    if (value == null) {
+      return prefs.delete(key);
+    } else {
+      return prefs.put(key, value);
+    }
+  }
 
   // --------------
   // mapPref
