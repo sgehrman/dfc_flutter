@@ -188,7 +188,7 @@ class _LinkableSpan extends WidgetSpan {
 // =========================================================
 
 final _fileRegex = RegExp(
-  r'(file?:\/\/)([^\s]*)',
+  r'^(.*?)(file?:\/\/)([^\s]*)',
   caseSensitive: false,
   dotAll: true,
 );
@@ -214,15 +214,14 @@ class FileLinkifier extends linkify.Linkifier {
 
           final one = match.group(1) ?? '';
           if (one.isNotEmpty) {
-            list.add(linkify.TextElement(match.group(1)!));
+            list.add(linkify.TextElement(one));
           }
 
           final two = match.group(2) ?? '';
           if (two.isNotEmpty) {
-            // Always humanize emails
             list.add(
               FileElement(
-                match.group(2)!.replaceFirst(RegExp('file:'), ''),
+                match.group(2)!.replaceFirst(RegExp('file://'), ''),
               ),
             );
           }
