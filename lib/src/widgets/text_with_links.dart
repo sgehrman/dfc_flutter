@@ -188,7 +188,7 @@ class _LinkableSpan extends WidgetSpan {
 // =========================================================
 
 final _fileRegex = RegExp(
-  r'^(.*?)(file?:\/\/)([^\s]*)',
+  r'(file?:\/\/)([^\s]*)',
   caseSensitive: false,
   dotAll: true,
 );
