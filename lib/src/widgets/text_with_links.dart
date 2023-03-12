@@ -77,7 +77,9 @@ class _LinkedTextState extends State<LinkedText> {
   void didUpdateWidget(covariant LinkedText oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    _rebuildElements();
+    if (widget.text != oldWidget.text) {
+      _rebuildElements();
+    }
   }
 
   TextSpan _buildTextSpan({
