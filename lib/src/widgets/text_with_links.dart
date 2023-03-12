@@ -6,6 +6,7 @@ import 'package:linkify/linkify.dart' as linkify;
 class TextWithLinks extends StatelessWidget {
   const TextWithLinks(
     this.text, {
+    this.selectable = false,
     this.style,
     this.linkStyle,
     super.key,
@@ -14,6 +15,7 @@ class TextWithLinks extends StatelessWidget {
   final String text;
   final TextStyle? style;
   final TextStyle? linkStyle;
+  final bool selectable;
 
   Future<void> _onOpen(linkify.LinkableElement link) async {
     await Utils.launchUrl(link.url);
@@ -23,9 +25,9 @@ class TextWithLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     return LinkedText(
       onOpen: _onOpen,
-      selectable: true,
+      selectable: selectable,
       style: style,
-      linkStyle: linkStyle ?? const TextStyle(color: Colors.cyan),
+      linkStyle: linkStyle,
       text: text,
     );
   }
@@ -127,14 +129,15 @@ class _LinkedTextState extends State<LinkedText> {
 
   @override
   Widget build(BuildContext context) {
+    final baseStyle =
+        Theme.of(context).textTheme.bodyMedium ?? const TextStyle();
+
     final spans = _buildTextSpan(
-      style: Theme.of(context).textTheme.bodyMedium?.merge(widget.style),
+      style: baseStyle.merge(widget.style),
       onOpen: widget.onOpen,
       useMouseRegion: !widget.selectable,
-      linkStyle: Theme.of(context)
-          .textTheme
-          .bodyMedium
-          ?.merge(widget.style)
+      linkStyle: baseStyle
+          .merge(widget.style)
           .copyWith(
             color: Colors.blueAccent,
             decoration: TextDecoration.underline,
