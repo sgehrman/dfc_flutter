@@ -187,8 +187,8 @@ class _LinkableSpan extends WidgetSpan {
 
 // =========================================================
 
-final _fileRegex = RegExp(
-  r'(file?:\/\/)([^\s]*)',
+final _urlRegex = RegExp(
+  r'^(.*?)((?:file:\/\/)[^\s]*)',
   caseSensitive: false,
   dotAll: true,
 );
@@ -205,7 +205,7 @@ class FileLinkifier extends linkify.Linkifier {
 
     for (final element in elements) {
       if (element is linkify.TextElement) {
-        final match = _fileRegex.firstMatch(element.text);
+        final match = _urlRegex.firstMatch(element.text);
 
         if (match == null) {
           list.add(element);
@@ -219,11 +219,35 @@ class FileLinkifier extends linkify.Linkifier {
 
           final two = match.group(2) ?? '';
           if (two.isNotEmpty) {
-            list.add(
-              FileElement(
-                match.group(2)!.replaceFirst(RegExp('file://'), ''),
-              ),
-            );
+            var originalUrl = two;
+            String? end;
+
+            if ((options.excludeLastPeriod) &&
+                originalUrl[originalUrl.length - 1] == '.') {
+              end = '.';
+              originalUrl = originalUrl.substring(0, originalUrl.length - 1);
+            }
+
+            var url = originalUrl;
+
+            if ((options.humanize) || (options.removeWww)) {
+              if (options.humanize) {
+                url = url.replaceFirst(RegExp('file://'), '');
+              }
+
+              list.add(
+                FileElement(
+                  originalUrl,
+                  url,
+                ),
+              );
+            } else {
+              list.add(FileElement(originalUrl));
+            }
+
+            if (end != null) {
+              list.add(linkify.TextElement(end));
+            }
           }
 
           if (text.isNotEmpty) {
@@ -239,24 +263,23 @@ class FileLinkifier extends linkify.Linkifier {
   }
 }
 
+/// Represents an element containing a link
+
 /// Represents an element containing an email address
 class FileElement extends linkify.LinkableElement {
-  final String fileUrl;
-
-  FileElement(this.fileUrl) : super(fileUrl, 'file:$fileUrl');
+  FileElement(String url, [String? text]) : super(text, url);
 
   @override
   String toString() {
-    return "FileElement: '$fileUrl' ($text)";
+    return "FileElement: '$url' ($text)";
   }
 
   @override
   bool operator ==(dynamic other) => equals(other);
 
   @override
-  bool equals(dynamic other) =>
-      other is FileElement && super.equals(other) && other.fileUrl == fileUrl;
+  bool equals(dynamic other) => other is FileElement && super.equals(other);
 
   @override
-  int get hashCode => fileUrl.hashCode;
+  int get hashCode => Object.hash(url, text);
 }
