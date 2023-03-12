@@ -6,14 +6,14 @@ import 'package:linkify/linkify.dart' as linkify;
 class TextWithLinks extends StatelessWidget {
   const TextWithLinks(
     this.text, {
+    required this.style,
     this.selectable = false,
-    this.style,
     this.linkStyle,
     super.key,
   });
 
   final String text;
-  final TextStyle? style;
+  final TextStyle style;
   final TextStyle? linkStyle;
   final bool selectable;
 
@@ -42,7 +42,7 @@ class LinkedText extends StatefulWidget {
   final String text;
   final bool selectable;
   final LTCallback? onOpen;
-  final TextStyle? style;
+  final TextStyle style;
   final TextStyle? linkStyle;
   final TextAlign textAlign;
   final int? maxLines;
@@ -50,9 +50,9 @@ class LinkedText extends StatefulWidget {
 
   const LinkedText({
     required this.text,
+    required this.style,
     this.selectable = false,
     this.onOpen,
-    this.style,
     this.linkStyle,
     this.textAlign = TextAlign.start,
     this.maxLines,
@@ -83,8 +83,8 @@ class _LinkedTextState extends State<LinkedText> {
   }
 
   TextSpan _buildTextSpan({
-    TextStyle? style,
-    TextStyle? linkStyle,
+    required TextStyle style,
+    required TextStyle linkStyle,
     LTCallback? onOpen,
     bool useMouseRegion = false,
   }) {
@@ -131,15 +131,11 @@ class _LinkedTextState extends State<LinkedText> {
 
   @override
   Widget build(BuildContext context) {
-    final baseStyle =
-        Theme.of(context).textTheme.bodyMedium ?? const TextStyle();
-
     final spans = _buildTextSpan(
-      style: baseStyle.merge(widget.style),
+      style: widget.style,
       onOpen: widget.onOpen,
       useMouseRegion: !widget.selectable,
-      linkStyle: baseStyle
-          .merge(widget.style)
+      linkStyle: widget.style
           .copyWith(
             color: Colors.blueAccent,
             decoration: TextDecoration.underline,
@@ -152,6 +148,10 @@ class _LinkedTextState extends State<LinkedText> {
         spans,
         textAlign: widget.textAlign,
         maxLines: widget.maxLines,
+
+        // SNG if this isn't set and the style is bold for example
+        // the TextSpans get clipped? this is a bug in flutter_linkify
+        style: widget.style,
       );
     }
 
@@ -160,6 +160,10 @@ class _LinkedTextState extends State<LinkedText> {
       textAlign: widget.textAlign,
       maxLines: widget.maxLines,
       softWrap: widget.softWrap,
+
+      // SNG if this isn't set and the style is bold for example
+      // the TextSpans get clipped? this is a bug in flutter_linkify
+      style: widget.style,
     );
   }
 }
