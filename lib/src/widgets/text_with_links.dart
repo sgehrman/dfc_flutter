@@ -126,6 +126,7 @@ class _LinkedTextState extends State<LinkedText> {
   void _rebuildElements() {
     _elements = linkify.linkify(
       widget.text,
+      linkifiers: [...linkify.defaultLinkifiers, const FileLinkifier()],
     );
   }
 
@@ -182,4 +183,81 @@ class _LinkableSpan extends WidgetSpan {
             ),
           ),
         );
+}
+
+// =========================================================
+
+final _fileRegex = RegExp(
+  r'^(file)://.+$',
+  caseSensitive: false,
+  dotAll: true,
+);
+
+class FileLinkifier extends linkify.Linkifier {
+  const FileLinkifier();
+
+  @override
+  List<linkify.LinkifyElement> parse(
+    List<linkify.LinkifyElement> elements,
+    linkify.LinkifyOptions options,
+  ) {
+    final list = <linkify.LinkifyElement>[];
+
+    for (final element in elements) {
+      if (element is linkify.TextElement) {
+        final match = _fileRegex.firstMatch(element.text);
+
+        if (match == null) {
+          list.add(element);
+        } else {
+          final text = element.text.replaceFirst(match.group(0)!, '');
+
+          final one = match.group(1) ?? '';
+          if (one.isNotEmpty) {
+            list.add(linkify.TextElement(match.group(1)!));
+          }
+
+          final two = match.group(2) ?? '';
+          if (two.isNotEmpty) {
+            // Always humanize emails
+            list.add(
+              FileElement(
+                match.group(2)!.replaceFirst(RegExp('file:'), ''),
+              ),
+            );
+          }
+
+          if (text.isNotEmpty) {
+            list.addAll(parse([linkify.TextElement(text)], options));
+          }
+        }
+      } else {
+        list.add(element);
+      }
+    }
+
+    return list;
+  }
+}
+
+/// Represents an element containing an email address
+class FileElement extends linkify.LinkableElement {
+  final String fileUrl;
+
+  FileElement(this.fileUrl) : super(fileUrl, 'file:$fileUrl');
+
+  @override
+  String toString() {
+    return "FileElement: '$fileUrl' ($text)";
+  }
+
+  @override
+  bool operator ==(dynamic other) => equals(other);
+
+  @override
+  bool equals(dynamic other) =>
+      other is FileElement && super.equals(other) && other.fileUrl == fileUrl;
+
+  @override
+  int get hashCode => fileUrl.hashCode;
 }
