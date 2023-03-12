@@ -203,60 +203,64 @@ class FileLinkifier extends linkify.Linkifier {
   ) {
     final list = <linkify.LinkifyElement>[];
 
-    for (final element in elements) {
-      if (element is linkify.TextElement) {
-        final match = _urlRegex.firstMatch(element.text);
+    try {
+      for (final element in elements) {
+        if (element is linkify.TextElement) {
+          final match = _urlRegex.firstMatch(element.text);
 
-        if (match == null) {
-          list.add(element);
-        } else {
-          final text = element.text.replaceFirst(match.group(0)!, '');
+          if (match == null) {
+            list.add(element);
+          } else {
+            final text = element.text.replaceFirst(match.group(0)!, '');
 
-          final one = match.group(1) ?? '';
-          if (one.isNotEmpty) {
-            list.add(linkify.TextElement(one));
-          }
-
-          final two = match.group(2) ?? '';
-          if (two.isNotEmpty) {
-            var originalUrl = two;
-            String? end;
-
-            if ((options.excludeLastPeriod) &&
-                originalUrl[originalUrl.length - 1] == '.') {
-              end = '.';
-              originalUrl = originalUrl.substring(0, originalUrl.length - 1);
+            final one = match.group(1) ?? '';
+            if (one.isNotEmpty) {
+              list.add(linkify.TextElement(one));
             }
 
-            var url = originalUrl;
+            final two = match.group(2) ?? '';
+            if (two.isNotEmpty) {
+              var originalUrl = two;
+              String? end;
 
-            if ((options.humanize) || (options.removeWww)) {
-              if (options.humanize) {
-                url = url.replaceFirst(RegExp('file://'), '');
+              if ((options.excludeLastPeriod) &&
+                  originalUrl[originalUrl.length - 1] == '.') {
+                end = '.';
+                originalUrl = originalUrl.substring(0, originalUrl.length - 1);
               }
 
-              list.add(
-                FileElement(
-                  originalUrl,
-                  url,
-                ),
-              );
-            } else {
-              list.add(FileElement(originalUrl));
+              var url = originalUrl;
+
+              if ((options.humanize) || (options.removeWww)) {
+                if (options.humanize) {
+                  url = url.replaceFirst(RegExp('file://'), '');
+                }
+
+                list.add(
+                  FileElement(
+                    originalUrl,
+                    url,
+                  ),
+                );
+              } else {
+                list.add(FileElement(originalUrl));
+              }
+
+              if (end != null) {
+                list.add(linkify.TextElement(end));
+              }
             }
 
-            if (end != null) {
-              list.add(linkify.TextElement(end));
+            if (text.isNotEmpty) {
+              list.addAll(parse([linkify.TextElement(text)], options));
             }
           }
-
-          if (text.isNotEmpty) {
-            list.addAll(parse([linkify.TextElement(text)], options));
-          }
+        } else {
+          list.add(element);
         }
-      } else {
-        list.add(element);
       }
+    } catch (err) {
+      print('FileLinkifier failed: $err');
     }
 
     return list;
