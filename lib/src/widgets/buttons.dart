@@ -177,9 +177,9 @@ class DFOutlineButton extends StatelessWidget {
 
 // =================================================================
 
-class IconMenuButton extends StatelessWidget {
-  const IconMenuButton({
-    required this.menuItems,
+class DFIconMenuButton extends StatelessWidget {
+  const DFIconMenuButton({
+    required this.itemBuilder,
     this.iconData,
     this.iconSize,
     this.icon,
@@ -187,7 +187,7 @@ class IconMenuButton extends StatelessWidget {
     super.key,
   });
 
-  final List<MenuItemData> menuItems;
+  final List<MenuItemData> Function() itemBuilder;
   final Color? color;
   final IconData? iconData;
   final Widget? icon;
@@ -200,7 +200,7 @@ class IconMenuButton extends StatelessWidget {
         showContextMenu(
           localPosition: Offset(0, context.size?.height ?? 0),
           context: context,
-          menuData: menuItems,
+          menuData: itemBuilder(),
         );
       },
       color: color,
