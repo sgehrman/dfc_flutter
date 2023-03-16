@@ -649,14 +649,10 @@ class Utils {
   }
 }
 
-class NothingWidget extends StatelessWidget {
+class NothingWidget extends SizedBox {
+  // this is just a shorthand for a SizedBox to let the coder know
+  // we want a nothing placeholder widget
   const NothingWidget();
-
-  @override
-  Widget build(BuildContext context) {
-    // error message says this takes up as little space as possible
-    return const SizedBox();
-  }
 }
 
 // if you want the contents scrollable when the keyboard comes up to avoid clipping
