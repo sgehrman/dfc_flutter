@@ -44,10 +44,8 @@ Future<bool?> showWidgetDialog({
           title: title == null ? null : Text(title),
           content: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 600),
-            child: SingleChildScrollView(
-              child: Column(
-                children: children,
-              ),
+            child: ListView(
+              children: children,
             ),
           ),
           actions: <Widget>[
