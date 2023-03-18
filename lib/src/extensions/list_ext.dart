@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension ExtendedList on List<dynamic> {
-  List<Widget> addDividers() {
+  List<Widget> addDividers({Widget divider = const Divider(height: 6)}) {
     final List<Widget> result = [];
 
     if (length < 2) {
@@ -12,7 +12,7 @@ extension ExtendedList on List<dynamic> {
       result.add(this[i] as Widget);
 
       if (i < length - 1) {
-        result.add(const Divider(height: 6));
+        result.add(divider);
       }
     }
 
