@@ -111,7 +111,7 @@ class DFButton extends StatelessWidget {
         style: secondary
             ? ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
+                foregroundColor: Theme.of(context).primaryColor,
               )
             : null,
       );
@@ -121,7 +121,7 @@ class DFButton extends StatelessWidget {
         style: secondary
             ? ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
+                foregroundColor: Theme.of(context).primaryColor,
               )
             : null,
         child: _ButtonText(label),
