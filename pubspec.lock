@@ -617,10 +617,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "5d1608b0217f82f32010461455e3d297fa140dd8"
-      url: "https://github.com/fen0268/linkify"
+      resolved-ref: "6f24ffd545045da1e481786cae19a0013bbf7e0b"
+      url: "https://github.com/Mikhail-Ivanou/linkify"
     source: git
-    version: "4.1.2"
+    version: "4.1.0"
   loading_animation_widget:
     dependency: "direct main"
     description:
