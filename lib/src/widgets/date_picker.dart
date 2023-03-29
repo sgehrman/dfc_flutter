@@ -30,10 +30,10 @@ class DatePicker extends StatefulWidget {
   final String locale;
 
   @override
-  State<DatePicker> createState() => _DatePickerState();
+  State<DatePicker> createState() => DatePickerState();
 }
 
-class _DatePickerState extends State<DatePicker> {
+class DatePickerState extends State<DatePicker> {
   DateTime? _currentDate;
 
   final ScrollController _controller = ScrollController();
@@ -97,9 +97,9 @@ class _DatePickerState extends State<DatePicker> {
 }
 
 class DatePickerController {
-  _DatePickerState? _datePickerState;
+  DatePickerState? _datePickerState;
 
-  set datePickerState(_DatePickerState state) {
+  set datePickerState(DatePickerState state) {
     _datePickerState = state;
   }
 
