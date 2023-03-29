@@ -128,6 +128,11 @@ class _LinkedTextState extends State<LinkedText> {
       widget.text,
       linkifiers: [...linkify.defaultLinkifiers, const FileLinkifier()],
     );
+
+    // TODO(SNG): debugging
+    for (final e in _elements) {
+      print(e.text);
+    }
   }
 
   @override
@@ -267,9 +272,8 @@ class FileLinkifier extends linkify.Linkifier {
   }
 }
 
-/// Represents an element containing a link
+// ================================================================
 
-/// Represents an element containing an email address
 class FileElement extends linkify.LinkableElement {
   FileElement(String url, [String? text]) : super(text, url);
 
