@@ -36,7 +36,8 @@ dependencies:
   intl: ^0.17.0
   json_annotation: ^4.8.0
   just_the_tooltip: ^0.0.12
-  linkify: ^4.1.0
+  linkify:
+    git: https://github.com/fen0268/linkify
   loading_animation_widget: ^1.2.0+4
   mime_type: ^1.0.0
   open_file_plus: ^3.4.0

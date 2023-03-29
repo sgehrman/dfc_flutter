@@ -12,6 +12,7 @@ import 'package:dfc_flutter/src/themes/editor/theme_set_button.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/list_row.dart';
+import 'package:dfc_flutter/src/widgets/shrink_wrapped_list.dart';
 import 'package:dfc_flutter/src/widgets/theme_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -93,9 +94,7 @@ class _ThemeEditorWidgetState extends State<ThemeEditorWidget> {
         const SizedBox(height: 6),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
+          child: ShrinkWrappedList(
             itemCount: colorFields.length,
             itemBuilder: (context, index) {
               return ListRow(

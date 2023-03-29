@@ -7,6 +7,7 @@ class TextWithLinks extends StatelessWidget {
   const TextWithLinks(
     this.text, {
     required this.style,
+    required this.humanize,
     this.selectable = false,
     this.linkStyle,
     super.key,
@@ -16,6 +17,7 @@ class TextWithLinks extends StatelessWidget {
   final TextStyle style;
   final TextStyle? linkStyle;
   final bool selectable;
+  final bool humanize;
 
   Future<void> _onOpen(linkify.LinkableElement link) async {
     await Utils.launchUrl(link.url);
@@ -26,6 +28,7 @@ class TextWithLinks extends StatelessWidget {
     return LinkedText(
       onOpen: _onOpen,
       selectable: selectable,
+      humanize: humanize,
       style: style,
       linkStyle: linkStyle,
       text: text,
@@ -39,18 +42,10 @@ class TextWithLinks extends StatelessWidget {
 typedef LTCallback = void Function(linkify.LinkableElement link);
 
 class LinkedText extends StatefulWidget {
-  final String text;
-  final bool selectable;
-  final LTCallback? onOpen;
-  final TextStyle style;
-  final TextStyle? linkStyle;
-  final TextAlign textAlign;
-  final int? maxLines;
-  final bool softWrap;
-
   const LinkedText({
     required this.text,
     required this.style,
+    required this.humanize,
     this.selectable = false,
     this.onOpen,
     this.linkStyle,
@@ -59,6 +54,16 @@ class LinkedText extends StatefulWidget {
     this.softWrap = true,
     super.key,
   });
+
+  final String text;
+  final bool humanize;
+  final bool selectable;
+  final LTCallback? onOpen;
+  final TextStyle style;
+  final TextStyle? linkStyle;
+  final TextAlign textAlign;
+  final int? maxLines;
+  final bool softWrap;
 
   @override
   State<LinkedText> createState() => _LinkedTextState();
@@ -126,13 +131,15 @@ class _LinkedTextState extends State<LinkedText> {
   void _rebuildElements() {
     _elements = linkify.linkify(
       widget.text,
+      options: linkify.LinkifyOptions(
+        // excludeLastPeriod: true,
+        humanize: widget.humanize,
+        // looseUrl: false,
+        // defaultToHttps: false,
+        // removeWww: false,
+      ),
       linkifiers: [...linkify.defaultLinkifiers, const FileLinkifier()],
     );
-
-    // TODO(SNG): debugging
-    for (final e in _elements) {
-      print(e.text);
-    }
   }
 
   @override

@@ -106,6 +106,7 @@ export 'src/widgets/primary_title.dart';
 export 'src/widgets/search_field.dart';
 export 'src/widgets/shared_context.dart';
 export 'src/widgets/shared_snack_bar.dart';
+export 'src/widgets/shrink_wrapped_list.dart';
 export 'src/widgets/slide_down_clock/slide_countdown_clock.dart';
 export 'src/widgets/slide_down_clock/slide_direction.dart';
 export 'src/widgets/stadium_button.dart';
