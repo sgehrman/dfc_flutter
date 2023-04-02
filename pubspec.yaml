@@ -33,7 +33,7 @@ dependencies:
   html2md: ^1.2.5
   http: ^0.13.5
   image: ^4.0.15
-  intl: ^0.17.0
+  intl: ^0.18.0
   json_annotation: ^4.8.0
   just_the_tooltip: ^0.0.12
   linkify:

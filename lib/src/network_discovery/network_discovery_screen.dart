@@ -35,10 +35,10 @@ class _NetworkDiscoveryScreenState extends State<NetworkDiscoveryScreen> {
     Widget contents;
 
     if (Utils.isEmpty(bonjour.clients)) {
-      contents = Center(
+      contents = const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Icon(Icons.info_outline, color: Colors.green, size: 65),
             SizedBox(height: 10),
             Text('Nothing found'),
