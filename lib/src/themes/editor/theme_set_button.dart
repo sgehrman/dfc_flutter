@@ -50,11 +50,11 @@ class ThemeSetButton extends StatelessWidget {
   }
 
   Widget _menuButton(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(left: 16, right: 11),
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 11),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
+        children: const <Widget>[
           Flexible(
             child: Text(
               'Themes',
