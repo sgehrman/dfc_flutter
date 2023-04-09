@@ -9,6 +9,7 @@ class FadeImage extends StatelessWidget {
     this.height,
     this.width,
     this.missingImage,
+    this.duration = const Duration(milliseconds: 300),
     super.key,
   });
 
@@ -17,6 +18,7 @@ class FadeImage extends StatelessWidget {
   final double? height;
   final double? width;
   final Widget? missingImage;
+  final Duration duration;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class FadeImage extends StatelessWidget {
       },
       placeholder: transparentImage(),
       image: url,
-      fadeInDuration: const Duration(milliseconds: 400),
+      fadeInDuration: duration,
       fit: fit,
       height: height,
       width: width,
