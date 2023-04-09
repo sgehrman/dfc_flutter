@@ -22,6 +22,36 @@ class FadeImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (url.startsWith('data')) {
+      final uri = Uri.tryParse(url);
+
+      if (uri != null && uri.data != null) {
+        return FadeInImage(
+          imageErrorBuilder: (context, error, stackTrace) {
+            if (missingImage != null) {
+              if (height != null && width != null) {
+                return SizedBox(
+                  height: height,
+                  width: width,
+                  child: missingImage,
+                );
+              } else {
+                return missingImage!;
+              }
+            }
+
+            return const Icon(Icons.warning);
+          },
+          placeholder: MemoryImage(transparentImage()),
+          image: MemoryImage(uri.data!.contentAsBytes()),
+          fadeInDuration: duration,
+          fit: fit,
+          height: height,
+          width: width,
+        );
+      }
+    }
+
     return FadeInImage.memoryNetwork(
       imageErrorBuilder: (context, error, stackTrace) {
         if (missingImage != null) {
