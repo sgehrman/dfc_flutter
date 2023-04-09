@@ -22,39 +22,10 @@ class FadeImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // if (url.startsWith('data')) {
-    //   final uri = Uri.tryParse(url.replaceAll(' ', ''));
-
-    //   if (uri != null && uri.data != null) {
-    //     return FadeInImage(
-    //       imageErrorBuilder: (context, error, stackTrace) {
-    //         if (missingImage != null) {
-    //           if (height != null && width != null) {
-    //             return SizedBox(
-    //               height: height,
-    //               width: width,
-    //               child: missingImage,
-    //             );
-    //           } else {
-    //             return missingImage!;
-    //           }
-    //         }
-
-    //         return const Icon(Icons.warning);
-    //       },
-    //       placeholder: MemoryImage(transparentImage()),
-    //       image: MemoryImage(uri.data!.contentAsBytes()),
-    //       fadeInDuration: duration,
-    //       fit: fit,
-    //       height: height,
-    //       width: width,
-    //     );
-    //   }
-    // }
-
-    String urll = url;
-    if (url.startsWith('data')) {
-      urll = url.replaceAll(' ', '');
+    // some data urls have spaces?
+    String cleanUrl = url;
+    if (cleanUrl.startsWith('data')) {
+      cleanUrl = cleanUrl.replaceAll(' ', '');
     }
 
     return FadeInImage.memoryNetwork(
@@ -70,7 +41,7 @@ class FadeImage extends StatelessWidget {
         return const Icon(Icons.warning);
       },
       placeholder: transparentImage(),
-      image: urll,
+      image: cleanUrl,
       fadeInDuration: duration,
       fit: fit,
       height: height,
