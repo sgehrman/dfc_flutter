@@ -23,7 +23,7 @@ class FadeImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (url.startsWith('data')) {
-      final uri = Uri.tryParse(url);
+      final uri = Uri.tryParse(url.replaceAll(' ', ''));
 
       if (uri != null && uri.data != null) {
         return FadeInImage(
