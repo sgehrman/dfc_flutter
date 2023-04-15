@@ -327,16 +327,15 @@ class ImageProcessor {
       if (width != 0) {
         size = ui.Size(width.toDouble(), width.toDouble());
 
-        double h = 1;
-        double w = 1;
+        double scale = 1;
 
         if (vpSize.width > vpSize.height) {
-          h *= vpSize.height / vpSize.width;
+          scale = width / vpSize.width;
         } else {
-          w *= vpSize.width / vpSize.height;
+          scale = width / vpSize.height;
         }
 
-        c.scale(h, w);
+        c.scale(scale, scale);
       }
 
       si.paint(c);
