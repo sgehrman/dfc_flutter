@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:dfc_dart/dfc_dart.dart';
 import 'package:dfc_flutter/src/utils/image_processor.dart';
+import 'package:dfc_flutter/src/widgets/checkerboard_container.dart';
 import 'package:dfc_flutter/src/widgets/context_menu_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ class FadeImage extends StatelessWidget {
     this.width,
     this.missingImage,
     this.duration = const Duration(milliseconds: 300),
+    this.checkerboard = false,
     super.key,
   });
 
@@ -24,6 +26,7 @@ class FadeImage extends StatelessWidget {
   final double? width;
   final Widget? missingImage;
   final Duration duration;
+  final bool checkerboard;
 
   List<MenuItemData> contextualMenuItems({
     required BuildContext context,
@@ -67,30 +70,33 @@ class FadeImage extends StatelessWidget {
       buildMenu: () => contextualMenuItems(
         context: context,
       ),
-      child: FadeInImage.memoryNetwork(
-        imageErrorBuilder: (context, error, stackTrace) {
-          if (missingImage != null) {
-            if (height != null && width != null) {
-              return SizedBox(
-                height: height,
-                width: width,
-                child: missingImage,
-              );
-            } else {
-              return missingImage!;
+      child: CheckerboardContainer(
+        enabled: checkerboard,
+        child: FadeInImage.memoryNetwork(
+          imageErrorBuilder: (context, error, stackTrace) {
+            if (missingImage != null) {
+              if (height != null && width != null) {
+                return SizedBox(
+                  height: height,
+                  width: width,
+                  child: missingImage,
+                );
+              } else {
+                return missingImage!;
+              }
             }
-          }
 
-          return const Icon(Icons.warning);
-        },
-        placeholder: transparentImage(),
-        image: cleanUrl,
-        fadeInDuration: duration,
-        fit: fit,
-        height: height,
-        width: width,
-        imageCacheWidth: width?.toInt(),
-        imageCacheHeight: height?.toInt(),
+            return const Icon(Icons.warning);
+          },
+          placeholder: transparentImage(),
+          image: cleanUrl,
+          fadeInDuration: duration,
+          fit: fit,
+          height: height,
+          width: width,
+          imageCacheWidth: width?.toInt(),
+          imageCacheHeight: height?.toInt(),
+        ),
       ),
     );
   }

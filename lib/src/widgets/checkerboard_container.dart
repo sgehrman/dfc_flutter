@@ -8,6 +8,7 @@ class CheckerboardContainer extends Container {
     EdgeInsetsGeometry? padding,
     EdgeInsetsGeometry? margin,
     Widget? child,
+    this.enabled = true,
   }) : super(
           constraints: constraints,
           padding: padding,
@@ -16,8 +17,14 @@ class CheckerboardContainer extends Container {
           child: child,
         );
 
+  final bool enabled;
+
   @override
   Widget build(BuildContext context) {
+    if (!enabled) {
+      return super.build(context);
+    }
+
     return Center(
       child: Stack(
         children: <Widget>[
