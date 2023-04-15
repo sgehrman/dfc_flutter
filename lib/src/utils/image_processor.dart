@@ -331,9 +331,9 @@ class ImageProcessor {
         double w = 1;
 
         if (vpSize.width > vpSize.height) {
-          w *= vpSize.height / vpSize.width;
+          h *= vpSize.height / vpSize.width;
         } else {
-          h *= vpSize.width / vpSize.height;
+          w *= vpSize.width / vpSize.height;
         }
 
         c.scale(h, w);
