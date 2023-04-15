@@ -300,16 +300,77 @@ class ImageProcessor {
     required String svg,
     int width = 0, // pass zero to use Size in png
     Color? color,
-  }) {
-    return _jovialSvgToPng(
-      svg: svg,
-      scaleTo: width == 0
-          ? null
-          : ui.Size(
-              width.toDouble(),
-              width.toDouble(),
-            ),
-      color: color,
+  }) async {
+    try {
+      ScalableImage si = ScalableImage.fromSvgString(
+        svg,
+        // currentColor: color,
+      );
+
+      // currentColor above doesn't work?
+      if (color != null) {
+        si = si.modifyTint(
+          newTintMode: BlendMode.srcIn,
+          newTintColor: color,
+        );
+      }
+
+      await si.prepareImages();
+
+      final vpSize = si.viewport;
+
+      final recorder = ui.PictureRecorder();
+      final ui.Canvas c = ui.Canvas(recorder);
+
+      Size size = ui.Size(vpSize.width, vpSize.height);
+
+      if (width != 0) {
+        size = ui.Size(width.toDouble(), width.toDouble());
+
+        double h = width.toDouble();
+        double w = width.toDouble();
+
+        if (vpSize.width > vpSize.height) {
+          w *= vpSize.height / vpSize.width;
+        } else {
+          h *= vpSize.width / vpSize.height;
+        }
+
+        c.scale(h, w);
+      }
+
+      si.paint(c);
+      si.unprepareImages();
+
+      final ui.Picture pict = recorder.endRecording();
+
+      final ui.Image rendered =
+          await pict.toImage(size.width.round(), size.height.round());
+
+      final ByteData? bd = await rendered.toByteData(
+        format: ui.ImageByteFormat.png,
+      );
+
+      pict.dispose();
+      rendered.dispose();
+
+      if (bd != null) {
+        final bytes = bd.buffer.asUint8List();
+
+        return PngImageBytesAndSize(
+          bytes: bytes,
+          height: size.height.toInt(),
+          width: size.width.toInt(),
+        );
+      }
+    } catch (err) {
+      print('svgToPngBytes: Error = $err');
+    }
+
+    return PngImageBytesAndSize(
+      bytes: Uint8List(0),
+      height: 0,
+      width: 0,
     );
   }
 
@@ -369,110 +430,4 @@ class ImageProcessor {
       width: (image.width * scale).round(),
     );
   }
-
-  // =====================================================
-
-  static Future<PngImageBytesAndSize> _jovialSvgToPng({
-    required String svg,
-    ui.Size? scaleTo,
-    Color? color,
-  }) async {
-    try {
-      ScalableImage si = ScalableImage.fromSvgString(
-        svg,
-        // currentColor: color,
-      );
-
-      // currentColor above doesn't work?
-      if (color != null) {
-        si = si.modifyTint(
-          newTintMode: BlendMode.srcIn,
-          newTintColor: color,
-        );
-      }
-
-      await si.prepareImages();
-
-      final vpSize = si.viewport;
-
-      final recorder = ui.PictureRecorder();
-      final ui.Canvas c = ui.Canvas(recorder);
-
-      if (scaleTo != null) {
-        c.scale(scaleTo.width / vpSize.width, scaleTo.height / vpSize.height);
-      }
-      si.paint(c);
-      si.unprepareImages();
-
-      final size = scaleTo ?? ui.Size(vpSize.width, vpSize.height);
-      final ui.Picture pict = recorder.endRecording();
-
-      final ui.Image rendered =
-          await pict.toImage(size.width.round(), size.height.round());
-
-      final ByteData? bd = await rendered.toByteData(
-        format: ui.ImageByteFormat.png,
-      );
-
-      pict.dispose();
-      rendered.dispose();
-
-      if (bd != null) {
-        final bytes = bd.buffer.asUint8List();
-        Size resultSize = size;
-        if (scaleTo != null) {
-          resultSize = scaleTo;
-        }
-
-        return PngImageBytesAndSize(
-          bytes: bytes,
-          height: resultSize.height.toInt(),
-          width: resultSize.width.toInt(),
-        );
-      }
-    } catch (err) {
-      print('svgToPngBytes: Error = $err');
-    }
-
-    return PngImageBytesAndSize(
-      bytes: Uint8List(0),
-      height: 0,
-      width: 0,
-    );
-  }
-
-  // broken
-  // static Future<Uint8List> _flutterSvgToPng({
-  //   required String svg,
-  //   ui.Size? scaleTo,
-  // }) async {
-  //   final PictureInfo pictureInfo =
-  //       await vg.loadPicture(SvgStringLoader(svg), null);
-
-  //   final image = await pictureInfo.picture.toImage(
-  //     scaleTo != null ? scaleTo.width.toInt() : pictureInfo.size.width.toInt(),
-  //     scaleTo != null
-  //         ? scaleTo.height.toInt()
-  //         : pictureInfo.size.height.toInt(),
-  //   );
-
-  //   // must dispose (see loadPicture)
-  //   pictureInfo.picture.dispose();
-
-  //   final pngData = await image.toByteData(format: ui.ImageByteFormat.png);
-
-  //   // must dispose
-  //   image.dispose();
-
-  //   if (pngData != null) {
-  //     // not sure if I need the one below or not, testing
-  //     // return pngData.buffer.asUint8List();
-  //     return pngData.buffer.asUint8List(
-  //       pngData.offsetInBytes,
-  //       pngData.lengthInBytes,
-  //     );
-  //   }
-
-  //   return Uint8List(0);
-  // }
 }
