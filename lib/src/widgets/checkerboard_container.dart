@@ -61,8 +61,7 @@ class CheckerboardPainter extends CustomPainter {
       ..color = fillColor;
     canvas.drawRect(rect, paint);
 
-    // calc block size so there are
-    const double blockDim = 16;
+    const double blockDim = 15;
 
     double yOffset = 0;
     const Size rectSize = Size(blockDim, blockDim);
