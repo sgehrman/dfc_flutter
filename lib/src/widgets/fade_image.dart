@@ -1,6 +1,11 @@
 import 'dart:typed_data';
 
+import 'package:dfc_dart/dfc_dart.dart';
+import 'package:dfc_flutter/src/utils/image_processor.dart';
+import 'package:dfc_flutter/src/widgets/context_menu_area.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:pasteboard/pasteboard.dart';
 
 class FadeImage extends StatelessWidget {
   const FadeImage({
@@ -20,6 +25,36 @@ class FadeImage extends StatelessWidget {
   final Widget? missingImage;
   final Duration duration;
 
+  List<MenuItemData> contextualMenuItems({
+    required BuildContext context,
+  }) {
+    final itemDatas = <MenuItemData>[];
+
+    itemDatas.add(
+      MenuItemData(
+        title: 'Copy',
+        action: () async {
+          // some data urls have spaces?
+          String cleanUrl = url;
+          if (cleanUrl.startsWith('data')) {
+            cleanUrl = cleanUrl.replaceAll(' ', '');
+          }
+
+          final uri = UriUtils.parseUri(cleanUrl);
+
+          if (uri != null) {
+            final imageData = await ImageProcessor.downloadImageToPng(uri);
+
+            await Pasteboard.writeImage(imageData.bytes);
+          }
+        },
+        iconData: Icons.info_outline,
+      ),
+    );
+
+    return itemDatas;
+  }
+
   @override
   Widget build(BuildContext context) {
     // some data urls have spaces?
@@ -28,26 +63,35 @@ class FadeImage extends StatelessWidget {
       cleanUrl = cleanUrl.replaceAll(' ', '');
     }
 
-    return FadeInImage.memoryNetwork(
-      imageErrorBuilder: (context, error, stackTrace) {
-        if (missingImage != null) {
-          if (height != null && width != null) {
-            return SizedBox(height: height, width: width, child: missingImage);
-          } else {
-            return missingImage!;
+    return ContextMenuArea(
+      buildMenu: () => contextualMenuItems(
+        context: context,
+      ),
+      child: FadeInImage.memoryNetwork(
+        imageErrorBuilder: (context, error, stackTrace) {
+          if (missingImage != null) {
+            if (height != null && width != null) {
+              return SizedBox(
+                height: height,
+                width: width,
+                child: missingImage,
+              );
+            } else {
+              return missingImage!;
+            }
           }
-        }
 
-        return const Icon(Icons.warning);
-      },
-      placeholder: transparentImage(),
-      image: cleanUrl,
-      fadeInDuration: duration,
-      fit: fit,
-      height: height,
-      width: width,
-      imageCacheWidth: width?.toInt(),
-      imageCacheHeight: height?.toInt(),
+          return const Icon(Icons.warning);
+        },
+        placeholder: transparentImage(),
+        image: cleanUrl,
+        fadeInDuration: duration,
+        fit: fit,
+        height: height,
+        width: width,
+        imageCacheWidth: width?.toInt(),
+        imageCacheHeight: height?.toInt(),
+      ),
     );
   }
 }

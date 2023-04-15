@@ -15,6 +15,8 @@ dependencies:
   collection: ^1.17.0
   crypto: ^3.0.0
   device_info_plus: ^8.0.0
+  dfc_dart:
+    git: https://github.com/sgehrman/dfc_dart
   dotted_border: ^2.0.0+2
   email_validator: ^2.1.17
   flutter:
@@ -34,6 +36,7 @@ dependencies:
   http: ^0.13.5
   image: ^4.0.15
   intl: ^0.17.0
+  jovial_svg: ^1.1.12
   json_annotation: ^4.8.0
   just_the_tooltip: ^0.0.12
   linkify:
@@ -42,6 +45,7 @@ dependencies:
   mime_type: ^1.0.0
   open_file_plus: ^3.4.0
   package_info_plus: ^3.0.2
+  pasteboard: ^0.2.0
   path: ^1.8.2
   path_provider: ^2.0.9
   provider: ^6.0.5
