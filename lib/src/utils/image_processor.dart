@@ -327,8 +327,8 @@ class ImageProcessor {
       if (width != 0) {
         size = ui.Size(width.toDouble(), width.toDouble());
 
-        double h = width.toDouble();
-        double w = width.toDouble();
+        double h = 1;
+        double w = 1;
 
         if (vpSize.width > vpSize.height) {
           w *= vpSize.height / vpSize.width;
