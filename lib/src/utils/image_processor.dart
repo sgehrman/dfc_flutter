@@ -305,6 +305,9 @@ class ImageProcessor {
       ScalableImage si = ScalableImage.fromSvgString(
         svg,
         // currentColor: color,
+        warnF: (message) {
+          // without this it prints to the console
+        },
       );
 
       // currentColor above doesn't work?
