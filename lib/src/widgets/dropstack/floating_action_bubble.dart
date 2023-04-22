@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/widgets/shrink_wrapped_list.dart';
 import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -51,11 +52,9 @@ class FloatingActionBubble extends AnimatedWidget {
         children: [
           IgnorePointer(
             ignoring: _animation.value == 0,
-            child: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+            child: ShrinkWrappedList(
               separatorBuilder: (_, __) => const SizedBox(height: 4),
-              padding: const EdgeInsets.symmetric(vertical: 12),
+              // padding: const EdgeInsets.symmetric(vertical: 12),
               itemCount: items.length,
               itemBuilder: buildItem,
             ),

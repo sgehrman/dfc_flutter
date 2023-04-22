@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 
 class HttpUtils {
+  HttpUtils._();
+
   static const _timeout = Duration(seconds: 8);
 
   static Future<http.Response> httpGet(Uri uri) {
