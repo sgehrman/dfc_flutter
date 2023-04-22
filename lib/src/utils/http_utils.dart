@@ -5,11 +5,12 @@ import 'package:http/http.dart' as http;
 class HttpUtils {
   HttpUtils._();
 
-  static const _timeout = Duration(seconds: 8);
-
-  static Future<http.Response> httpGet(Uri uri) {
+  static Future<http.Response> httpGet(
+    Uri uri, {
+    int timeout = 10,
+  }) {
     try {
-      return http.get(uri).timeout(_timeout);
+      return http.get(uri).timeout(Duration(seconds: timeout));
     } on TimeoutException catch (err) {
       print('### Error(http.get): TimeoutException err:$err url: $uri');
       rethrow;
@@ -27,7 +28,10 @@ class HttpUtils {
   // this way follows redirects, used for scraping websitesZ
   // saved https://stackoverflow.com/questions/51912621/redirect-loop-detected-dart
 
-  static Future<String> httpGetBodyWithRedirects(Uri uri) async {
+  static Future<String> httpGetBodyWithRedirects(
+    Uri uri, {
+    int timeout = 10,
+  }) async {
     String receivedCookies = '';
     Uri getUri = uri;
 
@@ -62,7 +66,8 @@ class HttpUtils {
         }
 
         // print(request.headers);
-        final response = await client.send(request).timeout(_timeout);
+        final response =
+            await client.send(request).timeout(Duration(seconds: timeout));
 
         if (response.statusCode == movedTemporarily ||
             response.statusCode == redirect) {
