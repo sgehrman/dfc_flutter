@@ -432,6 +432,8 @@ class Utils {
     return hslLight.toColor();
   }
 
+  // set newTab to false for downloads
+  //  webOnlyWindowName: '_self', // no flicker on click
   static Future<void> launchUrl(String url, {bool newTab = true}) async {
     // canLaunchUrl doesn't work with flatpak on linux
     // https://github.com/flutter/flutter/issues/88463
