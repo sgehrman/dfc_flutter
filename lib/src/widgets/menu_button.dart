@@ -6,11 +6,13 @@ class MenuButtonItem<T> {
   MenuButtonItem({
     required this.title,
     required this.value,
-    required this.iconData,
+    this.iconData,
+    this.iconWidget,
   });
   final String title;
   final T value;
-  final IconData iconData;
+  final IconData? iconData;
+  final Widget? iconWidget;
 }
 
 class MenuButton<T> extends StatelessWidget {
@@ -83,6 +85,7 @@ class MenuButton<T> extends StatelessWidget {
           value: item,
           child: MenuItemSpec(
             iconData: item.iconData,
+            iconWidget: item.iconWidget,
             name: item.title,
           ),
         ),
