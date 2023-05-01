@@ -25,17 +25,15 @@ class CheckerboardContainer extends Container {
       return super.build(context);
     }
 
-    return Center(
-      child: Stack(
-        children: <Widget>[
-          Positioned.fill(
-            child: CustomPaint(
-              painter: CheckerboardPainter(darkMode: Utils.isDarkMode(context)),
-            ),
+    return Stack(
+      children: <Widget>[
+        Positioned.fill(
+          child: CustomPaint(
+            painter: CheckerboardPainter(darkMode: Utils.isDarkMode(context)),
           ),
-          super.build(context),
-        ],
-      ),
+        ),
+        super.build(context),
+      ],
     );
   }
 }
