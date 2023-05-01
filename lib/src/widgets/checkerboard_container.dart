@@ -28,8 +28,10 @@ class CheckerboardContainer extends Container {
     return Stack(
       children: <Widget>[
         Positioned.fill(
-          child: CustomPaint(
-            painter: CheckerboardPainter(darkMode: Utils.isDarkMode(context)),
+          child: Center(
+            child: CustomPaint(
+              painter: CheckerboardPainter(darkMode: Utils.isDarkMode(context)),
+            ),
           ),
         ),
         super.build(context),
