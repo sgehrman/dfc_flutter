@@ -15,6 +15,7 @@ class CheckerboardContainer extends Container {
           margin: margin,
           color: color,
           child: child,
+          alignment: Alignment.center,
         );
 
   final bool enabled;
@@ -28,10 +29,8 @@ class CheckerboardContainer extends Container {
     return Stack(
       children: <Widget>[
         Positioned.fill(
-          child: Center(
-            child: CustomPaint(
-              painter: CheckerboardPainter(darkMode: Utils.isDarkMode(context)),
-            ),
+          child: CustomPaint(
+            painter: CheckerboardPainter(darkMode: Utils.isDarkMode(context)),
           ),
         ),
         super.build(context),
