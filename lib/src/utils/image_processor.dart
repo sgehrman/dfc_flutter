@@ -87,7 +87,7 @@ class ImageProcessor {
   static Future<PngImageBytesAndSize> _pngFromBytes(Uint8List imageData) async {
     try {
       // could be any format so convert to png
-      final decodedImage = await _decodeBytesToImage(imageData);
+      final decodedImage = await bytesToImage(imageData);
 
       // draws image to a canvas
       final PictureAndSize pictureAndSize = _drawImageToCanvas(decodedImage);
@@ -379,7 +379,7 @@ class ImageProcessor {
   // ========================================================================================
 
   // ## must dispose
-  static Future<ui.Image> _decodeBytesToImage(Uint8List bytes) async {
+  static Future<ui.Image> bytesToImage(Uint8List bytes) async {
     final ui.ImmutableBuffer buffer =
         await ui.ImmutableBuffer.fromUint8List(bytes);
     final ui.ImageDescriptor descriptor =
