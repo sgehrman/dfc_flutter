@@ -323,6 +323,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0+3"
+  el_tooltip:
+    dependency: "direct main"
+    description:
+      name: el_tooltip
+      sha256: "03c25f52317fe385fcd7f3eccc0e4a04bfe686a1c993e0cb1ba8ce4e84614cbb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.8"
   email_validator:
     dependency: "direct main"
     description:
@@ -444,10 +452,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_multi_formatter
-      sha256: "287ebe691f39b2bc5062b065adb01220b44bbf2513571ebf280398c1d6da2aa5"
+      sha256: "1c657a17700fec7ff7bd40269425ba877cbabfee2daec5658b1cd6bb99cfffda"
       url: "https://pub.dev"
     source: hosted
-    version: "2.10.2"
+    version: "2.10.3"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -666,10 +674,10 @@ packages:
     dependency: transitive
     description:
       name: markdown
-      sha256: d95a9d12954aafc97f984ca29baaa7690ed4d9ec4140a23ad40580bcdb6c87f5
+      sha256: "8e332924094383133cee218b676871f42db2514f1f6ac617b6cf6152a7faab8e"
       url: "https://pub.dev"
     source: hosted
-    version: "7.0.2"
+    version: "7.1.0"
   matcher:
     dependency: transitive
     description:
@@ -938,10 +946,10 @@ packages:
     dependency: transitive
     description:
       name: rive_common
-      sha256: "12ea4a1ca1aa2ddeb2ef212afa20517d6c140a5deb32149c713912a7e6b7e26e"
+      sha256: "7c4be235d75c34a0f257b4487c0cc314188aa2f9a6c177d34f02df53d7c25831"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.5"
   share_extend:
     dependency: "direct main"
     description:

@@ -18,6 +18,7 @@ dependencies:
   dfc_dart:
     git: https://github.com/sgehrman/dfc_dart
   dotted_border: ^2.0.0+2
+  el_tooltip: ^1.0.8
   email_validator: ^2.1.17
   flutter:
     sdk: flutter
