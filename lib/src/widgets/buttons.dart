@@ -83,14 +83,12 @@ class DFButton extends StatelessWidget {
     required this.onPressed,
     required this.label,
     this.tooltip,
-    this.secondary = false,
     this.icon,
     super.key,
   });
 
   final Function()? onPressed;
   final String label;
-  final bool secondary;
   final String? tooltip;
   final Widget? icon;
 
@@ -103,22 +101,10 @@ class DFButton extends StatelessWidget {
         onPressed: onPressed,
         label: _ButtonText(label),
         icon: icon!,
-        style: secondary
-            ? ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: Theme.of(context).primaryColor,
-              )
-            : null,
       );
     } else {
       b = ElevatedButton(
         onPressed: onPressed,
-        style: secondary
-            ? ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                foregroundColor: Theme.of(context).primaryColor,
-              )
-            : null,
         child: _ButtonText(label),
       );
     }
