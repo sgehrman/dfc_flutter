@@ -1,5 +1,4 @@
 import 'package:dfc_flutter/src/widgets/context_menu_area.dart';
-import 'package:dfc_flutter/src/widgets/help_tip.dart';
 import 'package:flutter/material.dart';
 
 class DFIconButton extends StatelessWidget {
@@ -9,7 +8,6 @@ class DFIconButton extends StatelessWidget {
     this.tooltip,
     this.iconSize,
     this.color,
-    this.tooltipDirection,
     this.disableHighlightColors = false,
     super.key,
   });
@@ -19,24 +17,20 @@ class DFIconButton extends StatelessWidget {
   final String? tooltip;
   final double? iconSize;
   final Color? color;
-  final AxisDirection? tooltipDirection;
   final bool disableHighlightColors;
 
   @override
   Widget build(BuildContext context) {
-    return HelpTip(
-      message: tooltip,
-      direction: tooltipDirection ?? AxisDirection.down,
-      child: IconButton(
-        splashColor: disableHighlightColors ? Colors.transparent : null,
-        highlightColor: disableHighlightColors ? Colors.transparent : null,
-        hoverColor: disableHighlightColors ? Colors.transparent : null,
-        iconSize: iconSize ?? IconTheme.of(context).size ?? 24.0,
-        color: color, // null is default
-        onPressed: onPressed,
-        splashRadius: 24,
-        icon: icon,
-      ),
+    return IconButton(
+      splashColor: disableHighlightColors ? Colors.transparent : null,
+      highlightColor: disableHighlightColors ? Colors.transparent : null,
+      hoverColor: disableHighlightColors ? Colors.transparent : null,
+      iconSize: iconSize ?? IconTheme.of(context).size ?? 24.0,
+      color: color, // null is default
+      onPressed: onPressed,
+      splashRadius: 24,
+      icon: icon,
+      tooltip: tooltip,
     );
   }
 }
@@ -74,7 +68,7 @@ class DFTextButton extends StatelessWidget {
       );
     }
 
-    return HelpTip(
+    return Tooltip(
       message: tooltip,
       child: b,
     );
@@ -128,7 +122,7 @@ class DFButton extends StatelessWidget {
       );
     }
 
-    return HelpTip(
+    return Tooltip(
       message: tooltip,
       child: b,
     );
@@ -168,7 +162,7 @@ class DFOutlineButton extends StatelessWidget {
       );
     }
 
-    return HelpTip(
+    return Tooltip(
       message: tooltip,
       child: b,
     );
