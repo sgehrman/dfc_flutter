@@ -1,14 +1,13 @@
 import 'package:dfc_flutter/src/themes/platform_sizes.dart';
 import 'package:dfc_flutter/src/utils/preferences.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:el_tooltip/el_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
-// import 'package:just_the_tooltip/just_the_tooltip.dart';
+import 'package:just_the_tooltip/just_the_tooltip.dart';
 
 const Color _textColor = Colors.black;
-// const Color _backColor = Colors.white;
+const Color _backColor = Colors.white;
 
 class HelpTip extends StatefulWidget {
   const HelpTip({
@@ -65,20 +64,15 @@ class _HelpTipState extends State<HelpTip> {
       return widget.child;
     }
 
-    //     return JustTheTooltip(
-    //   backgroundColor: _backColor,
-    //   preferredDirection: widget.direction,
-    //   waitDuration: widget.waitDuration ?? const Duration(milliseconds: 1200),
-    //   tailLength: 14,
-    //   borderRadius: const BorderRadius.all(Radius.circular(10)),
-    //   fadeInDuration: const Duration(milliseconds: 400),
-    //   fadeOutDuration: const Duration(milliseconds: 400),
-    //   tailBaseWidth: 18,
-    //   content: _content,
-    //   child: widget.child,
-    // );
-
-    return ElTooltip(
+    return JustTheTooltip(
+      backgroundColor: _backColor,
+      preferredDirection: widget.direction,
+      waitDuration: widget.waitDuration ?? const Duration(milliseconds: 1200),
+      tailLength: 14,
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      fadeInDuration: const Duration(milliseconds: 400),
+      fadeOutDuration: const Duration(milliseconds: 400),
+      tailBaseWidth: 18,
       content: _content,
       child: widget.child,
     );
