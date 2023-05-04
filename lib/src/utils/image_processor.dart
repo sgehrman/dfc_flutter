@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:dfc_dart/dfc_dart.dart';
-import 'package:dfc_flutter/src/utils/http_utils.dart';
+import 'package:dfc_flutter/src/http/http_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:jovial_svg/jovial_svg.dart';
