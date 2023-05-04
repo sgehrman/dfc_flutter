@@ -20,6 +20,21 @@ class HttpUtils {
     }
   }
 
+  static Future<http.Response> httpHead(
+    Uri uri, {
+    int timeout = 10,
+  }) {
+    try {
+      return http.head(uri).timeout(Duration(seconds: timeout));
+    } on TimeoutException catch (err) {
+      print('### Error(http.head): TimeoutException err:$err url: $uri');
+      rethrow;
+    } catch (err) {
+      print('### Error(http.head): err:$err url: $uri');
+      rethrow;
+    }
+  }
+
   // =============================================================
 
   // {"error":"Preview failed:  request: http://localhost:8765/?icon=aHR0cHM6Ly91aW8uZWRkLmNhLmdvdi9VSU8vUGFnZXMvUHVibGljL05ld0NsYWltL05ld0NsYWltQ29uZmlybWF0aW9uLmFzcHg="}
