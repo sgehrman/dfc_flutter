@@ -20,6 +20,29 @@ class HttpUtils {
     }
   }
 
+  // is this better for redirects?
+  static Future<http.StreamedResponse> httpGetStream(
+    Uri uri, {
+    int timeout = 10,
+  }) {
+    final httpClient = http.Client();
+
+    try {
+      final clientRequest = http.Request('GET', uri);
+
+      // follows redirects by default
+      return httpClient.send(clientRequest).timeout(Duration(seconds: timeout));
+    } on TimeoutException catch (err) {
+      print('### Error(httpGetAlt): TimeoutException err:$err url: $uri');
+      rethrow;
+    } catch (err) {
+      print('### Error(httpGetAlt): err:$err url: $uri');
+      rethrow;
+    } finally {
+      httpClient.close();
+    }
+  }
+
   static Future<http.Response> httpHead(
     Uri uri, {
     int timeout = 10,
