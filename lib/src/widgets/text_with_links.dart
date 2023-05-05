@@ -25,7 +25,7 @@ class TextWithLinks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LinkedText(
+    return _LinkedText(
       onOpen: _onOpen,
       selectable: selectable,
       humanize: humanize,
@@ -41,18 +41,14 @@ class TextWithLinks extends StatelessWidget {
 
 typedef LTCallback = void Function(linkify.LinkableElement link);
 
-class LinkedText extends StatefulWidget {
-  const LinkedText({
+class _LinkedText extends StatefulWidget {
+  const _LinkedText({
     required this.text,
     required this.style,
     required this.humanize,
     this.selectable = false,
     this.onOpen,
     this.linkStyle,
-    this.textAlign = TextAlign.start,
-    this.maxLines,
-    this.softWrap = true,
-    super.key,
   });
 
   final String text;
@@ -61,15 +57,12 @@ class LinkedText extends StatefulWidget {
   final LTCallback? onOpen;
   final TextStyle style;
   final TextStyle? linkStyle;
-  final TextAlign textAlign;
-  final int? maxLines;
-  final bool softWrap;
 
   @override
-  State<LinkedText> createState() => _LinkedTextState();
+  State<_LinkedText> createState() => _LinkedTextState();
 }
 
-class _LinkedTextState extends State<LinkedText> {
+class _LinkedTextState extends State<_LinkedText> {
   List<linkify.LinkifyElement> _elements = [];
 
   @override
@@ -79,7 +72,7 @@ class _LinkedTextState extends State<LinkedText> {
   }
 
   @override
-  void didUpdateWidget(covariant LinkedText oldWidget) {
+  void didUpdateWidget(covariant _LinkedText oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if (widget.text != oldWidget.text) {
@@ -159,8 +152,8 @@ class _LinkedTextState extends State<LinkedText> {
     if (widget.selectable) {
       return SelectableText.rich(
         spans,
-        textAlign: widget.textAlign,
-        maxLines: widget.maxLines,
+        // we don't want scrolling, matches Text.rich below behavior
+        scrollPhysics: const NeverScrollableScrollPhysics(),
 
         // SNG if this isn't set and the style is bold for example
         // the TextSpans get clipped? this is a bug in flutter_linkify
@@ -170,9 +163,7 @@ class _LinkedTextState extends State<LinkedText> {
 
     return Text.rich(
       spans,
-      textAlign: widget.textAlign,
-      maxLines: widget.maxLines,
-      softWrap: widget.softWrap,
+      softWrap: true,
 
       // SNG if this isn't set and the style is bold for example
       // the TextSpans get clipped? this is a bug in flutter_linkify
