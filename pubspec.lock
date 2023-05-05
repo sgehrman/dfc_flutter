@@ -302,7 +302,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "5f73936741daf6722ec3304f2ae1475ee6901a11"
+      resolved-ref: "52b97ba719d96ea46f0b19c8640d5976775d2cd4"
       url: "https://github.com/sgehrman/dfc_dart"
     source: git
     version: "1.0.1"
