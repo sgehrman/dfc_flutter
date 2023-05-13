@@ -22,19 +22,19 @@ class Plist {
 
       switch (element.name.local) {
         case 'string':
-          return element.text;
+          return element.value ?? '';
         case 'real':
-          return double.parse(element.text);
+          return double.parse(element.value ?? '');
         case 'integer':
-          return int.parse(element.text);
+          return int.parse(element.value ?? '');
         case 'true':
           return true;
         case 'false':
           return false;
         case 'date':
-          return DateTime.tryParse(element.text) ?? DateTime(0);
+          return DateTime.tryParse(element.value ?? '') ?? DateTime(0);
         case 'data':
-          return Uint8List.fromList(base64Decode(element.text));
+          return Uint8List.fromList(base64Decode(element.value ?? ''));
         case 'array':
           return element.children.where(_isElement).map(_handleElem).toList();
         case 'dict':
@@ -50,7 +50,7 @@ class Plist {
 
     final key = children
         .where((elem) => (elem as XmlElement).name.local == 'key')
-        .map((elem) => elem.text);
+        .map((elem) => elem.value ?? '');
     final values = children
         .where((elem) => (elem as XmlElement).name.local != 'key')
         .map(_handleElem);

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 final Sizes kFontSize = Sizes.fonts();
 final Sizes kIconSize = Sizes.icons();
 
@@ -15,52 +13,20 @@ class Sizes {
   // ex: const bool isProduction = bool.fromEnvironment('dart.vm.product');
 
   factory Sizes.fonts() {
-    final window = WidgetsBinding.instance.window;
-    double pixelRatio = window.devicePixelRatio;
-    if (pixelRatio > 1.0) {
-      pixelRatio = 1.25;
-    }
-
-    // // smaller fonts for mac desktop
-    // if (Utils.isMacOS) {
-    //   return const Sizes(
-    //     s: 12,
-    //     m: 14,
-    //     l: 18,
-    //     xl: 30,
-    //   );
-    // }
-
-    return Sizes(
-      s: 14 / pixelRatio,
-      m: 16 / pixelRatio,
-      l: 20 / pixelRatio,
-      xl: 40 / pixelRatio, // used for quote
+    return const Sizes(
+      s: 14,
+      m: 16,
+      l: 20,
+      xl: 40, // used for quote
     );
   }
 
   factory Sizes.icons() {
-    final window = WidgetsBinding.instance.window;
-    double pixelRatio = window.devicePixelRatio;
-    if (pixelRatio > 1.0) {
-      pixelRatio = 1.25;
-    }
-
-    // smaller fonts for mac desktop
-    // if (Utils.isMacOS) {
-    //   return const Sizes(
-    //     s: 18,
-    //     m: 22,
-    //     l: 32,
-    //     xl: 42,
-    //   );
-    // }
-
-    return Sizes(
-      s: 20 / pixelRatio,
-      m: 24 / pixelRatio,
-      l: 32 / pixelRatio,
-      xl: 42 / pixelRatio,
+    return const Sizes(
+      s: 20,
+      m: 24,
+      l: 32,
+      xl: 42,
     );
   }
 
