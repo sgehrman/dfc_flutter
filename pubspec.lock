@@ -302,7 +302,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "24d7405ecb7890e30f123e91c548f670e5db961c"
+      resolved-ref: "34ebb731d26206f9b90cac6f8d7d189b8bdfc859"
       url: "https://github.com/sgehrman/dfc_dart"
     source: git
     version: "1.0.1"
@@ -311,7 +311,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "50895152c2738ae1ba24908bf4b40cf7eeac6be1"
+      resolved-ref: "928d9ff3b8ba29e765a4d3bca9ace5db27126ad1"
       url: "https://github.com/sgehrman/dfc_lints"
     source: git
     version: "1.0.6"
