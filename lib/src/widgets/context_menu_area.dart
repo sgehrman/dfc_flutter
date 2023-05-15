@@ -18,6 +18,35 @@ class MenuItemData {
     return MenuItemData._divider();
   }
 
+  // helper, convert List<MenuItemData> to List<PopupMenuEntry>
+  static List<PopupMenuEntry<MenuItemData>> popupEntries(
+    List<MenuItemData> menuData,
+  ) {
+    final List<PopupMenuEntry<MenuItemData>> menuItems = [];
+
+    for (final itemData in menuData) {
+      if (Utils.isEmpty(itemData.title)) {
+        menuItems.add(const PopupMenuDivider());
+      } else {
+        menuItems.add(
+          popupMenuItem<MenuItemData>(
+            value: itemData,
+            enabled: itemData.enabled,
+            child: MenuItemSpec(
+              iconData: itemData.iconData,
+              iconWidget: itemData.iconWidget,
+              name: itemData.title,
+              level: itemData.level,
+              tooltip: itemData.tooltip,
+            ),
+          ),
+        );
+      }
+    }
+
+    return menuItems;
+  }
+
   MenuItemData._divider()
       : title = '',
         iconData = null,
@@ -44,27 +73,8 @@ Future<void> showContextMenu({
   required Offset localPosition,
   required List<MenuItemData> menuData,
 }) async {
-  final List<PopupMenuEntry<MenuItemData>> menuItems = [];
-
-  for (final itemData in menuData) {
-    if (Utils.isEmpty(itemData.title)) {
-      menuItems.add(const PopupMenuDivider());
-    } else {
-      menuItems.add(
-        popupMenuItem<MenuItemData>(
-          value: itemData,
-          enabled: itemData.enabled,
-          child: MenuItemSpec(
-            iconData: itemData.iconData,
-            iconWidget: itemData.iconWidget,
-            name: itemData.title,
-            level: itemData.level,
-            tooltip: itemData.tooltip,
-          ),
-        ),
-      );
-    }
-  }
+  final List<PopupMenuEntry<MenuItemData>> menuItems =
+      MenuItemData.popupEntries(menuData);
 
   final result = await MenuUtils.displayMenu<MenuItemData>(
     context: context,
