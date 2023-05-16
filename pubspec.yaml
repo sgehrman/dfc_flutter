@@ -14,7 +14,7 @@ dependencies:
   characters: ^1.2.0
   collection: ^1.17.0
   crypto: ^3.0.0
-  device_info_plus: ^8.0.0
+  device_info_plus: ^9.0.0
   dfc_dart:
     git: https://github.com/sgehrman/dfc_dart
   dotted_border: ^2.0.0+2
