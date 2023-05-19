@@ -11,7 +11,7 @@ class DatePicker extends StatefulWidget {
     this.width = 60,
     this.height = 100,
     this.controller,
-    this.selectionColor = AppColors.defaultSelectionColor,
+    this.selectionColor = _DateColors.defaultSelectionColor,
     this.daysCount = 60,
     this.onDateChange,
     this.locale = 'en_US',
@@ -230,11 +230,11 @@ class _DateWidget extends StatelessWidget {
   }
 }
 
-class AppColors {
-  AppColors._();
+class _DateColors {
+  _DateColors._();
 
-  static const Color defaultDateColor = Colors.black;
-  static const Color defaultDayColor = Colors.black;
+  // static const Color defaultDateColor = Colors.black;
+  // static const Color defaultDayColor = Colors.black;
   static const Color defaultMonthColor = Colors.black;
   static const Color disabledColor = Colors.grey;
   static const Color selectedTextColor = Colors.white;
@@ -245,11 +245,11 @@ TextStyle defaultMonthTextStyle({
   bool disabled = false,
   bool isSelected = false,
 }) {
-  Color color = AppColors.defaultMonthColor;
+  Color color = _DateColors.defaultMonthColor;
   if (disabled) {
-    color = AppColors.disabledColor;
+    color = _DateColors.disabledColor;
   } else if (isSelected) {
-    color = AppColors.selectedTextColor;
+    color = _DateColors.selectedTextColor;
   }
 
   return TextStyle(
@@ -263,11 +263,11 @@ TextStyle defaultDateTextStyle({
   bool disabled = false,
   bool isSelected = false,
 }) {
-  Color color = AppColors.defaultMonthColor;
+  Color color = _DateColors.defaultMonthColor;
   if (disabled) {
-    color = AppColors.disabledColor;
+    color = _DateColors.disabledColor;
   } else if (isSelected) {
-    color = AppColors.selectedTextColor;
+    color = _DateColors.selectedTextColor;
   }
 
   return TextStyle(
@@ -281,11 +281,11 @@ TextStyle defaultDayTextStyle({
   bool disabled = false,
   bool isSelected = false,
 }) {
-  Color color = AppColors.defaultMonthColor;
+  Color color = _DateColors.defaultMonthColor;
   if (disabled) {
-    color = AppColors.disabledColor;
+    color = _DateColors.disabledColor;
   } else if (isSelected) {
-    color = AppColors.selectedTextColor;
+    color = _DateColors.selectedTextColor;
   }
 
   return TextStyle(
