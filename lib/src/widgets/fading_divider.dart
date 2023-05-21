@@ -23,14 +23,15 @@ class FadingDivider extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: height == 0 ? 0 : height / 2),
       child: SizedBox(
         height: thickness,
+        width: double.infinity,
         child: DecoratedBox(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.transparent,
+                Colors.white.withOpacity(0),
                 dividerColor,
                 dividerColor,
-                Colors.transparent,
+                Colors.white.withOpacity(0),
               ],
               stops: const [0, 0.1, 0.9, 1],
             ),
