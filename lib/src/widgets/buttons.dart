@@ -60,24 +60,14 @@ class DFTextButton extends StatelessWidget {
 
     if (icon != null) {
       b = TextButton.icon(
-        style: color != null
-            ? TextButton.styleFrom(
-                textStyle: TextStyle(color: color),
-              )
-            : null,
         onPressed: onPressed,
-        label: _ButtonText(label),
+        label: _ButtonText(label, color: color),
         icon: icon!,
       );
     } else {
       b = TextButton(
-        style: color != null
-            ? TextButton.styleFrom(
-                textStyle: TextStyle(color: color),
-              )
-            : null,
         onPressed: onPressed,
-        child: _ButtonText(label),
+        child: _ButtonText(label, color: color),
       );
     }
 
@@ -206,15 +196,22 @@ class DFIconMenuButton extends StatelessWidget {
 // ===========================================================
 
 class _ButtonText extends StatelessWidget {
-  const _ButtonText(this.text);
+  const _ButtonText(
+    this.text, {
+    this.color,
+  });
 
   final String text;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 1),
-      child: Text(text),
+      child: Text(
+        text,
+        style: color != null ? TextStyle(color: color) : null,
+      ),
     );
   }
 }
