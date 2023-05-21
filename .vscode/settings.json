@@ -8,9 +8,13 @@
   "workbench.editor.limit.enabled": true,
   "dart.closingLabels": false,
   "editor.bracketPairColorization.enabled": true,
+
   "editor.codeActionsOnSave": {
+    "source.fixAll": true,
     "source.organizeImports": true,
-    "source.fixAll": true
+    "quickfix.insertSemicolon": true,
+    "source.fixAll.eslint": true
   },
+
   "editor.formatOnSave": true
 }

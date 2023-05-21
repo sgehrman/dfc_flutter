@@ -44,6 +44,7 @@ class DFTextButton extends StatelessWidget {
     required this.label,
     this.tooltip,
     this.icon,
+    this.color,
     super.key,
   });
 
@@ -51,6 +52,7 @@ class DFTextButton extends StatelessWidget {
   final String label;
   final String? tooltip;
   final Widget? icon;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +60,11 @@ class DFTextButton extends StatelessWidget {
 
     if (icon != null) {
       b = TextButton.icon(
+        style: color != null
+            ? TextButton.styleFrom(
+                textStyle: TextStyle(color: color),
+              )
+            : null,
         onPressed: onPressed,
         label: _ButtonText(label),
         icon: icon!,
