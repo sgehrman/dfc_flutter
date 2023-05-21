@@ -71,6 +71,11 @@ class DFTextButton extends StatelessWidget {
       );
     } else {
       b = TextButton(
+        style: color != null
+            ? TextButton.styleFrom(
+                textStyle: TextStyle(color: color),
+              )
+            : null,
         onPressed: onPressed,
         child: _ButtonText(label),
       );
