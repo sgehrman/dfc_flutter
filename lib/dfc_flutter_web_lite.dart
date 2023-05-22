@@ -19,7 +19,6 @@ export 'src/extensions/size_ext.dart';
 export 'src/extensions/string_ext.dart';
 export 'src/file_system/directory_listing_spec.dart';
 export 'src/file_system/server_file.dart';
-export 'src/google_fonts/google_font_library.dart';
 export 'src/hive_db/hive_box.dart';
 export 'src/hive_db/hive_data.dart';
 export 'src/hive_db/hive_opener.dart';
