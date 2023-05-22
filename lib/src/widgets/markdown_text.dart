@@ -5,14 +5,14 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 
 class MarkdownText extends StatelessWidget {
   const MarkdownText(
-    this.text, {
+    this.markdownText, {
     this.fontSize = 16,
     this.onTapLink,
     this.textAlign = WrapAlignment.start,
     this.softLineBreak = false,
   });
 
-  final String? text;
+  final String markdownText;
   final double fontSize;
   final bool softLineBreak;
   final void Function(String text, String? href, String title)? onTapLink;
@@ -59,7 +59,7 @@ class MarkdownText extends StatelessWidget {
         h4: Theme.of(context).textTheme.headlineMedium,
         h5: Theme.of(context).textTheme.headlineSmall,
       ),
-      data: text!,
+      data: markdownText,
     );
   }
 }
