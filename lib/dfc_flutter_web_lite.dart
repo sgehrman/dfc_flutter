@@ -37,8 +37,6 @@ export 'src/publishing_tools/screenshot_params.dart';
 export 'src/publishing_tools/screenshots_screen.dart';
 export 'src/requests/common.dart';
 export 'src/requests/requests.dart';
-export 'src/rive/loading.dart';
-export 'src/rive/treasure.dart';
 export 'src/svg_icons/svg_icon.dart';
 export 'src/svg_icons/svg_screen.dart';
 export 'src/themes/dynamic_theme.dart';
