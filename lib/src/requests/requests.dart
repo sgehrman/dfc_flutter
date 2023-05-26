@@ -73,9 +73,6 @@ class Requests {
     'expires',
     'secure',
     'httponly',
-    'cookie',
-    'set-cookie',
-    'set-cookie2',
   };
 
   static Map<String, String> _extractResponseCookies(
@@ -106,21 +103,11 @@ class Requests {
     String hostname,
     Map<String, String>? customHeaders,
   ) async {
-    print('start _constructRequestHeaders');
-
     final cookies = await getStoredCookies(hostname);
-
-    print(cookies);
-
     final String cookie =
         cookies.keys.map((key) => '$key=${cookies[key]}').join('; ');
     final Map<String, String> requestHeaders = {};
     requestHeaders['cookie'] = cookie;
-
-    print('result');
-    print(cookie);
-    print('customheaders');
-    print(customHeaders);
 
     if (customHeaders != null) {
       requestHeaders.addAll(customHeaders);
