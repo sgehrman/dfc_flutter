@@ -73,6 +73,7 @@ class Requests {
     'expires',
     'secure',
     'httponly',
+    'cookie',
     'set-cookie',
     'set-cookie2',
   };
