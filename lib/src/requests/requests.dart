@@ -73,6 +73,8 @@ class Requests {
     'expires',
     'secure',
     'httponly',
+    'set-cookie',
+    'set-cookie2',
   };
 
   static Map<String, String> _extractResponseCookies(
