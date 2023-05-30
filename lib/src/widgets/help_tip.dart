@@ -1,5 +1,5 @@
+import 'package:dfc_flutter/src/preferences/preferences.dart';
 import 'package:dfc_flutter/src/themes/platform_sizes.dart';
-import 'package:dfc_flutter/src/utils/preferences.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';

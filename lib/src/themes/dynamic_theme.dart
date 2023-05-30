@@ -1,7 +1,7 @@
+import 'package:dfc_flutter/src/preferences/preferences.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/themes/themes.dart';
-import 'package:dfc_flutter/src/utils/preferences.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 

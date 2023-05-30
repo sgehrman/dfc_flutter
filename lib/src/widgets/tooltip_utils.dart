@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/utils/preferences.dart';
+import 'package:dfc_flutter/src/preferences/preferences.dart';
 
 String tipString(String? message) {
   if (Preferences().disableTooltips) {

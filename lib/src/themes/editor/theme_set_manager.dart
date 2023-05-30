@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart' show IterableExtension;
+import 'package:dfc_flutter/src/preferences/preferences.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
-import 'package:dfc_flutter/src/utils/preferences.dart';
 import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
