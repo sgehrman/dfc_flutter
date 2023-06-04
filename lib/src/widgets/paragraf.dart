@@ -18,7 +18,14 @@ class Paragraf extends StatelessWidget {
     required this.isMobile,
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
-  }) : specs = [ParagrafSpec.sm(text, color: color)];
+    double alpha = 1,
+  }) : specs = [
+          ParagrafSpec.sm(
+            text,
+            color: color,
+            alpha: alpha,
+          ),
+        ];
 
   Paragraf.smb(
     String text, {
@@ -32,15 +39,27 @@ class Paragraf extends StatelessWidget {
     required this.isMobile,
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
-  }) : specs = [ParagrafSpec.lg(text, color: color)];
+    double alpha = 1,
+  }) : specs = [
+          ParagrafSpec.lg(
+            text,
+            color: color,
+            alpha: alpha,
+          ),
+        ];
 
   Paragraf.lgb(
     String text, {
     required this.isMobile,
     ParagrafColor color = ParagrafColor.none,
     this.textAlign = TextAlign.left,
+    double alpha = 1,
   }) : specs = [
-          ParagrafSpec.lgb(text, color: color),
+          ParagrafSpec.lgb(
+            text,
+            color: color,
+            alpha: alpha,
+          ),
         ];
 
   Paragraf.elg(
@@ -48,15 +67,27 @@ class Paragraf extends StatelessWidget {
     required this.isMobile,
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
-  }) : specs = [ParagrafSpec.elg(text, color: color)];
+    double alpha = 1,
+  }) : specs = [
+          ParagrafSpec.elg(
+            text,
+            color: color,
+            alpha: alpha,
+          ),
+        ];
 
   Paragraf.elgb(
     String text, {
     required this.isMobile,
     ParagrafColor color = ParagrafColor.none,
     this.textAlign = TextAlign.left,
+    double alpha = 1,
   }) : specs = [
-          ParagrafSpec.elgb(text, color: color),
+          ParagrafSpec.elgb(
+            text,
+            color: color,
+            alpha: alpha,
+          ),
         ];
 
   Paragraf.hdr(
@@ -64,15 +95,27 @@ class Paragraf extends StatelessWidget {
     required this.isMobile,
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
-  }) : specs = [ParagrafSpec.hdr(text, color: color)];
+    double alpha = 1,
+  }) : specs = [
+          ParagrafSpec.hdr(
+            text,
+            color: color,
+            alpha: alpha,
+          ),
+        ];
 
   Paragraf.hdrb(
     String text, {
     required this.isMobile,
     ParagrafColor color = ParagrafColor.none,
     this.textAlign = TextAlign.left,
+    double alpha = 1,
   }) : specs = [
-          ParagrafSpec.hdrb(text, color: color),
+          ParagrafSpec.hdrb(
+            text,
+            color: color,
+            alpha: alpha,
+          ),
         ];
 
   Paragraf.md(
@@ -87,8 +130,13 @@ class Paragraf extends StatelessWidget {
     required this.isMobile,
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
+    double alpha = 1,
   }) : specs = [
-          ParagrafSpec.mdb(text, color: color),
+          ParagrafSpec.mdb(
+            text,
+            color: color,
+            alpha: alpha,
+          ),
         ];
 
   // ----------------------------------------------
