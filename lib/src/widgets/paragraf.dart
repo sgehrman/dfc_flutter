@@ -103,7 +103,7 @@ class Paragraf extends StatelessWidget {
     required bool isMobile,
   }) {
     final textStyle = TextStyle(
-      color: spec.color.color(context),
+      color: spec.color.color(context: context, alpha: spec.alpha),
       fontWeight: spec.bold ? ParagrafSizes.defaults.bold : FontWeight.normal,
       fontSize: spec.fontSize.fontSize(isMobile: isMobile),
     );
@@ -294,7 +294,10 @@ enum ParagrafColor {
   black,
   primary;
 
-  Color? color(BuildContext context) {
+  Color? color({
+    required BuildContext context,
+    required double alpha,
+  }) {
     switch (this) {
       case ParagrafColor.none:
         return null;
@@ -327,6 +330,7 @@ class ParagrafSpec {
     this.children = const [],
     this.color = ParagrafColor.primary,
     this.newlines = 0,
+    this.alpha = 1,
   });
 
   const ParagrafSpec.lg(
@@ -336,6 +340,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   }) : fontSize = ParagrafSize.lg;
 
   const ParagrafSpec.lgb(
@@ -344,6 +349,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   })  : fontSize = ParagrafSize.lg,
         bold = true;
 
@@ -354,6 +360,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   }) : fontSize = ParagrafSize.elg;
 
   const ParagrafSpec.elgb(
@@ -362,6 +369,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   })  : fontSize = ParagrafSize.elg,
         bold = true;
 
@@ -372,6 +380,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   }) : fontSize = ParagrafSize.hdr;
 
   const ParagrafSpec.hdrb(
@@ -380,6 +389,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   })  : fontSize = ParagrafSize.hdr,
         bold = true;
 
@@ -390,6 +400,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   }) : fontSize = ParagrafSize.md;
 
   const ParagrafSpec.mdb(
@@ -398,6 +409,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   })  : fontSize = ParagrafSize.md,
         bold = true;
 
@@ -408,6 +420,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   }) : fontSize = ParagrafSize.sm;
 
   const ParagrafSpec.smb(
@@ -416,6 +429,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   })  : fontSize = ParagrafSize.sm,
         bold = true;
 
@@ -426,6 +440,7 @@ class ParagrafSpec {
     this.color = ParagrafColor.none,
     this.newlines = 0,
     this.href = '',
+    this.alpha = 1,
   }) : bold = true;
 
   final String text;
@@ -435,4 +450,5 @@ class ParagrafSpec {
   final int newlines;
   final ParagrafColor color;
   final List<ParagrafSpec> children;
+  final double alpha;
 }
