@@ -59,6 +59,13 @@ class Paragraf extends StatelessWidget {
           ParagrafSpec.elgb(text, color: color),
         ];
 
+  Paragraf.hdr(
+    String text, {
+    required this.isMobile,
+    this.textAlign = TextAlign.left,
+    ParagrafColor color = ParagrafColor.none,
+  }) : specs = [ParagrafSpec.hdr(text, color: color)];
+
   Paragraf.hdrb(
     String text, {
     required this.isMobile,
