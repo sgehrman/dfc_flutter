@@ -32,7 +32,14 @@ class Paragraf extends StatelessWidget {
     required this.isMobile,
     ParagrafColor color = ParagrafColor.none,
     this.textAlign = TextAlign.left,
-  }) : specs = [ParagrafSpec.smb(text, color: color)];
+    double opacity = 1,
+  }) : specs = [
+          ParagrafSpec.smb(
+            text,
+            color: color,
+            opacity: opacity,
+          ),
+        ];
 
   Paragraf.lg(
     String text, {
@@ -123,7 +130,14 @@ class Paragraf extends StatelessWidget {
     required this.isMobile,
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
-  }) : specs = [ParagrafSpec.md(text, color: color)];
+    double opacity = 1,
+  }) : specs = [
+          ParagrafSpec.md(
+            text,
+            color: color,
+            opacity: opacity,
+          ),
+        ];
 
   Paragraf.mdb(
     String text, {
