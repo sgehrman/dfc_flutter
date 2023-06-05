@@ -1,39 +1,31 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-class CheckerboardContainer extends Container {
-  CheckerboardContainer({
-    Color? color,
-    BoxConstraints? constraints,
-    EdgeInsetsGeometry? padding,
-    EdgeInsetsGeometry? margin,
-    Widget? child,
+class CheckerboardContainer extends StatelessWidget {
+  const CheckerboardContainer({
+    required this.child,
     this.enabled = true,
-  }) : super(
-          constraints: constraints,
-          padding: padding,
-          margin: margin,
-          color: color,
-          child: child,
-          alignment: Alignment.center,
-        );
+  });
+
+  final Widget child;
 
   final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     if (!enabled) {
-      return super.build(context);
+      return child;
     }
 
     return Stack(
+      fit: StackFit.passthrough,
       children: <Widget>[
         Positioned.fill(
           child: CustomPaint(
             painter: CheckerboardPainter(darkMode: Utils.isDarkMode(context)),
           ),
         ),
-        super.build(context),
+        child,
       ],
     );
   }
