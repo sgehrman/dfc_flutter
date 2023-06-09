@@ -219,8 +219,12 @@ class Preferences {
   Map<String, dynamic> mapPref({
     required String key,
     Map<String, dynamic> defaultValue = const {},
-  }) =>
-      prefs.get(key, defaultValue: defaultValue) as Map<String, dynamic>;
+  }) {
+    return Map<String, dynamic>.from(
+      prefs.get(key, defaultValue: defaultValue) as Map? ?? {},
+    );
+  }
+
   Future<void> setMapPref({
     required String key,
     required Map<String, dynamic>? value,
