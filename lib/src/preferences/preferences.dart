@@ -225,7 +225,7 @@ class Preferences {
     required String key,
     required Map<String, dynamic>? value,
   }) =>
-      prefs.put('$key-Map', value);
+      prefs.put(key, value);
 
   // --------------
   // listPref
