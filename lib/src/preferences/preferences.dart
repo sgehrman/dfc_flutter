@@ -220,7 +220,7 @@ class Preferences {
     required String key,
     Map<String, dynamic> defaultValue = const {},
   }) {
-    return Map<String, dynamic>.from(
+    return _castMap(
       prefs.get(key, defaultValue: defaultValue) as Map? ?? {},
     );
   }
@@ -230,6 +230,22 @@ class Preferences {
     required Map<String, dynamic>? value,
   }) =>
       prefs.put(key, value);
+
+  Map<String, dynamic> _castMap(Map<dynamic, dynamic> map) {
+    final result = <String, dynamic>{};
+
+    for (final key in map.keys) {
+      var val = map[key];
+
+      if (val is Map<dynamic, dynamic>) {
+        val = _castMap(val);
+      }
+
+      result[key as String] = val;
+    }
+
+    return result;
+  }
 
   // --------------
   // listPref
