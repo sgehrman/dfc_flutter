@@ -98,7 +98,7 @@ class StrUtils {
   static List<String> lines(String text) {
     final lines = text.split('\n');
     final result = <String>[];
-    const maxLen = 400;
+    const maxLen = 200;
 
     for (final line in lines) {
       if (line.length > (maxLen + 20)) {
