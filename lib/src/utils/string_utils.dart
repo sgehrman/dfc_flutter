@@ -98,7 +98,7 @@ class StrUtils {
   static List<String> lines(String text) {
     final lines = text.split('\n');
     final result = <String>[];
-    const maxLen = 400;
+    const maxLen = 1000;
 
     for (final line in lines) {
       if (line.length > (maxLen + 20)) {
@@ -129,6 +129,6 @@ class StrUtils {
       }
     }
 
-    return result;
+    return result.where((e) => e.trim().isNotEmpty).toList();
   }
 }

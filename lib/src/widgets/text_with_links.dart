@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -116,16 +115,12 @@ class _LinkedTextState extends State<_LinkedText> {
           );
         }
       } else {
-        final lines = StrUtils.lines(element.text);
-
-        for (final line in lines) {
-          children.add(
-            TextSpan(
-              text: line,
-              style: style,
-            ),
-          );
-        }
+        children.add(
+          TextSpan(
+            text: element.text,
+            style: style,
+          ),
+        );
       }
     }
 
