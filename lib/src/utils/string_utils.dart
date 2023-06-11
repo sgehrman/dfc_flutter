@@ -120,17 +120,22 @@ class StrUtils {
 
         final chunkLines = buffer.toString().split('\n');
 
+        // ignore: prefer_foreach
         for (final cl in chunkLines) {
-          final d = cl.split(',');
-          result.add(d.join(', '));
+          result.add(cl);
         }
       } else {
-        final d = line.split(',');
-        result.add(d.join(', '));
+        result.add(line);
       }
     }
 
     // add \n at end of every line
-    return result.map((e) => '$e\n').toList();
+    final dick = result.map((e) => '$e\n').toList();
+    for (final d in dick) {
+      print('-----------');
+      print(d);
+    }
+
+    return ['fuck ths'];
   }
 }
