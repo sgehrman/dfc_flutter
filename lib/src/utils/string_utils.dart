@@ -119,7 +119,7 @@ class StrUtils {
         }
 
         final chunkLines = buffer.toString().split('\n');
-        chunkLines.forEach(result.add);
+        chunkLines.forEach(print);
       } else {
         result.add(line);
       }
