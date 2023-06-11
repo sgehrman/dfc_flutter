@@ -102,6 +102,7 @@ class StrUtils {
 
     for (final line in lines) {
       if (line.length > (maxLen + 20)) {
+        // first add \n characters, then split on \n
         final StringBuffer buffer = StringBuffer();
 
         int offset = 0;
@@ -111,7 +112,7 @@ class StrUtils {
           final chunkLen = math.min(maxLen, remainder);
 
           buffer.writeln(
-            line.substring(offset, chunkLen),
+            line.substring(offset, offset + chunkLen),
           );
 
           offset += chunkLen;
