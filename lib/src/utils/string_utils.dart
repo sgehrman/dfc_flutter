@@ -129,13 +129,6 @@ class StrUtils {
       }
     }
 
-    // add \n at end of every line
-    final dick = result.map((e) => '$e\n').toList();
-    for (final d in dick) {
-      print('-----------');
-      print(d);
-    }
-
-    return ['fuck ths'];
+    return result;
   }
 }
