@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math' as math;
 
 import 'package:crypto/crypto.dart';
 import 'package:email_validator/email_validator.dart';
@@ -90,5 +91,39 @@ class StrUtils {
     final digest = sha256.convert(bytes);
 
     return hexFromData(digest.bytes);
+  }
+
+  // used for displaying richText.  Long lines make it super slow
+  // this breaks up huge lines if needed
+  static List<String> lines(String text) {
+    final lines = text.split('\n');
+    final result = <String>[];
+    const maxLen = 400;
+
+    for (final line in lines) {
+      if (line.length > (maxLen + 20)) {
+        final StringBuffer buffer = StringBuffer();
+
+        int offset = 0;
+        while (offset < line.length) {
+          final remainder = line.length - offset;
+
+          final chunkLen = math.min(maxLen, remainder);
+
+          buffer.writeln(
+            line.substring(offset, chunkLen),
+          );
+
+          offset += chunkLen;
+        }
+
+        final chunkLines = buffer.toString().split('\n');
+        chunkLines.forEach(result.add);
+      } else {
+        result.add(line);
+      }
+    }
+
+    return result;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -86,38 +87,50 @@ class _LinkedTextState extends State<_LinkedText> {
     LTCallback? onOpen,
     bool useMouseRegion = false,
   }) {
-    return TextSpan(
-      children: _elements.map<InlineSpan>(
-        (element) {
-          if (element is linkify.LinkableElement) {
-            if (useMouseRegion) {
-              return _LinkableSpan(
-                mouseCursor: SystemMouseCursors.click,
-                inlineSpan: TextSpan(
-                  text: element.text,
-                  style: linkStyle,
-                  recognizer: onOpen != null
-                      ? (TapGestureRecognizer()..onTap = () => onOpen(element))
-                      : null,
-                ),
-              );
-            } else {
-              return TextSpan(
+    final children = <InlineSpan>[];
+
+    for (final element in _elements) {
+      if (element is linkify.LinkableElement) {
+        if (useMouseRegion) {
+          children.add(
+            _LinkableSpan(
+              mouseCursor: SystemMouseCursors.click,
+              inlineSpan: TextSpan(
                 text: element.text,
                 style: linkStyle,
                 recognizer: onOpen != null
                     ? (TapGestureRecognizer()..onTap = () => onOpen(element))
                     : null,
-              );
-            }
-          } else {
-            return TextSpan(
+              ),
+            ),
+          );
+        } else {
+          children.add(
+            TextSpan(
               text: element.text,
+              style: linkStyle,
+              recognizer: onOpen != null
+                  ? (TapGestureRecognizer()..onTap = () => onOpen(element))
+                  : null,
+            ),
+          );
+        }
+      } else {
+        final lines = StrUtils.lines(element.text);
+
+        for (final line in lines) {
+          children.add(
+            TextSpan(
+              text: line,
               style: style,
-            );
-          }
-        },
-      ).toList(),
+            ),
+          );
+        }
+      }
+    }
+
+    return TextSpan(
+      children: children,
     );
   }
 
