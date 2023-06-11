@@ -98,7 +98,7 @@ class StrUtils {
   static List<String> lines(String text) {
     final lines = text.split('\n');
     final result = <String>[];
-    const maxLen = 200;
+    const maxLen = 400;
 
     for (final line in lines) {
       if (line.length > (maxLen + 20)) {
@@ -119,9 +119,14 @@ class StrUtils {
         }
 
         final chunkLines = buffer.toString().split('\n');
-        chunkLines.forEach(print);
+
+        for (final cl in chunkLines) {
+          final d = cl.split(',');
+          result.add(d.join(', '));
+        }
       } else {
-        result.add(line);
+        final d = line.split(',');
+        result.add(d.join(', '));
       }
     }
 
