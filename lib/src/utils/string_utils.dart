@@ -129,6 +129,6 @@ class StrUtils {
       }
     }
 
-    return result.where((e) => e.trim().isNotEmpty).toList();
+    return result;
   }
 }
