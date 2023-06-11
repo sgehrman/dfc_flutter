@@ -125,6 +125,7 @@ class StrUtils {
       }
     }
 
-    return result;
+    // add \n at end of every line
+    return result.map((e) => '$e\n').toList();
   }
 }
