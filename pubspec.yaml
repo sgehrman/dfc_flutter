@@ -12,7 +12,7 @@ dependencies:
   barcode_widget: ^2.0.3
   bonsoir: ^2.0.0
   characters: ^1.2.0
-  collection: ^1.17.0
+  collection: ^1.17.1
   crypto: ^3.0.0
   device_info_plus: ^9.0.0
   dfc_dart:
@@ -24,7 +24,6 @@ dependencies:
   flutter_archive: ^5.0.0
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^1.0.3
-  flutter_keyboard_visibility: ^5.2.0
   flutter_markdown: ^0.6.13
   flutter_multi_formatter: ^2.9.11
   flutter_svg: ^2.0.0+1
