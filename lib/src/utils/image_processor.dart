@@ -84,7 +84,7 @@ class ImageProcessor {
     return ImgFormat.unknown;
   }
 
-  static Future<PngImageBytesAndSize> _pngFromBytes(Uint8List imageData) async {
+  static Future<PngImageBytesAndSize> pngFromBytes(Uint8List imageData) async {
     try {
       // could be any format so convert to png
       final decodedImage = await bytesToImage(imageData);
@@ -144,7 +144,7 @@ class ImageProcessor {
         final bodyBytes = dUri.contentAsBytes();
 
         if (bodyBytes.isNotEmpty) {
-          return _pngFromBytes(bodyBytes);
+          return pngFromBytes(bodyBytes);
         }
       } else {
         final response = await HttpUtils.httpGet(uri);
@@ -160,7 +160,7 @@ class ImageProcessor {
 
               return svgToPng(svg: svgString);
             } else {
-              return _pngFromBytes(bodyBytes);
+              return pngFromBytes(bodyBytes);
             }
           }
         }
