@@ -34,6 +34,10 @@ class MarkdownText extends StatelessWidget {
       fontWeight: Font.bold,
     );
 
+    // was showing white in light mode without this
+    final Color tableBorderColor =
+        Theme.of(context).textTheme.displayLarge?.color ?? Colors.red;
+
     return MarkdownBody(
       onTapLink: onTapLink ??
           (text, href, title) {
@@ -58,6 +62,20 @@ class MarkdownText extends StatelessWidget {
         h3: Theme.of(context).textTheme.displaySmall,
         h4: Theme.of(context).textTheme.headlineMedium,
         h5: Theme.of(context).textTheme.headlineSmall,
+        tableBorder: TableBorder(
+          top: BorderSide(
+            color: tableBorderColor,
+          ),
+          bottom: BorderSide(
+            color: tableBorderColor,
+          ),
+          left: BorderSide(
+            color: tableBorderColor,
+          ),
+          right: BorderSide(
+            color: tableBorderColor,
+          ),
+        ),
       ),
       data: markdownText,
     );
