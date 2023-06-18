@@ -21,6 +21,16 @@ class HttpUtils {
   }
 
   // is this better for redirects?
+  // this failed for gpt models.  didn't redirect correctly?
+  // failed on client close?
+
+  // WARNING: In the browser it doesn't handle redirects
+  /// This client inherits some of the limitations of XMLHttpRequest. It ignores
+  /// the [BaseRequest.contentLength], [BaseRequest.persistentConnection],
+  /// [BaseRequest.followRedirects], and [BaseRequest.maxRedirects] fields. It is
+  /// also unable to stream requests or responses; a request will only be sent and
+  /// a response will only be returned once all the data is available.
+
   static Future<http.StreamedResponse> httpGetStream(
     Uri uri, {
     int timeout = 10,
