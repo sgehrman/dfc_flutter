@@ -40,7 +40,7 @@ class HttpUtils {
     try {
       final clientRequest = http.Request('GET', uri);
 
-      // follows redirects by default
+      // follows redirects by default (not for web)
       return httpClient.send(clientRequest).timeout(Duration(seconds: timeout));
     } on TimeoutException catch (err) {
       print('### Error(httpGetAlt): TimeoutException err:$err url: $uri');
