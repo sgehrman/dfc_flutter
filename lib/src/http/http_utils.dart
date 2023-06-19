@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
 
@@ -31,26 +32,40 @@ class HttpUtils {
   /// also unable to stream requests or responses; a request will only be sent and
   /// a response will only be returned once all the data is available.
 
-  static Future<http.StreamedResponse> httpGetStream(
+  static Future<Uint8List> httpGetStream(
     Uri uri, {
     int timeout = 10,
-  }) {
+  }) async {
     final httpClient = http.Client();
 
     try {
       final clientRequest = http.Request('GET', uri);
 
       // follows redirects by default (not for web)
-      return httpClient.send(clientRequest).timeout(Duration(seconds: timeout));
+      final response = await httpClient
+          .send(clientRequest)
+          .timeout(Duration(seconds: timeout));
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        // we want the bytes now before close happens in finally.
+        // not sure how to handle this correctly.
+        final Uint8List result = await response.stream.toBytes();
+
+        if (result.isEmpty) {
+          print('httpGetStream zero bytes received');
+        }
+
+        return result;
+      }
     } on TimeoutException catch (err) {
       print('### Error(httpGetAlt): TimeoutException err:$err url: $uri');
-      rethrow;
     } catch (err) {
       print('### Error(httpGetAlt): err:$err url: $uri');
-      rethrow;
     } finally {
       httpClient.close();
     }
+
+    return Uint8List(0);
   }
 
   static Future<http.Response> httpHead(
