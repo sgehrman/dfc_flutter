@@ -94,6 +94,10 @@ class MenuButton<T> extends StatelessWidget {
 
     return PopupMenuButton<MenuButtonItem<T>>(
       initialValue: selectedItem,
+      constraints: const BoxConstraints(
+        minWidth: 2.0 * 56.0,
+        maxWidth: 15.0 * 56.0,
+      ),
       offset: const Offset(0, 40),
       itemBuilder: (context) {
         return menuItems;
