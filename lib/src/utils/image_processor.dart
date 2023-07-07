@@ -405,6 +405,7 @@ class ImageProcessor {
   }
 
   // ## must dispose
+  // doesn't work on web. never tested, not sure if this works
   static Future<ui.Image> assetImage(String assetPath) async {
     final ui.ImmutableBuffer buffer =
         await ui.ImmutableBuffer.fromAsset(assetPath);
