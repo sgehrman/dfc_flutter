@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dfc_dart/dfc_dart.dart';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:dfc_flutter/src/widgets/loading_widget.dart';
@@ -61,10 +62,15 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
   void initState() {
     super.initState();
 
+    Uri? uri;
+    if (widget.hostUrl != null) {
+      uri = UriUtils.parseUri(widget.hostUrl);
+    }
+
     if (widget.serverFile != null) {
       _controller = VideoPlayerController.file(File(widget.serverFile!.path!));
-    } else if (widget.hostUrl != null) {
-      _controller = VideoPlayerController.network(widget.hostUrl!);
+    } else if (uri != null) {
+      _controller = VideoPlayerController.networkUrl(uri);
     } else {
       print('you have to set a serverFile or hostUrl in video player.');
     }
