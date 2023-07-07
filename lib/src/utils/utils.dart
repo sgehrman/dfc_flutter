@@ -182,6 +182,20 @@ class Utils {
     return kIsWeb;
   }
 
+  // -----------------------------------------------------------
+
+  // used for web to find out underlying host OS
+  static bool onDesktop(BuildContext context) {
+    return onWindows(context) ||
+        onMac(context) ||
+        onLinux(context) ||
+        onFuchsia(context);
+  }
+
+  static bool onMobile(BuildContext context) {
+    return oniOS(context) || onAndroid(context);
+  }
+
   // used for web to find out underlying host OS
   static bool onWindows(BuildContext context) {
     return Theme.of(context).platform == TargetPlatform.windows;
@@ -211,6 +225,8 @@ class Utils {
   static bool onFuchsia(BuildContext context) {
     return Theme.of(context).platform == TargetPlatform.fuchsia;
   }
+
+  // -----------------------------------------------------------
 
   static bool versionOutOfDate({
     required String oldVersion,
