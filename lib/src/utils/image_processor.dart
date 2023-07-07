@@ -404,6 +404,27 @@ class ImageProcessor {
     return frameInfo.image;
   }
 
+  // ## must dispose
+  static Future<ui.Image> assetImage(String assetPath) async {
+    final ui.ImmutableBuffer buffer =
+        await ui.ImmutableBuffer.fromAsset(assetPath);
+    final ui.ImageDescriptor descriptor =
+        await ui.ImageDescriptor.encoded(buffer);
+
+    final ui.Codec codec = await descriptor.instantiateCodec(
+      targetWidth: descriptor.width,
+      targetHeight: descriptor.height,
+    );
+
+    final ui.FrameInfo frameInfo = await codec.getNextFrame();
+
+    buffer.dispose();
+    codec.dispose();
+    descriptor.dispose();
+
+    return frameInfo.image;
+  }
+
   // ===============================================================
 
   static PictureAndSize _drawImageToCanvas(ui.Image image) {
