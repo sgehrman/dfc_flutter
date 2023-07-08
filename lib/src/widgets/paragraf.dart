@@ -372,7 +372,7 @@ enum ParagrafColor {
       case ParagrafColor.white:
         return Colors.white.withOpacity(opacity);
       case ParagrafColor.primary:
-        return Theme.of(context).primaryColor.withOpacity(opacity);
+        return Theme.of(context).colorScheme.primary.withOpacity(opacity);
     }
   }
 }
