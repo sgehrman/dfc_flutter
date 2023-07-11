@@ -362,11 +362,10 @@ enum ParagrafColor {
   }) {
     switch (this) {
       case ParagrafColor.none:
-        return Theme.of(context)
-            .textTheme
-            .bodyMedium!
-            .color!
-            .withOpacity(opacity);
+        final textColor =
+            Theme.of(context).textTheme.bodyMedium?.color ?? Colors.red;
+
+        return textColor.withOpacity(opacity);
       case ParagrafColor.black:
         return Colors.black.withOpacity(opacity);
       case ParagrafColor.white:
