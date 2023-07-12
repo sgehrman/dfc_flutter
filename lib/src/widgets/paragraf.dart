@@ -1,5 +1,3 @@
-import 'dart:ui' as ui;
-
 import 'package:dfc_flutter/dfc_flutter_web_lite.dart';
 import 'package:flutter/material.dart';
 
@@ -168,6 +166,7 @@ class Paragraf extends StatelessWidget {
       color: spec.color.color(context: context, opacity: spec.opacity),
       fontWeight: spec.bold ? ParagrafSizes.defaults.bold : FontWeight.normal,
       fontSize: spec.fontSize.fontSize(isMobile: isMobile),
+      height: 1.1,
     );
 
     String nls = '';
@@ -179,8 +178,8 @@ class Paragraf extends StatelessWidget {
       return TextSpan(
         children: [
           WidgetSpan(
-            baseline: TextBaseline.alphabetic,
-            alignment: ui.PlaceholderAlignment.baseline,
+            // baseline: TextBaseline.alphabetic,
+            // alignment: ui.PlaceholderAlignment.baseline,
             child: InkWell(
               onTap: () {
                 Utils.launchUrl(spec.href);
