@@ -386,16 +386,35 @@ class ParagrafSpec {
   //   this.href = '',
   // });
 
-  const ParagrafSpec.link(
+  const ParagrafSpec.linkLg(
     this.text, {
     required this.href,
     this.bold = true,
-    this.fontSize = ParagrafSize.md,
     this.children = const [],
     this.color = ParagrafColor.primary,
     this.newlines = 0,
     this.opacity = 1,
-  });
+  }) : fontSize = ParagrafSize.lg;
+
+  const ParagrafSpec.linkMd(
+    this.text, {
+    required this.href,
+    this.bold = true,
+    this.children = const [],
+    this.color = ParagrafColor.primary,
+    this.newlines = 0,
+    this.opacity = 1,
+  }) : fontSize = ParagrafSize.md;
+
+  const ParagrafSpec.linkSm(
+    this.text, {
+    required this.href,
+    this.bold = true,
+    this.children = const [],
+    this.color = ParagrafColor.primary,
+    this.newlines = 0,
+    this.opacity = 1,
+  }) : fontSize = ParagrafSize.sm;
 
   const ParagrafSpec.lg(
     this.text, {
