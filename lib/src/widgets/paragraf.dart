@@ -161,6 +161,7 @@ class Paragraf extends StatelessWidget {
     required BuildContext context,
     required ParagrafSpec spec,
     required bool isMobile,
+    required bool spaceBefore,
   }) {
     final textStyle = TextStyle(
       color: spec.color.color(context: context, opacity: spec.opacity),
@@ -195,8 +196,10 @@ class Paragraf extends StatelessWidget {
       );
     }
 
+    final space = spaceBefore ? ' ' : '';
+
     return TextSpan(
-      text: '${spec.text}$nls',
+      text: '$space${spec.text}$nls',
       style: textStyle,
       children: spec.children
           .map(
@@ -204,6 +207,7 @@ class Paragraf extends StatelessWidget {
               context: context,
               spec: e,
               isMobile: isMobile,
+              spaceBefore: true,
             ),
           )
           .toList(),
@@ -222,23 +226,31 @@ class Paragraf extends StatelessWidget {
           context: context,
           spec: specs.first,
           isMobile: isMobile,
+          spaceBefore: false,
         ),
         textAlign: textAlign,
       );
     }
 
-    final List<Widget> children = specs
-        .map(
-          (e) => Text.rich(
-            _generate(
-              context: context,
-              spec: e,
-              isMobile: isMobile,
-            ),
-            textAlign: textAlign,
+    bool spaceBefore = false;
+
+    final List<Widget> children = specs.map(
+      (e) {
+        final result = Text.rich(
+          _generate(
+            context: context,
+            spec: e,
+            isMobile: isMobile,
+            spaceBefore: spaceBefore,
           ),
-        )
-        .toList();
+          textAlign: textAlign,
+        );
+
+        spaceBefore = true;
+
+        return result;
+      },
+    ).toList();
 
     return Column(
       mainAxisSize: MainAxisSize.min,
