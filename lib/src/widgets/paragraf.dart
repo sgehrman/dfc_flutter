@@ -289,6 +289,7 @@ class ParagrafSizes {
     required this.hdrFontSize,
     required this.hdrFontSizeMobile,
     required this.bold,
+    required this.lightOpacity,
   });
 
   ParagrafSizes.defaultValues()
@@ -302,6 +303,7 @@ class ParagrafSizes {
         elgFontSizeMobile = 26,
         hdrFontSize = 42,
         hdrFontSizeMobile = 32,
+        lightOpacity = 0.7,
         bold = FontWeight.w600;
 
   double smFontSize;
@@ -318,6 +320,8 @@ class ParagrafSizes {
 
   double hdrFontSize;
   double hdrFontSizeMobile;
+
+  double lightOpacity;
   FontWeight bold;
 
   // call this if you want to change defaults
@@ -517,6 +521,16 @@ class ParagrafSpec {
     this.href = '',
     this.opacity = 1,
   }) : fontSize = ParagrafSize.sm;
+
+  ParagrafSpec.sml(
+    this.text, {
+    this.bold = false,
+    this.children = const [],
+    this.color = ParagrafColor.none,
+    this.newlines = 0,
+    this.href = '',
+  })  : fontSize = ParagrafSize.sm,
+        opacity = ParagrafSizes.defaults.lightOpacity;
 
   const ParagrafSpec.smb(
     this.text, {
