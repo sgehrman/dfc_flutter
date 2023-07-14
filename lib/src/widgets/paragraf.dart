@@ -167,7 +167,7 @@ class Paragraf extends StatelessWidget {
       color: spec.color.color(context: context, opacity: spec.opacity),
       fontWeight: spec.bold ? ParagrafSizes.defaults.bold : FontWeight.normal,
       fontSize: spec.fontSize.fontSize(isMobile: isMobile),
-      height: 1.1,
+      height: 1.5,
     );
 
     String nls = '';
@@ -196,7 +196,7 @@ class Paragraf extends StatelessWidget {
       );
     }
 
-    final space = spaceBefore ? ' ' : '';
+    final space = spaceBefore ? '  ' : '';
 
     return TextSpan(
       text: '$space${spec.text}$nls',
