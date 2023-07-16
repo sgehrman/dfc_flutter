@@ -8,7 +8,6 @@ environment:
   sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  # barcode_image: ^2.0.2
   barcode_widget: ^2.0.3
   bonsoir: ^2.0.0
   characters: ^1.2.0
@@ -21,6 +20,7 @@ dependencies:
   email_validator: ^2.1.17
   flutter:
     sdk: flutter
+  flutter_animate: ^4.2.0
   flutter_archive: ^5.0.0
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^1.0.3
@@ -49,7 +49,6 @@ dependencies:
   path_provider: ^2.0.9
   provider: ^6.0.5
   random_string: ^2.3.1
-  # rive: ^0.10.1
   share_extend: ^2.0.0
   shared_preferences: ^2.2.0
   supercharged: ^2.0.0
