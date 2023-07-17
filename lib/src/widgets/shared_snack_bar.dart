@@ -246,13 +246,15 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
-                  if (widget.message.isNotEmpty)
+                  if (widget.message.isNotEmpty) ...[
+                    const SizedBox(height: 4),
                     Text(
                       widget.message,
                       style: const TextStyle(color: Colors.white, fontSize: 14),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
+                  ],
                 ],
               ),
             ],
