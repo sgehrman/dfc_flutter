@@ -35,8 +35,6 @@ class _TextBase extends Text {
 }
 
 class Text12 extends _TextBase {
-  static const double size = 12;
-
   Text12(
     String? text, {
     TextStyle? style,
@@ -53,11 +51,11 @@ class Text12 extends _TextBase {
           textAlign: textAlign,
           maxLines: maxLines,
         );
+
+  static const double size = 12;
 }
 
 class Text16 extends _TextBase {
-  static const double size = 16;
-
   Text16(
     String? text, {
     TextStyle? style,
@@ -74,11 +72,11 @@ class Text16 extends _TextBase {
           textAlign: textAlign,
           maxLines: maxLines,
         );
+
+  static const double size = 16;
 }
 
 class Text18 extends _TextBase {
-  static const double size = 18;
-
   Text18(
     String? text, {
     TextStyle? style,
@@ -95,11 +93,11 @@ class Text18 extends _TextBase {
           textAlign: textAlign,
           maxLines: maxLines,
         );
+
+  static const double size = 18;
 }
 
 class Text20 extends _TextBase {
-  static const double size = 20;
-
   Text20(
     String? text, {
     TextStyle? style,
@@ -116,11 +114,11 @@ class Text20 extends _TextBase {
           textAlign: textAlign,
           maxLines: maxLines,
         );
+
+  static const double size = 20;
 }
 
 class Text22 extends _TextBase {
-  static const double size = 22;
-
   Text22(
     String? text, {
     TextStyle? style,
@@ -137,11 +135,11 @@ class Text22 extends _TextBase {
           textAlign: textAlign,
           maxLines: maxLines,
         );
+
+  static const double size = 22;
 }
 
 class TextTitle extends _TextBase {
-  static const double size = 70;
-
   TextTitle(
     String? text, {
     TextStyle? style,
@@ -159,11 +157,11 @@ class TextTitle extends _TextBase {
           maxLines: maxLines,
           height: 0.9,
         );
+
+  static const double size = 70;
 }
 
 class TextSubtitle extends _TextBase {
-  static const double size = 35;
-
   TextSubtitle(
     String? text, {
     TextStyle? style,
@@ -181,4 +179,6 @@ class TextSubtitle extends _TextBase {
           maxLines: maxLines,
           height: 0.9,
         );
+
+  static const double size = 35;
 }

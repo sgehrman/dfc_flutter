@@ -13,6 +13,14 @@ class MenuItemData {
     this.enabled = true,
     this.tooltip,
   });
+  MenuItemData._divider()
+      : title = '',
+        iconData = null,
+        iconWidget = null,
+        tooltip = null,
+        enabled = false,
+        level = 0,
+        action = null;
 
   factory MenuItemData.divider() {
     return MenuItemData._divider();
@@ -46,15 +54,6 @@ class MenuItemData {
 
     return menuItems;
   }
-
-  MenuItemData._divider()
-      : title = '',
-        iconData = null,
-        iconWidget = null,
-        tooltip = null,
-        enabled = false,
-        level = 0,
-        action = null;
 
   final String title;
   final IconData? iconData;
