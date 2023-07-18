@@ -166,9 +166,7 @@ class HttpUtils {
 
             // ignore: prefer_immediate_return
             // await so I can client.close() when done
-            final result = await response.stream.bytesToString();
-
-            return result;
+            return await response.stream.bytesToString();
           } catch (err) {
             print(
               '### Error: response.stream.bytesToString: uri: $uri err: $err',
