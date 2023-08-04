@@ -13,19 +13,19 @@ dependencies:
   characters: ^1.2.0
   collection: ^1.17.1
   crypto: ^3.0.0
-  device_info_plus: ^9.0.0
+  device_info_plus: ^9.0.3
   dfc_dart:
     git: https://github.com/sgehrman/dfc_dart
   dotted_border: ^2.0.0+2
   email_validator: ^2.1.17
   flutter:
     sdk: flutter
-  flutter_animate: ^4.2.0
+  flutter_animate: ^4.2.0+1
   flutter_archive: ^5.0.0
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^1.0.3
   flutter_markdown: ^0.6.16
-  flutter_multi_formatter: ^2.9.11
+  flutter_multi_formatter: ^2.11.6
   flutter_svg: ^2.0.0+1
   google_fonts: ^4.0.4
   hex: ^0.2.0
