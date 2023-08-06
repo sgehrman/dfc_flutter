@@ -242,7 +242,7 @@ class AddCard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(6),
             child: Icon(
-              Icons.add_circle_outline,
+              Icons.add,
               color: cardColor,
               size: iconSize,
             ),
