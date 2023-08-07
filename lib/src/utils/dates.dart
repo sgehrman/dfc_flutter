@@ -28,6 +28,24 @@ class Dates {
     return '';
   }
 
+  String formatInDays(DateTime dateTime) {
+    final today = DateTime.now();
+    final difference = dateTime.difference(today);
+
+    return switch (difference) {
+      Duration(inDays: 0) => 'today',
+      Duration(inDays: 1) => 'tomorrow',
+      Duration(inDays: -1) => 'yesterday',
+      Duration(inDays: final days) when days > 7 =>
+        '${days ~/ 7} weeks from now', // Add from here
+      Duration(inDays: final days) when days < -7 =>
+        '${days.abs() ~/ 7} weeks ago', // to here.
+      Duration(inDays: final days, isNegative: true) =>
+        '${days.abs()} days ago',
+      Duration(inDays: final days) => '$days days from now',
+    };
+  }
+
   static String formatLongDate(DateTime? date) {
     if (date != null) {
       final formatter = DateFormat('EE, MMM d, yyyy');
@@ -120,28 +138,31 @@ class Dates {
   // not a perfect solution, but enough for now
   static DateTime? parseDate(String dateString) {
     if (Utils.isNotEmpty(dateString)) {
-      DateTime? theDate = DateTime.tryParse(dateString);
-
+      final DateTime? theDate = DateTime.tryParse(dateString);
       if (theDate != null) {
         return theDate;
       }
 
       try {
         // try again with DateFormat.parse()
-        theDate = DateFormat('MM/dd/yyy HH:mm:ss').parse(dateString);
+        return DateFormat('MM/dd/yyy HH:mm:ss').parse(dateString);
       } catch (err) {
         print('Error-2: dateString: $dateString, err: $err');
       }
 
       try {
         // 2021-07-24 2:32
-        theDate = DateFormat('yyy-MM-dd HH:mm').parse(dateString);
+        return DateFormat('yyy-MM-dd HH:mm').parse(dateString);
       } catch (err) {
         print('Error-2: dateString: $dateString, err: $err');
       }
 
-      if (theDate != null) {
-        return theDate;
+      try {
+        // used in RSS feeds
+        // Sun, 06 Aug 2023 17:00:00 +0000
+        return DateFormat('E, dd MMM yyyy, H:mm:ss').parse(dateString);
+      } catch (err) {
+        print('Error-2: dateString: $dateString, err: $err');
       }
     }
 
