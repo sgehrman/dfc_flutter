@@ -147,14 +147,14 @@ class Dates {
         // try again with DateFormat.parse()
         return DateFormat('MM/dd/yyy HH:mm:ss').parse(dateString);
       } catch (err) {
-        print('Error-1: dateString: $dateString, err: $err');
+        // print('Error-1: dateString: $dateString, err: $err');
       }
 
       try {
         // 2021-07-24 2:32
         return DateFormat('yyy-MM-dd HH:mm').parse(dateString);
       } catch (err) {
-        print('Error-2: dateString: $dateString, err: $err');
+        // print('Error-2: dateString: $dateString, err: $err');
       }
 
       try {
@@ -162,9 +162,11 @@ class Dates {
         // Sun, 06 Aug 2023 17:00:00 +0000
         return DateFormat('E, dd MMM yyyy H:mm:ss').parse(dateString);
       } catch (err) {
-        print('Error-3: dateString: $dateString, err: $err');
+        // print('Error-3: dateString: $dateString, err: $err');
       }
     }
+
+    print('Error: Dates.parseDate failed: $dateString');
 
     return null;
   }
