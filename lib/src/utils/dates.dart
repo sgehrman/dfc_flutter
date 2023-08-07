@@ -28,7 +28,7 @@ class Dates {
     return '';
   }
 
-  String formatInDays(DateTime dateTime) {
+  static String formatInDays(DateTime dateTime) {
     final today = DateTime.now();
     final difference = dateTime.difference(today);
 
