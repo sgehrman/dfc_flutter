@@ -118,6 +118,7 @@ export 'src/widgets/theme_button.dart';
 export 'src/widgets/thumb_widget.dart';
 export 'src/widgets/thumbs_up_control.dart';
 export 'src/widgets/title_detail_row.dart';
+export 'src/widgets/tool_tip.dart';
 export 'src/widgets/tooltip_utils.dart';
 export 'src/widgets/transparent_appbar_theme.dart';
 // export 'src/widgets/transparent_route.dart';
