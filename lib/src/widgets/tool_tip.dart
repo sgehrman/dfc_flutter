@@ -101,6 +101,15 @@ class _ToolTipContentState extends State<_ToolTipContent> {
         code: style,
         blockquote: style,
         tableBody: style,
+        pPadding: EdgeInsets.zero,
+        h1Padding: EdgeInsets.zero,
+        h2Padding: EdgeInsets.zero,
+        h3Padding: EdgeInsets.zero,
+        h4Padding: EdgeInsets.zero,
+        h5Padding: EdgeInsets.zero,
+        h6Padding: EdgeInsets.zero,
+        codeblockPadding: EdgeInsets.zero,
+        blockquotePadding: EdgeInsets.zero,
       );
 
       tooltipBody = MarkdownBody(
