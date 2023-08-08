@@ -33,9 +33,9 @@ class Dates {
     final difference = dateTime.difference(today);
 
     return switch (difference) {
-      Duration(inDays: 0) => 'today',
-      Duration(inDays: 1) => 'tomorrow',
-      Duration(inDays: -1) => 'yesterday',
+      Duration(inDays: 0) => 'Today',
+      Duration(inDays: 1) => 'Tomorrow',
+      Duration(inDays: -1) => 'Yesterday',
       Duration(inDays: final days) when days > 7 =>
         '${days ~/ 7} weeks from now', // Add from here
       Duration(inDays: final days) when days < -7 =>
