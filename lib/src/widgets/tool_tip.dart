@@ -1,5 +1,6 @@
 import 'package:dfc_flutter/src/preferences/preferences.dart';
 import 'package:dfc_flutter/src/themes/platform_sizes.dart';
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
@@ -14,18 +15,18 @@ class ToolTip extends StatelessWidget {
   });
 
   final Widget child;
-  final String message;
+  final String? message;
   final Duration? waitDuration;
 
   @override
   Widget build(BuildContext context) {
-    if (Preferences().disableTooltips || message.isEmpty) {
+    if (Preferences().disableTooltips || Utils.isEmpty(message)) {
       return child;
     }
 
     final WidgetSpan tooltipWidget = WidgetSpan(
       child: _ToolTipContent(
-        message: message,
+        message: message ?? '',
         maxWidth: 600,
       ),
     );

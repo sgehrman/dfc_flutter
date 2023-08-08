@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
+import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
 class MenuItemSpec extends StatelessWidget {
@@ -41,9 +41,8 @@ class MenuItemSpec extends StatelessWidget {
       leading = iconWidget!;
     }
 
-    return Tooltip(
-      message: tipString(tooltip),
-      waitDuration: const Duration(milliseconds: 500),
+    return ToolTip(
+      message: tooltip,
       child: Padding(
         padding: contentPadding,
         child: Row(

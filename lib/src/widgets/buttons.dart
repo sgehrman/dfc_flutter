@@ -1,5 +1,5 @@
 import 'package:dfc_flutter/src/widgets/context_menu_area.dart';
-import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
+import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
 class DFIconButton extends StatelessWidget {
@@ -71,8 +71,8 @@ class DFTextButton extends StatelessWidget {
       );
     }
 
-    return Tooltip(
-      message: tipString(tooltip),
+    return ToolTip(
+      message: tooltip,
       child: b,
     );
   }
@@ -111,8 +111,8 @@ class DFButton extends StatelessWidget {
       );
     }
 
-    return Tooltip(
-      message: tipString(tooltip),
+    return ToolTip(
+      message: tooltip,
       child: b,
     );
   }
@@ -151,8 +151,8 @@ class DFOutlineButton extends StatelessWidget {
       );
     }
 
-    return Tooltip(
-      message: tipString(tooltip),
+    return ToolTip(
+      message: tooltip,
       child: b,
     );
   }
