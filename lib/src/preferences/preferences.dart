@@ -40,9 +40,10 @@ class Preferences {
   }
 
   // tooltips
+  static const kDisableTooltipsKey = 'disableTooltips';
   bool get disableTooltips =>
-      prefs.get('disableTooltips', defaultValue: false) as bool;
-  set disableTooltips(bool? flag) => prefs.put('disableTooltips', flag);
+      prefs.get(kDisableTooltipsKey, defaultValue: false) as bool;
+  set disableTooltips(bool? flag) => prefs.put(kDisableTooltipsKey, flag);
 
   bool get showCheckerboardImages =>
       prefs.get('checkerboardImages', defaultValue: false) as bool;
