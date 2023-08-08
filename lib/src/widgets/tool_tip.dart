@@ -55,32 +55,6 @@ class _ToolTipContent extends StatefulWidget {
 }
 
 class _ToolTipContentState extends State<_ToolTipContent> {
-  static final TextStyle style = TextStyle(
-    fontSize: kFontSize.s,
-    decoration: TextDecoration.none,
-  );
-
-  static final markdownStyleSheet = MarkdownStyleSheet(
-    a: style,
-    img: style,
-    p: style,
-    h1: style,
-    checkbox: style,
-    del: style,
-    em: style,
-    h2: style,
-    h3: style,
-    h4: style,
-    h5: style,
-    h6: style,
-    listBullet: style,
-    tableHead: style,
-    strong: style,
-    code: style,
-    blockquote: style,
-    tableBody: style,
-  );
-
   @override
   Widget build(BuildContext context) {
     final msg = widget.message; // _wrapString();
@@ -102,6 +76,33 @@ class _ToolTipContentState extends State<_ToolTipContent> {
         ),
       );
     } else {
+      final TextStyle style = TextStyle(
+        fontSize: kFontSize.s,
+        color: Utils.isDarkMode(context) ? Colors.black : Colors.white,
+        decoration: TextDecoration.none,
+      );
+
+      final markdownStyleSheet = MarkdownStyleSheet(
+        a: style,
+        img: style,
+        p: style,
+        h1: style,
+        checkbox: style,
+        del: style,
+        em: style,
+        h2: style,
+        h3: style,
+        h4: style,
+        h5: style,
+        h6: style,
+        listBullet: style,
+        tableHead: style,
+        strong: style,
+        code: style,
+        blockquote: style,
+        tableBody: style,
+      );
+
       tooltipBody = MarkdownBody(
         imageBuilder: (uri, title, alt) {
           return const SizedBox();
@@ -114,10 +115,6 @@ class _ToolTipContentState extends State<_ToolTipContent> {
 
     return Container(
       constraints: BoxConstraints(maxHeight: 800, maxWidth: widget.maxWidth),
-      decoration: const BoxDecoration(
-        color: Colors
-            .blue, // Utils.isDarkMode(context) ? Colors.black87 : Colors.white70,
-      ),
       padding: const EdgeInsets.all(12),
       child: tooltipBody,
     );
