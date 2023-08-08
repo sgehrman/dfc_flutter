@@ -57,50 +57,46 @@ class _ToolTipContent extends StatefulWidget {
 class _ToolTipContentState extends State<_ToolTipContent> {
   @override
   Widget build(BuildContext context) {
-    final msg = widget.message; // _wrapString();
+    final msg = widget.message;
 
     // rss feed descriptions can be html, convert to markdown
     final markdown = html2md.convert(msg);
 
     Widget tooltipBody;
 
+    final textStyle = TextStyle(
+      fontSize: kFontSize.s,
+      color: Utils.isDarkMode(context) ? Colors.black : Colors.white,
+      decoration: TextDecoration.none,
+    );
+
+    // no change: not html, normal text
     if (msg == markdown) {
-      // markdown was expanded vertically for one line content
-      // so we just use a Text
       tooltipBody = Text(
         msg,
         softWrap: true,
-        style: TextStyle(
-          fontSize: kFontSize.s,
-          decoration: TextDecoration.none,
-        ),
+        style: textStyle,
       );
     } else {
-      final TextStyle style = TextStyle(
-        fontSize: kFontSize.s,
-        color: Utils.isDarkMode(context) ? Colors.black : Colors.white,
-        decoration: TextDecoration.none,
-      );
-
       final markdownStyleSheet = MarkdownStyleSheet(
-        a: style,
-        img: style,
-        p: style,
-        h1: style,
-        checkbox: style,
-        del: style,
-        em: style,
-        h2: style,
-        h3: style,
-        h4: style,
-        h5: style,
-        h6: style,
-        listBullet: style,
-        tableHead: style,
-        strong: style,
-        code: style,
-        blockquote: style,
-        tableBody: style,
+        a: textStyle,
+        img: textStyle,
+        p: textStyle,
+        h1: textStyle,
+        checkbox: textStyle,
+        del: textStyle,
+        em: textStyle,
+        h2: textStyle,
+        h3: textStyle,
+        h4: textStyle,
+        h5: textStyle,
+        h6: textStyle,
+        listBullet: textStyle,
+        tableHead: textStyle,
+        strong: textStyle,
+        code: textStyle,
+        blockquote: textStyle,
+        tableBody: textStyle,
         pPadding: EdgeInsets.zero,
         h1Padding: EdgeInsets.zero,
         h2Padding: EdgeInsets.zero,
@@ -122,9 +118,8 @@ class _ToolTipContentState extends State<_ToolTipContent> {
       );
     }
 
-    return Container(
+    return ConstrainedBox(
       constraints: BoxConstraints(maxHeight: 800, maxWidth: widget.maxWidth),
-      padding: const EdgeInsets.all(12),
       child: tooltipBody,
     );
   }
