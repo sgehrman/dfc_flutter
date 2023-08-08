@@ -114,6 +114,10 @@ class _ToolTipContentState extends State<_ToolTipContent> {
 
     return Container(
       constraints: BoxConstraints(maxHeight: 800, maxWidth: widget.maxWidth),
+      decoration: const BoxDecoration(
+        color: Colors
+            .blue, // Utils.isDarkMode(context) ? Colors.black87 : Colors.white70,
+      ),
       padding: const EdgeInsets.all(12),
       child: tooltipBody,
     );
