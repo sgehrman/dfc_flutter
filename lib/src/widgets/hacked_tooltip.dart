@@ -735,6 +735,8 @@ class _TooltipOverlay extends StatelessWidget {
       ),
     );
     // SNG hack here
+    // problem was if tooltip was large, it would not hide if mouse was over large
+    // overlay and you couldn't hover over the next item covered by the overlay
     // if (onEnter != null || onExit != null) {
     //   result = MouseRegion(
     //     onEnter: onEnter,
