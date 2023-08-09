@@ -1,6 +1,7 @@
 import 'package:dfc_flutter/src/preferences/preferences.dart';
 import 'package:dfc_flutter/src/themes/platform_sizes.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:dfc_flutter/src/widgets/hacked_tooltip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
@@ -35,7 +36,7 @@ class ToolTip extends StatelessWidget {
       ),
     );
 
-    return Tooltip(
+    return HackedTooltip(
       richMessage: tooltipWidget,
       waitDuration: waitDuration, // rarely customized, usually null
       child: child,
