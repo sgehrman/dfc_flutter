@@ -627,13 +627,13 @@ class TooltipState extends State<HackedTooltip>
         child: result,
       );
 
-      if (_mouseIsConnected) {
-        result = MouseRegion(
-          onEnter: (_) => _handleMouseEnter(),
-          onExit: (_) => _handleMouseExit(),
-          child: result,
-        );
-      }
+      // if (_mouseIsConnected) {
+      //   result = MouseRegion(
+      //     onEnter: (_) => _handleMouseEnter(),
+      //     onExit: (_) => _handleMouseExit(),
+      //     child: result,
+      //   );
+      // }
     }
 
     return result;

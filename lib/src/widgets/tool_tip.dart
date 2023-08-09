@@ -124,7 +124,7 @@ class _ToolTipContentState extends State<_ToolTipContent> {
     }
 
     return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: 800, maxWidth: widget.maxWidth),
+      constraints: BoxConstraints(maxHeight: 600, maxWidth: widget.maxWidth),
       // SingleChildScrollView since it could go past the maxheight
       child: SingleChildScrollView(child: tooltipBody),
     );
