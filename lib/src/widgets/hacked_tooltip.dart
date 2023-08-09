@@ -456,7 +456,9 @@ class TooltipState extends State<HackedTooltip>
         height: _height,
         padding: _padding,
         margin: _margin,
-        onEnter: _mouseIsConnected ? (_) => _handleMouseEnter() : null,
+        onEnter: _mouseIsConnected
+            ? (_) => _handleMouseExit()
+            : null, // SNG only hack _handleMouseEnter
         onExit: _mouseIsConnected ? (_) => _handleMouseExit() : null,
         decoration: _decoration,
         textStyle: _textStyle,
@@ -627,13 +629,13 @@ class TooltipState extends State<HackedTooltip>
         child: result,
       );
 
-      // if (_mouseIsConnected) {
-      //   result = MouseRegion(
-      //     onEnter: (_) => _handleMouseEnter(),
-      //     onExit: (_) => _handleMouseExit(),
-      //     child: result,
-      //   );
-      // }
+      if (_mouseIsConnected) {
+        result = MouseRegion(
+          onEnter: (_) => _handleMouseEnter(),
+          onExit: (_) => _handleMouseExit(),
+          child: result,
+        );
+      }
     }
 
     return result;
