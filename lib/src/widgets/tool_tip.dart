@@ -25,22 +25,20 @@ class ToolTip extends StatelessWidget {
     }
 
     final WidgetSpan tooltipWidget = WidgetSpan(
-      // must ignore pointer, otherwise scroll events are blocked and cursor changes on hover
-      child: _ToolTipContent(
-        message: message ?? '',
-        maxWidth: 600,
+      // this doesn't seem to work, don't have a solution
+      // problem is pointer events like the scrollwheel are captured by the tooltip
+      child: IgnorePointer(
+        child: _ToolTipContent(
+          message: message ?? '',
+          maxWidth: 600,
+        ),
       ),
     );
 
-    return IgnorePointer(
-      child: Tooltip(
-        richMessage: tooltipWidget,
-        waitDuration: waitDuration, // rarely customized, usually null
-        child: IgnorePointer(
-          ignoring: false,
-          child: child,
-        ),
-      ),
+    return Tooltip(
+      richMessage: tooltipWidget,
+      waitDuration: waitDuration, // rarely customized, usually null
+      child: child,
     );
   }
 }
