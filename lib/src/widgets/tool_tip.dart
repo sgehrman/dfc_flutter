@@ -25,9 +25,12 @@ class ToolTip extends StatelessWidget {
     }
 
     final WidgetSpan tooltipWidget = WidgetSpan(
-      child: _ToolTipContent(
-        message: message ?? '',
-        maxWidth: 600,
+      // must ignore pointer, otherwise scroll events are blocked and cursor changes on hover
+      child: IgnorePointer(
+        child: _ToolTipContent(
+          message: message ?? '',
+          maxWidth: 600,
+        ),
       ),
     );
 
