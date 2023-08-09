@@ -456,9 +456,7 @@ class TooltipState extends State<HackedTooltip>
         height: _height,
         padding: _padding,
         margin: _margin,
-        onEnter: _mouseIsConnected
-            ? (_) => _handleMouseExit()
-            : null, // SNG only hack _handleMouseEnter
+        onEnter: _mouseIsConnected ? (_) => _handleMouseEnter() : null,
         onExit: _mouseIsConnected ? (_) => _handleMouseExit() : null,
         decoration: _decoration,
         textStyle: _textStyle,
@@ -711,7 +709,7 @@ class _TooltipOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget result = IgnorePointer(
+    final Widget result = IgnorePointer(
       child: FadeTransition(
         opacity: animation,
         child: ConstrainedBox(
@@ -736,13 +734,14 @@ class _TooltipOverlay extends StatelessWidget {
         ),
       ),
     );
-    if (onEnter != null || onExit != null) {
-      result = MouseRegion(
-        onEnter: onEnter,
-        onExit: onExit,
-        child: result,
-      );
-    }
+    // SNG hack here
+    // if (onEnter != null || onExit != null) {
+    //   result = MouseRegion(
+    //     onEnter: onEnter,
+    //     onExit: onExit,
+    //     child: result,
+    //   );
+    // }
 
     return Positioned.fill(
       bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
