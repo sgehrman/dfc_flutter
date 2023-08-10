@@ -787,7 +787,7 @@ Offset positionDependentBoxHacked({
   double x;
 
   // verticalOffset is a fixed value and is useless, use widgetSize.height
-  final vertOffset = widgetSize.height;
+  final vertOffset = widgetSize.height / 2;
 
   // VERTICAL DIRECTION;
   final bool fitsBelow =
