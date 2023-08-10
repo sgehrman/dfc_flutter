@@ -467,7 +467,7 @@ class TooltipState extends State<HackedTooltip>
           curve: Curves.fastOutSlowIn,
         ),
         target: target,
-        widgetSize: box.size,
+        widgetSize: box.size, // SNG hack
         verticalOffset: _verticalOffset,
         preferBelow: _preferBelow,
       ),
@@ -651,6 +651,8 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
   });
 
   final Offset target;
+
+  // SNG hack
   final Size widgetSize;
 
   final double verticalOffset;
@@ -670,7 +672,7 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
       size: size,
       childSize: childSize,
       target: target,
-      widgetSize: widgetSize,
+      widgetSize: widgetSize, // SNG hack
       verticalOffset: verticalOffset,
       preferBelow: preferBelow,
     );
@@ -690,7 +692,7 @@ class _TooltipOverlay extends StatelessWidget {
     required this.richMessage,
     required this.animation,
     required this.target,
-    required this.widgetSize,
+    required this.widgetSize, // SNG hack
     required this.verticalOffset,
     required this.preferBelow,
     this.padding,
@@ -711,7 +713,7 @@ class _TooltipOverlay extends StatelessWidget {
   final TextAlign? textAlign;
   final Animation<double> animation;
   final Offset target;
-  final Size widgetSize;
+  final Size widgetSize; // SNG hack
   final double verticalOffset;
   final bool preferBelow;
   final PointerEnterEventListener? onEnter;
@@ -760,7 +762,7 @@ class _TooltipOverlay extends StatelessWidget {
       child: CustomSingleChildLayout(
         delegate: _TooltipPositionDelegate(
           target: target,
-          widgetSize: widgetSize,
+          widgetSize: widgetSize, // SNG hack
           verticalOffset: verticalOffset,
           preferBelow: preferBelow,
         ),
@@ -784,50 +786,39 @@ Offset positionDependentBoxHacked({
   double y;
   double x;
 
+  // verticalOffset is a fixed value and is useless, use widgetSize.height
+  final vertOffset = widgetSize.height;
+
   // VERTICAL DIRECTION;
   final bool fitsBelow =
-      target.dy + verticalOffset + childSize.height <= size.height - margin;
+      target.dy + vertOffset + childSize.height <= size.height - margin;
 
-  final bool fitsAbove =
-      target.dy - verticalOffset - childSize.height >= margin;
+  final bool fitsAbove = target.dy - vertOffset - childSize.height >= margin;
 
   final bool tooltipBelow =
       preferBelow ? fitsBelow || !fitsAbove : !(fitsAbove || !fitsBelow);
 
   if (tooltipBelow) {
-    y = math.min(target.dy + verticalOffset, size.height - margin);
+    y = math.min(target.dy + vertOffset, size.height - margin);
   } else {
-    y = math.max(target.dy - verticalOffset - childSize.height, margin);
+    y = math.max(target.dy - vertOffset - childSize.height, margin);
   }
-
-  print(
-    'size: $size, childSize: $childSize,  target: $target, margin: $margin verticalOffset: $verticalOffset widgetSize: $widgetSize',
-  );
 
   // HORIZONTAL DIRECTION
   if (size.width - margin * 2.0 < childSize.width) {
     x = (size.width - childSize.width) / 2.0;
-    print('1 x: $x');
   } else {
     final double normalizedTargetX =
         clampDouble(target.dx, margin, size.width - margin);
 
     final double edge = margin + childSize.width / 2.0;
 
-    print('normalizedTargetX: $normalizedTargetX, edge: $edge');
-
     if (normalizedTargetX < edge) {
       x = margin;
-      print('2: $x');
     } else if (normalizedTargetX > size.width - edge) {
       x = size.width - margin - childSize.width;
-      print('3: $x');
     } else {
       x = normalizedTargetX - childSize.width / 2.0;
-
-      x -= widgetSize.width / 2.0;
-
-      print('4: $x');
     }
   }
 
