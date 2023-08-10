@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ class HackedTooltip extends StatefulWidget {
     this.margin,
     this.verticalOffset,
     this.preferBelow,
+    this.horizontalPosition,
     this.excludeFromSemantics,
     this.decoration,
     this.textStyle,
@@ -53,6 +55,7 @@ class HackedTooltip extends StatefulWidget {
   final double? verticalOffset;
 
   final bool? preferBelow;
+  final TooltipHorizontalPosition? horizontalPosition;
 
   final bool? excludeFromSemantics;
 
@@ -470,6 +473,8 @@ class TooltipState extends State<HackedTooltip>
         widgetSize: box.size, // SNG hack
         verticalOffset: _verticalOffset,
         preferBelow: _preferBelow,
+        horizontalPosition:
+            widget.horizontalPosition ?? TooltipHorizontalPosition.center,
       ),
     );
     _entry = OverlayEntry(builder: (BuildContext context) => overlay);
@@ -648,12 +653,14 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
     required this.verticalOffset,
     required this.preferBelow,
     required this.widgetSize,
+    required this.horizontalPosition,
   });
 
   final Offset target;
 
   // SNG hack
   final Size widgetSize;
+  final TooltipHorizontalPosition horizontalPosition;
 
   final double verticalOffset;
 
@@ -675,6 +682,7 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
       widgetSize: widgetSize, // SNG hack
       verticalOffset: verticalOffset,
       preferBelow: preferBelow,
+      horizontalPosition: horizontalPosition,
     );
   }
 
@@ -695,6 +703,7 @@ class _TooltipOverlay extends StatelessWidget {
     required this.widgetSize, // SNG hack
     required this.verticalOffset,
     required this.preferBelow,
+    required this.horizontalPosition, // SNG hack
     this.padding,
     this.margin,
     this.decoration,
@@ -716,6 +725,7 @@ class _TooltipOverlay extends StatelessWidget {
   final Size widgetSize; // SNG hack
   final double verticalOffset;
   final bool preferBelow;
+  final TooltipHorizontalPosition horizontalPosition; // SNG hack
   final PointerEnterEventListener? onEnter;
   final PointerExitEventListener? onExit;
 
@@ -746,7 +756,7 @@ class _TooltipOverlay extends StatelessWidget {
         ),
       ),
     );
-    // SNG hack here
+    // SNG hack
     // problem was if tooltip was large, it would not hide if mouse was over large
     // overlay and you couldn't hover over the next item covered by the overlay
     // if (onEnter != null || onExit != null) {
@@ -765,6 +775,7 @@ class _TooltipOverlay extends StatelessWidget {
           widgetSize: widgetSize, // SNG hack
           verticalOffset: verticalOffset,
           preferBelow: preferBelow,
+          horizontalPosition: horizontalPosition,
         ),
         child: result,
       ),
@@ -773,6 +784,7 @@ class _TooltipOverlay extends StatelessWidget {
 }
 
 // ======================================================
+// SNG hack
 
 Offset positionDependentBoxHacked({
   required Size size,
@@ -780,6 +792,7 @@ Offset positionDependentBoxHacked({
   required Offset target,
   required Size widgetSize,
   required bool preferBelow,
+  required TooltipHorizontalPosition horizontalPosition,
   double verticalOffset = 0.0,
   double margin = 10.0,
 }) {
@@ -808,8 +821,22 @@ Offset positionDependentBoxHacked({
   if (size.width - margin * 2.0 < childSize.width) {
     x = (size.width - childSize.width) / 2.0;
   } else {
+    // target is the center of the widget
+    double horizTarget = target.dx;
+
+    switch (horizontalPosition) {
+      case TooltipHorizontalPosition.left:
+        horizTarget -= widgetSize.width / 2;
+        break;
+      case TooltipHorizontalPosition.right:
+        horizTarget += widgetSize.width / 2;
+        break;
+      case TooltipHorizontalPosition.center:
+        break;
+    }
+
     final double normalizedTargetX =
-        clampDouble(target.dx, margin, size.width - margin);
+        clampDouble(horizTarget, margin, size.width - margin);
 
     final double edge = margin + childSize.width / 2.0;
 

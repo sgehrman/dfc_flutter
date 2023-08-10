@@ -7,10 +7,19 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:html2md/html2md.dart' as html2md;
 
 // like Tooltip, but handles html tips
+
+enum TooltipHorizontalPosition {
+  center,
+  left,
+  right,
+}
+
 class ToolTip extends StatelessWidget {
   const ToolTip({
     required this.child,
     required this.message,
+    this.horizontalPosition,
+    this.preferBelow,
     this.waitDuration,
     super.key,
   });
@@ -18,6 +27,8 @@ class ToolTip extends StatelessWidget {
   final Widget child;
   final String? message;
   final Duration? waitDuration;
+  final bool? preferBelow;
+  final TooltipHorizontalPosition? horizontalPosition;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +50,8 @@ class ToolTip extends StatelessWidget {
     return HackedTooltip(
       richMessage: tooltipWidget,
       waitDuration: waitDuration, // rarely customized, usually null
+      horizontalPosition: horizontalPosition,
+      preferBelow: preferBelow,
       child: child,
     );
   }
