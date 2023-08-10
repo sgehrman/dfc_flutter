@@ -823,13 +823,14 @@ Offset positionDependentBoxHacked({
   } else {
     // target is the center of the widget
     double horizTarget = target.dx;
+    final double edge = margin + childSize.width / 2.0;
 
     switch (horizontalPosition) {
       case TooltipHorizontalPosition.left:
-        horizTarget -= widgetSize.width / 2;
+        horizTarget -= (widgetSize.width / 2) - edge;
         break;
       case TooltipHorizontalPosition.right:
-        horizTarget += widgetSize.width / 2;
+        horizTarget += (widgetSize.width / 2) - edge;
         break;
       case TooltipHorizontalPosition.center:
         break;
@@ -837,8 +838,6 @@ Offset positionDependentBoxHacked({
 
     final double normalizedTargetX =
         clampDouble(horizTarget, margin, size.width - margin);
-
-    final double edge = margin + childSize.width / 2.0;
 
     if (normalizedTargetX < edge) {
       x = margin;
