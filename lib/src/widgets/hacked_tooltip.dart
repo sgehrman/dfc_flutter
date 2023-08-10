@@ -467,6 +467,7 @@ class TooltipState extends State<HackedTooltip>
           curve: Curves.fastOutSlowIn,
         ),
         target: target,
+        widgetSize: box.size,
         verticalOffset: _verticalOffset,
         preferBelow: _preferBelow,
       ),
@@ -646,9 +647,11 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
     required this.target,
     required this.verticalOffset,
     required this.preferBelow,
+    required this.widgetSize,
   });
 
   final Offset target;
+  final Size widgetSize;
 
   final double verticalOffset;
 
@@ -667,6 +670,7 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
       size: size,
       childSize: childSize,
       target: target,
+      widgetSize: widgetSize,
       verticalOffset: verticalOffset,
       preferBelow: preferBelow,
     );
@@ -686,6 +690,7 @@ class _TooltipOverlay extends StatelessWidget {
     required this.richMessage,
     required this.animation,
     required this.target,
+    required this.widgetSize,
     required this.verticalOffset,
     required this.preferBelow,
     this.padding,
@@ -706,6 +711,7 @@ class _TooltipOverlay extends StatelessWidget {
   final TextAlign? textAlign;
   final Animation<double> animation;
   final Offset target;
+  final Size widgetSize;
   final double verticalOffset;
   final bool preferBelow;
   final PointerEnterEventListener? onEnter;
@@ -754,6 +760,7 @@ class _TooltipOverlay extends StatelessWidget {
       child: CustomSingleChildLayout(
         delegate: _TooltipPositionDelegate(
           target: target,
+          widgetSize: widgetSize,
           verticalOffset: verticalOffset,
           preferBelow: preferBelow,
         ),
@@ -769,6 +776,7 @@ Offset positionDependentBoxHacked({
   required Size size,
   required Size childSize,
   required Offset target,
+  required Size widgetSize,
   required bool preferBelow,
   double verticalOffset = 0.0,
   double margin = 10.0,
@@ -776,24 +784,24 @@ Offset positionDependentBoxHacked({
   double y;
   double x;
 
-  // VERTICAL DIRECTION
-  // final bool fitsBelow =
-  //     target.dy + verticalOffset + childSize.height <= size.height - margin;
+  // VERTICAL DIRECTION;
+  final bool fitsBelow =
+      target.dy + verticalOffset + childSize.height <= size.height - margin;
 
-  // final bool fitsAbove =
-  //     target.dy - verticalOffset - childSize.height >= margin;
+  final bool fitsAbove =
+      target.dy - verticalOffset - childSize.height >= margin;
 
-  // final bool tooltipBelow =
-  //     preferBelow ? fitsBelow || !fitsAbove : !(fitsAbove || !fitsBelow);
+  final bool tooltipBelow =
+      preferBelow ? fitsBelow || !fitsAbove : !(fitsAbove || !fitsBelow);
 
-  // if (tooltipBelow) {
-  //   y = math.min(target.dy + verticalOffset, size.height - margin);
-  // } else {
-  y = math.max(target.dy - verticalOffset - childSize.height, margin);
-  // }
+  if (tooltipBelow) {
+    y = math.min(target.dy + verticalOffset, size.height - margin);
+  } else {
+    y = math.max(target.dy - verticalOffset - childSize.height, margin);
+  }
 
   print(
-    'size: $size, childSize: $childSize,  target: $target, margin: $margin verticalOffset: $verticalOffset',
+    'size: $size, childSize: $childSize,  target: $target, margin: $margin verticalOffset: $verticalOffset widgetSize: $widgetSize',
   );
 
   // HORIZONTAL DIRECTION
@@ -816,6 +824,9 @@ Offset positionDependentBoxHacked({
       print('3: $x');
     } else {
       x = normalizedTargetX - childSize.width / 2.0;
+
+      x -= widgetSize.width / 2.0;
+
       print('4: $x');
     }
   }
