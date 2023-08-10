@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -659,7 +660,10 @@ class _TooltipPositionDelegate extends SingleChildLayoutDelegate {
 
   @override
   Offset getPositionForChild(Size size, Size childSize) {
-    return positionDependentBox(
+    // SNG hack
+    // problem was a switch tile would show the tooltip in the center
+    // add option to make it right or left side
+    return positionDependentBoxHacked(
       size: size,
       childSize: childSize,
       target: target,
@@ -757,4 +761,54 @@ class _TooltipOverlay extends StatelessWidget {
       ),
     );
   }
+}
+
+// ======================================================
+
+Offset positionDependentBoxHacked({
+  required Size size,
+  required Size childSize,
+  required Offset target,
+  required bool preferBelow,
+  double verticalOffset = 0.0,
+  double margin = 10.0,
+}) {
+  double y;
+  double x;
+
+  // VERTICAL DIRECTION
+  final bool fitsBelow =
+      target.dy + verticalOffset + childSize.height <= size.height - margin;
+
+  final bool fitsAbove =
+      target.dy - verticalOffset - childSize.height >= margin;
+
+  final bool tooltipBelow =
+      preferBelow ? fitsBelow || !fitsAbove : !(fitsAbove || !fitsBelow);
+
+  if (tooltipBelow) {
+    y = math.min(target.dy + verticalOffset, size.height - margin);
+  } else {
+    y = math.max(target.dy - verticalOffset - childSize.height, margin);
+  }
+
+  // HORIZONTAL DIRECTION
+  if (size.width - margin * 2.0 < childSize.width) {
+    x = (size.width - childSize.width) / 2.0;
+  } else {
+    final double normalizedTargetX =
+        clampDouble(target.dx, margin, size.width - margin);
+
+    final double edge = margin + childSize.width / 2.0;
+
+    if (normalizedTargetX < edge) {
+      x = margin;
+    } else if (normalizedTargetX > size.width - edge) {
+      x = size.width - margin - childSize.width;
+    } else {
+      x = normalizedTargetX - childSize.width / 2.0;
+    }
+  }
+
+  return Offset(x, y);
 }
