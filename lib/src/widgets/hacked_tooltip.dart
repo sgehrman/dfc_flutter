@@ -777,23 +777,23 @@ Offset positionDependentBoxHacked({
   double x;
 
   // VERTICAL DIRECTION
-  final bool fitsBelow =
-      target.dy + verticalOffset + childSize.height <= size.height - margin;
+  // final bool fitsBelow =
+  //     target.dy + verticalOffset + childSize.height <= size.height - margin;
 
-  final bool fitsAbove =
-      target.dy - verticalOffset - childSize.height >= margin;
+  // final bool fitsAbove =
+  //     target.dy - verticalOffset - childSize.height >= margin;
 
-  final bool tooltipBelow =
-      preferBelow ? fitsBelow || !fitsAbove : !(fitsAbove || !fitsBelow);
+  // final bool tooltipBelow =
+  //     preferBelow ? fitsBelow || !fitsAbove : !(fitsAbove || !fitsBelow);
 
-  if (tooltipBelow) {
-    y = math.min(target.dy + verticalOffset, size.height - margin);
-  } else {
-    y = math.max(target.dy - verticalOffset - childSize.height, margin);
-  }
+  // if (tooltipBelow) {
+  //   y = math.min(target.dy + verticalOffset, size.height - margin);
+  // } else {
+  y = math.max(target.dy - verticalOffset - childSize.height, margin);
+  // }
 
   print(
-    'size: $size, childSize: $childSize,  target: $target, margin: $margin',
+    'size: $size, childSize: $childSize,  target: $target, margin: $margin verticalOffset: $verticalOffset',
   );
 
   // HORIZONTAL DIRECTION
