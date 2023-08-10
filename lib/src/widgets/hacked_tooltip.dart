@@ -794,12 +794,12 @@ Offset positionDependentBoxHacked({
 
   // HORIZONTAL DIRECTION
   if (size.width - margin * 2.0 < childSize.width) {
-    x = (size.width - childSize.width) / 2.0;
+    x = (size.width - childSize.width) / 1.1;
   } else {
     final double normalizedTargetX =
         clampDouble(target.dx, margin, size.width - margin);
 
-    final double edge = margin + childSize.width / 1.1;
+    final double edge = margin + childSize.width / 2.0;
 
     if (normalizedTargetX < edge) {
       x = margin;
