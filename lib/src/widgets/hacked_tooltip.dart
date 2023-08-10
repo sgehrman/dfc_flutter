@@ -799,7 +799,7 @@ Offset positionDependentBoxHacked({
     final double normalizedTargetX =
         clampDouble(target.dx, margin, size.width - margin);
 
-    final double edge = margin + childSize.width / 2.0;
+    final double edge = margin + childSize.width / 1.1;
 
     if (normalizedTargetX < edge) {
       x = margin;
