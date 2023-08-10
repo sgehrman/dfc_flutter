@@ -794,7 +794,8 @@ Offset positionDependentBoxHacked({
 
   // HORIZONTAL DIRECTION
   if (size.width - margin * 2.0 < childSize.width) {
-    x = (size.width - childSize.width) / 1.1;
+    x = (size.width - childSize.width) / 2.0;
+    print('1 x: $x');
   } else {
     final double normalizedTargetX =
         clampDouble(target.dx, margin, size.width - margin);
@@ -803,10 +804,13 @@ Offset positionDependentBoxHacked({
 
     if (normalizedTargetX < edge) {
       x = margin;
+      print('2 x: $x           $normalizedTargetX  $edge');
     } else if (normalizedTargetX > size.width - edge) {
       x = size.width - margin - childSize.width;
+      print('3 x: $x           $normalizedTargetX  $edge');
     } else {
       x = normalizedTargetX - childSize.width / 2.0;
+      print('4 x: $x           $normalizedTargetX  $edge');
     }
   }
 
