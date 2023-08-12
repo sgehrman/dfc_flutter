@@ -185,7 +185,7 @@ class Dates {
     required DateTime? date,
   }) {
     if (date != null) {
-      final DateFormat formatter = DateFormat('h:mma');
+      final DateFormat formatter = DateFormat('h:mm a');
 
       return formatter.format(date.toLocal());
     }
