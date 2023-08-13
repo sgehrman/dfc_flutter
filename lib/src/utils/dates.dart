@@ -184,9 +184,12 @@ class Dates {
   static String timeOnly({
     required DateTime? date,
     bool local = true,
+    bool leadingZero = false,
   }) {
     if (date != null) {
-      final DateFormat formatter = DateFormat('h:mm a');
+      final format = leadingZero ? 'hh:mm a' : 'h:mm a';
+
+      final DateFormat formatter = DateFormat(format);
 
       return formatter.format(local ? date.toLocal() : date);
     }
