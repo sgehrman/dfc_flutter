@@ -183,11 +183,12 @@ class Dates {
 
   static String timeOnly({
     required DateTime? date,
+    bool local = true,
   }) {
     if (date != null) {
       final DateFormat formatter = DateFormat('h:mm a');
 
-      return formatter.format(date.toLocal());
+      return formatter.format(local ? date.toLocal() : date);
     }
 
     // don't want to crash Text, return '' instead of null
