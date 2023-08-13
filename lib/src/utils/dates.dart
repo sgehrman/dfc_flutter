@@ -185,9 +185,14 @@ class Dates {
     required DateTime? date,
     bool local = true,
     bool leadingZero = false,
+    bool seconds = false,
   }) {
     if (date != null) {
-      final format = leadingZero ? 'hh:mm a' : 'h:mm a';
+      String format = leadingZero ? 'hh:mm a' : 'h:mm a';
+
+      if (seconds) {
+        format = leadingZero ? 'hh:mm:ss a' : 'h:mm:ss a';
+      }
 
       final DateFormat formatter = DateFormat(format);
 
