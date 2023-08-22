@@ -10,6 +10,7 @@ import 'package:dfc_flutter/src/widgets/ttext.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:html2md/html2md.dart' as html2md;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart' as p;
 import 'package:url_launcher/url_launcher.dart' as launcher;
@@ -555,6 +556,10 @@ class Utils {
 
   static bool isEmpty(dynamic input) {
     return !isNotEmpty(input);
+  }
+
+  static String htmlToMd(String text) {
+    return html2md.convert(text);
   }
 
   static void successSnackbar({
