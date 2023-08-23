@@ -8,11 +8,13 @@ class MenuButtonItem<T> {
     required this.value,
     this.iconData,
     this.iconWidget,
+    this.tooltip,
   });
   final String title;
   final T value;
   final IconData? iconData;
   final Widget? iconWidget;
+  final String? tooltip;
 }
 
 class MenuButton<T> extends StatelessWidget {
@@ -87,6 +89,7 @@ class MenuButton<T> extends StatelessWidget {
             iconData: item.iconData,
             iconWidget: item.iconWidget,
             name: item.title,
+            tooltip: item.tooltip,
           ),
         ),
       );
