@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:http/http.dart' as http;
 
 class HttpUtils {
@@ -19,6 +21,53 @@ class HttpUtils {
       print('### Error(http.get): err:$err url: $uri');
       rethrow;
     }
+  }
+
+  static Future<String> httpGetBody(
+    Uri uri, {
+    int timeout = 10,
+  }) async {
+    try {
+      final response = await httpGet(
+        uri,
+        timeout: timeout,
+      );
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        String? decoded;
+
+        // this fails
+        // https://tass.com/rss/v2.xml
+        // https://github.com/dart-lang/http/issues/180
+
+        // nytimes uses weird quotes that are utf8, but the file doesn't specify utf-8
+        // so by default it uses latin1 for body and fails, so we have to besure to decode utf-8
+
+        // one feed on CNN crashes with utf8, but works on latin1?
+
+        // try the normal way first
+        try {
+          decoded = response.body;
+        } catch (e) {
+          print('response.body failed: $e');
+        }
+
+        // if fails, get the body as utf8
+        if (Utils.isEmpty(decoded)) {
+          try {
+            decoded = utf8.decode(response.bodyBytes);
+          } catch (e) {
+            print('utf8.decode(response.bodyBytes) failed: $e');
+          }
+        }
+
+        return decoded ?? '';
+      }
+    } catch (err) {
+      print('### Error(http.get): err:$err url: $uri');
+    }
+
+    return '';
   }
 
   // is this better for redirects?
