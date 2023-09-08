@@ -10,7 +10,7 @@ class HttpUtils {
 
   static Future<http.Response> httpGet(
     Uri uri, {
-    int timeout = 10,
+    int timeout = 20,
   }) {
     try {
       return http.get(uri).timeout(Duration(seconds: timeout));
@@ -25,7 +25,7 @@ class HttpUtils {
 
   static Future<String> httpGetBody(
     Uri uri, {
-    int timeout = 10,
+    int timeout = 20,
   }) async {
     try {
       final response = await httpGet(
@@ -83,7 +83,7 @@ class HttpUtils {
 
   static Future<Uint8List> httpGetStream(
     Uri uri, {
-    int timeout = 10,
+    int timeout = 20,
   }) async {
     final httpClient = http.Client();
 
@@ -119,7 +119,7 @@ class HttpUtils {
 
   static Future<http.Response> httpHead(
     Uri uri, {
-    int timeout = 10,
+    int timeout = 20,
   }) {
     try {
       return http.head(uri).timeout(Duration(seconds: timeout));
@@ -142,7 +142,7 @@ class HttpUtils {
 
   static Future<String> httpGetBodyWithRedirects(
     Uri uri, {
-    int timeout = 10,
+    int timeout = 20,
   }) async {
     String receivedCookies = '';
     Uri getUri = uri;
