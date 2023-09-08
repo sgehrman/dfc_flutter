@@ -45,19 +45,19 @@ class HttpUtils {
 
         // one feed on CNN crashes with utf8, but works on latin1?
 
-        // try the normal way first
+        // try the utf8 first, japanese broken with response.body? http://rss.asahi.com/rss/asahi/newsheadlines.rdf
         try {
-          decoded = response.body;
+          decoded = utf8.decode(response.bodyBytes);
         } catch (e) {
-          print('response.body failed: $e');
+          print('utf8.decode(response.bodyBytes) failed: $e');
         }
 
-        // if fails, get the body as utf8
+        // if fails, get the body as normal
         if (Utils.isEmpty(decoded)) {
           try {
-            decoded = utf8.decode(response.bodyBytes);
+            decoded = response.body;
           } catch (e) {
-            print('utf8.decode(response.bodyBytes) failed: $e');
+            print('response.body failed: $e');
           }
         }
 
