@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:dfc_flutter/dfc_flutter_web_lite.dart';
 import 'package:flutter/material.dart';
 
@@ -178,8 +180,8 @@ class Paragraf extends StatelessWidget {
       return TextSpan(
         children: [
           WidgetSpan(
-            // baseline: TextBaseline.alphabetic,
-            // alignment: ui.PlaceholderAlignment.baseline,
+            baseline: TextBaseline.alphabetic,
+            alignment: ui.PlaceholderAlignment.baseline,
             child: InkWell(
               onTap: () {
                 Utils.launchUrl(spec.href);
@@ -197,7 +199,7 @@ class Paragraf extends StatelessWidget {
 
     const String spaces = '';
     if (spec.spaces > 0) {
-      nls = List.generate(spec.newlines, (index) => ' ').join();
+      nls = List.generate(spec.spaces, (index) => ' ').join();
     }
 
     return TextSpan(
