@@ -197,9 +197,9 @@ class Paragraf extends StatelessWidget {
       );
     }
 
-    const String spaces = '';
+    String spaces = '';
     if (spec.spaces > 0) {
-      nls = List.generate(spec.spaces, (index) => ' ').join();
+      spaces = List.generate(spec.spaces, (index) => ' ').join();
     }
 
     return TextSpan(
