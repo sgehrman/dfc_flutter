@@ -12,7 +12,6 @@
 # Libraries should not include pubspec.lock, per https://dart.dev/guides/libraries/private-files#pubspeclock.
 /pubspec.lock
 
-
 # IntelliJ related
 *.iml
 *.ipr
