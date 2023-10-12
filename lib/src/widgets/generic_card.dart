@@ -1,6 +1,6 @@
 import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:dfc_flutter/src/widgets/menu_item.dart';
+import 'package:dfc_flutter/src/widgets/menu_item_widget.dart';
 import 'package:dfc_flutter/src/widgets/primary_title.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +71,7 @@ class GenericCard extends StatelessWidget {
             popupMenuItem<String>(
               value: 'edit',
               enabled: onEdit != null,
-              child: const MenuItemSpec(
+              child: const MenuItemWidget(
                 iconData: Icons.edit,
                 name: 'Edit',
               ),
@@ -84,7 +84,7 @@ class GenericCard extends StatelessWidget {
             popupMenuItem<String>(
               value: 'delete',
               enabled: onDelete != null,
-              child: const MenuItemSpec(
+              child: const MenuItemWidget(
                 iconData: Icons.delete,
                 name: 'Delete',
               ),

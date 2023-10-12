@@ -1,8 +1,8 @@
 import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
-class MenuItemSpec extends StatelessWidget {
-  const MenuItemSpec({
+class MenuItemWidget extends StatelessWidget {
+  const MenuItemWidget({
     required this.name,
     this.iconWidget,
     this.iconData,

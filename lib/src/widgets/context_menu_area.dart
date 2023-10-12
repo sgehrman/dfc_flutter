@@ -1,6 +1,6 @@
 import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:dfc_flutter/src/widgets/menu_item.dart';
+import 'package:dfc_flutter/src/widgets/menu_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class MenuItemData {
@@ -40,7 +40,7 @@ class MenuItemData {
           popupMenuItem<MenuItemData>(
             value: itemData,
             enabled: itemData.enabled,
-            child: MenuItemSpec(
+            child: MenuItemWidget(
               iconData: itemData.iconData,
               iconWidget: itemData.iconWidget,
               name: itemData.title,
