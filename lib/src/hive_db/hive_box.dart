@@ -141,4 +141,43 @@ class HiveBox<T> {
 
     return _box?.deleteAt(index);
   }
+
+  // ------------------------------------
+  // reorder, only works for indexed items
+
+  Future<void> reorder(int from, int to) async {
+    assert(_box != null, 'Box is closed: $name');
+
+    if (from == to) {
+      print('reorder failed, bad params: from: $from, to: $to');
+
+      return;
+    }
+
+    if (from < 0 || from >= length) {
+      print('reorder failed, bad params: from: $from, to: $to');
+
+      return;
+    }
+
+    if (to < 0 || to >= length) {
+      print('reorder failed, bad params: from: $from, to: $to');
+
+      return;
+    }
+
+    final item = getAt(from);
+    if (item != null) {
+      await _box?.deleteAt(from);
+
+      int putIndex = to;
+      if (to > from) {
+        putIndex--;
+      }
+
+      await putAt(putIndex, item);
+    } else {
+      print('reorder failed getAt null: from: $from, to: $to');
+    }
+  }
 }
