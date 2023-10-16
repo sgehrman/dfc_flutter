@@ -160,22 +160,31 @@ class HiveBox<T> {
       return;
     }
 
-    if (to < 0 || to >= length) {
+    // "to" can be equal to length for append to end
+    if (to < 0 || to > length) {
       print('reorder failed, bad params: from: $from, to: $to');
 
       return;
     }
 
-    final item = getAt(from);
-    if (item != null) {
-      await _box?.deleteAt(from);
+    // there's no easy way to insert into a hive box, put replaces
+    //  so just get the whole array and clear, then addAll in the correct order
+
+    final items = getAll();
+    if (items.isNotEmpty) {
+      final item = items[from];
+
+      items.removeAt(from);
 
       int putIndex = to;
       if (to > from) {
         putIndex--;
       }
 
-      await putAt(putIndex, item);
+      items.insert(putIndex, item);
+
+      await _box!.clear();
+      await _box!.addAll(items);
     } else {
       print('reorder failed getAt null: from: $from, to: $to');
     }
