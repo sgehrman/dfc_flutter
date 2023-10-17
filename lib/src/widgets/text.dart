@@ -42,6 +42,7 @@ class Text12 extends _TextBase {
     int? maxLines,
     bool bold = false,
     Color? color,
+    double? height,
   }) : super(
           text,
           style: style,
@@ -50,6 +51,7 @@ class Text12 extends _TextBase {
           size: size,
           textAlign: textAlign,
           maxLines: maxLines,
+          height: height,
         );
 
   static const double size = 12;
