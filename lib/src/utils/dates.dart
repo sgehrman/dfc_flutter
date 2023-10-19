@@ -186,12 +186,21 @@ class Dates {
     bool local = true,
     bool leadingZero = false,
     bool seconds = false,
+    bool twentyFourHour = false,
   }) {
     if (date != null) {
-      String format = leadingZero ? 'hh:mm a' : 'h:mm a';
+      String hr = 'h';
+      String amPm = ' a';
+
+      if (twentyFourHour) {
+        hr = 'k';
+        amPm = '';
+      }
+
+      String format = leadingZero ? '$hr$hr:mm$amPm' : '$hr:mm$amPm';
 
       if (seconds) {
-        format = leadingZero ? 'hh:mm:ss a' : 'h:mm:ss a';
+        format = leadingZero ? '$hr$hr:mm:ss$amPm' : '$hr:mm:ss$amPm';
       }
 
       final DateFormat formatter = DateFormat(format);
