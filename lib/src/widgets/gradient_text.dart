@@ -18,7 +18,6 @@ class GradientText extends StatelessWidget {
         Colors.pink,
         Colors.purple,
         Colors.deepPurple,
-        Colors.deepPurple,
         Colors.indigo,
         Colors.blue,
         Colors.lightBlue,
