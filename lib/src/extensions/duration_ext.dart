@@ -5,6 +5,10 @@ extension ExtendedDuration on Duration {
     return '$hoursString : $minutesString : $secondsString : $tenthsString';
   }
 
+  String get shortElapsedString {
+    return '$hoursString:$minutesString:$secondsString';
+  }
+
   String get hoursString {
     final Duration e = this;
 
