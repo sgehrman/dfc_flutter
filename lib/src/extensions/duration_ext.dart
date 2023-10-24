@@ -6,7 +6,19 @@ extension ExtendedDuration on Duration {
   }
 
   String get shortElapsedString {
-    return '$hoursString:$minutesString:$secondsString';
+    final Duration e = this;
+
+    if (e.inHours == 0) {
+      // no leading zero of first numbers
+      final minsStr = e.inMinutes.remainder(60);
+
+      return '$minsStr:$secondsString';
+    }
+
+    // no leading zero of first numbers
+    final hrsStr = e.inHours.remainder(24);
+
+    return '$hrsStr:$minutesString:$secondsString';
   }
 
   String get hoursString {
