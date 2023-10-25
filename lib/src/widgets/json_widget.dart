@@ -5,29 +5,39 @@ import 'package:flutter/material.dart';
 const double arrowIconSize = 26;
 
 class JsonViewerWidget extends StatefulWidget {
-  const JsonViewerWidget(this.jsonObj, {this.notRoot});
+  const JsonViewerWidget(
+    this.jsonObj, {
+    this.notRoot = false,
+    this.convertIntsToDates = true,
+  });
 
   final Map<String, dynamic> jsonObj;
-  final bool? notRoot;
+  final bool notRoot;
+  final bool convertIntsToDates;
 
   @override
   JsonViewerWidgetState createState() => JsonViewerWidgetState();
 }
 
-String _intToString(int content) {
+String _intToString(
+  int content, {
+  required bool convertIntsToDates,
+}) {
   String contentStr = content.toString();
 
-  // convert to date if number is large
-  // chargebee is seconds, so we check for that too
-  DateTime? date;
-  if (content > 1000000000000) {
-    date = DateTime.fromMillisecondsSinceEpoch(content);
-  } else if (content > 1000000000) {
-    date = DateTime.fromMillisecondsSinceEpoch(content * 1000);
-  }
+  if (convertIntsToDates) {
+    // convert to date if number is large
+    // chargebee is seconds, so we check for that too
+    DateTime? date;
+    if (content > 1000000000000) {
+      date = DateTime.fromMillisecondsSinceEpoch(content);
+    } else if (content > 1000000000) {
+      date = DateTime.fromMillisecondsSinceEpoch(content * 1000);
+    }
 
-  if (date != null && date.year > 1700 && date.year < 3000) {
-    contentStr = date.toString();
+    if (date != null && date.year > 1700 && date.year < 3000) {
+      contentStr = date.toString();
+    }
   }
 
   return contentStr;
@@ -38,7 +48,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.notRoot ?? false) {
+    if (widget.notRoot) {
       return Container(
         padding: const EdgeInsets.only(left: 14),
         child: Column(
@@ -131,7 +141,12 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
       list.add(const SizedBox(height: 4));
       if (!_closedFlag.contains(entry.key)) {
         if (entry.value is List || entry.value is Map) {
-          list.add(getContentWidget(entry.value));
+          list.add(
+            getContentWidget(
+              entry.value,
+              convertIntsToDates: widget.convertIntsToDates,
+            ),
+          );
         }
       }
     }
@@ -139,13 +154,21 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     return list;
   }
 
-  static Widget getContentWidget(dynamic content) {
+  static Widget getContentWidget(
+    dynamic content, {
+    required bool convertIntsToDates,
+  }) {
     if (content is List) {
-      return JsonArrayViewerWidget(content, notRoot: true);
+      return JsonArrayViewerWidget(
+        content,
+        notRoot: true,
+        convertIntsToDates: convertIntsToDates,
+      );
     } else {
       return JsonViewerWidget(
         Map<String, dynamic>.from(content as Map),
         notRoot: true,
+        convertIntsToDates: convertIntsToDates,
       );
     }
   }
@@ -181,7 +204,10 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     } else if (entry.value is int) {
       return Expanded(
         child: Text(
-          _intToString(entry.value as int),
+          _intToString(
+            entry.value as int,
+            convertIntsToDates: widget.convertIntsToDates,
+          ),
           style: const TextStyle(color: Colors.grey),
         ),
       );
@@ -298,11 +324,16 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
 }
 
 class JsonArrayViewerWidget extends StatefulWidget {
-  const JsonArrayViewerWidget(this.jsonArray, {this.notRoot});
+  const JsonArrayViewerWidget(
+    this.jsonArray, {
+    this.notRoot = false,
+    this.convertIntsToDates = true,
+  });
 
   final List<dynamic> jsonArray;
 
-  final bool? notRoot;
+  final bool notRoot;
+  final bool convertIntsToDates;
 
   @override
   State<JsonArrayViewerWidget> createState() => _JsonArrayViewerWidgetState();
@@ -313,7 +344,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.notRoot ?? false) {
+    if (widget.notRoot) {
       return Container(
         padding: const EdgeInsets.only(left: 14),
         child: Column(
@@ -399,7 +430,12 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
       list.add(const SizedBox(height: 4));
       if (!_closedFlag.contains(i)) {
         if (content is List || content is Map) {
-          list.add(JsonViewerWidgetState.getContentWidget(content));
+          list.add(
+            JsonViewerWidgetState.getContentWidget(
+              content,
+              convertIntsToDates: widget.convertIntsToDates,
+            ),
+          );
         }
       }
       i++;
@@ -443,7 +479,10 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
     } else if (content is int) {
       return Expanded(
         child: Text(
-          _intToString(content),
+          _intToString(
+            content,
+            convertIntsToDates: widget.convertIntsToDates,
+          ),
           style: const TextStyle(color: Colors.grey),
         ),
       );
