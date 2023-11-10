@@ -3,8 +3,6 @@ import 'dart:ui';
 
 import 'package:vector_math/vector_math_64.dart';
 
-final int startTime = DateTime.now().millisecondsSinceEpoch;
-
 class StarField {
   StarField(int starCount) {
     for (int i = 0; i < starCount; i++) {
@@ -15,7 +13,7 @@ class StarField {
   List<Star> stars = [];
 }
 
-Random starRandom = Random.secure();
+Random _starRandom = Random.secure();
 
 class Star {
   final Vector3 position = Vector3(
@@ -23,10 +21,10 @@ class Star {
     getNormalizedRandom(),
     getNormalizedRandom(),
   );
-  final int alpha = starRandom.nextInt(128) + 128;
-  final int red = starRandom.nextInt(50) + 205;
-  final int green = starRandom.nextInt(50) + 205;
-  final int blue = starRandom.nextInt(50) + 205;
+  final int alpha = _starRandom.nextInt(128) + 128;
+  final int red = _starRandom.nextInt(50) + 205;
+  final int green = _starRandom.nextInt(50) + 205;
+  final int blue = _starRandom.nextInt(50) + 205;
   final Vector3 screenVector = Vector3.zero();
   Offset screenOffset = Offset.zero;
 
@@ -35,5 +33,5 @@ class Star {
 
   double z = 0;
 
-  static double getNormalizedRandom() => starRandom.nextDouble();
+  static double getNormalizedRandom() => _starRandom.nextDouble();
 }
