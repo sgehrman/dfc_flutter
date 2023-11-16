@@ -5,8 +5,8 @@ import 'package:dfc_flutter/src/widgets/primary_title.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
-const double kBorderRadius = 12;
-const double kSmallBorderRadius = 8;
+const double _borderRadius = 12;
+const double _smallBorderRadius = 8;
 
 class GenericCard extends StatelessWidget {
   const GenericCard({
@@ -228,7 +228,7 @@ class AddCard extends StatelessWidget {
       strokeWidth: strokeWidth,
       strokeCap: StrokeCap.round,
       borderType: BorderType.RRect,
-      radius: Radius.circular(small ? kSmallBorderRadius : kBorderRadius),
+      radius: Radius.circular(small ? _smallBorderRadius : _borderRadius),
       color: cardColor,
       child: BaseCard(
         elevation: 0,
@@ -282,7 +282,7 @@ class BaseCard extends StatelessWidget {
       color: fill ? null : Colors.transparent,
       shape: RoundedRectangleBorder(
         borderRadius:
-            BorderRadius.circular(small ? kSmallBorderRadius : kBorderRadius),
+            BorderRadius.circular(small ? _smallBorderRadius : _borderRadius),
       ),
       margin: EdgeInsets.zero,
       child: ConstrainedBox(
