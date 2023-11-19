@@ -53,6 +53,7 @@ export 'src/utils/dates.dart';
 export 'src/utils/debouncer.dart';
 export 'src/utils/image_processor.dart';
 export 'src/utils/menu_utils.dart';
+export 'src/utils/next_color.dart';
 export 'src/utils/plist_parser.dart';
 export 'src/utils/rect_clipper.dart';
 export 'src/utils/sort_menu_button.dart';
