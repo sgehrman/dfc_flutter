@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class NextColor {
   int _colorIndex = 0;
 
-  final colors = <Color>[
+  final _colors = <Color>[
     Colors.red,
     Colors.pink,
     Colors.purple,
@@ -13,7 +13,7 @@ class NextColor {
     Colors.orange,
   ];
 
-  final darkColors = <Color>[
+  final _darkColors = <Color>[
     Colors.red[900] ?? Colors.black,
     Colors.pink[900] ?? Colors.black,
     Colors.purple[900] ?? Colors.black,
@@ -24,7 +24,7 @@ class NextColor {
   ];
 
   int _nextIndex(bool useDark) {
-    final length = useDark ? darkColors.length : colors.length;
+    final length = useDark ? _darkColors.length : _colors.length;
 
     if (_colorIndex >= length) {
       _colorIndex = 0;
@@ -34,10 +34,10 @@ class NextColor {
   }
 
   Color color() {
-    return colors[_nextIndex(false)];
+    return _colors[_nextIndex(false)];
   }
 
   Color darkColor() {
-    return darkColors[_nextIndex(true)];
+    return _darkColors[_nextIndex(true)];
   }
 }
