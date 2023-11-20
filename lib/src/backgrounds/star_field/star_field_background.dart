@@ -36,7 +36,6 @@ class StarFieldContainingStatefulWidget extends StatefulWidget {
 
 class StarFieldState extends State<StarFieldContainingStatefulWidget>
     with SingleTickerProviderStateMixin {
-  Animation<double>? animation;
   late AnimationController controller;
   final MainScreenViewModel viewModel =
       MainScreenViewModel(600, StarField(600));
@@ -46,7 +45,7 @@ class StarFieldState extends State<StarFieldContainingStatefulWidget>
     super.initState();
     controller =
         AnimationController(duration: const Duration(days: 1000), vsync: this);
-    animation = Tween<double>(begin: 0, end: 300).animate(controller);
+
     controller.forward();
   }
 

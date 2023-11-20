@@ -53,7 +53,7 @@ class DateTimeFormField extends StatelessWidget {
       if (Platform.isAndroid) {
         date = await showDatePicker(
           context: context,
-          initialDate: state.value!,
+          initialDate: state.value,
           firstDate: firstDate,
           lastDate: lastDate,
         );
@@ -116,7 +116,7 @@ class DateTimeFormField extends StatelessWidget {
       if (Platform.isAndroid) {
         date = await showDatePicker(
           context: context,
-          initialDate: state.value!,
+          initialDate: state.value,
           firstDate: firstDate,
           lastDate: lastDate,
         );

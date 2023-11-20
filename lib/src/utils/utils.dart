@@ -4,7 +4,6 @@ import 'dart:io';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
-import 'package:collection/collection.dart' show IterableExtension;
 import 'package:dfc_flutter/src/widgets/shared_snack_bar.dart';
 import 'package:dfc_flutter/src/widgets/ttext.dart';
 import 'package:flutter/foundation.dart';
@@ -571,27 +570,6 @@ class Utils {
       title: title,
       message: message,
       error: error,
-    );
-  }
-
-  static String enumToString(Object? enumItem) {
-    if (enumItem == null) {
-      return '';
-    }
-
-    return describeEnum(enumItem);
-  }
-
-  static T? enumFromString<T>(
-    List<T> enumValues,
-    String value,
-  ) {
-    if (Utils.isEmpty(enumValues) || Utils.isEmpty(value)) {
-      return null;
-    }
-
-    return enumValues.singleWhereOrNull(
-      (enumItem) => enumToString(enumItem).toLowerCase() == value.toLowerCase(),
     );
   }
 

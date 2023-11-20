@@ -122,7 +122,6 @@ class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {
       child: Text(
         '9',
         style: widget.textStyle,
-        textScaleFactor: 1,
         textAlign: TextAlign.center,
       ),
     );
@@ -153,7 +152,6 @@ class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {
                       child: Text(
                         '$_nextValue',
                         textAlign: TextAlign.center,
-                        textScaleFactor: 1,
                         style: widget.textStyle,
                       ),
                     ),
@@ -172,7 +170,6 @@ class _DigitState extends State<Digit> with SingleTickerProviderStateMixin {
                   child: Text(
                     '$_currentValue',
                     textAlign: TextAlign.center,
-                    textScaleFactor: 1,
                     style: widget.textStyle,
                   ),
                 ),
