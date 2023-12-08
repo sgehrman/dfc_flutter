@@ -10,10 +10,10 @@
   "editor.bracketPairColorization.enabled": true,
 
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true,
-    "quickfix.insertSemicolon": true,
-    "source.fixAll.eslint": true
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "quickfix.insertSemicolon": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
 
   "editor.formatOnSave": true
