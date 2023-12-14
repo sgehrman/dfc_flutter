@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
+import 'package:collection/collection.dart';
 import 'package:dfc_flutter/src/widgets/shared_snack_bar.dart';
 import 'package:dfc_flutter/src/widgets/ttext.dart';
 import 'package:flutter/foundation.dart';
@@ -551,6 +552,22 @@ class Utils {
     print('### isNotEmpty called on ${input.runtimeType}');
 
     return false;
+  }
+
+  static T? enumFromString<T extends Enum>(
+    List<T> enumValues,
+    String name,
+  ) {
+    if (enumValues.isEmpty || name.isEmpty) {
+      return null;
+    }
+
+    return enumValues.singleWhereOrNull(
+      (e) {
+        // not sure if .toLowerCase() is necessary, but old code was doing this
+        return e.name.toLowerCase() == name.toLowerCase();
+      },
+    );
   }
 
   static bool isEmpty(dynamic input) {
