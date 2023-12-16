@@ -45,15 +45,17 @@ class TrianglePainter extends CustomPainter {
     EdgeInsets padding = EdgeInsets.zero,
     double width = 13,
     double height = 8,
+    Color darkColor = Colors.white70,
+    Color lightColor = Colors.black54,
   }) {
     return Padding(
       padding: padding,
       child: SizedBox(
-        height: 8,
-        width: 13,
+        height: height,
+        width: width,
         child: CustomPaint(
           painter: TrianglePainter(
-            color: Utils.isDarkMode(context) ? Colors.white : Colors.black54,
+            color: Utils.isDarkMode(context) ? darkColor : lightColor,
             downArrow: true,
           ),
         ),
