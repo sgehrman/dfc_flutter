@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class TrianglePainter extends CustomPainter {
@@ -35,4 +36,28 @@ class TrianglePainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => oldDelegate != this;
+
+  // ==============================================================
+  // Using the Icons.arrow_drop_down wastes space, this is more exact
+
+  static Widget downArrowIcon({
+    required BuildContext context,
+    EdgeInsets padding = EdgeInsets.zero,
+    double width = 13,
+    double height = 8,
+  }) {
+    return Padding(
+      padding: padding,
+      child: SizedBox(
+        height: 8,
+        width: 13,
+        child: CustomPaint(
+          painter: TrianglePainter(
+            color: Utils.isDarkMode(context) ? Colors.white : Colors.black54,
+            downArrow: true,
+          ),
+        ),
+      ),
+    );
+  }
 }
