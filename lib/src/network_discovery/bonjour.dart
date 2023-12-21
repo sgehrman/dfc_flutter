@@ -20,7 +20,7 @@ class Bonjour extends ChangeNotifier {
 
   List<NetworkClient> get clients {
     return _resolvedServices.map((x) {
-      return NetworkClient(name: x.name, url: 'http://${x.ip}:${x.port}');
+      return NetworkClient(name: x.name, url: 'http://${x.host}:${x.port}');
     }).toList();
   }
 
