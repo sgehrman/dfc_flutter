@@ -21,13 +21,13 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_animate: ^4.2.0+1
-  flutter_archive: ^5.0.0
+  flutter_archive: ^6.0.0
   flutter_barcode_scanner: ^2.0.0
   flutter_colorpicker: ^1.0.3
   flutter_markdown: ^0.6.16
   flutter_multi_formatter: ^2.11.6
   flutter_svg: ^2.0.0+1
-  google_fonts: ^4.0.4
+  google_fonts: ^6.1.0
   hex: ^0.2.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
@@ -35,15 +35,15 @@ dependencies:
   html2md: ^1.2.5
   http: ^1.1.0
   image: ^4.0.15
-  intl: ^0.18.0
-  jovial_svg: ^1.1.12
+  intl: ^0.19.0
+  jovial_svg: ^1.1.20
   json_annotation: ^4.8.0
   just_the_tooltip: ^0.0.12
   linkify: ^5.0.0
   loading_animation_widget: ^1.2.0+4
   mime_type: ^1.0.0
   open_file_plus: ^3.4.0
-  package_info_plus: ^4.0.2
+  package_info_plus: ^5.0.1
   pasteboard: ^0.2.0
   path: ^1.8.2
   path_provider: ^2.0.9
