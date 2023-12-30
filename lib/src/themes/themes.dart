@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/google_fonts/google_font_library.dart';
+import 'package:dfc_flutter/src/google_fonts/font_utils.dart';
 import 'package:dfc_flutter/src/themes/color_params.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
@@ -124,7 +124,7 @@ class AppTheme {
 
   // change the global font here
   TextTheme _fontChange(TextTheme theme) {
-    return themeWithGoogleFont(themeSet.fontName, theme);
+    return FontUtils.themeWithGoogleFont(themeSet.fontName, theme);
   }
 
   TextTheme _textTheme(bool darkMode) {

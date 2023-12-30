@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
-import 'package:dfc_flutter/src/google_fonts/google_font_library.dart';
+import 'package:dfc_flutter/src/google_fonts/font_utils.dart';
 import 'package:dfc_flutter/src/preferences/preferences.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
@@ -44,20 +44,18 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
   static const _itemHeight = 45.0;
 
   static List<_FontObj> _buildFontList() {
-    final List<String> gFonts = googleFonts();
+    final List<String> gFonts = FontUtils.googleFonts();
     final List<String?> favs = Preferences().getFavoriteGoogleFonts();
 
     final result = <_FontObj>[];
 
     for (final f in gFonts) {
-      final String fixed = f.replaceFirst('TextTheme', '');
-
       final bool fav = favs.contains(f);
 
       result.add(
         _FontObj(
           name: f,
-          displayName: fixed.fromCamelCase(),
+          displayName: f.fromCamelCase(),
           fav: fav,
           firstChar: f.toUpperCase().firstChar,
         ),
@@ -92,7 +90,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
           final fontObj = _fontList[index];
 
           TextTheme theme = Theme.of(context).textTheme;
-          theme = themeWithGoogleFont(fontObj.name, theme);
+          theme = FontUtils.themeWithGoogleFont(fontObj.name, theme);
 
           // not using ListTile for speed
           // we use the itemExtent and add our own divider
