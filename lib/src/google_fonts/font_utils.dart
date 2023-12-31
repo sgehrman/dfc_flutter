@@ -11,22 +11,25 @@ class FontUtils {
   }
 
   static List<String> googleFonts({bool includeItalic = false}) {
-    final List<String> result = [];
     final map = GoogleFonts.asMap();
 
-    for (final item in map.entries) {
-      if (!includeItalic) {
-        final d = item.value().fontStyle;
+    return map.keys.toList();
 
-        if (d != FontStyle.italic) {
-          result.add(item.key);
-        }
-      } else {
-        result.add(item.key);
-      }
-    }
+    // this downloads the fonts?? crashing in debug mode?
+    // final List<String> result = [];
+    // for (final item in map.entries) {
+    //   if (!includeItalic) {
+    //     final d = item.value().fontStyle;
 
-    return result;
+    //     if (d != FontStyle.italic) {
+    //       result.add(item.key);
+    //     }
+    //   } else {
+    //     result.add(item.key);
+    //   }
+    // }
+
+    // return result;
   }
 
   // call this in main() to turn off http font fetching
