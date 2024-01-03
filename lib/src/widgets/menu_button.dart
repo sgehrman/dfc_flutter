@@ -1,4 +1,5 @@
 import 'package:dfc_flutter/src/utils/menu_utils.dart';
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -82,17 +83,27 @@ class MenuButton<T> extends StatelessWidget {
     final List<PopupMenuItem<MenuButtonItem<T>>> menuItems = [];
 
     for (final item in items) {
-      menuItems.add(
-        popupMenuItem<MenuButtonItem<T>>(
-          value: item,
-          child: MenuItemWidget(
-            iconData: item.iconData,
-            iconWidget: item.iconWidget,
-            name: item.title,
-            tooltip: item.tooltip,
+      if (Utils.isEmpty(item.title)) {
+        menuItems.add(
+          popupMenuItem<MenuButtonItem<T>>(
+            value: item,
+            child: const Divider(),
+            enabled: false,
           ),
-        ),
-      );
+        );
+      } else {
+        menuItems.add(
+          popupMenuItem<MenuButtonItem<T>>(
+            value: item,
+            child: MenuItemWidget(
+              iconData: item.iconData,
+              iconWidget: item.iconWidget,
+              name: item.title,
+              tooltip: item.tooltip,
+            ),
+          ),
+        );
+      }
     }
 
     return PopupMenuButton<MenuButtonItem<T>>(
