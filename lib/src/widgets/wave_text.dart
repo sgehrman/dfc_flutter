@@ -8,6 +8,7 @@ class WaveText extends StatefulWidget {
     required this.text,
     required this.boxHeight,
     required this.boxWidth,
+    required this.textColor,
     required this.waveColor,
     super.key,
     this.textStyle = const TextStyle(
@@ -28,6 +29,7 @@ class WaveText extends StatefulWidget {
   final double boxWidth;
   final String text;
   final Color waveColor;
+  final Color textColor;
   final double loadUntil;
 
   @override
@@ -85,7 +87,7 @@ class _TextLiquidFillState extends State<WaveText>
   Widget build(BuildContext context) {
     return SaveLayer(
       child: Container(
-        color: Colors.white,
+        color: widget.textColor,
         child: WidgetMask(
           blendMode: BlendMode.dstATop,
           mask: Text(
