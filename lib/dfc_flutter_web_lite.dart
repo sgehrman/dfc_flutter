@@ -127,4 +127,5 @@ export 'src/widgets/triangle_painter.dart';
 export 'src/widgets/ttext.dart';
 export 'src/widgets/txt.dart';
 export 'src/widgets/video_player_widget.dart';
+export 'src/widgets/wave_text.dart';
 export 'src/widgets/widget_pop_button.dart';
