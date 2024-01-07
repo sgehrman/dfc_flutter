@@ -83,32 +83,34 @@ class _TextLiquidFillState extends State<WaveText>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: WidgetMask(
-        blendMode: BlendMode.dstATop,
-        mask: Text(
-          widget.text,
-          key: _textKey,
-          textAlign: TextAlign.center,
-          style: widget.textStyle,
-        ),
-        child: SizedBox(
-          height: widget.boxHeight,
-          width: widget.boxWidth,
-          child: AnimatedBuilder(
-            animation: _waveController,
-            builder: (BuildContext context, Widget? child) {
-              return CustomPaint(
-                painter: _WavePainter(
-                  textKey: _textKey,
-                  waveValue: _waveController.value,
-                  loadValue: _loadValue.value,
-                  boxHeight: widget.boxHeight,
-                  waveColor: widget.waveColor,
-                ),
-              );
-            },
+    return SaveLayer(
+      child: Container(
+        color: Colors.white,
+        child: WidgetMask(
+          blendMode: BlendMode.dstATop,
+          mask: Text(
+            widget.text,
+            key: _textKey,
+            textAlign: TextAlign.center,
+            style: widget.textStyle,
+          ),
+          child: SizedBox(
+            height: widget.boxHeight,
+            width: widget.boxWidth,
+            child: AnimatedBuilder(
+              animation: _waveController,
+              builder: (BuildContext context, Widget? child) {
+                return CustomPaint(
+                  painter: _WavePainter(
+                    textKey: _textKey,
+                    waveValue: _waveController.value,
+                    loadValue: _loadValue.value,
+                    boxHeight: widget.boxHeight,
+                    waveColor: widget.waveColor,
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),
