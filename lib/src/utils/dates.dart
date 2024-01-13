@@ -164,6 +164,14 @@ class Dates {
       } catch (err) {
         // print('Error-3: dateString: $dateString, err: $err');
       }
+
+      try {
+        // used in RSS feeds
+        // Fri, 12 Jan 2024 16:19 GMT
+        return DateFormat('E, dd MMM yyyy H:mm').parse(dateString);
+      } catch (err) {
+        // print('Error-3: dateString: $dateString, err: $err');
+      }
     }
 
     print('Error: Dates.parseDate failed: $dateString');
