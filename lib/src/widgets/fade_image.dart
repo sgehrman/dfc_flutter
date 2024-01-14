@@ -8,6 +8,47 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pasteboard/pasteboard.dart';
 
+// =======================================================================
+// util functions
+
+List<MenuItemData> _contextualMenuItems({
+  required BuildContext context,
+  required String url,
+}) {
+  final itemDatas = <MenuItemData>[];
+
+  itemDatas.add(
+    MenuItemData(
+      title: 'Copy',
+      action: () async {
+        final uri = UriUtils.parseUri(url);
+
+        if (uri != null) {
+          final imageData = await ImageProcessor.downloadImageToPng(uri);
+
+          await Pasteboard.writeImage(imageData.bytes);
+        }
+      },
+      iconData: Icons.info_outline,
+    ),
+  );
+
+  return itemDatas;
+}
+
+String _cleanUrl(String url) {
+  // some data urls have spaces?
+  String cleanUrl = url;
+
+  if (cleanUrl.startsWith('data')) {
+    cleanUrl = cleanUrl.replaceAll(' ', '');
+  }
+
+  return cleanUrl;
+}
+
+// =======================================================================
+
 class FadeImage extends StatelessWidget {
   const FadeImage({
     required this.url,
@@ -28,47 +69,15 @@ class FadeImage extends StatelessWidget {
   final Duration duration;
   final bool checkerboard;
 
-  List<MenuItemData> contextualMenuItems({
-    required BuildContext context,
-  }) {
-    final itemDatas = <MenuItemData>[];
-
-    itemDatas.add(
-      MenuItemData(
-        title: 'Copy',
-        action: () async {
-          // some data urls have spaces?
-          String cleanUrl = url;
-          if (cleanUrl.startsWith('data')) {
-            cleanUrl = cleanUrl.replaceAll(' ', '');
-          }
-
-          final uri = UriUtils.parseUri(cleanUrl);
-
-          if (uri != null) {
-            final imageData = await ImageProcessor.downloadImageToPng(uri);
-
-            await Pasteboard.writeImage(imageData.bytes);
-          }
-        },
-        iconData: Icons.info_outline,
-      ),
-    );
-
-    return itemDatas;
-  }
-
   @override
   Widget build(BuildContext context) {
     // some data urls have spaces?
-    String cleanUrl = url;
-    if (cleanUrl.startsWith('data')) {
-      cleanUrl = cleanUrl.replaceAll(' ', '');
-    }
+    final cleanUrl = _cleanUrl(url);
 
     return ContextMenuArea(
-      buildMenu: () => contextualMenuItems(
+      buildMenu: () => _contextualMenuItems(
         context: context,
+        url: cleanUrl,
       ),
       child: CheckerboardContainer(
         enabled: checkerboard,
@@ -96,6 +105,64 @@ class FadeImage extends StatelessWidget {
           width: width,
           imageCacheWidth: width?.toInt(),
           imageCacheHeight: height?.toInt(),
+        ),
+      ),
+    );
+  }
+}
+
+// =======================================================================
+// wanted a faster FadeImage, but similar behavior
+
+class NoFadeImage extends StatelessWidget {
+  const NoFadeImage({
+    required this.url,
+    required this.fit,
+    required this.height,
+    required this.width,
+    required this.missingImage,
+    this.checkerboard = false,
+    super.key,
+  });
+
+  final String url;
+  final BoxFit fit;
+  final double height;
+  final double width;
+  final Widget missingImage;
+  final bool checkerboard;
+
+  @override
+  Widget build(BuildContext context) {
+    final cleanUrl = _cleanUrl(url);
+
+    return ContextMenuArea(
+      buildMenu: () => _contextualMenuItems(
+        context: context,
+        url: cleanUrl,
+      ),
+      child: CheckerboardContainer(
+        enabled: checkerboard,
+        child: Image.network(
+          cleanUrl,
+          errorBuilder: (context, error, stackTrace) {
+            return SizedBox(
+              height: height,
+              width: width,
+              child: missingImage,
+            );
+          },
+          loadingBuilder: (context, child, loadingProgress) {
+            return SizedBox(
+              height: height,
+              width: width,
+            );
+          },
+          fit: fit,
+          height: height,
+          width: width,
+          cacheWidth: width.toInt(),
+          cacheHeight: height.toInt(),
         ),
       ),
     );
