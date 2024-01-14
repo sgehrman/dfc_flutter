@@ -143,26 +143,20 @@ class NoFadeImage extends StatelessWidget {
       ),
       child: CheckerboardContainer(
         enabled: checkerboard,
-        child: Image.network(
-          cleanUrl,
-          errorBuilder: (context, error, stackTrace) {
-            return SizedBox(
-              height: height,
-              width: width,
-              child: missingImage,
-            );
-          },
-          loadingBuilder: (context, child, loadingProgress) {
-            return SizedBox(
-              height: height,
-              width: width,
-            );
-          },
-          fit: fit,
+        child: SizedBox(
           height: height,
           width: width,
-          cacheWidth: width.toInt(),
-          cacheHeight: height.toInt(),
+          child: Image.network(
+            cleanUrl,
+            errorBuilder: (context, error, stackTrace) {
+              return missingImage;
+            },
+            fit: fit,
+            height: height,
+            width: width,
+            cacheWidth: width.toInt(),
+            cacheHeight: height.toInt(),
+          ),
         ),
       ),
     );
