@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hex/hex.dart';
+import 'package:html/parser.dart';
 
 class StrUtils {
   static void print(String output) {
@@ -130,5 +131,13 @@ class StrUtils {
     }
 
     return result;
+  }
+
+  String convertHtmlCodes(String text) {
+    if (text.contains('&')) {
+      return parseFragment(text).text ?? text;
+    }
+
+    return text;
   }
 }
