@@ -100,7 +100,11 @@ extension StringUtils on String {
 
   String get convertHtmlCodes {
     if (contains('&')) {
-      return parseFragment(this).text ?? this;
+      try {
+        return parseFragment(this).text ?? this;
+      } catch (err) {
+        print('html:parseFragment err: $err');
+      }
     }
 
     return this;

@@ -133,9 +133,14 @@ class StrUtils {
     return result;
   }
 
+  // there is also a string-extension
   String convertHtmlCodes(String text) {
     if (text.contains('&')) {
-      return parseFragment(text).text ?? text;
+      try {
+        return parseFragment(text).text ?? text;
+      } catch (err) {
+        print('html:parseFragment err: $err');
+      }
     }
 
     return text;
