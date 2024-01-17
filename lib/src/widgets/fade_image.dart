@@ -103,8 +103,9 @@ class FadeImage extends StatelessWidget {
           fit: fit,
           height: height,
           width: width,
-          imageCacheWidth: width?.toInt(),
-          imageCacheHeight: height?.toInt(),
+          // causes lag
+          // imageCacheWidth: width?.toInt(),
+          // imageCacheHeight: height?.toInt(),
         ),
       ),
     );
@@ -154,7 +155,7 @@ class NoFadeImage extends StatelessWidget {
             fit: fit,
             height: height,
             width: width,
-            // causes lag??
+            // causes lag
             // cacheWidth: width.toInt(),
             // cacheHeight: height.toInt(),
           ),
