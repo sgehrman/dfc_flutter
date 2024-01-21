@@ -103,9 +103,9 @@ class FadeImage extends StatelessWidget {
           fit: fit,
           height: height,
           width: width,
-          // causes lag
-          // imageCacheWidth: width?.toInt(),
-          // imageCacheHeight: height?.toInt(),
+          // SNG causes lag, but keeping until we can see if this screws up our image cache flushing code.
+          imageCacheWidth: width?.toInt(),
+          imageCacheHeight: height?.toInt(),
         ),
       ),
     );
@@ -155,7 +155,7 @@ class NoFadeImage extends StatelessWidget {
             fit: fit,
             height: height,
             width: width,
-            // causes lag
+            // causes lag in RSS code?
             // cacheWidth: width.toInt(),
             // cacheHeight: height.toInt(),
           ),
