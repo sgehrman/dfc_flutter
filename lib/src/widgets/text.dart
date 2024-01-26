@@ -1,6 +1,12 @@
 import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:flutter/material.dart';
 
+String _fixText(String? text) {
+  // cool hack so that the ellipsis doesn't break on words 'test this' => 'test...' with: 'test thi...'
+  // this can make multiline breaks break between words which looks bad
+  return (text ?? 'null').replaceAll(' ', '\u00A0');
+}
+
 class _TextBase extends Text {
   _TextBase(
     String? text, {
@@ -12,8 +18,7 @@ class _TextBase extends Text {
     bool bold = false,
     Color? color,
   }) : super(
-          // cool hack so that the ellipsis doesn't break on words 'test this' => 'test...' with: 'test thi...'
-          (text ?? 'null').replaceAll(' ', '\u00A0'),
+          _fixText(text),
           style: style != null
               ? style.copyWith(
                   fontSize: size,
