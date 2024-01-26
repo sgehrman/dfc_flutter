@@ -1,6 +1,7 @@
 import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item_widget.dart';
+import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
 class MenuItemData {
@@ -132,24 +133,29 @@ class MenuPopupButton extends StatelessWidget {
     required this.child,
     required this.buildMenu,
     this.radius = Material.defaultSplashRadius,
+    this.tooltip = '',
   });
 
   final Widget child;
   final List<MenuItemData> Function() buildMenu;
   final double radius;
+  final String tooltip;
 
   @override
   Widget build(BuildContext context) {
-    return InkResponse(
-      radius: radius,
-      onTap: () {
-        showContextMenu(
-          localPosition: Offset(0, context.size?.height ?? 0),
-          context: context,
-          menuData: buildMenu(),
-        );
-      },
-      child: child,
+    return ToolTip(
+      message: tooltip,
+      child: InkResponse(
+        radius: radius,
+        onTap: () {
+          showContextMenu(
+            localPosition: Offset(0, context.size?.height ?? 0),
+            context: context,
+            menuData: buildMenu(),
+          );
+        },
+        child: child,
+      ),
     );
   }
 }
