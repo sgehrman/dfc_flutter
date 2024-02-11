@@ -16,6 +16,7 @@ class CustomMarkdown extends StatelessWidget {
     this.h6FontSize = 22,
     this.bottomPadding = 4,
     this.blockSpacing = 4,
+    this.textScaleFactor = 1,
     this.onTapLink,
     this.textAlign = WrapAlignment.start,
     this.softLineBreak = false,
@@ -24,6 +25,7 @@ class CustomMarkdown extends StatelessWidget {
   final String markdownText;
   final Color color;
   final double fontSize;
+  final double textScaleFactor;
   final double blockSpacing;
   final double bottomPadding;
   final double h1FontSize;
@@ -45,7 +47,8 @@ class CustomMarkdown extends StatelessWidget {
 
     final padding = EdgeInsets.only(bottom: bottomPadding);
 
-    return MarkdownBody(
+    // alignment broken in MarkdownBody, Markdown scrolls
+    return Markdown(
       onTapLink: onTapLink ??
           (text, href, title) {
             Utils.launchUrl(href!);
@@ -60,6 +63,8 @@ class CustomMarkdown extends StatelessWidget {
         h4Align: textAlign,
         h5Align: textAlign,
         h6Align: textAlign,
+        blockquoteAlign: textAlign,
+        textScaleFactor: textScaleFactor,
         a: textStyle.copyWith(
           decorationColor: Theme.of(context).primaryColor,
           color: Theme.of(context).primaryColor,
