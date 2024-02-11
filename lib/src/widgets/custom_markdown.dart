@@ -20,6 +20,7 @@ class CustomMarkdown extends StatelessWidget {
     this.onTapLink,
     this.textAlign = WrapAlignment.start,
     this.softLineBreak = false,
+    this.padding = const EdgeInsets.all(16),
   });
 
   final String markdownText;
@@ -37,6 +38,7 @@ class CustomMarkdown extends StatelessWidget {
   final bool softLineBreak;
   final void Function(String text, String? href, String title)? onTapLink;
   final WrapAlignment textAlign;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +47,11 @@ class CustomMarkdown extends StatelessWidget {
       color: color,
     );
 
-    final padding = EdgeInsets.only(bottom: bottomPadding);
+    final blockPadding = EdgeInsets.only(bottom: bottomPadding);
 
     // alignment broken in MarkdownBody, Markdown scrolls
     return Markdown(
+      padding: padding,
       onTapLink: onTapLink ??
           (text, href, title) {
             Utils.launchUrl(href!);
@@ -70,13 +73,13 @@ class CustomMarkdown extends StatelessWidget {
           color: Theme.of(context).primaryColor,
         ),
         p: textStyle,
-        h1Padding: padding,
-        h2Padding: padding,
-        h3Padding: padding,
-        h4Padding: padding,
-        h5Padding: padding,
-        h6Padding: padding,
-        pPadding: padding,
+        h1Padding: blockPadding,
+        h2Padding: blockPadding,
+        h3Padding: blockPadding,
+        h4Padding: blockPadding,
+        h5Padding: blockPadding,
+        h6Padding: blockPadding,
+        pPadding: blockPadding,
         strong: textStyle.copyWith(
           fontWeight: Font.bold,
         ),
