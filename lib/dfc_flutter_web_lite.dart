@@ -68,6 +68,7 @@ export 'src/widgets/checkerboard_container.dart';
 export 'src/widgets/colored_button.dart';
 export 'src/widgets/colorized_text.dart';
 export 'src/widgets/context_menu_area.dart';
+export 'src/widgets/custom_markdown.dart';
 export 'src/widgets/date_picker.dart';
 export 'src/widgets/datetime_form_field.dart';
 export 'src/widgets/dialog_button.dart';
