@@ -21,6 +21,7 @@ class CustomMarkdown extends StatelessWidget {
     this.textAlign = WrapAlignment.start,
     this.softLineBreak = false,
     this.padding = const EdgeInsets.all(16),
+    this.shrinkWrap = false,
   });
 
   final String markdownText;
@@ -39,6 +40,7 @@ class CustomMarkdown extends StatelessWidget {
   final void Function(String text, String? href, String title)? onTapLink;
   final WrapAlignment textAlign;
   final EdgeInsets padding;
+  final bool shrinkWrap;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class CustomMarkdown extends StatelessWidget {
 
     // alignment broken in MarkdownBody, Markdown scrolls
     return Markdown(
+      shrinkWrap: shrinkWrap,
       padding: padding,
       onTapLink: onTapLink ??
           (text, href, title) {
