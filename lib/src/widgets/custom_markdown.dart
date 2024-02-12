@@ -47,6 +47,8 @@ class CustomMarkdown extends StatelessWidget {
     final TextStyle textStyle = TextStyle(
       fontSize: fontSize,
       color: color,
+      height: 1,
+      decorationColor: color,
     );
 
     final blockPadding = EdgeInsets.only(bottom: bottomPadding);
