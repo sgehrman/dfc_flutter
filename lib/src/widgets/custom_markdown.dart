@@ -65,15 +65,22 @@ class CustomMarkdown extends StatelessWidget {
       styleSheet: MarkdownStyleSheet(
         code: textStyle,
         blockquote: textStyle,
+        blockquotePadding: const EdgeInsets.all(12),
         codeblockPadding: const EdgeInsets.all(12),
         horizontalRuleDecoration: BoxDecoration(
-          color: color,
+          border: Border(
+            top: BorderSide(
+              color: color,
+            ),
+          ),
         ),
         codeblockDecoration: BoxDecoration(
-          color: color.withOpacity(0.1),
+          color: Colors.blue.shade100,
+          borderRadius: const BorderRadius.all(Radius.circular(6)),
         ),
         blockquoteDecoration: BoxDecoration(
-          color: color.withOpacity(0.1),
+          color: Colors.blue.shade100,
+          borderRadius: const BorderRadius.all(Radius.circular(6)),
         ),
         listBullet: textStyle,
         blockSpacing: blockSpacing,
