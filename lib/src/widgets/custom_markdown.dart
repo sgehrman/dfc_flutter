@@ -63,6 +63,19 @@ class CustomMarkdown extends StatelessWidget {
           },
       softLineBreak: softLineBreak,
       styleSheet: MarkdownStyleSheet(
+        code: textStyle,
+        blockquote: textStyle,
+        codeblockPadding: const EdgeInsets.all(12),
+        horizontalRuleDecoration: BoxDecoration(
+          color: color,
+        ),
+        codeblockDecoration: BoxDecoration(
+          color: color.withOpacity(0.1),
+        ),
+        blockquoteDecoration: BoxDecoration(
+          color: color.withOpacity(0.1),
+        ),
+        listBullet: textStyle,
         blockSpacing: blockSpacing,
         textAlign: textAlign,
         h1Align: textAlign,
