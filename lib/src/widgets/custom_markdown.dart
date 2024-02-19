@@ -22,6 +22,7 @@ class CustomMarkdown extends StatelessWidget {
     this.softLineBreak = false,
     this.padding = const EdgeInsets.all(16),
     this.shrinkWrap = false,
+    this.fontFamily,
   });
 
   final String markdownText;
@@ -41,6 +42,7 @@ class CustomMarkdown extends StatelessWidget {
   final WrapAlignment textAlign;
   final EdgeInsets padding;
   final bool shrinkWrap;
+  final String? fontFamily;
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +51,7 @@ class CustomMarkdown extends StatelessWidget {
       color: color,
       height: 1,
       decorationColor: color,
+      fontFamily: fontFamily,
     );
 
     final blockPadding = EdgeInsets.only(bottom: bottomPadding);
