@@ -346,7 +346,7 @@ class ServerFile {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     if (other is ServerFile) {
       if (other.path == path && other.isDirectory == isDirectory) {
         return true;

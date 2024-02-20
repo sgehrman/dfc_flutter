@@ -289,7 +289,7 @@ class FileElement extends linkify.LinkableElement {
   }
 
   @override
-  bool operator ==(dynamic other) => equals(other);
+  bool operator ==(Object other) => equals(other);
 
   @override
   bool equals(dynamic other) => other is FileElement && super.equals(other);

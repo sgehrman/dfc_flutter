@@ -234,7 +234,7 @@ class ThemeSet {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     if (other is ThemeSet) {
       if (other.name == name &&
           Utils.equalColors(primaryColor, other.primaryColor) &&
