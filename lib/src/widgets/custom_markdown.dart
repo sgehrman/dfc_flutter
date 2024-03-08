@@ -95,7 +95,7 @@ class CustomMarkdown extends StatelessWidget {
         h5Align: textAlign,
         h6Align: textAlign,
         blockquoteAlign: textAlign,
-        textScaleFactor: textScaleFactor,
+        textScaler: TextScaler.linear(textScaleFactor),
         a: textStyle.copyWith(
           decorationColor: Theme.of(context).primaryColor,
           color: Theme.of(context).primaryColor,
