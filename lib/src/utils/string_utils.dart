@@ -96,10 +96,12 @@ class StrUtils {
 
   // used for displaying richText.  Long lines make it super slow
   // this breaks up huge lines if needed
-  static List<String> lines(String text) {
+  static List<String> lines(
+    String text, {
+    int maxLen = 1000,
+  }) {
     final lines = text.split('\n');
     final result = <String>[];
-    const maxLen = 1000;
 
     for (final line in lines) {
       if (line.length > (maxLen + 20)) {
