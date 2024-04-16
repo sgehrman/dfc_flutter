@@ -23,7 +23,7 @@ class DFIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      focusNode: FocusNode(canRequestFocus: false),
+      focusNode: FocusNode(skipTraversal: true),
       splashColor: disableHighlightColors ? Colors.transparent : null,
       highlightColor: disableHighlightColors ? Colors.transparent : null,
       hoverColor: disableHighlightColors ? Colors.transparent : null,
@@ -61,14 +61,14 @@ class DFTextButton extends StatelessWidget {
 
     if (icon != null) {
       b = TextButton.icon(
-        focusNode: FocusNode(canRequestFocus: false),
+        focusNode: FocusNode(skipTraversal: true),
         onPressed: onPressed,
         label: _ButtonText(label, color: color),
         icon: icon!,
       );
     } else {
       b = TextButton(
-        focusNode: FocusNode(canRequestFocus: false),
+        focusNode: FocusNode(skipTraversal: true),
         onPressed: onPressed,
         child: _ButtonText(label, color: color),
       );
@@ -103,14 +103,14 @@ class DFButton extends StatelessWidget {
 
     if (icon != null) {
       b = ElevatedButton.icon(
-        focusNode: FocusNode(canRequestFocus: false),
+        focusNode: FocusNode(skipTraversal: true),
         onPressed: onPressed,
         label: _ButtonText(label),
         icon: icon!,
       );
     } else {
       b = ElevatedButton(
-        focusNode: FocusNode(canRequestFocus: false),
+        focusNode: FocusNode(skipTraversal: true),
         onPressed: onPressed,
         child: _ButtonText(label),
       );
@@ -145,14 +145,14 @@ class DFOutlineButton extends StatelessWidget {
 
     if (icon != null) {
       b = OutlinedButton.icon(
-        focusNode: FocusNode(canRequestFocus: false),
+        focusNode: FocusNode(skipTraversal: true),
         onPressed: onPressed,
         label: _ButtonText(label),
         icon: icon!,
       );
     } else {
       b = OutlinedButton(
-        focusNode: FocusNode(canRequestFocus: false),
+        focusNode: FocusNode(skipTraversal: true),
         onPressed: onPressed,
         child: _ButtonText(label),
       );
