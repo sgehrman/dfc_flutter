@@ -61,6 +61,20 @@ class HttpUtils {
           }
         }
 
+        // if fails, allowMalformed: true
+        // uherd.com/feed was failing
+        // FormatException: Unexpected extension byte (at offset 15031)
+        if (Utils.isEmpty(decoded)) {
+          try {
+            decoded = utf8.decode(
+              response.bodyBytes,
+              allowMalformed: true,
+            );
+          } catch (e) {
+            print('utf8.decode with allowMalformed: true failed: $e');
+          }
+        }
+
         return decoded ?? '';
       }
     } catch (err) {
