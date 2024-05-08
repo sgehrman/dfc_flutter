@@ -136,6 +136,34 @@ class ImageProcessor {
     );
   }
 
+  static bool isSvg({
+    required Uri uri,
+    required Uint8List bytes,
+  }) {
+    final format = ImageProcessor.formatForName(uri.path);
+
+    if (format == ImgFormat.svg) {
+      return true;
+    }
+
+    // might be an svg without a .svg extension
+    if (format == ImgFormat.unknown) {
+      if (bytes.length < (1024 * 256)) {
+        try {
+          final decoded = utf8.decode(bytes);
+
+          if (decoded.startsWith('<svg')) {
+            return true;
+          }
+        } catch (e) {
+          // print('utf8.decode failed: $e');
+        }
+      }
+    }
+
+    return false;
+  }
+
   static Future<PngImageBytesAndSize> downloadImageToPng(Uri uri) async {
     try {
       if (UriUtils.isDataUri(uri)) {
@@ -153,9 +181,7 @@ class ImageProcessor {
           final Uint8List bodyBytes = response.bodyBytes;
 
           if (bodyBytes.isNotEmpty) {
-            final format = ImageProcessor.formatForName(uri.path);
-
-            if (format == ImgFormat.svg) {
+            if (isSvg(uri: uri, bytes: bodyBytes)) {
               final svgString = utf8.decode(bodyBytes);
 
               return svgToPng(svg: svgString);
