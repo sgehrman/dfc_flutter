@@ -18,12 +18,12 @@ dependencies:
     git: https://github.com/sgehrman/dfc_dart
   dotted_border: ^2.1.0
   email_validator: ^2.1.17
+  flex_color_picker: ^3.4.1
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
   flutter_archive: ^6.0.3
   flutter_barcode_scanner: ^2.0.0
-  flutter_colorpicker: ^1.0.3
   flutter_markdown: ^0.7.1
   flutter_multi_formatter: ^2.12.8
   flutter_svg: ^2.0.10+1

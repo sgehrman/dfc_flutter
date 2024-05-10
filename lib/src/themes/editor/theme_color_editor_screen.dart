@@ -4,8 +4,8 @@ import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/widgets/headers/browser_header.dart';
 import 'package:dfc_flutter/src/widgets/list_row.dart';
 import 'package:dfc_flutter/src/widgets/theme_button.dart';
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class ThemeColorEditorScreen extends StatelessWidget {
   const ThemeColorEditorScreen({
@@ -44,7 +44,7 @@ class ThemeColorEditorWidget extends StatefulWidget {
 }
 
 class _ThemeColorEditorWidgetState extends State<ThemeColorEditorWidget> {
-  late HSVColor currentColor;
+  late Color currentColor;
   late ThemeSet themeSet;
 
   @override
@@ -53,16 +53,13 @@ class _ThemeColorEditorWidgetState extends State<ThemeColorEditorWidget> {
 
     themeSet = widget.themeSet;
 
-    // color picker crashes if you send nil.  An invalid themeset might have null colors from bad scan etc.
-    final Color color = themeSet.colorForField(widget.field) ?? Colors.black;
-    currentColor = HSVColor.fromColor(color);
+    currentColor = themeSet.colorForField(widget.field) ?? Colors.black;
   }
 
-  void changeColorHsv(HSVColor hsvColor) {
+  void changeColorHsv(Color color) {
     setState(() {
-      currentColor = hsvColor;
+      currentColor = color;
 
-      final Color color = hsvColor.toColor();
       themeSet = themeSet.copyWithColor(widget.field, color);
 
       ThemeSetManager().currentTheme = themeSet;
@@ -77,16 +74,22 @@ class _ThemeColorEditorWidgetState extends State<ThemeColorEditorWidget> {
           children: <Widget>[
             const SizedBox(height: 10),
             ColorPicker(
-              labelTypes: const [],
-              pickerAreaBorderRadius:
-                  const BorderRadius.all(Radius.circular(8)),
-              enableAlpha: false,
-              pickerColor: currentColor.toColor(),
-              pickerHsvColor: currentColor,
-              onHsvColorChanged: changeColorHsv,
-              onColorChanged: (color) {
-                // using the hsv color above? test this.
+              color: currentColor,
+              showColorCode: true,
+              padding: EdgeInsets.zero,
+              showRecentColors: true,
+              showColorName: true,
+              showMaterialName: true,
+              pickersEnabled: const {
+                ColorPickerType.both: true,
+                ColorPickerType.primary: false,
+                ColorPickerType.accent: false,
+                ColorPickerType.bw: false,
+                ColorPickerType.custom: false,
+                ColorPickerType.customSecondary: false,
+                ColorPickerType.wheel: true,
               },
+              onColorChanged: changeColorHsv,
             ),
             const SizedBox(height: 20),
             const BrowserHeader(
@@ -108,7 +111,7 @@ class _ThemeColorEditorWidgetState extends State<ThemeColorEditorWidget> {
             ThemeButton(
               title: 'Sample Button',
               onPressed: () {
-                changeColorHsv(HSVColor.fromColor(themeSet.primaryColor));
+                changeColorHsv(themeSet.primaryColor);
               },
             ),
           ],
