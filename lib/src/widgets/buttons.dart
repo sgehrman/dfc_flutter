@@ -64,7 +64,7 @@ class DFTextButton extends StatelessWidget {
         focusNode: FocusNode(skipTraversal: true),
         onPressed: onPressed,
         label: _ButtonText(label, color: color),
-        icon: icon,
+        icon: icon!,
       );
     } else {
       b = TextButton(
@@ -106,7 +106,7 @@ class DFButton extends StatelessWidget {
         focusNode: FocusNode(skipTraversal: true),
         onPressed: onPressed,
         label: _ButtonText(label),
-        icon: icon,
+        icon: icon!,
       );
     } else {
       b = ElevatedButton(
@@ -148,7 +148,7 @@ class DFOutlineButton extends StatelessWidget {
         focusNode: FocusNode(skipTraversal: true),
         onPressed: onPressed,
         label: _ButtonText(label),
-        icon: icon,
+        icon: icon!,
       );
     } else {
       b = OutlinedButton(

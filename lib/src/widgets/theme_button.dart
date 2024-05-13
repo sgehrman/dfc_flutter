@@ -50,7 +50,7 @@ class ThemeButton extends StatelessWidget {
         ),
         onPressed: disabled ? null : onPressed,
         label: buttonLabel(),
-        icon: icon,
+        icon: icon!,
       );
     }
 
