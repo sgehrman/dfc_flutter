@@ -185,12 +185,10 @@ class _PathCache {
       _lastBoxHeight = boxHeight;
     }
 
-    final cacheKey = '$width:$height:$boxHeight';
+    final cacheKey = '$width:$height:$boxHeight:$waveValue:$loadValue';
 
     final cached = _cache[cacheKey];
     if (cached != null) {
-      print('cached');
-
       return cached;
     }
 
@@ -208,6 +206,8 @@ class _PathCache {
     path.close();
 
     _cache[cacheKey] = path;
+
+    print('not cached');
 
     return path;
   }
