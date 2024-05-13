@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 import 'dart:math' as math;
 import 'dart:ui' as ui;
@@ -50,38 +49,6 @@ class Utils {
         },
       ),
     );
-  }
-
-  static Future<void> printAssets(
-    BuildContext context, {
-    String? directoryName,
-    String? ext,
-  }) async {
-    String matchDir = '';
-    String matchExt = '';
-
-    if (directoryName != null && ext!.isNotEmpty) {
-      matchDir = directoryName;
-    }
-
-    if (ext != null && ext.isNotEmpty) {
-      matchExt = ext;
-    }
-
-    final bundle = DefaultAssetBundle.of(context);
-
-    final manifestContent = await bundle.loadString('AssetManifest.json');
-
-    final manifestMap = json.decode(manifestContent) as Map<String, dynamic>;
-
-    final List<String> paths = manifestMap.keys
-        .where((String key) => key.contains(matchDir))
-        .where((String key) => key.contains(matchExt))
-        .toList();
-
-    for (final String p in paths) {
-      debugPrint('ASSET: $p', wrapWidth: 555);
-    }
   }
 
   static String uniqueFileName(String name, String directoryPath) {
@@ -631,39 +598,6 @@ class Utils {
     }
 
     return params;
-  }
-
-  static Future<String?> jsonAssets({
-    required BuildContext context,
-    required String directoryName,
-    required String filename,
-  }) async {
-    final bundle = DefaultAssetBundle.of(context);
-
-    final manifestContent = await bundle.loadString('AssetManifest.json');
-
-    final Map<String, dynamic> manifestMap =
-        json.decode(manifestContent) as Map<String, dynamic>;
-
-    final List<String> paths = manifestMap.keys.where((String path) {
-      final dirPath = p.split(p.dirname(path));
-
-      if (Utils.isNotEmpty(dirPath)) {
-        return directoryName == dirPath.last;
-      }
-
-      return false;
-    }).where((String path) {
-      return p.basename(path) == filename;
-    }).toList();
-
-    if (paths.length == 1) {
-      return bundle.loadString(paths.first);
-    }
-
-    print('jsonAssets: not found');
-
-    return null;
   }
 }
 

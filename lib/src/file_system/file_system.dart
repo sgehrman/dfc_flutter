@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
@@ -17,38 +16,6 @@ class FileSystem {
 
   // set to true during statup. We could use different starting paths if not granted
   static bool storagePermissionGranted = false;
-
-  static Future<void> printAssets(
-    BuildContext context, {
-    String? directoryName,
-    String? ext,
-  }) async {
-    String matchDir = '';
-    String matchExt = '';
-
-    if (directoryName != null && ext!.isNotEmpty) {
-      matchDir = directoryName;
-    }
-
-    if (ext != null && ext.isNotEmpty) {
-      matchExt = ext;
-    }
-
-    final bundle = DefaultAssetBundle.of(context);
-
-    final manifestContent = await bundle.loadString('AssetManifest.json');
-
-    final manifestMap = json.decode(manifestContent) as Map<String, dynamic>;
-
-    final List<String> paths = manifestMap.keys
-        .where((String key) => key.contains(matchDir))
-        .where((String key) => key.contains(matchExt))
-        .toList();
-
-    for (final String p in paths) {
-      debugPrint('ASSET: $p', wrapWidth: 555);
-    }
-  }
 
   static Future<String?> get documentsPath async {
     String? result;
