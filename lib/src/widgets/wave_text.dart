@@ -186,7 +186,7 @@ class _PathCache {
     }
 
     final cacheKey =
-        '$width:$height:$boxHeight:${waveValue.toStringAsFixed(3)}:$loadValue';
+        '$width:$height:$boxHeight:${waveValue.toStringAsFixed(2)}:$loadValue';
 
     final cached = _cache[cacheKey];
     if (cached != null) {
