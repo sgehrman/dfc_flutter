@@ -38,8 +38,6 @@ class WaveText extends StatefulWidget {
 
 class _TextLiquidFillState extends State<WaveText>
     with TickerProviderStateMixin {
-  final _textKey = GlobalKey();
-
   late AnimationController _waveController;
   late AnimationController _loadController;
   late Animation<double> _loadValue;
@@ -92,7 +90,6 @@ class _TextLiquidFillState extends State<WaveText>
           blendMode: BlendMode.dstATop,
           mask: Text(
             widget.text,
-            key: _textKey,
             textAlign: TextAlign.center,
             style: widget.textStyle,
           ),
@@ -101,16 +98,11 @@ class _TextLiquidFillState extends State<WaveText>
             width: widget.boxWidth,
             child: Builder(
               builder: (context) {
-                final RenderBox textBox =
-                    _textKey.currentContext!.findRenderObject()! as RenderBox;
-                final textHeight = textBox.size.height;
-
                 return AnimatedBuilder(
                   animation: _waveController,
                   builder: (BuildContext context, Widget? child) {
                     return CustomPaint(
                       painter: _WavePainter(
-                        textHeight: textHeight,
                         waveValue: _waveController.value,
                         loadValue: _loadValue.value,
                         boxHeight: widget.boxHeight,
@@ -132,14 +124,12 @@ class _TextLiquidFillState extends State<WaveText>
 
 class _WavePainter extends CustomPainter {
   _WavePainter({
-    required this.textHeight,
     required this.waveValue,
     required this.loadValue,
     required this.boxHeight,
     required this.waveColor,
   });
   static const _pi2 = 2 * pi;
-  final double textHeight;
   final double waveValue;
   final double loadValue;
   final double boxHeight;
@@ -148,7 +138,7 @@ class _WavePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final baseHeight =
-        (boxHeight / 2) + (textHeight / 2) - (loadValue * textHeight);
+        (boxHeight / 2) + (boxHeight / 2) - (loadValue * boxHeight);
 
     final width = size.width;
     final height = size.height;
