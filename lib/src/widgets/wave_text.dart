@@ -85,10 +85,6 @@ class _TextLiquidFillState extends State<WaveText>
 
   @override
   Widget build(BuildContext context) {
-    final RenderBox textBox =
-        _textKey.currentContext!.findRenderObject()! as RenderBox;
-    final textHeight = textBox.size.height;
-
     return SaveLayer(
       child: Container(
         color: widget.textColor,
@@ -103,17 +99,25 @@ class _TextLiquidFillState extends State<WaveText>
           child: SizedBox(
             height: widget.boxHeight,
             width: widget.boxWidth,
-            child: AnimatedBuilder(
-              animation: _waveController,
-              builder: (BuildContext context, Widget? child) {
-                return CustomPaint(
-                  painter: _WavePainter(
-                    textHeight: textHeight,
-                    waveValue: _waveController.value,
-                    loadValue: _loadValue.value,
-                    boxHeight: widget.boxHeight,
-                    waveColor: widget.waveColor,
-                  ),
+            child: Builder(
+              builder: (context) {
+                final RenderBox textBox =
+                    _textKey.currentContext!.findRenderObject()! as RenderBox;
+                final textHeight = textBox.size.height;
+
+                return AnimatedBuilder(
+                  animation: _waveController,
+                  builder: (BuildContext context, Widget? child) {
+                    return CustomPaint(
+                      painter: _WavePainter(
+                        textHeight: textHeight,
+                        waveValue: _waveController.value,
+                        loadValue: _loadValue.value,
+                        boxHeight: widget.boxHeight,
+                        waveColor: widget.waveColor,
+                      ),
+                    );
+                  },
                 );
               },
             ),
