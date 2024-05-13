@@ -178,6 +178,7 @@ class _PathCache {
     if (_lastBoxHeight != boxHeight ||
         _lastHeight != height ||
         _lastWidth != width) {
+      print('clear');
       _cache.clear();
 
       _lastWidth = width;
