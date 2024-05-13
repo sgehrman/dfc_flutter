@@ -208,8 +208,6 @@ class _PathCache {
 
     _cache[cacheKey] = path;
 
-    print('not cached $cacheKey len: ${_cache.length}');
-
     return path;
   }
 }
