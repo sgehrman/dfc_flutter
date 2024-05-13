@@ -178,7 +178,6 @@ class _PathCache {
     if (_lastBoxHeight != boxHeight ||
         _lastHeight != height ||
         _lastWidth != width) {
-      print('clear');
       _cache.clear();
 
       _lastWidth = width;
@@ -190,6 +189,8 @@ class _PathCache {
 
     final cached = _cache[cacheKey];
     if (cached != null) {
+      print('cached');
+
       return cached;
     }
 
@@ -208,7 +209,7 @@ class _PathCache {
 
     _cache[cacheKey] = path;
 
-    print('not cached');
+    print('not cached $cacheKey len: ${_cache.length}');
 
     return path;
   }
