@@ -41,6 +41,7 @@ class _TextLiquidFillState extends State<WaveText>
   late AnimationController _waveController;
   late AnimationController _loadController;
   late Animation<double> _loadValue;
+  final _PathCache _pathCache = _PathCache();
 
   @override
   void initState() {
@@ -103,6 +104,7 @@ class _TextLiquidFillState extends State<WaveText>
                   builder: (BuildContext context, Widget? child) {
                     return CustomPaint(
                       painter: _WavePainter(
+                        pathCache: _pathCache,
                         waveValue: _waveController.value,
                         loadValue: _loadValue.value,
                         boxHeight: widget.boxHeight,
@@ -124,12 +126,14 @@ class _TextLiquidFillState extends State<WaveText>
 
 class _WavePainter extends CustomPainter {
   _WavePainter({
+    required this.pathCache,
     required this.waveValue,
     required this.loadValue,
     required this.boxHeight,
     required this.waveColor,
   });
-  static const _pi2 = 2 * pi;
+
+  final _PathCache pathCache;
   final double waveValue;
   final double loadValue;
   final double boxHeight;
@@ -137,11 +141,62 @@ class _WavePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    final path = pathCache.path(
+      width: size.width,
+      boxHeight: boxHeight,
+      height: size.height,
+      waveValue: waveValue,
+      loadValue: loadValue,
+    );
+
+    final wavePaint = Paint()..color = waveColor;
+    canvas.drawPath(path, wavePaint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
+  }
+}
+
+// =====================================================
+
+class _PathCache {
+  final Map<String, Path> _cache = {};
+  double _lastWidth = 0;
+  double _lastHeight = 0;
+  double _lastBoxHeight = 0;
+  static const _pi2 = 2 * pi;
+
+  Path path({
+    required double width,
+    required double height,
+    required double waveValue,
+    required double loadValue,
+    required double boxHeight,
+  }) {
+    if (_lastBoxHeight != boxHeight ||
+        _lastHeight != height ||
+        _lastWidth != width) {
+      _cache.clear();
+
+      _lastWidth = width;
+      _lastHeight = height;
+      _lastBoxHeight = boxHeight;
+    }
+
+    final cacheKey = '$width:$height:$boxHeight';
+
+    final cached = _cache[cacheKey];
+    if (cached != null) {
+      print('cached');
+
+      return cached;
+    }
+
     final baseHeight =
         (boxHeight / 2) + (boxHeight / 2) - (loadValue * boxHeight);
 
-    final width = size.width;
-    final height = size.height;
     final path = Path();
     path.moveTo(0, baseHeight);
     for (var i = 0.0; i < width; i++) {
@@ -151,12 +206,9 @@ class _WavePainter extends CustomPainter {
     path.lineTo(width, height);
     path.lineTo(0, height);
     path.close();
-    final wavePaint = Paint()..color = waveColor;
-    canvas.drawPath(path, wavePaint);
-  }
 
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
+    _cache[cacheKey] = path;
+
+    return path;
   }
 }
