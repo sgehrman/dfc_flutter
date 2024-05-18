@@ -82,6 +82,7 @@ class _TextLiquidFillState extends State<WaveText>
             case AnimationStatus.completed:
             case AnimationStatus.dismissed:
               if (repeats++ < widget.repeatCount) {
+                _waveController.reset();
                 _waveController.forward();
               }
               break;
@@ -92,6 +93,7 @@ class _TextLiquidFillState extends State<WaveText>
           }
         },
       );
+
       _waveController.forward();
     }
 
