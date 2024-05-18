@@ -19,6 +19,7 @@ class WaveText extends StatefulWidget {
     this.loadDuration = const Duration(seconds: 6),
     this.waveDuration = const Duration(seconds: 2),
     this.loadUntil = 1.0,
+    this.repeatCount = -1,
   }) : assert(loadUntil > 0 && loadUntil <= 1.0, '');
 
   final TextStyle textStyle;
@@ -27,6 +28,7 @@ class WaveText extends StatefulWidget {
   final Duration waveDuration;
   final double boxHeight;
   final double boxWidth;
+  final int repeatCount;
   final String text;
   final Color waveColor;
   final Color textColor;
@@ -42,6 +44,7 @@ class _TextLiquidFillState extends State<WaveText>
   late AnimationController _loadController;
   late Animation<double> _loadValue;
   final _PathCache _pathCache = _PathCache();
+  int repeats = 0;
 
   @override
   void initState() {
@@ -70,7 +73,28 @@ class _TextLiquidFillState extends State<WaveText>
       });
     }
 
-    _waveController.repeat();
+    if (widget.repeatCount == -1) {
+      _waveController.repeat();
+    } else {
+      _waveController.addStatusListener(
+        (status) {
+          switch (status) {
+            case AnimationStatus.completed:
+            case AnimationStatus.dismissed:
+              if (repeats++ < widget.repeatCount) {
+                _waveController.forward();
+              }
+              break;
+            case AnimationStatus.forward:
+              break;
+            case AnimationStatus.reverse:
+              break;
+          }
+        },
+      );
+      _waveController.forward();
+    }
+
     _loadController.forward();
   }
 
