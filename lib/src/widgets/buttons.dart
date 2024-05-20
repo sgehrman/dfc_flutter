@@ -89,6 +89,7 @@ class DFButton extends StatelessWidget {
     required this.label,
     this.tooltip,
     this.icon,
+    this.filled = true,
     super.key,
   });
 
@@ -96,24 +97,42 @@ class DFButton extends StatelessWidget {
   final String label;
   final String? tooltip;
   final Widget? icon;
+  final bool filled;
 
   @override
   Widget build(BuildContext context) {
     Widget b;
 
-    if (icon != null) {
-      b = ElevatedButton.icon(
-        focusNode: FocusNode(skipTraversal: true),
-        onPressed: onPressed,
-        label: _ButtonText(label),
-        icon: icon,
-      );
+    if (filled) {
+      if (icon != null) {
+        b = FilledButton.icon(
+          focusNode: FocusNode(skipTraversal: true),
+          onPressed: onPressed,
+          label: _ButtonText(label),
+          icon: icon,
+        );
+      } else {
+        b = FilledButton(
+          focusNode: FocusNode(skipTraversal: true),
+          onPressed: onPressed,
+          child: _ButtonText(label),
+        );
+      }
     } else {
-      b = ElevatedButton(
-        focusNode: FocusNode(skipTraversal: true),
-        onPressed: onPressed,
-        child: _ButtonText(label),
-      );
+      if (icon != null) {
+        b = ElevatedButton.icon(
+          focusNode: FocusNode(skipTraversal: true),
+          onPressed: onPressed,
+          label: _ButtonText(label),
+          icon: icon,
+        );
+      } else {
+        b = ElevatedButton(
+          focusNode: FocusNode(skipTraversal: true),
+          onPressed: onPressed,
+          child: _ButtonText(label),
+        );
+      }
     }
 
     return ToolTip(
@@ -213,12 +232,9 @@ class _ButtonText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 1),
-      child: Text(
-        text,
-        style: color != null ? TextStyle(color: color) : null,
-      ),
+    return Text(
+      text,
+      style: color != null ? TextStyle(color: color) : null,
     );
   }
 }
