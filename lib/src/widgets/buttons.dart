@@ -27,10 +27,9 @@ class DFIconButton extends StatelessWidget {
       splashColor: disableHighlightColors ? Colors.transparent : null,
       highlightColor: disableHighlightColors ? Colors.transparent : null,
       hoverColor: disableHighlightColors ? Colors.transparent : null,
-      iconSize: iconSize ?? IconTheme.of(context).size ?? 24.0,
-      color: color, // null is default
+      iconSize: iconSize,
+      color: color,
       onPressed: onPressed,
-      splashRadius: 24,
       icon: icon,
       tooltip: tooltip,
     );
