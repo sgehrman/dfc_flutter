@@ -20,8 +20,10 @@ class DFIconButton extends StatelessWidget {
 
   static const double kSmallSize = 32;
   static const kIconConstraints = BoxConstraints(
-    maxHeight: kSmallSize,
+    minWidth: kSmallSize,
+    maxWidth: kSmallSize,
     minHeight: kSmallSize,
+    maxHeight: kSmallSize,
   );
 
   final Function()? onPressed;
