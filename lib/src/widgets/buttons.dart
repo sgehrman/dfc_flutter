@@ -2,6 +2,17 @@ import 'package:dfc_flutter/src/widgets/context_menu_area.dart';
 import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
+// DFIconButton in a textfields prefix/suffix icons, use this
+// prefixIconConstraints: const BoxConstraints(
+//   maxHeight: DFIconButton.kSmallSize,
+//   minHeight: DFIconButton.kSmallSize,
+// )
+
+// suffixIconConstraints: const BoxConstraints(
+//   maxHeight: DFIconButton.kSmallSize,
+//   minHeight: DFIconButton.kSmallSize,
+// ),
+
 class DFIconButton extends StatelessWidget {
   const DFIconButton({
     required this.onPressed,
@@ -12,6 +23,8 @@ class DFIconButton extends StatelessWidget {
     this.small = false,
     super.key,
   });
+
+  static const double kSmallSize = 32;
 
   final Function()? onPressed;
   final Widget icon;
@@ -33,8 +46,8 @@ class DFIconButton extends StatelessWidget {
 
     if (small) {
       return SizedBox(
-        height: 32,
-        width: 32,
+        height: kSmallSize,
+        width: kSmallSize,
         child: FittedBox(
           child: result,
         ),
