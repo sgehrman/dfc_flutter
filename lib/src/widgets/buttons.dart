@@ -2,8 +2,8 @@ import 'package:dfc_flutter/src/widgets/context_menu_area.dart';
 import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
-// DFIconButton in a textfields prefix/suffix icons, use this
-//
+// DFIconButton in a textfields prefix/suffix icons
+// use this with small: true,
 // prefixIconConstraints: DFIconButton.kIconConstraints,
 // suffixIconConstraints: DFIconButton.kIconConstraints,
 
