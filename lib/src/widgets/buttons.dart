@@ -3,15 +3,9 @@ import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
 // DFIconButton in a textfields prefix/suffix icons, use this
-// prefixIconConstraints: const BoxConstraints(
-//   maxHeight: DFIconButton.kSmallSize,
-//   minHeight: DFIconButton.kSmallSize,
-// )
-
-// suffixIconConstraints: const BoxConstraints(
-//   maxHeight: DFIconButton.kSmallSize,
-//   minHeight: DFIconButton.kSmallSize,
-// ),
+//
+// prefixIconConstraints: DFIconButton.kIconConstraints,
+// suffixIconConstraints: DFIconButton.kIconConstraints,
 
 class DFIconButton extends StatelessWidget {
   const DFIconButton({
@@ -25,6 +19,10 @@ class DFIconButton extends StatelessWidget {
   });
 
   static const double kSmallSize = 32;
+  static const kIconConstraints = BoxConstraints(
+    maxHeight: kSmallSize,
+    minHeight: kSmallSize,
+  );
 
   final Function()? onPressed;
   final Widget icon;
