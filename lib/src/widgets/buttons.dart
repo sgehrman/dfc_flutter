@@ -9,7 +9,7 @@ class DFIconButton extends StatelessWidget {
     this.tooltip,
     this.iconSize,
     this.color,
-    this.disableHighlightColors = false,
+    this.small = false,
     super.key,
   });
 
@@ -18,21 +18,30 @@ class DFIconButton extends StatelessWidget {
   final String? tooltip;
   final double? iconSize;
   final Color? color;
-  final bool disableHighlightColors;
+  final bool small;
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
+    final result = IconButton(
       focusNode: FocusNode(skipTraversal: true),
-      splashColor: disableHighlightColors ? Colors.transparent : null,
-      highlightColor: disableHighlightColors ? Colors.transparent : null,
-      hoverColor: disableHighlightColors ? Colors.transparent : null,
       iconSize: iconSize,
       color: color,
       onPressed: onPressed,
       icon: icon,
       tooltip: tooltip,
     );
+
+    if (small) {
+      return SizedBox(
+        height: 32,
+        width: 32,
+        child: FittedBox(
+          child: result,
+        ),
+      );
+    }
+
+    return result;
   }
 }
 
