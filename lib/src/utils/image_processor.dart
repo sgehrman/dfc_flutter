@@ -5,10 +5,9 @@ import 'dart:ui' as ui;
 
 import 'package:dfc_dart/dfc_dart.dart';
 import 'package:dfc_flutter/src/http/http_utils.dart';
-import 'package:dfc_flutter/src/widgets/fade_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
-// import 'package:jovial_svg/jovial_svg.dart';
+import 'package:jovial_svg/jovial_svg.dart';
 
 enum ImgFormat {
   unknown,
@@ -328,78 +327,78 @@ class ImageProcessor {
     int width = 0, // pass zero to use Size in png
     Color? color,
   }) async {
-    // try {
-    //   ScalableImage si = ScalableImage.fromSvgString(
-    //     svg,
-    //     // currentColor: color,
-    //     warnF: (message) {
-    //       // without this it prints to the console
-    //     },
-    //   );
+    try {
+      ScalableImage si = ScalableImage.fromSvgString(
+        svg,
+        // currentColor: color,
+        warnF: (message) {
+          // without this it prints to the console
+        },
+      );
 
-    //   // currentColor above doesn't work?
-    //   if (color != null) {
-    //     si = si.modifyTint(
-    //       newTintMode: BlendMode.srcIn,
-    //       newTintColor: color,
-    //     );
-    //   }
+      // currentColor above doesn't work?
+      if (color != null) {
+        si = si.modifyTint(
+          newTintMode: BlendMode.srcIn,
+          newTintColor: color,
+        );
+      }
 
-    //   await si.prepareImages();
+      await si.prepareImages();
 
-    //   final vpSize = si.viewport;
+      final vpSize = si.viewport;
 
-    //   final recorder = ui.PictureRecorder();
-    //   final ui.Canvas c = ui.Canvas(recorder);
+      final recorder = ui.PictureRecorder();
+      final ui.Canvas c = ui.Canvas(recorder);
 
-    //   Size size = ui.Size(vpSize.width, vpSize.height);
+      Size size = ui.Size(vpSize.width, vpSize.height);
 
-    //   if (width != 0) {
-    //     size = ui.Size(width.toDouble(), width.toDouble());
+      if (width != 0) {
+        size = ui.Size(width.toDouble(), width.toDouble());
 
-    //     double scale = 1;
+        double scale = 1;
 
-    //     if (vpSize.width > vpSize.height) {
-    //       scale = width / vpSize.width;
-    //     } else {
-    //       scale = width / vpSize.height;
-    //     }
+        if (vpSize.width > vpSize.height) {
+          scale = width / vpSize.width;
+        } else {
+          scale = width / vpSize.height;
+        }
 
-    //     c.scale(scale, scale);
-    //   }
+        c.scale(scale, scale);
+      }
 
-    //   si.paint(c);
-    //   si.unprepareImages();
+      si.paint(c);
+      si.unprepareImages();
 
-    //   final ui.Picture pict = recorder.endRecording();
+      final ui.Picture pict = recorder.endRecording();
 
-    //   final ui.Image rendered =
-    //       await pict.toImage(size.width.round(), size.height.round());
+      final ui.Image rendered =
+          await pict.toImage(size.width.round(), size.height.round());
 
-    //   final ByteData? bd = await rendered.toByteData(
-    //     format: ui.ImageByteFormat.png,
-    //   );
+      final ByteData? bd = await rendered.toByteData(
+        format: ui.ImageByteFormat.png,
+      );
 
-    //   pict.dispose();
-    //   rendered.dispose();
+      pict.dispose();
+      rendered.dispose();
 
-    //   if (bd != null) {
-    //     final bytes = bd.buffer.asUint8List();
+      if (bd != null) {
+        final bytes = bd.buffer.asUint8List();
 
-    //     return PngImageBytesAndSize(
-    //       bytes: bytes,
-    //       height: size.height.toInt(),
-    //       width: size.width.toInt(),
-    //     );
-    //   }
-    // } catch (err) {
-    //   print('svgToPngBytes: Error = $err');
-    // }
+        return PngImageBytesAndSize(
+          bytes: bytes,
+          height: size.height.toInt(),
+          width: size.width.toInt(),
+        );
+      }
+    } catch (err) {
+      print('svgToPngBytes: Error = $err');
+    }
 
     return PngImageBytesAndSize(
-      bytes: transparentImage(),
-      height: 10,
-      width: 10,
+      bytes: Uint8List(0),
+      height: 0,
+      width: 0,
     );
   }
 
