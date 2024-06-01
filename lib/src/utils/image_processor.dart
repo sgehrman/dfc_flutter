@@ -351,29 +351,33 @@ class ImageProcessor {
       final recorder = ui.PictureRecorder();
       final ui.Canvas c = ui.Canvas(recorder);
 
-      Size size = ui.Size(vpSize.width, vpSize.height);
-
-      if (width != 0) {
-        size = ui.Size(width.toDouble(), width.toDouble());
-
-        double scale = 1;
-
-        if (vpSize.width > vpSize.height) {
-          scale = width / vpSize.width;
-        } else {
-          scale = width / vpSize.height;
-        }
-
-        c.scale(scale, scale);
-      }
-
       si.paint(c);
       si.unprepareImages();
 
       final ui.Picture pict = recorder.endRecording();
 
-      final ui.Image rendered =
-          await pict.toImage(size.width.round(), size.height.round());
+      ui.Image rendered =
+          await pict.toImage(vpSize.width.round(), vpSize.height.round());
+
+      Size resultSize = ui.Size(vpSize.width, vpSize.height);
+
+      // resize image if needed
+      if (width != 0) {
+        final recorder = ui.PictureRecorder();
+        final ui.Canvas c = ui.Canvas(recorder);
+
+        paintImage(
+          canvas: c,
+          rect: Rect.fromLTWH(0, 0, width.toDouble(), width.toDouble()),
+          image: rendered,
+          fit: BoxFit.contain,
+        );
+        final ui.Picture pict = recorder.endRecording();
+
+        // set new size and image
+        resultSize = ui.Size(width.toDouble(), width.toDouble());
+        rendered = await pict.toImage(width, width);
+      }
 
       final ByteData? bd = await rendered.toByteData(
         format: ui.ImageByteFormat.png,
@@ -387,8 +391,8 @@ class ImageProcessor {
 
         return PngImageBytesAndSize(
           bytes: bytes,
-          height: size.height.toInt(),
-          width: size.width.toInt(),
+          height: resultSize.height.round(),
+          width: resultSize.width.round(),
         );
       }
     } catch (err) {
