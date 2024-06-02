@@ -40,18 +40,6 @@ class PngImageBytesAndSize {
   final int width;
 }
 
-class PictureAndSize {
-  const PictureAndSize({
-    required this.picture,
-    required this.height,
-    required this.width,
-  });
-
-  final ui.Picture picture;
-  final int height;
-  final int width;
-}
-
 class ImageProcessor {
   static ImgFormat formatForName(String name) {
     final n = name.toLowerCase();
@@ -90,14 +78,10 @@ class ImageProcessor {
       final decodedImage = await bytesToImage(imageData);
 
       // draws image to a canvas
-      final PictureAndSize pictureAndSize = _drawImageToCanvas(decodedImage);
+      final ui.Image pictureImage = await _drawImageToCanvas(decodedImage);
 
       // must dispose
       decodedImage.dispose();
-
-      // get image fom picture and get the png data
-      final ui.Image pictureImage = await pictureAndSize.picture
-          .toImage(pictureAndSize.width, pictureAndSize.height);
 
       // convert to png byte data
       final ByteData? pngData = await pictureImage.toByteData(
@@ -466,7 +450,9 @@ class ImageProcessor {
 
   // ===============================================================
 
-  static PictureAndSize _drawImageToCanvas(ui.Image image) {
+  static Future<ui.Image> _drawImageToCanvas(
+    ui.Image image,
+  ) {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
     final ui.Canvas canvas = ui.Canvas(recorder);
 
@@ -486,10 +472,16 @@ class ImageProcessor {
 
     canvas.restore();
 
-    return PictureAndSize(
-      picture: recorder.endRecording(),
-      height: (image.height * scale).round(),
-      width: (image.width * scale).round(),
+    final picture = recorder.endRecording();
+
+    // get image fom picture and get the png data
+    final result = picture.toImage(
+      (image.width * scale).round(),
+      (image.height * scale).round(),
     );
+
+    picture.dispose();
+
+    return result;
   }
 }

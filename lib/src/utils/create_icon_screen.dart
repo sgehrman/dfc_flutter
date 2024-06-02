@@ -162,6 +162,8 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
 
     final ui.Image resultImage = await pict.toImage(kWidth, kWidth);
 
+    pict.dispose();
+
     final ByteData data =
         (await resultImage.toByteData(format: ui.ImageByteFormat.png))!;
 
