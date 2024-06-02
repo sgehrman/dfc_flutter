@@ -366,11 +366,19 @@ class ImageProcessor {
         final recorder = ui.PictureRecorder();
         final ui.Canvas c = ui.Canvas(recorder);
 
+        BoxFit fit = BoxFit.contain;
+
+        // avoiding squashed images if they are wide or tall
+        // cover clips off long side of image
+        if (vpSize.shortestSide / vpSize.longestSide < 0.8) {
+          fit = BoxFit.cover;
+        }
+
         paintImage(
           canvas: c,
           rect: Rect.fromLTWH(0, 0, width.toDouble(), width.toDouble()),
           image: rendered,
-          fit: BoxFit.contain,
+          fit: fit,
         );
         final ui.Picture pict = recorder.endRecording();
 
