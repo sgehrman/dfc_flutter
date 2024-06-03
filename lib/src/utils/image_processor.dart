@@ -468,15 +468,7 @@ class ImageProcessor {
       canvas.scale(scale);
     }
 
-    // canvas.drawImage(image, ui.Offset.zero, ui.Paint());
-
-    paintImage(
-      canvas: canvas,
-      rect:
-          Rect.fromLTWH(0, 0, image.width.toDouble(), image.height.toDouble()),
-      image: image,
-      fit: BoxFit.none,
-    );
+    canvas.drawImage(image, ui.Offset.zero, ui.Paint());
 
     canvas.restore();
 
