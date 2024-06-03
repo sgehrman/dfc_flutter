@@ -334,42 +334,46 @@ class ImageProcessor {
 
       final recorder = ui.PictureRecorder();
       final ui.Canvas c = ui.Canvas(recorder);
+      Size resultSize = ui.Size(vpSize.width, vpSize.height);
 
-      si.paint(c);
+      c.save();
+      try {
+        if (width != 0) {
+          BoxFit fit = BoxFit.contain;
+
+          resultSize = ui.Size(width.toDouble(), width.toDouble());
+
+          // avoiding squashed images if they are wide or tall
+          // cover clips off long side of image
+          if (vpSize.shortestSide / vpSize.longestSide < 0.8) {
+            fit = BoxFit.cover;
+          }
+
+          final scaleTransform = ScalingTransform(
+            containerSize: Size(width.toDouble(), width.toDouble()),
+            siViewport: si.viewport,
+            fit: fit,
+            // alignment: Alignment.center,
+          );
+
+          scaleTransform.applyToCanvas(c);
+        }
+
+        si.paint(c);
+      } catch (err) {
+        print(err);
+      } finally {
+        c.restore();
+      }
+
       si.unprepareImages();
 
       final ui.Picture pict = recorder.endRecording();
 
-      ui.Image rendered =
-          await pict.toImage(vpSize.width.round(), vpSize.height.round());
-
-      Size resultSize = ui.Size(vpSize.width, vpSize.height);
-
-      // resize image if needed
-      if (width != 0) {
-        final recorder = ui.PictureRecorder();
-        final ui.Canvas c = ui.Canvas(recorder);
-
-        BoxFit fit = BoxFit.contain;
-
-        // avoiding squashed images if they are wide or tall
-        // cover clips off long side of image
-        if (vpSize.shortestSide / vpSize.longestSide < 0.8) {
-          fit = BoxFit.cover;
-        }
-
-        paintImage(
-          canvas: c,
-          rect: Rect.fromLTWH(0, 0, width.toDouble(), width.toDouble()),
-          image: rendered,
-          fit: fit,
-        );
-        final ui.Picture pict = recorder.endRecording();
-
-        // set new size and image
-        resultSize = ui.Size(width.toDouble(), width.toDouble());
-        rendered = await pict.toImage(width, width);
-      }
+      final rendered = await pict.toImage(
+        resultSize.width.round(),
+        resultSize.height.round(),
+      );
 
       final ByteData? bd = await rendered.toByteData(
         format: ui.ImageByteFormat.png,
