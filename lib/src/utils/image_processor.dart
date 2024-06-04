@@ -132,7 +132,7 @@ class ImageProcessor {
 
     // might be an svg without a .svg extension
     if (format == ImgFormat.unknown) {
-      if (bytes.length < (1024 * 20)) {
+      if (bytes.length < (1024 * 100)) {
         try {
           final decoded = utf8.decode(bytes);
 
