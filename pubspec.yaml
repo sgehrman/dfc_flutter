@@ -52,7 +52,7 @@ dependencies:
   share_extend: ^2.0.0
   shared_preferences: ^2.2.3
   supercharged: ^2.1.1
-  url_launcher: ^6.2.6
+  url_launcher: ^6.3.0
   vector_math: ^2.1.4
   video_player: ^2.8.6
   widget_mask: ^1.0.0+0
