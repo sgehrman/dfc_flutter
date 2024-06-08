@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class NextColor {
   int _colorIndex = 0;
 
-  final _colors = <Color>[
+  static final _colors = <Color>[
     Colors.red,
     Colors.pink,
     Colors.purple,
@@ -13,7 +13,7 @@ class NextColor {
     Colors.orange,
   ];
 
-  final _darkColors = <Color>[
+  static final _darkColors = <Color>[
     Colors.red[900] ?? Colors.black,
     Colors.pink[900] ?? Colors.black,
     Colors.purple[900] ?? Colors.black,
@@ -23,21 +23,34 @@ class NextColor {
     Colors.orange[900] ?? Colors.black,
   ];
 
-  int _nextIndex(bool useDark) {
-    final length = useDark ? _darkColors.length : _colors.length;
-
-    if (_colorIndex >= length) {
-      _colorIndex = 0;
-    }
-
-    return _colorIndex++;
-  }
-
   Color color() {
-    return _colors[_nextIndex(false)];
+    return _nextColor(useDark: false);
   }
 
   Color darkColor() {
-    return _darkColors[_nextIndex(true)];
+    return _nextColor(useDark: true);
+  }
+
+  static Color colorForIndex(int index) {
+    return _colorForIndex(useDark: false, index: index);
+  }
+
+  static Color darkColorForIndex(int index) {
+    return _colorForIndex(useDark: true, index: index);
+  }
+
+  // =============================================
+  // private
+
+  static Color _colorForIndex({required bool useDark, required int index}) {
+    if (useDark) {
+      return _darkColors[_darkColors.length % index];
+    }
+
+    return _colors[_colors.length % index];
+  }
+
+  Color _nextColor({required bool useDark}) {
+    return _colorForIndex(useDark: useDark, index: _colorIndex++);
   }
 }
