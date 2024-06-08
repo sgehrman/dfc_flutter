@@ -44,10 +44,10 @@ class NextColor {
 
   static Color _colorForIndex({required bool useDark, required int index}) {
     if (useDark) {
-      return _darkColors[_darkColors.length % index];
+      return _darkColors[index % _darkColors.length];
     }
 
-    return _colors[_colors.length % index];
+    return _colors[index % _colors.length];
   }
 
   Color _nextColor({required bool useDark}) {
