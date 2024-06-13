@@ -46,7 +46,7 @@ class AnimatedLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: LoadingAnimationWidget.staggeredDotsWave(
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.primary,
         size: size,
       ),
     );

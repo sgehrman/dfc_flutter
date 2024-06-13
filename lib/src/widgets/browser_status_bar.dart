@@ -22,8 +22,7 @@ class BrowserStatusBar extends StatelessWidget {
         width: double.infinity,
         height: 30,
         decoration: BoxDecoration(
-          color: Theme.of(context)
-              .primaryColor, // Utils.darken(Theme.of(context).primaryColor, .10),
+          color: Theme.of(context).colorScheme.primary,
         ),
         // color: Colors.black,
         child: Stack(
@@ -60,8 +59,7 @@ class BrowserStatusBar extends StatelessWidget {
       width: double.infinity,
       height: 30,
       decoration: BoxDecoration(
-        color: Theme.of(context)
-            .scaffoldBackgroundColor, // Utils.darken(Theme.of(context).primaryColor, .10),
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: Utils.isDarkMode(context)

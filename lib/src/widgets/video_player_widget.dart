@@ -16,7 +16,7 @@ Future<void> showVideoDialog(
   bool showFileOpener = true,
 }) {
   return showPreviewDialog(
-    backgroundColor: Theme.of(context).primaryColor,
+    backgroundColor: Theme.of(context).colorScheme.primary,
     context: context,
     children: [
       Flexible(
@@ -129,7 +129,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
       );
     }
 
-    return LoadingWidget(color: Theme.of(context).primaryColor);
+    return LoadingWidget(color: Theme.of(context).colorScheme.primary);
   }
 }
 

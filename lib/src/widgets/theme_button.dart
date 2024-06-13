@@ -30,7 +30,7 @@ class ThemeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color disabledColor = Theme.of(context).primaryColor;
+    Color disabledColor = Theme.of(context).colorScheme.primary;
 
     final ThemeSet? themeSet = ThemeSetManager().currentTheme;
 
@@ -45,7 +45,7 @@ class ThemeButton extends StatelessWidget {
       return TextButton.icon(
         style: TextButton.styleFrom(
           foregroundColor: textColor ?? Colors.white,
-          backgroundColor: Theme.of(context).primaryColor,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           padding: padding,
         ),
         onPressed: disabled ? null : onPressed,
@@ -56,7 +56,7 @@ class ThemeButton extends StatelessWidget {
 
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: textColor ?? Colors.white,
         padding: padding,
       ),

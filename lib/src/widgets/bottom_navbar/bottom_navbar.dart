@@ -75,7 +75,7 @@ class BottomNavBarState extends State<BottomNavBar>
     circleColor = (widget.circleColor == null)
         ? (Theme.of(context).brightness == Brightness.dark)
             ? Colors.white
-            : Theme.of(context).primaryColor
+            : Theme.of(context).colorScheme.primary
         : widget.circleColor;
 
     activeIconColor = (widget.activeIconColor == null)
@@ -97,7 +97,7 @@ class BottomNavBarState extends State<BottomNavBar>
     inactiveIconColor = (widget.inactiveIconColor == null)
         ? (Theme.of(context).brightness == Brightness.dark)
             ? Colors.white
-            : Theme.of(context).primaryColor
+            : Theme.of(context).colorScheme.primary
         : widget.inactiveIconColor;
     gradient = widget.gradient;
     shadowColor = Theme.of(context).brightness == Brightness.dark

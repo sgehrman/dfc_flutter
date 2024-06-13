@@ -122,7 +122,7 @@ class __DialogContentsState extends State<_DialogContents> {
         TextButton(
           style: TextButton.styleFrom(
             textStyle: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               fontSize: 18,
             ),
           ),
@@ -134,7 +134,7 @@ class __DialogContentsState extends State<_DialogContents> {
         TextButton(
           style: TextButton.styleFrom(
             textStyle: TextStyle(
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).colorScheme.primary,
               fontSize: 18,
             ),
           ),

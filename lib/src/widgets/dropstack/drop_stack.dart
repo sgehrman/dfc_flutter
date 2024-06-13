@@ -100,12 +100,15 @@ class DropStack extends ChangeNotifier {
       children: <Widget>[
         Text(
           'Dropping:',
-          style: TextStyle(color: Theme.of(context).primaryColor),
+          style: TextStyle(color: Theme.of(context).colorScheme.primary),
         ),
         const SizedBox(height: 6),
         ...itemsDropping,
         const SizedBox(height: 10),
-        Text('To:', style: TextStyle(color: Theme.of(context).primaryColor)),
+        Text(
+          'To:',
+          style: TextStyle(color: Theme.of(context).colorScheme.primary),
+        ),
         const SizedBox(height: 6),
         Padding(
           padding: const EdgeInsets.only(left: 12),
@@ -114,7 +117,7 @@ class DropStack extends ChangeNotifier {
         ValueListenableBuilder<Box<dynamic>>(
           valueListenable: HiveBox.prefsBox.listenable()!,
           builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
-            final color = Theme.of(context).primaryColor;
+            final color = Theme.of(context).colorScheme.primary;
 
             return Column(
               children: [

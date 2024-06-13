@@ -27,7 +27,7 @@
 //         width: 300,
 //         child: RiveAnimation.asset(
 //           'assets/animations/treasure.flr',
-//           // color: Theme.of(context).primaryColor,
+//           // color: Theme.of(context).colorScheme.primary,
 //           controllers: [_controller],
 //           // Update the play state when the widget's initialized
 //           // onInit: (_) => setState(() { _isPlaying = false}),

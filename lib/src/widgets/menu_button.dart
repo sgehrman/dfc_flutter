@@ -41,7 +41,7 @@ class MenuButton<T> extends StatelessWidget {
         child: DecoratedBox(
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(8)),
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).colorScheme.primary,
           ),
           child: Icon(
             Icons.arrow_drop_down,

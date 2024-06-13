@@ -31,10 +31,11 @@ class StadiumButton extends StatelessWidget {
       style: TextButton.styleFrom(
         minimumSize: Size(minWidth, 0),
         foregroundColor:
-            raisedStyle ? Colors.white : Theme.of(context).primaryColor,
+            raisedStyle ? Colors.white : Theme.of(context).colorScheme.primary,
         disabledForegroundColor: Colors.grey,
-        backgroundColor:
-            raisedStyle ? Theme.of(context).primaryColor : Colors.white70,
+        backgroundColor: raisedStyle
+            ? Theme.of(context).colorScheme.primary
+            : Colors.white70,
         side: BorderSide(
           color: Colors.black.withOpacity(0.08),
         ),

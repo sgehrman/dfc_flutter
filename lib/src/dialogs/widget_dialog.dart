@@ -54,7 +54,7 @@ Future<bool?> showWidgetDialog({
               child: TextButton(
                 style: TextButton.styleFrom(
                   textStyle: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).colorScheme.primary,
                     fontSize: 18,
                   ),
                 ),
@@ -67,7 +67,7 @@ Future<bool?> showWidgetDialog({
             TextButton(
               style: TextButton.styleFrom(
                 textStyle: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.primary,
                   fontSize: 18,
                 ),
               ),

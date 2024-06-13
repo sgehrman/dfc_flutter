@@ -150,7 +150,7 @@ class _SearchFieldState extends State<SearchField> {
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           hoverColor: Colors.transparent,
-          color: Theme.of(context).primaryColor,
+          color: Theme.of(context).colorScheme.primary,
           constraints: const BoxConstraints(maxHeight: 32, maxWidth: 32),
           icon: const Icon(Icons.search),
           onPressed: () {

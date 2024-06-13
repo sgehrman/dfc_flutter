@@ -67,7 +67,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
 
   Widget _contents(Color? normalColor, String currentFont) {
     return DraggableScrollbar(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       labelTextBuilder: (double offset) {
         int index = offset ~/ _itemHeight;
 
@@ -110,7 +110,7 @@ class GoogleFontsWidgetState extends State<GoogleFontsWidget> {
                             fontObj.displayName,
                             style: theme.titleLarge!.copyWith(
                               color: fontObj.name == currentFont
-                                  ? Theme.of(context).primaryColor
+                                  ? Theme.of(context).colorScheme.primary
                                   : null,
                             ),
                           ),

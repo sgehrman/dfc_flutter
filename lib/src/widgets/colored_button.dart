@@ -36,7 +36,7 @@ class ColoredButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color disabledColor = color ?? Theme.of(context).primaryColor;
+    Color disabledColor = color ?? Theme.of(context).colorScheme.primary;
 
     disabledColor = Utils.lighten(disabledColor);
 
@@ -44,7 +44,7 @@ class ColoredButton extends StatelessWidget {
       return TextButton.icon(
         style: TextButton.styleFrom(
           foregroundColor: textColor ?? Colors.white,
-          backgroundColor: color ?? Theme.of(context).primaryColor,
+          backgroundColor: color ?? Theme.of(context).colorScheme.primary,
           padding: padding,
         ),
         onPressed: disabled ? null : onPressed,
@@ -55,7 +55,7 @@ class ColoredButton extends StatelessWidget {
 
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: color ?? Theme.of(context).primaryColor,
+        backgroundColor: color ?? Theme.of(context).colorScheme.primary,
         foregroundColor: textColor ?? Colors.white,
         padding: padding,
       ),
@@ -83,7 +83,7 @@ class CircularIconButton extends StatelessWidget {
     return Ink(
       padding: const EdgeInsets.all(4),
       decoration: ShapeDecoration(
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.primary,
         shape: const CircleBorder(),
       ),
       child: IconButton(

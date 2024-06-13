@@ -62,7 +62,7 @@ Future<T?> showContentDialog<T>({
               child: TextButton(
                 style: TextButton.styleFrom(
                   textStyle: TextStyle(
-                    color: Theme.of(context).primaryColor,
+                    color: Theme.of(context).colorScheme.primary,
                     fontSize: 18,
                   ),
                 ),
@@ -75,7 +75,7 @@ Future<T?> showContentDialog<T>({
             TextButton(
               style: TextButton.styleFrom(
                 textStyle: TextStyle(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.primary,
                   fontSize: 18,
                 ),
               ),
