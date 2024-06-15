@@ -70,12 +70,14 @@ class Text16 extends _TextBase {
     int? maxLines,
     bool bold = true,
     Color? color,
+    double? height,
   }) : super(
           text,
           style: style,
           bold: bold,
           color: color,
           size: size,
+          height: height,
           textAlign: textAlign,
           maxLines: maxLines,
         );
@@ -91,12 +93,14 @@ class Text18 extends _TextBase {
     int? maxLines,
     bool bold = true,
     Color? color,
+    double? height,
   }) : super(
           text,
           style: style,
           bold: bold,
           color: color,
           size: size,
+          height: height,
           textAlign: textAlign,
           maxLines: maxLines,
         );
@@ -112,12 +116,14 @@ class Text20 extends _TextBase {
     int? maxLines,
     bool bold = true,
     Color? color,
+    double? height,
   }) : super(
           text,
           style: style,
           bold: bold,
           color: color,
           size: size,
+          height: height,
           textAlign: textAlign,
           maxLines: maxLines,
         );
@@ -133,12 +139,14 @@ class Text22 extends _TextBase {
     int? maxLines,
     bool bold = true,
     Color? color,
+    double? height,
   }) : super(
           text,
           style: style,
           bold: bold,
           color: color,
           size: size,
+          height: height,
           textAlign: textAlign,
           maxLines: maxLines,
         );
