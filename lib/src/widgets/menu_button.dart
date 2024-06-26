@@ -80,14 +80,14 @@ class MenuButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<PopupMenuItem<MenuButtonItem<T>>> menuItems = [];
+    final List<PopupMenuEntry<MenuButtonItem<T>>> menuItems = [];
 
     for (final item in items) {
       if (Utils.isEmpty(item.title)) {
         menuItems.add(
           popupMenuItem<MenuButtonItem<T>>(
             value: item,
-            child: const Divider(),
+            child: null,
             enabled: false,
           ),
         );

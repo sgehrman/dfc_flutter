@@ -56,7 +56,7 @@ class PhoneMenu extends StatelessWidget {
       ),
     );
 
-    final List<PopupMenuItem<PhoneMenuItem>> menuItems = [];
+    final List<PopupMenuEntry<PhoneMenuItem>> menuItems = [];
 
     for (final item in PhoneMenuItem.items) {
       menuItems.add(

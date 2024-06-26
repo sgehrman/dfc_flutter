@@ -93,7 +93,7 @@ class _ScreenshotMenuState extends State<ScreenshotMenu> {
       ),
     );
 
-    final List<PopupMenuItem<ScreenshotMenuItem>> menuItems = [];
+    final List<PopupMenuEntry<ScreenshotMenuItem>> menuItems = [];
 
     for (final item in items) {
       menuItems.add(

@@ -43,11 +43,15 @@ class MenuUtils {
 }
 
 // use this so all our menus are the same heights (default is too big)
-PopupMenuItem<T> popupMenuItem<T>({
-  required Widget child,
+PopupMenuEntry<T> popupMenuItem<T>({
+  required Widget? child, // null for PopupMenuDivider
   required T value,
   bool enabled = true,
 }) {
+  if (child == null) {
+    return const PopupMenuDivider();
+  }
+
   return PopupMenuItem<T>(
     value: value,
     height: kMinInteractiveDimension - 8,

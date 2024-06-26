@@ -20,7 +20,7 @@ class ThemeSetButton extends StatelessWidget {
   Widget _popupMenu(BuildContext context) {
     final List<ThemeSet> items = themeSets;
 
-    final menuItems = <PopupMenuItem<ThemeSet>>[];
+    final menuItems = <PopupMenuEntry<ThemeSet>>[];
 
     for (final item in items) {
       menuItems.add(
