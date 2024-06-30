@@ -456,7 +456,7 @@ class ImageProcessor {
 
   static Future<ui.Image> _drawImageToCanvas(
     ui.Image image,
-  ) {
+  ) async {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
     final ui.Canvas canvas = ui.Canvas(recorder);
 
@@ -479,7 +479,8 @@ class ImageProcessor {
     final picture = recorder.endRecording();
 
     // get image fom picture and get the png data
-    final result = picture.toImage(
+    // await so we don't dispose() before done
+    final result = await picture.toImage(
       (image.width * scale).round(),
       (image.height * scale).round(),
     );
