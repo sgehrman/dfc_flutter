@@ -47,6 +47,8 @@ export 'src/themes/editor/theme_set.dart';
 export 'src/themes/editor/theme_set_button.dart';
 export 'src/themes/editor/theme_set_manager.dart';
 export 'src/themes/platform_sizes.dart';
+export 'src/themes/theme_buttons.dart';
+export 'src/themes/theme_utils.dart';
 export 'src/themes/themes.dart';
 export 'src/utils/browser_prefs.dart';
 export 'src/utils/dates.dart';
