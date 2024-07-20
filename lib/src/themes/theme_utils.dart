@@ -26,4 +26,17 @@ class ThemeUtils {
       }.contains,
     );
   }
+
+  // Returns true if the color's brightness is [Brightness.light], else false.
+  static bool isLightColor(Color color) {
+    return ThemeData.estimateBrightnessForColor(color) == Brightness.light;
+  }
+
+  // Returns true if the color's brightness is [Brightness.dark], else false.
+  static bool isDarkColor(Color color) {
+    // could also use this?
+    // return color.computeLuminance() <= 0.5;
+
+    return ThemeData.estimateBrightnessForColor(color) == Brightness.dark;
+  }
 }
