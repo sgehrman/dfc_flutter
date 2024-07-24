@@ -40,8 +40,9 @@ extension ExtendedInt on int {
 
   String formatAsDollars({int decimalDigits = 2}) {
     return NumberFormat.simpleCurrency(
-            name: 'USD', decimalDigits: decimalDigits)
-        .format(this);
+      name: 'USD',
+      decimalDigits: decimalDigits,
+    ).format(this);
   }
 
   String formatWithCommas({int decimalDigits = 2}) {
