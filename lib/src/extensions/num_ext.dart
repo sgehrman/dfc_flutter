@@ -37,6 +37,16 @@ extension ExtendedInt on int {
 
     return showCents ? '\$${val.toStringAsFixed(2)}' : '\$${val.toInt()}';
   }
+}
+
+extension ExtendedNum on num {
+  num difference(num other) => (this - other).abs();
+}
+
+extension ExtendedDouble on double {
+  double get getRadians {
+    return this * math.pi / 180;
+  }
 
   String formatAsDollars({int decimalDigits = 2}) {
     return NumberFormat.simpleCurrency(
@@ -52,15 +62,5 @@ extension ExtendedInt on int {
     );
 
     return formatter.format(this);
-  }
-}
-
-extension ExtendedNum on num {
-  num difference(num other) => (this - other).abs();
-}
-
-extension ExtendedDouble on double {
-  double get getRadians {
-    return this * math.pi / 180;
   }
 }
