@@ -1,5 +1,7 @@
 import 'dart:math' as math;
 
+import 'package:intl/intl.dart';
+
 extension ExtendedInt on int {
   String get twoDigitTime => '$this'.padLeft(2, '0');
 
@@ -34,6 +36,21 @@ extension ExtendedInt on int {
     final showCents = this % 100 != 0;
 
     return showCents ? '\$${val.toStringAsFixed(2)}' : '\$${val.toInt()}';
+  }
+
+  String formatAsDollars({int decimalDigits = 2}) {
+    return NumberFormat.simpleCurrency(
+            name: 'USD', decimalDigits: decimalDigits)
+        .format(this);
+  }
+
+  String formatWithCommas({int decimalDigits = 2}) {
+    final formatter = NumberFormat.decimalPatternDigits(
+      locale: 'en_US',
+      decimalDigits: decimalDigits,
+    );
+
+    return formatter.format(this);
   }
 }
 
