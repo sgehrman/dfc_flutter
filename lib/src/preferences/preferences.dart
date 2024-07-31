@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
+import 'package:dfc_flutter/src/hive_db/hive_utils.dart';
 import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 
 class Preferences {
@@ -14,7 +15,7 @@ class Preferences {
   static Preferences? _instance;
 
   HiveBox<dynamic> get prefs {
-    return HiveBox.prefsBox;
+    return PrefsBox().box;
   }
 
   void clearPrefs() {

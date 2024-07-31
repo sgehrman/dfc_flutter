@@ -8,12 +8,6 @@ class HiveBox<T> {
     return HiveBox<T>._(boxName);
   }
 
-  // static access to the prefs box
-  static HiveBox<dynamic>? _prefs;
-  static HiveBox<dynamic> get prefsBox {
-    return _prefs ??= HiveBox<dynamic>.box('prefs');
-  }
-
   String name;
   int _refCount = 0;
   Box<T>? _box;

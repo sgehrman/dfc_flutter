@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/hive_db/hive_box.dart';
+import 'package:dfc_flutter/src/hive_db/hive_utils.dart';
 import 'package:dfc_flutter/src/utils/browser_prefs.dart';
 import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item_widget.dart';
@@ -98,7 +98,7 @@ class BrowserSortMenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<dynamic>>(
-      valueListenable: HiveBox.prefsBox.listenable()!,
+      valueListenable: PrefsBox().box.listenable()!,
       builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
         return _popupMenu(context);
       },

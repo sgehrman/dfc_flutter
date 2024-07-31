@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/hive_db/hive_box.dart';
+import 'package:dfc_flutter/src/hive_db/hive_utils.dart';
 import 'package:dfc_flutter/src/utils/debouncer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -29,9 +29,9 @@ class _PreferencesListenerState extends State<PreferencesListener> {
 
     _updater = Debouncer(milliseconds: widget.debounceMilliseconds);
 
-    _listenable = HiveBox.prefsBox.listenable(
-      keys: widget.keys.isEmpty ? null : widget.keys,
-    )!;
+    _listenable = PrefsBox().box.listenable(
+          keys: widget.keys.isEmpty ? null : widget.keys,
+        )!;
 
     _listenable.addListener(listener);
   }
@@ -56,9 +56,9 @@ class _PreferencesListenerState extends State<PreferencesListener> {
     }
 
     return ValueListenableBuilder<Box<dynamic>>(
-      valueListenable: HiveBox.prefsBox.listenable(
-        keys: widget.keys.isEmpty ? null : widget.keys,
-      )!,
+      valueListenable: PrefsBox().box.listenable(
+            keys: widget.keys.isEmpty ? null : widget.keys,
+          )!,
       builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
         return widget.builder(context);
       },

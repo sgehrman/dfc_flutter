@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:dfc_flutter/src/dialogs/confirm_dialog.dart';
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
-import 'package:dfc_flutter/src/hive_db/hive_box.dart';
+import 'package:dfc_flutter/src/hive_db/hive_utils.dart';
 import 'package:dfc_flutter/src/utils/browser_prefs.dart';
 import 'package:dfc_flutter/src/utils/stack.dart';
 import 'package:flutter/material.dart';
@@ -115,7 +115,7 @@ class DropStack extends ChangeNotifier {
           child: Text(directory.name.preTruncate()),
         ),
         ValueListenableBuilder<Box<dynamic>>(
-          valueListenable: HiveBox.prefsBox.listenable()!,
+          valueListenable: PrefsBox().box.listenable()!,
           builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
             final color = Theme.of(context).colorScheme.primary;
 

@@ -1,40 +1,40 @@
 import 'package:dfc_flutter/src/file_system/directory_listing_spec.dart';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
-import 'package:dfc_flutter/src/hive_db/hive_box.dart';
+import 'package:dfc_flutter/src/hive_db/hive_utils.dart';
 
 class BrowserPrefs {
   static bool? get showHidden =>
-      HiveBox.prefsBox.get('showHidden', defaultValue: false) as bool?;
-  static set showHidden(bool? flag) => HiveBox.prefsBox.put('showHidden', flag);
+      PrefsBox().box.get('showHidden', defaultValue: false) as bool?;
+  static set showHidden(bool? flag) => PrefsBox().box.put('showHidden', flag);
 
   static String? get sortType =>
-      HiveBox.prefsBox.get('sortType', defaultValue: SortTypes.sortByName)
+      PrefsBox().box.get('sortType', defaultValue: SortTypes.sortByName)
           as String?;
-  static set sortType(String? style) => HiveBox.prefsBox.put('sortType', style);
+  static set sortType(String? style) => PrefsBox().box.put('sortType', style);
 
   static bool? get sortAscending =>
-      HiveBox.prefsBox.get('sortAscending', defaultValue: true) as bool?;
+      PrefsBox().box.get('sortAscending', defaultValue: true) as bool?;
   static set sortAscending(bool? style) =>
-      HiveBox.prefsBox.put('sortAscending', style);
+      PrefsBox().box.put('sortAscending', style);
 
   static bool? get sortFoldersFirst =>
-      HiveBox.prefsBox.get('sortFoldersFirst', defaultValue: true) as bool?;
+      PrefsBox().box.get('sortFoldersFirst', defaultValue: true) as bool?;
   static set sortFoldersFirst(bool? style) =>
-      HiveBox.prefsBox.put('sortFoldersFirst', style);
+      PrefsBox().box.put('sortFoldersFirst', style);
 
   static bool? get searchInsideHidden =>
-      HiveBox.prefsBox.get('searchInsideHidden', defaultValue: false) as bool?;
+      PrefsBox().box.get('searchInsideHidden', defaultValue: false) as bool?;
   static set searchInsideHidden(bool? flag) =>
-      HiveBox.prefsBox.put('searchInsideHidden', flag);
+      PrefsBox().box.put('searchInsideHidden', flag);
 
   static bool? get copyOnDrop =>
-      HiveBox.prefsBox.get('copyOnDrop', defaultValue: false) as bool?;
-  static set copyOnDrop(bool? flag) => HiveBox.prefsBox.put('copyOnDrop', flag);
+      PrefsBox().box.get('copyOnDrop', defaultValue: false) as bool?;
+  static set copyOnDrop(bool? flag) => PrefsBox().box.put('copyOnDrop', flag);
 
   static bool? get replaceOnDrop =>
-      HiveBox.prefsBox.get('replaceOnDrop', defaultValue: false) as bool?;
+      PrefsBox().box.get('replaceOnDrop', defaultValue: false) as bool?;
   static set replaceOnDrop(bool? flag) =>
-      HiveBox.prefsBox.put('replaceOnDrop', flag);
+      PrefsBox().box.put('replaceOnDrop', flag);
 }
 
 class BrowserUtils {
