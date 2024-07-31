@@ -9,8 +9,15 @@ class HiveBox<T> {
   }
 
   // static access to the prefs box
-  static HiveBox<dynamic> get prefsBox => _prefs;
-  static final HiveBox<dynamic> _prefs = HiveBox<dynamic>.box('prefs');
+  static HiveBox<dynamic>? _prefs;
+  static HiveBox<dynamic> get prefsBox {
+    if (_prefs == null) {
+      print('### creating prefs');
+      _prefs = HiveBox<dynamic>.box('prefs');
+    }
+
+    return _prefs!;
+  }
 
   String name;
   int _refCount = 0;
