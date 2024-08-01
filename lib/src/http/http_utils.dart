@@ -121,9 +121,9 @@ class HttpUtils {
         return result;
       }
     } on TimeoutException catch (err) {
-      print('### Error(httpGetAlt): TimeoutException err:$err url: $uri');
+      print('### Error(httpGetStream): TimeoutException err:$err url: $uri');
     } catch (err) {
-      print('### Error(httpGetAlt): err:$err url: $uri');
+      print('### Error(httpGetStream): err:$err url: $uri');
     } finally {
       httpClient.close();
     }
