@@ -9,23 +9,23 @@ environment:
 
 dependencies:
   barcode_widget: ^2.0.4
-  bonsoir: ^5.1.9
+  bonsoir: ^5.1.10
   characters: ^1.3.0
   collection: ^1.18.0
   crypto: ^3.0.3
-  device_info_plus: ^10.1.0
+  device_info_plus: ^10.1.2
   dfc_dart:
     git: https://github.com/sgehrman/dfc_dart
   dotted_border: ^2.1.0
-  email_validator: ^2.1.17
-  flex_color_picker: ^3.5.0
+  email_validator: ^3.0.0
+  flex_color_picker: ^3.5.1
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
   flutter_archive: ^6.0.3
   flutter_barcode_scanner: ^2.0.0
-  flutter_markdown: ^0.7.2
-  flutter_multi_formatter: ^2.12.8
+  flutter_markdown: ^0.7.3+1
+  flutter_multi_formatter: ^2.13.0
   flutter_svg: ^2.0.10+1
   google_fonts: ^6.2.1
   hex: ^0.2.0
@@ -33,33 +33,33 @@ dependencies:
   hive_flutter: ^1.1.0
   html: ^0.15.4
   html2md: ^1.3.2
-  http: ^1.2.1
+  http: ^1.2.2
   image: ^4.2.0
   intl: ^0.19.0
-  jovial_svg: ^1.1.21
+  jovial_svg: ^1.1.22
   json_annotation: ^4.9.0
   just_the_tooltip: ^0.0.12
   linkify: ^5.0.0
   loading_animation_widget: ^1.2.1
   mime_type: ^1.0.0
   open_file_plus: ^3.4.1+1
-  package_info_plus: ^8.0.0
+  package_info_plus: ^8.0.2
   pasteboard: ^0.2.0
   path: ^1.9.0
-  path_provider: ^2.1.3
+  path_provider: ^2.1.4
   provider: ^6.1.2
   random_string: ^2.3.1
   share_extend: ^2.0.0
-  shared_preferences: ^2.2.3
+  shared_preferences: ^2.3.1
   supercharged: ^2.1.1
   url_launcher: ^6.3.0
   vector_math: ^2.1.4
-  video_player: ^2.8.7
+  video_player: ^2.9.1
   widget_mask: ^1.0.0+0
   xml: ^6.5.0
 
 dev_dependencies:
-  build_runner: ^2.4.11
+  build_runner: ^2.4.12
   # must include this with dfc_lints. see https://github.com/dart-code-checker/dart-code-metrics/issues/254
   dart_code_metrics:
     git: https://github.com/rei-codes/dart-code-metrics
