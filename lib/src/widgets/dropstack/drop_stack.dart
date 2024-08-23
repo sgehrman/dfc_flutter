@@ -7,7 +7,7 @@ import 'package:dfc_flutter/src/hive_db/hive_utils.dart';
 import 'package:dfc_flutter/src/utils/browser_prefs.dart';
 import 'package:dfc_flutter/src/utils/stack.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 
 // web and mobile have different implementations, see DropStackImpMobile, DropStackImpWeb
 typedef DropStackImplementation = void Function(
