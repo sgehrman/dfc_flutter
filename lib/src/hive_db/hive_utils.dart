@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
 import 'package:dfc_flutter/src/hive_db/hive_data.dart';
+import 'package:dfc_flutter/src/preferences/settings.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce/hive.dart';
@@ -49,6 +50,8 @@ class HiveUtils {
 
     // open prefs box before app runs so it's ready
     await PrefsBox().init(prefsBoxName);
+
+    await Settings().initialize();
   }
 }
 
