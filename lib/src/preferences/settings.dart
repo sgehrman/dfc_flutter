@@ -31,45 +31,45 @@ class Settings extends ChangeNotifier {
   // ---------------------------------------------------
   // getters
 
-  bool boolValue(
-    String key, {
-    required bool defaultValue,
+  bool boolValue({
+    required String key,
+    bool defaultValue = false,
   }) {
     _check();
 
     return _sharedPreferences.getBool(key) ?? defaultValue;
   }
 
-  int intValue(
-    String key, {
-    required int defaultValue,
+  int intValue({
+    required String key,
+    int defaultValue = 0,
   }) {
     _check();
 
     return _sharedPreferences.getInt(key) ?? defaultValue;
   }
 
-  List<String> listValue(
-    String key, {
-    required List<String> defaultValue,
+  List<String> listValue({
+    required String key,
+    List<String> defaultValue = const [],
   }) {
     _check();
 
     return _sharedPreferences.getStringList(key) ?? defaultValue;
   }
 
-  String stringValue(
-    String key, {
-    required String defaultValue,
+  String stringValue({
+    required String key,
+    String defaultValue = '',
   }) {
     _check();
 
     return _sharedPreferences.getString(key) ?? defaultValue;
   }
 
-  double doubleValue(
-    String key, {
-    required double defaultValue,
+  double doubleValue({
+    required String key,
+    double defaultValue = 0,
   }) {
     _check();
 
@@ -85,8 +85,8 @@ class Settings extends ChangeNotifier {
     _keyChanged = '';
   }
 
-  void setBool(
-    String key, {
+  void setBool({
+    required String key,
     required bool value,
   }) {
     _check();
@@ -96,8 +96,8 @@ class Settings extends ChangeNotifier {
     _notifyListeners(key);
   }
 
-  void setInt(
-    String key, {
+  void setInt({
+    required String key,
     required int value,
   }) {
     _check();
@@ -107,8 +107,8 @@ class Settings extends ChangeNotifier {
     _notifyListeners(key);
   }
 
-  void setList(
-    String key, {
+  void setList({
+    required String key,
     required List<String> value,
   }) {
     _check();
@@ -118,8 +118,8 @@ class Settings extends ChangeNotifier {
     _notifyListeners(key);
   }
 
-  void setString(
-    String key, {
+  void setString({
+    required String key,
     required String value,
   }) {
     _check();
@@ -129,8 +129,8 @@ class Settings extends ChangeNotifier {
     _notifyListeners(key);
   }
 
-  void setDouble(
-    String key, {
+  void setDouble({
+    required String key,
     required double value,
   }) {
     _check();
