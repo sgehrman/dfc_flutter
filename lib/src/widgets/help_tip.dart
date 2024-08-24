@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/preferences/preferences.dart';
 import 'package:dfc_flutter/src/themes/platform_sizes.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +59,7 @@ class _HelpTipState extends State<HelpTip> {
 
   @override
   Widget build(BuildContext context) {
-    if (Preferences().disableTooltips || Utils.isEmpty(widget.message)) {
+    if (Utils.isEmpty(widget.message)) {
       return widget.child;
     }
 

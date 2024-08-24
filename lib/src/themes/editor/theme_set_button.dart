@@ -5,7 +5,6 @@ import 'package:dfc_flutter/src/themes/editor/theme_set_manager.dart';
 import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_item_widget.dart';
-import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
 import 'package:flutter/material.dart';
 
 class ThemeSetButton extends StatelessWidget {
@@ -36,7 +35,7 @@ class ThemeSetButton extends StatelessWidget {
 
     return Center(
       child: PopupMenuButton<ThemeSet>(
-        tooltip: tipString('Switch Themes'),
+        tooltip: 'Switch Themes',
         offset: const Offset(0, 30),
         itemBuilder: (context) {
           return menuItems;

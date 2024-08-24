@@ -2,7 +2,6 @@ import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/widgets/dropstack/drop_stack.dart';
 import 'package:dfc_flutter/src/widgets/dropstack/floating_action_bubble.dart';
 import 'package:dfc_flutter/src/widgets/dropstack/overlay_container.dart';
-import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -169,7 +168,7 @@ class _DropStackButtonState extends State<DropStackButton>
           context,
           FloatingActionBubble(
             title: dropStack.count.toString(),
-            tooltip: tipString('Drop Stack'),
+            tooltip: 'Drop Stack',
             items: _items(context, dropStack),
             animation: _animation,
             onPressed: onPressed,

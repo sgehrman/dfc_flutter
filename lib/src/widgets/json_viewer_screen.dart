@@ -2,7 +2,6 @@ import 'package:dfc_flutter/src/dialogs/content_dialog.dart';
 import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/json_widget.dart';
-import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -123,7 +122,7 @@ Future<void> showJsonViewerDialog({
         const Spacer(),
         IconButton(
           onPressed: onDelete,
-          tooltip: tipString('Delete'),
+          tooltip: 'Delete',
           icon: const Icon(Icons.delete_outlined),
         ),
         IconButton(
@@ -133,7 +132,7 @@ Future<void> showJsonViewerDialog({
 
             Utils.showCopiedToast(context);
           },
-          tooltip: tipString('Copy Json'),
+          tooltip: 'Copy Json',
           icon: const Icon(Icons.content_copy),
         ),
       ],

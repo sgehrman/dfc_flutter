@@ -1,5 +1,4 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
 import 'package:flutter/material.dart';
 
 class ColoredButton extends StatelessWidget {
@@ -87,7 +86,7 @@ class CircularIconButton extends StatelessWidget {
         shape: const CircleBorder(),
       ),
       child: IconButton(
-        tooltip: tipString(tooltip),
+        tooltip: tooltip,
         iconSize: iconSize,
         color: Colors.white,
         onPressed: onPressed,

@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/preferences/preferences.dart';
 import 'package:dfc_flutter/src/themes/platform_sizes.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/hacked_tooltip.dart';
@@ -32,7 +31,7 @@ class ToolTip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Preferences().disableTooltips || Utils.isEmpty(message)) {
+    if (Utils.isEmpty(message)) {
       return child;
     }
 

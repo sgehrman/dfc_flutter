@@ -1,5 +1,4 @@
 import 'package:dfc_flutter/src/widgets/shrink_wrapped_list.dart';
-import 'package:dfc_flutter/src/widgets/tooltip_utils.dart';
 import 'package:flutter/material.dart';
 
 class FloatingActionBubble extends AnimatedWidget {
@@ -63,7 +62,7 @@ class FloatingActionBubble extends AnimatedWidget {
           FloatingActionButton.extended(
             onPressed: onPressed,
             label: Text(title),
-            tooltip: tipString(tooltip),
+            tooltip: tooltip,
             icon: AnimatedIcon(
               icon: icon,
               progress: _animation,
