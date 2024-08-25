@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// unused for now
+// do this at HiveInit or somewhere called in main()
+// await Settings().initialize();
+
 class Settings extends ChangeNotifier {
   factory Settings() {
     return _instance ??= Settings._();

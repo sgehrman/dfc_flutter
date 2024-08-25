@@ -32,7 +32,6 @@ export 'src/network_discovery/network_client.dart';
 export 'src/network_discovery/network_discovery_screen.dart';
 export 'src/preferences/preferences.dart';
 export 'src/preferences/preferences_listener.dart';
-export 'src/preferences/settings.dart';
 export 'src/publishing_tools/phone_menu.dart';
 export 'src/publishing_tools/phone_shapes.dart';
 export 'src/publishing_tools/screenshot_maker.dart';
