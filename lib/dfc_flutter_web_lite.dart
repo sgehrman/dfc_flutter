@@ -50,6 +50,7 @@ export 'src/themes/platform_sizes.dart';
 export 'src/themes/theme_buttons.dart';
 export 'src/themes/theme_utils.dart';
 export 'src/themes/themes.dart';
+export 'src/utils/browser_detect.dart';
 export 'src/utils/browser_prefs.dart';
 export 'src/utils/dates.dart';
 export 'src/utils/debouncer.dart';
