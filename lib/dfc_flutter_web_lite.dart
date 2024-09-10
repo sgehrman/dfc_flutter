@@ -8,6 +8,7 @@ export 'src/dialogs/content_dialog.dart';
 export 'src/dialogs/simple_dialog.dart';
 export 'src/dialogs/string_dialog.dart';
 export 'src/dialogs/widget_dialog.dart';
+export 'src/extensions/build_context_ext.dart';
 export 'src/extensions/canvas_ext.dart';
 export 'src/extensions/color_ext.dart';
 export 'src/extensions/date_ext.dart';
