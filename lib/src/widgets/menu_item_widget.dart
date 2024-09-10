@@ -6,7 +6,6 @@ class MenuItemWidget extends StatelessWidget {
     required this.name,
     this.iconWidget,
     this.iconData,
-    this.level = 0,
     this.tooltip,
   });
 
@@ -16,7 +15,6 @@ class MenuItemWidget extends StatelessWidget {
   final Widget? iconWidget;
 
   final String name;
-  final int level;
   final String? tooltip;
 
   static const double iconSize = 24;
@@ -26,14 +24,6 @@ class MenuItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double horizontalPadding = 10;
-    const double levelPadding = 20;
-
-    final contentPadding = EdgeInsets.only(
-      right: horizontalPadding,
-      left: horizontalPadding + (level * levelPadding),
-    );
-
     Widget leading = const SizedBox();
     if (iconData != null) {
       leading = Icon(iconData, size: iconSize);
@@ -43,23 +33,10 @@ class MenuItemWidget extends StatelessWidget {
 
     return ToolTip(
       message: tooltip,
-      child: Padding(
-        padding: contentPadding,
-        child: Row(
-          children: [
-            leading,
-            const SizedBox(
-              width: 14,
-            ),
-            Flexible(
-              child: Text(
-                name,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: 18),
-              ),
-            ),
-          ],
+      child: ListTile(
+        leading: leading,
+        title: Text(
+          name,
         ),
       ),
     );

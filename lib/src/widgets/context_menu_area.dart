@@ -10,7 +10,6 @@ class MenuItemData {
     this.iconData,
     this.iconWidget,
     this.action,
-    this.level = 0,
     this.enabled = true,
     this.tooltip,
   });
@@ -20,7 +19,6 @@ class MenuItemData {
         iconWidget = null,
         tooltip = null,
         enabled = false,
-        level = 0,
         action = null;
 
   factory MenuItemData.divider() {
@@ -45,7 +43,6 @@ class MenuItemData {
               iconData: itemData.iconData,
               iconWidget: itemData.iconWidget,
               name: itemData.title,
-              level: itemData.level,
               tooltip: itemData.tooltip,
             ),
           ),
@@ -60,7 +57,6 @@ class MenuItemData {
   final IconData? iconData;
   final Widget? iconWidget;
   final bool enabled;
-  final int level;
   final String? tooltip;
   final void Function()? action;
 }
