@@ -40,7 +40,9 @@ class _MenuPopupButtonState extends State<MenuPopupButton> {
     return ToolTip(
       message: widget.tooltip,
       child: MenuAnchor(
+        consumeOutsideTap: true,
         menuChildren: menuChildren,
+        child: widget.child,
         builder: (
           BuildContext context,
           MenuController controller,
@@ -49,7 +51,7 @@ class _MenuPopupButtonState extends State<MenuPopupButton> {
           return InkResponse(
             radius: widget.radius,
             onTapDown: (details) => _handleClick(details, controller),
-            child: widget.child,
+            child: child,
           );
         },
       ),

@@ -24,7 +24,9 @@ class _ContextMenuState extends State<ContextualMenu> {
     );
 
     return MenuAnchor(
+      consumeOutsideTap: true,
       menuChildren: menuChildren,
+      child: widget.child,
       builder: (
         BuildContext context,
         MenuController controller,
@@ -33,9 +35,7 @@ class _ContextMenuState extends State<ContextualMenu> {
         return GestureDetector(
           onSecondaryTapDown: (details) =>
               _handleRightClick(details, controller),
-          // don't eat the mouse down if menu isn't open, let it fall through to the child
-          onTapDown: controller.isOpen ? (details) => controller.close() : null,
-          child: widget.child,
+          child: child,
         );
       },
     );
