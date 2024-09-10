@@ -1,9 +1,10 @@
 import 'dart:typed_data';
 
 import 'package:dfc_dart/dfc_dart.dart';
+import 'package:dfc_flutter/src/menu_button_bar/contextual_menu.dart';
+import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/utils/image_processor.dart';
 import 'package:dfc_flutter/src/widgets/checkerboard_container.dart';
-import 'package:dfc_flutter/src/widgets/context_menu_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pasteboard/pasteboard.dart';
@@ -11,14 +12,14 @@ import 'package:pasteboard/pasteboard.dart';
 // =======================================================================
 // util functions
 
-List<MenuItemData> _contextualMenuItems({
+List<MenuButtonBarItemData> _contextualMenuItems({
   required BuildContext context,
   required String url,
 }) {
-  final itemDatas = <MenuItemData>[];
+  final itemDatas = <MenuButtonBarItemData>[];
 
   itemDatas.add(
-    MenuItemData(
+    MenuButtonBarItemData(
       title: 'Copy',
       action: () async {
         final uri = UriUtils.parseUri(url);
@@ -29,7 +30,7 @@ List<MenuItemData> _contextualMenuItems({
           await Pasteboard.writeImage(imageData.bytes);
         }
       },
-      iconData: Icons.info_outline,
+      leading: const Icon(Icons.info_outline),
     ),
   );
 
@@ -74,7 +75,7 @@ class FadeImage extends StatelessWidget {
     // some data urls have spaces?
     final cleanUrl = _cleanUrl(url);
 
-    return ContextMenuArea(
+    return ContextualMenu(
       buildMenu: () => _contextualMenuItems(
         context: context,
         url: cleanUrl,
@@ -137,7 +138,7 @@ class NoFadeImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final cleanUrl = _cleanUrl(url);
 
-    return ContextMenuArea(
+    return ContextualMenu(
       buildMenu: () => _contextualMenuItems(
         context: context,
         url: cleanUrl,
