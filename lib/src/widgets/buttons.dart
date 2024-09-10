@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/widgets/context_menu_area.dart';
 import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
@@ -201,41 +200,6 @@ class DFOutlineButton extends StatelessWidget {
     return ToolTip(
       message: tooltip,
       child: b,
-    );
-  }
-}
-
-// =================================================================
-
-class DFIconMenuButton extends StatelessWidget {
-  const DFIconMenuButton({
-    required this.itemBuilder,
-    this.iconData,
-    this.iconSize,
-    this.icon,
-    this.color,
-    super.key,
-  });
-
-  final List<MenuItemData> Function() itemBuilder;
-  final Color? color;
-  final IconData? iconData;
-  final Widget? icon;
-  final double? iconSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return DFIconButton(
-      onPressed: () {
-        showContextMenu(
-          localPosition: Offset(0, context.size?.height ?? 0),
-          context: context,
-          menuData: itemBuilder(),
-        );
-      },
-      color: color,
-      iconSize: iconSize,
-      icon: icon ?? Icon(iconData ?? Icons.more_vert),
     );
   }
 }
