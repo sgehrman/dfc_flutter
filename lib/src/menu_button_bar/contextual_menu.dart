@@ -25,14 +25,15 @@ class _ContextMenuState extends State<ContextualMenu> {
       menuData: widget.buildMenu(),
     );
 
-    return GestureDetector(
-      onSecondaryTapDown: _handleRightClick,
-      // don't eat the mouse down if menu isn't open, let it fall through to the child
-      onTapDown:
-          _menuController.isOpen ? (details) => _menuController.close() : null,
-      child: MenuAnchor(
-        controller: _menuController,
-        menuChildren: menuChildren,
+    return MenuAnchor(
+      controller: _menuController,
+      menuChildren: menuChildren,
+      child: GestureDetector(
+        onSecondaryTapDown: _handleRightClick,
+        // don't eat the mouse down if menu isn't open, let it fall through to the child
+        onTapDown: _menuController.isOpen
+            ? (details) => _menuController.close()
+            : null,
         child: widget.child,
       ),
     );
