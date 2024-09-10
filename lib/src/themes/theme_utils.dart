@@ -4,38 +4,42 @@ class ThemeUtils {
   ThemeUtils._();
 
   static void debugStates(Set<WidgetState> states) {
-    print('## debug states ##');
+    if (states.isNotEmpty) {
+      print('## START: debug states ##');
 
-    if (isSelected(states)) {
-      print('isSelected');
-    }
+      if (isSelected(states)) {
+        print('isSelected');
+      }
 
-    if (isHovered(states)) {
-      print('isHovered');
-    }
+      if (isHovered(states)) {
+        print('isHovered');
+      }
 
-    if (isDisabled(states)) {
-      print('isDisabled');
-    }
+      if (isDisabled(states)) {
+        print('isDisabled');
+      }
 
-    if (isFocused(states)) {
-      print('isFocused');
-    }
+      if (isFocused(states)) {
+        print('isFocused');
+      }
 
-    if (isError(states)) {
-      print('isError');
-    }
+      if (isError(states)) {
+        print('isError');
+      }
 
-    if (isDragged(states)) {
-      print('isDragged');
-    }
+      if (isDragged(states)) {
+        print('isDragged');
+      }
 
-    if (isPressed(states)) {
-      print('isPressed');
-    }
+      if (isPressed(states)) {
+        print('isPressed');
+      }
 
-    if (isScrolledUnder(states)) {
-      print('isScrolledUnder');
+      if (isScrolledUnder(states)) {
+        print('isScrolledUnder');
+      }
+
+      print('## END: debug states ##');
     }
   }
 
