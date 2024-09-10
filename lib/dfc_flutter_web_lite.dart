@@ -33,6 +33,7 @@ export 'src/menu_button_bar/menu_button_bar_item.dart';
 export 'src/menu_button_bar/menu_button_bar_item_data.dart';
 export 'src/menu_button_bar/menu_button_bar_styles.dart';
 export 'src/menu_button_bar/menu_button_bar_utils.dart';
+export 'src/menu_button_bar/menu_pupup_button.dart';
 export 'src/models/abstract_models.dart';
 export 'src/network_discovery/bonjour.dart';
 export 'src/network_discovery/network_client.dart';
