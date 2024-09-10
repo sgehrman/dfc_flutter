@@ -3,6 +3,42 @@ import 'package:flutter/material.dart';
 class ThemeUtils {
   ThemeUtils._();
 
+  static void debugStates(Set<WidgetState> states) {
+    print('## debug states ##');
+
+    if (isSelected(states)) {
+      print('isSelected');
+    }
+
+    if (isHovered(states)) {
+      print('isHovered');
+    }
+
+    if (isDisabled(states)) {
+      print('isDisabled');
+    }
+
+    if (isFocused(states)) {
+      print('isFocused');
+    }
+
+    if (isError(states)) {
+      print('isError');
+    }
+
+    if (isDragged(states)) {
+      print('isDragged');
+    }
+
+    if (isPressed(states)) {
+      print('isPressed');
+    }
+
+    if (isScrolledUnder(states)) {
+      print('isScrolledUnder');
+    }
+  }
+
   static bool isSelected(Set<WidgetState> states) {
     return states.any(
       <WidgetState>{
@@ -23,6 +59,46 @@ class ThemeUtils {
     return states.any(
       <WidgetState>{
         WidgetState.disabled,
+      }.contains,
+    );
+  }
+
+  static bool isError(Set<WidgetState> states) {
+    return states.any(
+      <WidgetState>{
+        WidgetState.error,
+      }.contains,
+    );
+  }
+
+  static bool isFocused(Set<WidgetState> states) {
+    return states.any(
+      <WidgetState>{
+        WidgetState.focused,
+      }.contains,
+    );
+  }
+
+  static bool isDragged(Set<WidgetState> states) {
+    return states.any(
+      <WidgetState>{
+        WidgetState.dragged,
+      }.contains,
+    );
+  }
+
+  static bool isPressed(Set<WidgetState> states) {
+    return states.any(
+      <WidgetState>{
+        WidgetState.pressed,
+      }.contains,
+    );
+  }
+
+  static bool isScrolledUnder(Set<WidgetState> states) {
+    return states.any(
+      <WidgetState>{
+        WidgetState.scrolledUnder,
       }.contains,
     );
   }
