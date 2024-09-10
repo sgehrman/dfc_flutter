@@ -16,8 +16,6 @@ class ContextualMenu extends StatefulWidget {
 }
 
 class _ContextMenuState extends State<ContextualMenu> {
-  final MenuController _menuController = MenuController();
-
   @override
   Widget build(BuildContext context) {
     final menuChildren = MenuButtonBarUtils.buildMenuItems(
@@ -26,25 +24,29 @@ class _ContextMenuState extends State<ContextualMenu> {
     );
 
     return MenuAnchor(
-      controller: _menuController,
       menuChildren: menuChildren,
-      child: GestureDetector(
-        onSecondaryTapDown: _handleRightClick,
-        // don't eat the mouse down if menu isn't open, let it fall through to the child
-        onTapDown: _menuController.isOpen
-            ? (details) => _menuController.close()
-            : null,
-        child: widget.child,
-      ),
+      builder: (
+        BuildContext context,
+        MenuController controller,
+        Widget? child,
+      ) {
+        return GestureDetector(
+          onSecondaryTapDown: (details) =>
+              _handleRightClick(details, controller),
+          // don't eat the mouse down if menu isn't open, let it fall through to the child
+          onTapDown: controller.isOpen ? (details) => controller.close() : null,
+          child: widget.child,
+        );
+      },
     );
   }
 
-  void _handleRightClick(TapDownDetails details) {
-    if (_menuController.isOpen) {
-      _menuController.close();
+  void _handleRightClick(TapDownDetails details, MenuController controller) {
+    if (controller.isOpen) {
+      controller.close();
       return;
     }
 
-    _menuController.open(position: details.localPosition);
+    controller.open(position: details.localPosition);
   }
 }

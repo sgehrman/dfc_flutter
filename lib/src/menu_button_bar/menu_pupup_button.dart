@@ -21,15 +21,13 @@ class MenuPopupButton extends StatefulWidget {
 }
 
 class _MenuPopupButtonState extends State<MenuPopupButton> {
-  final MenuController _menuController = MenuController();
-
-  void _handleClick(TapDownDetails details) {
-    if (_menuController.isOpen) {
-      _menuController.close();
+  void _handleClick(TapDownDetails details, MenuController controller) {
+    if (controller.isOpen) {
+      controller.close();
       return;
     }
 
-    _menuController.open(position: details.localPosition);
+    controller.open(position: details.localPosition);
   }
 
   @override
@@ -42,13 +40,18 @@ class _MenuPopupButtonState extends State<MenuPopupButton> {
     return ToolTip(
       message: widget.tooltip,
       child: MenuAnchor(
-        controller: _menuController,
         menuChildren: menuChildren,
-        child: InkResponse(
-          radius: widget.radius,
-          onTapDown: _handleClick,
-          child: widget.child,
-        ),
+        builder: (
+          BuildContext context,
+          MenuController controller,
+          Widget? child,
+        ) {
+          return InkResponse(
+            radius: widget.radius,
+            onTapDown: (details) => _handleClick(details, controller),
+            child: widget.child,
+          );
+        },
       ),
     );
   }
