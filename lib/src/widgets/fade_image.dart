@@ -30,7 +30,7 @@ List<MenuButtonBarItemData> _contextualMenuItems({
           await Pasteboard.writeImage(imageData.bytes);
         }
       },
-      leading: const Icon(Icons.info_outline),
+      leading: const Icon(Icons.copy),
     ),
   );
 
