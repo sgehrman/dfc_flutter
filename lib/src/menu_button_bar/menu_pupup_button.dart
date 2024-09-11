@@ -40,7 +40,6 @@ class _MenuPopupButtonState extends State<MenuPopupButton> {
     return ToolTip(
       message: widget.tooltip,
       child: MenuAnchor(
-        consumeOutsideTap: true,
         menuChildren: menuChildren,
         child: widget.child,
         builder: (
