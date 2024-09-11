@@ -26,6 +26,8 @@ class _ContextMenuState extends State<ContextualMenu> {
     return MenuAnchor(
       menuChildren: menuChildren,
       child: widget.child,
+      onOpen: () => setState(() {}),
+      onClose: () => setState(() {}),
       builder: (
         BuildContext context,
         MenuController controller,
