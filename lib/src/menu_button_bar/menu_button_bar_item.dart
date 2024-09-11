@@ -17,8 +17,12 @@ class MenuButtonBarItem extends StatefulWidget {
     required IconData iconData,
     required this.menuBuilder,
     this.tooltip = '',
+    Color? color,
   })  : round = true,
-        child = Icon(iconData);
+        child = Icon(
+          iconData,
+          color: color,
+        );
 
   final Widget child;
   final String tooltip;
