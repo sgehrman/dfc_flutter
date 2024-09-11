@@ -34,7 +34,7 @@ class _ContextMenuState extends State<ContextualMenu> {
         return GestureDetector(
           onSecondaryTapDown: (details) =>
               _handleRightClick(details, controller),
-          onTap: controller.close,
+          onTap: controller.isOpen ? controller.close : null,
           behavior: controller.isOpen
               ? HitTestBehavior.opaque
               : HitTestBehavior.deferToChild,
