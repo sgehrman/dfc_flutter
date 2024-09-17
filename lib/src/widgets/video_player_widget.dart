@@ -6,7 +6,7 @@ import 'package:dfc_flutter/src/svg_icons/svg_icon.dart';
 import 'package:dfc_flutter/src/widgets/loading_widget.dart';
 import 'package:dfc_flutter/src/widgets/preview_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:open_file_plus/open_file_plus.dart';
+import 'package:open_file/open_file.dart';
 import 'package:video_player/video_player.dart';
 
 Future<void> showVideoDialog(
