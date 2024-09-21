@@ -44,7 +44,7 @@ dependencies:
   mime_type: ^1.0.1
   open_file:
     git:
-      url: https://github.com/sgehrman/open_file
+      url: https://github.com/crazecoder/open_file
       path: open_file
   package_info_plus: ^8.0.2
   pasteboard: ^0.3.0
