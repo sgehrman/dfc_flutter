@@ -42,10 +42,7 @@ dependencies:
   linkify: ^5.0.0
   loading_animation_widget: ^1.2.1
   mime_type: ^1.0.1
-  open_file:
-    git:
-      url: https://github.com/crazecoder/open_file
-      path: open_file
+  open_file: ^3.5.5
   package_info_plus: ^8.0.2
   pasteboard: ^0.3.0
   path: ^1.9.0
