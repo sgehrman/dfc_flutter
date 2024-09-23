@@ -230,7 +230,10 @@ class ButtonThemes {
     required Set<WidgetState> states,
     required bool filledButton,
   }) {
-    return const TextStyle(
+    // google font set by caller was ignored unless we copy the labelLarge
+    final style = baseTheme.textTheme.labelLarge ?? const TextStyle();
+
+    return style.copyWith(
       fontWeight: Font.bold,
     );
   }
