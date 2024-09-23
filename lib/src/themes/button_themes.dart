@@ -6,9 +6,13 @@ import 'package:flutter/material.dart';
 class ButtonThemes {
   ButtonThemes({
     required this.baseTheme,
+    this.boldButtons,
+    this.buttonFontSize,
   });
 
   final ThemeData baseTheme;
+  bool? boldButtons;
+  double? buttonFontSize;
 
   ElevatedButtonThemeData elevatedButtonTheme() {
     final startTheme = baseTheme.elevatedButtonTheme;
@@ -234,7 +238,8 @@ class ButtonThemes {
     final style = baseTheme.textTheme.labelLarge ?? const TextStyle();
 
     return style.copyWith(
-      fontWeight: Font.bold,
+      fontWeight: (boldButtons ?? false) ? Font.bold : null,
+      fontSize: (buttonFontSize != null) ? buttonFontSize : null,
     );
   }
 
