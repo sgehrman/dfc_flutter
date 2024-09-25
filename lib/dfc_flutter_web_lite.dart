@@ -139,3 +139,8 @@ export 'src/widgets/txt.dart';
 export 'src/widgets/video_player_widget.dart';
 export 'src/widgets/wave_text.dart';
 export 'src/widgets/widget_pop_button.dart';
+export 'src/xpandable/scroll_on_xpand.dart';
+export 'src/xpandable/xpandable_controller.dart';
+export 'src/xpandable/xpandable_panel.dart';
+export 'src/xpandable/xpandable_theme.dart';
+export 'src/xpandable/xpandable_theme_notifier.dart';
