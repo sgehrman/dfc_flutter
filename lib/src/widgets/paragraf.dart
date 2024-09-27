@@ -184,7 +184,11 @@ class Paragraf extends StatelessWidget {
             alignment: ui.PlaceholderAlignment.baseline,
             child: InkWell(
               onTap: () {
-                Utils.launchUrl(spec.href);
+                if (spec.hrefOnTap != null) {
+                  spec.hrefOnTap?.call(spec.href);
+                } else {
+                  Utils.launchUrl(spec.href);
+                }
               },
               child: Text(spec.text, style: textStyle),
             ),
@@ -400,6 +404,7 @@ class ParagrafSpec {
   const ParagrafSpec.linkLg(
     this.text, {
     required this.href,
+    this.hrefOnTap,
     this.bold = true,
     this.children = const [],
     this.color = ParagrafColor.primary,
@@ -411,6 +416,7 @@ class ParagrafSpec {
   const ParagrafSpec.linkMd(
     this.text, {
     required this.href,
+    this.hrefOnTap,
     this.bold = true,
     this.children = const [],
     this.color = ParagrafColor.primary,
@@ -422,6 +428,7 @@ class ParagrafSpec {
   const ParagrafSpec.linkSm(
     this.text, {
     required this.href,
+    this.hrefOnTap,
     this.bold = true,
     this.children = const [],
     this.color = ParagrafColor.primary,
@@ -438,6 +445,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   }) : fontSize = ParagrafSize.lg;
 
@@ -448,6 +456,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   })  : fontSize = ParagrafSize.lg,
         bold = true;
@@ -460,6 +469,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   }) : fontSize = ParagrafSize.elg;
 
@@ -470,6 +480,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   })  : fontSize = ParagrafSize.elg,
         bold = true;
@@ -482,6 +493,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   }) : fontSize = ParagrafSize.hdr;
 
@@ -492,6 +504,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   })  : fontSize = ParagrafSize.hdr,
         bold = true;
@@ -504,6 +517,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   }) : fontSize = ParagrafSize.md;
 
@@ -514,6 +528,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   })  : fontSize = ParagrafSize.md,
         bold = true;
@@ -526,6 +541,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   }) : fontSize = ParagrafSize.sm;
 
@@ -537,6 +553,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
   })  : fontSize = ParagrafSize.sm,
         opacity = ParagrafSizes.defaults.lightOpacity;
 
@@ -547,6 +564,7 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   })  : fontSize = ParagrafSize.sm,
         bold = true;
@@ -559,11 +577,14 @@ class ParagrafSpec {
     this.newlines = 0,
     this.spaces = 0,
     this.href = '',
+    this.hrefOnTap,
     this.opacity = 1,
   }) : bold = true;
 
   final String text;
   final String href;
+  // default hrefOnTap launches the url, but you can override this
+  final void Function(String href)? hrefOnTap;
   final bool bold;
   final ParagrafSize fontSize;
   final int newlines;
