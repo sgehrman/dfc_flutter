@@ -17,6 +17,32 @@ class HelpListItem extends StatefulWidget {
   final bool initialExpanded;
   final bool isMobile;
 
+  // helper methods
+  static List<HelpListItem> itemsFromHelpData({
+    required List<HelpData> helpData,
+    required bool isMobile,
+  }) {
+    int index = 0;
+
+    return helpData.map(
+      (x) {
+        return HelpListItem(
+          isMobile: isMobile,
+          header: Paragraf(
+            isMobile: isMobile,
+            specs: [x.title],
+          ),
+          expanded: Paragraf(
+            isMobile: isMobile,
+            specs: [x.message],
+          ),
+          key: ValueKey(index++),
+          initialExpanded: index == 1,
+        );
+      },
+    ).toList();
+  }
+
   @override
   State<HelpListItem> createState() => _HelpListItemState();
 }
