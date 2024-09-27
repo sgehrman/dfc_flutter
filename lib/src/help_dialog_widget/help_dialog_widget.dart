@@ -37,16 +37,19 @@ class HelpDialogWidget extends StatelessWidget {
     ).toList();
 
     return SingleChildScrollView(
-      padding: const EdgeInsets.only(left: 10, right: 20, top: 20, bottom: 60),
+      padding: const EdgeInsets.only(left: 10, right: 20, top: 20, bottom: 100),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (title != null) ...[
-            Paragraf(
-              specs: [
-                title!,
-              ],
-              isMobile: isMobile,
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Paragraf(
+                specs: [
+                  title!,
+                ],
+                isMobile: isMobile,
+              ),
             ),
             const SizedBox(height: 20),
           ],
