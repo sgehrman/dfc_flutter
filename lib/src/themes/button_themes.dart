@@ -27,11 +27,6 @@ class ButtonThemes {
       (states) => _buttonPadding(states),
     );
 
-    // DFButton has a secondary white button style that uses this border
-    final borderSide = WidgetStateProperty.resolveWith<BorderSide>(
-      (states) => _borderSide(states, 1),
-    );
-
     final foregroundColor = WidgetStateProperty.resolveWith<Color>(
       (states) => _buttonTextColor(
         states: states,
@@ -55,7 +50,6 @@ class ButtonThemes {
 
     final ButtonStyle startStyle = startTheme.style ?? const ButtonStyle();
     final ButtonStyle style = startStyle.copyWith(
-      side: borderSide,
       textStyle: textStyle,
       backgroundColor: backColor,
       iconColor: foregroundColor,
@@ -80,11 +74,6 @@ class ButtonThemes {
       (states) => _buttonPadding(states),
     );
 
-    // DFButton has a secondary white button style that uses this border
-    final borderSide = WidgetStateProperty.resolveWith<BorderSide>(
-      (states) => _borderSide(states, 1),
-    );
-
     final foregroundColor = WidgetStateProperty.resolveWith<Color>(
       (states) => _buttonTextColor(
         states: states,
@@ -108,7 +97,6 @@ class ButtonThemes {
 
     final ButtonStyle startStyle = startTheme.style ?? const ButtonStyle();
     final ButtonStyle style = startStyle.copyWith(
-      side: borderSide,
       textStyle: textStyle,
       backgroundColor: backColor,
       iconColor: foregroundColor,
@@ -296,10 +284,10 @@ class ButtonThemes {
     Set<WidgetState> states,
     double width,
   ) {
-    Color color = baseTheme.colorScheme.primary;
+    Color color = whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
 
-    final darker = Utils.darken(baseTheme.colorScheme.primary);
-    final lighter = Utils.lighten(baseTheme.colorScheme.primary, 0.2);
+    final darker = Utils.darken(color);
+    final lighter = Utils.lighten(color, 0.2);
 
     if (ThemeUtils.isHovered(states)) {
       color = darker;
