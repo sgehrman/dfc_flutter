@@ -8,11 +8,13 @@ class ButtonThemes {
     required this.baseTheme,
     this.boldButtons,
     this.buttonFontSize,
+    this.whiteButtons = false,
   });
 
   final ThemeData baseTheme;
   bool? boldButtons;
   double? buttonFontSize;
+  bool whiteButtons; // text and filled
 
   ElevatedButtonThemeData elevatedButtonTheme() {
     final startTheme = baseTheme.elevatedButtonTheme;
@@ -40,7 +42,6 @@ class ButtonThemes {
     final textStyle = WidgetStateProperty.resolveWith<TextStyle>(
       (states) => _buttonTextStyle(
         states: states,
-        filledButton: true,
       ),
     );
 
@@ -94,7 +95,6 @@ class ButtonThemes {
     final textStyle = WidgetStateProperty.resolveWith<TextStyle>(
       (states) => _buttonTextStyle(
         states: states,
-        filledButton: true,
       ),
     );
 
@@ -135,7 +135,6 @@ class ButtonThemes {
     final textStyle = WidgetStateProperty.resolveWith<TextStyle>(
       (states) => _buttonTextStyle(
         states: states,
-        filledButton: false,
       ),
     );
 
@@ -182,7 +181,6 @@ class ButtonThemes {
     final textStyle = WidgetStateProperty.resolveWith<TextStyle>(
       (states) => _buttonTextStyle(
         states: states,
-        filledButton: false,
       ),
     );
 
@@ -232,7 +230,6 @@ class ButtonThemes {
 
   TextStyle _buttonTextStyle({
     required Set<WidgetState> states,
-    required bool filledButton,
   }) {
     // google font set by caller was ignored unless we copy the labelLarge
     final style = baseTheme.textTheme.labelLarge ?? const TextStyle();
@@ -247,8 +244,11 @@ class ButtonThemes {
     required Set<WidgetState> states,
     required bool filledButton,
   }) {
-    Color baseColor = baseTheme.colorScheme.primary;
-    Color baseColorLight = Utils.lighten(baseTheme.colorScheme.primary, 0.2);
+    Color baseColor =
+        whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
+    Color baseColorLight = whiteButtons
+        ? Utils.lighten(Colors.white, 0.2)
+        : Utils.lighten(baseTheme.colorScheme.primary, 0.2);
 
     if (filledButton) {
       baseColor = baseTheme.colorScheme.onPrimary;
