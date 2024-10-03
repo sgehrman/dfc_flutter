@@ -58,6 +58,7 @@ export 'src/themes/editor/theme_color_editor_screen.dart';
 export 'src/themes/editor/theme_set.dart';
 export 'src/themes/editor/theme_set_button.dart';
 export 'src/themes/editor/theme_set_manager.dart';
+export 'src/themes/font_preloader.dart';
 export 'src/themes/platform_sizes.dart';
 export 'src/themes/theme_utils.dart';
 export 'src/themes/themes.dart';
