@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/extensions/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -6,10 +5,12 @@ class FontPreloader extends StatefulWidget {
   const FontPreloader({
     required this.child,
     required this.fontName,
+    required this.backgroundColor,
   });
 
   final Widget child;
   final String fontName;
+  final Color backgroundColor;
 
   @override
   State<FontPreloader> createState() => _FontPreloaderState();
@@ -32,13 +33,11 @@ class _FontPreloaderState extends State<FontPreloader> {
     return FutureBuilder(
       future: _pendingFonts,
       builder: (context, snapshot) {
-        return Stack(
-          children: [
-            widget.child,
-            if (snapshot.connectionState != ConnectionState.done)
-              Positioned.fill(child: Container(color: context.surface)),
-          ],
-        );
+        if (snapshot.connectionState != ConnectionState.done) {
+          return Container(color: widget.backgroundColor);
+        }
+
+        return widget.child;
       },
     );
   }
