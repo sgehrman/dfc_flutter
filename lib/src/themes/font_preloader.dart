@@ -32,14 +32,13 @@ class _FontPreloaderState extends State<FontPreloader> {
     return FutureBuilder(
       future: _pendingFonts,
       builder: (context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.done) {
-          // this draws white screen?  why?
-          // return const SizedBox();
-
-          return Container(color: context.surface);
-        }
-
-        return widget.child;
+        return Stack(
+          children: [
+            widget.child,
+            if (snapshot.connectionState != ConnectionState.done)
+              Positioned.fill(child: Container(color: context.surface)),
+          ],
+        );
       },
     );
   }
