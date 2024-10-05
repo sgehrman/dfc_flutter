@@ -40,8 +40,6 @@ class WpPostPage {
 
   Future<List<WpPostRecord>> postRecords() async {
     if (_completer == null) {
-      print('page: $page');
-
       _completer = Completer<List<WpPostRecord>>();
       final List<WpPostRecord> result = [];
 
