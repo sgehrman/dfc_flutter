@@ -2,6 +2,7 @@ library dfc_flutter_web_lite;
 
 export 'src/backgrounds/star_field/star_field.dart';
 export 'src/backgrounds/star_field/star_field_background.dart';
+export 'src/blog_dialog/blog_dialog_widget.dart';
 export 'src/dialogs/alert_dialog.dart';
 export 'src/dialogs/confirm_dialog.dart';
 export 'src/dialogs/content_dialog.dart';
