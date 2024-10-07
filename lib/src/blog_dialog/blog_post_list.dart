@@ -57,9 +57,7 @@ class BlogPostList extends StatelessWidget {
                 Expanded(
                   child: BlogHtmlWidget(
                     htmlString: htmlString,
-                    shrinkWrap: true,
                     isMobile: isMobile,
-                    padding: EdgeInsets.zero,
                   ),
                 ),
               ],

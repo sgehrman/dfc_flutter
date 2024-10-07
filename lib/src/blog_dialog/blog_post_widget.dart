@@ -25,7 +25,12 @@ class BlogPostWidget extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        return Column(
+        return ListView(
+          padding: EdgeInsets.only(
+            left: horizPadding,
+            right: horizPadding,
+            bottom: 200,
+          ),
           children: [
             if (thumbnail.isNotEmpty) ...[
               SizedBox(
@@ -39,16 +44,10 @@ class BlogPostWidget extends StatelessWidget {
             ],
             Expanded(
               child: BlogHtmlWidget(
-                padding: EdgeInsets.only(
-                  left: horizPadding,
-                  right: horizPadding,
-                  bottom: 200, // scrolling room on bottom
-                ),
                 htmlString: postRecord!.post.html(
                   excerptOnly: false,
                   isMobile: isMobile,
                 ),
-                shrinkWrap: false,
                 isMobile: isMobile,
               ),
             ),

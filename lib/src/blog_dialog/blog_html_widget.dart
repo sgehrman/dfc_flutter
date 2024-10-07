@@ -4,14 +4,10 @@ import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 class BlogHtmlWidget extends StatelessWidget {
   const BlogHtmlWidget({
     required this.htmlString,
-    required this.shrinkWrap,
-    required this.padding,
     required this.isMobile,
   });
   final String htmlString;
-  final bool shrinkWrap;
   final bool isMobile;
-  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +35,6 @@ class BlogHtmlWidget extends StatelessWidget {
 
         return null;
       },
-      renderMode: ListViewMode(
-        shrinkWrap: shrinkWrap,
-        padding: padding,
-      ),
       onErrorBuilder: (context, element, error) =>
           Text('$element error: $error'),
       onLoadingBuilder: (context, element, loadingProgress) =>
