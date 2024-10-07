@@ -37,7 +37,7 @@ class BlogPostWidget extends StatelessWidget {
                 child: Image.network(thumbnail, fit: BoxFit.cover),
               ),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
             ],
             Padding(
