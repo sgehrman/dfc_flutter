@@ -80,6 +80,16 @@ class __BlogDialogWidgetState extends State<BlogDialogWidget> {
     }
   }
 
+  bool _onLoadMore() {
+    if (_fetcher.hasMore()) {
+      _updatePosts();
+
+      return true;
+    }
+
+    return false;
+  }
+
   void _switchToList() {
     _mode = _DialogMode.list;
     widget.backButtonController?.onPressed = null;
@@ -123,9 +133,7 @@ class __BlogDialogWidgetState extends State<BlogDialogWidget> {
             onClick: (rec) {
               _switchToPost(rec);
             },
-            onLoadMore: () {
-              _updatePosts();
-            },
+            onLoadMore: _onLoadMore,
             isMobile: widget.isMobile,
           ),
         );

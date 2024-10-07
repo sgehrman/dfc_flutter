@@ -12,7 +12,7 @@ class BlogPostList extends StatelessWidget {
 
   final List<WpPostRecord> postRecords;
   final void Function(WpPostRecord rec) onClick;
-  final void Function() onLoadMore;
+  final bool Function() onLoadMore;
   final bool isMobile;
 
   @override
@@ -22,7 +22,14 @@ class BlogPostList extends StatelessWidget {
       itemCount: postRecords.length + 1,
       itemBuilder: (context, index) {
         if (index >= postRecords.length) {
-          onLoadMore();
+          final bool loading = onLoadMore();
+
+          if (loading) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: LoadingWidget(color: context.primary),
+            );
+          }
 
           return const SizedBox();
         }
