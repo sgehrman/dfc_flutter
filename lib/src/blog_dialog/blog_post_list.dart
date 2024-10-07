@@ -26,8 +26,12 @@ class BlogPostList extends StatelessWidget {
 
           if (loading) {
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: LoadingWidget(color: context.primary),
+              padding: const EdgeInsets.symmetric(vertical: 40),
+              child: LoadingWidget(
+                color: context.primary,
+                delay: const Duration(milliseconds: 100),
+                size: 42,
+              ),
             );
           }
 
