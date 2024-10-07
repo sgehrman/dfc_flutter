@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:dfc_flutter/src/wp_api/wp_media_details_model.dart';
 import 'package:dfc_flutter/src/wp_api/wp_media_size_model.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -41,20 +39,14 @@ class WpMediaLinksModel {
           final size = sizeMap[key];
 
           if (size != null) {
-            math.min(3, 3);
-
             if (bestMatch != null) {
               final oldDiff = (bestMatch.width - maxSize).abs();
-              final newDiff = (bestMatch.width - maxSize).abs();
+              final newDiff = (size.width - maxSize).abs();
 
               if (newDiff < oldDiff) {
                 bestMatch = size;
               }
             } else {
-              bestMatch = size;
-            }
-
-            if (size.width <= maxSize) {
               bestMatch = size;
             }
           }
