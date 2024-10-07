@@ -26,9 +26,7 @@ class BlogPostWidget extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return ListView(
-          padding: EdgeInsets.only(
-            left: horizPadding,
-            right: horizPadding,
+          padding: const EdgeInsets.only(
             bottom: 200,
           ),
           children: [
@@ -39,10 +37,11 @@ class BlogPostWidget extends StatelessWidget {
                 child: Image.network(thumbnail, fit: BoxFit.cover),
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
             ],
-            Expanded(
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: horizPadding),
               child: BlogHtmlWidget(
                 htmlString: postRecord!.post.html(
                   excerptOnly: false,
