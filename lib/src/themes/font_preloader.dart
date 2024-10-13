@@ -4,12 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 class FontPreloader extends StatefulWidget {
   const FontPreloader({
     required this.child,
-    required this.fontName,
     required this.backgroundColor,
   });
 
   final Widget child;
-  final String fontName;
   final Color backgroundColor;
 
   @override
@@ -23,9 +21,7 @@ class _FontPreloaderState extends State<FontPreloader> {
   void initState() {
     super.initState();
 
-    _pendingFonts = GoogleFonts.pendingFonts([
-      GoogleFonts.getTextTheme(widget.fontName),
-    ]);
+    _pendingFonts = GoogleFonts.pendingFonts();
   }
 
   @override
