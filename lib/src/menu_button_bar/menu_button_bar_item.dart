@@ -10,6 +10,7 @@ class MenuButtonBarItem extends StatefulWidget {
     required this.child,
     required this.menuBuilder,
     this.round = false,
+    this.iconSize = 24,
     this.tooltip = '',
   });
 
@@ -18,6 +19,7 @@ class MenuButtonBarItem extends StatefulWidget {
     required this.menuBuilder,
     this.tooltip = '',
     Color? color,
+    this.iconSize = 24,
   })  : round = true,
         child = Icon(
           iconData,
@@ -28,6 +30,7 @@ class MenuButtonBarItem extends StatefulWidget {
   final String tooltip;
   final List<MenuButtonBarItemData> Function() menuBuilder;
   final bool round;
+  final double iconSize;
 
   @override
   State<MenuButtonBarItem> createState() => _MenuButtonBarItemState();
@@ -61,6 +64,7 @@ class _MenuButtonBarItemState extends State<MenuButtonBarItem> {
         style: MenuButtonBarStyles.menuBarItemStyle(
           context: context,
           round: widget.round,
+          iconSize: widget.iconSize,
         ),
         menuChildren: _menuItems,
         child: widget.child,
