@@ -45,6 +45,7 @@ class MenuButtonBarStyles {
   static ButtonStyle menuBarItemStyle({
     required BuildContext context,
     required bool round,
+    double iconSize = 24,
   }) {
     return ButtonStyle(
       elevation: WidgetStateProperty.resolveWith<double>(
@@ -61,7 +62,7 @@ class MenuButtonBarStyles {
           ),
         );
       }),
-      iconSize: WidgetStateProperty.resolveWith((states) => 24),
+      iconSize: WidgetStateProperty.resolveWith((states) => iconSize),
       minimumSize: WidgetStateProperty.resolveWith((states) => Size.zero),
       padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>((states) {
         if (round) {
