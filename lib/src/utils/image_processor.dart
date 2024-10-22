@@ -6,8 +6,10 @@ import 'dart:ui' as ui;
 import 'package:dfc_dart/dfc_dart.dart';
 import 'package:dfc_flutter/src/http/http_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image/image.dart' as img;
-import 'package:jovial_svg/jovial_svg.dart';
+
+export 'package:vector_graphics/vector_graphics.dart';
 
 enum ImgFormat {
   unknown,
@@ -312,87 +314,45 @@ class ImageProcessor {
     Color? color,
   }) async {
     try {
-      ScalableImage si = ScalableImage.fromSvgString(
-        svg,
-        // currentColor: color,
-        warnF: (message) {
-          // without this it prints to the console
+      final PictureInfo pictureInfo = await vg.loadPicture(
+        SvgStringLoader(
+          svg,
+          theme: SvgTheme(
+            currentColor: color ?? Colors.black,
+          ),
+        ),
+        null,
+        onError: (error, stackTrace) {
+          print('vg.loadPicture error: $error');
         },
       );
 
-      // currentColor above doesn't work?
-      if (color != null) {
-        si = si.modifyTint(
-          newTintMode: BlendMode.srcIn,
-          newTintColor: color,
-        );
+      int w = pictureInfo.size.width.ceil();
+      int h = pictureInfo.size.height.ceil();
+
+      if (width != 0) {
+        w = width;
+        h = width;
       }
 
-      await si.prepareImages();
+      final ui.Image image = await pictureInfo.picture.toImage(w, h);
+      pictureInfo.picture.dispose();
 
-      final vpSize = si.viewport;
-
-      final recorder = ui.PictureRecorder();
-      final ui.Canvas c = ui.Canvas(recorder);
-      Size resultSize = ui.Size(vpSize.width, vpSize.height);
-
-      c.save();
-      try {
-        if (width != 0) {
-          BoxFit fit = BoxFit.contain;
-
-          resultSize = ui.Size(width.toDouble(), width.toDouble());
-
-          // avoiding squashed images if they are wide or tall
-          // cover clips off long side of image
-          if (vpSize.shortestSide / vpSize.longestSide < 0.8) {
-            fit = BoxFit.cover;
-          }
-
-          final scaleTransform = ScalingTransform(
-            containerSize: Size(width.toDouble(), width.toDouble()),
-            siViewport: si.viewport,
-            fit: fit,
-            // alignment: Alignment.center,
-          );
-
-          scaleTransform.applyToCanvas(c);
-        }
-
-        si.paint(c);
-      } catch (err) {
-        print(err);
-      } finally {
-        c.restore();
-      }
-
-      si.unprepareImages();
-
-      final ui.Picture pict = recorder.endRecording();
-
-      final rendered = await pict.toImage(
-        resultSize.width.round(),
-        resultSize.height.round(),
-      );
-
-      final ByteData? bd = await rendered.toByteData(
+      final ByteData? bd = await image.toByteData(
         format: ui.ImageByteFormat.png,
       );
-
-      pict.dispose();
-      rendered.dispose();
 
       if (bd != null) {
         final bytes = bd.buffer.asUint8List();
 
         return PngImageBytesAndSize(
           bytes: bytes,
-          height: resultSize.height.round(),
-          width: resultSize.width.round(),
+          height: image.height,
+          width: image.width,
         );
       }
     } catch (err) {
-      print('svgToPngBytes: Error = $err');
+      print('svgToPng: Error = $err');
     }
 
     return PngImageBytesAndSize(
