@@ -1,6 +1,6 @@
 import 'package:dfc_flutter/src/web_utils/web_utils_interface.dart';
 import 'package:dfc_flutter/src/web_utils/web_utils_stub.dart'
-    if (dart.library.js) 'package:dfc_flutter/src/web_utils/web_utils_js.dart'
+    if (dart.library.js_interop) 'package:dfc_flutter/src/web_utils/web_utils_js.dart'
     if (dart.library.io) 'package:dfc_flutter/src/web_utils/web_utils_io.dart';
 
 class WebUtils {
