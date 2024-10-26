@@ -23,6 +23,7 @@ export 'src/extensions/string_ext.dart';
 export 'src/file_system/directory_listing_spec.dart';
 export 'src/file_system/server_file.dart';
 export 'src/help_dialog_widget/help_data.dart';
+export 'src/help_dialog_widget/help_dialog_search_widget.dart';
 export 'src/help_dialog_widget/help_dialog_widget.dart';
 export 'src/help_dialog_widget/help_list.dart';
 export 'src/hive_db/hive_box.dart';
