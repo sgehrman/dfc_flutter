@@ -24,6 +24,8 @@ dependencies:
   flutter_animate: ^4.5.0
   flutter_archive: ^6.0.3
   flutter_barcode_scanner: ^2.0.0
+  flutter_localizations:
+    sdk: flutter
   flutter_markdown: ^0.7.4+1
   flutter_multi_formatter: ^2.13.0
   flutter_svg: ^2.0.10+1
@@ -71,6 +73,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  # for flutter_localizations
+  generate: true
 
   assets:
     - packages/dfc_flutter/assets/animations/treasure.flr
