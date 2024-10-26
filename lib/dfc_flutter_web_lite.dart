@@ -1,6 +1,6 @@
 library dfc_flutter_web_lite;
 
-export 'l10n/app_localizations.dart';
+export 'l10n/app_locs.dart';
 export 'src/backgrounds/star_field/star_field.dart';
 export 'src/backgrounds/star_field/star_field_background.dart';
 export 'src/blog_dialog/blog_dialog_widget.dart';
