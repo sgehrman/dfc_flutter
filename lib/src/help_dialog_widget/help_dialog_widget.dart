@@ -53,10 +53,11 @@ class HelpDialogContents extends StatelessWidget {
     required this.query,
     required this.data,
     required this.title,
+    required this.isMobile,
   });
 
   final ValueNotifier<String> query;
-
+  final bool isMobile;
   final List<HelpData> data;
   final ParagrafSpec? title;
 
@@ -72,6 +73,7 @@ class HelpDialogContents extends StatelessWidget {
               child: HelpDialogSearchWidget(
                 filter: filter,
                 data: data,
+                isMobile: isMobile,
               ),
             ),
           );
@@ -80,7 +82,7 @@ class HelpDialogContents extends StatelessWidget {
         return HelpDialogWidget(
           data: data,
           title: title,
-          isMobile: false,
+          isMobile: isMobile,
         );
       },
     );

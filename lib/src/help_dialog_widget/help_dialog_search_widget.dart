@@ -5,10 +5,12 @@ class HelpDialogSearchWidget extends StatefulWidget {
   const HelpDialogSearchWidget({
     required this.filter,
     required this.data,
+    required this.isMobile,
   });
 
   final String filter;
   final List<HelpData> data;
+  final bool isMobile;
 
   @override
   State<HelpDialogSearchWidget> createState() => _HelpDialogSearchWidgetState();
@@ -68,11 +70,11 @@ class _HelpDialogSearchWidgetState extends State<HelpDialogSearchWidget> {
             padding: const EdgeInsets.all(10),
             child: ListTile(
               title: Paragraf(
-                isMobile: false,
+                isMobile: widget.isMobile,
                 specs: [item.title],
               ),
               subtitle: Paragraf(
-                isMobile: false,
+                isMobile: widget.isMobile,
                 specs: [item.message],
               ),
             ),
