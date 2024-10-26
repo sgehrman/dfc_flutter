@@ -1,4 +1,5 @@
 {
   "@@locale": "fi",
-  "nothingFound": "Ei löytynyt mitään"
+  "nothingFound": "Ei löytynyt mitään",
+  "search": "Etsi"
 }

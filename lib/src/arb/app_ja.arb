@@ -1,4 +1,5 @@
 {
   "@@locale": "ja",
-  "nothingFound": "何も見つからない"
+  "nothingFound": "何も見つからない",
+  "search": "検索"
 }

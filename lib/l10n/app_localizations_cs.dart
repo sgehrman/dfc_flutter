@@ -8,4 +8,7 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get nothingFound => 'Nic nenalezeno';
+
+  @override
+  String get search => 'Vyhledávání';
 }

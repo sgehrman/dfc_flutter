@@ -8,4 +8,7 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get nothingFound => 'Ingenting hittades';
+
+  @override
+  String get search => 'Sök';
 }

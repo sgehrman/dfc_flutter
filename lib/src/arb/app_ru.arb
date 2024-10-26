@@ -1,4 +1,5 @@
 {
   "@@locale": "ru",
-  "nothingFound": "Ничего не найдено"
+  "nothingFound": "Ничего не найдено",
+  "search": "Поиск"
 }

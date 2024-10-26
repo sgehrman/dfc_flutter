@@ -8,4 +8,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get nothingFound => '未找到';
+
+  @override
+  String get search => '搜索';
 }

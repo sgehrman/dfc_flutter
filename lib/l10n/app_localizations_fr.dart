@@ -8,4 +8,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get nothingFound => 'Rien n\'a été trouvé';
+
+  @override
+  String get search => 'Recherche';
 }

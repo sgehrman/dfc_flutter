@@ -122,6 +122,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Nothing Found'**
   String get nothingFound;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

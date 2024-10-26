@@ -1,4 +1,5 @@
 {
   "@@locale": "cs",
-  "nothingFound": "Nic nenalezeno"
+  "nothingFound": "Nic nenalezeno",
+  "search": "Vyhledávání"
 }

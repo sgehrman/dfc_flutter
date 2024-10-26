@@ -1,4 +1,5 @@
 {
   "@@locale": "es",
-  "nothingFound": "No se ha encontrado nada"
+  "nothingFound": "No se ha encontrado nada",
+  "search": "Busca en"
 }

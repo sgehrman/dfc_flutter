@@ -8,4 +8,7 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get nothingFound => 'Intet fundet';
+
+  @override
+  String get search => 'Søg efter';
 }

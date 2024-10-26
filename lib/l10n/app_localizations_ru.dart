@@ -8,4 +8,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get nothingFound => 'Ничего не найдено';
+
+  @override
+  String get search => 'Поиск';
 }
