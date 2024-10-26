@@ -1,5 +1,8 @@
+import 'package:dfc_flutter/l10n/app_localizations.dart';
 import 'package:dfc_flutter/src/help_dialog_widget/help_data.dart';
+import 'package:dfc_flutter/src/help_dialog_widget/help_dialog_search_widget.dart';
 import 'package:dfc_flutter/src/help_dialog_widget/help_list.dart';
+import 'package:dfc_flutter/src/widgets/filter_field.dart';
 import 'package:dfc_flutter/src/widgets/paragraf.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +41,91 @@ class HelpDialogWidget extends StatelessWidget {
             isMobile: isMobile,
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ===================================================================
+
+class HelpDialogContents extends StatelessWidget {
+  const HelpDialogContents({
+    required this.query,
+    required this.data,
+    required this.title,
+  });
+
+  final ValueNotifier<String> query;
+
+  final List<HelpData> data;
+  final ParagrafSpec? title;
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<String>(
+      valueListenable: query,
+      builder: (context, filter, _) {
+        if (filter.length > 1) {
+          return Flexible(
+            child: SizedBox(
+              height: 1000,
+              child: HelpDialogSearchWidget(
+                filter: filter,
+                data: data,
+              ),
+            ),
+          );
+        }
+
+        return HelpDialogWidget(
+          data: data,
+          title: title,
+          isMobile: false,
+        );
+      },
+    );
+  }
+}
+
+// ===================================================================
+
+class HelpDialogSearchField extends StatefulWidget {
+  const HelpDialogSearchField({
+    required this.query,
+  });
+
+  final ValueNotifier<String> query;
+
+  @override
+  State<HelpDialogSearchField> createState() => _HelpDialogSearchFieldState();
+}
+
+class _HelpDialogSearchFieldState extends State<HelpDialogSearchField> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: SizedBox(
+        width: 150,
+        child: FilterField(
+          small: true,
+          label: '',
+          controller: _controller,
+          hint: l10n.search,
+          onChange: (filter) {
+            widget.query.value = filter;
+          },
+          onSubmit: (filter) {
+            // ddd
+          },
+          // override colors since it's on a primary colored dialog header
+          fillColor: Colors.white,
+          textColor: Colors.black,
+        ),
       ),
     );
   }
