@@ -9,6 +9,17 @@ class HelpData {
   final ParagrafSpec title;
   final ParagrafSpec message;
 
+  // used for search
+  String get asText {
+    final buffer = StringBuffer();
+
+    _writeItem(title, buffer);
+    buffer.write('\n\n');
+    _writeItem(message, buffer);
+
+    return buffer.toString();
+  }
+
   // --------------------------------------
   // static helpers
 
