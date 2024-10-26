@@ -45,4 +45,19 @@ class HelpData {
 
     return buffer.toString();
   }
+
+  // used for search
+  static String toText(List<HelpData> data) {
+    final buffer = StringBuffer();
+
+    for (final item in data) {
+      _writeItem(item.title, buffer);
+      buffer.write('\n\n');
+
+      _writeItem(item.message, buffer);
+      buffer.write('\n\n');
+    }
+
+    return buffer.toString();
+  }
 }
