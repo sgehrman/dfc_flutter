@@ -22,6 +22,8 @@ List<MenuButtonBarItemData> _contextualMenuItems({
     MenuButtonBarItemData(
       title: 'Copy',
       action: () async {
+        print('copy');
+
         final uri = UriUtils.parseUri(url);
 
         if (uri != null) {
@@ -35,6 +37,8 @@ List<MenuButtonBarItemData> _contextualMenuItems({
             print(err);
           }
         }
+
+        print('end copy');
       },
       leading: const Icon(Icons.copy),
     ),
