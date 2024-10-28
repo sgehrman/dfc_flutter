@@ -175,26 +175,10 @@ class Preferences {
     required String key,
     int defaultValue = 0,
   }) {
-    final duh = prefs.get(key, defaultValue: defaultValue);
+    // wasm bug, it will read as a double, so convert
+    final res = prefs.get(key, defaultValue: defaultValue) as num;
 
-    print(duh);
-
-    if (duh is int) {
-      print('int');
-    }
-    if (duh is double) {
-      print('double');
-    }
-
-    if (duh is num) {
-      print('num');
-    }
-
-    if (duh is String) {
-      print('str');
-    }
-
-    return duh as int;
+    return res.toInt();
   }
 
   Future<void> setIntPref({
@@ -209,8 +193,12 @@ class Preferences {
   double doublePref({
     required String key,
     double defaultValue = 0,
-  }) =>
-      prefs.get(key, defaultValue: defaultValue) as double;
+  }) {
+    final res = prefs.get(key, defaultValue: defaultValue) as num;
+
+    return res.toDouble();
+  }
+
   Future<void> setDoublePref({
     required String key,
     required double? value,
