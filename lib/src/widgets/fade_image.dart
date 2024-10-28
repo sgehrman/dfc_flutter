@@ -27,7 +27,12 @@ List<MenuButtonBarItemData> _contextualMenuItems({
         if (uri != null) {
           final imageData = await ImageProcessor.downloadImageToPng(uri);
 
-          await Pasteboard.writeImage(imageData.bytes);
+          // failing on WASM
+          try {
+            await Pasteboard.writeImage(imageData.bytes);
+          } catch (err) {
+            print(err);
+          }
         }
       },
       leading: const Icon(Icons.copy),
