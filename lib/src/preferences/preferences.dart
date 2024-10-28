@@ -174,8 +174,29 @@ class Preferences {
   int intPref({
     required String key,
     int defaultValue = 0,
-  }) =>
-      prefs.get(key, defaultValue: defaultValue) as int;
+  }) {
+    final duh = prefs.get(key, defaultValue: defaultValue);
+
+    print(duh);
+
+    if (duh is int) {
+      print('int');
+    }
+    if (duh is double) {
+      print('double');
+    }
+
+    if (duh is num) {
+      print('num');
+    }
+
+    if (duh is String) {
+      print('str');
+    }
+
+    return duh as int;
+  }
+
   Future<void> setIntPref({
     required String key,
     required int? value,
