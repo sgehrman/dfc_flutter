@@ -194,6 +194,7 @@ class Preferences {
     required String key,
     double defaultValue = 0,
   }) {
+    // wasm bug
     final res = prefs.get(key, defaultValue: defaultValue) as num;
 
     return res.toDouble();
