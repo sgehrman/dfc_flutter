@@ -31,6 +31,7 @@ List<MenuButtonBarItemData> _contextualMenuItems({
           try {
             await Pasteboard.writeImage(imageData.bytes);
           } catch (err) {
+            print('Pasteboard.writeImage exception');
             print(err);
           }
         }
