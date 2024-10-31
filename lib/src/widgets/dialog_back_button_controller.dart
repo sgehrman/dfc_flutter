@@ -33,7 +33,6 @@ class DialogBackButton extends StatelessWidget {
           padding: const EdgeInsets.only(right: 10),
           child: DFIconButton(
             tooltip: 'Back',
-            iconSize: 30,
             onPressed: provider.onPressed,
             icon: const Icon(Icons.arrow_back),
           ),
