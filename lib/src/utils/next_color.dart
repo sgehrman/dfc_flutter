@@ -11,6 +11,13 @@ class NextColor {
     Colors.cyan,
     Colors.green,
     Colors.orange,
+    Colors.teal,
+    Colors.amber,
+    Colors.indigo,
+    Colors.lime,
+    Colors.yellow,
+    Colors.blueGrey,
+    Colors.brown,
   ];
 
   static final _darkColors = <Color>[
@@ -21,6 +28,13 @@ class NextColor {
     Colors.cyan[900] ?? Colors.black,
     Colors.green[900] ?? Colors.black,
     Colors.orange[900] ?? Colors.black,
+    Colors.teal[900] ?? Colors.black,
+    Colors.amber[900] ?? Colors.black,
+    Colors.indigo[900] ?? Colors.black,
+    Colors.lime[900] ?? Colors.black,
+    Colors.yellow[900] ?? Colors.black,
+    Colors.blueGrey[900] ?? Colors.black,
+    Colors.brown[900] ?? Colors.black,
   ];
 
   Color color() {
