@@ -29,6 +29,10 @@ extension BuildContextUtils on BuildContext {
   Color get onTertiaryContainer =>
       Theme.of(this).colorScheme.onTertiaryContainer;
   Color get secondary => Theme.of(this).colorScheme.secondary;
+  Color get error => Theme.of(this).colorScheme.error;
+  Color get onError => Theme.of(this).colorScheme.onError;
+  Color get errorContainer => Theme.of(this).colorScheme.errorContainer;
+  Color get onErrorContainer => Theme.of(this).colorScheme.onErrorContainer;
   Color get secondaryContainer => Theme.of(this).colorScheme.secondaryContainer;
   Color get onSecondary => Theme.of(this).colorScheme.onSecondary;
   Color get onSecondaryContainer =>
