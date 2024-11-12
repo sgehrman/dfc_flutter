@@ -10,6 +10,8 @@ import 'package:hex/hex.dart';
 import 'package:html/parser.dart';
 
 class StrUtils {
+  StrUtils._();
+
   static void print(String output) {
     debugPrint(output, wrapWidth: 555);
   }
@@ -136,15 +138,18 @@ class StrUtils {
   }
 
   // there is also a string-extension
-  String convertHtmlCodes(String text) {
-    if (text.contains('&')) {
+  static String convertHtmlCodes(String text) {
+    String result = text;
+
+    if (result.contains('&')) {
       try {
-        return parseFragment(text).text ?? text;
+        result = parseFragment(result).text ?? result;
       } catch (err) {
         print('html:parseFragment err: $err');
       }
     }
 
-    return text;
+    // parseFragment leaving a newline at end? Added trim() to fix
+    return result.trim();
   }
 }

@@ -1,6 +1,6 @@
 import 'package:characters/characters.dart';
+import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:html/parser.dart';
 
 extension StringUtils on String {
   bool get isAssetUrl {
@@ -99,14 +99,6 @@ extension StringUtils on String {
   }
 
   String get convertHtmlCodes {
-    if (contains('&')) {
-      try {
-        return parseFragment(this).text ?? this;
-      } catch (err) {
-        print('html:parseFragment err: $err');
-      }
-    }
-
-    return this;
+    return StrUtils.convertHtmlCodes(this);
   }
 }
