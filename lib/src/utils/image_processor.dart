@@ -327,16 +327,33 @@ class ImageProcessor {
         },
       );
 
-      int w = pictureInfo.size.width.ceil();
-      int h = pictureInfo.size.height.ceil();
+      ui.Image image = await pictureInfo.picture.toImage(
+        pictureInfo.size.width.ceil(),
+        pictureInfo.size.height.ceil(),
+      );
+      pictureInfo.picture.dispose();
 
       if (width != 0) {
-        w = width;
-        h = width;
-      }
+        BoxFit fit = BoxFit.contain;
 
-      final ui.Image image = await pictureInfo.picture.toImage(w, h);
-      pictureInfo.picture.dispose();
+        // avoiding squashed images if they are wide or tall
+        // cover clips off long side of image
+        final imageSize = ui.Size(width.toDouble(), width.toDouble());
+        if (imageSize.shortestSide / imageSize.longestSide < 0.8) {
+          fit = BoxFit.cover;
+        }
+
+        final disposeAfter = image;
+
+        image = await _resizeImage(
+          image: image,
+          height: width.toDouble(),
+          width: width.toDouble(),
+          fit: fit,
+        );
+
+        disposeAfter.dispose();
+      }
 
       final ByteData? bd = await image.toByteData(
         format: ui.ImageByteFormat.png,
@@ -443,6 +460,36 @@ class ImageProcessor {
     final result = await picture.toImage(
       (image.width * scale).round(),
       (image.height * scale).round(),
+    );
+
+    picture.dispose();
+
+    return result;
+  }
+
+  static Future<ui.Image> _resizeImage({
+    required ui.Image image,
+    required double height,
+    required double width,
+    BoxFit fit = BoxFit.scaleDown,
+  }) async {
+    final ui.PictureRecorder recorder = ui.PictureRecorder();
+    final ui.Canvas canvas = ui.Canvas(recorder);
+
+    paintImage(
+      canvas: canvas,
+      rect: Rect.fromLTWH(0, 0, width, height),
+      image: image,
+      fit: fit,
+      isAntiAlias: true,
+      filterQuality: FilterQuality.high,
+    );
+
+    final picture = recorder.endRecording();
+
+    final result = await picture.toImage(
+      width.round(),
+      height.round(),
     );
 
     picture.dispose();
