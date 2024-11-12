@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math' as math;
 
 import 'package:crypto/crypto.dart';
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -149,7 +150,7 @@ class StrUtils {
       }
     }
 
-    // parseFragment leaving a newline at end? Added trim() to fix
-    return result.trim();
+    // parseFragment leaving a newline at end and multiple blank lines? Added superTrim() to fix
+    return result.superTrim();
   }
 }
