@@ -101,4 +101,9 @@ extension StringUtils on String {
   String get convertHtmlCodes {
     return StrUtils.convertHtmlCodes(this);
   }
+
+  // like trim() but also removes more than one blank line \n\n\n => \n\n
+  String superTrim() {
+    return replaceAll(RegExp(r'\n\s*\n'), '\n\n').trim();
+  }
 }
