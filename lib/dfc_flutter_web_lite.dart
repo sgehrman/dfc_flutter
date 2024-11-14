@@ -33,6 +33,7 @@ export 'src/hive_db/hive_utils.dart';
 export 'src/http/doc_record.dart';
 export 'src/http/document_parser.dart';
 export 'src/http/http_utils.dart';
+export 'src/menu_button_bar/contextual_ink_well.dart';
 export 'src/menu_button_bar/contextual_menu.dart';
 export 'src/menu_button_bar/menu_button_bar.dart';
 export 'src/menu_button_bar/menu_button_bar_item.dart';
