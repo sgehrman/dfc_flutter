@@ -26,53 +26,33 @@ class _ContextMenuState extends State<ContextualMenu> {
     return MenuAnchor(
       menuChildren: menuChildren,
       consumeOutsideTap: true,
-      onOpen: () {
-        print('onOpen');
-        setState(() {});
-      },
-      onClose: () {
-        print('onClose');
-        setState(() {});
-      },
+      child: widget.child,
+      onOpen: () => setState(() {}),
+      onClose: () => setState(() {}),
       builder: (
         BuildContext context,
         MenuController controller,
-        Widget? unusedChild,
+        Widget? child,
       ) {
-        final HitTestBehavior behavior = controller.isOpen
-            ? HitTestBehavior.opaque
-            : HitTestBehavior.deferToChild;
-
-        final onTap = controller.isOpen
-            ? () {
-                print('onTap');
-
-                controller.close();
-              }
-            : null;
-
-        print('start');
-        print(behavior);
-        print('controller.isOpen');
-        print(controller.isOpen);
-        print('onTap set');
-        print(onTap != null);
-        print(controller.hashCode);
-
         return GestureDetector(
-          onSecondaryTapDown: (details) {
-            if (controller.isOpen) {
-              controller.close();
-              return;
-            }
-
-            controller.open(position: details.localPosition);
-          },
-          onTap: onTap,
-          behavior: behavior,
-          child: widget.child,
+          onSecondaryTapDown: (details) =>
+              _handleRightClick(details, controller),
+          onTap: controller.isOpen ? controller.close : null,
+          behavior: controller.isOpen
+              ? HitTestBehavior.opaque
+              : HitTestBehavior.deferToChild,
+          child: child,
         );
       },
     );
+  }
+
+  void _handleRightClick(TapDownDetails details, MenuController controller) {
+    if (controller.isOpen) {
+      controller.close();
+      return;
+    }
+
+    controller.open(position: details.localPosition);
   }
 }
