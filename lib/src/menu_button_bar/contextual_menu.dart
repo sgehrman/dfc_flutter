@@ -40,8 +40,13 @@ class _ContextMenuState extends State<ContextualMenu> {
 
         final onTap = controller.isOpen ? controller.close : null;
 
+        print('start');
         print(behavior);
+        print('controller.isOpen');
+        print(controller.isOpen);
+        print('onTap set');
         print(onTap != null);
+        print(controller);
 
         return GestureDetector(
           onSecondaryTapDown: (details) {
