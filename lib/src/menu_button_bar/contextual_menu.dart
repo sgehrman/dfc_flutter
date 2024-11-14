@@ -44,7 +44,13 @@ class _ContextMenuState extends State<ContextualMenu> {
             ? HitTestBehavior.opaque
             : HitTestBehavior.deferToChild;
 
-        final onTap = controller.isOpen ? controller.close : null;
+        final onTap = controller.isOpen
+            ? () {
+                print('onTap');
+
+                controller.close();
+              }
+            : null;
 
         print('start');
         print(behavior);
