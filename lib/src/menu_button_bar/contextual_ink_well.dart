@@ -5,39 +5,37 @@ import 'package:flutter/material.dart';
 // an contextual menu and InkWell combined
 // right click pops a menu, left click calls onTap
 
-class ContextualInkWell extends StatefulWidget {
+class ContextualInkWell extends StatelessWidget {
   const ContextualInkWell({
     required this.buildMenu,
     required this.child,
     required this.onTap,
+    this.borderRadius,
   });
 
   final List<MenuButtonBarItemData> Function() buildMenu;
   final Widget child;
   final void Function() onTap;
+  final BorderRadius? borderRadius;
 
-  @override
-  State<ContextualInkWell> createState() => _ContextInkWellState();
-}
-
-class _ContextInkWellState extends State<ContextualInkWell> {
   @override
   Widget build(BuildContext context) {
     final menuChildren = MenuButtonBarUtils.buildMenuItems(
       context: context,
-      menuData: widget.buildMenu(),
+      menuData: buildMenu(),
     );
 
     return MenuAnchor(
       menuChildren: menuChildren,
       consumeOutsideTap: true,
-      child: widget.child,
+      child: child,
       builder: (
         BuildContext context,
         MenuController controller,
         Widget? child,
       ) {
         return InkWell(
+          borderRadius: borderRadius,
           onSecondaryTapDown: (details) {
             if (controller.isOpen) {
               controller.close();
@@ -54,7 +52,7 @@ class _ContextInkWellState extends State<ContextualInkWell> {
               return;
             }
 
-            widget.onTap();
+            onTap();
           },
           child: child,
         );
