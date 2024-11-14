@@ -27,8 +27,14 @@ class _ContextMenuState extends State<ContextualMenu> {
       menuChildren: menuChildren,
       consumeOutsideTap: true,
       child: widget.child,
-      onOpen: () => setState(() {}),
-      onClose: () => setState(() {}),
+      onOpen: () {
+        print('onOpen');
+        setState(() {});
+      },
+      onClose: () {
+        print('onClose');
+        setState(() {});
+      },
       builder: (
         BuildContext context,
         MenuController controller,
@@ -46,7 +52,7 @@ class _ContextMenuState extends State<ContextualMenu> {
         print(controller.isOpen);
         print('onTap set');
         print(onTap != null);
-        print(controller);
+        print(controller.hashCode);
 
         return GestureDetector(
           onSecondaryTapDown: (details) {
