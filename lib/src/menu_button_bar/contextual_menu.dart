@@ -25,6 +25,7 @@ class _ContextMenuState extends State<ContextualMenu> {
 
     return MenuAnchor(
       menuChildren: menuChildren,
+      consumeOutsideTap: true,
       child: widget.child,
       onOpen: () => setState(() {}),
       onClose: () => setState(() {}),
@@ -37,9 +38,9 @@ class _ContextMenuState extends State<ContextualMenu> {
           onSecondaryTapDown: (details) =>
               _handleRightClick(details, controller),
           onTap: controller.isOpen ? controller.close : null,
-          behavior: controller.isOpen
-              ? HitTestBehavior.opaque
-              : HitTestBehavior.deferToChild,
+          // behavior: controller.isOpen
+          //     ? HitTestBehavior.opaque
+          //     : HitTestBehavior.deferToChild,
           child: child,
         );
       },
