@@ -36,6 +36,9 @@ class ContextualInkWell extends StatelessWidget {
       ) {
         return InkWell(
           borderRadius: borderRadius,
+          // focusColor seems to get set on a right click? it get focused?
+          focusColor: Colors.transparent,
+          hoverColor: Colors.transparent,
           onSecondaryTapDown: (details) {
             if (controller.isOpen) {
               controller.close();
