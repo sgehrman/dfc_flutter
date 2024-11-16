@@ -2,7 +2,6 @@ import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_styles.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_utils.dart';
 import 'package:dfc_flutter/src/widgets/tool_tip.dart';
-import 'package:dfc_flutter/src/widgets/triangle_painter.dart';
 import 'package:flutter/material.dart';
 
 class MenuButtonBarItem extends StatefulWidget {
@@ -65,30 +64,6 @@ class _MenuButtonBarItemState extends State<MenuButtonBarItem> {
         menuChildren: _menuItems,
         child: widget.child,
       ),
-    );
-  }
-}
-
-// =======================================================================
-
-class MenuTextButton extends StatelessWidget {
-  const MenuTextButton(this.title);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(title),
-        TrianglePainter.downArrowIcon(
-          context: context,
-          padding: const EdgeInsets.only(left: 4, top: 4),
-          height: 7,
-          width: 11,
-        ),
-      ],
     );
   }
 }
