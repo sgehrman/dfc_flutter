@@ -9,6 +9,7 @@ class MenuAnchorButton extends StatelessWidget {
     // one must be set
     this.icon,
     this.title,
+    this.widget,
     // tooltip only used for icons
     this.tooltip,
     this.color,
@@ -19,6 +20,7 @@ class MenuAnchorButton extends StatelessWidget {
   final List<MenuButtonBarItemData> menuData;
   final String? tooltip;
   final Color? color;
+  final Widget? widget;
 
   void _onPressed(MenuController controller) {
     if (controller.isOpen) {
@@ -54,7 +56,14 @@ class MenuAnchorButton extends StatelessWidget {
           );
         }
 
-        return const Text('icon and title null');
+        if (widget != null) {
+          return InkWell(
+            onTap: () => _onPressed(controller),
+            child: widget,
+          );
+        }
+
+        return const Text('icon/title/wiget null');
       },
       menuChildren: menuItems,
     );
