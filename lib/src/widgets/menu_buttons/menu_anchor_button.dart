@@ -5,14 +5,16 @@ import 'package:flutter/material.dart';
 
 class MenuAnchorButton extends StatelessWidget {
   const MenuAnchorButton({
-    required this.icon,
     required this.menuData,
-    this.title = '',
+    // one must be set
+    this.icon,
+    this.title,
+    // tooltip only used for icons
     this.tooltip,
   });
 
-  final Widget icon;
-  final String title;
+  final Widget? icon;
+  final String? title;
   final List<MenuButtonBarItemData> menuData;
   final String? tooltip;
 
@@ -34,18 +36,22 @@ class MenuAnchorButton extends StatelessWidget {
     return MenuAnchor(
       builder:
           (BuildContext context, MenuController controller, Widget? child) {
-        if (title.isNotEmpty) {
+        if (title != null) {
           return TextButton(
             onPressed: () => _onPressed(controller),
-            child: _MenuTextContents(title),
+            child: _MenuTextContents(title!),
           );
         }
 
-        return IconButton(
-          onPressed: () => _onPressed(controller),
-          icon: icon,
-          tooltip: tooltip,
-        );
+        if (icon != null) {
+          return IconButton(
+            onPressed: () => _onPressed(controller),
+            icon: icon!,
+            tooltip: tooltip,
+          );
+        }
+
+        return const Text('  icon and title == null');
       },
       menuChildren: menuItems,
     );
