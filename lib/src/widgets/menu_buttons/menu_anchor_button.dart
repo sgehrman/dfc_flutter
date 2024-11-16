@@ -11,12 +11,14 @@ class MenuAnchorButton extends StatelessWidget {
     this.title,
     // tooltip only used for icons
     this.tooltip,
+    this.color,
   });
 
   final Widget? icon;
   final String? title;
   final List<MenuButtonBarItemData> menuData;
   final String? tooltip;
+  final Color? color;
 
   void _onPressed(MenuController controller) {
     if (controller.isOpen) {
@@ -45,13 +47,14 @@ class MenuAnchorButton extends StatelessWidget {
 
         if (icon != null) {
           return IconButton(
+            color: color,
             onPressed: () => _onPressed(controller),
             icon: icon!,
             tooltip: tooltip,
           );
         }
 
-        return const Text('  icon and title == null');
+        return const Text('icon and title null');
       },
       menuChildren: menuItems,
     );
