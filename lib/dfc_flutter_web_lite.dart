@@ -119,6 +119,7 @@ export 'src/widgets/measure_size.dart';
 export 'src/widgets/menu_button.dart';
 export 'src/widgets/menu_buttons/contextual_ink_well.dart';
 export 'src/widgets/menu_buttons/menu_anchor_button.dart';
+export 'src/widgets/menu_buttons/menu_anchor_dynamic_button.dart';
 export 'src/widgets/menu_item_widget.dart';
 export 'src/widgets/nothing_found.dart';
 export 'src/widgets/page_fader.dart';
