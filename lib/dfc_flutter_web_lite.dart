@@ -118,6 +118,7 @@ export 'src/widgets/markdown_text.dart';
 export 'src/widgets/markdown_theme_text.dart';
 export 'src/widgets/measure_size.dart';
 export 'src/widgets/menu_button.dart';
+export 'src/widgets/menu_buttons/menu_icon_button.dart';
 export 'src/widgets/menu_item_widget.dart';
 export 'src/widgets/nothing_found.dart';
 export 'src/widgets/page_fader.dart';
