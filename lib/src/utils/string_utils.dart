@@ -142,9 +142,15 @@ class StrUtils {
   static String convertHtmlCodes(String text) {
     String result = text;
 
-    if (result.contains('&')) {
+    result = removeCData(result);
+
+    // why was this originally here?
+    // if (result.contains('&')) {
+    if (result.contains('<')) {
       try {
         result = parseFragment(result).text ?? result;
+
+        print('convertHtmlCodes : $result from $text');
       } catch (err) {
         print('html:parseFragment err: $err');
       }
@@ -152,5 +158,26 @@ class StrUtils {
 
     // parseFragment leaving a newline at end and multiple blank lines? Added superTrim() to fix
     return result.superTrim();
+  }
+
+  static String removeCData(String text) {
+    // <![CDATA[  ]]>
+    const cDataPrefix = '<![CDATA[';
+
+    if (text.startsWith('<![CDATA[')) {
+      final endIndex = text.indexOf(']]>');
+
+      if (endIndex != -1) {
+        const startIndex = cDataPrefix.length;
+
+        if (endIndex - startIndex > 0) {
+          final result = text.substring(startIndex, endIndex);
+
+          print('removed cdata : $result from $text');
+        }
+      }
+    }
+
+    return text;
   }
 }
