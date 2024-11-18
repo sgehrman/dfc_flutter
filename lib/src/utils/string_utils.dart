@@ -149,8 +149,6 @@ class StrUtils {
     if (result.contains('<')) {
       try {
         result = parseFragment(result).text ?? result;
-
-        print('convertHtmlCodes : $result from $text');
       } catch (err) {
         print('html:parseFragment err: $err');
       }
@@ -164,16 +162,14 @@ class StrUtils {
     // <![CDATA[  ]]>
     const cDataPrefix = '<![CDATA[';
 
-    if (text.startsWith('<![CDATA[')) {
+    if (text.startsWith(cDataPrefix)) {
       final endIndex = text.indexOf(']]>');
 
       if (endIndex != -1) {
         const startIndex = cDataPrefix.length;
 
         if (endIndex - startIndex > 0) {
-          final result = text.substring(startIndex, endIndex);
-
-          print('removed cdata : $result from $text');
+          return text.substring(startIndex, endIndex);
         }
       }
     }
