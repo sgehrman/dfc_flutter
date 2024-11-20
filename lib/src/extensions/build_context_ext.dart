@@ -37,6 +37,7 @@ extension BuildContextUtils on BuildContext {
   Color get onSecondary => Theme.of(this).colorScheme.onSecondary;
   Color get onSecondaryContainer =>
       Theme.of(this).colorScheme.onSecondaryContainer;
+  Color get outlineVariant => Theme.of(this).colorScheme.outlineVariant;
 
   // text colors
   Color get textColor => onSurface;
