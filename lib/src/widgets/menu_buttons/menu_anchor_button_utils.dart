@@ -1,30 +1,6 @@
 import 'package:dfc_flutter/src/widgets/triangle_painter.dart';
 import 'package:flutter/material.dart';
 
-class MenuAnchorButtonText extends StatelessWidget {
-  const MenuAnchorButtonText(this.title);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(title),
-        TrianglePainter.downArrowIcon(
-          context: context,
-          padding: const EdgeInsets.only(left: 4, top: 4),
-          height: 7,
-          width: 11,
-        ),
-      ],
-    );
-  }
-}
-
-// ========================================================
-
 class MenuAnchorButtonContents extends StatelessWidget {
   const MenuAnchorButtonContents({
     required this.controller,
@@ -55,9 +31,16 @@ class MenuAnchorButtonContents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (title != null) {
-      return TextButton(
+      return TextButton.icon(
+        iconAlignment: IconAlignment.end,
         onPressed: () => _onPressed(controller),
-        child: MenuAnchorButtonText(title!),
+        label: Text(title!),
+        icon: TrianglePainter.downArrowIcon(
+          context: context,
+          padding: const EdgeInsets.only(left: 4, top: 4),
+          height: 7,
+          width: 11,
+        ),
       );
     }
 
