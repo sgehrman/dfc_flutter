@@ -93,22 +93,6 @@ class _FilterFieldState extends State<FilterField> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    final border = OutlineInputBorder(
-      borderRadius: const BorderRadius.all(Radius.circular(50)),
-      borderSide: BorderSide(
-        color: context.lightPrimary(),
-        width: 2,
-      ),
-    );
-
-    final focusedBorder = OutlineInputBorder(
-      borderRadius: const BorderRadius.all(Radius.circular(50)),
-      borderSide: BorderSide(
-        color: context.primary,
-        width: 3,
-      ),
-    );
-
     Color? hintColor = Theme.of(context).textTheme.bodyLarge?.color;
     if (widget.textColor != null) {
       hintColor = widget.textColor;
@@ -134,12 +118,8 @@ class _FilterFieldState extends State<FilterField> {
         isDense: true,
         // contentPadding is wierd, right gets cut off too soon?
         contentPadding: EdgeInsets.zero,
-        focusedBorder: focusedBorder,
-        enabledBorder: border,
         fillColor: widget.fillColor,
         filled: widget.fillColor != null,
-        border: border,
-        errorBorder: border,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: widget.hint ?? l10n.search,
         hintStyle: TextStyle(
