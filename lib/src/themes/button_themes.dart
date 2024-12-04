@@ -266,7 +266,7 @@ class ButtonThemes {
     return WidgetStateProperty.resolveWith<OutlinedBorder>(
       (states) => const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(8),
+          Radius.circular(12),
         ),
       ),
     );
