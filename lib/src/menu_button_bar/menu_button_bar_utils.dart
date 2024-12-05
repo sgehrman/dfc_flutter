@@ -29,7 +29,10 @@ class MenuButtonBarUtils {
     return context.textColor;
   }
 
-  static ButtonStyle _menuiItemStyle(BuildContext context) {
+  static ButtonStyle _menuiItemStyle(
+    BuildContext context, {
+    bool selected = false,
+  }) {
     return ButtonStyle(
       animationDuration: Duration.zero,
       padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
@@ -48,6 +51,10 @@ class MenuButtonBarUtils {
           if (ThemeUtils.isFocused(states)) {
             // lowest seems to be the default menu background color
             return context.surfaceContainerLowest;
+          }
+
+          if (selected) {
+            return Theme.of(context).highlightColor;
           }
 
           return null;
@@ -117,7 +124,7 @@ class MenuButtonBarUtils {
             onPressed: itemData.enabled ? itemData.action : null,
             trailingIcon: itemData.trailing,
             leadingIcon: itemData.leading,
-            style: _menuiItemStyle(context),
+            style: _menuiItemStyle(context, selected: itemData.selected),
             // child can't be null, interface is bad
             child: child ?? const Text(''),
           ),
