@@ -34,12 +34,12 @@ class MenuButtonBarUtils {
     bool selected = false,
   }) {
     return ButtonStyle(
-      // animationDuration: Duration.zero,
-      // padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
-      //   (states) {
-      //     return const EdgeInsets.symmetric(horizontal: 20);
-      //   },
-      // ),
+      animationDuration: Duration.zero,
+      padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
+        (states) {
+          return const EdgeInsets.symmetric(horizontal: 20);
+        },
+      ),
       backgroundColor: WidgetStateProperty.resolveWith<Color?>(
         (states) {
           // if (ThemeUtils.isHovered(states)) {
