@@ -119,6 +119,7 @@ class _FilterFieldState extends State<FilterField> {
         // contentPadding is wierd, right gets cut off too soon?
         contentPadding: EdgeInsets.zero,
         fillColor: widget.fillColor,
+        hoverColor: Colors.transparent,
         filled: widget.fillColor != null,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: widget.hint ?? l10n.search,
