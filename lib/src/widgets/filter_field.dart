@@ -89,8 +89,6 @@ class _FilterFieldState extends State<FilterField> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    final Color? hintColor = Theme.of(context).textTheme.bodyLarge?.color;
-
     return TextField(
       style: TextStyle(
         fontSize: widget.small ? 16 : null,
@@ -113,9 +111,6 @@ class _FilterFieldState extends State<FilterField> {
         hoverColor: Colors.transparent,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: widget.hint ?? l10n.search,
-        hintStyle: TextStyle(
-          color: hintColor?.withOpacity(0.5),
-        ),
         labelText: widget.label ?? l10n.search,
         prefixIconConstraints:
             widget.small ? DFIconButton.kIconConstraints : null,
