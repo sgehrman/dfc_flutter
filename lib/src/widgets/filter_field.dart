@@ -100,7 +100,7 @@ class _FilterFieldState extends State<FilterField> {
 
     return TextField(
       style: TextStyle(
-        fontSize: widget.small ? 16 : 20,
+        fontSize: widget.small ? 16 : null,
         color: widget.textColor,
       ),
       autofocus: widget.autofocus,
