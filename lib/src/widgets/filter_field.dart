@@ -134,7 +134,7 @@ class _FilterFieldState extends State<FilterField> {
         prefixIcon: Container(
           margin: const EdgeInsets.only(left: 6),
           child: DFIconButton(
-            color: widget.textColor ?? context.primary,
+            color: Colors.red,
             icon: const Icon(Icons.search),
             small: widget.small,
             onPressed: () {
@@ -150,7 +150,7 @@ class _FilterFieldState extends State<FilterField> {
             margin: const EdgeInsets.only(right: 4),
             child: DFIconButton(
               small: widget.small,
-              color: widget.textColor ?? context.primary,
+              color: Colors.red,
               icon: const Icon(Icons.close),
               onPressed: () {
                 widget.controller.text = '';
