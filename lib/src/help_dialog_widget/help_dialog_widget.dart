@@ -124,9 +124,6 @@ class _HelpDialogSearchFieldState extends State<HelpDialogSearchField> {
           onSubmit: (filter) {
             // ddd
           },
-          // override colors since it's on a primary colored dialog header
-          fillColor: Colors.white,
-          textColor: Colors.black,
         ),
       ),
     );

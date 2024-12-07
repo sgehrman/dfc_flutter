@@ -12,8 +12,6 @@ class FilterField extends StatefulWidget {
     this.label, // Search
     this.hint, // Search
     this.small = false,
-    this.fillColor,
-    this.textColor,
     this.debounce = true,
   });
 
@@ -26,8 +24,6 @@ class FilterField extends StatefulWidget {
   final bool debounce;
   final String? label;
   final String? hint;
-  final Color? fillColor;
-  final Color? textColor;
 
   @override
   State<FilterField> createState() => _FilterFieldState();
@@ -93,15 +89,11 @@ class _FilterFieldState extends State<FilterField> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    Color? hintColor = Theme.of(context).textTheme.bodyLarge?.color;
-    if (widget.textColor != null) {
-      hintColor = widget.textColor;
-    }
+    final Color? hintColor = Theme.of(context).textTheme.bodyLarge?.color;
 
     return TextField(
       style: TextStyle(
         fontSize: widget.small ? 16 : null,
-        color: widget.textColor,
       ),
       autofocus: widget.autofocus,
       controller: widget.controller,
@@ -118,9 +110,7 @@ class _FilterFieldState extends State<FilterField> {
         isDense: true,
         // contentPadding is wierd, right gets cut off too soon?
         contentPadding: EdgeInsets.zero,
-        fillColor: widget.fillColor,
         hoverColor: Colors.transparent,
-        filled: widget.fillColor != null,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: widget.hint ?? l10n.search,
         hintStyle: TextStyle(
@@ -134,7 +124,7 @@ class _FilterFieldState extends State<FilterField> {
         prefixIcon: Container(
           margin: const EdgeInsets.only(left: 6),
           child: DFIconButton(
-            color: widget.textColor ?? context.primary,
+            color: context.primary,
             icon: const Icon(Icons.search),
             small: widget.small,
             onPressed: () {
@@ -150,7 +140,7 @@ class _FilterFieldState extends State<FilterField> {
             margin: const EdgeInsets.only(right: 4),
             child: DFIconButton(
               small: widget.small,
-              color: widget.textColor ?? context.primary,
+              color: context.primary,
               icon: const Icon(Icons.close),
               onPressed: () {
                 widget.controller.text = '';
