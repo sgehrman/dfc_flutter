@@ -34,17 +34,17 @@ class MenuButtonBarUtils {
     bool selected = false,
   }) {
     return ButtonStyle(
-      animationDuration: Duration.zero,
-      padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
-        (states) {
-          return const EdgeInsets.symmetric(horizontal: 20);
-        },
-      ),
+      // animationDuration: Duration.zero,
+      // padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
+      //   (states) {
+      //     return const EdgeInsets.symmetric(horizontal: 20);
+      //   },
+      // ),
       backgroundColor: WidgetStateProperty.resolveWith<Color?>(
         (states) {
-          if (ThemeUtils.isHovered(states)) {
-            return context.primary;
-          }
+          // if (ThemeUtils.isHovered(states)) {
+          //   return context.primary;
+          // }
 
           // this gets rid of the faint background left when popping open
           // a submenu and moving mouse ourside of the menu.
@@ -60,16 +60,16 @@ class MenuButtonBarUtils {
           return null;
         },
       ),
-      foregroundColor: WidgetStateProperty.resolveWith<Color?>(
-        (states) {
-          return _textIconColor(context, states);
-        },
-      ),
-      iconColor: WidgetStateProperty.resolveWith<Color?>(
-        (states) {
-          return _textIconColor(context, states);
-        },
-      ),
+      // foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+      //   (states) {
+      //     return _textIconColor(context, states);
+      //   },
+      // ),
+      // iconColor: WidgetStateProperty.resolveWith<Color?>(
+      //   (states) {
+      //     return _textIconColor(context, states);
+      //   },
+      // ),
     );
   }
 
