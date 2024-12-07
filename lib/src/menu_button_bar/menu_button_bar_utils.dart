@@ -17,18 +17,6 @@ class MenuButtonBarUtils {
     );
   }
 
-  static Color _textIconColor(BuildContext context, Set<WidgetState> states) {
-    if (ThemeUtils.isDisabled(states)) {
-      return context.dimTextColor;
-    }
-
-    if (ThemeUtils.isHovered(states)) {
-      return context.onPrimary;
-    }
-
-    return context.textColor;
-  }
-
   static ButtonStyle _menuiItemStyle(
     BuildContext context, {
     bool selected = false,
@@ -37,7 +25,7 @@ class MenuButtonBarUtils {
       animationDuration: Duration.zero,
       padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
         (states) {
-          return const EdgeInsets.symmetric(horizontal: 20);
+          return const EdgeInsets.symmetric(horizontal: 40);
         },
       ),
       backgroundColor: WidgetStateProperty.resolveWith<Color?>(
