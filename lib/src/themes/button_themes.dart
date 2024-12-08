@@ -156,7 +156,7 @@ class ButtonThemes {
     final startTheme = baseTheme.outlinedButtonTheme;
 
     final borderSide = WidgetStateProperty.resolveWith<BorderSide>(
-      (states) => _borderSide(states, 2),
+      (states) => _borderSide(states),
     );
 
     final foregroundColor = WidgetStateProperty.resolveWith<Color>(
@@ -258,7 +258,7 @@ class ButtonThemes {
   EdgeInsets _buttonPadding(Set<WidgetState> states) {
     return const EdgeInsets.symmetric(
       horizontal: 18,
-      vertical: 16,
+      vertical: 14,
     );
   }
 
@@ -282,9 +282,9 @@ class ButtonThemes {
 
   BorderSide _borderSide(
     Set<WidgetState> states,
-    double width,
   ) {
-    Color color = whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
+    Color color =
+        whiteButtons ? Colors.white : baseTheme.colorScheme.outlineVariant;
 
     final darker = Utils.darken(color);
     final lighter = Utils.lighten(color, 0.2);
@@ -299,7 +299,6 @@ class ButtonThemes {
 
     return BorderSide(
       color: color,
-      width: width,
     );
   }
 }
