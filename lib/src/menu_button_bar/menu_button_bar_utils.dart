@@ -25,7 +25,7 @@ class MenuButtonBarUtils {
       animationDuration: Duration.zero,
       padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
         (states) {
-          return const EdgeInsets.only(left: 20, right: 40);
+          return const EdgeInsets.symmetric(horizontal: 20);
         },
       ),
       backgroundColor: WidgetStateProperty.resolveWith<Color?>(
