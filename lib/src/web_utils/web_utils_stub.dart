@@ -15,4 +15,9 @@ class WebUtilsImp implements WebUtilsInterface {
   bool isFireFox() {
     throw UnimplementedError('isFireFox not implemented');
   }
+
+  @override
+  bool isFullscreen() {
+    throw UnimplementedError('isFullscreen not implemented');
+  }
 }

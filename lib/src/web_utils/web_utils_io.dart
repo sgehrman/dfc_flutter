@@ -15,4 +15,9 @@ class WebUtilsImp implements WebUtilsInterface {
   bool isFireFox() {
     return false;
   }
+
+  @override
+  bool isFullscreen() {
+    return false;
+  }
 }

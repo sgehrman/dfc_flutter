@@ -23,4 +23,8 @@ class WebUtils {
   bool isFireFox() {
     return _ba.isFireFox();
   }
+
+  bool isFullscreen() {
+    return _ba.isFullscreen();
+  }
 }
