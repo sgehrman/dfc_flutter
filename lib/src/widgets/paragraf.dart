@@ -379,13 +379,13 @@ enum ParagrafColor {
         final textColor =
             Theme.of(context).textTheme.bodyMedium?.color ?? Colors.red;
 
-        return textColor.withOpacity(opacity);
+        return textColor.withValues(alpha: opacity);
       case ParagrafColor.black:
-        return Colors.black.withOpacity(opacity);
+        return Colors.black.withValues(alpha: opacity);
       case ParagrafColor.white:
-        return Colors.white.withOpacity(opacity);
+        return Colors.white.withValues(alpha: opacity);
       case ParagrafColor.primary:
-        return Theme.of(context).colorScheme.primary.withOpacity(opacity);
+        return Theme.of(context).colorScheme.primary.withValues(alpha: opacity);
     }
   }
 }

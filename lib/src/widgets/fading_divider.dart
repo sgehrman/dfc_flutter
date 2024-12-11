@@ -28,10 +28,10 @@ class FadingDivider extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Colors.white.withOpacity(0),
+                Colors.white.withValues(alpha: 0),
                 dividerColor,
                 dividerColor,
-                Colors.white.withOpacity(0),
+                Colors.white.withValues(alpha: 0),
               ],
               stops: const [0, 0.1, 0.9, 1],
             ),

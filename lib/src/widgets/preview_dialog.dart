@@ -43,7 +43,7 @@ class CDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DialogTheme dialogTheme = DialogTheme.of(context);
+    final dialogTheme = DialogTheme.of(context);
 
     final color = backgroundColor ??
         dialogTheme.backgroundColor ??

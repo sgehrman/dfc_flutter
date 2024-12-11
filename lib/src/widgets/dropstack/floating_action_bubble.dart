@@ -104,7 +104,7 @@ class BubbleMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.grey.withOpacity(0.1);
+    final color = Colors.grey.withValues(alpha: 0.1);
 
     return MaterialButton(
       shape: const StadiumBorder(),

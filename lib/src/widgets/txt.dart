@@ -44,10 +44,11 @@ class Txt {
     if (primary) {
       final Color startColor = color ?? Theme.of(context).colorScheme.primary;
 
-      result = lighten ? startColor.withOpacity(lightOpacity) : startColor;
+      result =
+          lighten ? startColor.withValues(alpha: lightOpacity) : startColor;
     } else {
       if (color != null) {
-        result = lighten ? color.withOpacity(lightOpacity) : color;
+        result = lighten ? color.withValues(alpha: lightOpacity) : color;
       } else {
         result = lighten ? Theme.of(context).textTheme.bodySmall!.color : null;
       }

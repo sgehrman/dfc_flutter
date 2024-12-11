@@ -22,7 +22,7 @@ extension BuildContextUtils on BuildContext {
   Color get surfaceContainerLow =>
       Theme.of(this).colorScheme.surfaceContainerLow;
   Color lightPrimary({double opacity = 0.4}) =>
-      Theme.of(this).colorScheme.primary.withOpacity(opacity);
+      Theme.of(this).colorScheme.primary.withValues(alpha: opacity);
   Color get tertiary => Theme.of(this).colorScheme.tertiary;
   Color get tertiaryContainer => Theme.of(this).colorScheme.tertiaryContainer;
   Color get onTertiary => Theme.of(this).colorScheme.onTertiary;
@@ -44,6 +44,6 @@ extension BuildContextUtils on BuildContext {
 
   // text colors
   Color get textColor => onSurface;
-  Color get lightTextColor => onSurface.withOpacity(0.8);
-  Color get dimTextColor => onSurface.withOpacity(0.5);
+  Color get lightTextColor => onSurface.withValues(alpha: 0.8);
+  Color get dimTextColor => onSurface.withValues(alpha: 0.5);
 }

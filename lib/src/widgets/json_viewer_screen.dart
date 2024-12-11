@@ -102,8 +102,8 @@ Future<void> showJsonViewerDialog({
     decoration: BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(12)),
       color: Utils.isDarkMode(context)
-          ? Colors.white.withOpacity(0.07)
-          : Colors.black.withOpacity(0.07),
+          ? Colors.white.withValues(alpha: 0.07)
+          : Colors.black.withValues(alpha: 0.07),
     ),
     padding: const EdgeInsets.all(10),
     height: 700,

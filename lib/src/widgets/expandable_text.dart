@@ -57,7 +57,7 @@ class _ExpandableTextState extends State<ExpandableText> {
                         color: Theme.of(context)
                             .colorScheme
                             .secondary
-                            .withOpacity(0.8),
+                            .withValues(alpha: 0.8),
                       ),
                 ),
               ),

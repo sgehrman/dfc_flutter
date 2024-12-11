@@ -241,7 +241,7 @@ class ButtonThemes {
     if (filledButton) {
       baseColor = baseTheme.colorScheme.onPrimary;
       // Utils.lighten won't work for white
-      baseColorLight = baseTheme.colorScheme.onPrimary.withOpacity(0.6);
+      baseColorLight = baseTheme.colorScheme.onPrimary.withValues(alpha: 0.6);
     }
 
     // if (states.any(_interactiveStates.contains)) {

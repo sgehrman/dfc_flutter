@@ -37,7 +37,7 @@ class StadiumButton extends StatelessWidget {
             ? Theme.of(context).colorScheme.primary
             : Colors.white70,
         side: BorderSide(
-          color: Colors.black.withOpacity(0.08),
+          color: Colors.black.withValues(alpha: 0.08),
         ),
         shape: const StadiumBorder(),
       ),

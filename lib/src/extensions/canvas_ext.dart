@@ -17,8 +17,8 @@ extension ExtendedCanvas on Canvas {
 
     final petalShader = RadialGradient(
       colors: [
-        highlightColor.withOpacity(opacity),
-        color.withOpacity(opacity),
+        highlightColor.withValues(alpha: opacity),
+        color.withValues(alpha: opacity),
       ],
       stops: const [
         0,

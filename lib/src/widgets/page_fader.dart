@@ -36,7 +36,7 @@ class PageFaderPainter extends CustomPainter {
     paint.shader = LinearGradient(
       colors: [
         color,
-        color.withOpacity(0),
+        color.withValues(alpha: 0),
       ],
     ).createShader(leftRect);
 
@@ -47,7 +47,7 @@ class PageFaderPainter extends CustomPainter {
 
     paint.shader = LinearGradient(
       colors: [
-        color.withOpacity(0),
+        color.withValues(alpha: 0),
         color,
       ],
     ).createShader(rightRect);
