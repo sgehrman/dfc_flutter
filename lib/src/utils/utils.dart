@@ -372,12 +372,6 @@ class Utils {
   // ===========================================
   // Misc
 
-  static bool equalColors(Color? color1, Color? color2) {
-    // colors don't compare well, one might be a material color, the other just has a Color(value)
-    // both both might have the same value and should be considered equal
-    return color1?.value == color2?.value;
-  }
-
   static Size mediaSquareSize(
     BuildContext context, {
     double percent = 0.5,

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
 import 'package:dfc_flutter/src/hive_db/hive_utils.dart';
-import 'package:dfc_flutter/src/themes/editor/theme_set.dart';
 
 class Preferences {
   factory Preferences() {
@@ -71,55 +70,6 @@ class Preferences {
   void setFavoriteGoogleFonts(List<String> value) {
     if (getFavoriteGoogleFonts() != value) {
       prefs.put('favoriteGoogleFonts', value);
-    }
-  }
-
-  ThemeSet? get themeSet {
-    final jsonMap = prefs.get('themeSet') as Map?;
-
-    if (jsonMap != null) {
-      return ThemeSet.fromMap(Map<String, dynamic>.from(jsonMap));
-    }
-
-    return null;
-  }
-
-  // pass null to delete pref
-  set themeSet(ThemeSet? newTheme) {
-    if (newTheme == null) {
-      prefs.delete('themeSet');
-    } else {
-      if (themeSet != newTheme) {
-        prefs.put('themeSet', newTheme.toMap());
-      }
-    }
-  }
-
-  List<ThemeSet>? get themeSets {
-    final dynamic pref = prefs.get('themeSets');
-
-    if (pref != null) {
-      final jsonList = List<Map<dynamic, dynamic>>.from(pref as List);
-
-      return jsonList
-          .map(
-            (jsonMap) => ThemeSet.fromMap(Map<String, dynamic>.from(jsonMap)),
-          )
-          .toList();
-    }
-
-    return null;
-  }
-
-  // pass null to delete
-  set themeSets(List<ThemeSet>? newThemes) {
-    if (newThemes == null) {
-      prefs.delete('themeSets');
-    } else {
-      final List<Map<dynamic, dynamic>> maps =
-          newThemes.map((x) => x.toMap()).toList();
-
-      prefs.put('themeSets', maps);
     }
   }
 
