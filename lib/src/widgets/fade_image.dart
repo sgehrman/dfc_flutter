@@ -62,7 +62,6 @@ class FadeImage extends StatelessWidget {
     required this.fit,
     this.height,
     this.width,
-    this.missingImage,
     this.duration = const Duration(milliseconds: 300),
     this.checkerboard = false,
     super.key,
@@ -72,7 +71,6 @@ class FadeImage extends StatelessWidget {
   final BoxFit fit;
   final double? height;
   final double? width;
-  final Widget? missingImage;
   final Duration duration;
   final bool checkerboard;
 
@@ -80,6 +78,10 @@ class FadeImage extends StatelessWidget {
   Widget build(BuildContext context) {
     // some data urls have spaces?
     final cleanUrl = _cleanUrl(url);
+
+    if (cleanUrl.isEmpty) {
+      return const _MissingImage();
+    }
 
     return ContextualMenu(
       buildMenu: () => _contextualMenuItems(
@@ -90,29 +92,15 @@ class FadeImage extends StatelessWidget {
         enabled: checkerboard,
         child: FadeInImage.memoryNetwork(
           imageErrorBuilder: (context, error, stackTrace) {
-            if (missingImage != null) {
-              if (height != null && width != null) {
-                return SizedBox(
-                  height: height,
-                  width: width,
-                  child: missingImage,
-                );
-              } else {
-                return missingImage!;
-              }
-            }
-
-            return const Icon(Icons.warning);
+            return const _MissingImage();
           },
           placeholder: transparentImage(),
           image: cleanUrl,
           fadeInDuration: duration,
+          fadeOutDuration: duration,
           fit: fit,
           height: height,
           width: width,
-          // SNG causes lag, but keeping until we can see if this screws up our image cache flushing code.
-          imageCacheWidth: width?.toInt(),
-          imageCacheHeight: height?.toInt(),
         ),
       ),
     );
@@ -120,13 +108,25 @@ class FadeImage extends StatelessWidget {
 }
 
 // =======================================================================
-// wanted a faster FadeImage, but similar behavior
+
+class _MissingImage extends StatelessWidget {
+  const _MissingImage();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Icon(
+      Icons.warning_outlined,
+      size: 64,
+    );
+  }
+}
+
+// =======================================================================
 
 class NoFadeImage extends StatelessWidget {
   const NoFadeImage({
     required this.url,
     required this.fit,
-    required this.missingImage,
     this.height,
     this.width,
     this.checkerboard = false,
@@ -137,37 +137,18 @@ class NoFadeImage extends StatelessWidget {
   final BoxFit fit;
   final double? height;
   final double? width;
-  final Widget missingImage;
   final bool checkerboard;
 
   @override
   Widget build(BuildContext context) {
-    final cleanUrl = _cleanUrl(url);
-
-    return ContextualMenu(
-      buildMenu: () => _contextualMenuItems(
-        context: context,
-        url: cleanUrl,
-      ),
-      child: CheckerboardContainer(
-        enabled: checkerboard,
-        child: SizedBox(
-          height: height,
-          width: width,
-          child: Image.network(
-            cleanUrl,
-            errorBuilder: (context, error, stackTrace) {
-              return missingImage;
-            },
-            fit: fit,
-            height: height,
-            width: width,
-            // causes lag in RSS code?
-            // cacheWidth: width.toInt(),
-            // cacheHeight: height.toInt(),
-          ),
-        ),
-      ),
+    return FadeImage(
+      url: url,
+      fit: fit,
+      checkerboard: checkerboard,
+      duration: Duration.zero,
+      height: height,
+      width: width,
+      key: key,
     );
   }
 }
