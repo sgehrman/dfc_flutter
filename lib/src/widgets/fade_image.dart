@@ -126,17 +126,17 @@ class NoFadeImage extends StatelessWidget {
   const NoFadeImage({
     required this.url,
     required this.fit,
-    required this.height,
-    required this.width,
     required this.missingImage,
+    this.height,
+    this.width,
     this.checkerboard = false,
     super.key,
   });
 
   final String url;
   final BoxFit fit;
-  final double height;
-  final double width;
+  final double? height;
+  final double? width;
   final Widget missingImage;
   final bool checkerboard;
 
