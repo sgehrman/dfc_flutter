@@ -64,11 +64,13 @@ class FadeImage extends StatelessWidget {
     this.width,
     this.duration = const Duration(milliseconds: 300),
     this.checkerboard = false,
+    this.missingImage,
     super.key,
   });
 
   final String url;
   final BoxFit fit;
+  final Widget? missingImage;
   final double? height;
   final double? width;
   final Duration duration;
@@ -80,7 +82,7 @@ class FadeImage extends StatelessWidget {
     final cleanUrl = _cleanUrl(url);
 
     if (cleanUrl.isEmpty) {
-      return const _MissingImage();
+      return _MissingImage(missingImage);
     }
 
     return ContextualMenu(
@@ -92,7 +94,7 @@ class FadeImage extends StatelessWidget {
         enabled: checkerboard,
         child: FadeInImage.memoryNetwork(
           imageErrorBuilder: (context, error, stackTrace) {
-            return const _MissingImage();
+            return _MissingImage(missingImage);
           },
           placeholder: transparentImage(),
           image: cleanUrl,
@@ -110,14 +112,17 @@ class FadeImage extends StatelessWidget {
 // =======================================================================
 
 class _MissingImage extends StatelessWidget {
-  const _MissingImage();
+  const _MissingImage(this.missingImage);
+
+  final Widget? missingImage;
 
   @override
   Widget build(BuildContext context) {
-    return const Icon(
-      Icons.warning_outlined,
-      size: 64,
-    );
+    return missingImage ??
+        const Icon(
+          Icons.warning_outlined,
+          size: 64,
+        );
   }
 }
 
@@ -130,6 +135,7 @@ class NoFadeImage extends StatelessWidget {
     this.height,
     this.width,
     this.checkerboard = false,
+    this.missingImage,
     super.key,
   });
 
@@ -138,6 +144,7 @@ class NoFadeImage extends StatelessWidget {
   final double? height;
   final double? width;
   final bool checkerboard;
+  final Widget? missingImage;
 
   @override
   Widget build(BuildContext context) {
@@ -149,6 +156,7 @@ class NoFadeImage extends StatelessWidget {
       height: height,
       width: width,
       key: key,
+      missingImage: missingImage,
     );
   }
 }
