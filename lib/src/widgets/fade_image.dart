@@ -85,6 +85,34 @@ class FadeImage extends StatelessWidget {
       return _MissingImage(missingImage);
     }
 
+    Widget image;
+
+    // FadeInImage crashes with zero duration
+    if (duration.compareTo(Duration.zero) == 0) {
+      image = Image.network(
+        cleanUrl,
+        errorBuilder: (context, error, stackTrace) {
+          return _MissingImage(missingImage);
+        },
+        fit: fit,
+        height: height,
+        width: width,
+      );
+    } else {
+      image = FadeInImage.memoryNetwork(
+        imageErrorBuilder: (context, error, stackTrace) {
+          return _MissingImage(missingImage);
+        },
+        placeholder: transparentImage(),
+        image: cleanUrl,
+        fadeInDuration: duration,
+        fadeOutDuration: duration,
+        fit: fit,
+        height: height,
+        width: width,
+      );
+    }
+
     return ContextualMenu(
       buildMenu: () => _contextualMenuItems(
         context: context,
@@ -92,18 +120,7 @@ class FadeImage extends StatelessWidget {
       ),
       child: CheckerboardContainer(
         enabled: checkerboard,
-        child: FadeInImage.memoryNetwork(
-          imageErrorBuilder: (context, error, stackTrace) {
-            return _MissingImage(missingImage);
-          },
-          placeholder: transparentImage(),
-          image: cleanUrl,
-          fadeInDuration: duration,
-          fadeOutDuration: duration,
-          fit: fit,
-          height: height,
-          width: width,
-        ),
+        child: image,
       ),
     );
   }
