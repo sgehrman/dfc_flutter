@@ -144,9 +144,8 @@ class StrUtils {
 
     result = removeCData(result);
 
-    // why was this originally here?
-    // if (result.contains('&')) {
-    if (result.contains('<')) {
+    // convert &mdash; and <img ...> inside descriptions
+    if (result.contains('&') || result.contains('<')) {
       try {
         result = parseFragment(result).text ?? result;
       } catch (err) {
