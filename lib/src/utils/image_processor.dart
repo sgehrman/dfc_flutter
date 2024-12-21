@@ -163,7 +163,7 @@ class ImageProcessor {
       } else {
         final response = await HttpUtils.httpGet(uri);
 
-        if (response.statusCode >= 200 && response.statusCode < 300) {
+        if (HttpUtils.statusOK(response.statusCode)) {
           final Uint8List bodyBytes = response.bodyBytes;
 
           if (bodyBytes.isNotEmpty) {

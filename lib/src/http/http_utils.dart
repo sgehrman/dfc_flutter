@@ -8,6 +8,10 @@ import 'package:http/http.dart' as http;
 class HttpUtils {
   HttpUtils._();
 
+  static bool statusOK(int statusCode) {
+    return statusCode >= 200 && statusCode < 300;
+  }
+
   static Future<http.Response> httpGet(
     Uri uri, {
     int timeout = 20,
@@ -37,7 +41,7 @@ class HttpUtils {
         timeout: timeout,
       );
 
-      if (response.statusCode >= 200 && response.statusCode < 300) {
+      if (HttpUtils.statusOK(response.statusCode)) {
         String? decoded;
 
         // this fails
@@ -113,7 +117,7 @@ class HttpUtils {
           .send(clientRequest)
           .timeout(Duration(seconds: timeout));
 
-      if (response.statusCode >= 200 && response.statusCode < 300) {
+      if (HttpUtils.statusOK(response.statusCode)) {
         // we want the bytes now before close happens in finally.
         // not sure how to handle this correctly.
         final Uint8List result = await response.stream.toBytes();

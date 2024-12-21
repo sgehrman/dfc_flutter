@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:dfc_flutter/src/http/http_utils.dart';
 import 'package:dfc_flutter/src/models/manifest_model.dart';
 import 'package:dfc_flutter/src/requests/requests.dart';
 import 'package:xml/xml.dart';
@@ -73,7 +74,7 @@ class ManifestFile {
         timeoutSeconds: 30,
       );
 
-      if (response.statusCode >= 200 && response.statusCode < 300) {
+      if (HttpUtils.statusOK(response.statusCode)) {
         String xmlString = response.content();
 
         xmlString = xmlString.replaceAll('bundle-version', 'bundleVersion');
