@@ -26,6 +26,10 @@ class HttpUtils {
     // 'user-agent':
     //     'Overcast/1.0 Podcast Sync (123 subscribers; feed-id=456789; +http://overcast.fm/)',
 
+    // test this
+    // 'user-agent':
+    // 'YourReaderName/1.0 (100 subscribers; +https://yourreader.com/)',
+
     // seems to work fine
     'user-agent': 'Mozilla/5.0 +https://podnews.net/bot PodnewsBot/1.0',
   };
