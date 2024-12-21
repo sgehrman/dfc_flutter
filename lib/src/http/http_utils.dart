@@ -8,11 +8,26 @@ import 'package:http/http.dart' as http;
 class HttpUtils {
   HttpUtils._();
 
-  // some sites try to block bots? This fixes it?
-  // pretend we are 'curl'?
+  // some sites try to block bots, must set a known user-agent
   // https://www.telegraph.co.uk/rss.xml
+  // https://fortune.com/feed/fortune-feeds/?id=3230629
+  // https://www.nasdaq.com/feed/nasdaq-original/rss.xml
+  // https://readwrite.com/feed/
+
   static Map<String, String> rssFeedHeaders = {
-    'user-agent': 'curl',
+    // works sometimes
+    // 'user-agent': 'curl',
+
+    // better but not great
+    // 'user-agent':
+    //     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+
+    // seems to work fine
+    // 'user-agent':
+    //     'Overcast/1.0 Podcast Sync (123 subscribers; feed-id=456789; +http://overcast.fm/)',
+
+    // seems to work fine
+    'user-agent': 'Mozilla/5.0 +https://podnews.net/bot PodnewsBot/1.0',
   };
 
   static Future<http.Response> httpGet(
