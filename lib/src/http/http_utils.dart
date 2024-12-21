@@ -15,11 +15,13 @@ class HttpUtils {
   static Future<http.Response> httpGet(
     Uri uri, {
     int timeout = 20,
+    Map<String, String> headers = const {},
   }) {
     try {
       return http
           .get(
             uri,
+            headers: headers,
           )
           .timeout(Duration(seconds: timeout));
     } on TimeoutException catch (err) {
@@ -34,11 +36,13 @@ class HttpUtils {
   static Future<String> httpGetBody(
     Uri uri, {
     int timeout = 20,
+    Map<String, String> headers = const {},
   }) async {
     try {
       final response = await httpGet(
         uri,
         timeout: timeout,
+        headers: headers,
       );
 
       if (HttpUtils.statusOK(response.statusCode)) {
