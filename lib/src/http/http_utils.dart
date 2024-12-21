@@ -31,7 +31,10 @@ class HttpUtils {
     // 'YourReaderName/1.0 (100 subscribers; +https://yourreader.com/)',
 
     // seems to work fine
-    'user-agent': 'Mozilla/5.0 +https://podnews.net/bot PodnewsBot/1.0',
+    // 'user-agent': 'Mozilla/5.0 +https://podnews.net/bot PodnewsBot/1.0',
+
+    // seems to work fine
+    'user-agent': 'Mozilla/5.0 +https://deckr.surf Deckr/1.0',
   };
 
   static Future<http.Response> httpGet(
