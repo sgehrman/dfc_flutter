@@ -8,12 +8,25 @@ import 'package:http/http.dart' as http;
 class HttpUtils {
   HttpUtils._();
 
+  // some sites try to block bots? This fixes it?
+  // pretend we are 'curl'?
+  // https://www.telegraph.co.uk/rss.xml
+  static Map<String, String> rssFeedHeaders = {
+    'user-agent': 'curl',
+  };
+
   static Future<http.Response> httpGet(
     Uri uri, {
     int timeout = 20,
+    Map<String, String> headers = const {},
   }) {
     try {
-      return http.get(uri).timeout(Duration(seconds: timeout));
+      return http
+          .get(
+            uri,
+            headers: headers,
+          )
+          .timeout(Duration(seconds: timeout));
     } on TimeoutException catch (err) {
       print('### Error(http.get): TimeoutException err:$err url: $uri');
       rethrow;
@@ -26,11 +39,13 @@ class HttpUtils {
   static Future<String> httpGetBody(
     Uri uri, {
     int timeout = 20,
+    Map<String, String> headers = const {},
   }) async {
     try {
       final response = await httpGet(
         uri,
         timeout: timeout,
+        headers: headers,
       );
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
