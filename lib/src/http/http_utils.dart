@@ -15,7 +15,7 @@ class HttpUtils {
   static Future<http.Response> httpGet(
     Uri uri, {
     int timeout = 20,
-    Map<String, String> headers = const {},
+    Map<String, String>? headers,
   }) {
     try {
       return http
@@ -36,7 +36,7 @@ class HttpUtils {
   static Future<String> httpGetBody(
     Uri uri, {
     int timeout = 20,
-    Map<String, String> headers = const {},
+    Map<String, String>? headers,
   }) async {
     try {
       final response = await httpGet(
