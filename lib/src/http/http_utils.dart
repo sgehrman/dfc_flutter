@@ -133,6 +133,8 @@ class HttpUtils {
         }
 
         return result;
+      } else {
+        print('httpGetStream: status: ${response.statusCode}, url: $uri');
       }
     } on TimeoutException catch (err) {
       print('### Error(httpGetStream): TimeoutException err:$err url: $uri');
