@@ -109,12 +109,14 @@ class HttpUtils {
 
   static Future<Uint8List> httpGetStream(
     Uri uri, {
+    Map<String, String> headers = const {},
     int timeout = 20,
   }) async {
     final httpClient = http.Client();
 
     try {
       final clientRequest = http.Request('GET', uri);
+      clientRequest.headers.addAll(headers);
 
       // follows redirects by default (not for web)
       final response = await httpClient
