@@ -11,4 +11,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get search => 'Recherche';
+
+  @override
+  String get today => 'Aujourd\'hui';
+
+  @override
+  String get tomorrow => 'Demain';
+
+  @override
+  String get yesterday => 'Hier';
 }

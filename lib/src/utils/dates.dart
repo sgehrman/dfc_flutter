@@ -1,4 +1,6 @@
+import 'package:dfc_flutter/l10n/app_localizations.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Dates {
@@ -28,14 +30,14 @@ class Dates {
     return '';
   }
 
-  static String formatInDays(DateTime dateTime) {
-    final today = DateTime.now();
-    final difference = dateTime.difference(today);
+  static String formatInDays(BuildContext context, DateTime dateTime) {
+    final difference = dateTime.difference(DateTime.now());
+    final l10n = AppLocalizations.of(context);
 
     return switch (difference) {
-      Duration(inDays: 0) => 'Today',
-      Duration(inDays: 1) => 'Tomorrow',
-      Duration(inDays: -1) => 'Yesterday',
+      Duration(inDays: 0) => l10n.today,
+      Duration(inDays: 1) => l10n.tomorrow,
+      Duration(inDays: -1) => l10n.yesterday,
       Duration(inDays: final days) when days > 7 =>
         '${days ~/ 7} weeks from now', // Add from here
       Duration(inDays: final days) when days < -7 =>

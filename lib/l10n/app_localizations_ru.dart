@@ -11,4 +11,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get search => 'Поиск';
+
+  @override
+  String get today => 'Сегодня';
+
+  @override
+  String get tomorrow => 'Завтра';
+
+  @override
+  String get yesterday => 'Вчера';
 }

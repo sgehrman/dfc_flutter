@@ -11,4 +11,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get search => 'Busca en';
+
+  @override
+  String get today => 'Hoy';
+
+  @override
+  String get tomorrow => 'Mañana';
+
+  @override
+  String get yesterday => 'Ayer';
 }

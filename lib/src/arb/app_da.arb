@@ -1,5 +1,8 @@
 {
   "@@locale": "da",
   "nothingFound": "Intet fundet",
-  "search": "Søg efter"
+  "search": "Søg efter",
+  "today": "I dag",
+  "tomorrow": "I morgen",
+  "yesterday": "I går"
 }

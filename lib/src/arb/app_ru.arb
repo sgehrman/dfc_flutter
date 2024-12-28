@@ -1,5 +1,8 @@
 {
   "@@locale": "ru",
   "nothingFound": "Ничего не найдено",
-  "search": "Поиск"
+  "search": "Поиск",
+  "today": "Сегодня",
+  "tomorrow": "Завтра",
+  "yesterday": "Вчера"
 }

@@ -1,5 +1,8 @@
 {
   "@@locale": "fi",
   "nothingFound": "Ei löytynyt mitään",
-  "search": "Etsi"
+  "search": "Etsi",
+  "today": "Tänään",
+  "tomorrow": "Huomenna",
+  "yesterday": "Eilen"
 }

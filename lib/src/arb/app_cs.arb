@@ -1,5 +1,8 @@
 {
   "@@locale": "cs",
   "nothingFound": "Nic nenalezeno",
-  "search": "Vyhledávání"
+  "search": "Vyhledávání",
+  "today": "Dnes",
+  "tomorrow": "Zítra",
+  "yesterday": "Včera"
 }

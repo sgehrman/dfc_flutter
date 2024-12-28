@@ -11,4 +11,13 @@ class AppLocalizationsSv extends AppLocalizations {
 
   @override
   String get search => 'Sök';
+
+  @override
+  String get today => 'I dag';
+
+  @override
+  String get tomorrow => 'I morgon';
+
+  @override
+  String get yesterday => 'Igår';
 }

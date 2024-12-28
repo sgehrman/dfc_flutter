@@ -11,4 +11,13 @@ class AppLocalizationsDa extends AppLocalizations {
 
   @override
   String get search => 'Søg efter';
+
+  @override
+  String get today => 'I dag';
+
+  @override
+  String get tomorrow => 'I morgen';
+
+  @override
+  String get yesterday => 'I går';
 }

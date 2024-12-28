@@ -11,4 +11,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get search => '検索';
+
+  @override
+  String get today => '今日';
+
+  @override
+  String get tomorrow => '明日';
+
+  @override
+  String get yesterday => '昨日';
 }

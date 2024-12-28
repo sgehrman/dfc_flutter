@@ -11,4 +11,13 @@ class AppLocalizationsNl extends AppLocalizations {
 
   @override
   String get search => 'Zoek op';
+
+  @override
+  String get today => 'Vandaag';
+
+  @override
+  String get tomorrow => 'Morgen';
+
+  @override
+  String get yesterday => 'Gisteren';
 }

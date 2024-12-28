@@ -1,5 +1,8 @@
 {
   "@@locale": "es",
   "nothingFound": "No se ha encontrado nada",
-  "search": "Busca en"
+  "search": "Busca en",
+  "today": "Hoy",
+  "tomorrow": "Mañana",
+  "yesterday": "Ayer"
 }

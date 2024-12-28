@@ -11,4 +11,13 @@ class AppLocalizationsCs extends AppLocalizations {
 
   @override
   String get search => 'Vyhledávání';
+
+  @override
+  String get today => 'Dnes';
+
+  @override
+  String get tomorrow => 'Zítra';
+
+  @override
+  String get yesterday => 'Včera';
 }

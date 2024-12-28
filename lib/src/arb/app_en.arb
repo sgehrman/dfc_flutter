@@ -1,5 +1,8 @@
 {
   "@@locale": "en",
   "nothingFound": "Nothing Found",
-  "search": "Search"
+  "search": "Search",
+  "today": "Today",
+  "tomorrow": "Tomorrow",
+  "yesterday": "Yesterday"
 }

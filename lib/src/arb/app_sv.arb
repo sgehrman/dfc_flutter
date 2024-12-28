@@ -1,5 +1,8 @@
 {
   "@@locale": "sv",
   "nothingFound": "Ingenting hittades",
-  "search": "Sök"
+  "search": "Sök",
+  "today": "I dag",
+  "tomorrow": "I morgon",
+  "yesterday": "Igår"
 }

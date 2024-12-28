@@ -1,5 +1,8 @@
 {
   "@@locale": "ja",
   "nothingFound": "何も見つからない",
-  "search": "検索"
+  "search": "検索",
+  "today": "今日",
+  "tomorrow": "明日",
+  "yesterday": "昨日"
 }

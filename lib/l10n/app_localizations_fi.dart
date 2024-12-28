@@ -11,4 +11,13 @@ class AppLocalizationsFi extends AppLocalizations {
 
   @override
   String get search => 'Etsi';
+
+  @override
+  String get today => 'Tänään';
+
+  @override
+  String get tomorrow => 'Huomenna';
+
+  @override
+  String get yesterday => 'Eilen';
 }
