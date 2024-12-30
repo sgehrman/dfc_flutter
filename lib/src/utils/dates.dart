@@ -160,7 +160,7 @@ class Dates {
       }
 
       try {
-        // used in RSS feeds (pcmag.com)
+        // used in RSS feeds (https://www.pcmag.com/feeds/rss/latest)
         // Sun, 29 Dec 24 17:53:00 +0000
         return DateFormat('E, dd MMM yy H:mm:ss').parse(dateString);
       } catch (err) {
