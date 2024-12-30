@@ -160,6 +160,14 @@ class Dates {
       }
 
       try {
+        // used in RSS feeds (pcmag.com)
+        // Sun, 29 Dec 24 17:53:00 +0000
+        return DateFormat('E, dd MMM yy H:mm:ss').parse(dateString);
+      } catch (err) {
+        // print('Error-3: dateString: $dateString, err: $err');
+      }
+
+      try {
         // used in RSS feeds
         // Sun, 06 Aug 2023 17:00:00 +0000
         return DateFormat('E, dd MMM yyyy H:mm:ss').parse(dateString);
