@@ -154,6 +154,28 @@ class Text22 extends _TextBase {
   static const double size = 22;
 }
 
+class TextWithSize extends _TextBase {
+  TextWithSize(
+    String? text,
+    double size, {
+    TextStyle? style,
+    TextAlign? textAlign,
+    int? maxLines,
+    bool bold = false,
+    Color? color,
+    double? height,
+  }) : super(
+          text,
+          style: style,
+          bold: bold,
+          color: color,
+          size: size,
+          height: height,
+          textAlign: textAlign,
+          maxLines: maxLines,
+        );
+}
+
 class TextTitle extends _TextBase {
   TextTitle(
     String? text, {
