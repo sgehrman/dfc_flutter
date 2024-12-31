@@ -6,10 +6,10 @@ class ScrollOnXpand extends StatefulWidget {
   const ScrollOnXpand({
     required this.child,
     required this.theme,
-    Key? key,
+    super.key,
     this.scrollOnExpand = true,
     this.scrollOnCollapse = true,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final bool scrollOnExpand;

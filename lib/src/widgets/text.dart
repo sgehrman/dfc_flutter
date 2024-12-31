@@ -8,8 +8,8 @@ String _fixText(String? text) {
 }
 
 class _TextBase extends Text {
-  _TextBase(
-    String? text, {
+  _TextBase({
+    String? text,
     double? size,
     TextStyle? style,
     TextAlign? textAlign,
@@ -42,21 +42,15 @@ class _TextBase extends Text {
 class Text12 extends _TextBase {
   Text12(
     String? text, {
-    TextStyle? style,
-    TextAlign? textAlign,
-    int? maxLines,
-    bool bold = false,
-    Color? color,
-    double? height,
+    super.style,
+    super.textAlign,
+    super.maxLines,
+    super.bold = false,
+    super.color,
+    super.height,
   }) : super(
-          text,
-          style: style,
-          bold: bold,
-          color: color,
+          text: text,
           size: size,
-          textAlign: textAlign,
-          maxLines: maxLines,
-          height: height,
         );
 
   static const double size = 12;
@@ -65,21 +59,15 @@ class Text12 extends _TextBase {
 class Text16 extends _TextBase {
   Text16(
     String? text, {
-    TextStyle? style,
-    TextAlign? textAlign,
-    int? maxLines,
-    bool bold = true,
-    Color? color,
-    double? height,
+    super.style,
+    super.textAlign,
+    super.maxLines,
+    super.bold = true,
+    super.color,
+    super.height,
   }) : super(
-          text,
-          style: style,
-          bold: bold,
-          color: color,
+          text: text,
           size: size,
-          height: height,
-          textAlign: textAlign,
-          maxLines: maxLines,
         );
 
   static const double size = 16;
@@ -88,21 +76,15 @@ class Text16 extends _TextBase {
 class Text18 extends _TextBase {
   Text18(
     String? text, {
-    TextStyle? style,
-    TextAlign? textAlign,
-    int? maxLines,
-    bool bold = true,
-    Color? color,
-    double? height,
+    super.style,
+    super.textAlign,
+    super.maxLines,
+    super.bold = true,
+    super.color,
+    super.height,
   }) : super(
-          text,
-          style: style,
-          bold: bold,
-          color: color,
+          text: text,
           size: size,
-          height: height,
-          textAlign: textAlign,
-          maxLines: maxLines,
         );
 
   static const double size = 18;
@@ -111,21 +93,15 @@ class Text18 extends _TextBase {
 class Text20 extends _TextBase {
   Text20(
     String? text, {
-    TextStyle? style,
-    TextAlign? textAlign,
-    int? maxLines,
-    bool bold = true,
-    Color? color,
-    double? height,
+    super.style,
+    super.textAlign,
+    super.maxLines,
+    super.bold = true,
+    super.color,
+    super.height,
   }) : super(
-          text,
-          style: style,
-          bold: bold,
-          color: color,
+          text: text,
           size: size,
-          height: height,
-          textAlign: textAlign,
-          maxLines: maxLines,
         );
 
   static const double size = 20;
@@ -134,21 +110,15 @@ class Text20 extends _TextBase {
 class Text22 extends _TextBase {
   Text22(
     String? text, {
-    TextStyle? style,
-    TextAlign? textAlign,
-    int? maxLines,
-    bool bold = true,
-    Color? color,
-    double? height,
+    super.style,
+    super.textAlign,
+    super.maxLines,
+    super.bold = true,
+    super.color,
+    super.height,
   }) : super(
-          text,
-          style: style,
-          bold: bold,
-          color: color,
+          text: text,
           size: size,
-          height: height,
-          textAlign: textAlign,
-          maxLines: maxLines,
         );
 
   static const double size = 22;
@@ -158,40 +128,29 @@ class TextWithSize extends _TextBase {
   TextWithSize(
     String? text,
     double size, {
-    TextStyle? style,
-    TextAlign? textAlign,
-    int? maxLines,
-    bool bold = false,
-    Color? color,
-    double? height,
+    super.style,
+    super.textAlign,
+    super.maxLines,
+    super.bold,
+    super.color,
+    super.height,
   }) : super(
-          text,
-          style: style,
-          bold: bold,
-          color: color,
+          text: text,
           size: size,
-          height: height,
-          textAlign: textAlign,
-          maxLines: maxLines,
         );
 }
 
 class TextTitle extends _TextBase {
   TextTitle(
     String? text, {
-    TextStyle? style,
-    TextAlign? textAlign = TextAlign.center,
-    int? maxLines,
-    bool bold = true,
-    Color? color,
+    super.style,
+    super.textAlign = TextAlign.center,
+    super.maxLines,
+    super.bold = true,
+    super.color,
   }) : super(
-          text,
-          style: style,
-          bold: bold,
-          color: color,
+          text: text,
           size: size,
-          textAlign: textAlign,
-          maxLines: maxLines,
           height: 0.9,
         );
 
@@ -201,19 +160,14 @@ class TextTitle extends _TextBase {
 class TextSubtitle extends _TextBase {
   TextSubtitle(
     String? text, {
-    TextStyle? style,
-    TextAlign? textAlign = TextAlign.center,
-    int? maxLines,
-    bool bold = true,
-    Color? color,
+    super.style,
+    super.textAlign = TextAlign.center,
+    super.maxLines,
+    super.bold = true,
+    super.color,
   }) : super(
-          text,
-          style: style,
-          bold: bold,
-          color: color,
+          text: text,
           size: size,
-          textAlign: textAlign,
-          maxLines: maxLines,
           height: 0.9,
         );
 

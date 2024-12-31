@@ -6,8 +6,8 @@ class XpandableNotifier extends StatefulWidget {
   const XpandableNotifier({
     required this.controller,
     required this.child,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final XpandableController? controller;
   final Widget child;
@@ -36,15 +36,16 @@ class XpandableControllerNotifier
     extends InheritedNotifier<XpandableController> {
   const XpandableControllerNotifier({
     required XpandableController? controller,
-    required Widget child,
-  }) : super(notifier: controller, child: child);
+    required super.child,
+  }) : super(notifier: controller);
 }
 
 class XpandableThemeNotifier extends InheritedWidget {
   const XpandableThemeNotifier({
     required this.themeData,
-    required Widget child,
-  }) : super(child: child);
+    required super.child,
+  });
+
   final XpandableThemeData? themeData;
 
   @override

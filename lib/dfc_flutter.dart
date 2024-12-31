@@ -1,5 +1,3 @@
-library dfc_flutter;
-
 export 'dfc_flutter_web.dart';
 export 'src/file_system/file_system.dart';
 export 'src/file_system/server_files.dart';

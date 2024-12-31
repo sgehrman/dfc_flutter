@@ -1,5 +1,3 @@
-library dfc_flutter_web_lite;
-
 export 'l10n/app_locs.dart';
 export 'src/backgrounds/star_field/star_field.dart';
 export 'src/backgrounds/star_field/star_field_background.dart';

@@ -649,7 +649,9 @@ class __ToastState extends State<_Toast> {
     super.initState();
 
     Future.delayed(const Duration(seconds: 1), () {
-      Navigator.of(context).pop();
+      if (mounted) {
+        Navigator.of(context).pop();
+      }
     });
   }
 

@@ -111,7 +111,7 @@ class _TextLiquidFillState extends State<WaveText>
   @override
   Widget build(BuildContext context) {
     return SaveLayer(
-      child: Container(
+      child: ColoredBox(
         color: widget.textColor,
         child: WidgetMask(
           blendMode: BlendMode.dstATop,

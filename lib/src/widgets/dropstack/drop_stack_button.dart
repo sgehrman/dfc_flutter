@@ -128,7 +128,7 @@ class _DropStackButtonState extends State<DropStackButton>
     if (_animation.value == 1) {
       showChild = GestureDetector(
         onTap: () => onPressed(reverseOnly: true),
-        child: Container(
+        child: ColoredBox(
           // needs a color set otherwise onTap never gets called
           color: Colors.transparent,
           child: showChild,

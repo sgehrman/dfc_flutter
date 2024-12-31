@@ -35,15 +35,17 @@ class _OverlayContainerState extends State<OverlayContainer> {
   void _show() {
     // overlay insert calls setState, can't call during build
     Future.delayed(const Duration(milliseconds: 1), () {
-      _hide();
+      if (mounted) {
+        _hide();
 
-      _overlayEntry = OverlayEntry(
-        builder: (context) {
-          return widget.child;
-        },
-      );
+        _overlayEntry = OverlayEntry(
+          builder: (context) {
+            return widget.child;
+          },
+        );
 
-      Overlay.of(context).insert(_overlayEntry!);
+        Overlay.of(context).insert(_overlayEntry!);
+      }
     });
   }
 

@@ -33,12 +33,12 @@ class XpandableController extends ValueNotifier<bool> {
 class Xpandable extends StatelessWidget {
   const Xpandable({
     required XpandableThemeData theme,
-    Key? key,
+    super.key,
     this.collapsed,
     this.expanded,
     this.controller,
-  })  : _theme = theme,
-        super(key: key);
+  }) : _theme = theme;
+
   final Widget? collapsed;
   final Widget? expanded;
   final XpandableController? controller;
