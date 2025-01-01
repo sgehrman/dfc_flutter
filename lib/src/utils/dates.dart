@@ -184,7 +184,7 @@ class Dates {
       }
     }
 
-    print('Error: Dates.parseDate failed: $dateString');
+    print('Error: Dates.parseDate failed: "$dateString"');
 
     return null;
   }
