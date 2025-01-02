@@ -182,9 +182,9 @@ class Dates {
       } catch (err) {
         // print('Error-3: dateString: $dateString, err: $err');
       }
-    }
 
-    print('Error: Dates.parseDate failed: "$dateString"');
+      print('Error: Dates.parseDate failed: "$dateString"');
+    }
 
     return null;
   }
