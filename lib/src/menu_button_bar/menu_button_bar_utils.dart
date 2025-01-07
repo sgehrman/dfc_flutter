@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/extensions/build_context_ext.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/themes/theme_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
@@ -38,16 +37,14 @@ class MenuButtonBarUtils {
           // a submenu and moving mouse ourside of the menu.
           if (ThemeUtils.isFocused(states)) {
             // lowest seems to be the default menu background color
-            return context.surfaceContainerLowest;
+            return Colors.red;
           }
 
           if (selected) {
-            return Theme.of(context).highlightColor;
+            return Colors.green;
           }
 
-          print(states);
-
-          return Colors.red;
+          return null;
         },
       ),
       // foregroundColor: WidgetStateProperty.resolveWith<Color?>(
