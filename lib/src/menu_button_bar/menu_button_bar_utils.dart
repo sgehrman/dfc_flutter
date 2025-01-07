@@ -45,7 +45,9 @@ class MenuButtonBarUtils {
             return Theme.of(context).highlightColor;
           }
 
-          return null;
+          print(states);
+
+          return Colors.red;
         },
       ),
       // foregroundColor: WidgetStateProperty.resolveWith<Color?>(
