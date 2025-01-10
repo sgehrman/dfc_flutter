@@ -9,12 +9,14 @@ class MenuPopupButton extends StatefulWidget {
     required this.buildMenu,
     this.radius = Material.defaultSplashRadius,
     this.tooltip = '',
+    this.alignment,
   });
 
   final Widget child;
   final List<MenuButtonBarItemData> Function() buildMenu;
   final double radius;
   final String tooltip;
+  final Alignment? alignment;
 
   @override
   State<MenuPopupButton> createState() => _MenuPopupButtonState();
@@ -41,7 +43,7 @@ class _MenuPopupButtonState extends State<MenuPopupButton> {
       message: widget.tooltip,
       child: MenuAnchor(
         menuChildren: menuChildren,
-        child: widget.child,
+        style: MenuStyle(alignment: widget.alignment),
         builder: (
           BuildContext context,
           MenuController controller,
@@ -53,6 +55,7 @@ class _MenuPopupButtonState extends State<MenuPopupButton> {
             child: child,
           );
         },
+        child: widget.child,
       ),
     );
   }
