@@ -182,8 +182,8 @@ class NoFadeImage extends StatelessWidget {
 // =================================================================
 
 class AssetImageFader extends StatelessWidget {
-  const AssetImageFader({
-    required this.assetPath,
+  const AssetImageFader(
+    this.assetPath, {
     required this.size,
     this.package,
     this.duration = const Duration(milliseconds: 100),
