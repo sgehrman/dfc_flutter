@@ -7,6 +7,7 @@ import 'package:dfc_flutter/src/utils/image_processor.dart';
 import 'package:dfc_flutter/src/widgets/checkerboard_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:pasteboard/pasteboard.dart';
 
 // =======================================================================
@@ -174,6 +175,49 @@ class NoFadeImage extends StatelessWidget {
       width: width,
       key: key,
       missingImage: missingImage,
+    );
+  }
+}
+
+// =================================================================
+
+class AssetImageFader extends StatelessWidget {
+  const AssetImageFader({
+    required this.assetPath,
+    required this.size,
+    this.package,
+    this.duration = const Duration(milliseconds: 100),
+  });
+
+  final double size;
+  final String assetPath;
+  final String? package;
+  final Duration duration;
+
+  @override
+  Widget build(BuildContext context) {
+    return Image(
+      width: size,
+      height: size,
+      image: AssetImage(
+        assetPath,
+        package: package,
+      ),
+      errorBuilder: (context, error, stackTrace) {
+        return Icon(Icons.dangerous, size: size, color: Colors.red);
+      },
+      frameBuilder: (
+        BuildContext context,
+        Widget child,
+        int? frame,
+        bool? wasSynchronouslyLoaded,
+      ) {
+        if ((wasSynchronouslyLoaded ?? false) || frame != null) {
+          return child.animate().fadeIn(duration: duration);
+        }
+
+        return SizedBox(height: size, width: size);
+      },
     );
   }
 }
