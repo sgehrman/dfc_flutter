@@ -13,6 +13,7 @@ class Utf8Utils {
   ) async {
     if (HttpUtils.statusOK(response.statusCode)) {
       String? decoded;
+      final url = response.request?.url.toString() ?? 'http://unknown.org';
 
       // this fails
       // https://tass.com/rss/v2.xml
@@ -24,7 +25,7 @@ class Utf8Utils {
       // one feed on CNN crashes with utf8, but works on latin1?
 
       // try the utf8 first, japanese broken with response.body? http://rss.asahi.com/rss/asahi/newsheadlines.rdf
-      decoded = await _decodeUtf8Async(response.bodyBytes);
+      decoded = await _decodeUtf8Async(response.bodyBytes, url: url);
 
       // if fails, get the body as normal
       if (decoded == null) {
@@ -42,35 +43,35 @@ class Utf8Utils {
       decoded ??= await _decodeUtf8Async(
         response.bodyBytes,
         allowMalformed: true,
+        url: url,
       );
 
       if (decoded != null) {
         return decoded;
       }
+
+      print(
+        'Utf8Utils: decodeUtf8 failed: $url, len: ${response.bodyBytes.length}',
+      );
     }
-
-    final url = response.request?.url.toString() ?? 'unknown';
-
-    print(
-      'Utf8Utils: decodeUtf8 failed: $url, len: ${response.bodyBytes.length}',
-    );
 
     return '';
   }
 
   static String? _utf8ComputeFunc(Map<String, dynamic> params) {
+    final url = params['url'] as String? ?? 'http://uknown.com';
     final bytes = params['bytes'] as Uint8List?;
     final allowMalformed = params['allowMalformed'] as bool? ?? false;
 
-    if (bytes != null) {
-      print('Utf8Utils: using compute, len: ${bytes.length}');
+    print('Utf8Utils: using compute: $url');
 
+    if (bytes != null) {
       return _decodeUtf8(
         bytes,
         allowMalformed: allowMalformed,
       );
     } else {
-      print('Utf8Utils: _utf8ComputeFunc bytes == null');
+      print('Utf8Utils: _utf8ComputeFunc bytes == null, url: $url');
     }
 
     return null;
@@ -78,16 +79,18 @@ class Utf8Utils {
 
   static Future<String?> _decodeUtf8Async(
     Uint8List bytes, {
+    required String url,
     bool allowMalformed = false,
   }) async {
     // utf8.decode can hang the thread if large.
     // push off to a isolate if large enough
     // the idea is our server can handle incoming requests faster if
     // the main thread is not hung on this
-    if (bytes.length > 250 * 1024) {
+    if (bytes.length > 200 * 1024) {
       final params = {
         'bytes': bytes,
         'allowMalformed': allowMalformed,
+        'url': url,
       };
 
       return compute<Map<String, dynamic>, String?>(_utf8ComputeFunc, params);
