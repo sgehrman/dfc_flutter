@@ -62,9 +62,9 @@ class Utf8Utils {
     final bytes = params['bytes'] as Uint8List?;
     final allowMalformed = params['allowMalformed'] as bool? ?? false;
 
-    print('Utf8Utils: using compute');
-
     if (bytes != null) {
+      print('Utf8Utils: using compute, len: ${bytes.length}');
+
       return _decodeUtf8(
         bytes,
         allowMalformed: allowMalformed,
