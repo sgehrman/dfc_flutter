@@ -29,8 +29,6 @@ class Utf8Utils {
       // if fails, get the body as normal
       if (decoded == null) {
         try {
-          print('Utf8Utils: response.body');
-
           decoded = response.body;
         } catch (e) {
           // print('Utf8Utils: response.body failed: $e');
@@ -40,21 +38,22 @@ class Utf8Utils {
       // if fails, allowMalformed: true
       // uherd.com/feed was failing
       // FormatException: Unexpected extension byte (at offset 15031)
-      if (decoded == null) {
-        print('Utf8Utils: malformed');
 
-        decoded = await _decodeUtf8Async(
-          response.bodyBytes,
-          allowMalformed: true,
-        );
-      }
+      decoded ??= await _decodeUtf8Async(
+        response.bodyBytes,
+        allowMalformed: true,
+      );
 
       if (decoded != null) {
         return decoded;
       }
     }
 
-    print('Utf8Utils: decodeUtf8 totally failed');
+    final url = response.request?.url.toString() ?? 'unknown';
+
+    print(
+      'Utf8Utils: decodeUtf8 failed: $url, len: ${response.bodyBytes.length}',
+    );
 
     return '';
   }
@@ -63,7 +62,7 @@ class Utf8Utils {
     final bytes = params['bytes'] as Uint8List?;
     final allowMalformed = params['allowMalformed'] as bool? ?? false;
 
-    print('Utf8Utils: using compute encoding');
+    print('Utf8Utils: using compute');
 
     if (bytes != null) {
       return _decodeUtf8(
@@ -85,7 +84,7 @@ class Utf8Utils {
     // push off to a isolate if large enough
     // the idea is our server can handle incoming requests faster if
     // the main thread is not hung on this
-    if (bytes.length > 200 * 1024) {
+    if (bytes.length > 250 * 1024) {
       final params = {
         'bytes': bytes,
         'allowMalformed': allowMalformed,
