@@ -8,6 +8,7 @@ class MenuButtonBarItemData {
     this.action,
     this.enabled = true,
     this.selected = false,
+    this.level = 0,
     this.tooltip = '',
     this.children = const [],
   }) : divider = false;
@@ -20,6 +21,7 @@ class MenuButtonBarItemData {
         divider = true,
         selected = false,
         enabled = true,
+        level = 0,
         children = [],
         action = null;
 
@@ -53,6 +55,7 @@ class MenuButtonBarItemData {
   final bool divider;
   final bool enabled;
   final bool selected;
+  final int level;
   final String tooltip;
   final void Function()? action;
   List<MenuButtonBarItemData> children;

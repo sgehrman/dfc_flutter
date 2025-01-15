@@ -85,6 +85,21 @@ class MenuButtonBarUtils {
         );
       }
 
+      Widget? leading = itemData.leading;
+
+      if (itemData.level > 0) {
+        final leadingSpace = SizedBox(width: 20.0 * itemData.level);
+
+        if (leading != null) {
+          leading = Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [leadingSpace, leading],
+          );
+        } else {
+          leading = leadingSpace;
+        }
+      }
+
       if (itemData.divider) {
         menuItems.add(_dividerWidget(context));
       } else if (itemData.children.isNotEmpty) {
@@ -98,7 +113,7 @@ class MenuButtonBarUtils {
             menuChildren: [
               ...children,
             ],
-            leadingIcon: itemData.leading,
+            leadingIcon: leading,
             style: _menuiItemStyle(context),
             // child can't be null, interface is bad
             child: child ?? const Text(''),
@@ -109,7 +124,7 @@ class MenuButtonBarUtils {
           MenuItemButton(
             onPressed: itemData.enabled ? itemData.action : null,
             trailingIcon: itemData.trailing,
-            leadingIcon: itemData.leading,
+            leadingIcon: leading,
             style: _menuiItemStyle(context, selected: itemData.selected),
             // child can't be null, interface is bad
             child: child ?? const Text(''),
