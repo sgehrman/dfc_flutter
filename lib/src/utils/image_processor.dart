@@ -161,7 +161,7 @@ class ImageProcessor {
           return pngFromBytes(bodyBytes);
         }
       } else {
-        final response = await HttpUtils.httpGet(uri);
+        final response = await HttpUtils.httpGet(uri, timeout: 60);
 
         if (HttpUtils.statusOK(response.statusCode)) {
           final Uint8List bodyBytes = response.bodyBytes;
