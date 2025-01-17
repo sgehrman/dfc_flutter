@@ -187,18 +187,21 @@ class AssetImageFader extends StatelessWidget {
     required this.size,
     this.package,
     this.duration = const Duration(milliseconds: 100),
+    this.fit = BoxFit.contain,
   });
 
   final double size;
   final String assetPath;
   final String? package;
   final Duration duration;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
     return Image(
       width: size,
       height: size,
+      fit: fit,
       image: AssetImage(
         assetPath,
         package: package,
