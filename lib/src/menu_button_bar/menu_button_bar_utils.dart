@@ -72,7 +72,7 @@ class MenuButtonBarUtils {
       if (Utils.isNotEmpty(itemData.title)) {
         // icon a little close to the text, adding some padding
         child = Padding(
-          padding: const EdgeInsets.only(left: 4),
+          padding: const EdgeInsets.only(left: 14),
           child: Text(itemData.title!),
         );
       }
