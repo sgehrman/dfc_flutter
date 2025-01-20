@@ -1,4 +1,6 @@
+import 'package:dfc_flutter/src/extensions/build_context_ext.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
+import 'package:dfc_flutter/src/themes/theme_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,18 @@ class MenuButtonBarUtils {
     );
   }
 
+  static Color _textIconColor(BuildContext context, Set<WidgetState> states) {
+    if (ThemeUtils.isDisabled(states)) {
+      return context.dimTextColor;
+    }
+
+    if (ThemeUtils.isHovered(states)) {
+      return context.onPrimary;
+    }
+
+    return context.textColor;
+  }
+
   static ButtonStyle _menuiItemStyle(
     BuildContext context, {
     bool selected = false,
@@ -28,9 +42,9 @@ class MenuButtonBarUtils {
       ),
       backgroundColor: WidgetStateProperty.resolveWith<Color?>(
         (states) {
-          // if (ThemeUtils.isHovered(states)) {
-          //   return context.primary;
-          // }
+          if (ThemeUtils.isHovered(states)) {
+            return context.primary;
+          }
 
           // // this gets rid of the faint background left when popping open
           // // a submenu and moving mouse ourside of the menu.
@@ -46,16 +60,16 @@ class MenuButtonBarUtils {
           return null;
         },
       ),
-      // foregroundColor: WidgetStateProperty.resolveWith<Color?>(
-      //   (states) {
-      //     return _textIconColor(context, states);
-      //   },
-      // ),
-      // iconColor: WidgetStateProperty.resolveWith<Color?>(
-      //   (states) {
-      //     return _textIconColor(context, states);
-      //   },
-      // ),
+      foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+        (states) {
+          return _textIconColor(context, states);
+        },
+      ),
+      iconColor: WidgetStateProperty.resolveWith<Color?>(
+        (states) {
+          return _textIconColor(context, states);
+        },
+      ),
     );
   }
 
