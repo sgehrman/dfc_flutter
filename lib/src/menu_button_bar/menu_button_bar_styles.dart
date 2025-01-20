@@ -16,9 +16,6 @@ class MenuButtonBarStyles {
           return EdgeInsets.zero;
         },
       ),
-      // these don't seem to help, can't get rid of horizontal padding
-      // minimumSize: WidgetStateProperty.resolveWith((states) => Size.zero),
-      // visualDensity: VisualDensity.compact,
     );
   }
 
