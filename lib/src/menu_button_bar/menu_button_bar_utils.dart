@@ -37,7 +37,7 @@ class MenuButtonBarUtils {
       animationDuration: Duration.zero,
       padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
         (states) {
-          return const EdgeInsets.symmetric(horizontal: 20);
+          return const EdgeInsets.symmetric(horizontal: 30);
         },
       ),
       visualDensity: VisualDensity.compact,
@@ -80,7 +80,7 @@ class MenuButtonBarUtils {
       if (Utils.isNotEmpty(itemData.title)) {
         // icon a little close to the text, adding some padding
         child = Padding(
-          padding: const EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: 8),
           child: Text(itemData.title!),
         );
       }
