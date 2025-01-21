@@ -105,7 +105,6 @@ class _FilterFieldState extends State<FilterField> {
         }
       },
       decoration: InputDecoration(
-        isDense: true,
         // contentPadding is wierd, right gets cut off too soon?
         contentPadding: EdgeInsets.zero,
         hoverColor: Colors.transparent,
