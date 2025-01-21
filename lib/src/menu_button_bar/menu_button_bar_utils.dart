@@ -26,7 +26,7 @@ class MenuButtonBarUtils {
       return context.onPrimary;
     }
 
-    return context.textColor;
+    return context.lightTextColor;
   }
 
   static ButtonStyle _menuiItemStyle(
@@ -45,13 +45,6 @@ class MenuButtonBarUtils {
           if (ThemeUtils.isHovered(states)) {
             return context.primary;
           }
-
-          // // this gets rid of the faint background left when popping open
-          // // a submenu and moving mouse ourside of the menu.
-          // if (ThemeUtils.isFocused(states)) {
-          //   // lowest seems to be the default menu background color
-          //   return context.surfaceContainerLowest;
-          // }
 
           if (selected) {
             return Theme.of(context).highlightColor;
