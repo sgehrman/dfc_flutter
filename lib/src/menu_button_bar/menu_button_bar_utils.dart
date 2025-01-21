@@ -40,6 +40,7 @@ class MenuButtonBarUtils {
           return const EdgeInsets.symmetric(horizontal: 20);
         },
       ),
+      visualDensity: VisualDensity.compact,
       backgroundColor: WidgetStateProperty.resolveWith<Color?>(
         (states) {
           if (ThemeUtils.isHovered(states)) {
