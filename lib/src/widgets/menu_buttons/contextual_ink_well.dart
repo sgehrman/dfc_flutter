@@ -1,5 +1,6 @@
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_utils.dart';
+import 'package:dfc_flutter/src/widgets/menu_buttons/dfc_menu_anchor.dart';
 import 'package:flutter/material.dart';
 
 // an contextual menu and InkWell combined
@@ -25,7 +26,7 @@ class ContextualInkWell extends StatelessWidget {
       menuData: buildMenu(),
     );
 
-    return MenuAnchor(
+    return DFCMenuAnchor(
       menuChildren: menuChildren,
       consumeOutsideTap: true,
       child: child,

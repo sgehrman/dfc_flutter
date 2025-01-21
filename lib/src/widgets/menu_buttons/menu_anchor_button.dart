@@ -1,5 +1,6 @@
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_utils.dart';
+import 'package:dfc_flutter/src/widgets/menu_buttons/dfc_menu_anchor.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/menu_anchor_button_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class MenuAnchorButton extends StatelessWidget {
       menuData: menuData,
     );
 
-    return MenuAnchor(
+    return DFCMenuAnchor(
       builder:
           (BuildContext context, MenuController controller, Widget? child) {
         return MenuAnchorButtonContents(
