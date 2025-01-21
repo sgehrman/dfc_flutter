@@ -154,7 +154,7 @@ class TextTitle extends _TextBase {
           height: 0.9,
         );
 
-  static const double size = 70;
+  static const double size = 58;
 }
 
 class TextSubtitle extends _TextBase {
@@ -171,5 +171,5 @@ class TextSubtitle extends _TextBase {
           height: 0.9,
         );
 
-  static const double size = 35;
+  static const double size = 28;
 }
