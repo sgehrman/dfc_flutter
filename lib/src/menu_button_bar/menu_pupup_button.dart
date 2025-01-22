@@ -27,6 +27,7 @@ class _MenuPopupButtonState extends State<MenuPopupButton> {
   void _handleClick(TapDownDetails details, MenuController controller) {
     if (controller.isOpen) {
       controller.close();
+
       return;
     }
 
