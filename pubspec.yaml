@@ -13,7 +13,7 @@ dependencies:
   characters: ^1.3.0
   collection: ^1.19.0
   crypto: ^3.0.6
-  device_info_plus: ^11.2.0
+  device_info_plus: ^11.2.1
   dfc_dart:
     git: https://github.com/sgehrman/dfc_dart
   dotted_border: ^2.1.0
@@ -26,17 +26,17 @@ dependencies:
   flutter_barcode_scanner: ^2.0.0
   flutter_localizations:
     sdk: flutter
-  flutter_markdown: ^0.7.4+3
+  flutter_markdown: ^0.7.5
   flutter_multi_formatter: ^2.13.0
-  flutter_svg: ^2.0.16
+  flutter_svg: ^2.0.17
   flutter_widget_from_html: ^0.15.3
   google_fonts: ^6.2.1
   hex: ^0.2.0
-  hive_ce: ^2.8.0+3
+  hive_ce: ^2.9.0
   hive_ce_flutter: ^2.2.0
   html: ^0.15.5
   html2md: ^1.3.2
-  http: ^1.2.2
+  http: ^1.3.0
   image: ^4.5.2
   intl: ^0.19.0
   json_annotation: ^4.9.0
@@ -45,14 +45,14 @@ dependencies:
   loading_animation_widget: ^1.3.0
   mime_type: ^1.0.1
   open_file: ^3.5.10
-  package_info_plus: ^8.1.2
+  package_info_plus: ^8.1.3
   pasteboard: ^0.3.0
   path: ^1.9.0
   path_provider: ^2.1.5
   provider: ^6.1.2
   random_string: ^2.3.1
   share_extend: ^2.0.0
-  shared_preferences: ^2.3.4
+  shared_preferences: ^2.3.5
   supercharged: ^2.1.1
   url_launcher: ^6.3.1
   vector_graphics: ^1.1.15
@@ -69,7 +69,7 @@ dev_dependencies:
     git: https://github.com/avatarnguyen/dart-code-metrics.git
   dfc_lints:
     git: https://github.com/sgehrman/dfc_lints
-  json_serializable: ^6.9.2
+  json_serializable: ^6.9.3
 
 flutter:
   uses-material-design: true
