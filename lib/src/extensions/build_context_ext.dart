@@ -42,6 +42,8 @@ extension BuildContextUtils on BuildContext {
   Color get primaryContainer => Theme.of(this).colorScheme.primaryContainer;
   Color get onPrimaryContainer => Theme.of(this).colorScheme.onPrimaryContainer;
   Color get scaffoldBackgroundColor => Theme.of(this).scaffoldBackgroundColor;
+  Color get dialogBackgroundColor =>
+      Theme.of(this).dialogTheme.backgroundColor ?? surface;
 
   // text colors
   Color get textColor => onSurface;
