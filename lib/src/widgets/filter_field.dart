@@ -1,5 +1,9 @@
-import 'package:dfc_flutter/dfc_flutter_web.dart';
 import 'package:dfc_flutter/l10n/app_localizations.dart';
+import 'package:dfc_flutter/src/extensions/build_context_ext.dart';
+import 'package:dfc_flutter/src/utils/debouncer.dart';
+import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:dfc_flutter/src/widgets/buttons.dart';
+import 'package:dfc_flutter/src/widgets/df_input_decoration.dart';
 import 'package:flutter/material.dart';
 
 class FilterField extends StatefulWidget {
@@ -104,11 +108,7 @@ class _FilterFieldState extends State<FilterField> {
           widget.controller.text = '';
         }
       },
-      decoration: InputDecoration(
-        // contentPadding is wierd, right gets cut off too soon?
-        contentPadding: EdgeInsets.zero,
-        hoverColor: Colors.transparent,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
+      decoration: inputDecoration(
         hintText: widget.hint ?? l10n.search,
         labelText: widget.label ?? l10n.search,
         prefixIconConstraints:

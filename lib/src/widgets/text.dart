@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/dfc_flutter_web.dart';
+import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
 
 String _fixText(String? text) {

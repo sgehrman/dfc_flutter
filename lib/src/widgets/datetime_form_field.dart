@@ -1,5 +1,6 @@
 import 'dart:io' show Platform;
 
+import 'package:dfc_flutter/src/widgets/df_input_decoration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -173,7 +174,7 @@ class DateTimeFormField extends StatelessWidget {
             }
           },
           child: InputDecorator(
-            decoration: InputDecoration(
+            decoration: inputDecoration(
               icon: const Icon(Icons.date_range),
               labelText: label,
               errorText: state.errorText,

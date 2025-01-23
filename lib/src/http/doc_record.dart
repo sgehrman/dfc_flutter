@@ -1,5 +1,6 @@
 import 'package:dfc_dart/dfc_dart.dart';
-import 'package:dfc_flutter/dfc_flutter_web.dart';
+import 'package:dfc_flutter/src/http/http_utils.dart';
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:html/dom.dart';
 
 class DocRecord {
