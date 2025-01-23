@@ -52,29 +52,26 @@ class MenuButton<T> extends StatelessWidget {
       );
     }
 
-    return Padding(
-      padding: const EdgeInsets.only(left: 14),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Flexible(
-            child: Text(
-              selectedItem.title,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: fontSize,
-              ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Flexible(
+          child: Text(
+            selectedItem.title,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontSize: fontSize,
             ),
           ),
-          FittedBox(
-            fit: BoxFit.fill,
-            child: Icon(
-              Icons.arrow_drop_down,
-              size: arrowSize,
-            ),
+        ),
+        FittedBox(
+          fit: BoxFit.fill,
+          child: Icon(
+            Icons.arrow_drop_down,
+            size: arrowSize,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
