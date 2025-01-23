@@ -1,3 +1,4 @@
+import 'package:date_time_format/date_time_format.dart';
 import 'package:dfc_flutter/l10n/app_localizations.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,14 @@ class Dates {
         '${days.abs()} days ago',
       Duration(inDays: final days) => '$days days from now',
     };
+  }
+
+  static String relativeDate(BuildContext context, DateTime dateTime) {
+    return DateTimeFormat.relative(
+      dateTime,
+      prependIfBefore: 'In',
+      appendIfAfter: 'ago',
+    );
   }
 
   static String formatLongDate(DateTime? date) {
