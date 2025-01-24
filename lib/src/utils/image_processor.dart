@@ -327,9 +327,12 @@ class ImageProcessor {
         },
       );
 
+      final imageWidth = pictureInfo.size.width.ceil();
+      final imageHeight = pictureInfo.size.height.ceil();
+
       ui.Image image = await pictureInfo.picture.toImage(
-        pictureInfo.size.width.ceil(),
-        pictureInfo.size.height.ceil(),
+        imageWidth,
+        imageHeight,
       );
       pictureInfo.picture.dispose();
 
@@ -338,7 +341,11 @@ class ImageProcessor {
 
         // avoiding squashed images if they are wide or tall
         // cover clips off long side of image
-        final imageSize = ui.Size(width.toDouble(), width.toDouble());
+        final imageSize = ui.Size(
+          imageWidth.toDouble(),
+          imageHeight.toDouble(),
+        );
+
         if (imageSize.shortestSide / imageSize.longestSide < 0.8) {
           fit = BoxFit.cover;
         }
