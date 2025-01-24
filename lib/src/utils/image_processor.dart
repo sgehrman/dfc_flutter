@@ -308,6 +308,23 @@ class ImageProcessor {
 
   // ===============================================================
 
+  static BoxFit _fitForImage(ui.Image image) {
+    final imageSize = ui.Size(
+      image.width.toDouble(),
+      image.height.toDouble(),
+    );
+
+    BoxFit fit = BoxFit.contain;
+
+    // avoiding squashed images if they are wide or tall
+    // cover clips off long side of image
+    if (imageSize.shortestSide / imageSize.longestSide < 0.8) {
+      fit = BoxFit.cover;
+    }
+
+    return fit;
+  }
+
   static Future<PngImageBytesAndSize> svgToPng({
     required String svg,
     int width = 0, // pass zero to use Size in png
@@ -337,26 +354,13 @@ class ImageProcessor {
       pictureInfo.picture.dispose();
 
       if (width != 0) {
-        BoxFit fit = BoxFit.contain;
-
-        // avoiding squashed images if they are wide or tall
-        // cover clips off long side of image
-        final imageSize = ui.Size(
-          imageWidth.toDouble(),
-          imageHeight.toDouble(),
-        );
-
-        if (imageSize.shortestSide / imageSize.longestSide < 0.8) {
-          fit = BoxFit.cover;
-        }
-
         final disposeAfter = image;
 
         image = await _resizeImage(
           image: image,
           height: width.toDouble(),
           width: width.toDouble(),
-          fit: fit,
+          fit: _fitForImage(image),
         );
 
         disposeAfter.dispose();
@@ -366,13 +370,19 @@ class ImageProcessor {
         format: ui.ImageByteFormat.png,
       );
 
+      // get final image height/width before disposing
+      final resultHeight = image.height;
+      final resultWidth = image.width;
+
+      image.dispose();
+
       if (bd != null) {
         final bytes = bd.buffer.asUint8List();
 
         return PngImageBytesAndSize(
           bytes: bytes,
-          height: image.height,
-          width: image.width,
+          height: resultHeight,
+          width: resultWidth,
         );
       }
     } catch (err) {
@@ -502,5 +512,75 @@ class ImageProcessor {
     picture.dispose();
 
     return result;
+  }
+
+  static Future<PngImageBytesAndSize> imageToSquarePng(
+    Uri uri,
+    int size,
+  ) async {
+    Uint8List imageBytes = Uint8List(0);
+
+    try {
+      if (UriUtils.isDataUri(uri)) {
+        final dUri = UriData.fromUri(uri);
+
+        imageBytes = dUri.contentAsBytes();
+      } else {
+        final response = await HttpUtils.httpGet(uri, timeout: 60);
+
+        if (HttpUtils.statusOK(response.statusCode)) {
+          imageBytes = response.bodyBytes;
+        }
+      }
+
+      // convert svgs to png
+      if (imageBytes.isNotEmpty) {
+        if (isSvg(uri: uri, bytes: imageBytes)) {
+          final svgString = utf8.decode(imageBytes);
+
+          imageBytes = (await svgToPng(svg: svgString)).bytes;
+        }
+      }
+
+      // resize to square
+      if (imageBytes.isNotEmpty) {
+        // could be any format so convert to png
+        final decodedImage = await bytesToImage(imageBytes);
+
+        final image = await _resizeImage(
+          image: decodedImage,
+          height: size.toDouble(),
+          width: size.toDouble(),
+          fit: _fitForImage(decodedImage),
+        );
+
+        decodedImage.dispose();
+
+        final ByteData? bd = await image.toByteData(
+          format: ui.ImageByteFormat.png,
+        );
+
+        // must dispose
+        image.dispose();
+
+        if (bd != null) {
+          final bytes = bd.buffer.asUint8List();
+
+          return PngImageBytesAndSize(
+            bytes: bytes,
+            height: size,
+            width: size,
+          );
+        }
+      }
+    } catch (e) {
+      print('### downloadImageToPng error: $e\nuri: $uri');
+    }
+
+    return PngImageBytesAndSize(
+      bytes: Uint8List(0),
+      height: 0,
+      width: 0,
+    );
   }
 }
