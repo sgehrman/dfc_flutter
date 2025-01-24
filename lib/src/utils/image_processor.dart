@@ -316,10 +316,11 @@ class ImageProcessor {
 
     BoxFit fit = BoxFit.contain;
 
-    // avoiding squashed images if they are wide or tall
-    // cover clips off long side of image
+    // if almost square, use cover
     if (imageSize.shortestSide / imageSize.longestSide >= 0.8) {
       fit = BoxFit.cover;
+    } else {
+      print('contain: ${imageSize.shortestSide} / ${imageSize.longestSide}');
     }
 
     return fit;
@@ -505,8 +506,8 @@ class ImageProcessor {
     final picture = recorder.endRecording();
 
     final result = await picture.toImage(
-      width.round(),
-      height.round(),
+      width.ceil(),
+      height.ceil(),
     );
 
     picture.dispose();
