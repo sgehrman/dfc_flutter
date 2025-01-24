@@ -477,8 +477,8 @@ class ImageProcessor {
     // get image fom picture and get the png data
     // await so we don't dispose() before done
     final result = await picture.toImage(
-      (image.width * scale).round(),
-      (image.height * scale).round(),
+      (image.width * scale).ceil(),
+      (image.height * scale).ceil(),
     );
 
     picture.dispose();
