@@ -318,7 +318,7 @@ class ImageProcessor {
 
     // avoiding squashed images if they are wide or tall
     // cover clips off long side of image
-    if (imageSize.shortestSide / imageSize.longestSide < 0.8) {
+    if (imageSize.shortestSide / imageSize.longestSide >= 0.8) {
       fit = BoxFit.cover;
     }
 
