@@ -14,6 +14,7 @@ class MenuAnchorButton extends StatelessWidget {
     // tooltip only used for icons
     this.tooltip,
     this.color,
+    this.filledButton = false,
   });
 
   final Widget? icon;
@@ -22,6 +23,7 @@ class MenuAnchorButton extends StatelessWidget {
   final String? tooltip;
   final Color? color;
   final Widget? widget;
+  final bool filledButton;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class MenuAnchorButton extends StatelessWidget {
           title: title,
           tooltip: tooltip,
           widget: widget,
+          filledButton: filledButton,
         );
       },
       menuChildren: menuItems,
