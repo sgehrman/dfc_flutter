@@ -314,13 +314,14 @@ class ImageProcessor {
       image.height.toDouble(),
     );
 
-    BoxFit fit = BoxFit.contain;
+    BoxFit fit = BoxFit.cover;
 
-    // if almost square, use cover
-    if (imageSize.shortestSide / imageSize.longestSide >= 0.8) {
-      fit = BoxFit.cover;
-    } else {
-      print('contain: ${imageSize.shortestSide} / ${imageSize.longestSide}');
+    // not a square, use contain if wider than tall
+    // could be a wide logo for example (revolver.news)
+    if (imageSize.width > imageSize.height) {
+      if (imageSize.shortestSide / imageSize.longestSide < 0.8) {
+        fit = BoxFit.contain;
+      }
     }
 
     return fit;
