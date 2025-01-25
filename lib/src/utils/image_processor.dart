@@ -98,12 +98,7 @@ class ImageProcessor {
       pictureImage.dispose();
 
       if (pngData != null) {
-        // not sure if I need the one below or not, testing
-        // final bs = pngData.buffer.asUint8List();
-        final bs = pngData.buffer.asUint8List(
-          pngData.offsetInBytes,
-          pngData.lengthInBytes,
-        );
+        final bs = pngData.buffer.asUint8List();
 
         return PngImageBytesAndSize(
           bytes: bs,
