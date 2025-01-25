@@ -147,30 +147,10 @@ class ImageProcessor {
 
   static Future<PngImageBytesAndSize> downloadImageToPng(Uri uri) async {
     try {
-      if (UriUtils.isDataUri(uri)) {
-        final dUri = UriData.fromUri(uri);
+      final imageBytes = await _imageBytesFromUrl(uri);
 
-        final bodyBytes = dUri.contentAsBytes();
-
-        if (bodyBytes.isNotEmpty) {
-          return pngFromBytes(bodyBytes);
-        }
-      } else {
-        final response = await HttpUtils.httpGet(uri, timeout: 60);
-
-        if (HttpUtils.statusOK(response.statusCode)) {
-          final Uint8List bodyBytes = response.bodyBytes;
-
-          if (bodyBytes.isNotEmpty) {
-            if (isSvg(uri: uri, bytes: bodyBytes)) {
-              final svgString = utf8.decode(bodyBytes);
-
-              return svgToPng(svg: svgString);
-            } else {
-              return pngFromBytes(bodyBytes);
-            }
-          }
-        }
+      if (imageBytes.isNotEmpty) {
+        return pngFromBytes(imageBytes);
       }
     } catch (e) {
       print('### downloadImageToPng error: $e\nuri: $uri');
@@ -511,11 +491,7 @@ class ImageProcessor {
     return result;
   }
 
-  // this can crop the image with BoxFit.cover if the image is not square
-  static Future<PngImageBytesAndSize> imageToSquarePng(
-    Uri uri,
-    int size,
-  ) async {
+  static Future<Uint8List> _imageBytesFromUrl(Uri uri) async {
     Uint8List imageBytes = Uint8List(0);
 
     try {
@@ -539,6 +515,20 @@ class ImageProcessor {
           imageBytes = (await svgToPng(svg: svgString)).bytes;
         }
       }
+    } catch (e) {
+      print('### _imageBytesFromUrl error: $e\nuri: $uri');
+    }
+
+    return imageBytes;
+  }
+
+  // this can crop the image with BoxFit.cover if the image is not square
+  static Future<PngImageBytesAndSize> imageToSquarePng(
+    Uri uri,
+    int size,
+  ) async {
+    try {
+      final imageBytes = await _imageBytesFromUrl(uri);
 
       // resize to square
       if (imageBytes.isNotEmpty) {
