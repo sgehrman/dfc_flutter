@@ -324,7 +324,7 @@ class ImageProcessor {
 
   static Future<PngImageBytesAndSize> svgToPng({
     required String svg,
-    int width = 0, // pass zero to use Size in png
+    int size = 0, // pass zero to use Size in png
     Color? color,
   }) async {
     try {
@@ -350,13 +350,13 @@ class ImageProcessor {
       );
       pictureInfo.picture.dispose();
 
-      if (width != 0) {
+      if (size != 0) {
         final disposeAfter = image;
 
         image = await _resizeImage(
           image: image,
-          height: width.toDouble(),
-          width: width.toDouble(),
+          height: size.toDouble(),
+          width: size.toDouble(),
           fit: _fitForImage(image),
         );
 
@@ -511,6 +511,7 @@ class ImageProcessor {
     return result;
   }
 
+  // this can crop the image with BoxFit.cover if the image is not square
   static Future<PngImageBytesAndSize> imageToSquarePng(
     Uri uri,
     int size,
