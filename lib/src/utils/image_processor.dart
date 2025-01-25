@@ -485,7 +485,7 @@ class ImageProcessor {
     required ui.Image image,
     required double height,
     required double width,
-    BoxFit fit = BoxFit.scaleDown,
+    required BoxFit fit,
   }) async {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
     final ui.Canvas canvas = ui.Canvas(recorder);
