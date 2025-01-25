@@ -333,23 +333,28 @@ class ImageProcessor {
       }
     }
 
+    final imageRect = Rect.fromLTWH(
+      0,
+      0,
+      image.width.toDouble() * scale,
+      image.height.toDouble() * scale,
+    );
+
     paintImage(
       canvas: canvas,
-      rect:
-          Rect.fromLTWH(0, 0, image.width.toDouble(), image.height.toDouble()),
+      rect: imageRect,
       image: image,
-      scale: scale,
+      fit: BoxFit.scaleDown,
       isAntiAlias: true,
       filterQuality: FilterQuality.high,
     );
 
     final picture = recorder.endRecording();
 
-    // get image fom picture and get the png data
     // await so we don't dispose() before done
     final result = await picture.toImage(
-      (image.width * scale).ceil(),
-      (image.height * scale).ceil(),
+      imageRect.size.width.ceil(),
+      imageRect.size.height.ceil(),
     );
 
     picture.dispose();
