@@ -8,10 +8,11 @@ class MenuAnchorButtonContents extends StatelessWidget {
     this.icon,
     this.title,
     this.widget,
-    // tooltip only used for icons
+    // all bellow, only used for icons
     this.tooltip,
     this.color,
     this.filledButton = false,
+    this.small = false,
   });
 
   final MenuController controller;
@@ -21,6 +22,7 @@ class MenuAnchorButtonContents extends StatelessWidget {
   final Color? color;
   final Widget? widget;
   final bool filledButton;
+  final bool small;
 
   void _onPressed(MenuController controller) {
     if (controller.isOpen) {
@@ -49,6 +51,7 @@ class MenuAnchorButtonContents extends StatelessWidget {
     if (icon != null) {
       if (filledButton) {
         return IconButton.filled(
+          iconSize: small ? 20 : null,
           color: color,
           onPressed: () => _onPressed(controller),
           icon: icon!,
@@ -56,6 +59,7 @@ class MenuAnchorButtonContents extends StatelessWidget {
         );
       } else {
         return IconButton(
+          iconSize: small ? 20 : null,
           color: color,
           onPressed: () => _onPressed(controller),
           icon: icon!,
