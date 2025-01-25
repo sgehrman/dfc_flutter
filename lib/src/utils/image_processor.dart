@@ -422,7 +422,7 @@ class ImageProcessor {
   // this can crop the image with BoxFit.cover if the image is not square
   static Future<PngImageBytesAndSize> imageToSquarePng(
     Uri uri,
-    int size,
+    double size,
   ) async {
     try {
       final imageBytes = await _imageBytesFromUrl(uri);
@@ -434,8 +434,8 @@ class ImageProcessor {
 
         final image = await _resizeImage(
           image: decodedImage,
-          height: size.toDouble(),
-          width: size.toDouble(),
+          height: size,
+          width: size,
           fit: _fitForImage(decodedImage),
         );
 
@@ -453,8 +453,8 @@ class ImageProcessor {
 
           return PngImageBytesAndSize(
             bytes: bytes,
-            height: size,
-            width: size,
+            height: size.ceil(),
+            width: size.ceil(),
           );
         }
       }
