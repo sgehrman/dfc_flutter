@@ -11,9 +11,11 @@ class MenuAnchorDynamicButton extends StatefulWidget {
     this.icon,
     this.title,
     this.widget,
-    // tooltip only used for icons
+    // all bellow, only used for icons
     this.tooltip,
     this.color,
+    this.filledButton = false,
+    this.small = false,
   });
 
   final Widget? icon;
@@ -22,6 +24,8 @@ class MenuAnchorDynamicButton extends StatefulWidget {
   final Color? color;
   final Widget? widget;
   final List<MenuButtonBarItemData> Function() menuBuilder;
+  final bool filledButton;
+  final bool small;
 
   @override
   State<MenuAnchorDynamicButton> createState() =>
@@ -60,6 +64,8 @@ class _MenuAnchorDynamicButtonState extends State<MenuAnchorDynamicButton> {
           title: widget.title,
           tooltip: widget.tooltip,
           widget: widget.widget,
+          filledButton: widget.filledButton,
+          small: widget.small,
         );
       },
       menuChildren: _menuItems,
