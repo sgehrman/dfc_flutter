@@ -25,10 +25,6 @@ enum ImgFormat {
   pvr,
 }
 
-const int minImageSize = 80;
-const int maxWidthScreenshot = 512;
-const int maxWidthIcon = 256;
-
 class PngImageBytesAndSize {
   const PngImageBytesAndSize({
     required this.bytes,
@@ -195,7 +191,7 @@ class ImageProcessor {
 
   static Future<PngImageBytesAndSize> svgToPng({
     required String svg,
-    int size = 0, // pass zero to use Size in png
+    double size = 0, // pass zero to use Size in png
     Color? color,
   }) async {
     try {
@@ -226,8 +222,8 @@ class ImageProcessor {
 
         image = await _resizeImage(
           image: image,
-          height: size.toDouble(),
-          width: size.toDouble(),
+          height: size,
+          width: size,
           fit: _fitForImage(image),
         );
 
