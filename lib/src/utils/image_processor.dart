@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math' as math;
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
@@ -73,13 +74,20 @@ class ImageProcessor {
     return ImgFormat.unknown;
   }
 
-  static Future<PngImageBytesAndSize> pngFromBytes(Uint8List imageData) async {
+  static Future<PngImageBytesAndSize> pngFromBytes(
+    Uint8List imageData, {
+    double maxSize = 0,
+  }) async {
     try {
       // could be any format so convert to png
       final decodedImage = await bytesToImage(imageData);
 
       // ## not sure why I did this. Could a gif or other weird format require this?
-      final ui.Image pictureImage = await _drawImageToCanvas(decodedImage);
+      // or does it save memory?
+      final ui.Image pictureImage = await _drawImageToCanvas(
+        image: decodedImage,
+        maxSize: maxSize,
+      );
 
       // must dispose
       decodedImage.dispose();
@@ -144,12 +152,15 @@ class ImageProcessor {
     return false;
   }
 
-  static Future<PngImageBytesAndSize> downloadImageToPng(Uri uri) async {
+  static Future<PngImageBytesAndSize> downloadImageToPng(
+    Uri uri, {
+    double maxSize = 0,
+  }) async {
     try {
       final imageBytes = await _imageBytesFromUrl(uri);
 
       if (imageBytes.isNotEmpty) {
-        return pngFromBytes(imageBytes);
+        return pngFromBytes(imageBytes, maxSize: maxSize);
       }
     } catch (e) {
       print('### downloadImageToPng error: $e\nuri: $uri');
@@ -424,13 +435,28 @@ class ImageProcessor {
 
   // ===============================================================
 
-  static Future<ui.Image> _drawImageToCanvas(
-    ui.Image image,
-  ) async {
+  static Future<ui.Image> _drawImageToCanvas({
+    required ui.Image image,
+    double maxSize = 0,
+  }) async {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
     final ui.Canvas canvas = ui.Canvas(recorder);
 
-    canvas.drawImage(image, ui.Offset.zero, ui.Paint());
+    double scale = 1;
+
+    if (maxSize > 0) {
+      scale = maxSize / math.max(image.width, image.height);
+    }
+
+    paintImage(
+      canvas: canvas,
+      rect:
+          Rect.fromLTWH(0, 0, image.width.toDouble(), image.height.toDouble()),
+      image: image,
+      scale: scale,
+      isAntiAlias: true,
+      filterQuality: FilterQuality.high,
+    );
 
     final picture = recorder.endRecording();
 
