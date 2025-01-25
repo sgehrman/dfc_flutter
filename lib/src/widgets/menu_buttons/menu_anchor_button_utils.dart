@@ -51,7 +51,7 @@ class MenuAnchorButtonContents extends StatelessWidget {
     if (icon != null) {
       if (filledButton) {
         return IconButton.filled(
-          iconSize: small ? 20 : null,
+          iconSize: small ? 18 : null,
           color: color,
           onPressed: () => _onPressed(controller),
           icon: icon!,
@@ -59,7 +59,7 @@ class MenuAnchorButtonContents extends StatelessWidget {
         );
       } else {
         return IconButton(
-          iconSize: small ? 20 : null,
+          iconSize: small ? 18 : null,
           color: color,
           onPressed: () => _onPressed(controller),
           icon: icon!,
