@@ -326,7 +326,11 @@ class ImageProcessor {
     double scale = 1;
 
     if (maxSize > 0) {
-      scale = maxSize / math.max(image.width, image.height);
+      final maxImageSize = math.max(image.width, image.height);
+
+      if (maxImageSize > maxSize) {
+        scale = maxSize / maxImageSize;
+      }
     }
 
     paintImage(
