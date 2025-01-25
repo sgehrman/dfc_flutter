@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math' as math;
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
@@ -79,7 +78,7 @@ class ImageProcessor {
       // could be any format so convert to png
       final decodedImage = await bytesToImage(imageData);
 
-      // draws image to a canvas
+      // ## not sure why I did this. Could a gif or other weird format require this?
       final ui.Image pictureImage = await _drawImageToCanvas(decodedImage);
 
       // must dispose
@@ -431,29 +430,15 @@ class ImageProcessor {
     final ui.PictureRecorder recorder = ui.PictureRecorder();
     final ui.Canvas canvas = ui.Canvas(recorder);
 
-    canvas.save();
-    double scale = 1;
-
-    // we don't want super small favicons for example, make them at least minImageSize
-    final imageSize = math.min(image.width, image.height);
-    if (imageSize < minImageSize) {
-      scale = minImageSize / imageSize;
-      scale = math.min(scale, 50);
-
-      canvas.scale(scale);
-    }
-
     canvas.drawImage(image, ui.Offset.zero, ui.Paint());
-
-    canvas.restore();
 
     final picture = recorder.endRecording();
 
     // get image fom picture and get the png data
     // await so we don't dispose() before done
     final result = await picture.toImage(
-      (image.width * scale).ceil(),
-      (image.height * scale).ceil(),
+      image.width,
+      image.height,
     );
 
     picture.dispose();
