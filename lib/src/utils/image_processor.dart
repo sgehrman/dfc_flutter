@@ -7,7 +7,6 @@ import 'package:dfc_dart/dfc_dart.dart';
 import 'package:dfc_flutter/src/http/http_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image/image.dart' as img;
 
 export 'package:vector_graphics/vector_graphics.dart';
 
@@ -171,124 +170,6 @@ class ImageProcessor {
       height: 0,
       width: 0,
     );
-  }
-
-  static Future<void> processAndSaveImage({
-    required Uint8List imageData,
-    required int imageWidth,
-    required ImgFormat dataFormat,
-    required int maxWidth,
-    required ImgFormat saveFormat,
-    required String savePath,
-  }) async {
-    try {
-      final cmd = img.Command();
-
-      await _appendConvertAndResize(
-        cmd: cmd,
-        imageData: imageData,
-        dataFormat: dataFormat,
-        imageWidth: imageWidth,
-        maxWidth: maxWidth,
-        saveFormat: saveFormat,
-      );
-
-      cmd.writeToFile(savePath);
-
-      await cmd.execute();
-    } catch (err) {
-      print(
-        'ImageProcessor: $err - format: ${dataFormat.name} path: $savePath',
-      );
-    }
-  }
-
-  static Future<void> _appendConvertAndResize({
-    required img.Command cmd,
-    required Uint8List imageData,
-    required ImgFormat dataFormat,
-    required int imageWidth,
-    required int maxWidth,
-    required ImgFormat saveFormat,
-  }) async {
-    switch (dataFormat) {
-      case ImgFormat.unknown:
-      case ImgFormat.cur:
-        cmd.decodeImage(imageData);
-        break;
-      case ImgFormat.png:
-        cmd.decodePng(imageData);
-        break;
-      case ImgFormat.jpg:
-        cmd.decodeJpg(imageData);
-        break;
-      case ImgFormat.webp:
-        cmd.decodeWebP(imageData);
-        break;
-      case ImgFormat.svg:
-        final svgString = utf8.decode(imageData);
-        final pngResult = await svgToPng(svg: svgString);
-        cmd.decodePng(pngResult.bytes);
-        break;
-      case ImgFormat.gif:
-        cmd.decodeGif(imageData);
-        break;
-      case ImgFormat.tiff:
-        cmd.decodeTiff(imageData);
-        break;
-      case ImgFormat.ico:
-        cmd.decodeIco(imageData);
-        break;
-      case ImgFormat.bmp:
-        cmd.decodeBmp(imageData);
-        break;
-      case ImgFormat.tga:
-        cmd.decodeTga(imageData);
-        break;
-      case ImgFormat.pvr:
-        cmd.decodePvr(imageData);
-        break;
-    }
-
-    if (dataFormat != saveFormat) {
-      switch (saveFormat) {
-        case ImgFormat.unknown:
-        case ImgFormat.cur:
-        case ImgFormat.svg:
-        case ImgFormat.webp:
-        case ImgFormat.png:
-          cmd.encodePng(level: 5);
-          break;
-        case ImgFormat.jpg:
-          cmd.encodeJpg(quality: 60);
-          break;
-        case ImgFormat.gif:
-          cmd.encodeGif();
-          break;
-        case ImgFormat.tiff:
-          cmd.encodeTiff();
-          break;
-        case ImgFormat.ico:
-          cmd.encodeIco();
-          break;
-        case ImgFormat.bmp:
-          cmd.encodeBmp();
-          break;
-        case ImgFormat.tga:
-          cmd.encodeTga();
-          break;
-        case ImgFormat.pvr:
-          cmd.encodePvr();
-          break;
-      }
-    }
-
-    if (imageWidth > maxWidth) {
-      cmd.copyResize(
-        width: maxWidth,
-        interpolation: img.Interpolation.average,
-      );
-    }
   }
 
   // ===============================================================
