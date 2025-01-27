@@ -75,6 +75,9 @@ class MenuButtonBarUtils {
   }) {
     final List<Widget> menuItems = [];
 
+    final style = _menuiItemStyle(context);
+    final selectedStyle = _menuiItemStyle(context, selected: true);
+
     for (final itemData in menuData) {
       Widget? child;
 
@@ -123,7 +126,7 @@ class MenuButtonBarUtils {
               ...children,
             ],
             leadingIcon: leading,
-            style: _menuiItemStyle(context),
+            style: style,
             // child can't be null, interface is bad
             child: child ?? const Text(''),
           ),
@@ -134,7 +137,7 @@ class MenuButtonBarUtils {
             onPressed: itemData.enabled ? itemData.action : null,
             trailingIcon: itemData.trailing,
             leadingIcon: leading,
-            style: _menuiItemStyle(context, selected: itemData.selected),
+            style: itemData.selected ? selectedStyle : style,
             // child can't be null, interface is bad
             child: child ?? const Text(''),
           ),
