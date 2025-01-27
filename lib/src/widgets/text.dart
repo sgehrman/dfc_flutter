@@ -17,17 +17,20 @@ class _TextBase extends Text {
     double? height,
     bool bold = false,
     Color? color,
+    String? fontFamily,
   }) : super(
           _fixText(text),
           style: style != null
               ? style.copyWith(
                   fontSize: size,
+                  fontFamily: fontFamily,
                   fontWeight: bold ? Font.bold : Font.normal,
                   color: color,
                   height: height,
                 )
               : TextStyle(
                   fontSize: size,
+                  fontFamily: fontFamily,
                   fontWeight: bold ? Font.bold : Font.normal,
                   color: color,
                   height: height,
@@ -48,6 +51,7 @@ class Text12 extends _TextBase {
     super.bold = false,
     super.color,
     super.height,
+    super.fontFamily,
   }) : super(
           text: text,
           size: size,
@@ -65,6 +69,7 @@ class Text16 extends _TextBase {
     super.bold = true,
     super.color,
     super.height,
+    super.fontFamily,
   }) : super(
           text: text,
           size: size,
@@ -82,6 +87,7 @@ class Text18 extends _TextBase {
     super.bold = true,
     super.color,
     super.height,
+    super.fontFamily,
   }) : super(
           text: text,
           size: size,
@@ -99,6 +105,7 @@ class Text20 extends _TextBase {
     super.bold = true,
     super.color,
     super.height,
+    super.fontFamily,
   }) : super(
           text: text,
           size: size,
@@ -116,6 +123,7 @@ class Text22 extends _TextBase {
     super.bold = true,
     super.color,
     super.height,
+    super.fontFamily,
   }) : super(
           text: text,
           size: size,
@@ -134,6 +142,7 @@ class TextWithSize extends _TextBase {
     super.bold,
     super.color,
     super.height,
+    super.fontFamily,
   }) : super(
           text: text,
           size: size,
@@ -148,6 +157,7 @@ class TextTitle extends _TextBase {
     super.maxLines,
     super.bold = true,
     super.color,
+    super.fontFamily,
   }) : super(
           text: text,
           size: size,
@@ -165,6 +175,7 @@ class TextSubtitle extends _TextBase {
     super.maxLines,
     super.bold = true,
     super.color,
+    super.fontFamily,
   }) : super(
           text: text,
           size: size,
