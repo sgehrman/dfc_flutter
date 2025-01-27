@@ -60,6 +60,24 @@ class Text12 extends _TextBase {
   static const double size = 12;
 }
 
+class Text14 extends _TextBase {
+  Text14(
+    String? text, {
+    super.style,
+    super.textAlign,
+    super.maxLines,
+    super.bold = false,
+    super.color,
+    super.height,
+    super.fontFamily,
+  }) : super(
+          text: text,
+          size: size,
+        );
+
+  static const double size = 14;
+}
+
 class Text16 extends _TextBase {
   Text16(
     String? text, {
