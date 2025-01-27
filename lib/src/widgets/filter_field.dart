@@ -109,6 +109,7 @@ class _FilterFieldState extends State<FilterField> {
         }
       },
       decoration: inputDecoration(
+        contentPadding: widget.small ? EdgeInsets.zero : null,
         hintText: widget.hint ?? l10n.search,
         labelText: widget.label ?? l10n.search,
         prefixIconConstraints:
