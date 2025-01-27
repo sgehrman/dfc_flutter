@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 InputDecoration inputDecoration({
+  EdgeInsets? contentPadding,
   String? hintText,
   String? labelText,
   Widget? prefix,
@@ -24,6 +25,7 @@ InputDecoration inputDecoration({
   }
 
   return InputDecoration(
+    contentPadding: contentPadding,
     isDense: isDense,
     labelText: labelText,
     hintText: hintText,
