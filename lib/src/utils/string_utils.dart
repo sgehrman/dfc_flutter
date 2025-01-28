@@ -138,6 +138,17 @@ class StrUtils {
     return result;
   }
 
+  String extractImageUrlFromCdata(String description) {
+    if (description.contains('<')) {
+      final fragment = parseFragment(description);
+
+      // Find the <img> tag and extract src attribute
+      return fragment.querySelector('img')?.attributes['src'] ?? '';
+    }
+
+    return '';
+  }
+
   // there is also a string-extension
   static String convertHtmlCodes(String text) {
     String result = text;
