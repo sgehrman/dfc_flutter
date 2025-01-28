@@ -138,12 +138,17 @@ class StrUtils {
     return result;
   }
 
-  static String extractImageUrlFromCdata(String description) {
-    if (description.contains('<')) {
-      final fragment = parseFragment(description);
+  // for cdata and html embedded in rss feeds
+  static String extractImageUrlFromHtml(String description) {
+    try {
+      if (description.contains('<')) {
+        final fragment = parseFragment(description);
 
-      // Find the <img> tag and extract src attribute
-      return fragment.querySelector('img')?.attributes['src'] ?? '';
+        // Find the <img> tag and extract src attribute
+        return fragment.querySelector('img')?.attributes['src'] ?? '';
+      }
+    } catch (err) {
+      print('extractImageUrlFromHtml exception: $err');
     }
 
     return '';
@@ -160,7 +165,7 @@ class StrUtils {
       try {
         result = parseFragment(result).text ?? result;
       } catch (err) {
-        print('html:parseFragment err: $err');
+        print('convertHtmlCodes html:parseFragment err: $err');
       }
     }
 
