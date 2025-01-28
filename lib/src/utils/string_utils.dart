@@ -138,7 +138,7 @@ class StrUtils {
     return result;
   }
 
-  String extractImageUrlFromCdata(String description) {
+  static String extractImageUrlFromCdata(String description) {
     if (description.contains('<')) {
       final fragment = parseFragment(description);
 
