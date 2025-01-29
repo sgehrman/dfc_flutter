@@ -17,7 +17,11 @@ class MenuButtonBarUtils {
     );
   }
 
-  static Color _textIconColor(BuildContext context, Set<WidgetState> states) {
+  static Color _textIconColor({
+    required BuildContext context,
+    required Set<WidgetState> states,
+    required bool selected,
+  }) {
     if (ThemeUtils.isDisabled(states)) {
       return context.dimTextColor;
     }
@@ -49,7 +53,8 @@ class MenuButtonBarUtils {
           }
 
           if (selected) {
-            return Theme.of(context).highlightColor;
+            return context.lightPrimary();
+            // return Theme.of(context).highlightColor;
           }
 
           return null;
@@ -57,12 +62,20 @@ class MenuButtonBarUtils {
       ),
       foregroundColor: WidgetStateProperty.resolveWith<Color?>(
         (states) {
-          return _textIconColor(context, states);
+          return _textIconColor(
+            context: context,
+            states: states,
+            selected: selected,
+          );
         },
       ),
       iconColor: WidgetStateProperty.resolveWith<Color?>(
         (states) {
-          return _textIconColor(context, states);
+          return _textIconColor(
+            context: context,
+            states: states,
+            selected: selected,
+          );
         },
       ),
     );
