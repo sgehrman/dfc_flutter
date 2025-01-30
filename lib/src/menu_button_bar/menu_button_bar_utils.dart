@@ -43,18 +43,19 @@ class MenuButtonBarUtils {
       padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
         (states) {
           // give room for scrollbar on right
-          // MaterialTapTargetSize.shrinkWrap removes vertical padding, so add here
           return const EdgeInsets.only(
             left: 20,
             right: 24,
-            top: 4,
-            bottom: 4,
           );
         },
       ),
       minimumSize: WidgetStateProperty.resolveWith<Size?>(
+        // MaterialTapTargetSize.shrinkWrap removes vertical padding
+        // so make sure the minheight  is set to give us some vertical space
+        // vertical padding is ignored
+
         (states) {
-          return const Size(10, 10);
+          return const Size(30, 30);
         },
       ),
       visualDensity: VisualDensity.compact,
