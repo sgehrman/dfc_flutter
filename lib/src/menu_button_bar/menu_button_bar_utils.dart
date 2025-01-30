@@ -42,7 +42,7 @@ class MenuButtonBarUtils {
       padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
         (states) {
           // give room for scrollbar on right
-          return const EdgeInsets.only(left: 20, right: 30);
+          return const EdgeInsets.only(left: 20, right: 20);
         },
       ),
       visualDensity: VisualDensity.compact,
