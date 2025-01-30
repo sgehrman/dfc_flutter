@@ -38,6 +38,7 @@ class MenuButtonBarUtils {
     bool selected = false,
   }) {
     return ButtonStyle(
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       animationDuration: Duration.zero,
       padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
         (states) {
