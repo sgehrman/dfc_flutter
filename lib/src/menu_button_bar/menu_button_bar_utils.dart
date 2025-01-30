@@ -51,11 +51,9 @@ class MenuButtonBarUtils {
       ),
       minimumSize: WidgetStateProperty.resolveWith<Size?>(
         // MaterialTapTargetSize.shrinkWrap removes vertical padding
-        // so make sure the minheight  is set to give us some vertical space
-        // vertical padding is ignored
-
+        // but this needs to be set low too to avoid items being too tall
         (states) {
-          return const Size(30, 30);
+          return const Size(10, 10);
         },
       ),
       visualDensity: VisualDensity.compact,
@@ -109,8 +107,14 @@ class MenuButtonBarUtils {
 
       if (Utils.isNotEmpty(itemData.title)) {
         // icon a little close to the text, adding some padding
+        // menuIterm vertical size is too tall, so default removed in _menuiItemStyle
+        // but we need vertical padding otherwise it's too compact
         child = Padding(
-          padding: const EdgeInsets.only(left: 8),
+          padding: const EdgeInsets.only(
+            left: 8,
+            top: 4,
+            bottom: 4,
+          ),
           child: Text(itemData.title!),
         );
       }
