@@ -196,55 +196,11 @@ class ImageProcessor {
     Color? color,
   }) async {
     try {
-      final PictureInfo pictureInfo = await vg.loadPicture(
-        SvgStringLoader(
-          svg,
-          theme: SvgTheme(
-            currentColor: color ?? Colors.black,
-          ),
-        ),
-        null,
-        onError: (error, stackTrace) {
-          print('vg.loadPicture error: $error');
-        },
+      final image = await _svgToImage(
+        svg: svg,
+        color: color,
+        size: size == 0 ? null : Size(size, size),
       );
-
-      final Size svgSize = pictureInfo.size;
-
-      ui.Image image = await pictureInfo.picture.toImage(
-        svgSize.width.ceil(),
-        svgSize.height.ceil(),
-      );
-      pictureInfo.picture.dispose();
-
-      if (size != 0) {
-        final disposeAfter = image;
-
-        image = await _resizeImage(
-          image: image,
-          height: size,
-          width: size,
-          fit: BoxFit.contain,
-        );
-
-        disposeAfter.dispose();
-      } else {
-        // no size specified, but no reason to return a super tiny png that could be scaled up later and look fuzzy
-        const double minSize = 64;
-
-        if (svgSize.longestSide < minSize) {
-          final disposeAfter = image;
-
-          image = await _resizeImage(
-            image: image,
-            height: minSize,
-            width: minSize,
-            fit: BoxFit.contain,
-          );
-
-          disposeAfter.dispose();
-        }
-      }
 
       final ByteData? bd = await image.toByteData(
         format: ui.ImageByteFormat.png,
@@ -397,6 +353,70 @@ class ImageProcessor {
     final result = await picture.toImage(
       width.ceil(),
       height.ceil(),
+    );
+
+    picture.dispose();
+
+    return result;
+  }
+
+  static Future<ui.Image> _svgToImage({
+    required String svg,
+    required Color? color,
+    required Size? size,
+  }) async {
+    final PictureInfo pictureInfo = await vg.loadPicture(
+      SvgStringLoader(
+        svg,
+        theme: SvgTheme(
+          currentColor: color ?? Colors.black,
+        ),
+      ),
+      null,
+      onError: (error, stackTrace) {
+        print('vg.loadPicture error: $error');
+      },
+    );
+
+    final Size svgSize = pictureInfo.size;
+
+    Size destinationSize;
+    if (size == null) {
+      destinationSize = svgSize;
+
+      // if no size give, don't return a super small png, it might be scaled up at some point (icon for example)
+      if (destinationSize.longestSide < 64) {
+        destinationSize = const Size(64, 64);
+      }
+    } else {
+      destinationSize = size;
+    }
+
+    final ui.PictureRecorder recorder = ui.PictureRecorder();
+    final ui.Canvas canvas = ui.Canvas(recorder);
+
+    double scale = 1;
+
+    final resultSize =
+        applyBoxFit(BoxFit.contain, svgSize, destinationSize).destination;
+
+    if (resultSize.longestSide == resultSize.width) {
+      scale = resultSize.width / svgSize.width;
+    } else {
+      scale = resultSize.height / svgSize.height;
+    }
+
+    canvas.scale(scale);
+
+    canvas.drawPicture(pictureInfo.picture);
+
+    final picture = recorder.endRecording();
+
+    pictureInfo.picture.dispose();
+
+    final result = await picture.toImage(
+      resultSize.width.ceil(),
+      resultSize.height.ceil(),
     );
 
     picture.dispose();
