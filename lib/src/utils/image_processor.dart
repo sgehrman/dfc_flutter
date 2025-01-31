@@ -214,10 +214,17 @@ class ImageProcessor {
 
       // don't want tiny svgs, draw at a min size, or passed in size
       if (svgSize.longestSide < minSize) {
-        final aspectRatio = minSize / svgSize.longestSide;
-
-        svgSize =
-            Size(svgSize.width * aspectRatio, svgSize.height * aspectRatio);
+        if (svgSize.longestSide == svgSize.width) {
+          svgSize = Size(
+            minSize.toDouble(),
+            minSize * (svgSize.height / svgSize.width),
+          );
+        } else {
+          svgSize = Size(
+            minSize * (svgSize.width / svgSize.height),
+            minSize.toDouble(),
+          );
+        }
       }
 
       ui.Image image = await pictureInfo.picture.toImage(
