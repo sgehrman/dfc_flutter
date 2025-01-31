@@ -209,12 +209,20 @@ class ImageProcessor {
         },
       );
 
-      final imageWidth = pictureInfo.size.width.ceil();
-      final imageHeight = pictureInfo.size.height.ceil();
+      Size svgSize = pictureInfo.size;
+      final minSize = math.max(64, size);
+
+      // don't want tiny svgs, draw at a min size, or passed in size
+      if (svgSize.longestSide < minSize) {
+        final aspectRatio = minSize / svgSize.longestSide;
+
+        svgSize =
+            Size(svgSize.width * aspectRatio, svgSize.height * aspectRatio);
+      }
 
       ui.Image image = await pictureInfo.picture.toImage(
-        imageWidth,
-        imageHeight,
+        svgSize.width.ceil(),
+        svgSize.height.ceil(),
       );
       pictureInfo.picture.dispose();
 
