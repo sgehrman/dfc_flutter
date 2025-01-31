@@ -209,23 +209,7 @@ class ImageProcessor {
         },
       );
 
-      Size svgSize = pictureInfo.size;
-      final minSize = math.max(64, size);
-
-      // don't want tiny svgs, draw at a min size, or passed in size
-      if (svgSize.longestSide < minSize) {
-        if (svgSize.longestSide == svgSize.width) {
-          svgSize = Size(
-            minSize.toDouble(),
-            minSize * (svgSize.height / svgSize.width),
-          );
-        } else {
-          svgSize = Size(
-            minSize * (svgSize.width / svgSize.height),
-            minSize.toDouble(),
-          );
-        }
-      }
+      final Size svgSize = pictureInfo.size;
 
       ui.Image image = await pictureInfo.picture.toImage(
         svgSize.width.ceil(),
@@ -240,10 +224,26 @@ class ImageProcessor {
           image: image,
           height: size,
           width: size,
-          fit: _fitForImage(image),
+          fit: BoxFit.contain,
         );
 
         disposeAfter.dispose();
+      } else {
+        // no size specified, but no reason to return a super tiny png that could be scaled up later and look fuzzy
+        const double minSize = 64;
+
+        if (svgSize.longestSide < minSize) {
+          final disposeAfter = image;
+
+          image = await _resizeImage(
+            image: image,
+            height: minSize,
+            width: minSize,
+            fit: BoxFit.contain,
+          );
+
+          disposeAfter.dispose();
+        }
       }
 
       final ByteData? bd = await image.toByteData(
