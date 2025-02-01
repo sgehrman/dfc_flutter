@@ -126,6 +126,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
       final bool ink = isInkWell(entry.value);
       list.add(
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _ex(ex, entry),
             _exAndInk(ex, ink, entry),
