@@ -4,21 +4,6 @@ import 'package:flutter/material.dart';
 
 const double arrowIconSize = 26;
 
-class JsonViewerWidget extends StatefulWidget {
-  const JsonViewerWidget(
-    this.jsonObj, {
-    this.notRoot = false,
-    this.convertIntsToDates = true,
-  });
-
-  final Map<String, dynamic> jsonObj;
-  final bool notRoot;
-  final bool convertIntsToDates;
-
-  @override
-  JsonViewerWidgetState createState() => JsonViewerWidgetState();
-}
-
 String _intToString(
   int content, {
   required bool convertIntsToDates,
@@ -41,6 +26,23 @@ String _intToString(
   }
 
   return contentStr;
+}
+
+// =================================================================
+
+class JsonViewerWidget extends StatefulWidget {
+  const JsonViewerWidget(
+    this.jsonObj, {
+    this.notRoot = false,
+    this.convertIntsToDates = true,
+  });
+
+  final Map<String, dynamic> jsonObj;
+  final bool notRoot;
+  final bool convertIntsToDates;
+
+  @override
+  JsonViewerWidgetState createState() => JsonViewerWidgetState();
 }
 
 class JsonViewerWidgetState extends State<JsonViewerWidget> {
@@ -123,6 +125,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
     for (final entry in widget.jsonObj.entries) {
       final bool ex = isExtensible(entry.value);
       final bool ink = isInkWell(entry.value);
+
       list.add(
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,6 +141,7 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
           ],
         ),
       );
+
       list.add(const SizedBox(height: 4));
       if (!_closedFlag.contains(entry.key)) {
         if (entry.value is List || entry.value is Map) {
@@ -323,6 +327,8 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
   }
 }
 
+// =================================================================
+
 class JsonArrayViewerWidget extends StatefulWidget {
   const JsonArrayViewerWidget(
     this.jsonArray, {
@@ -408,9 +414,11 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
   List<Widget> _getList() {
     final List<Widget> list = [];
     int i = 0;
+
     for (final content in widget.jsonArray) {
       final bool ex = JsonViewerWidgetState.isExtensible(content);
       final bool ink = JsonViewerWidgetState.isInkWell(content);
+
       list.add(
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -426,6 +434,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
           ],
         ),
       );
+
       list.add(const SizedBox(height: 4));
       if (!_closedFlag.contains(i)) {
         if (content is List || content is Map) {
@@ -437,6 +446,7 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
           );
         }
       }
+
       i++;
     }
 
