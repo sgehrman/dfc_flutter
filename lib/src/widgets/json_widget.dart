@@ -48,20 +48,19 @@ class JsonViewerWidgetState extends State<JsonViewerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.notRoot) {
-      return Container(
-        padding: const EdgeInsets.only(left: 14),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: _getList(),
-        ),
-      );
-    }
-
-    return Column(
+    final result = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: _getList(),
     );
+
+    if (widget.notRoot) {
+      return Padding(
+        padding: const EdgeInsets.only(left: 14),
+        child: result,
+      );
+    }
+
+    return result;
   }
 
   Widget _ex(bool ex, MapEntry<String, dynamic> entry) {
@@ -345,20 +344,19 @@ class _JsonArrayViewerWidgetState extends State<JsonArrayViewerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.notRoot) {
-      return Container(
-        padding: const EdgeInsets.only(left: 14),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: _getList(),
-        ),
-      );
-    }
-
-    return Column(
+    final result = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: _getList(),
     );
+
+    if (widget.notRoot) {
+      return Padding(
+        padding: const EdgeInsets.only(left: 14),
+        child: result,
+      );
+    }
+
+    return result;
   }
 
   Widget _ex(bool ex, int i) {
