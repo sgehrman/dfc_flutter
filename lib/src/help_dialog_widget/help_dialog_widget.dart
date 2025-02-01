@@ -115,7 +115,6 @@ class _HelpDialogSearchFieldState extends State<HelpDialogSearchField> {
         width: 150,
         child: FilterField(
           small: true,
-          label: '',
           controller: _controller,
           hint: l10n.search,
           onChange: (filter) {

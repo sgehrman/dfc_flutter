@@ -25,9 +25,10 @@ InputDecoration inputDecoration({
   }
 
   return InputDecoration(
+    helperMaxLines: 1,
     contentPadding: contentPadding,
     isDense: isDense,
-    labelText: labelText,
+    labelText: labelText?.isNotEmpty ?? false ? labelText : null,
     hintText: hintText,
     prefixIcon: prefixIcon,
     suffixIcon: suffixIcon,

@@ -13,7 +13,6 @@ class FilterField extends StatefulWidget {
     this.onSubmit,
     this.onClose,
     this.autofocus = false,
-    this.label, // Search
     this.hint, // Search
     this.small = false,
     this.debounce = true,
@@ -26,7 +25,6 @@ class FilterField extends StatefulWidget {
   final bool autofocus;
   final bool small;
   final bool debounce;
-  final String? label;
   final String? hint;
 
   @override
@@ -111,7 +109,6 @@ class _FilterFieldState extends State<FilterField> {
       decoration: inputDecoration(
         contentPadding: widget.small ? EdgeInsets.zero : null,
         hintText: widget.hint ?? l10n.search,
-        labelText: widget.label ?? l10n.search,
         prefixIconConstraints:
             widget.small ? DFIconButton.kIconConstraints : null,
         suffixIconConstraints:
