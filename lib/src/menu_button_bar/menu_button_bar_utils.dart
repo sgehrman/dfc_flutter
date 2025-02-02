@@ -112,8 +112,8 @@ class MenuButtonBarUtils {
         child = Padding(
           padding: const EdgeInsets.only(
             left: 8,
-            top: 8,
-            bottom: 8,
+            top: 7,
+            bottom: 7,
           ),
           child: Text(itemData.title!),
         );
