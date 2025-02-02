@@ -8,26 +8,23 @@ environment:
   sdk: ^3.6.0
 
 dependencies:
-  barcode_widget: ^2.0.4
   bonsoir: ^5.1.10
   characters: ^1.3.0
   collection: ^1.19.0
   crypto: ^3.0.6
   date_time_format: ^2.0.1
-  device_info_plus: ^11.2.1
+  device_info_plus: ^11.2.2
   dfc_dart:
     git: https://github.com/sgehrman/dfc_dart
   dotted_border: ^2.1.0
   email_validator: ^3.0.0
-  flex_color_picker: ^3.7.0
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.2
   flutter_archive: ^6.0.3
-  flutter_barcode_scanner: ^2.0.0
   flutter_localizations:
     sdk: flutter
-  flutter_markdown: ^0.7.5
+  flutter_markdown: ^0.7.6
   flutter_multi_formatter: ^2.13.0
   flutter_svg: ^2.0.17
   flutter_widget_from_html: ^0.15.3
@@ -45,17 +42,15 @@ dependencies:
   loading_animation_widget: ^1.3.0
   mime_type: ^1.0.1
   open_file: ^3.5.10
-  package_info_plus: ^8.1.3
+  package_info_plus: ^8.1.4
   pasteboard: ^0.3.0
   path: ^1.9.0
   path_provider: ^2.1.5
   provider: ^6.1.2
   random_string: ^2.3.1
-  share_extend: ^2.0.0
-  shared_preferences: ^2.3.5
-  supercharged: ^2.1.1
+  shared_preferences: ^2.5.1
   url_launcher: ^6.3.1
-  vector_graphics: ^1.1.15
+  vector_graphics: ^1.1.17
   vector_math: ^2.1.4
   video_player: ^2.9.2
   web: ^1.1.0
