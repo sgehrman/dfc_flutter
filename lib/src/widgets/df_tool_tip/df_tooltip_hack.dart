@@ -664,26 +664,28 @@ class DFTooltipHackState extends State<DFTooltipHack>
         child: Listener(
           onPointerDown: _handlePointerDown,
           behavior: HitTestBehavior.opaque,
-          onPointerSignal: (event) {
-            print(event);
-
-            if (event is PointerScrollEvent) {
-              print('is pointer');
-
-              Scrollable.of(context).position.jumpTo(
-                    Scrollable.of(context).position.pixels +
-                        event.scrollDelta.dy,
-                  );
-            }
-          },
           child: result,
         ),
       );
     }
-    return OverlayPortal(
-      controller: _overlayController,
-      overlayChildBuilder: _buildTooltipOverlay,
-      child: result,
+
+    return Listener(
+      onPointerSignal: (event) {
+        print(event);
+
+        if (event is PointerScrollEvent) {
+          print('is pointer');
+
+          Scrollable.of(context).position.jumpTo(
+                Scrollable.of(context).position.pixels + event.scrollDelta.dy,
+              );
+        }
+      },
+      child: OverlayPortal(
+        controller: _overlayController,
+        overlayChildBuilder: _buildTooltipOverlay,
+        child: result,
+      ),
     );
   }
 }
