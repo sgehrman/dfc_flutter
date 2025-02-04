@@ -781,10 +781,10 @@ class _TooltipOverlay extends StatelessWidget {
     }
     return Listener(
       onPointerSignal: (event) {
-        print(event);
-
         if (event is PointerScrollEvent) {
-          print('is pointer');
+          // hide tooltip otherwise it will stick with the mouse pointer
+
+          DFTooltipHack.dismissAllToolTips();
 
           Scrollable.of(context).position.jumpTo(
                 Scrollable.of(context).position.pixels + event.scrollDelta.dy,
