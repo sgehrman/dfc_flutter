@@ -15,30 +15,47 @@ class DFTooltip extends StatelessWidget {
   final Widget child;
   final bool? preferBelow;
 
-  String _wrapString(String message) {
-    final words = message.split(' ');
+  String _wrapString(String? message) {
+    if (Utils.isNotEmpty(message)) {
+      final words = message!.split(' ');
 
-    final buffer = StringBuffer();
+      final buffer = StringBuffer();
 
-    int letterCnt = 0;
-    for (final word in words) {
-      letterCnt += word.length;
-      buffer.write('$word ');
+      int letterCnt = 0;
+      for (final word in words) {
+        letterCnt += word.length;
+        buffer.write('$word ');
 
-      if (letterCnt > 40) {
-        letterCnt = 0;
-        buffer.write('\n');
+        if (letterCnt > 40) {
+          letterCnt = 0;
+          buffer.write('\n');
+        }
       }
+
+      return buffer.toString().trim();
     }
 
-    return buffer.toString().trim();
+    return '';
   }
 
   @override
   Widget build(BuildContext context) {
-    if (Utils.isNotEmpty(message)) {
+    final msg = _wrapString(message);
+
+    if (msg.isNotEmpty) {
+      final WidgetSpan richMessage = WidgetSpan(
+        child: IgnorePointer(
+          child: Text(
+            msg,
+          ),
+        ),
+      );
+
       return Tooltip(
-        message: _wrapString(message!),
+        // can't use message, we have to IgnorePointer so the scrollWheel events don't
+        // get eaten when the mouse is over a tooltip
+        // message: '',
+        richMessage: richMessage,
         preferBelow: preferBelow,
         enableTapToDismiss: false,
         enableFeedback: false,
