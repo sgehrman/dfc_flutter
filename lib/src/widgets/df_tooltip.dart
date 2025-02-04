@@ -47,17 +47,32 @@ class DFTooltip extends StatelessWidget {
       return Listener(
         onPointerSignal: (event) {
           if (event is PointerScrollEvent) {
-            Scrollable.of(context).position.jumpTo(
-                  Scrollable.of(context).position.pixels + event.scrollDelta.dy,
-                );
+            GestureBinding.instance.pointerSignalResolver.register(event,
+                (PointerSignalEvent e) {
+              if (e is PointerScrollEvent) {
+                Scrollable.of(context).position.jumpTo(
+                      Scrollable.of(context).position.pixels + e.scrollDelta.dy,
+                    );
+              }
+            });
           }
         },
-        child: Tooltip(
-          message: msg,
-          preferBelow: preferBelow,
-          enableTapToDismiss: false,
-          enableFeedback: false,
-          child: child,
+        child: Stack(
+          children: [
+            Tooltip(
+              message: msg,
+              preferBelow: preferBelow,
+              enableTapToDismiss: false,
+              enableFeedback: false,
+              child: child,
+            ),
+            const Positioned.fill(
+              child: AbsorbPointer(),
+            ),
+            const Positioned.fill(
+              child: IgnorePointer(),
+            ),
+          ],
         ),
       );
     }
