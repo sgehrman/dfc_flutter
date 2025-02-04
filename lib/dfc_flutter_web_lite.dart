@@ -77,6 +77,7 @@ export 'src/widgets/colorized_text.dart';
 export 'src/widgets/custom_markdown.dart';
 export 'src/widgets/date_picker.dart';
 export 'src/widgets/df_input_decoration.dart';
+export 'src/widgets/df_tooltip.dart';
 export 'src/widgets/dialog_back_button_controller.dart';
 export 'src/widgets/dialog_button.dart';
 export 'src/widgets/double_thumbs_control.dart';
