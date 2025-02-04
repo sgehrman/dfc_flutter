@@ -144,7 +144,7 @@ class DFTooltipHack extends StatefulWidget {
   }
 
   @override
-  State<Tooltip> createState() => DFTooltipHackState();
+  State<DFTooltipHack> createState() => DFTooltipHackState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -246,7 +246,7 @@ class DFTooltipHack extends StatefulWidget {
   }
 }
 
-class DFTooltipHackState extends State<Tooltip>
+class DFTooltipHackState extends State<DFTooltipHack>
     with SingleTickerProviderStateMixin {
   static const double _defaultVerticalOffset = 24;
   static const bool _defaultPreferBelow = true;
