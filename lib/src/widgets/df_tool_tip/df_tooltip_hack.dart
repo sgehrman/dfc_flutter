@@ -507,8 +507,8 @@ class DFTooltipHackState extends State<DFTooltipHack>
   void initState() {
     super.initState();
 
-    // GestureBinding.instance.pointerRouter
-    //     .addGlobalRoute(_handleGlobalPointerEvent);
+    GestureBinding.instance.pointerRouter
+        .addGlobalRoute(_handleGlobalPointerEvent);
   }
 
   @override
@@ -630,8 +630,8 @@ class DFTooltipHackState extends State<DFTooltipHack>
 
   @override
   void dispose() {
-    // GestureBinding.instance.pointerRouter
-    //     .removeGlobalRoute(_handleGlobalPointerEvent);
+    GestureBinding.instance.pointerRouter
+        .removeGlobalRoute(_handleGlobalPointerEvent);
     DFTooltipHack._openedTooltips.remove(this);
 
     _longPressRecognizer?.onLongPressCancel = null;
@@ -663,7 +663,19 @@ class DFTooltipHackState extends State<DFTooltipHack>
         onExit: _handleMouseExit,
         child: Listener(
           onPointerDown: _handlePointerDown,
-          behavior: HitTestBehavior.translucent,
+          behavior: HitTestBehavior.opaque,
+          onPointerSignal: (event) {
+            print(event);
+
+            if (event is PointerScrollEvent) {
+              print('is pointer');
+
+              Scrollable.of(context).position.jumpTo(
+                    Scrollable.of(context).position.pixels +
+                        event.scrollDelta.dy,
+                  );
+            }
+          },
           child: result,
         ),
       );
@@ -780,15 +792,13 @@ class _TooltipOverlay extends StatelessWidget {
     }
     return Positioned.fill(
       bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
-      child: IgnorePointer(
-        child: CustomSingleChildLayout(
-          delegate: _TooltipPositionDelegate(
-            target: target,
-            verticalOffset: verticalOffset,
-            preferBelow: preferBelow,
-          ),
-          child: result,
+      child: CustomSingleChildLayout(
+        delegate: _TooltipPositionDelegate(
+          target: target,
+          verticalOffset: verticalOffset,
+          preferBelow: preferBelow,
         ),
+        child: result,
       ),
     );
   }
