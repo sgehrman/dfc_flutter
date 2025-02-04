@@ -668,10 +668,12 @@ class DFTooltipHackState extends State<DFTooltipHack>
         ),
       );
     }
-    return OverlayPortal(
-      controller: _overlayController,
-      overlayChildBuilder: _buildTooltipOverlay,
-      child: result,
+    return IgnorePointer(
+      child: OverlayPortal(
+        controller: _overlayController,
+        overlayChildBuilder: _buildTooltipOverlay,
+        child: result,
+      ),
     );
   }
 }
@@ -745,27 +747,25 @@ class _TooltipOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget result = IgnorePointer(
-      child: FadeTransition(
-        opacity: animation,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: height),
-          child: DefaultTextStyle(
-            style: Theme.of(context).textTheme.bodyMedium!,
-            child: Semantics(
-              container: true,
-              child: Container(
-                decoration: decoration,
-                padding: padding,
-                margin: margin,
-                child: Center(
-                  widthFactor: 1,
-                  heightFactor: 1,
-                  child: Text.rich(
-                    richMessage,
-                    style: textStyle,
-                    textAlign: textAlign,
-                  ),
+    Widget result = FadeTransition(
+      opacity: animation,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: height),
+        child: DefaultTextStyle(
+          style: Theme.of(context).textTheme.bodyMedium!,
+          child: Semantics(
+            container: true,
+            child: Container(
+              decoration: decoration,
+              padding: padding,
+              margin: margin,
+              child: Center(
+                widthFactor: 1,
+                heightFactor: 1,
+                child: Text.rich(
+                  richMessage,
+                  style: textStyle,
+                  textAlign: textAlign,
                 ),
               ),
             ),
@@ -782,13 +782,15 @@ class _TooltipOverlay extends StatelessWidget {
     }
     return Positioned.fill(
       bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
-      child: CustomSingleChildLayout(
-        delegate: _TooltipPositionDelegate(
-          target: target,
-          verticalOffset: verticalOffset,
-          preferBelow: preferBelow,
+      child: IgnorePointer(
+        child: CustomSingleChildLayout(
+          delegate: _TooltipPositionDelegate(
+            target: target,
+            verticalOffset: verticalOffset,
+            preferBelow: preferBelow,
+          ),
+          child: result,
         ),
-        child: result,
       ),
     );
   }
