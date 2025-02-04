@@ -106,7 +106,7 @@ class _FilterFieldState extends State<FilterField> {
           widget.controller.text = '';
         }
       },
-      decoration: inputDecoration(
+      decoration: DFInputDecoration.decoration(
         contentPadding: widget.small ? EdgeInsets.zero : null,
         hintText: widget.hint ?? l10n.search,
         prefixIconConstraints:
