@@ -1,5 +1,6 @@
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_utils.dart';
+import 'package:dfc_flutter/src/widgets/df_tooltip.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/dfc_menu_anchor.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,7 @@ class _MenuPopupButtonState extends State<MenuPopupButton> {
       menuData: widget.buildMenu(),
     );
 
-    return Tooltip(
+    return DFTooltip(
       message: widget.tooltip,
       child: DFCMenuAnchor(
         menuChildren: menuChildren,

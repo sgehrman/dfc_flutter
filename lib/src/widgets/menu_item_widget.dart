@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/widgets/df_tooltip.dart';
 import 'package:flutter/material.dart';
 
 class MenuItemWidget extends StatelessWidget {
@@ -30,7 +31,7 @@ class MenuItemWidget extends StatelessWidget {
       leading = iconWidget!;
     }
 
-    return Tooltip(
+    return DFTooltip(
       message: tooltip,
       child: ListTile(
         leading: leading,

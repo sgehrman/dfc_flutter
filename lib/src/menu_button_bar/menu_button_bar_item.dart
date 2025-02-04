@@ -1,6 +1,7 @@
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_styles.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_utils.dart';
+import 'package:dfc_flutter/src/widgets/df_tooltip.dart';
 import 'package:flutter/material.dart';
 
 class MenuButtonBarItem extends StatefulWidget {
@@ -45,7 +46,7 @@ class _MenuButtonBarItemState extends State<MenuButtonBarItem> {
       ];
     }
 
-    return Tooltip(
+    return DFTooltip(
       message: widget.tooltip,
       child: SubmenuButton(
         onOpen: () {
