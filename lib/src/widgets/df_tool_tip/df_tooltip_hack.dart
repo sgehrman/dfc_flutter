@@ -668,12 +668,10 @@ class DFTooltipHackState extends State<DFTooltipHack>
         ),
       );
     }
-    return IgnorePointer(
-      child: OverlayPortal(
-        controller: _overlayController,
-        overlayChildBuilder: _buildTooltipOverlay,
-        child: result,
-      ),
+    return OverlayPortal(
+      controller: _overlayController,
+      overlayChildBuilder: _buildTooltipOverlay,
+      child: IgnorePointer(child: result),
     );
   }
 }
