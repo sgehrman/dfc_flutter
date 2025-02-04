@@ -507,8 +507,8 @@ class DFTooltipHackState extends State<DFTooltipHack>
   void initState() {
     super.initState();
 
-    GestureBinding.instance.pointerRouter
-        .addGlobalRoute(_handleGlobalPointerEvent);
+    // GestureBinding.instance.pointerRouter
+    //     .addGlobalRoute(_handleGlobalPointerEvent);
   }
 
   @override
@@ -630,8 +630,8 @@ class DFTooltipHackState extends State<DFTooltipHack>
 
   @override
   void dispose() {
-    GestureBinding.instance.pointerRouter
-        .removeGlobalRoute(_handleGlobalPointerEvent);
+    // GestureBinding.instance.pointerRouter
+    //     .removeGlobalRoute(_handleGlobalPointerEvent);
     DFTooltipHack._openedTooltips.remove(this);
 
     _longPressRecognizer?.onLongPressCancel = null;
@@ -663,7 +663,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
         onExit: _handleMouseExit,
         child: Listener(
           onPointerDown: _handlePointerDown,
-          behavior: HitTestBehavior.opaque,
+          behavior: HitTestBehavior.translucent,
           child: result,
         ),
       );
@@ -671,7 +671,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
     return OverlayPortal(
       controller: _overlayController,
       overlayChildBuilder: _buildTooltipOverlay,
-      child: IgnorePointer(child: result),
+      child: result,
     );
   }
 }
