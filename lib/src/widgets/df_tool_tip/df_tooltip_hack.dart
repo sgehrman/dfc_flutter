@@ -669,23 +669,10 @@ class DFTooltipHackState extends State<DFTooltipHack>
       );
     }
 
-    return Listener(
-      onPointerSignal: (event) {
-        print(event);
-
-        if (event is PointerScrollEvent) {
-          print('is pointer');
-
-          Scrollable.of(context).position.jumpTo(
-                Scrollable.of(context).position.pixels + event.scrollDelta.dy,
-              );
-        }
-      },
-      child: OverlayPortal(
-        controller: _overlayController,
-        overlayChildBuilder: _buildTooltipOverlay,
-        child: result,
-      ),
+    return OverlayPortal(
+      controller: _overlayController,
+      overlayChildBuilder: _buildTooltipOverlay,
+      child: result,
     );
   }
 }
@@ -792,15 +779,28 @@ class _TooltipOverlay extends StatelessWidget {
         child: result,
       );
     }
-    return Positioned.fill(
-      bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
-      child: CustomSingleChildLayout(
-        delegate: _TooltipPositionDelegate(
-          target: target,
-          verticalOffset: verticalOffset,
-          preferBelow: preferBelow,
+    return Listener(
+      onPointerSignal: (event) {
+        print(event);
+
+        if (event is PointerScrollEvent) {
+          print('is pointer');
+
+          Scrollable.of(context).position.jumpTo(
+                Scrollable.of(context).position.pixels + event.scrollDelta.dy,
+              );
+        }
+      },
+      child: Positioned.fill(
+        bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
+        child: CustomSingleChildLayout(
+          delegate: _TooltipPositionDelegate(
+            target: target,
+            verticalOffset: verticalOffset,
+            preferBelow: preferBelow,
+          ),
+          child: result,
         ),
-        child: result,
       ),
     );
   }
