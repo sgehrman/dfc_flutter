@@ -94,7 +94,6 @@ export 'src/widgets/form_builder/form_builder.dart';
 export 'src/widgets/form_builder/form_params.dart';
 export 'src/widgets/generic_card.dart';
 export 'src/widgets/gradient_text.dart';
-export 'src/widgets/help_tip.dart';
 export 'src/widgets/json_viewer_screen.dart';
 export 'src/widgets/json_widget.dart';
 export 'src/widgets/keyboard_and_mouse_events.dart';
