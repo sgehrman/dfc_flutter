@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
 // DFIconButton in a textfields prefix/suffix icons
@@ -94,7 +93,7 @@ class DFTextButton extends StatelessWidget {
       );
     }
 
-    return ToolTip(
+    return Tooltip(
       message: tooltip,
       child: b,
     );
@@ -155,7 +154,7 @@ class DFButton extends StatelessWidget {
       }
     }
 
-    return ToolTip(
+    return Tooltip(
       message: tooltip,
       child: b,
     );
@@ -197,7 +196,7 @@ class DFOutlineButton extends StatelessWidget {
       );
     }
 
-    return ToolTip(
+    return Tooltip(
       message: tooltip,
       child: b,
     );

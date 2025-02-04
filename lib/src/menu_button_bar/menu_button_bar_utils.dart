@@ -2,7 +2,6 @@ import 'package:dfc_flutter/src/extensions/build_context_ext.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/themes/theme_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:dfc_flutter/src/widgets/tool_tip.dart';
 import 'package:flutter/material.dart';
 
 class MenuButtonBarUtils {
@@ -121,7 +120,7 @@ class MenuButtonBarUtils {
 
       // add tooltip
       if (child != null && itemData.tooltip.isNotEmpty) {
-        child = ToolTip(
+        child = Tooltip(
           message: itemData.tooltip,
           child: child,
         );
