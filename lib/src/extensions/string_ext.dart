@@ -104,6 +104,14 @@ extension StringUtils on String {
 
   // like trim() but also removes more than one blank line \n\n\n => \n\n
   String superTrim() {
-    return replaceAll(RegExp(r'\n\s*\n'), '\n\n').trim();
+    String result = replaceAll(RegExp(r'\n\s*\n'), '\n\n');
+
+    // multiple spaces to one space
+    result = result.replaceAll(RegExp(' +'), ' ');
+
+    // remove spaces after newline
+    result = result.replaceAll(RegExp(r'\n\s*'), '\n');
+
+    return result.trim();
   }
 }
