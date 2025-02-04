@@ -40,6 +40,8 @@ class DFTooltip extends StatelessWidget {
       return Tooltip(
         message: _wrapString(message!),
         preferBelow: preferBelow,
+        enableTapToDismiss: false,
+        enableFeedback: false,
         child: child,
       );
     }
