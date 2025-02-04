@@ -1,5 +1,5 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:flutter/gestures.dart';
+import 'package:dfc_flutter/src/widgets/df_tool_tip/df_tooltip_hack.dart';
 import 'package:flutter/material.dart';
 
 // same as Tooltip, but handles null messages without exceptions
@@ -44,30 +44,10 @@ class DFTooltip extends StatelessWidget {
     final msg = _wrapString(message);
 
     if (msg.isNotEmpty) {
-      return Listener(
-        onPointerSignal: (event) {
-          print(event);
-
-          if (event is PointerScrollEvent) {
-            print('is pointer');
-
-            GestureBinding.instance.pointerSignalResolver.register(event,
-                (PointerSignalEvent e) {
-              if (e is PointerScrollEvent) {
-                Scrollable.of(context).position.jumpTo(
-                      Scrollable.of(context).position.pixels + e.scrollDelta.dy,
-                    );
-              }
-            });
-          }
-        },
-        child: Tooltip(
-          message: msg,
-          preferBelow: preferBelow,
-          enableTapToDismiss: false,
-          enableFeedback: false,
-          child: child,
-        ),
+      return DFTooltipHack(
+        message: msg,
+        preferBelow: preferBelow,
+        child: child,
       );
     }
 

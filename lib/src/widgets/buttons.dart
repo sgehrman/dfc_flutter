@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/widgets/df_tooltip.dart';
+import 'package:dfc_flutter/src/widgets/df_tool_tip/df_tooltip.dart';
 import 'package:flutter/material.dart';
 
 // DFIconButton in a textfields prefix/suffix icons
