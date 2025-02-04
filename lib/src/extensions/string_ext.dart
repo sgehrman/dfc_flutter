@@ -102,15 +102,15 @@ extension StringUtils on String {
     return StrUtils.convertHtmlCodes(this);
   }
 
-  // like trim() but also removes more than one blank line \n\n\n => \n\n
   String superTrim() {
-    String result = replaceAll(RegExp(r'\n\s*\n'), '\n\n');
-
-    // multiple spaces to one space
-    result = result.replaceAll(RegExp(' +'), ' ');
-
     // remove spaces after newline
-    result = result.replaceAll(RegExp(r'\n\s*'), '\n');
+    String result = replaceAll(RegExp(r'\n\s+'), '\n');
+
+    // replace 3 or more newlines with 2 newlines
+    result = result.replaceAll(RegExp(r'\n{3,}'), '\n\n');
+
+    // two or more spaces to one space
+    result = result.replaceAll(RegExp(' {2,}'), ' ');
 
     return result.trim();
   }
