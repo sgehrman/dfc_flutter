@@ -12,11 +12,30 @@ class DFTooltip extends StatelessWidget {
   final String? message;
   final Widget child;
 
+  String _wrapString(String message) {
+    final words = message.split(' ');
+
+    final buffer = StringBuffer();
+
+    int cnt = 0;
+    for (final word in words) {
+      cnt += word.length;
+      buffer.write('$word ');
+
+      if (cnt > 30) {
+        cnt = 0;
+        buffer.write('\n');
+      }
+    }
+
+    return buffer.toString().trim();
+  }
+
   @override
   Widget build(BuildContext context) {
     if (Utils.isNotEmpty(message)) {
       return Tooltip(
-        message: message,
+        message: _wrapString(message!),
         child: child,
       );
     }
