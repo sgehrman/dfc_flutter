@@ -22,7 +22,7 @@ class DFTooltip extends StatelessWidget {
       cnt += word.length;
       buffer.write('$word ');
 
-      if (cnt > 30) {
+      if (cnt > 40) {
         cnt = 0;
         buffer.write('\n');
       }
