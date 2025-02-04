@@ -779,6 +779,8 @@ class _TooltipOverlay extends StatelessWidget {
         child: result,
       );
     }
+
+    // SNG - this is the only change.  allows scrollwheel to work when hovering over tooltip
     return Listener(
       onPointerSignal: (event) {
         if (event is PointerScrollEvent) {
