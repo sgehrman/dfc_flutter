@@ -46,7 +46,11 @@ class DFTooltip extends StatelessWidget {
     if (msg.isNotEmpty) {
       return Listener(
         onPointerSignal: (event) {
+          print(event);
+
           if (event is PointerScrollEvent) {
+            print('is pointer');
+
             GestureBinding.instance.pointerSignalResolver.register(event,
                 (PointerSignalEvent e) {
               if (e is PointerScrollEvent) {
@@ -57,17 +61,12 @@ class DFTooltip extends StatelessWidget {
             });
           }
         },
-        child: IgnorePointer(
-          child: Tooltip(
-            message: msg,
-            preferBelow: preferBelow,
-            enableTapToDismiss: false,
-            enableFeedback: false,
-            child: IgnorePointer(
-              ignoring: false,
-              child: child,
-            ),
-          ),
+        child: Tooltip(
+          message: msg,
+          preferBelow: preferBelow,
+          enableTapToDismiss: false,
+          enableFeedback: false,
+          child: child,
         ),
       );
     }
