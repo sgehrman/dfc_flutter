@@ -57,22 +57,17 @@ class DFTooltip extends StatelessWidget {
             });
           }
         },
-        child: Stack(
-          children: [
-            Tooltip(
-              message: msg,
-              preferBelow: preferBelow,
-              enableTapToDismiss: false,
-              enableFeedback: false,
+        child: IgnorePointer(
+          child: Tooltip(
+            message: msg,
+            preferBelow: preferBelow,
+            enableTapToDismiss: false,
+            enableFeedback: false,
+            child: IgnorePointer(
+              ignoring: false,
               child: child,
             ),
-            const Positioned.fill(
-              child: AbsorbPointer(),
-            ),
-            const Positioned.fill(
-              child: IgnorePointer(),
-            ),
-          ],
+          ),
         ),
       );
     }
