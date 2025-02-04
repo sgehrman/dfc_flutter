@@ -781,20 +781,20 @@ class _TooltipOverlay extends StatelessWidget {
     }
 
     // SNG - this is the only change.  allows scrollwheel to work when hovering over tooltip
-    return Listener(
-      onPointerSignal: (event) {
-        if (event is PointerScrollEvent) {
-          // hide tooltip otherwise it will stick with the mouse pointer
+    return Positioned.fill(
+      bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
+      child: Listener(
+        onPointerSignal: (event) {
+          if (event is PointerScrollEvent) {
+            // hide tooltip otherwise it will stick with the mouse pointer
 
-          DFTooltipHack.dismissAllToolTips();
+            DFTooltipHack.dismissAllToolTips();
 
-          Scrollable.of(context).position.jumpTo(
-                Scrollable.of(context).position.pixels + event.scrollDelta.dy,
-              );
-        }
-      },
-      child: Positioned.fill(
-        bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
+            Scrollable.of(context).position.jumpTo(
+                  Scrollable.of(context).position.pixels + event.scrollDelta.dy,
+                );
+          }
+        },
         child: CustomSingleChildLayout(
           delegate: _TooltipPositionDelegate(
             target: target,
