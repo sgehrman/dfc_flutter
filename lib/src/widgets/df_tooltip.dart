@@ -1,4 +1,5 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 // same as Tooltip, but handles null messages without exceptions
@@ -43,23 +44,21 @@ class DFTooltip extends StatelessWidget {
     final msg = _wrapString(message);
 
     if (msg.isNotEmpty) {
-      final WidgetSpan richMessage = WidgetSpan(
-        child: IgnorePointer(
-          child: Text(
-            msg,
-          ),
+      return Listener(
+        onPointerSignal: (event) {
+          if (event is PointerScrollEvent) {
+            Scrollable.of(context).position.jumpTo(
+                  Scrollable.of(context).position.pixels + event.scrollDelta.dy,
+                );
+          }
+        },
+        child: Tooltip(
+          message: msg,
+          preferBelow: preferBelow,
+          enableTapToDismiss: false,
+          enableFeedback: false,
+          child: child,
         ),
-      );
-
-      return Tooltip(
-        // can't use message, we have to IgnorePointer so the scrollWheel events don't
-        // get eaten when the mouse is over a tooltip
-        // message: '',
-        richMessage: richMessage,
-        preferBelow: preferBelow,
-        enableTapToDismiss: false,
-        enableFeedback: false,
-        child: child,
       );
     }
 
