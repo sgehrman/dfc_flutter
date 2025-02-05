@@ -7,6 +7,8 @@ class TextWithLinks extends StatelessWidget {
   const TextWithLinks(
     this.text, {
     required this.style,
+    this.humanize = false,
+    this.selectable = false,
     this.linkStyle,
     super.key,
   });
@@ -14,6 +16,8 @@ class TextWithLinks extends StatelessWidget {
   final String text;
   final TextStyle style;
   final TextStyle? linkStyle;
+  final bool selectable;
+  final bool humanize;
 
   @override
   Widget build(BuildContext context) {
