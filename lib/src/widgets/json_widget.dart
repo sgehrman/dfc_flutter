@@ -152,7 +152,6 @@ class _JsonViewerWidgetState extends State<JsonViewerWidget> {
       return Expanded(
         child: TextWithLinks(
           entry.value as String,
-          humanize: false,
           style: const TextStyle(
             color: Colors.grey,
           ),
@@ -396,7 +395,6 @@ class _JsonArrayViewerWidgetState extends State<_JsonArrayViewerWidget> {
       return Expanded(
         child: TextWithLinks(
           content,
-          humanize: false,
           style: const TextStyle(
             color: Colors.grey,
           ),
