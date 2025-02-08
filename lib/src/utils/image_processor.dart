@@ -495,7 +495,7 @@ class ImageProcessor {
         }
       }
     } catch (e) {
-      print('### downloadImageToPng error: $e\nuri: $uri');
+      print('### imageToSquarePng error: $e\nuri: $uri');
     }
 
     return PngImageBytesAndSize(
