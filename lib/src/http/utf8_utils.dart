@@ -86,7 +86,7 @@ class Utf8Utils {
     // push off to a isolate if large enough
     // the idea is our server can handle incoming requests faster if
     // the main thread is not hung on this
-    if (bytes.length > 200 * 1024) {
+    if (bytes.length > 100 * 1024) {
       final params = {
         'bytes': bytes,
         'allowMalformed': allowMalformed,
