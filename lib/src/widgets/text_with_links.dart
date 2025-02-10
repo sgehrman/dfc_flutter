@@ -1,7 +1,7 @@
 import 'package:dfc_flutter/src/extensions/build_context_ext.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:linkfy_text/linkfy_text.dart';
+import 'package:linkify_plus/linkify_plus.dart';
 
 class TextWithLinks extends StatelessWidget {
   const TextWithLinks(
@@ -21,20 +21,27 @@ class TextWithLinks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LinkifyText(
-      text,
+    if (selectable) {
+      return SelectableLinkify(
+        text: text,
+        linkStyle: linkStyle ?? style.copyWith(color: context.primary),
+        options: LinkifyOptions(humanize: humanize),
+        style: style,
+        onOpen: (link) {
+          if (Utils.isNotEmpty(link.url)) {
+            Utils.launchUrl(link.url);
+          }
+        },
+      );
+    }
+    return Linkify(
+      text: text,
       linkStyle: linkStyle ?? style.copyWith(color: context.primary),
-      linkTypes: const [
-        LinkType.url,
-        // LinkType.hashTag,
-        LinkType.email,
-        LinkType.phone,
-        // LinkType.userTag,
-      ],
-      textStyle: style,
-      onTap: (link) {
-        if (Utils.isNotEmpty(link.value)) {
-          Utils.launchUrl(link.value ?? '');
+      options: LinkifyOptions(humanize: humanize),
+      style: style,
+      onOpen: (link) {
+        if (Utils.isNotEmpty(link.url)) {
+          Utils.launchUrl(link.url);
         }
       },
     );

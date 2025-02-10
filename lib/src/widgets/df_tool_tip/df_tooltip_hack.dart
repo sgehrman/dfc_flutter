@@ -54,6 +54,7 @@ class _RenderExclusiveMouseRegion extends RenderMouseRegion {
       isOutermostMouseRegion = true;
       foundInnermostMouseRegion = false;
     }
+
     return isHit;
   }
 }
@@ -138,8 +139,10 @@ class DFTooltipHack extends StatefulWidget {
       for (final DFTooltipHackState state in openedTooltips) {
         state._scheduleDismissTooltip(withDelay: Duration.zero);
       }
+
       return true;
     }
+
     return false;
   }
 
@@ -500,6 +503,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
       return false;
     }
     _scheduleShowTooltip(withDelay: Duration.zero);
+
     return true;
   }
 
