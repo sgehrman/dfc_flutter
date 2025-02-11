@@ -5,7 +5,7 @@
 import 'package:dfc_flutter/src/widgets/linkify_text/linkify.dart';
 
 String urlRegExp =
-    r'(?:(?:https?:\/\/)?(?:www\.)?)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)';
+    r'(?:https?:\/\/)?[\w\.-]+(?::\d+)?\/[\w\/.-]+\/[A-Za-z0-9+\/=]+';
 
 String hashtagRegExp =
     r'#[a-zA-Z\u00C0-\u01B4\w_\u1EA0-\u1EF9!$%^&]{1,}(?=\s|$)';
