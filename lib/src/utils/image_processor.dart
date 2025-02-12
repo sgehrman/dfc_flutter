@@ -182,7 +182,9 @@ class ImageProcessor {
     // could be a wide logo for example (revolver.news)
     if (imageSize.width > imageSize.height) {
       // 720 / 1280  youtube thumbnail == .56
-      if (imageSize.shortestSide / imageSize.longestSide < 0.55) {
+      // 1536 × 346 revolver logo = .22
+      // 1200 × 630 apple logo = .525
+      if (imageSize.shortestSide / imageSize.longestSide < 0.50) {
         fit = BoxFit.contain;
       }
     }
