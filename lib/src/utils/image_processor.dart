@@ -181,8 +181,8 @@ class ImageProcessor {
     // not a square, use contain if wider than tall
     // could be a wide logo for example (revolver.news)
     if (imageSize.width > imageSize.height) {
-      // 360 / 480 = 0.75
-      if (imageSize.shortestSide / imageSize.longestSide < 0.75) {
+      // 720 / 1280  youtube thumbnail == .56
+      if (imageSize.shortestSide / imageSize.longestSide < 0.55) {
         fit = BoxFit.contain;
       }
     }
