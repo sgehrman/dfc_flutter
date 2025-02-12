@@ -10,11 +10,15 @@ class NothingFound extends StatelessWidget {
     this.nothing = true,
     this.loading = false,
     this.message = '', // 'Nothing found'
+    this.fontSize = 14,
+    this.bold = false,
   });
 
   final bool nothing;
   final bool loading;
   final String message;
+  final double fontSize;
+  final bool bold;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +38,8 @@ class NothingFound extends StatelessWidget {
           msg,
           style: TextStyle(
             color: context.dimTextColor,
+            fontSize: fontSize,
+            fontWeight: bold ? FontWeight.bold : FontWeight.normal,
           ),
         ),
       );
