@@ -45,9 +45,8 @@ class CDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final dialogTheme = DialogTheme.of(context);
 
-    final color = backgroundColor ??
-        dialogTheme.backgroundColor ??
-        Theme.of(context).dialogBackgroundColor;
+    final color =
+        backgroundColor ?? dialogTheme.backgroundColor ?? Colors.black;
 
     return AnimatedPadding(
       padding: EdgeInsets.zero,
@@ -67,8 +66,9 @@ class CDialog extends StatelessWidget {
             clipBehavior: clipBehavior,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                border:
-                    Border.fromBorderSide(BorderSide(color: color, width: 4)),
+                border: Border.fromBorderSide(
+                  BorderSide(color: color, width: 4),
+                ),
                 color: Colors.black,
               ),
               child: child,
