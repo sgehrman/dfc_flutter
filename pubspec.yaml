@@ -8,12 +8,11 @@ environment:
   sdk: ^3.7.0
 
 dependencies:
-  bonsoir: ^5.1.10
+  bonsoir: ^5.1.11
   characters: ^1.4.0
   collection: ^1.19.1
   crypto: ^3.0.6
   date_time_format: ^2.0.1
-  device_info_plus: ^11.3.0
   dfc_dart:
     git: https://github.com/sgehrman/dfc_dart
   dotted_border: ^2.1.0

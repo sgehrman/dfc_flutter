@@ -8,7 +8,6 @@ export 'src/file_system/zip_archive.dart';
 export 'src/requests/common.dart';
 export 'src/requests/requests.dart';
 export 'src/utils/create_icon_screen.dart';
-export 'src/utils/device_info_screen.dart';
 // export 'src/widgets/image/image_viewer.dart';
 // export 'src/widgets/image/super_image.dart';
 export 'src/widgets/image/super_image_source.dart';
