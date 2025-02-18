@@ -102,27 +102,16 @@ class ImageProcessor {
       if (pngData != null) {
         final bs = pngData.buffer.asUint8List();
 
-        return PngImageBytesAndSize(
-          bytes: bs,
-          height: height,
-          width: width,
-        );
+        return PngImageBytesAndSize(bytes: bs, height: height, width: width);
       }
     } catch (err) {
       print(err);
     }
 
-    return PngImageBytesAndSize(
-      bytes: Uint8List(0),
-      height: 0,
-      width: 0,
-    );
+    return PngImageBytesAndSize(bytes: Uint8List(0), height: 0, width: 0);
   }
 
-  static bool isSvg({
-    required Uri uri,
-    required Uint8List bytes,
-  }) {
+  static bool isSvg({required Uri uri, required Uint8List bytes}) {
     final format = ImageProcessor.formatForName(uri.path);
 
     if (format == ImgFormat.svg) {
@@ -161,20 +150,13 @@ class ImageProcessor {
       print('### downloadImageToPng error: $e\nuri: $uri');
     }
 
-    return PngImageBytesAndSize(
-      bytes: Uint8List(0),
-      height: 0,
-      width: 0,
-    );
+    return PngImageBytesAndSize(bytes: Uint8List(0), height: 0, width: 0);
   }
 
   // ===============================================================
 
   static BoxFit _fitForImage(ui.Image image) {
-    final imageSize = ui.Size(
-      image.width.toDouble(),
-      image.height.toDouble(),
-    );
+    final imageSize = ui.Size(image.width.toDouble(), image.height.toDouble());
 
     BoxFit fit = BoxFit.cover;
 
@@ -224,33 +206,31 @@ class ImageProcessor {
         );
       }
     } catch (err) {
-      print('svgToPng: Error = $err');
+      print('svgToPng: Error = $err, svg: $svg');
     }
 
-    return PngImageBytesAndSize(
-      bytes: Uint8List(0),
-      height: 0,
-      width: 0,
-    );
+    return PngImageBytesAndSize(bytes: Uint8List(0), height: 0, width: 0);
   }
 
   // ========================================================================================
 
   // ## must dispose
   static Future<ui.Image> bytesToImage(Uint8List bytes) async {
-    final ui.ImmutableBuffer buffer =
-        await ui.ImmutableBuffer.fromUint8List(bytes);
-    final ui.ImageDescriptor descriptor =
-        await ui.ImageDescriptor.encoded(buffer);
+    final ui.ImmutableBuffer buffer = await ui.ImmutableBuffer.fromUint8List(
+      bytes,
+    );
+    final ui.ImageDescriptor descriptor = await ui.ImageDescriptor.encoded(
+      buffer,
+    );
 
     // descriptor.width
     // descriptor.height
 
     final ui.Codec codec = await descriptor.instantiateCodec(
-        // use this if you don't use the svg replacement (facebook thing?)
-        // targetWidth: _kWidth.toInt(),
-        // targetHeight: _kWidth.toInt(),
-        );
+      // use this if you don't use the svg replacement (facebook thing?)
+      // targetWidth: _kWidth.toInt(),
+      // targetHeight: _kWidth.toInt(),
+    );
 
     final ui.FrameInfo frameInfo = await codec.getNextFrame();
 
@@ -265,10 +245,12 @@ class ImageProcessor {
   // ## must dispose
   // doesn't work on web. never tested, not sure if this works
   static Future<ui.Image> assetImage(String assetPath) async {
-    final ui.ImmutableBuffer buffer =
-        await ui.ImmutableBuffer.fromAsset(assetPath);
-    final ui.ImageDescriptor descriptor =
-        await ui.ImageDescriptor.encoded(buffer);
+    final ui.ImmutableBuffer buffer = await ui.ImmutableBuffer.fromAsset(
+      assetPath,
+    );
+    final ui.ImageDescriptor descriptor = await ui.ImageDescriptor.encoded(
+      buffer,
+    );
 
     final ui.Codec codec = await descriptor.instantiateCodec(
       targetWidth: descriptor.width,
@@ -352,10 +334,7 @@ class ImageProcessor {
 
     final picture = recorder.endRecording();
 
-    final result = await picture.toImage(
-      width.ceil(),
-      height.ceil(),
-    );
+    final result = await picture.toImage(width.ceil(), height.ceil());
 
     picture.dispose();
 
@@ -370,9 +349,7 @@ class ImageProcessor {
     final PictureInfo pictureInfo = await vg.loadPicture(
       SvgStringLoader(
         svg,
-        theme: SvgTheme(
-          currentColor: color ?? Colors.black,
-        ),
+        theme: SvgTheme(currentColor: color ?? Colors.black),
       ),
       null,
       onError: (error, stackTrace) {
@@ -500,10 +477,6 @@ class ImageProcessor {
       print('### imageToSquarePng error: $e\nuri: $uri');
     }
 
-    return PngImageBytesAndSize(
-      bytes: Uint8List(0),
-      height: 0,
-      width: 0,
-    );
+    return PngImageBytesAndSize(bytes: Uint8List(0), height: 0, width: 0);
   }
 }
