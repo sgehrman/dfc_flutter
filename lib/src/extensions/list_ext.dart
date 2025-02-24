@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
 extension ExtendedList on List<dynamic> {
@@ -22,6 +20,10 @@ extension ExtendedList on List<dynamic> {
   }
 
   List<T> truncate<T>(int limit) {
-    return sublist(0, math.min(length, limit)) as List<T>;
+    if (length > limit) {
+      return sublist(0, limit) as List<T>;
+    }
+
+    return this as List<T>;
   }
 }
