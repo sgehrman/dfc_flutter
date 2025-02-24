@@ -778,9 +778,9 @@ class _TooltipOverlay extends StatelessWidget {
     // SNG - this is the only change.  allows scrollwheel to work when hovering over tooltip
     // added IgnorePointer to avoid hover over tooltip and our slideout sidebars getting dismissed
     // when mouse is over the tooltip.
-    return IgnorePointer(
-      child: Positioned.fill(
-        bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
+    return Positioned.fill(
+      bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
+      child: IgnorePointer(
         child: Listener(
           onPointerSignal: (event) {
             if (event is PointerScrollEvent) {
