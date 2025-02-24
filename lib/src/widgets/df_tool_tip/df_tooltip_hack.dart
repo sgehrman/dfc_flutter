@@ -11,26 +11,16 @@ import 'package:flutter/services.dart';
 typedef TooltipTriggeredCallback = void Function();
 
 class _ExclusiveMouseRegion extends MouseRegion {
-  const _ExclusiveMouseRegion({
-    super.onEnter,
-    super.onExit,
-    super.child,
-  });
+  const _ExclusiveMouseRegion({super.onEnter, super.onExit, super.child});
 
   @override
   _RenderExclusiveMouseRegion createRenderObject(BuildContext context) {
-    return _RenderExclusiveMouseRegion(
-      onEnter: onEnter,
-      onExit: onExit,
-    );
+    return _RenderExclusiveMouseRegion(onEnter: onEnter, onExit: onExit);
   }
 }
 
 class _RenderExclusiveMouseRegion extends RenderMouseRegion {
-  _RenderExclusiveMouseRegion({
-    super.onEnter,
-    super.onExit,
-  });
+  _RenderExclusiveMouseRegion({super.onEnter, super.onExit});
 
   static bool isOutermostMouseRegion = true;
   static bool foundInnermostMouseRegion = false;
@@ -81,16 +71,16 @@ class DFTooltipHack extends StatefulWidget {
     this.enableFeedback,
     this.onTriggered,
     this.child,
-  })  : assert(
-          (message == null) != (richMessage == null),
-          'Either `message` or `richMessage` must be specified',
-        ),
-        assert(
-          richMessage == null || textStyle == null,
-          'If `richMessage` is specified, `textStyle` will have no effect. '
-          'If you wish to provide a `textStyle` for a rich tooltip, add the '
-          '`textStyle` directly to the `richMessage` InlineSpan.',
-        );
+  }) : assert(
+         (message == null) != (richMessage == null),
+         'Either `message` or `richMessage` must be specified',
+       ),
+       assert(
+         richMessage == null || textStyle == null,
+         'If `richMessage` is specified, `textStyle` will have no effect. '
+         'If you wish to provide a `textStyle` for a rich tooltip, add the '
+         '`textStyle` directly to the `richMessage` InlineSpan.',
+       );
 
   final String? message;
 
@@ -337,9 +327,10 @@ class DFTooltipHackState extends State<DFTooltipHack>
       }
       _controller.forward();
       _timer?.cancel();
-      _timer = showDuration == null
-          ? null
-          : Timer(showDuration, _controller.reverse);
+      _timer =
+          showDuration == null
+              ? null
+              : Timer(showDuration, _controller.reverse);
     }
 
     assert(
@@ -386,9 +377,9 @@ class DFTooltipHackState extends State<DFTooltipHack>
       case TooltipTriggerMode.longPress:
         final LongPressGestureRecognizer recognizer =
             _longPressRecognizer ??= LongPressGestureRecognizer(
-          debugOwner: this,
-          supportedDevices: triggerModeDeviceKinds,
-        );
+              debugOwner: this,
+              supportedDevices: triggerModeDeviceKinds,
+            );
         recognizer
           ..onLongPressCancel = _handleTapToDismiss
           ..onLongPress = _handleLongPress
@@ -397,9 +388,9 @@ class DFTooltipHackState extends State<DFTooltipHack>
       case TooltipTriggerMode.tap:
         final TapGestureRecognizer recognizer =
             _tapRecognizer ??= TapGestureRecognizer(
-          debugOwner: this,
-          supportedDevices: triggerModeDeviceKinds,
-        );
+              debugOwner: this,
+              supportedDevices: triggerModeDeviceKinds,
+            );
         recognizer
           ..onTapCancel = _handleTapToDismiss
           ..onTap = _handleTap
@@ -511,8 +502,9 @@ class DFTooltipHackState extends State<DFTooltipHack>
   void initState() {
     super.initState();
 
-    GestureBinding.instance.pointerRouter
-        .addGlobalRoute(_handleGlobalPointerEvent);
+    GestureBinding.instance.pointerRouter.addGlobalRoute(
+      _handleGlobalPointerEvent,
+    );
   }
 
   @override
@@ -526,24 +518,18 @@ class DFTooltipHackState extends State<DFTooltipHack>
     return switch (Theme.of(context).platform) {
       TargetPlatform.macOS ||
       TargetPlatform.linux ||
-      TargetPlatform.windows =>
-        24.0,
+      TargetPlatform.windows => 24.0,
       TargetPlatform.android ||
       TargetPlatform.fuchsia ||
-      TargetPlatform.iOS =>
-        32.0,
+      TargetPlatform.iOS => 32.0,
     };
   }
 
   EdgeInsets _getDefaultPadding() {
     return switch (Theme.of(context).platform) {
-      TargetPlatform.macOS ||
-      TargetPlatform.linux ||
-      TargetPlatform.windows =>
+      TargetPlatform.macOS || TargetPlatform.linux || TargetPlatform.windows =>
         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      TargetPlatform.android ||
-      TargetPlatform.fuchsia ||
-      TargetPlatform.iOS =>
+      TargetPlatform.android || TargetPlatform.fuchsia || TargetPlatform.iOS =>
         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
     };
   }
@@ -552,30 +538,32 @@ class DFTooltipHackState extends State<DFTooltipHack>
     return switch (platform) {
       TargetPlatform.macOS ||
       TargetPlatform.linux ||
-      TargetPlatform.windows =>
-        12.0,
+      TargetPlatform.windows => 12.0,
       TargetPlatform.android ||
       TargetPlatform.fuchsia ||
-      TargetPlatform.iOS =>
-        14.0,
+      TargetPlatform.iOS => 14.0,
     };
   }
 
   Widget _buildTooltipOverlay(BuildContext context) {
-    final OverlayState overlayState =
-        Overlay.of(context, debugRequiredFor: widget);
+    final OverlayState overlayState = Overlay.of(
+      context,
+      debugRequiredFor: widget,
+    );
     final RenderBox box = this.context.findRenderObject()! as RenderBox;
     final Offset target = box.localToGlobal(
       box.size.center(Offset.zero),
       ancestor: overlayState.context.findRenderObject(),
     );
 
-    final (TextStyle defaultTextStyle, BoxDecoration defaultDecoration) =
-        switch (Theme.of(context)) {
+    final (
+      TextStyle defaultTextStyle,
+      BoxDecoration defaultDecoration,
+    ) = switch (Theme.of(context)) {
       ThemeData(
         brightness: Brightness.dark,
         :final TextTheme textTheme,
-        :final TargetPlatform platform
+        :final TargetPlatform platform,
       ) =>
         (
           textTheme.bodyMedium!.copyWith(
@@ -590,7 +578,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
       ThemeData(
         brightness: Brightness.light,
         :final TextTheme textTheme,
-        :final TargetPlatform platform
+        :final TargetPlatform platform,
       ) =>
         (
           textTheme.bodyMedium!.copyWith(
@@ -620,7 +608,8 @@ class DFTooltipHackState extends State<DFTooltipHack>
           widget.textAlign ?? tooltipTheme.textAlign ?? _defaultTextAlign,
       animation: _overlayAnimation,
       target: target,
-      verticalOffset: widget.verticalOffset ??
+      verticalOffset:
+          widget.verticalOffset ??
           tooltipTheme.verticalOffset ??
           _defaultVerticalOffset,
       preferBelow:
@@ -634,8 +623,9 @@ class DFTooltipHackState extends State<DFTooltipHack>
 
   @override
   void dispose() {
-    GestureBinding.instance.pointerRouter
-        .removeGlobalRoute(_handleGlobalPointerEvent);
+    GestureBinding.instance.pointerRouter.removeGlobalRoute(
+      _handleGlobalPointerEvent,
+    );
     DFTooltipHack._openedTooltips.remove(this);
 
     _longPressRecognizer?.onLongPressCancel = null;
@@ -653,7 +643,8 @@ class DFTooltipHackState extends State<DFTooltipHack>
     if (_tooltipMessage.isEmpty) {
       return widget.child ?? const SizedBox.shrink();
     }
-    final bool excludeFromSemantics = widget.excludeFromSemantics ??
+    final bool excludeFromSemantics =
+        widget.excludeFromSemantics ??
         _tooltipTheme.excludeFromSemantics ??
         _defaultExcludeFromSemantics;
     Widget result = Semantics(
@@ -785,27 +776,31 @@ class _TooltipOverlay extends StatelessWidget {
     }
 
     // SNG - this is the only change.  allows scrollwheel to work when hovering over tooltip
-    return Positioned.fill(
-      bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
-      child: Listener(
-        onPointerSignal: (event) {
-          if (event is PointerScrollEvent) {
-            // hide tooltip otherwise it will stick with the mouse pointer
+    // added IgnorePointer to avoid hover over tooltip and our slideout sidebars getting dismissed
+    // when mouse is over the tooltip.
+    return IgnorePointer(
+      child: Positioned.fill(
+        bottom: MediaQuery.maybeViewInsetsOf(context)?.bottom ?? 0.0,
+        child: Listener(
+          onPointerSignal: (event) {
+            if (event is PointerScrollEvent) {
+              // hide tooltip otherwise it will stick with the mouse pointer
 
-            DFTooltipHack.dismissAllToolTips();
+              DFTooltipHack.dismissAllToolTips();
 
-            Scrollable.of(context).position.jumpTo(
-                  Scrollable.of(context).position.pixels + event.scrollDelta.dy,
-                );
-          }
-        },
-        child: CustomSingleChildLayout(
-          delegate: _TooltipPositionDelegate(
-            target: target,
-            verticalOffset: verticalOffset,
-            preferBelow: preferBelow,
+              Scrollable.of(context).position.jumpTo(
+                Scrollable.of(context).position.pixels + event.scrollDelta.dy,
+              );
+            }
+          },
+          child: CustomSingleChildLayout(
+            delegate: _TooltipPositionDelegate(
+              target: target,
+              verticalOffset: verticalOffset,
+              preferBelow: preferBelow,
+            ),
+            child: result,
           ),
-          child: result,
         ),
       ),
     );
