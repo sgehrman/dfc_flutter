@@ -1,5 +1,3 @@
-import 'dart:math' as math;
-
 import 'package:dfc_flutter/dfc_flutter_web_lite.dart';
 import 'package:flutter/material.dart';
 
@@ -24,23 +22,15 @@ class HelpListItem extends StatefulWidget {
   }) {
     int index = 0;
 
-    return helpData.map(
-      (x) {
-        return HelpListItem(
-          isMobile: isMobile,
-          header: Paragraf(
-            isMobile: isMobile,
-            specs: [x.title],
-          ),
-          expanded: Paragraf(
-            isMobile: isMobile,
-            specs: [x.message],
-          ),
-          key: ValueKey(index++),
-          initialExpanded: index == 1,
-        );
-      },
-    ).toList();
+    return helpData.map((x) {
+      return HelpListItem(
+        isMobile: isMobile,
+        header: Paragraf(isMobile: isMobile, specs: [x.title]),
+        expanded: Paragraf(isMobile: isMobile, specs: [x.message]),
+        key: ValueKey(index++),
+        initialExpanded: index == 1,
+      );
+    }).toList();
   }
 
   @override
@@ -58,7 +48,7 @@ class _HelpListItemState extends State<HelpListItem> {
     _controller = XpandableController(initialExpanded: widget.initialExpanded);
   }
 
-  Widget _expandIcon({required bool downArrow}) {
+  Widget _expandIcon() {
     return SizedBox(
       height: widget.isMobile ? 16 : 20,
       width: widget.isMobile ? 16 : 20,
@@ -66,11 +56,7 @@ class _HelpListItemState extends State<HelpListItem> {
         child: SizedBox(
           height: widget.isMobile ? 14 : 18,
           width: widget.isMobile ? 12 : 14,
-          child: CustomPaint(
-            painter: TrianglePainter(
-              color: context.primary,
-            ),
-          ),
+          child: CustomPaint(painter: TrianglePainter(color: context.primary)),
         ),
       ),
     );
@@ -78,14 +64,13 @@ class _HelpListItemState extends State<HelpListItem> {
 
   XpandableThemeData _theme(BuildContext context) {
     _expandableTheme ??= XpandableThemeData(
-      collapseIcon: _expandIcon(downArrow: true),
-      expandIcon: _expandIcon(downArrow: false),
-      iconRotationAngle: math.pi / 2,
+      expandIcon: _expandIcon(),
       animationDuration: const Duration(milliseconds: 300),
       crossFadePoint: 0,
-      hoverColor: Utils.isDarkMode(context)
-          ? Colors.white.withValues(alpha: 0.05)
-          : Colors.black.withValues(alpha: 0.05),
+      hoverColor:
+          Utils.isDarkMode(context)
+              ? Colors.white.withValues(alpha: 0.05)
+              : Colors.black.withValues(alpha: 0.05),
       headerDecoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),

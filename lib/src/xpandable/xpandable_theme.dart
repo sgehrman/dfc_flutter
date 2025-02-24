@@ -1,12 +1,9 @@
-import 'dart:math' as math;
-
 import 'package:dfc_flutter/src/xpandable/xpandable_theme_notifier.dart';
 import 'package:flutter/material.dart';
 
 class XpandableThemeData {
   const XpandableThemeData({
     required this.expandIcon,
-    required this.collapseIcon,
     this.animationDuration,
     this.scrollAnimationDuration,
     this.crossFadePoint,
@@ -14,7 +11,6 @@ class XpandableThemeData {
     this.sizeCurve,
     this.alignment,
     this.hoverColor,
-    this.iconRotationAngle,
     this.headerDecoration,
   });
 
@@ -35,25 +31,17 @@ class XpandableThemeData {
         sizeCurve: theme.sizeCurve ?? defaults.sizeCurve,
         alignment: theme.alignment ?? defaults.alignment,
         hoverColor: theme.hoverColor ?? defaults.hoverColor,
-        iconRotationAngle:
-            theme.iconRotationAngle ?? defaults.iconRotationAngle,
         expandIcon: theme.expandIcon,
-        collapseIcon: theme.collapseIcon,
         headerDecoration: theme.headerDecoration ?? defaults.headerDecoration,
       );
     }
   }
 
-  factory XpandableThemeData.withDefaults(
-    XpandableThemeData theme,
-  ) {
+  factory XpandableThemeData.withDefaults(XpandableThemeData theme) {
     if (theme.isFull()) {
       return theme;
     } else {
-      return XpandableThemeData.combine(
-        theme,
-        defaults,
-      );
+      return XpandableThemeData.combine(theme, defaults);
     }
   }
   static const XpandableThemeData defaults = XpandableThemeData(
@@ -64,9 +52,7 @@ class XpandableThemeData {
     sizeCurve: Curves.fastOutSlowIn,
     alignment: Alignment.topLeft,
     hoverColor: Colors.transparent,
-    iconRotationAngle: -math.pi,
-    expandIcon: Icon(Icons.expand_more),
-    collapseIcon: Icon(Icons.expand_more),
+    expandIcon: Icon(Icons.chevron_right),
     headerDecoration: BoxDecoration(color: Colors.transparent),
   );
 
@@ -78,9 +64,7 @@ class XpandableThemeData {
   final Curve? sizeCurve;
   final Color? hoverColor;
   final BoxDecoration? headerDecoration;
-  final double? iconRotationAngle;
   final Widget expandIcon;
-  final Widget collapseIcon;
 
   double get collapsedFadeStart =>
       crossFadePoint! < 0.5 ? 0 : (crossFadePoint! * 2 - 1);
@@ -100,7 +84,6 @@ class XpandableThemeData {
         fadeCurve != null &&
         sizeCurve != null &&
         alignment != null &&
-        iconRotationAngle != null &&
         hoverColor != null &&
         headerDecoration != null;
   }
@@ -117,10 +100,8 @@ class XpandableThemeData {
           sizeCurve == other.sizeCurve &&
           alignment == other.alignment &&
           hoverColor == other.hoverColor &&
-          iconRotationAngle == other.iconRotationAngle &&
           expandIcon == other.expandIcon &&
-          headerDecoration == other.headerDecoration &&
-          collapseIcon == other.collapseIcon;
+          headerDecoration == other.headerDecoration;
     } else {
       return false;
     }
@@ -135,9 +116,11 @@ class XpandableThemeData {
     BuildContext context, {
     bool rebuildOnChange = true,
   }) {
-    final notifier = rebuildOnChange
-        ? context.dependOnInheritedWidgetOfExactType<XpandableThemeNotifier>()
-        : context.findAncestorWidgetOfExactType<XpandableThemeNotifier>();
+    final notifier =
+        rebuildOnChange
+            ? context
+                .dependOnInheritedWidgetOfExactType<XpandableThemeNotifier>()
+            : context.findAncestorWidgetOfExactType<XpandableThemeNotifier>();
 
     return notifier?.themeData ?? defaults;
   }
