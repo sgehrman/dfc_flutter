@@ -3,7 +3,6 @@ import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/json_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class JsonViewerScreen extends StatelessWidget {
   const JsonViewerScreen({
@@ -25,11 +24,7 @@ class JsonViewerScreen extends StatelessWidget {
     return Navigator.of(context).push<void>(
       MaterialPageRoute(
         builder: (context) {
-          return JsonViewerScreen(
-            map: map,
-            title: title,
-            onDelete: onDelete,
-          );
+          return JsonViewerScreen(map: map, title: title, onDelete: onDelete);
         },
         fullscreenDialog: true,
       ),
@@ -40,13 +35,10 @@ class JsonViewerScreen extends StatelessWidget {
     return IconButton(
       onPressed: () {
         final String jsonStr = StrUtils.toPrettyString(map);
-        Clipboard.setData(ClipboardData(text: jsonStr));
 
-        Utils.showCopiedToast(context);
+        Utils.copyToClipboard(jsonStr);
       },
-      icon: const Icon(
-        Icons.content_copy,
-      ),
+      icon: const Icon(Icons.content_copy),
     );
   }
 
@@ -66,10 +58,7 @@ class JsonViewerScreen extends StatelessWidget {
     actions.add(_copyButton(context));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        actions: actions,
-      ),
+      appBar: AppBar(title: Text(title), actions: actions),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: JsonViewerWidget(map),
@@ -101,9 +90,10 @@ Future<void> showJsonViewerDialog({
   controller.widget = Container(
     decoration: BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(12)),
-      color: Utils.isDarkMode(context)
-          ? Colors.white.withValues(alpha: 0.07)
-          : Colors.black.withValues(alpha: 0.07),
+      color:
+          Utils.isDarkMode(context)
+              ? Colors.white.withValues(alpha: 0.07)
+              : Colors.black.withValues(alpha: 0.07),
     ),
     padding: const EdgeInsets.all(10),
     height: 700,
@@ -128,9 +118,8 @@ Future<void> showJsonViewerDialog({
         IconButton(
           onPressed: () {
             final String jsonStr = StrUtils.toPrettyString(map);
-            Clipboard.setData(ClipboardData(text: jsonStr));
 
-            Utils.showCopiedToast(context);
+            Utils.copyToClipboard(jsonStr);
           },
           tooltip: 'Copy Json',
           icon: const Icon(Icons.content_copy),

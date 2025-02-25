@@ -7,14 +7,8 @@ import 'package:dfc_flutter/src/utils/debouncer.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/search_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-enum SVGSource {
-  fontawesome,
-  material,
-  bootstrap,
-  community,
-}
+enum SVGSource { fontawesome, material, bootstrap, community }
 
 class SvgScreen extends StatefulWidget {
   const SvgScreen({
@@ -115,10 +109,7 @@ class _SvgScreenState extends State<SvgScreen> {
     final gridItemHeight = gridItemWidth;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_title),
-        actions: actions,
-      ),
+      appBar: AppBar(title: Text(_title), actions: actions),
       body: Column(
         children: [
           SearchField(
@@ -149,9 +140,7 @@ class _SvgScreenState extends State<SvgScreen> {
                         const SizedBox(height: 20),
                         InkWell(
                           onTap: () {
-                            Clipboard.setData(ClipboardData(text: item.name));
-
-                            Utils.showCopiedToast(context);
+                            Utils.copyToClipboard(item.name);
                           },
                           child: SvgIcon(
                             item.icon,
@@ -160,9 +149,7 @@ class _SvgScreenState extends State<SvgScreen> {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Text(
-                          item.name,
-                        ),
+                        Text(item.name),
                       ],
                     );
                   },
@@ -177,10 +164,7 @@ class _SvgScreenState extends State<SvgScreen> {
 }
 
 class _NameAndIcon {
-  const _NameAndIcon(
-    this.name,
-    this.icon,
-  );
+  const _NameAndIcon(this.name, this.icon);
 
   final String name;
   final String icon;

@@ -4,6 +4,7 @@ import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:collection/collection.dart';
+import 'package:dfc_flutter/src/extensions/string_ext.dart';
 import 'package:dfc_flutter/src/widgets/shared_snack_bar.dart';
 import 'package:dfc_flutter/src/widgets/ttext.dart';
 import 'package:flutter/foundation.dart';
@@ -42,10 +43,7 @@ class Utils {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (context) {
-          return Theme(
-            data: ThemeData.light(),
-            child: const LicensePage(),
-          );
+          return Theme(data: ThemeData.light(), child: const LicensePage());
         },
       ),
     );
@@ -77,8 +75,8 @@ class Utils {
     String tryDirName = dirName;
 
     String destFolder = p.join(directoryPath, tryDirName);
-    while (
-        File(destFolder).existsSync() || Directory(destFolder).existsSync()) {
+    while (File(destFolder).existsSync() ||
+        Directory(destFolder).existsSync()) {
       tryDirName = '$dirName-$nameIndex';
       destFolder = p.join(directoryPath, tryDirName);
 
@@ -303,8 +301,8 @@ class Utils {
         actions: [
           TextButton(
             child: Text(buttonName),
-            onPressed: () =>
-                ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+            onPressed:
+                () => ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
           ),
         ],
       ),
@@ -320,18 +318,11 @@ class Utils {
   }) {
     final snackBar = SnackBar(
       backgroundColor: error ? Colors.red[700] : Colors.green[800],
-      content: TText(
-        message,
-        style: const TextStyle(
-          color: Colors.white,
-        ),
-      ),
-      action: action != null
-          ? SnackBarAction(
-              label: action,
-              onPressed: onPressed!,
-            )
-          : null,
+      content: TText(message, style: const TextStyle(color: Colors.white)),
+      action:
+          action != null
+              ? SnackBarAction(label: action, onPressed: onPressed!)
+              : null,
     );
 
     // remove any existing snackbars first otherwise they can queue up and take forever to finish
@@ -339,13 +330,12 @@ class Utils {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  static Future<void> showCopiedToast(BuildContext context) async {
-    await Navigator.of(context).push<void>(
-      PageRouteBuilder(
-        opaque: false,
-        pageBuilder: (BuildContext context, _, __) => _Toast(),
-      ),
-    );
+  static void copyToClipboard(String text) {
+    Clipboard.setData(ClipboardData(text: text));
+
+    final String message = text.truncate(60).replaceAll('\n', ' ');
+
+    Utils.successSnackbar(title: 'Copied', message: message);
   }
 
   static Future<ui.Image> loadUiImage(String imageAssetPath) async {
@@ -394,8 +384,9 @@ class Utils {
     assert(amount >= 0 && amount <= 1, 'amount bad');
 
     final hsl = HSLColor.fromColor(color);
-    final hslDark =
-        hsl.withLightness((hsl.lightness * (1 - amount)).clamp(0.0, 1.0));
+    final hslDark = hsl.withLightness(
+      (hsl.lightness * (1 - amount)).clamp(0.0, 1.0),
+    );
 
     return hslDark.toColor();
   }
@@ -404,8 +395,9 @@ class Utils {
     assert(amount >= 0 && amount <= 1, 'amount bad');
 
     final hsl = HSLColor.fromColor(color);
-    final hslLight =
-        hsl.withLightness((hsl.lightness * (1 + amount)).clamp(0.0, 1.0));
+    final hslLight = hsl.withLightness(
+      (hsl.lightness * (1 + amount)).clamp(0.0, 1.0),
+    );
 
     return hslLight.toColor();
   }
@@ -515,20 +507,15 @@ class Utils {
     return false;
   }
 
-  static T? enumFromString<T extends Enum>(
-    List<T> enumValues,
-    String name,
-  ) {
+  static T? enumFromString<T extends Enum>(List<T> enumValues, String name) {
     if (enumValues.isEmpty || name.isEmpty) {
       return null;
     }
 
-    return enumValues.singleWhereOrNull(
-      (e) {
-        // not sure if .toLowerCase() is necessary, but old code was doing this
-        return e.name.toLowerCase() == name.toLowerCase();
-      },
-    );
+    return enumValues.singleWhereOrNull((e) {
+      // not sure if .toLowerCase() is necessary, but old code was doing this
+      return e.name.toLowerCase() == name.toLowerCase();
+    });
   }
 
   static bool isEmpty(dynamic input) {
@@ -544,11 +531,7 @@ class Utils {
     required String message,
     bool error = false,
   }) {
-    SharedSnackBars().show(
-      title: title,
-      message: message,
-      error: error,
-    );
+    SharedSnackBars().show(title: title, message: message, error: error);
   }
 
   // removes null value, empty strings, empty lists, empty maps
@@ -635,45 +618,5 @@ class HexColor extends Color {
     }
 
     return int.parse(hc, radix: 16);
-  }
-}
-
-class _Toast extends StatefulWidget {
-  @override
-  __ToastState createState() => __ToastState();
-}
-
-class __ToastState extends State<_Toast> {
-  @override
-  void initState() {
-    super.initState();
-
-    Future.delayed(const Duration(seconds: 1), () {
-      if (mounted) {
-        Navigator.of(context).pop();
-      }
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return IgnorePointer(
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Center(
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.black87,
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-            child: const Text(
-              'Copied',
-              style: TextStyle(color: Colors.white, fontSize: 18),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

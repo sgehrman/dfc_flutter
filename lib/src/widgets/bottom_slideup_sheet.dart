@@ -1,6 +1,5 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 abstract class SliderContent {
   int itemCount();
@@ -29,9 +28,7 @@ class BottomSlideupSheet {
       backgroundColor: sliderContent.backgroundColor(context),
       barrierColor: sliderContent.barrierColor(context),
       isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: _borderRadius,
-      ),
+      shape: const RoundedRectangleBorder(borderRadius: _borderRadius),
       context: context,
       builder: (context) {
         return _SheetList(sliderContent: sliderContent);
@@ -41,9 +38,7 @@ class BottomSlideupSheet {
 }
 
 class _SheetList extends StatelessWidget {
-  const _SheetList({
-    this.sliderContent,
-  });
+  const _SheetList({this.sliderContent});
 
   final SliderContent? sliderContent;
 
@@ -53,9 +48,7 @@ class _SheetList extends StatelessWidget {
       height: 5,
       decoration: BoxDecoration(
         color: Utils.isDarkMode(context) ? Colors.grey[600] : Colors.grey[400],
-        borderRadius: const BorderRadius.all(
-          Radius.circular(12),
-        ),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
     );
   }
@@ -67,9 +60,8 @@ class _SheetList extends StatelessWidget {
       copyButton = InkWell(
         onTap: () {
           final String jsonStr = sliderContent!.stringForCopy();
-          Clipboard.setData(ClipboardData(text: jsonStr));
 
-          Utils.showCopiedToast(context);
+          Utils.copyToClipboard(jsonStr);
         },
         child: const Icon(Icons.content_copy, size: 26),
       );
@@ -77,10 +69,7 @@ class _SheetList extends StatelessWidget {
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        sliderContent!.buttonBarBuilder(context),
-        copyButton,
-      ],
+      children: <Widget>[sliderContent!.buttonBarBuilder(context), copyButton],
     );
   }
 
@@ -117,9 +106,7 @@ class _SheetList extends StatelessWidget {
                 _tabDecoration(context),
                 const SizedBox(height: 8),
                 _buttonBar(context),
-                Expanded(
-                  child: _listView(context, controller),
-                ),
+                Expanded(child: _listView(context, controller)),
               ],
             ),
           );
