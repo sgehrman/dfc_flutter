@@ -12,12 +12,14 @@ class ContextualInkWell extends StatelessWidget {
     required this.child,
     required this.onTap,
     this.borderRadius,
+    this.disableHoverColor = false,
   });
 
   final List<MenuButtonBarItemData> Function() buildMenu;
   final Widget child;
   final void Function() onTap;
   final BorderRadius? borderRadius;
+  final bool disableHoverColor;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,7 @@ class ContextualInkWell extends StatelessWidget {
         Widget? child,
       ) {
         return InkWell(
+          hoverColor: disableHoverColor ? Colors.transparent : null,
           borderRadius: borderRadius,
           onSecondaryTapDown: (details) {
             if (controller.isOpen) {
