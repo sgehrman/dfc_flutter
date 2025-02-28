@@ -4,10 +4,7 @@ import 'package:dfc_flutter/src/widgets/menu_buttons/dfc_menu_anchor.dart';
 import 'package:flutter/material.dart';
 
 class ContextualMenu extends StatefulWidget {
-  const ContextualMenu({
-    required this.buildMenu,
-    required this.child,
-  });
+  const ContextualMenu({required this.buildMenu, required this.child});
 
   final List<MenuButtonBarItemData> Function() buildMenu;
   final Widget child;
@@ -26,7 +23,6 @@ class _ContextMenuState extends State<ContextualMenu> {
 
     return DFCMenuAnchor(
       menuChildren: menuChildren,
-      consumeOutsideTap: true,
       child: widget.child,
       onOpen: () => setState(() {}),
       onClose: () => setState(() {}),
@@ -36,12 +32,13 @@ class _ContextMenuState extends State<ContextualMenu> {
         Widget? child,
       ) {
         return GestureDetector(
-          onSecondaryTapDown: (details) =>
-              _handleRightClick(details, controller),
+          onSecondaryTapDown:
+              (details) => _handleRightClick(details, controller),
           onTap: controller.isOpen ? controller.close : null,
-          behavior: controller.isOpen
-              ? HitTestBehavior.opaque
-              : HitTestBehavior.deferToChild,
+          behavior:
+              controller.isOpen
+                  ? HitTestBehavior.opaque
+                  : HitTestBehavior.deferToChild,
           child: child,
         );
       },

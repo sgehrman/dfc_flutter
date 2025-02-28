@@ -54,7 +54,6 @@ class ContextualInkWell extends StatelessWidget {
 
     return DFCMenuAnchor(
       menuChildren: menuChildren,
-      consumeOutsideTap: true,
       child: child,
       builder: (
         BuildContext context,
@@ -63,6 +62,10 @@ class ContextualInkWell extends StatelessWidget {
       ) {
         if (useGestureDetector) {
           return GestureDetector(
+            behavior:
+                controller.isOpen
+                    ? HitTestBehavior.opaque
+                    : HitTestBehavior.deferToChild,
             onSecondaryTapDown: (details) {
               _handleRightClick(details, controller, child);
             },

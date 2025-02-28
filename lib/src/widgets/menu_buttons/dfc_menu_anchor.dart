@@ -12,7 +12,8 @@ class DFCMenuAnchor extends StatelessWidget {
     this.alignmentOffset = Offset.zero,
     this.layerLink,
     this.clipBehavior = Clip.hardEdge,
-    this.consumeOutsideTap = false,
+    // I think we always want this true
+    this.consumeOutsideTap = true,
     this.onOpen,
     this.onClose,
     this.crossAxisUnconstrained = true,
@@ -37,11 +38,7 @@ class DFCMenuAnchor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScrollbarTheme(
-      data: const ScrollbarThemeData(
-        thickness: WidgetStatePropertyAll(
-          2,
-        ),
-      ),
+      data: const ScrollbarThemeData(thickness: WidgetStatePropertyAll(2)),
       child: MenuAnchor(
         controller: controller,
         childFocusNode: childFocusNode,
