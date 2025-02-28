@@ -13,6 +13,7 @@ class ContextualInkWell extends StatelessWidget {
     required this.onTap,
     this.borderRadius,
     this.useGestureDetector = false,
+    this.disableHoverColor = false,
   });
 
   final List<MenuButtonBarItemData> Function() buildMenu;
@@ -20,6 +21,7 @@ class ContextualInkWell extends StatelessWidget {
   final void Function() onTap;
   final BorderRadius? borderRadius;
   final bool useGestureDetector;
+  final bool disableHoverColor;
 
   void _handleLeftClick(MenuController controller, Widget? child) {
     if (controller.isOpen) {
@@ -73,6 +75,7 @@ class ContextualInkWell extends StatelessWidget {
           );
         }
         return InkWell(
+          hoverColor: disableHoverColor ? Colors.transparent : null,
           borderRadius: borderRadius,
           onSecondaryTapDown: (details) {
             _handleRightClick(details, controller, child);
