@@ -48,10 +48,8 @@ class _ContextMenuState extends State<ContextualMenu> {
   void _handleRightClick(TapDownDetails details, MenuController controller) {
     if (controller.isOpen) {
       controller.close();
-
-      return;
+    } else {
+      controller.open(position: details.localPosition);
     }
-
-    controller.open(position: details.localPosition);
   }
 }

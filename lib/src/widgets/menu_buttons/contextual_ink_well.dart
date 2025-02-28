@@ -26,11 +26,9 @@ class ContextualInkWell extends StatelessWidget {
   void _handleLeftClick(MenuController controller, Widget? child) {
     if (controller.isOpen) {
       controller.close();
-
-      return;
+    } else {
+      onTap();
     }
-
-    onTap();
   }
 
   void _handleRightClick(
@@ -40,11 +38,9 @@ class ContextualInkWell extends StatelessWidget {
   ) {
     if (controller.isOpen) {
       controller.close();
-
-      return;
+    } else {
+      controller.open(position: details.localPosition);
     }
-
-    controller.open(position: details.localPosition);
   }
 
   @override
