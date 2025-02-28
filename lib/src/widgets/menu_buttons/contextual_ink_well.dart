@@ -12,14 +12,38 @@ class ContextualInkWell extends StatelessWidget {
     required this.child,
     required this.onTap,
     this.borderRadius,
-    this.disableHoverColor = false,
+    this.useGestureDetector = false,
   });
 
   final List<MenuButtonBarItemData> Function() buildMenu;
   final Widget child;
   final void Function() onTap;
   final BorderRadius? borderRadius;
-  final bool disableHoverColor;
+  final bool useGestureDetector;
+
+  void _handleLeftClick(MenuController controller, Widget? child) {
+    if (controller.isOpen) {
+      controller.close();
+
+      return;
+    }
+
+    onTap();
+  }
+
+  void _handleRightClick(
+    TapDownDetails details,
+    MenuController controller,
+    Widget? child,
+  ) {
+    if (controller.isOpen) {
+      controller.close();
+
+      return;
+    }
+
+    controller.open(position: details.localPosition);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,26 +61,24 @@ class ContextualInkWell extends StatelessWidget {
         MenuController controller,
         Widget? child,
       ) {
+        if (useGestureDetector) {
+          return GestureDetector(
+            onSecondaryTapDown: (details) {
+              _handleRightClick(details, controller, child);
+            },
+            onTap: () {
+              _handleLeftClick(controller, child);
+            },
+            child: child,
+          );
+        }
         return InkWell(
-          hoverColor: disableHoverColor ? Colors.transparent : null,
           borderRadius: borderRadius,
           onSecondaryTapDown: (details) {
-            if (controller.isOpen) {
-              controller.close();
-
-              return;
-            }
-
-            controller.open(position: details.localPosition);
+            _handleRightClick(details, controller, child);
           },
           onTap: () {
-            if (controller.isOpen) {
-              controller.close();
-
-              return;
-            }
-
-            onTap();
+            _handleLeftClick(controller, child);
           },
           child: child,
         );
