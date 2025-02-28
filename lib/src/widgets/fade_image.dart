@@ -69,7 +69,7 @@ class FadeImage extends StatelessWidget {
     required this.fit,
     this.height,
     this.width,
-    this.duration = const Duration(milliseconds: 300),
+    this.duration = const Duration(milliseconds: 200),
     this.checkerboard = false,
     this.missingImage,
     super.key,
