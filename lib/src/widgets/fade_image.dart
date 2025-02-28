@@ -4,6 +4,7 @@ import 'package:dfc_dart/dfc_dart.dart';
 import 'package:dfc_flutter/src/menu_button_bar/contextual_menu.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/utils/image_processor.dart';
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/checkerboard_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +32,11 @@ List<MenuButtonBarItemData> _contextualMenuItems({
           // failing on WASM
           try {
             await Pasteboard.writeImage(imageData.bytes);
+
+            Utils.successSnackbar(
+              title: 'Copied',
+              message: 'Image to clipboard',
+            );
           } catch (err) {
             print('Pasteboard.writeImage exception');
             print(err);
@@ -115,14 +121,8 @@ class FadeImage extends StatelessWidget {
     }
 
     return ContextualMenu(
-      buildMenu: () => _contextualMenuItems(
-        context: context,
-        url: cleanUrl,
-      ),
-      child: CheckerboardContainer(
-        enabled: checkerboard,
-        child: image,
-      ),
+      buildMenu: () => _contextualMenuItems(context: context, url: cleanUrl),
+      child: CheckerboardContainer(enabled: checkerboard, child: image),
     );
   }
 }
@@ -136,11 +136,7 @@ class _MissingImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return missingImage ??
-        const Icon(
-          Icons.warning_outlined,
-          size: 64,
-        );
+    return missingImage ?? const Icon(Icons.warning_outlined, size: 64);
   }
 }
 
@@ -202,10 +198,7 @@ class AssetImageFader extends StatelessWidget {
       width: size,
       height: size,
       fit: fit,
-      image: AssetImage(
-        assetPath,
-        package: package,
-      ),
+      image: AssetImage(assetPath, package: package),
       errorBuilder: (context, error, stackTrace) {
         return Icon(Icons.dangerous, size: size, color: Colors.red);
       },
