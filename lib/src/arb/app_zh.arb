@@ -1,5 +1,8 @@
 {
   "@@locale": "zh",
+  "copied": "Copied",
+  "copy": "Copy",
+  "imageToClipboard": "Image to clipboard",
   "nothingFound": "未找到",
   "search": "搜索",
   "today": "今天",

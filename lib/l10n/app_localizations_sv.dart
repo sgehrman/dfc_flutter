@@ -9,6 +9,15 @@ class AppLocalizationsSv extends AppLocalizations {
   AppLocalizationsSv([String locale = 'sv']) : super(locale);
 
   @override
+  String get copied => 'Copied';
+
+  @override
+  String get copy => 'Copy';
+
+  @override
+  String get imageToClipboard => 'Image to clipboard';
+
+  @override
   String get nothingFound => 'Ingenting hittades';
 
   @override

@@ -1,5 +1,8 @@
 {
   "@@locale": "en",
+  "copied": "Copied",
+  "copy": "Copy",
+  "imageToClipboard": "Image to clipboard",
   "nothingFound": "Nothing Found",
   "search": "Search",
   "today": "Today",

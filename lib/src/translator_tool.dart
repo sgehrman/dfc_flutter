@@ -66,8 +66,10 @@ class Translator {
                 englishMap[item.key] != existing) {
               sourceMapCopy[item.key] = existing;
             } else {
-              sourceMapCopy[item.key] =
-                  await _translate(item.value as String, languageCode);
+              sourceMapCopy[item.key] = await _translate(
+                item.value as String,
+                languageCode,
+              );
             }
           } else {
             // startswith @ above should catch everyting, but warn here since it would unexpected
@@ -126,31 +128,17 @@ class Translator {
     };
 
     try {
-      final res = await http.post(
-        uri,
-        headers: <String, String>{
-          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-        },
-        body: body,
-      );
+      final result = await _getTranslationRetry(uri, body);
 
-      if (res.bodyBytes.isNotEmpty) {
-        final result = Map<String, dynamic>.from(
-          json.decode(utf8.decode(res.bodyBytes)) as Map,
-        );
+      final results = result['translations'] as List?;
 
-        final results = result['translations'] as List?;
+      if (results != null && results.isNotEmpty) {
+        final m = results.first as Map;
+        final text = m['text'] as String;
 
-        if (results != null && results.isNotEmpty) {
-          final m = results.first as Map;
-          final text = m['text'] as String;
-
-          return processedInput.restore(text);
-        } else {
-          print(result);
-        }
+        return processedInput.restore(text);
       } else {
-        print('body empty');
+        print(result);
       }
     } catch (err) {
       print(err);
@@ -160,6 +148,53 @@ class Translator {
 
     return text;
   }
+}
+
+// ======================================================
+
+Future<Map<String, dynamic>> _getTranslationRetry(
+  Uri uri,
+  Map<String, String> body,
+) async {
+  try {
+    while (true) {
+      final res = await http.post(
+        uri,
+        headers: <String, String>{
+          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+        },
+        body: body,
+      );
+
+      if (res.bodyBytes.isNotEmpty) {
+        final bodyString = utf8.decode(res.bodyBytes);
+
+        if (bodyString.startsWith('<')) {
+          // <html>
+          // <head><title>429 Too Many Requests</title></head>
+          // <body>
+          // <center><h1>429 Too Many Requests</h1></center>
+          // <hr><center>nginx</center>
+          // </body>
+          // </html>
+          print('Waiting to try again...');
+
+          await Future.delayed(const Duration(seconds: 2));
+          print('Retrying...');
+        } else {
+          return Map<String, dynamic>.from(json.decode(bodyString) as Map);
+        }
+      } else {
+        print('body empty');
+      }
+    }
+  } catch (err) {
+    print('getTranslationRetry catch: $err');
+  }
+
+  print('getTranslationRetry failed');
+
+  return {};
 }
 
 // ======================================================

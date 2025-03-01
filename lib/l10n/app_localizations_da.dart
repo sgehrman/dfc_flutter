@@ -9,6 +9,15 @@ class AppLocalizationsDa extends AppLocalizations {
   AppLocalizationsDa([String locale = 'da']) : super(locale);
 
   @override
+  String get copied => 'Copied';
+
+  @override
+  String get copy => 'Copy';
+
+  @override
+  String get imageToClipboard => 'Image to clipboard';
+
+  @override
   String get nothingFound => 'Intet fundet';
 
   @override

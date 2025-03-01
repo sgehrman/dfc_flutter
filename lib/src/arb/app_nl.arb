@@ -1,5 +1,8 @@
 {
   "@@locale": "nl",
+  "copied": "Copied",
+  "copy": "Copy",
+  "imageToClipboard": "Image to clipboard",
   "nothingFound": "Niets gevonden",
   "search": "Zoek op",
   "today": "Vandaag",

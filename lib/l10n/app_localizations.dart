@@ -117,6 +117,24 @@ abstract class AppLocalizations {
     Locale('zh')
   ];
 
+  /// No description provided for @copied.
+  ///
+  /// In en, this message translates to:
+  /// **'Copied'**
+  String get copied;
+
+  /// No description provided for @copy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copy;
+
+  /// No description provided for @imageToClipboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Image to clipboard'**
+  String get imageToClipboard;
+
   /// No description provided for @nothingFound.
   ///
   /// In en, this message translates to:

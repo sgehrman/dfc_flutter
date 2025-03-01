@@ -1,5 +1,8 @@
 {
   "@@locale": "ru",
+  "copied": "Copied",
+  "copy": "Copy",
+  "imageToClipboard": "Image to clipboard",
   "nothingFound": "Ничего не найдено",
   "search": "Поиск",
   "today": "Сегодня",

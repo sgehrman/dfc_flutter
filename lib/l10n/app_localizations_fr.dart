@@ -9,6 +9,15 @@ class AppLocalizationsFr extends AppLocalizations {
   AppLocalizationsFr([String locale = 'fr']) : super(locale);
 
   @override
+  String get copied => 'Copied';
+
+  @override
+  String get copy => 'Copy';
+
+  @override
+  String get imageToClipboard => 'Image to clipboard';
+
+  @override
   String get nothingFound => 'Rien n\'a été trouvé';
 
   @override

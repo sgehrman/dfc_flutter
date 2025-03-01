@@ -1,5 +1,8 @@
 {
   "@@locale": "cs",
+  "copied": "Copied",
+  "copy": "Copy",
+  "imageToClipboard": "Image to clipboard",
   "nothingFound": "Nic nenalezeno",
   "search": "Vyhledávání",
   "today": "Dnes",

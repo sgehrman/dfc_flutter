@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:dfc_dart/dfc_dart.dart';
+import 'package:dfc_flutter/l10n/app_localizations.dart';
 import 'package:dfc_flutter/src/menu_button_bar/contextual_menu.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/utils/image_processor.dart';
@@ -18,11 +19,12 @@ List<MenuButtonBarItemData> _contextualMenuItems({
   required BuildContext context,
   required String url,
 }) {
+  final l10n = AppLocalizations.of(context);
   final itemDatas = <MenuButtonBarItemData>[];
 
   itemDatas.add(
     MenuButtonBarItemData(
-      title: 'Copy',
+      title: l10n.copy,
       action: () async {
         final uri = UriUtils.parseUri(url);
 
@@ -34,8 +36,8 @@ List<MenuButtonBarItemData> _contextualMenuItems({
             await Pasteboard.writeImage(imageData.bytes);
 
             Utils.successSnackbar(
-              title: 'Copied',
-              message: 'Image to clipboard',
+              title: l10n.copied,
+              message: l10n.imageToClipboard,
             );
           } catch (err) {
             print('Pasteboard.writeImage exception');
