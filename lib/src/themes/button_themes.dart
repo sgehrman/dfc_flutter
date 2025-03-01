@@ -261,8 +261,7 @@ class ButtonThemes {
   }
 
   BorderSide _borderSide(Set<WidgetState> states) {
-    Color color =
-        whiteButtons ? Colors.white : baseTheme.colorScheme.outlineVariant;
+    Color color = whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
 
     final darker = color.darker();
     final lighter = color.mix(baseTheme.colorScheme.surface, 0.2);
@@ -275,6 +274,6 @@ class ButtonThemes {
       color = lighter;
     }
 
-    return BorderSide(color: color);
+    return BorderSide(color: color, width: 2);
   }
 }
