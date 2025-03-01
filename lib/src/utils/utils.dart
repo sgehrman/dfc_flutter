@@ -4,7 +4,9 @@ import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:collection/collection.dart';
+import 'package:dfc_flutter/l10n/app_localizations.dart';
 import 'package:dfc_flutter/src/extensions/string_ext.dart';
+import 'package:dfc_flutter/src/widgets/shared_context.dart';
 import 'package:dfc_flutter/src/widgets/shared_snack_bar.dart';
 import 'package:dfc_flutter/src/widgets/ttext.dart';
 import 'package:flutter/foundation.dart';
@@ -331,11 +333,13 @@ class Utils {
   }
 
   static void copyToClipboard(String text) {
+    final l10n = AppLocalizations.of(SharedContext().scaffoldContext);
+
     Clipboard.setData(ClipboardData(text: text));
 
     final String message = text.truncate(60).replaceAll('\n', ' ');
 
-    Utils.successSnackbar(title: 'Copied', message: message);
+    Utils.successSnackbar(title: l10n.copied, message: message);
   }
 
   static Future<ui.Image> loadUiImage(String imageAssetPath) async {
