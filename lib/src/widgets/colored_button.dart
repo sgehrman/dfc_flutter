@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:dfc_flutter/src/extensions/color_ext.dart';
 import 'package:flutter/material.dart';
 
 class ColoredButton extends StatelessWidget {
@@ -27,17 +27,14 @@ class ColoredButton extends StatelessWidget {
       return label;
     }
 
-    return Text(
-      title!,
-      textAlign: TextAlign.center,
-    );
+    return Text(title!, textAlign: TextAlign.center);
   }
 
   @override
   Widget build(BuildContext context) {
     Color disabledColor = color ?? Theme.of(context).colorScheme.primary;
 
-    disabledColor = Utils.lighten(disabledColor);
+    disabledColor = disabledColor.lighter();
 
     if (icon != null) {
       return TextButton.icon(

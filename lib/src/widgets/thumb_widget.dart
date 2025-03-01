@@ -1,5 +1,5 @@
+import 'package:dfc_flutter/src/extensions/color_ext.dart';
 import 'package:dfc_flutter/src/utils/rect_clipper.dart';
-import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class ThumbWidget extends StatelessWidget {
@@ -44,7 +44,7 @@ class ThumbWidget extends StatelessWidget {
 
     Color? firstIconColor = isSelected ? iconColor : unselectedColor;
     if (isDouble) {
-      firstIconColor = Utils.darken(firstIconColor!, 0.05);
+      firstIconColor = firstIconColor!.darker(factor: 0.05);
     }
 
     return Padding(
@@ -93,9 +93,6 @@ class ThumbWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Opacity(
-      opacity: opacity,
-      child: _thumb(index),
-    );
+    return Opacity(opacity: opacity, child: _thumb(index));
   }
 }

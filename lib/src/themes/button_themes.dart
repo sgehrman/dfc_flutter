@@ -1,5 +1,5 @@
+import 'package:dfc_flutter/src/extensions/color_ext.dart';
 import 'package:dfc_flutter/src/themes/theme_utils.dart';
-import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
 
@@ -28,16 +28,11 @@ class ButtonThemes {
     );
 
     final foregroundColor = WidgetStateProperty.resolveWith<Color>(
-      (states) => _buttonTextColor(
-        states: states,
-        filledButton: true,
-      ),
+      (states) => _buttonTextColor(states: states, filledButton: true),
     );
 
     final textStyle = WidgetStateProperty.resolveWith<TextStyle>(
-      (states) => _buttonTextStyle(
-        states: states,
-      ),
+      (states) => _buttonTextStyle(states: states),
     );
 
     final minSize = WidgetStateProperty.resolveWith<Size>(
@@ -75,16 +70,11 @@ class ButtonThemes {
     );
 
     final foregroundColor = WidgetStateProperty.resolveWith<Color>(
-      (states) => _buttonTextColor(
-        states: states,
-        filledButton: true,
-      ),
+      (states) => _buttonTextColor(states: states, filledButton: true),
     );
 
     final textStyle = WidgetStateProperty.resolveWith<TextStyle>(
-      (states) => _buttonTextStyle(
-        states: states,
-      ),
+      (states) => _buttonTextStyle(states: states),
     );
 
     final minSize = WidgetStateProperty.resolveWith<Size>(
@@ -114,16 +104,11 @@ class ButtonThemes {
     final startTheme = baseTheme.textButtonTheme;
 
     final foregroundColor = WidgetStateProperty.resolveWith<Color>(
-      (states) => _buttonTextColor(
-        states: states,
-        filledButton: false,
-      ),
+      (states) => _buttonTextColor(states: states, filledButton: false),
     );
 
     final textStyle = WidgetStateProperty.resolveWith<TextStyle>(
-      (states) => _buttonTextStyle(
-        states: states,
-      ),
+      (states) => _buttonTextStyle(states: states),
     );
 
     final padding = WidgetStateProperty.resolveWith<EdgeInsetsGeometry>(
@@ -160,16 +145,11 @@ class ButtonThemes {
     );
 
     final foregroundColor = WidgetStateProperty.resolveWith<Color>(
-      (states) => _buttonTextColor(
-        states: states,
-        filledButton: false,
-      ),
+      (states) => _buttonTextColor(states: states, filledButton: false),
     );
 
     final textStyle = WidgetStateProperty.resolveWith<TextStyle>(
-      (states) => _buttonTextStyle(
-        states: states,
-      ),
+      (states) => _buttonTextStyle(states: states),
     );
 
     final padding = WidgetStateProperty.resolveWith<EdgeInsetsGeometry>(
@@ -202,8 +182,8 @@ class ButtonThemes {
   // ===============================================================
 
   Color _backColor(Set<WidgetState> states) {
-    final darker = Utils.darken(baseTheme.colorScheme.primary);
-    final lighter = Utils.lighten(baseTheme.colorScheme.primary, 0.2);
+    final darker = baseTheme.colorScheme.primary.darker();
+    final lighter = baseTheme.colorScheme.primary.lighter(factor: 0.2);
 
     if (ThemeUtils.isHovered(states)) {
       return darker;
@@ -216,9 +196,7 @@ class ButtonThemes {
     return baseTheme.colorScheme.primary;
   }
 
-  TextStyle _buttonTextStyle({
-    required Set<WidgetState> states,
-  }) {
+  TextStyle _buttonTextStyle({required Set<WidgetState> states}) {
     // google font set by caller was ignored unless we copy the labelLarge
     final style = baseTheme.textTheme.labelLarge ?? const TextStyle();
 
@@ -234,9 +212,10 @@ class ButtonThemes {
   }) {
     Color baseColor =
         whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
-    Color baseColorLight = whiteButtons
-        ? Utils.lighten(Colors.white, 0.2)
-        : Utils.lighten(baseTheme.colorScheme.primary, 0.2);
+    Color baseColorLight =
+        whiteButtons
+            ? Colors.white.lighter(factor: 0.2)
+            : baseTheme.colorScheme.primary.lighter(factor: 0.2);
 
     if (filledButton) {
       baseColor = baseTheme.colorScheme.onPrimary;
@@ -256,18 +235,13 @@ class ButtonThemes {
   }
 
   EdgeInsets _buttonPadding(Set<WidgetState> states) {
-    return const EdgeInsets.symmetric(
-      horizontal: 18,
-      vertical: 14,
-    );
+    return const EdgeInsets.symmetric(horizontal: 18, vertical: 14);
   }
 
   WidgetStateProperty<OutlinedBorder> _buttonShape() {
     return WidgetStateProperty.resolveWith<OutlinedBorder>(
       (states) => const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(12),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
   }
@@ -280,14 +254,12 @@ class ButtonThemes {
     return const Size(88, 0);
   }
 
-  BorderSide _borderSide(
-    Set<WidgetState> states,
-  ) {
+  BorderSide _borderSide(Set<WidgetState> states) {
     Color color =
         whiteButtons ? Colors.white : baseTheme.colorScheme.outlineVariant;
 
-    final darker = Utils.darken(color);
-    final lighter = Utils.lighten(color, 0.2);
+    final darker = color.darker();
+    final lighter = color.lighter(factor: 0.2);
 
     if (ThemeUtils.isHovered(states)) {
       color = darker;
@@ -297,8 +269,6 @@ class ButtonThemes {
       color = lighter;
     }
 
-    return BorderSide(
-      color: color,
-    );
+    return BorderSide(color: color);
   }
 }

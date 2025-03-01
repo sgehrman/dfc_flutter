@@ -384,28 +384,6 @@ class Utils {
     return Size(dimension, dimension);
   }
 
-  static Color darken(Color color, [double amount = 0.1]) {
-    assert(amount >= 0 && amount <= 1, 'amount bad');
-
-    final hsl = HSLColor.fromColor(color);
-    final hslDark = hsl.withLightness(
-      (hsl.lightness * (1 - amount)).clamp(0.0, 1.0),
-    );
-
-    return hslDark.toColor();
-  }
-
-  static Color lighten(Color color, [double amount = 0.1]) {
-    assert(amount >= 0 && amount <= 1, 'amount bad');
-
-    final hsl = HSLColor.fromColor(color);
-    final hslLight = hsl.withLightness(
-      (hsl.lightness * (1 + amount)).clamp(0.0, 1.0),
-    );
-
-    return hslLight.toColor();
-  }
-
   // set newTab to false for downloads
   //  webOnlyWindowName: '_self', // no flicker on click
   static Future<void> launchUrl(String url, {bool newTab = true}) async {
