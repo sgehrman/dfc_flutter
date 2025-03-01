@@ -10,9 +10,7 @@ class MenuButtonBarUtils {
     return const Flexible(
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 3),
-        child: Divider(
-          height: 1,
-        ),
+        child: Divider(height: 1),
       ),
     );
   }
@@ -40,15 +38,10 @@ class MenuButtonBarUtils {
     return ButtonStyle(
       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       animationDuration: Duration.zero,
-      padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>(
-        (states) {
-          // give room for scrollbar on right
-          return const EdgeInsets.only(
-            left: 20,
-            right: 24,
-          );
-        },
-      ),
+      padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry?>((states) {
+        // give room for scrollbar on right
+        return const EdgeInsets.only(left: 20, right: 24);
+      }),
       minimumSize: WidgetStateProperty.resolveWith<Size?>(
         // MaterialTapTargetSize.shrinkWrap removes vertical padding
         // but this needs to be set low too to avoid items being too tall
@@ -57,38 +50,32 @@ class MenuButtonBarUtils {
         },
       ),
       visualDensity: VisualDensity.compact,
-      backgroundColor: WidgetStateProperty.resolveWith<Color?>(
-        (states) {
-          if (ThemeUtils.isHovered(states)) {
-            return context.primary;
-          }
+      backgroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+        if (ThemeUtils.isHovered(states)) {
+          return context.primary;
+        }
 
-          if (selected) {
-            return context.lightPrimary();
-            // return Theme.of(context).highlightColor;
-          }
+        if (selected) {
+          return context.lightPrimary;
+          // return Theme.of(context).highlightColor;
+        }
 
-          return null;
-        },
-      ),
-      foregroundColor: WidgetStateProperty.resolveWith<Color?>(
-        (states) {
-          return _textIconColor(
-            context: context,
-            states: states,
-            selected: selected,
-          );
-        },
-      ),
-      iconColor: WidgetStateProperty.resolveWith<Color?>(
-        (states) {
-          return _textIconColor(
-            context: context,
-            states: states,
-            selected: selected,
-          );
-        },
-      ),
+        return null;
+      }),
+      foregroundColor: WidgetStateProperty.resolveWith<Color?>((states) {
+        return _textIconColor(
+          context: context,
+          states: states,
+          selected: selected,
+        );
+      }),
+      iconColor: WidgetStateProperty.resolveWith<Color?>((states) {
+        return _textIconColor(
+          context: context,
+          states: states,
+          selected: selected,
+        );
+      }),
     );
   }
 
@@ -110,21 +97,14 @@ class MenuButtonBarUtils {
         // menuIterm vertical size is too tall, so default removed in _menuiItemStyle
         // but we need vertical padding otherwise it's too compact
         child = Padding(
-          padding: const EdgeInsets.only(
-            left: 8,
-            top: 7,
-            bottom: 7,
-          ),
+          padding: const EdgeInsets.only(left: 8, top: 7, bottom: 7),
           child: Text(itemData.title!),
         );
       }
 
       // add tooltip
       if (child != null && itemData.tooltip.isNotEmpty) {
-        child = DFTooltip(
-          message: itemData.tooltip,
-          child: child,
-        );
+        child = DFTooltip(message: itemData.tooltip, child: child);
       }
 
       Widget? leading = itemData.leading;
@@ -152,9 +132,7 @@ class MenuButtonBarUtils {
 
         menuItems.add(
           SubmenuButton(
-            menuChildren: [
-              ...children,
-            ],
+            menuChildren: [...children],
             leadingIcon: leading,
             style: style,
             // child can't be null, interface is bad
