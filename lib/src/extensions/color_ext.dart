@@ -30,7 +30,7 @@ extension ColorUtils on Color {
     assert(factor >= 0 && factor <= 1, 'Factor must be between 0 and 1');
 
     final HSLColor hslColor = HSLColor.fromColor(this);
-    if (hslColor.lightness <= 0.5) {
+    if (hslColor.lightness < 0.5) {
       return mix(Colors.white, factor);
     }
 

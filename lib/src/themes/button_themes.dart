@@ -183,7 +183,10 @@ class ButtonThemes {
 
   Color _backColor(Set<WidgetState> states) {
     final darker = baseTheme.colorScheme.primary.darker();
-    final lighter = baseTheme.colorScheme.primary.lighter(factor: 0.2);
+    final lighter = baseTheme.colorScheme.primary.mix(
+      baseTheme.colorScheme.surface,
+      0.2,
+    );
 
     if (ThemeUtils.isHovered(states)) {
       return darker;
@@ -214,8 +217,11 @@ class ButtonThemes {
         whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
     Color baseColorLight =
         whiteButtons
-            ? Colors.white.lighter(factor: 0.2)
-            : baseTheme.colorScheme.primary.lighter(factor: 0.2);
+            ? Colors.white.mix(baseTheme.colorScheme.surface, 0.2)
+            : baseTheme.colorScheme.primary.mix(
+              baseTheme.colorScheme.surface,
+              0.2,
+            );
 
     if (filledButton) {
       baseColor = baseTheme.colorScheme.onPrimary;
@@ -259,7 +265,7 @@ class ButtonThemes {
         whiteButtons ? Colors.white : baseTheme.colorScheme.outlineVariant;
 
     final darker = color.darker();
-    final lighter = color.lighter(factor: 0.2);
+    final lighter = color.mix(baseTheme.colorScheme.surface, 0.2);
 
     if (ThemeUtils.isHovered(states)) {
       color = darker;
