@@ -10,13 +10,14 @@ extension ColorUtils on Color {
 
     final HSLColor hslColor = HSLColor.fromColor(this);
 
+    // for black or very dark colors, the lightness doesn't work well
+    // so lerp with white to avoid changing the hue and saturation
+    if (hslColor.lightness <= factor) {
+      return mix(Colors.white, factor);
+    }
+
     return hslColor
-        .withLightness(
-          (hslColor.lightness + (1 - hslColor.lightness) * factor).clamp(
-            0.0,
-            1.0,
-          ),
-        )
+        .withLightness((hslColor.lightness * (1 + factor)).clamp(0.0, 1.0))
         .toColor();
   }
 
