@@ -12,7 +12,8 @@ extension ColorUtils on Color {
 
     // for black or very dark colors, the lightness doesn't work well
     // so lerp with white to avoid changing the hue and saturation
-    if (hslColor.lightness <= factor) {
+    // black will become grayish
+    if (hslColor.lightness < factor) {
       return mix(Colors.white, factor);
     }
 
