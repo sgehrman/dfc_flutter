@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/extensions/color_ext.dart';
 import 'package:flutter/material.dart';
 
 extension BuildContextUtils on BuildContext {
@@ -47,8 +48,11 @@ extension BuildContextUtils on BuildContext {
   Color get textColor => onSurface;
 
   // light colors
-  Color get lightTextColor => onSurface.withValues(alpha: 0.8);
-  Color get dimTextColor => onSurface.withValues(alpha: 0.5);
-  Color get lightPrimary =>
-      Theme.of(this).colorScheme.primary.withValues(alpha: 0.4);
+  // Color get lightTextColor => onSurface.withValues(alpha: 0.8);
+  // Color get dimTextColor => onSurface.withValues(alpha: 0.5);
+  // Color get lightPrimary => primary.withValues(alpha: 0.4);
+
+  Color get lightTextColor => onSurface.mix(surface, 0.2);
+  Color get dimTextColor => onSurface.mix(surface, 0.4);
+  Color get lightPrimary => primary.mix(surface, 0.3);
 }
