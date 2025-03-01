@@ -15,6 +15,7 @@ class ButtonThemes {
   bool? boldButtons;
   double? buttonFontSize;
   bool whiteButtons; // text and filled
+  final double dimFactor = 0.25;
 
   ElevatedButtonThemeData elevatedButtonTheme() {
     final startTheme = baseTheme.elevatedButtonTheme;
@@ -185,7 +186,7 @@ class ButtonThemes {
     final darker = baseTheme.colorScheme.primary.darker();
     final lighter = baseTheme.colorScheme.primary.mix(
       baseTheme.colorScheme.surface,
-      0.2,
+      dimFactor,
     );
 
     if (ThemeUtils.isHovered(states)) {
@@ -217,10 +218,10 @@ class ButtonThemes {
         whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
     Color baseColorLight =
         whiteButtons
-            ? Colors.white.mix(baseTheme.colorScheme.surface, 0.2)
+            ? Colors.white.mix(baseTheme.colorScheme.surface, dimFactor)
             : baseTheme.colorScheme.primary.mix(
               baseTheme.colorScheme.surface,
-              0.2,
+              dimFactor,
             );
 
     if (filledButton) {
@@ -241,7 +242,7 @@ class ButtonThemes {
   }
 
   EdgeInsets _buttonPadding(Set<WidgetState> states) {
-    return const EdgeInsets.symmetric(horizontal: 18, vertical: 14);
+    return const EdgeInsets.symmetric(horizontal: 20, vertical: 16);
   }
 
   WidgetStateProperty<OutlinedBorder> _buttonShape() {
@@ -264,7 +265,7 @@ class ButtonThemes {
     Color color = whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
 
     final darker = color.darker();
-    final lighter = color.mix(baseTheme.colorScheme.surface, 0.2);
+    final lighter = color.mix(baseTheme.colorScheme.surface, dimFactor);
 
     if (ThemeUtils.isHovered(states)) {
       color = darker;
