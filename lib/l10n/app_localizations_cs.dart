@@ -9,13 +9,13 @@ class AppLocalizationsCs extends AppLocalizations {
   AppLocalizationsCs([String locale = 'cs']) : super(locale);
 
   @override
-  String get copied => 'Copied';
+  String get copied => 'Zkopírováno';
 
   @override
-  String get copy => 'Copy';
+  String get copy => 'Kopírovat';
 
   @override
-  String get imageToClipboard => 'Image to clipboard';
+  String get imageToClipboard => 'Obrázek do schránky';
 
   @override
   String get nothingFound => 'Nic nenalezeno';

@@ -1,8 +1,8 @@
 {
   "@@locale": "zh",
-  "copied": "Copied",
-  "copy": "Copy",
-  "imageToClipboard": "Image to clipboard",
+  "copied": "复制的",
+  "copy": "复制",
+  "imageToClipboard": "图像到剪贴板",
   "nothingFound": "未找到",
   "search": "搜索",
   "today": "今天",

@@ -1,8 +1,8 @@
 {
   "@@locale": "da",
-  "copied": "Copied",
-  "copy": "Copy",
-  "imageToClipboard": "Image to clipboard",
+  "copied": "Kopieret",
+  "copy": "Kopi",
+  "imageToClipboard": "Billede til udklipsholder",
   "nothingFound": "Intet fundet",
   "search": "Søg efter",
   "today": "I dag",

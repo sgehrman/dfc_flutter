@@ -9,13 +9,13 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get copied => 'Copied';
+  String get copied => 'Скопировано';
 
   @override
-  String get copy => 'Copy';
+  String get copy => 'Копируй';
 
   @override
-  String get imageToClipboard => 'Image to clipboard';
+  String get imageToClipboard => 'Изображение в буфер обмена';
 
   @override
   String get nothingFound => 'Ничего не найдено';

@@ -1,8 +1,8 @@
 {
   "@@locale": "ja",
-  "copied": "Copied",
-  "copy": "Copy",
-  "imageToClipboard": "Image to clipboard",
+  "copied": "コピーされた",
+  "copy": "コピー",
+  "imageToClipboard": "画像をクリップボードにコピーする",
   "nothingFound": "何も見つからない",
   "search": "検索",
   "today": "今日",

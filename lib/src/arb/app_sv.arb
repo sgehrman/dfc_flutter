@@ -1,8 +1,8 @@
 {
   "@@locale": "sv",
-  "copied": "Copied",
-  "copy": "Copy",
-  "imageToClipboard": "Image to clipboard",
+  "copied": "Kopierad",
+  "copy": "Kopia",
+  "imageToClipboard": "Bild till urklipp",
   "nothingFound": "Ingenting hittades",
   "search": "Sök",
   "today": "I dag",

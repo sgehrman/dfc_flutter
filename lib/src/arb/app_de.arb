@@ -1,8 +1,8 @@
 {
   "@@locale": "de",
-  "copied": "Copied",
-  "copy": "Copy",
-  "imageToClipboard": "Image to clipboard",
+  "copied": "Kopiert",
+  "copy": "Kopiere",
+  "imageToClipboard": "Bild in die Zwischenablage",
   "nothingFound": "Nichts gefunden",
   "search": "Suche",
   "today": "Heute",

@@ -1,8 +1,8 @@
 {
   "@@locale": "fi",
-  "copied": "Copied",
-  "copy": "Copy",
-  "imageToClipboard": "Image to clipboard",
+  "copied": "Kopioitu",
+  "copy": "Kopioi",
+  "imageToClipboard": "Kuva leikepöydälle",
   "nothingFound": "Ei löytynyt mitään",
   "search": "Etsi",
   "today": "Tänään",

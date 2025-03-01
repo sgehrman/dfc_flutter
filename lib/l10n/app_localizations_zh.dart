@@ -9,13 +9,13 @@ class AppLocalizationsZh extends AppLocalizations {
   AppLocalizationsZh([String locale = 'zh']) : super(locale);
 
   @override
-  String get copied => 'Copied';
+  String get copied => '复制的';
 
   @override
-  String get copy => 'Copy';
+  String get copy => '复制';
 
   @override
-  String get imageToClipboard => 'Image to clipboard';
+  String get imageToClipboard => '图像到剪贴板';
 
   @override
   String get nothingFound => '未找到';

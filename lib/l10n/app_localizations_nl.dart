@@ -9,13 +9,13 @@ class AppLocalizationsNl extends AppLocalizations {
   AppLocalizationsNl([String locale = 'nl']) : super(locale);
 
   @override
-  String get copied => 'Copied';
+  String get copied => 'Gekopieerd';
 
   @override
-  String get copy => 'Copy';
+  String get copy => 'Kopie';
 
   @override
-  String get imageToClipboard => 'Image to clipboard';
+  String get imageToClipboard => 'Afbeelding naar klembord';
 
   @override
   String get nothingFound => 'Niets gevonden';

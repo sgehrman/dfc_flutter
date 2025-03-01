@@ -9,13 +9,13 @@ class AppLocalizationsFi extends AppLocalizations {
   AppLocalizationsFi([String locale = 'fi']) : super(locale);
 
   @override
-  String get copied => 'Copied';
+  String get copied => 'Kopioitu';
 
   @override
-  String get copy => 'Copy';
+  String get copy => 'Kopioi';
 
   @override
-  String get imageToClipboard => 'Image to clipboard';
+  String get imageToClipboard => 'Kuva leikepöydälle';
 
   @override
   String get nothingFound => 'Ei löytynyt mitään';

@@ -9,13 +9,13 @@ class AppLocalizationsJa extends AppLocalizations {
   AppLocalizationsJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get copied => 'Copied';
+  String get copied => 'コピーされた';
 
   @override
-  String get copy => 'Copy';
+  String get copy => 'コピー';
 
   @override
-  String get imageToClipboard => 'Image to clipboard';
+  String get imageToClipboard => '画像をクリップボードにコピーする';
 
   @override
   String get nothingFound => '何も見つからない';
