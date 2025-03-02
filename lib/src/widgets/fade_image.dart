@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:dfc_dart/dfc_dart.dart';
 import 'package:dfc_flutter/l10n/app_localizations.dart';
+import 'package:dfc_flutter/src/extensions/build_context_ext.dart';
 import 'package:dfc_flutter/src/menu_button_bar/contextual_menu.dart';
 import 'package:dfc_flutter/src/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/utils/image_processor.dart';
@@ -138,7 +139,12 @@ class _MissingImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return missingImage ?? const Icon(Icons.warning_outlined, size: 64);
+    return missingImage ??
+        Icon(
+          Icons.image_not_supported_outlined,
+          size: 64,
+          color: context.error,
+        );
   }
 }
 
