@@ -56,8 +56,8 @@ class MenuButtonBarUtils {
         }
 
         if (selected) {
-          return context.lightPrimary;
-          // return Theme.of(context).highlightColor;
+          // return context.lightPrimary;
+          return Theme.of(context).highlightColor;
         }
 
         return null;
