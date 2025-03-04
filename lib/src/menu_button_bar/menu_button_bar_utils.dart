@@ -49,23 +49,6 @@ class MenuButtonBarUtils {
           return const Size(10, 10);
         },
       ),
-      backgroundBuilder: (context, states, child) {
-        if (ThemeUtils.isHovered(states)) {
-          return DecoratedBox(
-            decoration: BoxDecoration(color: context.primary),
-            child: child,
-          );
-        }
-
-        if (selected) {
-          return DecoratedBox(
-            decoration: BoxDecoration(color: Theme.of(context).highlightColor),
-            child: child,
-          );
-        }
-
-        return SizedBox(child: child);
-      },
       shape: const WidgetStatePropertyAll(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(6)),
