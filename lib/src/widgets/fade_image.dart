@@ -102,6 +102,8 @@ class FadeImage extends StatelessWidget {
       image = Image.network(
         cleanUrl,
         errorBuilder: (context, error, stackTrace) {
+          print('FadeImage zero duration errorBuilder: $error, url: $cleanUrl');
+
           return _MissingImage(missingImage);
         },
         fit: fit,
@@ -111,6 +113,8 @@ class FadeImage extends StatelessWidget {
     } else {
       image = FadeInImage.memoryNetwork(
         imageErrorBuilder: (context, error, stackTrace) {
+          print('FadeImage errorBuilder: $error, url: $cleanUrl');
+
           return _MissingImage(missingImage);
         },
         placeholder: transparentImage(),
@@ -208,6 +212,8 @@ class AssetImageFader extends StatelessWidget {
       fit: fit,
       image: AssetImage(assetPath, package: package),
       errorBuilder: (context, error, stackTrace) {
+        print('AssetImageFader errorBuilder: $error, assetPath: $assetPath');
+
         return Icon(Icons.dangerous, size: size, color: Colors.red);
       },
       frameBuilder: (
