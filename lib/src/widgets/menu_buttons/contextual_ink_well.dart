@@ -71,6 +71,7 @@ class ContextualInkWell extends StatelessWidget {
           );
         }
         return InkWell(
+          focusColor: disableHoverColor ? Colors.transparent : null,
           hoverColor: disableHoverColor ? Colors.transparent : null,
           borderRadius: borderRadius,
           onSecondaryTapDown: (details) {

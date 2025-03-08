@@ -51,7 +51,6 @@ class XpandableThemeData {
     fadeCurve: Curves.linear,
     sizeCurve: Curves.fastOutSlowIn,
     alignment: Alignment.topLeft,
-    hoverColor: Colors.transparent,
     expandIcon: Icon(Icons.chevron_right),
     headerDecoration: BoxDecoration(color: Colors.transparent),
   );

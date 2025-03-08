@@ -67,10 +67,6 @@ class _HelpListItemState extends State<HelpListItem> {
       expandIcon: _expandIcon(),
       animationDuration: const Duration(milliseconds: 300),
       crossFadePoint: 0,
-      hoverColor:
-          Utils.isDarkMode(context)
-              ? Colors.white.withValues(alpha: 0.05)
-              : Colors.black.withValues(alpha: 0.05),
       headerDecoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
