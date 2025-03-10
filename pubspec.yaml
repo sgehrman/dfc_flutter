@@ -58,7 +58,7 @@ dev_dependencies:
   build_runner: ^2.4.15
   # must include this with dfc_lints. see https://github.com/dart-code-checker/dart-code-metrics/issues/254
   dart_code_metrics:
-    git: https://github.com/rei-codes/dart-code-metrics
+    git: https://github.com/JonasWanke/dart-code-metrics
   dfc_lints:
     git: https://github.com/sgehrman/dfc_lints
   json_serializable: ^6.9.4
