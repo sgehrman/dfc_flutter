@@ -23,11 +23,7 @@ class SharedSnackBars {
     bool error = false,
   }) {
     _pending.add(
-      _StandardSnackBar(
-        title: title,
-        message: message,
-        error: error,
-      ),
+      _StandardSnackBar(title: title, message: message, error: error),
     );
   }
 
@@ -35,10 +31,7 @@ class SharedSnackBars {
     await for (final snackbar in _pending.stream) {
       final BuildContext context = SharedContext().scaffoldContext;
 
-      await SharedSnackBar._show(
-        context,
-        snackbar,
-      );
+      await SharedSnackBar._show(context, snackbar);
     }
   }
 }
@@ -69,13 +62,17 @@ class SharedSnackBar extends StatefulWidget {
   static Future<bool> _show(
     BuildContext context,
     Widget child, {
-    Duration showOutAnimationDuration = const Duration(milliseconds: 1000),
-    Duration hideOutAnimationDuration = const Duration(milliseconds: 500),
-    Duration displayDuration = const Duration(milliseconds: 1500),
     double additionalTopPadding = 16.0,
   }) async {
     final overlayState = Overlay.of(context);
-    final Completer<bool> result = Completer<bool>();
+    // final Completer<bool> result = Completer<bool>();
+
+    // this allows multiple shown at once
+    const Duration resultDuration = Duration(milliseconds: 500);
+
+    const Duration showOutAnimationDuration = Duration(milliseconds: 1000);
+    const Duration hideOutAnimationDuration = Duration(milliseconds: 500);
+    const Duration displayDuration = Duration(milliseconds: 1500);
 
     late OverlayEntry overlayEntry;
 
@@ -86,7 +83,7 @@ class SharedSnackBar extends StatefulWidget {
           onTop: MediaQuery.of(context).viewInsets.bottom != 0,
           onDismissed: () {
             overlayEntry.remove();
-            result.complete(true);
+            // result.complete(true);
           },
           showOutAnimationDuration: showOutAnimationDuration,
           hideOutAnimationDuration: hideOutAnimationDuration,
@@ -99,7 +96,9 @@ class SharedSnackBar extends StatefulWidget {
 
     overlayState.insert(overlayEntry);
 
-    return result.future;
+    // return result.future;
+
+    return Future.delayed(resultDuration);
   }
 
   @override
@@ -183,7 +182,7 @@ class _SharedSnackBarState extends State<SharedSnackBar>
 // ===============================================
 // ===============================================
 
-class _StandardSnackBar extends StatefulWidget {
+class _StandardSnackBar extends StatelessWidget {
   const _StandardSnackBar({
     required this.title,
     required this.message,
@@ -195,21 +194,18 @@ class _StandardSnackBar extends StatefulWidget {
   final bool error;
 
   @override
-  _StandardSnackBarState createState() => _StandardSnackBarState();
-}
-
-class _StandardSnackBarState extends State<_StandardSnackBar> {
-  @override
   Widget build(BuildContext context) {
     return Material(
       type: MaterialType.transparency,
       child: Container(
-        constraints:
-            BoxConstraints(minWidth: MediaQuery.of(context).size.width / 3),
+        constraints: BoxConstraints(
+          minWidth: MediaQuery.of(context).size.width / 3,
+        ),
         decoration: BoxDecoration(
-          color: widget.error
-              ? Colors.red[800]!.withValues(alpha: 0.9)
-              : Colors.green[800]!.withValues(alpha: 0.9),
+          color:
+              error
+                  ? Colors.red[800]!.withValues(alpha: 0.9)
+                  : Colors.green[800]!.withValues(alpha: 0.9),
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           boxShadow: const [
             BoxShadow(
@@ -226,7 +222,7 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
             mainAxisSize: MainAxisSize.min,
             children: [
               SvgIcon(
-                widget.error
+                error
                     ? CommunitySvgs.alertWarningAmberMaterialiconsround24px
                     : CommunitySvgs.actionCheckCircleMaterialicons24px,
                 color: Colors.white,
@@ -238,7 +234,7 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    widget.title,
+                    title,
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: Font.bold,
@@ -246,10 +242,10 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
-                  if (widget.message.isNotEmpty) ...[
+                  if (message.isNotEmpty) ...[
                     const SizedBox(height: 4),
                     Text(
-                      widget.message,
+                      message,
                       style: const TextStyle(color: Colors.white, fontSize: 14),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
@@ -269,10 +265,7 @@ class _StandardSnackBarState extends State<_StandardSnackBar> {
 // ===============================================
 
 class _TapBounceContainer extends StatefulWidget {
-  const _TapBounceContainer({
-    required this.child,
-    this.onTap,
-  });
+  const _TapBounceContainer({required this.child, this.onTap});
 
   final Widget child;
   final VoidCallback? onTap;
@@ -318,10 +311,7 @@ class _TapBounceContainerState extends State<_TapBounceContainer>
       onTapDown: _onTapDown,
       onTapUp: _onTapUp,
       onPanEnd: _onPanEnd,
-      child: Transform.scale(
-        scale: _scale,
-        child: widget.child,
-      ),
+      child: Transform.scale(scale: _scale, child: widget.child),
     );
   }
 

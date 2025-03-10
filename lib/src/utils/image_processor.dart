@@ -166,7 +166,7 @@ class ImageProcessor {
       // 720 / 1280  youtube thumbnail == .56
       // 1536 × 346 revolver logo = .22
       // 1200 × 630 apple logo = .525
-      if (imageSize.shortestSide / imageSize.longestSide < 0.50) {
+      if (imageSize.shortestSide / imageSize.longestSide < 0.5) {
         fit = BoxFit.contain;
       }
     }

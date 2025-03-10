@@ -41,6 +41,7 @@ class TextWithLinks extends StatelessWidget {
         },
       );
     }
+
     return LinkifyText(
       text,
       linkStyle: linkStyle ?? style.copyWith(color: context.primary),

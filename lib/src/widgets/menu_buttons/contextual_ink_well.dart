@@ -70,6 +70,7 @@ class ContextualInkWell extends StatelessWidget {
             child: child,
           );
         }
+
         return InkWell(
           focusColor: disableHoverColor ? Colors.transparent : null,
           hoverColor: disableHoverColor ? Colors.transparent : null,

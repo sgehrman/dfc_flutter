@@ -260,11 +260,7 @@ TextSpan _linkify({
   final links = regExp.allMatches(text).toList();
 
   for (final text in texts) {
-    spans.add(
-      TextSpan(
-        text: text,
-      ),
-    );
+    spans.add(TextSpan(text: text));
     if (links.isNotEmpty) {
       final match = links.removeAt(0);
       final link = Link.fromMatch(match);
@@ -273,15 +269,17 @@ TextSpan _linkify({
         TextSpan(
           text: link.value,
           style: customLinkStyles?[link.type] ?? linkStyle,
-          recognizer: TapGestureRecognizer()
-            ..onTap = () {
-              if (onTap != null) {
-                onTap(link);
-              }
-            },
+          recognizer:
+              TapGestureRecognizer()
+                ..onTap = () {
+                  if (onTap != null) {
+                    onTap(link);
+                  }
+                },
         ),
       );
     }
   }
+
   return TextSpan(children: spans);
 }

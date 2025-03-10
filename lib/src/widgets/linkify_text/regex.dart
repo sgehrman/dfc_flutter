@@ -61,6 +61,7 @@ RegExp constructRegExpFromLinkType(List<LinkType> types) {
         break;
     }
   }
+
   return RegExp(buffer.toString());
 }
 
@@ -79,5 +80,6 @@ LinkType getMatchedType(String match) {
   } else if (RegExp(fileRegExp).hasMatch(match)) {
     type = LinkType.file;
   }
+
   return type;
 }

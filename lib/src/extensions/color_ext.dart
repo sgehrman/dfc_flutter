@@ -20,6 +20,7 @@ extension ColorUtils on Color {
     assert(factor >= 0 && factor <= 1, 'Factor must be between 0 and 1');
 
     final HSLColor hslColor = HSLColor.fromColor(this);
+
     return hslColor
         .withLightness((hslColor.lightness * (1 - factor)).clamp(0.0, 1.0))
         .toColor();
