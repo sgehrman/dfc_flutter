@@ -29,9 +29,10 @@ class SharedSnackBars {
 
   Future<void> _processStream() async {
     await for (final snackbar in _pending.stream) {
-      final BuildContext context = SharedContext().scaffoldContext;
+      SharedSnackBar._show(snackbar).ignore();
 
-      await SharedSnackBar._show(context, snackbar);
+      // this allows multiple shown at once
+      await Future.delayed(const Duration(milliseconds: 500));
     }
   }
 }
@@ -59,31 +60,27 @@ class SharedSnackBar extends StatefulWidget {
   final VoidCallback? onTap;
   final bool onTop;
 
-  static Future<bool> _show(
-    BuildContext context,
+  static Future<void> _show(
     Widget child, {
     double additionalTopPadding = 16.0,
   }) async {
+    final context = SharedContext().scaffoldContext;
     final overlayState = Overlay.of(context);
-    // final Completer<bool> result = Completer<bool>();
+    final Completer<bool> completed = Completer<bool>();
 
-    // this allows multiple shown at once
-    const Duration resultDuration = Duration(milliseconds: 500);
+    // this means the keyboard is visible
+    final onTop = MediaQuery.of(context).viewInsets.bottom != 0;
 
     const Duration showOutAnimationDuration = Duration(milliseconds: 1000);
     const Duration hideOutAnimationDuration = Duration(milliseconds: 500);
     const Duration displayDuration = Duration(milliseconds: 1500);
 
-    late OverlayEntry overlayEntry;
-
-    overlayEntry = OverlayEntry(
+    final overlayEntry = OverlayEntry(
       builder: (context) {
         return SharedSnackBar(
-          // this means the keyboard is visible
-          onTop: MediaQuery.of(context).viewInsets.bottom != 0,
+          onTop: onTop,
           onDismissed: () {
-            overlayEntry.remove();
-            // result.complete(true);
+            completed.complete(true);
           },
           showOutAnimationDuration: showOutAnimationDuration,
           hideOutAnimationDuration: hideOutAnimationDuration,
@@ -96,9 +93,8 @@ class SharedSnackBar extends StatefulWidget {
 
     overlayState.insert(overlayEntry);
 
-    // return result.future;
-
-    return Future.delayed(resultDuration);
+    await completed.future;
+    overlayEntry.remove();
   }
 
   @override
