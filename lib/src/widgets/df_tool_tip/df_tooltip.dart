@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/df_tool_tip/df_tooltip_hack.dart';
 import 'package:flutter/material.dart';
 
@@ -16,21 +15,59 @@ class DFTooltip extends StatelessWidget {
   final Widget child;
   final bool? preferBelow;
 
-  String _wrapString(String? message) {
-    if (Utils.isNotEmpty(message)) {
-      final words = message!.split(' ');
+  List<String> _breakWord(String input, int maxLength) {
+    final List<String> segments = [];
+    int start = 0;
 
+    while (start < input.length) {
+      final end =
+          (start + maxLength > input.length) ? input.length : start + maxLength;
+
+      segments.add(input.substring(start, end));
+      start = end;
+    }
+
+    return segments;
+  }
+
+  List<String> _words(String text, int maxLength) {
+    final result = <String>[];
+
+    final words = text.split(' ');
+
+    for (final word in words) {
+      if (word.length > maxLength) {
+        // must be a url or something without spaces, break up words
+        result.addAll(_breakWord(word, maxLength ~/ 4));
+        result.add(' ');
+      } else {
+        result.add('$word ');
+      }
+    }
+
+    return result;
+  }
+
+  String _wrapString(String? message, int maxLength) {
+    if (message != null && message.isNotEmpty) {
       final buffer = StringBuffer();
 
-      int letterCnt = 0;
-      for (final word in words) {
-        letterCnt += word.length;
-        buffer.write('$word ');
+      final lines = message.split('\n');
+      for (final line in lines) {
+        final words = _words(line, maxLength);
 
-        if (letterCnt > 40) {
-          letterCnt = 0;
-          buffer.write('\n');
+        int letterCnt = 0;
+        for (final word in words) {
+          letterCnt += word.length;
+          buffer.write(word);
+
+          if (letterCnt > maxLength) {
+            letterCnt = 0;
+            buffer.write('\n');
+          }
         }
+
+        buffer.write('\n');
       }
 
       return buffer.toString().trim();
@@ -41,7 +78,7 @@ class DFTooltip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final msg = _wrapString(message);
+    final msg = _wrapString(message, 46);
 
     if (msg.isNotEmpty) {
       return DFTooltipHack(
