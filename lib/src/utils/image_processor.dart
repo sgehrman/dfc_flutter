@@ -8,8 +8,6 @@ import 'package:dfc_flutter/src/http/http_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-export 'package:vector_graphics/vector_graphics.dart';
-
 enum ImgFormat {
   unknown,
   png,
