@@ -2,6 +2,7 @@ import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomMarkdown extends StatelessWidget {
   const CustomMarkdown(
@@ -22,7 +23,7 @@ class CustomMarkdown extends StatelessWidget {
     this.softLineBreak = false,
     this.padding = const EdgeInsets.all(16),
     this.shrinkWrap = false,
-    this.fontFamily,
+    this.googleFont,
   });
 
   final String markdownText;
@@ -42,17 +43,28 @@ class CustomMarkdown extends StatelessWidget {
   final WrapAlignment textAlign;
   final EdgeInsets padding;
   final bool shrinkWrap;
-  final String? fontFamily;
+  final String? googleFont;
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle textStyle = TextStyle(
-      fontSize: fontSize,
-      color: color,
-      height: 1,
-      decorationColor: color,
-      fontFamily: fontFamily,
-    );
+    TextStyle textStyle;
+
+    if (googleFont != null) {
+      textStyle = GoogleFonts.getFont(
+        googleFont!,
+        fontSize: fontSize,
+        color: color,
+        height: 1,
+        decorationColor: color,
+      );
+    } else {
+      textStyle = TextStyle(
+        fontSize: fontSize,
+        color: color,
+        height: 1,
+        decorationColor: color,
+      );
+    }
 
     final blockPadding = EdgeInsets.only(bottom: bottomPadding);
 
@@ -60,7 +72,8 @@ class CustomMarkdown extends StatelessWidget {
     return Markdown(
       shrinkWrap: shrinkWrap,
       padding: padding,
-      onTapLink: onTapLink ??
+      onTapLink:
+          onTapLink ??
           (text, href, title) {
             Utils.launchUrl(href!);
           },
@@ -71,11 +84,7 @@ class CustomMarkdown extends StatelessWidget {
         blockquotePadding: const EdgeInsets.all(12),
         codeblockPadding: const EdgeInsets.all(12),
         horizontalRuleDecoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(
-              color: color,
-            ),
-          ),
+          border: Border(top: BorderSide(color: color)),
         ),
         codeblockDecoration: BoxDecoration(
           color: Colors.blue.shade100,
@@ -108,40 +117,18 @@ class CustomMarkdown extends StatelessWidget {
         h5Padding: blockPadding,
         h6Padding: blockPadding,
         pPadding: blockPadding,
-        strong: textStyle.copyWith(
-          fontWeight: Font.bold,
-        ),
-        h1: textStyle.copyWith(
-          fontSize: h1FontSize,
-        ),
-        h2: textStyle.copyWith(
-          fontSize: h2FontSize,
-        ),
-        h3: textStyle.copyWith(
-          fontSize: h3FontSize,
-        ),
-        h4: textStyle.copyWith(
-          fontSize: h4FontSize,
-        ),
-        h5: textStyle.copyWith(
-          fontSize: h5FontSize,
-        ),
-        h6: textStyle.copyWith(
-          fontSize: h6FontSize,
-        ),
+        strong: textStyle.copyWith(fontWeight: Font.bold),
+        h1: textStyle.copyWith(fontSize: h1FontSize),
+        h2: textStyle.copyWith(fontSize: h2FontSize),
+        h3: textStyle.copyWith(fontSize: h3FontSize),
+        h4: textStyle.copyWith(fontSize: h4FontSize),
+        h5: textStyle.copyWith(fontSize: h5FontSize),
+        h6: textStyle.copyWith(fontSize: h6FontSize),
         tableBorder: TableBorder(
-          top: BorderSide(
-            color: color,
-          ),
-          bottom: BorderSide(
-            color: color,
-          ),
-          left: BorderSide(
-            color: color,
-          ),
-          right: BorderSide(
-            color: color,
-          ),
+          top: BorderSide(color: color),
+          bottom: BorderSide(color: color),
+          left: BorderSide(color: color),
+          right: BorderSide(color: color),
         ),
       ),
       data: markdownText,
