@@ -60,7 +60,5 @@ extension BuildContextUtils on BuildContext {
   // in light mode, surfaceContainerLowest can be tinted and not pure white, use this instead
   // of surfaceContainerLowest, dark seems OK
   Color get surfaceContainerSuperLow =>
-      Utils.isDarkMode(this)
-          ? Theme.of(this).colorScheme.surfaceContainerLowest
-          : Colors.white;
+      Utils.isDarkMode(this) ? Colors.black : Colors.white;
 }
