@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/extensions/color_ext.dart';
+import 'package:dfc_flutter/dfc_flutter.dart';
 import 'package:flutter/material.dart';
 
 extension BuildContextUtils on BuildContext {
@@ -52,7 +52,15 @@ extension BuildContextUtils on BuildContext {
   // Color get dimTextColor => onSurface.withValues(alpha: 0.5);
   // Color get lightPrimary => primary.withValues(alpha: 0.4);
 
+  // assuming that this draws more crisp text than using alpha above
   Color get lightTextColor => onSurface.mix(surface, 0.2);
   Color get dimTextColor => onSurface.mix(surface, 0.4);
   Color get lightPrimary => primary.mix(surface, 0.3);
+
+  // in light mode, surfaceContainerLowest can be tinted and not pure white, use this instead
+  // of surfaceContainerLowest, dark seems OK
+  Color get surfaceContainerSuperLow =>
+      Utils.isDarkMode(this)
+          ? Theme.of(this).colorScheme.surfaceContainerLowest
+          : Colors.white;
 }
