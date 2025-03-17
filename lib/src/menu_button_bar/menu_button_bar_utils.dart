@@ -51,7 +51,7 @@ class MenuButtonBarUtils {
       ),
       shape: const WidgetStatePropertyAll(
         RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
+          borderRadius: BorderRadius.all(Radius.circular(6)),
         ),
       ),
       visualDensity: VisualDensity.compact,
