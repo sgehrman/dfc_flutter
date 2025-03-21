@@ -5,7 +5,7 @@ homepage: distantfutu.re
 publish_to: "none"
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.6.0
 
 dependencies:
   bonsoir: ^5.1.11
