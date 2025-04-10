@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/dfc_flutter_web_lite.dart';
+import 'package:dfc_flutter/src/widgets/paragraf.dart';
 import 'package:flutter/material.dart';
 import 'package:seo/seo.dart';
 
