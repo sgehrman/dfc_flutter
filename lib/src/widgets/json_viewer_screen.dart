@@ -20,7 +20,7 @@ class JsonViewerScreen extends StatelessWidget {
     required Map<String, dynamic> map,
     required String title,
     VoidCallback? onDelete,
-  }) async {
+  }) {
     return Navigator.of(context).push<void>(
       MaterialPageRoute(
         builder: (context) {
@@ -90,10 +90,9 @@ Future<void> showJsonViewerDialog({
   controller.widget = Container(
     decoration: BoxDecoration(
       borderRadius: const BorderRadius.all(Radius.circular(12)),
-      color:
-          Utils.isDarkMode(context)
-              ? Colors.white.withValues(alpha: 0.07)
-              : Colors.black.withValues(alpha: 0.07),
+      color: Utils.isDarkMode(context)
+          ? Colors.white.withValues(alpha: 0.07)
+          : Colors.black.withValues(alpha: 0.07),
     ),
     padding: const EdgeInsets.all(10),
     height: 700,

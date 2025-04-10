@@ -75,7 +75,7 @@ class DropStack extends ChangeNotifier {
     required BuildContext context,
     required ServerFile directory,
     required bool topOnly,
-  }) async {
+  }) {
     final List<Widget> itemsDropping = [];
 
     for (final serverFile in _stack.list) {

@@ -77,8 +77,8 @@ class Utils {
     String tryDirName = dirName;
 
     String destFolder = p.join(directoryPath, tryDirName);
-    while (File(destFolder).existsSync() ||
-        Directory(destFolder).existsSync()) {
+    while (
+        File(destFolder).existsSync() || Directory(destFolder).existsSync()) {
       tryDirName = '$dirName-$nameIndex';
       destFolder = p.join(directoryPath, tryDirName);
 
@@ -303,8 +303,8 @@ class Utils {
         actions: [
           TextButton(
             child: Text(buttonName),
-            onPressed:
-                () => ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+            onPressed: () =>
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
           ),
         ],
       ),
@@ -321,10 +321,9 @@ class Utils {
     final snackBar = SnackBar(
       backgroundColor: error ? Colors.red[700] : Colors.green[800],
       content: TText(message, style: const TextStyle(color: Colors.white)),
-      action:
-          action != null
-              ? SnackBarAction(label: action, onPressed: onPressed!)
-              : null,
+      action: action != null
+          ? SnackBarAction(label: action, onPressed: onPressed!)
+          : null,
     );
 
     // remove any existing snackbars first otherwise they can queue up and take forever to finish
@@ -352,7 +351,7 @@ class Utils {
     return completer.future;
   }
 
-  static Future<ui.Image> loadImageFromPath(String imagePath) async {
+  static Future<ui.Image> loadImageFromPath(String imagePath) {
     final File file = File(imagePath);
 
     final Completer<ui.Image> completer = Completer();

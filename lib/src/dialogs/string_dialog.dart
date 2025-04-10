@@ -12,7 +12,7 @@ Future<String?> showStringDialog({
   bool barrierDismissible = true,
   int minLines = 1,
   int maxLines = 1,
-}) async {
+}) {
   return showDialog<String>(
     context: context,
     barrierDismissible: barrierDismissible, // if true, null can be returned

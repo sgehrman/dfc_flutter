@@ -10,7 +10,7 @@ Future<bool?> showConfirmDialog({
   String okButtonName = 'OK',
   String cancelButtonName = 'Cancel',
   bool barrierDismissible = true,
-}) async {
+}) {
   const EdgeInsets actionsPadding = EdgeInsets.only(right: 10, bottom: 10);
 
   return showDialog<bool>(
