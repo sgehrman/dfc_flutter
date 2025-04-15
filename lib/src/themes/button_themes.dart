@@ -183,18 +183,11 @@ class ButtonThemes {
   // ===============================================================
 
   Color _backColor(Set<WidgetState> states) {
-    final darker = baseTheme.colorScheme.primary.darker();
-    final lighter = baseTheme.colorScheme.primary.mix(
-      baseTheme.colorScheme.surface,
-      dimFactor,
-    );
-
-    if (ThemeUtils.isHovered(states)) {
-      return darker;
-    }
-
     if (ThemeUtils.isDisabled(states)) {
-      return lighter;
+      return baseTheme.colorScheme.primary.mix(
+        baseTheme.colorScheme.surface,
+        dimFactor,
+      );
     }
 
     return baseTheme.colorScheme.primary;
@@ -216,13 +209,12 @@ class ButtonThemes {
   }) {
     Color baseColor =
         whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
-    Color baseColorLight =
-        whiteButtons
-            ? Colors.white.mix(baseTheme.colorScheme.surface, dimFactor)
-            : baseTheme.colorScheme.primary.mix(
-              baseTheme.colorScheme.surface,
-              dimFactor,
-            );
+    Color baseColorLight = whiteButtons
+        ? Colors.white.mix(baseTheme.colorScheme.surface, dimFactor)
+        : baseTheme.colorScheme.primary.mix(
+            baseTheme.colorScheme.surface,
+            dimFactor,
+          );
 
     if (filledButton) {
       baseColor = baseTheme.colorScheme.onPrimary;
@@ -264,14 +256,9 @@ class ButtonThemes {
   BorderSide _borderSide(Set<WidgetState> states) {
     Color color = whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
 
-    final darker = color.darker();
-    final lighter = color.mix(baseTheme.colorScheme.surface, dimFactor);
-
-    if (ThemeUtils.isHovered(states)) {
-      color = darker;
-    }
-
     if (ThemeUtils.isDisabled(states)) {
+      final lighter = color.mix(baseTheme.colorScheme.surface, dimFactor);
+
       color = lighter;
     }
 
