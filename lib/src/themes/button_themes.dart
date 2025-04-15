@@ -256,6 +256,12 @@ class ButtonThemes {
   BorderSide _borderSide(Set<WidgetState> states) {
     Color color = whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
 
+    final darker = color.darker();
+
+    if (ThemeUtils.isHovered(states)) {
+      color = darker;
+    }
+
     if (ThemeUtils.isDisabled(states)) {
       final lighter = color.mix(baseTheme.colorScheme.surface, dimFactor);
 
