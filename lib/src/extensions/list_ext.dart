@@ -28,4 +28,18 @@ extension GenericList<T> on List<T> {
 
     return this;
   }
+
+  int validIndex(int index) {
+    if (isEmpty) {
+      print('### validIndex() error: List is empty, index: $index');
+    }
+
+    if (index < 0) {
+      return 0;
+    } else if (index >= length) {
+      return length - 1;
+    }
+
+    return index;
+  }
 }
