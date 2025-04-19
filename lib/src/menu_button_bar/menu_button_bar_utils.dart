@@ -9,7 +9,7 @@ class MenuButtonBarUtils {
   static Widget _dividerWidget(BuildContext context) {
     return const Flexible(
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 4),
+        padding: EdgeInsets.symmetric(vertical: 6),
         child: Divider(height: 1),
       ),
     );
