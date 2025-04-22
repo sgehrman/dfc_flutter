@@ -1,4 +1,3 @@
-import 'package:characters/characters.dart';
 import 'package:dfc_flutter/src/utils/string_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 
@@ -26,6 +25,8 @@ extension StringUtils on String {
   String fromCamelCase() {
     String displayName = '';
     bool lastUpper = false;
+
+    final List<String> characters = split('');
     for (final String r in characters) {
       if (r.toUpperCase() == r) {
         displayName += lastUpper ? r : ' $r';
