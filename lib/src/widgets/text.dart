@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 String _fixText(String? text) {
   // cool hack so that the ellipsis doesn't break on words 'test this' => 'test...' with: 'test thi...'
   // this can make multiline breaks break between words which looks bad
+  // You can prevent a line break after a slash by inserting a zero-width non-breaking character,
+  // such as the WORD JOINER (U+2060), immediately after the slash. For example, typing "/\u2060" (slash followed by word joiner)
+  // in your text will keep the content before and after the slash together on the same line
   return (text ?? 'null')
       .replaceAll(' ', '\u00A0')
       .replaceAll('-', '\u{2011}')
-      .replaceAll('/', '\u{002F}');
+      .replaceAll('/', '/\u{2060}');
 }
 
 class _TextBase extends Text {
