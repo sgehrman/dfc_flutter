@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 String _fixText(String? text) {
   // cool hack so that the ellipsis doesn't break on words 'test this' => 'test...' with: 'test thi...'
   // this can make multiline breaks break between words which looks bad
-  return (text ?? 'null').replaceAll(' ', '\u00A0').replaceAll('-', '\u{2011}');
+  return (text ?? 'null')
+      .replaceAll(' ', '\u00A0')
+      .replaceAll('-', '\u{2011}')
+      .replaceAll('/', '\u{002F}');
 }
 
 class _TextBase extends Text {
