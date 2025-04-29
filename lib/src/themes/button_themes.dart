@@ -113,7 +113,7 @@ class ButtonThemes {
     );
 
     final padding = WidgetStateProperty.resolveWith<EdgeInsetsGeometry>(
-      (states) => _buttonPadding(states),
+      (states) => _textButtonPadding(states),
     );
 
     final minSize = WidgetStateProperty.resolveWith<Size>(
@@ -235,6 +235,10 @@ class ButtonThemes {
 
   EdgeInsets _buttonPadding(Set<WidgetState> states) {
     return const EdgeInsets.symmetric(horizontal: 20, vertical: 16);
+  }
+
+  EdgeInsets _textButtonPadding(Set<WidgetState> states) {
+    return const EdgeInsets.symmetric(horizontal: 10, vertical: 16);
   }
 
   WidgetStateProperty<OutlinedBorder> _buttonShape() {
