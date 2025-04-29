@@ -1,5 +1,6 @@
 import 'package:dfc_flutter/src/widgets/df_tool_tip/df_tooltip_hack.dart';
 import 'package:flutter/material.dart';
+import 'package:html/parser.dart' as html_parser;
 
 // same as Tooltip, but handles null messages without exceptions
 // it also wraps text so the tooltip isn't so wide
@@ -76,9 +77,28 @@ class DFTooltip extends StatelessWidget {
     return '';
   }
 
+  String _htmlToText(String htmlString) {
+    try {
+      final document = html_parser.parse(htmlString);
+
+      return document.body?.text ?? htmlString;
+    } catch (err) {
+      print(err);
+    }
+
+    return htmlString;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final msg = _wrapString(message, 46);
+    String msg = message ?? '';
+
+    // AI chat models have html tooltips
+    if (msg.startsWith('<')) {
+      msg = _htmlToText(msg);
+    }
+
+    msg = _wrapString(msg, 46);
 
     if (msg.isNotEmpty) {
       return DFTooltipHack(
