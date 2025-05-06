@@ -65,13 +65,12 @@ class DatePickerState extends State<DatePicker> {
         scrollDirection: Axis.horizontal,
         controller: _controller,
         itemBuilder: (context, index) {
-          final DateTime tmpDate = widget.startDate.add(Duration(days: index));
-          final DateTime date =
-              DateTime(tmpDate.year, tmpDate.month, tmpDate.day);
+          final tmpDate = widget.startDate.add(Duration(days: index));
+          final date = DateTime(tmpDate.year, tmpDate.month, tmpDate.day);
 
-          final bool isSelected = date == _currentDate;
+          final isSelected = date == _currentDate;
 
-          bool disabled = false;
+          var disabled = false;
           if (widget.selectableDayPredicate != null) {
             disabled = !widget.selectableDayPredicate!(date);
           }
@@ -155,7 +154,7 @@ class DatePickerController {
   }
 
   double _calculateDateOffset(DateTime date) {
-    final int offset =
+    final offset =
         date.difference(_datePickerState!.widget.startDate).inDays + 1;
 
     return (offset * _datePickerState!.widget.width) + (offset * 6);
@@ -245,7 +244,7 @@ TextStyle defaultMonthTextStyle({
   bool disabled = false,
   bool isSelected = false,
 }) {
-  Color color = _DateColors.defaultMonthColor;
+  var color = _DateColors.defaultMonthColor;
   if (disabled) {
     color = _DateColors.disabledColor;
   } else if (isSelected) {
@@ -263,7 +262,7 @@ TextStyle defaultDateTextStyle({
   bool disabled = false,
   bool isSelected = false,
 }) {
-  Color color = _DateColors.defaultMonthColor;
+  var color = _DateColors.defaultMonthColor;
   if (disabled) {
     color = _DateColors.disabledColor;
   } else if (isSelected) {
@@ -281,7 +280,7 @@ TextStyle defaultDayTextStyle({
   bool disabled = false,
   bool isSelected = false,
 }) {
-  Color color = _DateColors.defaultMonthColor;
+  var color = _DateColors.defaultMonthColor;
   if (disabled) {
     color = _DateColors.disabledColor;
   } else if (isSelected) {

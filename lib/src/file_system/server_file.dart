@@ -79,7 +79,7 @@ class ServerFile {
   // Wondering if this is faster than above
   String? get extension {
     if (_extension == null) {
-      final int lastDot = name.lastIndexOf('.', name.length - 1);
+      final lastDot = name.lastIndexOf('.', name.length - 1);
       if (lastDot != -1) {
         _extension = name.substring(lastDot).toLowerCase();
       }
@@ -218,13 +218,13 @@ class ServerFile {
   ServerFileType? get type {
     if (_type == null) {
       if (Utils.isNotEmpty(extension)) {
-        String noDot = extension!;
+        var noDot = extension!;
 
         if (noDot.length > 1) {
           noDot = extension!.substring(1);
         }
 
-        final String? mimeType = mimeFromExtension(noDot);
+        final mimeType = mimeFromExtension(noDot);
 
         if (mimeType != null) {
           switch (mimeType.split('/').first) {
@@ -280,8 +280,8 @@ class ServerFile {
   }
 
   bool get isReadOnly {
-    bool result = true;
-    final String? mode = modeString;
+    var result = true;
+    final mode = modeString;
 
     if (mode != null) {
       if (mode.length == 9) {

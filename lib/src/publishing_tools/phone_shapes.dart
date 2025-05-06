@@ -14,7 +14,7 @@ class PhoneShapes {
     required double startY,
   }) {
     // speaker
-    final RRect speakerRRect =
+    final speakerRRect =
         drawSpeaker(canvas: canvas, centerX: centerX, startY: centerY);
 
     // camera dot
@@ -56,12 +56,12 @@ class PhoneShapes {
     required double radius,
   }) {
     // camera dot
-    final Paint camPaint = Paint();
+    final camPaint = Paint();
     camPaint.color = cameraColor;
     camPaint.style = PaintingStyle.stroke;
     camPaint.strokeWidth = 5;
 
-    final Paint camFillPaint = Paint();
+    final camFillPaint = Paint();
     camFillPaint.color = Colors.white12;
 
     canvas.drawCircle(
@@ -82,7 +82,7 @@ class PhoneShapes {
     required double startY,
   }) {
     const speakerHalfW = 78;
-    final RRect speakerRRect = RRect.fromLTRBR(
+    final speakerRRect = RRect.fromLTRBR(
       centerX - speakerHalfW,
       startY - speakerHeight / 2,
       centerX + speakerHalfW,
@@ -90,12 +90,12 @@ class PhoneShapes {
       const Radius.circular(10),
     );
 
-    final Paint camPaint = Paint();
+    final camPaint = Paint();
     camPaint.color = cameraColor;
     camPaint.style = PaintingStyle.stroke;
     camPaint.strokeWidth = 5;
 
-    final Paint camFillPaint = Paint();
+    final camFillPaint = Paint();
     camFillPaint.color = const Color.fromRGBO(0, 0, 0, 0.35);
 
     canvas.drawRRect(speakerRRect, camPaint);
@@ -112,7 +112,7 @@ class PhoneShapes {
     required double centerX,
     required double startY,
   }) {
-    final Paint notchPaint = Paint();
+    final notchPaint = Paint();
     notchPaint.color = params.phoneColor;
 
     if (appleNotch) {
@@ -124,7 +124,7 @@ class PhoneShapes {
     // draw camera dot
     if (appleNotch) {
       // speaker
-      final RRect speakerRRect =
+      final speakerRRect =
           drawSpeaker(canvas: canvas, centerX: centerX, startY: startY + 24);
 
       drawFramedCircle(
@@ -141,18 +141,18 @@ class PhoneShapes {
   }
 
   static void drawPhoneButtons(Canvas canvas, ScreenshotParams params) {
-    final Paint paint = Paint();
+    final paint = Paint();
     paint.color = params.phoneColor;
     const double volButtonW = 100;
     const double volButtonH = 184;
     const double muteButtonH = 100;
-    double volButtonY = params.phoneRect.top + 300;
+    var volButtonY = params.phoneRect.top + 300;
     const double stickout = 16;
     const r = Radius.circular(10);
     Rect rect;
 
-    bool drawMuteSwitch = false;
-    bool drawButtons = false;
+    var drawMuteSwitch = false;
+    var drawButtons = false;
     switch (params.type) {
       case PhoneType.iPhone11:
       case PhoneType.iPhone5:
@@ -218,10 +218,10 @@ class PhoneShapes {
   }
 
   static Path onePlusNotchPath(double centerX, double startY) {
-    final Path notchPath = Path();
-    final double notchY = startY + 50;
+    final notchPath = Path();
+    final notchY = startY + 50;
     const double notchWidth = 80;
-    const double notchHalf = notchWidth / 2;
+    const notchHalf = notchWidth / 2;
 
     notchPath.moveTo(centerX - notchWidth, startY);
 
@@ -254,11 +254,11 @@ class PhoneShapes {
     const double notchWidth = 680;
     const double notchHeight = 86;
 
-    final Path notchPath = Path();
-    final double notchY = startY + notchHeight;
-    const double notchHalf = notchWidth / 2;
-    final double leftX = centerX - notchHalf;
-    final double rightX = centerX + notchHalf;
+    final notchPath = Path();
+    final notchY = startY + notchHeight;
+    const notchHalf = notchWidth / 2;
+    final leftX = centerX - notchHalf;
+    final rightX = centerX + notchHalf;
 
     notchPath.moveTo(leftX - smallCurveLen, startY);
 

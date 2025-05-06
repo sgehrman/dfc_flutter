@@ -34,10 +34,10 @@ class PhoneInputUtils {
   static List<TextInputFormatter> inputFormatters() {
     return <TextInputFormatter>[
       TextInputFormatter.withFunction(
-        (TextEditingValue oldValue, TextEditingValue newValue) {
-          String newText = newValue.text;
+        (oldValue, newValue) {
+          var newText = newValue.text;
 
-          TextSelection selection = newValue.selection;
+          var selection = newValue.selection;
 
           if (Utils.isNotEmpty(newText) && newText.length > 4) {
             if (newText[0] != '+') {
@@ -54,8 +54,7 @@ class PhoneInputUtils {
         },
       ),
       PhoneInputFormatter(
-        onCountrySelected: (PhoneCountryData? countryData) =>
-            print(countryData?.country),
+        onCountrySelected: (countryData) => print(countryData?.country),
       ),
     ];
   }

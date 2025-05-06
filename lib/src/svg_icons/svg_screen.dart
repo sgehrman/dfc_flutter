@@ -58,9 +58,9 @@ class _SvgScreenState extends State<SvgScreen> {
         break;
     }
 
-    final List<_NameAndIcon> items = [];
+    final items = <_NameAndIcon>[];
 
-    for (int i = 0; i < iconNames.length; i++) {
+    for (var i = 0; i < iconNames.length; i++) {
       if (Utils.isNotEmpty(_filter)) {
         if (iconNames[i].toLowerCase().contains(_filter)) {
           items.add(_NameAndIcon(iconNames[i], _icons[i]));

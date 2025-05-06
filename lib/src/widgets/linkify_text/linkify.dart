@@ -13,7 +13,7 @@ enum LinkType { url, email, hashTag, userTag, phone, file }
 class Link {
   /// construct link from matched regExp
   Link.fromMatch(RegExpMatch match) {
-    final String m = match.input.substring(match.start, match.end);
+    final m = match.input.substring(match.start, match.end);
     _type = getMatchedType(m);
     _value = m;
   }
@@ -256,7 +256,7 @@ TextSpan _linkify({
   }
 
   final texts = text.split(regExp);
-  final List<InlineSpan> spans = [];
+  final spans = <InlineSpan>[];
   final links = regExp.allMatches(text).toList();
 
   for (final text in texts) {
@@ -269,13 +269,12 @@ TextSpan _linkify({
         TextSpan(
           text: link.value,
           style: customLinkStyles?[link.type] ?? linkStyle,
-          recognizer:
-              TapGestureRecognizer()
-                ..onTap = () {
-                  if (onTap != null) {
-                    onTap(link);
-                  }
-                },
+          recognizer: TapGestureRecognizer()
+            ..onTap = () {
+              if (onTap != null) {
+                onTap(link);
+              }
+            },
         ),
       );
     }

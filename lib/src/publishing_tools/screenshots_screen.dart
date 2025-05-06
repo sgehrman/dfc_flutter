@@ -72,7 +72,7 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
 
   Future<void> _saveClicked() async {
     // ask user for file name
-    final String? fileName = await showStringDialog(
+    final fileName = await showStringDialog(
       context: context,
       title: 'Filename',
       message: 'Choose a file name',
@@ -81,10 +81,9 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
 
     if (Utils.isNotEmpty(fileName)) {
       try {
-        final ui.Image assetImage =
-            await Utils.loadImageFromPath(widget.imagePath);
+        final assetImage = await Utils.loadImageFromPath(widget.imagePath);
 
-        final CaptureResult capture = await maker.createImage(
+        final capture = await maker.createImage(
           assetImage,
           _title ?? selectedScreenshotItem.displayTitle,
           selectedItem.type,
@@ -110,7 +109,7 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
     return Row(
       children: [
         PhoneMenu(
-          onItemSelected: (PhoneMenuItem item) {
+          onItemSelected: (item) {
             setState(() {
               selectedItem = item;
             });
@@ -120,7 +119,7 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
           selectedItem: selectedItem,
         ),
         ScreenshotMenu(
-          onItemSelected: (ScreenshotMenuItem item) {
+          onItemSelected: (item) {
             setState(() {
               selectedScreenshotItem = item;
             });
@@ -153,7 +152,7 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
           child: const Text('Title'),
         ),
         SizeMenu(
-          onItemSelected: (SizeMenuItem item) {
+          onItemSelected: (item) {
             setState(() {
               sizeMenuItem = item;
             });
@@ -232,7 +231,7 @@ class _ScreenshotsScreenState extends State<ScreenshotsScreen> {
       ),
       body: FutureBuilder<CaptureResult>(
         future: _image,
-        builder: (BuildContext context, AsyncSnapshot<CaptureResult> snapshot) {
+        builder: (context, snapshot) {
           return SingleChildScrollView(
             child: Center(
               child: Column(

@@ -27,12 +27,12 @@ class ScreenshotMaker {
     bool showBackground = true,
     SizeType? resultImageSize,
   }) {
-    final Size imageSize = Size(
+    final imageSize = Size(
       assetImage.width.toDouble(),
       assetImage.height.toDouble(),
     );
 
-    final ScreenshotParams p = phoneParams(
+    final p = phoneParams(
       imageSize: imageSize,
       type: type,
       showBackground: showBackground,
@@ -82,8 +82,8 @@ class ScreenshotMaker {
     }
 
     // draw frame
-    final Path path = Path();
-    final RRect rrect = RRect.fromRectAndRadius(p.phoneRect, p.frameRadius);
+    final path = Path();
+    final rrect = RRect.fromRectAndRadius(p.phoneRect, p.frameRadius);
     path.addRRect(rrect);
 
     final fillPaint = Paint();
@@ -100,8 +100,8 @@ class ScreenshotMaker {
     canvas.drawPath(path, framePaint);
 
     // draw image
-    final Path clipPath = Path();
-    final RRect clipRrect =
+    final clipPath = Path();
+    final clipRrect =
         RRect.fromRectAndRadius(p.screenshotRect, p.imageFrameRadius);
     clipPath.addRRect(clipRrect);
 
@@ -126,10 +126,9 @@ class ScreenshotMaker {
     bool drawBackground = false,
   }) async {
     final pic = pictureRecorder.endRecording();
-    final ui.Image image =
-        await pic.toImage(rect.width.toInt(), rect.height.toInt());
+    final image = await pic.toImage(rect.width.toInt(), rect.height.toInt());
 
-    final ui.Image resizedImage = await _resizeImage(
+    final resizedImage = await _resizeImage(
       image,
       imageSize,
       drawBackground: drawBackground,
@@ -169,7 +168,7 @@ class ScreenshotMaker {
     required double startY,
     required double titleBoxHeight,
   }) {
-    final TextSpan span = TextSpan(
+    final span = TextSpan(
       style: const TextStyle(
         color: Colors.white,
         fontSize: 84,
@@ -177,14 +176,14 @@ class ScreenshotMaker {
       ),
       text: title,
     );
-    final TextPainter tp = TextPainter(
+    final tp = TextPainter(
       text: span,
       textAlign: TextAlign.center,
       textDirection: TextDirection.ltr,
     );
     tp.layout();
-    final double w = tp.size.width / 2;
-    double h = tp.size.height;
+    final w = tp.size.width / 2;
+    var h = tp.size.height;
     h = (titleBoxHeight - h) / 2;
 
     tp.paint(canvas, Offset(centerX - w, startY + h));
@@ -199,7 +198,7 @@ class ScreenshotMaker {
     final pictureRecorder = ui.PictureRecorder();
     final canvas = Canvas(pictureRecorder);
 
-    Size? newSize = size;
+    var newSize = size;
 
     if (resultImageSize != null) {
       switch (resultImageSize) {
@@ -215,7 +214,7 @@ class ScreenshotMaker {
         case SizeType.imageSize:
           {
             // enforce 2:1 Google play max aspect ratio
-            final double aspectRatio = size!.width / size.height;
+            final aspectRatio = size!.width / size.height;
             if (aspectRatio < 0.5) {
               newSize = Size(size.height / 2, size.height);
             }
@@ -224,7 +223,7 @@ class ScreenshotMaker {
       }
     }
 
-    final Rect rect = Offset.zero & newSize!;
+    final rect = Offset.zero & newSize!;
 
     if (drawBackground) {
       _drawBackground(
@@ -248,12 +247,12 @@ class ScreenshotMaker {
   }
 
   Future<void> saveToFile(String? filename, CaptureResult capture) async {
-    String? path = await FileSystem.documentsPath;
+    var path = await FileSystem.documentsPath;
     path = '$path/${filename}_screenshot.png';
 
     print('saved to: $path');
 
-    final File file = File(path);
+    final file = File(path);
     file.createSync(recursive: true);
 
     file.writeAsBytesSync(capture.data);
@@ -266,7 +265,7 @@ class ScreenshotMaker {
     Color phoneColor = Colors.black,
     Color phoneFrameColor = Colors.black,
   }) {
-    final double imageAspectRatio = imageSize.width / imageSize.height;
+    final imageAspectRatio = imageSize.width / imageSize.height;
 
     double titleBoxHeight = 20;
     double footerBoxHeight = 20;
@@ -328,11 +327,11 @@ class ScreenshotMaker {
         (phoneFrameWidth * 2) +
         topBezelHeight +
         bottomBezelHeight;
-    final Rect resultRect =
+    final resultRect =
         Offset.zero & Size(finalHeight * imageAspectRatio, finalHeight);
 
     // rect below top border
-    Rect phoneRect = Rect.fromLTWH(
+    var phoneRect = Rect.fromLTWH(
       resultRect.left,
       resultRect.top + titleBoxHeight,
       resultRect.width,
@@ -349,7 +348,7 @@ class ScreenshotMaker {
     );
 
     // rect for the screenshot
-    Rect screenshotRect = phoneRect.deflate(phoneFrameWidth);
+    var screenshotRect = phoneRect.deflate(phoneFrameWidth);
     screenshotRect = Rect.fromLTWH(
       screenshotRect.left,
       screenshotRect.top + topBezelHeight,

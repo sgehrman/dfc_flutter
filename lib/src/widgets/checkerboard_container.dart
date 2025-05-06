@@ -42,7 +42,7 @@ class CheckerboardPainter extends CustomPainter {
     canvas.clipRect(rect);
 
     // final Color fillColor = darkMode! ? Colors.black : Colors.white;
-    final Color blockColor = darkMode!
+    final blockColor = darkMode!
         ? const Color.fromRGBO(255, 255, 255, 0.08)
         : const Color.fromRGBO(0, 0, 0, 0.08);
 
@@ -55,8 +55,8 @@ class CheckerboardPainter extends CustomPainter {
     const double blockDim = 15;
 
     double yOffset = 0;
-    const Size rectSize = Size(blockDim, blockDim);
-    int yIndex = 0;
+    const rectSize = Size(blockDim, blockDim);
+    var yIndex = 0;
 
     paint.color = blockColor;
     while (yOffset < size.height) {

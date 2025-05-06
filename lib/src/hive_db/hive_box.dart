@@ -171,7 +171,7 @@ class HiveBox<T> {
 
       items.removeAt(from);
 
-      int putIndex = to;
+      var putIndex = to;
       if (to > (from + 1)) {
         // don't subtract if from: 0, to: 1, or any other combo one ahead of from
         putIndex--;

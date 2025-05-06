@@ -41,7 +41,7 @@ class _DoubleThumbsControlState extends State<DoubleThumbsControl> {
 
   @override
   Widget build(BuildContext context) {
-    String textResult = 'Select Rating';
+    var textResult = 'Select Rating';
 
     switch (widget.value) {
       case 0:

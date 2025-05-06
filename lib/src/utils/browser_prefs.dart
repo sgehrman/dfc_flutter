@@ -43,11 +43,11 @@ class BrowserUtils {
     bool recursive = false,
     bool directoryCounts = false,
   }) {
-    final bool? searchHiddenDirs = BrowserPrefs.searchInsideHidden;
-    final String? sortType = BrowserPrefs.sortType;
-    final bool? showHidden = BrowserPrefs.showHidden;
-    final bool? sortAscending = BrowserPrefs.sortAscending;
-    final bool? sortFoldersFirst = BrowserPrefs.sortFoldersFirst;
+    final searchHiddenDirs = BrowserPrefs.searchInsideHidden;
+    final sortType = BrowserPrefs.sortType;
+    final showHidden = BrowserPrefs.showHidden;
+    final sortAscending = BrowserPrefs.sortAscending;
+    final sortFoldersFirst = BrowserPrefs.sortFoldersFirst;
 
     return DirectoryListingSpec(
       serverFile: serverFile,

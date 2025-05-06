@@ -26,14 +26,14 @@ class SvgIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final iconTheme = IconTheme.of(context);
 
-    Color svgColor = color ?? Colors.black;
+    var svgColor = color ?? Colors.black;
 
     // if no color passed in, use the current theme color
     if (color == null) {
       svgColor = iconTheme.color ?? Colors.black;
     }
 
-    final double iconOpacity = iconTheme.opacity ?? 1.0;
+    final iconOpacity = iconTheme.opacity ?? 1.0;
     if (iconOpacity != 1.0) {
       svgColor = svgColor.withValues(alpha: iconOpacity);
     }

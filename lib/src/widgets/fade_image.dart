@@ -55,7 +55,7 @@ List<MenuButtonBarItemData> _contextualMenuItems({
 
 String _cleanUrl(String url) {
   // some data urls have spaces?
-  String cleanUrl = url;
+  var cleanUrl = url;
 
   if (cleanUrl.startsWith('data')) {
     cleanUrl = cleanUrl.replaceAll(' ', '');
@@ -217,12 +217,12 @@ class AssetImageFader extends StatelessWidget {
         return Icon(Icons.dangerous, size: size, color: Colors.red);
       },
       frameBuilder: (
-        BuildContext context,
-        Widget child,
-        int? frame,
-        bool? wasSynchronouslyLoaded,
+        context,
+        child,
+        frame,
+        wasSynchronouslyLoaded,
       ) {
-        if ((wasSynchronouslyLoaded ?? false) || frame != null) {
+        if (wasSynchronouslyLoaded || frame != null) {
           return child.animate().fadeIn(duration: duration);
         }
 

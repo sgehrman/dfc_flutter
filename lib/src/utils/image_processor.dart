@@ -77,7 +77,7 @@ class ImageProcessor {
 
       // ## not sure why I did this. Could a gif or other weird format require this?
       // or does it save memory?
-      final ui.Image pictureImage = await _drawImageToCanvas(
+      final pictureImage = await _drawImageToCanvas(
         image: decodedImage,
         maxSize: maxSize,
       );
@@ -86,13 +86,13 @@ class ImageProcessor {
       decodedImage.dispose();
 
       // convert to png byte data
-      final ByteData? pngData = await pictureImage.toByteData(
+      final pngData = await pictureImage.toByteData(
         format: ui.ImageByteFormat.png,
       );
 
       // copy before we dispose the picture image
-      final int height = pictureImage.height;
-      final int width = pictureImage.width;
+      final height = pictureImage.height;
+      final width = pictureImage.width;
 
       // must dispose
       pictureImage.dispose();
@@ -156,7 +156,7 @@ class ImageProcessor {
   static BoxFit _fitForImage(ui.Image image) {
     final imageSize = ui.Size(image.width.toDouble(), image.height.toDouble());
 
-    BoxFit fit = BoxFit.cover;
+    var fit = BoxFit.cover;
 
     // not a square, use contain if wider than tall
     // could be a wide logo for example (revolver.news)
@@ -184,7 +184,7 @@ class ImageProcessor {
         size: size == 0 ? null : Size(size, size),
       );
 
-      final ByteData? bd = await image.toByteData(
+      final bd = await image.toByteData(
         format: ui.ImageByteFormat.png,
       );
 
@@ -214,23 +214,23 @@ class ImageProcessor {
 
   // ## must dispose
   static Future<ui.Image> bytesToImage(Uint8List bytes) async {
-    final ui.ImmutableBuffer buffer = await ui.ImmutableBuffer.fromUint8List(
+    final buffer = await ui.ImmutableBuffer.fromUint8List(
       bytes,
     );
-    final ui.ImageDescriptor descriptor = await ui.ImageDescriptor.encoded(
+    final descriptor = await ui.ImageDescriptor.encoded(
       buffer,
     );
 
     // descriptor.width
     // descriptor.height
 
-    final ui.Codec codec = await descriptor.instantiateCodec(
-      // use this if you don't use the svg replacement (facebook thing?)
-      // targetWidth: _kWidth.toInt(),
-      // targetHeight: _kWidth.toInt(),
-    );
+    final codec = await descriptor.instantiateCodec(
+        // use this if you don't use the svg replacement (facebook thing?)
+        // targetWidth: _kWidth.toInt(),
+        // targetHeight: _kWidth.toInt(),
+        );
 
-    final ui.FrameInfo frameInfo = await codec.getNextFrame();
+    final frameInfo = await codec.getNextFrame();
 
     // not sure if this is necessary or even a good idea, but saw it in some flutter code
     buffer.dispose();
@@ -243,19 +243,19 @@ class ImageProcessor {
   // ## must dispose
   // doesn't work on web. never tested, not sure if this works
   static Future<ui.Image> assetImage(String assetPath) async {
-    final ui.ImmutableBuffer buffer = await ui.ImmutableBuffer.fromAsset(
+    final buffer = await ui.ImmutableBuffer.fromAsset(
       assetPath,
     );
-    final ui.ImageDescriptor descriptor = await ui.ImageDescriptor.encoded(
+    final descriptor = await ui.ImageDescriptor.encoded(
       buffer,
     );
 
-    final ui.Codec codec = await descriptor.instantiateCodec(
+    final codec = await descriptor.instantiateCodec(
       targetWidth: descriptor.width,
       targetHeight: descriptor.height,
     );
 
-    final ui.FrameInfo frameInfo = await codec.getNextFrame();
+    final frameInfo = await codec.getNextFrame();
 
     buffer.dispose();
     codec.dispose();
@@ -270,8 +270,8 @@ class ImageProcessor {
     required ui.Image image,
     double maxSize = 0,
   }) async {
-    final ui.PictureRecorder recorder = ui.PictureRecorder();
-    final ui.Canvas canvas = ui.Canvas(recorder);
+    final recorder = ui.PictureRecorder();
+    final canvas = ui.Canvas(recorder);
 
     double scale = 1;
 
@@ -318,8 +318,8 @@ class ImageProcessor {
     required double width,
     required BoxFit fit,
   }) async {
-    final ui.PictureRecorder recorder = ui.PictureRecorder();
-    final ui.Canvas canvas = ui.Canvas(recorder);
+    final recorder = ui.PictureRecorder();
+    final canvas = ui.Canvas(recorder);
 
     paintImage(
       canvas: canvas,
@@ -344,7 +344,7 @@ class ImageProcessor {
     required Color? color,
     required Size? size,
   }) async {
-    final PictureInfo pictureInfo = await vg.loadPicture(
+    final pictureInfo = await vg.loadPicture(
       SvgStringLoader(
         svg,
         theme: SvgTheme(currentColor: color ?? Colors.black),
@@ -355,7 +355,7 @@ class ImageProcessor {
       },
     );
 
-    final Size svgSize = pictureInfo.size;
+    final svgSize = pictureInfo.size;
 
     Size destinationSize;
     if (size == null) {
@@ -369,8 +369,8 @@ class ImageProcessor {
       destinationSize = size;
     }
 
-    final ui.PictureRecorder recorder = ui.PictureRecorder();
-    final ui.Canvas canvas = ui.Canvas(recorder);
+    final recorder = ui.PictureRecorder();
+    final canvas = ui.Canvas(recorder);
 
     double scale = 1;
 
@@ -402,7 +402,7 @@ class ImageProcessor {
   }
 
   static Future<Uint8List> _imageBytesFromUrl(Uri uri) async {
-    Uint8List imageBytes = Uint8List(0);
+    var imageBytes = Uint8List(0);
 
     try {
       if (UriUtils.isDataUri(uri)) {
@@ -454,7 +454,7 @@ class ImageProcessor {
 
         decodedImage.dispose();
 
-        final ByteData? bd = await image.toByteData(
+        final bd = await image.toByteData(
           format: ui.ImageByteFormat.png,
         );
 

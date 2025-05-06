@@ -84,7 +84,7 @@ class WpPostModel {
   }
 
   String dateString() {
-    String result = '';
+    var result = '';
 
     final d = DateTime.tryParse(date);
     if (d != null) {

@@ -8,14 +8,14 @@ import 'package:dfc_flutter/src/file_system/server_file.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 
 List<ServerFile> dirListing(String path) {
-  final List<ServerFile> result = [];
+  final result = <ServerFile>[];
 
   final dir = Directory(path);
   if (dir.existsSync()) {
     for (final file in dir.listSync()) {
-      final bool isDirectory = file is Directory;
+      final isDirectory = file is Directory;
 
-      final ServerFile serverFile = ServerFile(
+      final serverFile = ServerFile(
         path: file.path,
         isDirectory: isDirectory,
       );
@@ -36,7 +36,7 @@ Future<Map<String, String>> buildIconMap(
   final map = <String, String>{};
 
   for (final file in files) {
-    String newName = file.name.replaceAll('-', '_');
+    var newName = file.name.replaceAll('-', '_');
 
     if (Utils.isNotEmpty(prefixName)) {
       newName = '${prefixName}_$newName';
@@ -61,7 +61,7 @@ Future<Map<String, String>> buildIconMap(
     } else {
       final f = File(file.path!);
 
-      String svgString = await f.readAsString();
+      var svgString = await f.readAsString();
 
       // add fill="#000000" if doesn't exist
       // our web hack uses this to change colors
@@ -83,7 +83,7 @@ Future<void> writeSvgOutput(String path, Map<String, String> map) async {
   final outFile = File(path);
   outFile.createSync();
 
-  final List<String> names = [];
+  final names = <String>[];
 
   for (final item in map.entries) {
     names.add(item.key);
@@ -146,13 +146,13 @@ class ReCase {
   late List<String> _words;
 
   List<String> _groupIntoWords(String text) {
-    final StringBuffer sb = StringBuffer();
-    final List<String> words = [];
-    final bool isAllCaps = text.toUpperCase() == text;
+    final sb = StringBuffer();
+    final words = <String>[];
+    final isAllCaps = text.toUpperCase() == text;
 
-    for (int i = 0; i < text.length; i++) {
-      final String char = text[i];
-      final String? nextChar = i + 1 == text.length ? null : text[i + 1];
+    for (var i = 0; i < text.length; i++) {
+      final char = text[i];
+      final nextChar = i + 1 == text.length ? null : text[i + 1];
 
       if (symbolSet.contains(char)) {
         continue;
@@ -160,7 +160,7 @@ class ReCase {
 
       sb.write(char);
 
-      final bool isEndOfWord = nextChar == null ||
+      final isEndOfWord = nextChar == null ||
           (_upperAlphaRegex.hasMatch(nextChar) && !isAllCaps) ||
           symbolSet.contains(nextChar);
 
@@ -204,7 +204,7 @@ class ReCase {
   String get titleCase => _getPascalCase(separator: ' ');
 
   String _getCamelCase({String separator = ''}) {
-    final List<String> words = _words.map(_upperCaseFirstLetter).toList();
+    final words = _words.map(_upperCaseFirstLetter).toList();
     if (_words.isNotEmpty) {
       words.first = words.first.toLowerCase();
     }
@@ -213,21 +213,19 @@ class ReCase {
   }
 
   String _getConstantCase({String separator = '_'}) {
-    final List<String> words =
-        _words.map((word) => word.toUpperCase()).toList();
+    final words = _words.map((word) => word.toUpperCase()).toList();
 
     return words.join(separator);
   }
 
   String _getPascalCase({String separator = ''}) {
-    final List<String> words = _words.map(_upperCaseFirstLetter).toList();
+    final words = _words.map(_upperCaseFirstLetter).toList();
 
     return words.join(separator);
   }
 
   String _getSentenceCase({String separator = ' '}) {
-    final List<String> words =
-        _words.map((word) => word.toLowerCase()).toList();
+    final words = _words.map((word) => word.toLowerCase()).toList();
     if (_words.isNotEmpty) {
       words.first = _upperCaseFirstLetter(words.first);
     }
@@ -236,8 +234,7 @@ class ReCase {
   }
 
   String _getSnakeCase({String separator = '_'}) {
-    final List<String> words =
-        _words.map((word) => word.toLowerCase()).toList();
+    final words = _words.map((word) => word.toLowerCase()).toList();
 
     return words.join(separator);
   }

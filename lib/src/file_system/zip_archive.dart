@@ -10,12 +10,12 @@ class ZipArchive {
     ServerFile serverFile,
     String destinationDir,
   ) async {
-    String destDir = destinationDir;
+    var destDir = destinationDir;
     if (Utils.isEmpty(destDir)) {
       destDir = serverFile.directoryPath;
     }
 
-    final String outputName = _uniqueCompressZipName(serverFile.name, destDir);
+    final outputName = _uniqueCompressZipName(serverFile.name, destDir);
 
     final zipFile = File(outputName);
 
@@ -50,8 +50,7 @@ class ZipArchive {
     final destinationDir = Directory(serverFile.directoryPath);
 
     // decompress into a tmp folder, then move the contents out renaming if needed to avoid conflicts
-    final String tmpDirPath =
-        Utils.uniqueDirName('.zipTmp', destinationDir.path);
+    final tmpDirPath = Utils.uniqueDirName('.zipTmp', destinationDir.path);
 
     final tmpDir = Directory(tmpDirPath);
     tmpDir.createSync();
@@ -63,19 +62,19 @@ class ZipArchive {
       );
 
       for (final entity in tmpDir.listSync()) {
-        final bool isDirectory = entity is Directory;
+        final isDirectory = entity is Directory;
 
         if (isDirectory) {
-          final Directory dir = entity;
+          final dir = entity;
 
-          final String newPath =
+          final newPath =
               Utils.uniqueDirName(p.basename(dir.path), destinationDir.path);
 
           dir.renameSync(newPath);
         } else {
-          final File file = entity as File;
+          final file = entity as File;
 
-          final String newPath =
+          final newPath =
               Utils.uniqueFileName(p.basename(file.path), destinationDir.path);
 
           file.renameSync(newPath);
@@ -90,13 +89,13 @@ class ZipArchive {
   }
 
   static String _uniqueCompressZipName(String name, String destinationDir) {
-    String outputName = '$destinationDir/$name.zip';
+    var outputName = '$destinationDir/$name.zip';
 
-    int nameIndex = 1;
+    var nameIndex = 1;
     while (
         File(outputName).existsSync() || Directory(outputName).existsSync()) {
-      final String baseName = p.basenameWithoutExtension(name);
-      final String extension = p.extension(name);
+      final baseName = p.basenameWithoutExtension(name);
+      final extension = p.extension(name);
 
       outputName = '$destinationDir/$baseName-$nameIndex$extension.zip';
       nameIndex++;

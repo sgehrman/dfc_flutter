@@ -84,8 +84,7 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
 
   TextPainter _iconPainter(Color color, double size) {
     const icon = Icons.person_add;
-    final TextPainter textPainter =
-        TextPainter(textDirection: TextDirection.ltr);
+    final textPainter = TextPainter(textDirection: TextDirection.ltr);
 
     textPainter.text = TextSpan(
       text: String.fromCharCode(icon.codePoint),
@@ -103,7 +102,7 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
   }
 
   Future<void> saveImage() async {
-    final File file = File(iconPath!);
+    final file = File(iconPath!);
     file.createSync(recursive: true);
 
     // final String svgString =
@@ -120,10 +119,10 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
 
     // draw in canvas
     const kWidth = 1024;
-    final Rect rect = Offset.zero & Size(kWidth.toDouble(), kWidth.toDouble());
-    const double kIconSize = kWidth * 0.9;
-    const Color iconColor = Colors.white;
-    final Rect iconRect = Offset.zero & const Size(kIconSize, kIconSize);
+    final rect = Offset.zero & Size(kWidth.toDouble(), kWidth.toDouble());
+    const kIconSize = kWidth * 0.9;
+    const iconColor = Colors.white;
+    final iconRect = Offset.zero & const Size(kIconSize, kIconSize);
 
     // const color = Color.fromRGBO(12, 43, 64, 1);
 
@@ -134,19 +133,19 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
     //         end: Alignment.bottomRight)
     //     .createShader(rect);
 
-    final ui.PictureRecorder recorder = ui.PictureRecorder();
-    final Canvas canvas = Canvas(recorder);
+    final recorder = ui.PictureRecorder();
+    final canvas = Canvas(recorder);
 
     // canvas.drawRect(rect, paint);
 
-    final Rect imageRect = Rect.fromCenter(
+    final imageRect = Rect.fromCenter(
       center: rect.center,
       width: iconRect.width,
       height: iconRect.height,
     );
     // canvas.drawImage(iconImage, imageRect.topLeft, paint);
 
-    TextPainter textPainter = _iconPainter(
+    var textPainter = _iconPainter(
       Colors.black54,
       kIconSize,
     );
@@ -158,13 +157,13 @@ class _CreateIconScreenState extends State<CreateIconScreen> {
     );
     textPainter.paint(canvas, imageRect.topLeft.translate(0, 0));
 
-    final ui.Picture pict = recorder.endRecording();
+    final pict = recorder.endRecording();
 
-    final ui.Image resultImage = await pict.toImage(kWidth, kWidth);
+    final resultImage = await pict.toImage(kWidth, kWidth);
 
     pict.dispose();
 
-    final ByteData data =
+    final data =
         (await resultImage.toByteData(format: ui.ImageByteFormat.png))!;
 
     final buffer = data.buffer;

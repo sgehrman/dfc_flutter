@@ -10,9 +10,9 @@ class HalfPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final Rect beforeRect = Rect.fromLTWH(0, (size.height / 2) - 10, 10, 10);
-    final Rect largeRect = Rect.fromLTWH(10, 0, size.width - 20, 70);
-    final Rect afterRect =
+    final beforeRect = Rect.fromLTWH(0, (size.height / 2) - 10, 10, 10);
+    final largeRect = Rect.fromLTWH(10, 0, size.width - 20, 70);
+    final afterRect =
         Rect.fromLTWH(size.width - 10, (size.height / 2) - 10, 10, 10);
 
     final path = Path();

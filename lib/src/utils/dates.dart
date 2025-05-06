@@ -11,9 +11,9 @@ class Dates {
 
   static String formatDateTime(DateTime? date) {
     if (date != null) {
-      final DateTime now = DateTime.now();
-      final DateTime yDay = now.subtract(const Duration(days: 1));
-      final DateTime yyDay = yDay.subtract(const Duration(days: 1));
+      final now = DateTime.now();
+      final yDay = now.subtract(const Duration(days: 1));
+      final yyDay = yDay.subtract(const Duration(days: 1));
 
       final formatter = DateFormat.MMMd().add_jm();
 
@@ -85,19 +85,19 @@ class Dates {
     bool addSeconds = false,
   }) {
     if (date != null) {
-      String day = '';
+      var day = '';
 
       if (addDay) {
         day = 'E, ';
       }
 
-      String secs = '';
+      var secs = '';
 
       if (addSeconds) {
         secs = ':ss';
       }
 
-      final DateFormat formatter = DateFormat('${day}MMM dd, h:mm$secs a');
+      final formatter = DateFormat('${day}MMM dd, h:mm$secs a');
 
       return formatter.format(date.toLocal());
     }
@@ -115,7 +115,7 @@ class Dates {
 
     if (Utils.isNotEmpty(dateString)) {
       try {
-        DateTime? theDate = parseDate(dateString);
+        var theDate = parseDate(dateString);
 
         if (theDate != null) {
           // added for medcreds, their dates need utc
@@ -149,7 +149,7 @@ class Dates {
   // not a perfect solution, but enough for now
   static DateTime? parseDate(String dateString) {
     if (Utils.isNotEmpty(dateString)) {
-      final DateTime? theDate = DateTime.tryParse(dateString);
+      final theDate = DateTime.tryParse(dateString);
       if (theDate != null) {
         return theDate;
       }
@@ -199,7 +199,7 @@ class Dates {
   }
 
   static String fileNameWithDate() {
-    String filename = DateFormat.yMd().add_jms().format(DateTime.now());
+    var filename = DateFormat.yMd().add_jms().format(DateTime.now());
     filename = filename.replaceAll(':', '-');
     filename = filename.replaceAll('.', '-');
     filename = filename.replaceAll(' ', '-');
@@ -216,21 +216,21 @@ class Dates {
     bool twentyFourHour = false,
   }) {
     if (date != null) {
-      String hr = 'h';
-      String amPm = ' a';
+      var hr = 'h';
+      var amPm = ' a';
 
       if (twentyFourHour) {
         hr = 'k';
         amPm = '';
       }
 
-      String format = leadingZero ? '$hr$hr:mm$amPm' : '$hr:mm$amPm';
+      var format = leadingZero ? '$hr$hr:mm$amPm' : '$hr:mm$amPm';
 
       if (seconds) {
         format = leadingZero ? '$hr$hr:mm:ss$amPm' : '$hr:mm:ss$amPm';
       }
 
-      final DateFormat formatter = DateFormat(format);
+      final formatter = DateFormat(format);
 
       return formatter.format(local ? date.toLocal() : date);
     }

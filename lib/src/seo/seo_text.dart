@@ -25,7 +25,7 @@ class SeoText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget child;
-    TextTagStyle tagStyle = TextTagStyle.p;
+    var tagStyle = TextTagStyle.p;
 
     switch (type) {
       case SeoTextType.lgb:

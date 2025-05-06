@@ -13,7 +13,7 @@ class FadingDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color dividerColor = Theme.of(context).dividerColor;
+    var dividerColor = Theme.of(context).dividerColor;
 
     if (color != null) {
       dividerColor = color!;

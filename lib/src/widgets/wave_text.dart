@@ -127,7 +127,7 @@ class _TextLiquidFillState extends State<WaveText>
               builder: (context) {
                 return AnimatedBuilder(
                   animation: _waveController,
-                  builder: (BuildContext context, Widget? child) {
+                  builder: (context, child) {
                     return CustomPaint(
                       painter: _WavePainter(
                         pathCache: _pathCache,

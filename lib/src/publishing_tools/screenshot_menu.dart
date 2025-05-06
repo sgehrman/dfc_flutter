@@ -15,12 +15,11 @@ class ScreenshotMenuItem {
   String? get displayTitle => title == kNoTextTitle ? '' : title;
 
   static Future<List<ScreenshotMenuItem>> get items async {
-    final List<ScreenshotMenuItem> result = [];
+    final result = <ScreenshotMenuItem>[];
 
-    final String data = await rootBundle.loadString('assets/screenshots.json');
+    final data = await rootBundle.loadString('assets/screenshots.json');
 
-    final Map<String, dynamic> jsonMap =
-        json.decode(data) as Map<String, dynamic>;
+    final jsonMap = json.decode(data) as Map<String, dynamic>;
 
     final dataList = List<Map<dynamic, dynamic>>.from(jsonMap['data'] as List);
 
@@ -93,7 +92,7 @@ class _ScreenshotMenuState extends State<ScreenshotMenu> {
       ),
     );
 
-    final List<PopupMenuEntry<ScreenshotMenuItem>> menuItems = [];
+    final menuItems = <PopupMenuEntry<ScreenshotMenuItem>>[];
 
     for (final item in items) {
       menuItems.add(

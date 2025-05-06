@@ -29,13 +29,13 @@ class DocRecord {
 
   static Future<DocRecord> docRecordForUrl(String url) async {
     Document? document;
-    String error = '';
-    String title = '';
+    var error = '';
+    var title = '';
     Element? head;
     Element? body;
 
-    List<Element> links = [];
-    List<Element> metas = [];
+    var links = <Element>[];
+    var metas = <Element>[];
 
     try {
       final uri = UriUtils.parseUri(url);

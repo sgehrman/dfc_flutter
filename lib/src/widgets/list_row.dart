@@ -40,7 +40,7 @@ class ListRow extends StatelessWidget {
     required int index,
     required bool darkMode,
   }) {
-    final Color c = darkMode
+    final c = darkMode
         ? Colors.white.withValues(alpha: 0.02)
         : Colors.black.withValues(alpha: 0.01);
 
@@ -49,7 +49,7 @@ class ListRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> titleChildren = [];
+    final titleChildren = <Widget>[];
 
     if (titleWidget != null) {
       titleChildren.add(titleWidget!);
@@ -87,7 +87,7 @@ class ListRow extends StatelessWidget {
       titleChildren.add(subWidget!);
     }
 
-    final List<Widget> rowChildren = [];
+    final rowChildren = <Widget>[];
 
     if (leading != null) {
       rowChildren.add(leading!);

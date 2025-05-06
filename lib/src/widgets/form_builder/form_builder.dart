@@ -104,7 +104,7 @@ class _FormBuilderState extends State<FormBuilder> {
   }
 
   Widget _jsonButton() {
-    const bool disabled = true;
+    const disabled = true;
 
     if (disabled) {
       return const NothingWidget();

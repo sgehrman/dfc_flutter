@@ -22,7 +22,7 @@ class ListStack<T> {
       return null;
     }
 
-    final T res = _list.last;
+    final res = _list.last;
     _list.removeLast();
 
     return res;

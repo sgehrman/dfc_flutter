@@ -16,15 +16,15 @@ class ThumbWidget extends StatelessWidget {
   final double opacity;
 
   Widget _thumb(int index) {
-    const Color unselectedColor = Color.fromRGBO(180, 180, 180, 1);
+    const unselectedColor = Color.fromRGBO(180, 180, 180, 1);
 
     IconData icon;
     IconData outlinedIcon;
 
-    final bool isSelected = selectedIndex == index;
+    final isSelected = selectedIndex == index;
 
     Color? iconColor;
-    final double xOffset = (iconSize / 5).roundToDouble();
+    final xOffset = (iconSize / 5).roundToDouble();
     double yOffset = 1;
 
     if (index < 2) {
@@ -42,7 +42,7 @@ class ThumbWidget extends StatelessWidget {
 
     final isDouble = index == 0 || index == 3;
 
-    Color? firstIconColor = isSelected ? iconColor : unselectedColor;
+    var firstIconColor = isSelected ? iconColor : unselectedColor;
     if (isDouble) {
       firstIconColor = firstIconColor!.darker(factor: 0.05);
     }

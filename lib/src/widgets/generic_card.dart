@@ -46,7 +46,7 @@ class GenericCard extends StatelessWidget {
   List<PopupMenuEntry<String>> _addMenuSeparators(
     List<PopupMenuEntry<String>> menuItems,
   ) {
-    final List<PopupMenuEntry<String>> result = [];
+    final result = <PopupMenuEntry<String>>[];
 
     if (Utils.isNotEmpty(menuItems)) {
       menuItems.asMap().forEach((index, value) {
@@ -64,7 +64,7 @@ class GenericCard extends StatelessWidget {
   Widget _popupMenu() {
     return PopupMenuButton<String>(
       itemBuilder: (context) {
-        final List<PopupMenuEntry<String>> menuItems = [];
+        final menuItems = <PopupMenuEntry<String>>[];
 
         if (onEdit != null) {
           menuItems.add(
@@ -209,11 +209,11 @@ class AddCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color cardColor =
+    final cardColor =
         Theme.of(context).textTheme.bodyLarge!.color!.withValues(alpha: 0.1);
 
     double strokeWidth = 5;
-    List<double> dashPattern = [12, 10];
+    var dashPattern = <double>[12, 10];
     double iconSize = 38;
 
     if (small) {

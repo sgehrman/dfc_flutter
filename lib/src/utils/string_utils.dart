@@ -21,8 +21,8 @@ class StrUtils {
     Map<dynamic, dynamic> map, {
     bool print = false,
   }) {
-    const JsonEncoder encoder = JsonEncoder.withIndent('  ');
-    final String prettyprint = encoder.convert(map);
+    const encoder = JsonEncoder.withIndent('  ');
+    final prettyprint = encoder.convert(map);
 
     if (print) {
       debugPrint(prettyprint, wrapWidth: 555);
@@ -35,8 +35,8 @@ class StrUtils {
     List<Map<dynamic, dynamic>> list, {
     bool print = false,
   }) {
-    const JsonEncoder encoder = JsonEncoder.withIndent('  ');
-    final String prettyprint = encoder.convert(list);
+    const encoder = JsonEncoder.withIndent('  ');
+    final prettyprint = encoder.convert(list);
 
     if (print) {
       debugPrint(prettyprint, wrapWidth: 555);
@@ -109,9 +109,9 @@ class StrUtils {
     for (final line in lines) {
       if (line.length > (maxLen + 20)) {
         // first add \n characters, then split on \n
-        final StringBuffer buffer = StringBuffer();
+        final buffer = StringBuffer();
 
-        int offset = 0;
+        var offset = 0;
         while (offset < line.length) {
           final remainder = line.length - offset;
 
@@ -156,7 +156,7 @@ class StrUtils {
 
   // there is also a string-extension
   static String convertHtmlCodes(String text) {
-    String result = text;
+    var result = text;
 
     result = removeCData(result);
 

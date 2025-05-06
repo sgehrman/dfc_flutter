@@ -50,7 +50,7 @@ class SizeMenu extends StatelessWidget {
       ),
     );
 
-    final List<PopupMenuEntry<SizeMenuItem>> menuItems = [];
+    final menuItems = <PopupMenuEntry<SizeMenuItem>>[];
 
     for (final item in SizeMenuItem.items) {
       menuItems.add(

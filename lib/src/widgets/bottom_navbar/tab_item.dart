@@ -68,7 +68,7 @@ class TabItem extends StatelessWidget {
                   icon: gradient != null
                       ? ShaderMask(
                           blendMode: BlendMode.srcIn,
-                          shaderCallback: (Rect bounds) {
+                          shaderCallback: (bounds) {
                             return ui.Gradient.linear(
                               const Offset(4, 24),
                               const Offset(24, 4),

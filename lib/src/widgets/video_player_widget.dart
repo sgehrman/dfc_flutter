@@ -148,7 +148,7 @@ class _PlayPauseOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool hasVideoFile = controller.dataSourceType == DataSourceType.file;
+    final hasVideoFile = controller.dataSourceType == DataSourceType.file;
 
     return Stack(
       children: <Widget>[

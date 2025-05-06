@@ -35,7 +35,7 @@ class MenuButtonBarItemData {
       return MenuButtonBarItemData.divider();
     }
 
-    Widget? leading = itemData.iconWidget;
+    var leading = itemData.iconWidget;
     if (itemData.iconData != null) {
       leading = Icon(itemData.iconData);
     }

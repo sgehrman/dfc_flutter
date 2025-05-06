@@ -41,7 +41,7 @@ class _RotatingRainbowTextState extends State<RotatingRainbowText>
 
   @override
   Widget build(BuildContext context) {
-    final Animation<double> animation = Tween<double>(begin: 0, end: 1).animate(
+    final animation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: controller,
         curve: const Interval(0, 1, curve: Curves.easeInOut),
@@ -71,7 +71,7 @@ class _ColorizeAnimatedText extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animation,
-      builder: (BuildContext context, Widget? child) {
+      builder: (context, child) {
         return GradientText.rainbow(
           text,
           textStyle: textStyle,

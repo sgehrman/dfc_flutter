@@ -47,9 +47,9 @@ class _MenuPopupButtonState extends State<MenuPopupButton> {
         menuChildren: menuChildren,
         style: MenuStyle(alignment: widget.alignment),
         builder: (
-          BuildContext context,
-          MenuController controller,
-          Widget? child,
+          context,
+          controller,
+          child,
         ) {
           return InkResponse(
             radius: widget.radius,

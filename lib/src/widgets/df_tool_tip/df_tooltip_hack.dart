@@ -27,8 +27,8 @@ class _RenderExclusiveMouseRegion extends RenderMouseRegion {
 
   @override
   bool hitTest(BoxHitTestResult result, {required Offset position}) {
-    bool isHit = false;
-    final bool outermost = isOutermostMouseRegion;
+    var isHit = false;
+    final outermost = isOutermostMouseRegion;
     isOutermostMouseRegion = false;
     if (size.contains(position)) {
       isHit =
@@ -71,16 +71,16 @@ class DFTooltipHack extends StatefulWidget {
     this.enableFeedback,
     this.onTriggered,
     this.child,
-  }) : assert(
-         (message == null) != (richMessage == null),
-         'Either `message` or `richMessage` must be specified',
-       ),
-       assert(
-         richMessage == null || textStyle == null,
-         'If `richMessage` is specified, `textStyle` will have no effect. '
-         'If you wish to provide a `textStyle` for a rich tooltip, add the '
-         '`textStyle` directly to the `richMessage` InlineSpan.',
-       );
+  })  : assert(
+          (message == null) != (richMessage == null),
+          'Either `message` or `richMessage` must be specified',
+        ),
+        assert(
+          richMessage == null || textStyle == null,
+          'If `richMessage` is specified, `textStyle` will have no effect. '
+          'If you wish to provide a `textStyle` for a rich tooltip, add the '
+          '`textStyle` directly to the `richMessage` InlineSpan.',
+        );
 
   final String? message;
 
@@ -125,8 +125,8 @@ class DFTooltipHack extends StatefulWidget {
 
   static bool dismissAllToolTips() {
     if (_openedTooltips.isNotEmpty) {
-      final List<DFTooltipHackState> openedTooltips = _openedTooltips.toList();
-      for (final DFTooltipHackState state in openedTooltips) {
+      final openedTooltips = _openedTooltips.toList();
+      for (final state in openedTooltips) {
         state._scheduleDismissTooltip(withDelay: Duration.zero);
       }
 
@@ -327,10 +327,9 @@ class DFTooltipHackState extends State<DFTooltipHack>
       }
       _controller.forward();
       _timer?.cancel();
-      _timer =
-          showDuration == null
-              ? null
-              : Timer(showDuration, _controller.reverse);
+      _timer = showDuration == null
+          ? null
+          : Timer(showDuration, _controller.reverse);
     }
 
     assert(
@@ -366,7 +365,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
   }
 
   void _handlePointerDown(PointerDownEvent event) {
-    const Set<PointerDeviceKind> triggerModeDeviceKinds = <PointerDeviceKind>{
+    const triggerModeDeviceKinds = <PointerDeviceKind>{
       PointerDeviceKind.invertedStylus,
       PointerDeviceKind.stylus,
       PointerDeviceKind.touch,
@@ -375,22 +374,20 @@ class DFTooltipHackState extends State<DFTooltipHack>
     };
     switch (_triggerMode) {
       case TooltipTriggerMode.longPress:
-        final LongPressGestureRecognizer recognizer =
-            _longPressRecognizer ??= LongPressGestureRecognizer(
-              debugOwner: this,
-              supportedDevices: triggerModeDeviceKinds,
-            );
+        final recognizer = _longPressRecognizer ??= LongPressGestureRecognizer(
+          debugOwner: this,
+          supportedDevices: triggerModeDeviceKinds,
+        );
         recognizer
           ..onLongPressCancel = _handleTapToDismiss
           ..onLongPress = _handleLongPress
           ..onLongPressUp = _handlePressUp
           ..addPointer(event);
       case TooltipTriggerMode.tap:
-        final TapGestureRecognizer recognizer =
-            _tapRecognizer ??= TapGestureRecognizer(
-              debugOwner: this,
-              supportedDevices: triggerModeDeviceKinds,
-            );
+        final recognizer = _tapRecognizer ??= TapGestureRecognizer(
+          debugOwner: this,
+          supportedDevices: triggerModeDeviceKinds,
+        );
         recognizer
           ..onTapCancel = _handleTapToDismiss
           ..onTap = _handleTap
@@ -424,7 +421,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
     if (!_visible) {
       return;
     }
-    final bool tooltipCreated = _controller.isDismissed;
+    final tooltipCreated = _controller.isDismissed;
     if (tooltipCreated && _enableFeedback) {
       Feedback.forTap(context);
     }
@@ -440,7 +437,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
     if (!_visible) {
       return;
     }
-    final bool tooltipCreated = _visible && _controller.isDismissed;
+    final tooltipCreated = _visible && _controller.isDismissed;
     if (tooltipCreated && _enableFeedback) {
       Feedback.forLongPress(context);
     }
@@ -458,14 +455,12 @@ class DFTooltipHackState extends State<DFTooltipHack>
   void _handleMouseEnter(PointerEnterEvent event) {
     _activeHoveringPointerDevices.add(event.device);
 
-    final List<DFTooltipHackState> tooltipsToDismiss =
-        DFTooltipHack._openedTooltips
-            .where(
-              (DFTooltipHackState tooltip) =>
-                  tooltip._activeHoveringPointerDevices.isEmpty,
-            )
-            .toList();
-    for (final DFTooltipHackState tooltip in tooltipsToDismiss) {
+    final tooltipsToDismiss = DFTooltipHack._openedTooltips
+        .where(
+          (tooltip) => tooltip._activeHoveringPointerDevices.isEmpty,
+        )
+        .toList();
+    for (final tooltip in tooltipsToDismiss) {
       tooltip._scheduleDismissTooltip(withDelay: Duration.zero);
     }
     _scheduleShowTooltip(
@@ -518,18 +513,24 @@ class DFTooltipHackState extends State<DFTooltipHack>
     return switch (Theme.of(context).platform) {
       TargetPlatform.macOS ||
       TargetPlatform.linux ||
-      TargetPlatform.windows => 24.0,
+      TargetPlatform.windows =>
+        24.0,
       TargetPlatform.android ||
       TargetPlatform.fuchsia ||
-      TargetPlatform.iOS => 32.0,
+      TargetPlatform.iOS =>
+        32.0,
     };
   }
 
   EdgeInsets _getDefaultPadding() {
     return switch (Theme.of(context).platform) {
-      TargetPlatform.macOS || TargetPlatform.linux || TargetPlatform.windows =>
+      TargetPlatform.macOS ||
+      TargetPlatform.linux ||
+      TargetPlatform.windows =>
         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      TargetPlatform.android || TargetPlatform.fuchsia || TargetPlatform.iOS =>
+      TargetPlatform.android ||
+      TargetPlatform.fuchsia ||
+      TargetPlatform.iOS =>
         const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
     };
   }
@@ -538,20 +539,22 @@ class DFTooltipHackState extends State<DFTooltipHack>
     return switch (platform) {
       TargetPlatform.macOS ||
       TargetPlatform.linux ||
-      TargetPlatform.windows => 12.0,
+      TargetPlatform.windows =>
+        12.0,
       TargetPlatform.android ||
       TargetPlatform.fuchsia ||
-      TargetPlatform.iOS => 14.0,
+      TargetPlatform.iOS =>
+        14.0,
     };
   }
 
   Widget _buildTooltipOverlay(BuildContext context) {
-    final OverlayState overlayState = Overlay.of(
+    final overlayState = Overlay.of(
       context,
       debugRequiredFor: widget,
     );
-    final RenderBox box = this.context.findRenderObject()! as RenderBox;
-    final Offset target = box.localToGlobal(
+    final box = this.context.findRenderObject()! as RenderBox;
+    final target = box.localToGlobal(
       box.size.center(Offset.zero),
       ancestor: overlayState.context.findRenderObject(),
     );
@@ -592,8 +595,8 @@ class DFTooltipHackState extends State<DFTooltipHack>
         ),
     };
 
-    final TooltipThemeData tooltipTheme = _tooltipTheme;
-    final _TooltipOverlay overlayChild = _TooltipOverlay(
+    final tooltipTheme = _tooltipTheme;
+    final overlayChild = _TooltipOverlay(
       richMessage: widget.richMessage ?? TextSpan(text: widget.message),
       height:
           widget.height ?? tooltipTheme.height ?? _getDefaultTooltipHeight(),
@@ -608,8 +611,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
           widget.textAlign ?? tooltipTheme.textAlign ?? _defaultTextAlign,
       animation: _overlayAnimation,
       target: target,
-      verticalOffset:
-          widget.verticalOffset ??
+      verticalOffset: widget.verticalOffset ??
           tooltipTheme.verticalOffset ??
           _defaultVerticalOffset,
       preferBelow:
@@ -643,8 +645,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
     if (_tooltipMessage.isEmpty) {
       return widget.child ?? const SizedBox.shrink();
     }
-    final bool excludeFromSemantics =
-        widget.excludeFromSemantics ??
+    final excludeFromSemantics = widget.excludeFromSemantics ??
         _tooltipTheme.excludeFromSemantics ??
         _defaultExcludeFromSemantics;
     Widget result = Semantics(
@@ -789,8 +790,9 @@ class _TooltipOverlay extends StatelessWidget {
               DFTooltipHack.dismissAllToolTips();
 
               Scrollable.of(context).position.jumpTo(
-                Scrollable.of(context).position.pixels + event.scrollDelta.dy,
-              );
+                    Scrollable.of(context).position.pixels +
+                        event.scrollDelta.dy,
+                  );
             }
           },
           child: CustomSingleChildLayout(

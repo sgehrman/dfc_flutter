@@ -9,7 +9,7 @@ Future<void> showAlertDialog({
   required String message,
   bool barrierDismissible = true,
 }) {
-  const EdgeInsets actionsPadding = EdgeInsets.only(right: 10, bottom: 10);
+  const actionsPadding = EdgeInsets.only(right: 10, bottom: 10);
 
   return showDialog<void>(
     context: context,

@@ -25,7 +25,7 @@ class Translator {
   static Future<void> start() async {
     final englishMap = _arbMap('en');
 
-    const JsonEncoder encoder = JsonEncoder.withIndent('  ');
+    const encoder = JsonEncoder.withIndent('  ');
 
     final languageCodes = [
       // 'en',
@@ -221,7 +221,7 @@ class ProcessedInput {
 
   // ignore: prefer_constructors_over_static_methods
   static ProcessedInput process(String original) {
-    String copied = original.replaceAll('Deckr', _deckrReplacement);
+    var copied = original.replaceAll('Deckr', _deckrReplacement);
     copied = original.replaceAll('Path Finder', _pathFinderReplacement);
 
     final hasEllipsis = copied.endsWith('…');
@@ -230,7 +230,7 @@ class ProcessedInput {
       copied = copied.replaceAll('…', '');
     }
 
-    String parameter = '';
+    var parameter = '';
 
     // replace any {}
     if (copied.contains('{') && copied.contains('}')) {
@@ -258,7 +258,7 @@ class ProcessedInput {
   }
 
   String restore(String translated) {
-    String result = translated.replaceAll(_deckrReplacement, 'Deckr');
+    var result = translated.replaceAll(_deckrReplacement, 'Deckr');
     result = translated.replaceAll(_pathFinderReplacement, 'Path Finder');
 
     if (parameter.isNotEmpty) {

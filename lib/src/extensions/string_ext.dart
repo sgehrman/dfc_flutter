@@ -23,11 +23,11 @@ extension StringUtils on String {
   }
 
   String fromCamelCase() {
-    String displayName = '';
-    bool lastUpper = false;
+    var displayName = '';
+    var lastUpper = false;
 
-    final List<String> characters = split('');
-    for (final String r in characters) {
+    final characters = split('');
+    for (final r in characters) {
       if (r.toUpperCase() == r) {
         displayName += lastUpper ? r : ' $r';
 
@@ -47,7 +47,7 @@ extension StringUtils on String {
   }
 
   String truncate([int max = 20]) {
-    String result = this;
+    var result = this;
 
     if (Utils.isNotEmpty(result)) {
       if (result.length > max) {
@@ -60,7 +60,7 @@ extension StringUtils on String {
   }
 
   String preTruncate([int max = 20]) {
-    String result = this;
+    var result = this;
 
     if (Utils.isNotEmpty(result)) {
       if (result.length > max) {
@@ -105,7 +105,7 @@ extension StringUtils on String {
 
   String superTrim() {
     // remove spaces after newline
-    String result = replaceAll(RegExp(r'\n\s+'), '\n');
+    var result = replaceAll(RegExp(r'\n\s+'), '\n');
 
     // replace 3 or more newlines with 2 newlines
     result = result.replaceAll(RegExp(r'\n{3,}'), '\n\n');

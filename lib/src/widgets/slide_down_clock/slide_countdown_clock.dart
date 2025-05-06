@@ -106,19 +106,18 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
   }
 
   List<Widget> _buildDigits() {
-    final List<Widget> result = <Widget>[];
+    final result = <Widget>[];
 
     if (shouldShowDays) {
       Widget dayDigits;
 
       if (timeLeft.inDays > 99) {
-        final List<int Function(DateTime)> digits = [];
+        final digits = <int Function(DateTime)>[];
 
-        for (int i = timeLeft.inDays.toString().length - 1; i >= 0; i--) {
+        for (var i = timeLeft.inDays.toString().length - 1; i >= 0; i--) {
           digits.add(
-            (DateTime time) =>
-                ((timeLeft.inDays) ~/ math.pow(10, i) % math.pow(10, 1))
-                    .toInt(),
+            (time) => ((timeLeft.inDays) ~/ math.pow(10, i) % math.pow(10, 1))
+                .toInt(),
           );
         }
 
@@ -126,8 +125,8 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
             _buildDigitForLargeNumber(digits, DateTime.now(), 'daysHundreds');
       } else {
         dayDigits = _buildDigit(
-          (DateTime time) => (timeLeft.inDays) ~/ 10,
-          (DateTime time) => (timeLeft.inDays) % 10,
+          (time) => (timeLeft.inDays) ~/ 10,
+          (time) => (timeLeft.inDays) % 10,
           DateTime.now(),
           'Days',
         );
@@ -148,8 +147,8 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
 
       result.add(
         _buildDigit(
-          (DateTime time) => (timeLeft.inHours % 24) ~/ 10,
-          (DateTime time) => (timeLeft.inHours % 24) % 10,
+          (time) => (timeLeft.inHours % 24) ~/ 10,
+          (time) => (timeLeft.inHours % 24) % 10,
           DateTime.now(),
           'Hours',
         ),
@@ -167,8 +166,8 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
 
     result.add(
       _buildDigit(
-        (DateTime time) => (timeLeft.inMinutes % 60) ~/ 10,
-        (DateTime time) => (timeLeft.inMinutes % 60) % 10,
+        (time) => (timeLeft.inMinutes % 60) ~/ 10,
+        (time) => (timeLeft.inMinutes % 60) % 10,
         DateTime.now(),
         'minutes',
       ),
@@ -183,8 +182,8 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
 
     result.add(
       _buildDigit(
-        (DateTime time) => (timeLeft.inSeconds % 60) ~/ 10,
-        (DateTime time) => (timeLeft.inSeconds % 60) % 10,
+        (time) => (timeLeft.inSeconds % 60) ~/ 10,
+        (time) => (timeLeft.inSeconds % 60) % 10,
         DateTime.now(),
         'seconds',
       ),
@@ -221,9 +220,9 @@ class SlideCountdownClockState extends State<SlideCountdownClock> {
     DateTime startTime,
     String id,
   ) {
-    final String timeLeftString = timeLeft.inDays.toString();
-    final List<Widget> rows = [];
-    for (int i = 0; i < timeLeftString.length; i++) {
+    final timeLeftString = timeLeft.inDays.toString();
+    final rows = <Widget>[];
+    for (var i = 0; i < timeLeftString.length; i++) {
       rows.add(
         Container(
           decoration: widget.decoration,

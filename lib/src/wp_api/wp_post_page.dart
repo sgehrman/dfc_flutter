@@ -41,7 +41,7 @@ class WpPostPage {
   Future<List<WpPostRecord>> postRecords() async {
     if (_completer == null) {
       _completer = Completer<List<WpPostRecord>>();
-      final List<WpPostRecord> result = [];
+      final result = <WpPostRecord>[];
 
       // https://developer.wordpress.org/rest-api/reference/posts/
       final response = await http.get(

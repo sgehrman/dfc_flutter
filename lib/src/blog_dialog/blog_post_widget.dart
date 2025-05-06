@@ -21,7 +21,7 @@ class BlogPostWidget extends StatelessWidget {
 
     final thumbnail = postRecord!.mediaLinks.thumbnail(maxSize: 1200);
 
-    final double horizPadding = isMobile ? 20 : 40;
+    final horizPadding = isMobile ? 20.0 : 40.0;
 
     return LayoutBuilder(
       builder: (context, constraints) {

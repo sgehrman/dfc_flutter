@@ -34,7 +34,7 @@ class StarFieldPainter extends CustomPainter {
     final ry = cos((time + 123) / 15) * 30;
     final rz = cos((time + 453) / 20) * 40;
 
-    final Matrix4 camera = Matrix4.identity()
+    final camera = Matrix4.identity()
       ..rotateX(rx)
       ..rotateY(ry)
       ..rotateZ(rz);
@@ -43,7 +43,7 @@ class StarFieldPainter extends CustomPainter {
         .take(numStars.floor())
         .map((star) {
           //Transform each star
-          final Vector3 currentPoint = star.screenVector;
+          final currentPoint = star.screenVector;
           currentPoint.setFrom(star.position);
           currentPoint.add(localOffset);
           currentPoint.add(cameraPosition);
@@ -78,7 +78,7 @@ class StarFieldPainter extends CustomPainter {
 
   void coloredStars(Star star, Canvas canvas) {
     const double maxDistance = 1200;
-    double d = maxDistance - star.z;
+    var d = maxDistance - star.z;
     if (d > maxDistance) {
       d = maxDistance;
     }
@@ -86,7 +86,7 @@ class StarFieldPainter extends CustomPainter {
       d = 0;
     }
     d /= maxDistance;
-    int c = (d * 255).round();
+    var c = (d * 255).round();
 
     c = max(c, 50);
 
@@ -96,7 +96,7 @@ class StarFieldPainter extends CustomPainter {
 
   void whiteStars(Star star, Canvas canvas) {
     const double maxDistance = 1200;
-    double d = maxDistance - star.z;
+    var d = maxDistance - star.z;
     if (d > maxDistance) {
       return;
     }
@@ -104,7 +104,7 @@ class StarFieldPainter extends CustomPainter {
       d = 0;
     }
     d /= maxDistance;
-    int c = (d * 255).round();
+    var c = (d * 255).round();
 
     c = max(c, 50);
 

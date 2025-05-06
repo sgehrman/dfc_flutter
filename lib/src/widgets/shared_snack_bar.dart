@@ -66,14 +66,14 @@ class SharedSnackBar extends StatefulWidget {
   }) async {
     final context = SharedContext().scaffoldContext;
     final overlayState = Overlay.of(context);
-    final Completer<bool> completed = Completer<bool>();
+    final completed = Completer<bool>();
 
     // this means the keyboard is visible
     final onTop = MediaQuery.of(context).viewInsets.bottom != 0;
 
-    const Duration showOutAnimationDuration = Duration(milliseconds: 1000);
-    const Duration hideOutAnimationDuration = Duration(milliseconds: 500);
-    const Duration displayDuration = Duration(milliseconds: 1500);
+    const showOutAnimationDuration = Duration(milliseconds: 1000);
+    const hideOutAnimationDuration = Duration(milliseconds: 500);
+    const displayDuration = Duration(milliseconds: 1500);
 
     final overlayEntry = OverlayEntry(
       builder: (context) {
@@ -122,7 +122,7 @@ class _SharedSnackBarState extends State<SharedSnackBar>
       reverseDuration: widget.hideOutAnimationDuration,
     );
 
-    final Tween<Offset> offsetTween = Tween<Offset>(
+    final offsetTween = Tween<Offset>(
       begin: Offset(0, widget.onTop ? -1.0 : 1.0),
       end: Offset.zero,
     );
@@ -198,10 +198,9 @@ class _StandardSnackBar extends StatelessWidget {
           minWidth: MediaQuery.of(context).size.width / 3,
         ),
         decoration: BoxDecoration(
-          color:
-              error
-                  ? Colors.red[800]!.withValues(alpha: 0.9)
-                  : Colors.green[800]!.withValues(alpha: 0.9),
+          color: error
+              ? Colors.red[800]!.withValues(alpha: 0.9)
+              : Colors.green[800]!.withValues(alpha: 0.9),
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           boxShadow: const [
             BoxShadow(

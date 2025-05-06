@@ -32,7 +32,7 @@ class ColoredButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color disabledColor = color ?? Theme.of(context).colorScheme.primary;
+    var disabledColor = color ?? Theme.of(context).colorScheme.primary;
 
     disabledColor = disabledColor.lighter();
 

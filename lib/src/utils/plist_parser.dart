@@ -75,7 +75,7 @@ class ManifestFile {
       );
 
       if (HttpUtils.statusOK(response.statusCode)) {
-        String xmlString = response.content();
+        var xmlString = response.content();
 
         xmlString = xmlString.replaceAll('bundle-version', 'bundleVersion');
         xmlString =
@@ -83,7 +83,7 @@ class ManifestFile {
         xmlString =
             xmlString.replaceAll('platform-identifier', 'platformIdentifier');
 
-        final Map<String, dynamic> converted =
+        final converted =
             Map<String, dynamic>.from(Plist.parse(xmlString) as Map);
 
         final manifest = ManifestModel.fromJson(converted);

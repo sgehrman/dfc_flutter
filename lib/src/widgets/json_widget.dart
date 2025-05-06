@@ -92,11 +92,11 @@ class _JsonViewerWidgetState extends State<JsonViewerWidget> {
   }
 
   List<Widget> _getList() {
-    final List<Widget> list = [];
+    final list = <Widget>[];
 
     for (final entry in widget.jsonObj.entries) {
-      final bool ex = _isExtensible(entry.value);
-      final bool ink = _isInkWell(entry.value);
+      final ex = _isExtensible(entry.value);
+      final ink = _isInkWell(entry.value);
 
       list.add(
         Row(
@@ -179,7 +179,7 @@ class _JsonViewerWidgetState extends State<JsonViewerWidget> {
         ),
       );
     } else if (entry.value is List) {
-      final List<dynamic> list = entry.value as List;
+      final list = entry.value as List;
 
       if (list.isEmpty) {
         return const Text(
@@ -308,12 +308,12 @@ class _JsonArrayViewerWidgetState extends State<_JsonArrayViewerWidget> {
   }
 
   List<Widget> _getList() {
-    final List<Widget> list = [];
-    int i = 0;
+    final list = <Widget>[];
+    var i = 0;
 
     for (final content in widget.jsonArray) {
-      final bool ex = _isExtensible(content);
-      final bool ink = _isInkWell(content);
+      final ex = _isExtensible(content);
+      final ink = _isInkWell(content);
 
       list.add(
         Row(
@@ -460,7 +460,7 @@ String _intToString(
   int content, {
   required bool convertIntsToDates,
 }) {
-  String contentStr = content.toString();
+  var contentStr = content.toString();
 
   if (convertIntsToDates) {
     // convert to date if number is large

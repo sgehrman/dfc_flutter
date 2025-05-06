@@ -35,8 +35,7 @@ class MenuAnchorButton extends StatelessWidget {
     );
 
     return DFCMenuAnchor(
-      builder:
-          (BuildContext context, MenuController controller, Widget? child) {
+      builder: (context, controller, child) {
         return MenuAnchorButtonContents(
           controller: controller,
           color: color,

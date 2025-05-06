@@ -11,12 +11,12 @@ Future<bool?> showConfirmDialog({
   String cancelButtonName = 'Cancel',
   bool barrierDismissible = true,
 }) {
-  const EdgeInsets actionsPadding = EdgeInsets.only(right: 10, bottom: 10);
+  const actionsPadding = EdgeInsets.only(right: 10, bottom: 10);
 
   return showDialog<bool>(
     context: context,
     barrierDismissible: barrierDismissible, // can return null
-    builder: (BuildContext context) {
+    builder: (context) {
       final focusNode = FocusNode();
       focusNode.attach(context);
 

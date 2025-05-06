@@ -58,9 +58,9 @@ class _DropStackButtonState extends State<DropStackButton>
   List<ActionBubble> _items(BuildContext context, DropStack dropStack) {
     const double fontSize = 14;
     const Color bubbleColor = Colors.cyan;
-    const Color textColor = Colors.white;
+    const textColor = Colors.white;
 
-    final List<ActionBubble> result = <ActionBubble>[];
+    final result = <ActionBubble>[];
 
     result.add(
       ActionBubble(
@@ -162,7 +162,7 @@ class _DropStackButtonState extends State<DropStackButton>
     return ChangeNotifierProvider.value(
       value: DropStack(),
       builder: (context, child) {
-        final DropStack dropStack = Provider.of<DropStack>(context);
+        final dropStack = Provider.of<DropStack>(context);
 
         return _overlay(
           context,

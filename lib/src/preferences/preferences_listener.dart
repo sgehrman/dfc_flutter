@@ -59,7 +59,7 @@ class _PreferencesListenerState extends State<PreferencesListener> {
       valueListenable: PrefsBox().box.listenable(
             keys: widget.keys.isEmpty ? null : widget.keys,
           )!,
-      builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
+      builder: (context, prefsBox, _) {
         return widget.builder(context);
       },
     );

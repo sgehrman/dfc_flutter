@@ -17,14 +17,14 @@ class StandardDirectories {
 
   Future<List<ServerFile>> standardDirectories() async {
     if (_standardDirectories == null) {
-      final List<String?> result = [];
+      final result = <String?>[];
       String? path;
-      final String? documentsPath = await FileSystem.globalDocumentsPath;
+      final documentsPath = await FileSystem.globalDocumentsPath;
 
       // iOS uses the file_picker directory as it's home
       if (Utils.isIOS) {
         // if (Utils.isAndroid) {
-        final String filePickerPath = await FileSystem.filePickerPath;
+        final filePickerPath = await FileSystem.filePickerPath;
 
         result.add(filePickerPath);
         _displayNameMap[filePickerPath] = 'Shared';
@@ -86,7 +86,7 @@ class StandardDirectories {
   }
 
   String? displayName(ServerFile serverFile) {
-    String? result = _displayNameMap[serverFile.path];
+    var result = _displayNameMap[serverFile.path];
 
     if (Utils.isEmpty(result)) {
       result = serverFile.name;

@@ -20,7 +20,7 @@ class HelpListItem extends StatefulWidget {
     required List<HelpData> helpData,
     required bool isMobile,
   }) {
-    int index = 0;
+    var index = 0;
 
     return helpData.map((x) {
       return HelpListItem(

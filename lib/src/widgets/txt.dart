@@ -42,7 +42,7 @@ class Txt {
     Color? result;
 
     if (primary) {
-      final Color startColor = color ?? Theme.of(context).colorScheme.primary;
+      final startColor = color ?? Theme.of(context).colorScheme.primary;
 
       result =
           lighten ? startColor.withValues(alpha: lightOpacity) : startColor;

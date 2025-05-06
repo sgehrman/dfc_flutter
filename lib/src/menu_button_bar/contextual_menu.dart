@@ -27,18 +27,17 @@ class _ContextMenuState extends State<ContextualMenu> {
       onOpen: () => setState(() {}),
       onClose: () => setState(() {}),
       builder: (
-        BuildContext context,
-        MenuController controller,
-        Widget? child,
+        context,
+        controller,
+        child,
       ) {
         return GestureDetector(
-          onSecondaryTapDown:
-              (details) => _handleRightClick(details, controller),
+          onSecondaryTapDown: (details) =>
+              _handleRightClick(details, controller),
           onTap: controller.isOpen ? controller.close : null,
-          behavior:
-              controller.isOpen
-                  ? HitTestBehavior.opaque
-                  : HitTestBehavior.deferToChild,
+          behavior: controller.isOpen
+              ? HitTestBehavior.opaque
+              : HitTestBehavior.deferToChild,
           child: child,
         );
       },

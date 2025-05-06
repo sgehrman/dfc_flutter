@@ -17,8 +17,8 @@ class DFTooltip extends StatelessWidget {
   final bool? preferBelow;
 
   List<String> _breakWord(String input, int maxLength) {
-    final List<String> segments = [];
-    int start = 0;
+    final segments = <String>[];
+    var start = 0;
 
     while (start < input.length) {
       final end =
@@ -57,7 +57,7 @@ class DFTooltip extends StatelessWidget {
       for (final line in lines) {
         final words = _words(line, maxLength);
 
-        int letterCnt = 0;
+        var letterCnt = 0;
         for (final word in words) {
           letterCnt += word.length;
           buffer.write(word);
@@ -91,7 +91,7 @@ class DFTooltip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String msg = message ?? '';
+    var msg = message ?? '';
 
     // AI chat models have html tooltips
     if (msg.startsWith('<')) {

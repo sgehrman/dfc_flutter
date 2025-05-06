@@ -89,7 +89,7 @@ class MenuButtonBarUtils {
     required BuildContext context,
     required List<MenuButtonBarItemData> menuData,
   }) {
-    final List<Widget> menuItems = [];
+    final menuItems = <Widget>[];
 
     final style = _menuiItemStyle(context);
     final selectedStyle = _menuiItemStyle(context, selected: true);
@@ -112,7 +112,7 @@ class MenuButtonBarUtils {
         child = DFTooltip(message: itemData.tooltip, child: child);
       }
 
-      Widget? leading = itemData.leading;
+      var leading = itemData.leading;
 
       if (itemData.level > 0) {
         final leadingSpace = SizedBox(width: 20.0 * itemData.level);

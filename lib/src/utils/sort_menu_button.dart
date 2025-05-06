@@ -9,7 +9,7 @@ class BrowserSortMenuButton extends StatelessWidget {
   const BrowserSortMenuButton();
 
   Widget _popupMenu(BuildContext context) {
-    final List<BrowserSortMenuItem> items = <BrowserSortMenuItem>[];
+    final items = <BrowserSortMenuItem>[];
 
     for (final sortType in SortTypes.sortTypes) {
       items.add(
@@ -98,7 +98,7 @@ class BrowserSortMenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder<Box<dynamic>>(
       valueListenable: PrefsBox().box.listenable()!,
-      builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
+      builder: (context, prefsBox, _) {
         return _popupMenu(context);
       },
     );

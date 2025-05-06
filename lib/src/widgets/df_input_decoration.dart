@@ -18,7 +18,7 @@ class DFInputDecoration {
     BoxConstraints? suffixIconConstraints,
     String? errorText,
   }) {
-    bool isDense = false;
+    var isDense = false;
 
     // only make dense has some icons, otherwise it will look weird
     if (suffixIcon != null || prefixIcon != null) {

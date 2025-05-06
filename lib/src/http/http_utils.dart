@@ -82,7 +82,7 @@ class HttpUtils {
       if (HttpUtils.statusOK(response.statusCode)) {
         // we want the bytes now before close happens in finally.
         // not sure how to handle this correctly.
-        final Uint8List result = await response.stream.toBytes();
+        final result = await response.stream.toBytes();
 
         if (result.isEmpty) {
           print('httpGetStream zero bytes received');
@@ -130,17 +130,17 @@ class HttpUtils {
     Uri uri, {
     int timeout = 20,
   }) async {
-    String receivedCookies = '';
-    Uri getUri = uri;
+    var receivedCookies = '';
+    var getUri = uri;
 
-    const int movedTemporarily = 302; // HttpStatus.movedTemporarily
-    const int redirect = 301; // HttpStatus.redirect
-    const int ok = 200; // HttpStatus.ok
-    int loops = 12;
+    const movedTemporarily = 302; // HttpStatus.movedTemporarily
+    const redirect = 301; // HttpStatus.redirect
+    const ok = 200; // HttpStatus.ok
+    var loops = 12;
     http.Client? client;
 
     try {
-      bool isRedirect = true;
+      var isRedirect = true;
 
       while (isRedirect) {
         isRedirect = false;
@@ -175,7 +175,7 @@ class HttpUtils {
             isRedirect = response.isRedirect;
             receivedCookies = response.headers['set-cookie'] ?? '';
 
-            String newUrl = url;
+            var newUrl = url;
 
             // seems that the relative urls don't always have a leading /
             // Invalid argument(s): No host specified in URI windows/ url: https://www.mamp.info/en

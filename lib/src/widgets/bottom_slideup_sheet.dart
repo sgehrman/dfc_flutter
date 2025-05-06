@@ -59,7 +59,7 @@ class _SheetList extends StatelessWidget {
     if (sliderContent!.enableCopyButton()) {
       copyButton = InkWell(
         onTap: () {
-          final String jsonStr = sliderContent!.stringForCopy();
+          final jsonStr = sliderContent!.stringForCopy();
 
           Utils.copyToClipboard(jsonStr);
         },
@@ -74,7 +74,7 @@ class _SheetList extends StatelessWidget {
   }
 
   Widget _listView(BuildContext context, ScrollController controller) {
-    final Widget? listview = sliderContent?.listView(context, controller);
+    final listview = sliderContent?.listView(context, controller);
 
     if (listview != null) {
       return listview;
@@ -96,7 +96,7 @@ class _SheetList extends StatelessWidget {
         initialChildSize: sliderContent!.initialChildSize,
         maxChildSize: 0.9,
         minChildSize: 0.2,
-        builder: (BuildContext context, ScrollController controller) {
+        builder: (context, controller) {
           // Material is needed for Ink splashes
           return Material(
             color: Colors.transparent,

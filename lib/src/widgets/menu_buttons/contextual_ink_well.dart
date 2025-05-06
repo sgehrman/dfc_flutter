@@ -54,9 +54,9 @@ class ContextualInkWell extends StatelessWidget {
       menuChildren: menuChildren,
       child: child,
       builder: (
-        BuildContext context,
-        MenuController controller,
-        Widget? child,
+        context,
+        controller,
+        child,
       ) {
         if (useGestureDetector) {
           return GestureDetector(

@@ -120,8 +120,7 @@ class BottomNavBarState extends State<BottomNavBar>
   }
 
   void _setSelected(UniqueKey key) {
-    final int selected =
-        widget.tabs.indexWhere((tabData) => tabData.key == key);
+    final selected = widget.tabs.indexWhere((tabData) => tabData.key == key);
 
     if (mounted) {
       setState(() {
@@ -162,7 +161,7 @@ class BottomNavBarState extends State<BottomNavBar>
                     gradient: gradient,
                     textColor: textColor,
                     callbackFunction: (uniqueKey) {
-                      final int selected = widget.tabs
+                      final selected = widget.tabs
                           .indexWhere((tabData) => tabData.key == uniqueKey);
 
                       widget.onTabChangedListener(selected);

@@ -38,7 +38,7 @@ class DropStack extends ChangeNotifier {
 
   bool _inStack(ServerFile serverFile) {
     final list = _stack.list;
-    final String? test = serverFile.path;
+    final test = serverFile.path;
 
     for (final item in list) {
       if (item.path == test) {
@@ -76,7 +76,7 @@ class DropStack extends ChangeNotifier {
     required ServerFile directory,
     required bool topOnly,
   }) {
-    final List<Widget> itemsDropping = [];
+    final itemsDropping = <Widget>[];
 
     for (final serverFile in _stack.list) {
       itemsDropping.add(
@@ -116,7 +116,7 @@ class DropStack extends ChangeNotifier {
         ),
         ValueListenableBuilder<Box<dynamic>>(
           valueListenable: PrefsBox().box.listenable()!,
-          builder: (BuildContext context, Box<dynamic> prefsBox, Widget? _) {
+          builder: (context, prefsBox, _) {
             final color = Theme.of(context).colorScheme.primary;
 
             return Column(
@@ -128,7 +128,7 @@ class DropStack extends ChangeNotifier {
                   inactiveTrackColor: Colors.white,
                   inactiveThumbColor: color,
                   selected: true,
-                  onChanged: (bool newValue) {
+                  onChanged: (newValue) {
                     BrowserPrefs.copyOnDrop = newValue;
                   },
                   title: Text(
@@ -144,7 +144,7 @@ class DropStack extends ChangeNotifier {
                   inactiveTrackColor: Colors.white,
                   inactiveThumbColor: color,
                   selected: true,
-                  onChanged: (bool newValue) {
+                  onChanged: (newValue) {
                     BrowserPrefs.replaceOnDrop = newValue;
                   },
                   title: const Text('Replace'),
@@ -164,17 +164,17 @@ class DropStack extends ChangeNotifier {
   }) async {
     if (isNotEmpty) {
       if (directory.isDirectory!) {
-        final bool? drop = await _confirmDrop(
+        final drop = await _confirmDrop(
           context: context,
           directory: directory,
           topOnly: topOnly,
         );
 
         if (drop ?? false) {
-          bool done = false;
+          var done = false;
 
           while (!done) {
-            final ServerFile? serverFile = _stack.pop();
+            final serverFile = _stack.pop();
 
             if (serverFile != null && context.mounted) {
               _dropFile(context, serverFile, directory);

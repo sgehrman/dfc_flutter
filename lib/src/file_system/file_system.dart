@@ -22,18 +22,18 @@ class FileSystem {
 
     if (Utils.isIOS) {
       // on Android this give us a data directory for some odd reason
-      final Directory dir = await getApplicationDocumentsDirectory();
+      final dir = await getApplicationDocumentsDirectory();
 
       result = dir.path;
     } else if (Utils.isAndroid) {
-      final Directory? dir = await getExternalStorageDirectory();
+      final dir = await getExternalStorageDirectory();
       if (dir != null) {
         result = dir.path;
       }
     } else {
       // linux, windows, macOs
 
-      final Directory dir = await getApplicationDocumentsDirectory();
+      final dir = await getApplicationDocumentsDirectory();
       result = dir.path;
     }
 
@@ -46,16 +46,16 @@ class FileSystem {
 
     if (Utils.isIOS) {
       // on Android this give us a data directory for some odd reason
-      final Directory dir = await getApplicationDocumentsDirectory();
+      final dir = await getApplicationDocumentsDirectory();
 
       result = dir.path;
     } else if (Utils.isAndroid) {
-      final Directory? dir = await getExternalStorageDirectory();
+      final dir = await getExternalStorageDirectory();
 
       if (dir != null) {
         result = dir.path;
 
-        String docsPath = _removeAndroidJunk(dir.path);
+        var docsPath = _removeAndroidJunk(dir.path);
 
         // get the real documents directory
         // if differnet, we know we are in the right place
@@ -77,16 +77,16 @@ class FileSystem {
   // used for iOS sharing
   static Future<String> get filePickerPath async {
     if (Utils.isAndroid) {
-      final String path = await FileSystem.dataDirectoryPath;
+      final path = await FileSystem.dataDirectoryPath;
 
       return '$path/cache/file_picker/';
     }
 
     // iOS
-    final String? path = await FileSystem.documentsPath;
+    final path = await FileSystem.documentsPath;
 
     if (path != null) {
-      List<String> items = path.split('/');
+      var items = path.split('/');
       items = items.sublist(0, items.length - 1);
 
       return items.join('/');
@@ -99,21 +99,21 @@ class FileSystem {
     String result;
 
     if (Utils.isIOS) {
-      final Directory directory = await getLibraryDirectory();
+      final directory = await getLibraryDirectory();
       result = directory.path;
     } else if (Utils.isAndroid) {
       // on Android this give us a data directory
-      final Directory directory = await getApplicationDocumentsDirectory();
+      final directory = await getApplicationDocumentsDirectory();
       result = directory.path;
 
       // appends app_flutter for some reason, remove that
-      final ServerFile serverFile = ServerFiles.serverFileForPath(result)!;
+      final serverFile = ServerFiles.serverFileForPath(result)!;
       if (serverFile.name == 'app_flutter') {
         result = serverFile.directoryPath;
       }
     } else {
       // linux, windows, macOs
-      final Directory directory = await getApplicationSupportDirectory();
+      final directory = await getApplicationSupportDirectory();
       result = directory.path;
     }
 
@@ -125,14 +125,14 @@ class FileSystem {
       return _pathCache['tmp'];
     }
 
-    final Directory directory = await getTemporaryDirectory();
+    final directory = await getTemporaryDirectory();
     _pathCache['tmp'] = directory.path;
 
     return _pathCache['tmp'];
   }
 
   static Future<String> get appSupportDirectoryPath async {
-    final Directory directory = await getApplicationSupportDirectory();
+    final directory = await getApplicationSupportDirectory();
 
     return directory.path;
   }
@@ -140,7 +140,7 @@ class FileSystem {
   // iOS only
   static Future<String?> get libraryDirectoryPath async {
     if (Utils.isIOS) {
-      final Directory directory = await getLibraryDirectory();
+      final directory = await getLibraryDirectory();
 
       return directory.path;
     }
@@ -151,7 +151,7 @@ class FileSystem {
   // Android only
   static Future<List<String>> get externalCacheDirectoryPaths async {
     if (Utils.isAndroid) {
-      final List<Directory>? directories = await getExternalCacheDirectories();
+      final directories = await getExternalCacheDirectories();
 
       if (directories != null) {
         return directories.map((dir) => dir.path).toList();
@@ -176,14 +176,13 @@ class FileSystem {
   static Future<List<String>> get externalStorageDirectoryPaths async {
     if (Utils.isAndroid) {
       // Android only call
-      final List<Directory>? directories =
-          await getExternalStorageDirectories();
+      final directories = await getExternalStorageDirectories();
 
       // add data directory
       // directories.add(Directory(await dataDirectoryPath));
 
       // convert to paths
-      final List<String> paths = directories!.map((dir) => dir.path).toList();
+      final paths = directories!.map((dir) => dir.path).toList();
 
       // remove android junk, remove dups with toSet()
       return paths
@@ -203,7 +202,7 @@ class FileSystem {
   // Desktop only
   static Future<String?> get downloadsDirectoryPath async {
     if (!Utils.isMobile) {
-      final Directory? directory = await getDownloadsDirectory();
+      final directory = await getDownloadsDirectory();
 
       if (directory != null) {
         return directory.path;
@@ -227,7 +226,7 @@ class FileSystem {
 
   static Future<Directory> booksDirectory() async {
     final documents = await documentsPath;
-    final Directory dir = Directory('$documents/books');
+    final dir = Directory('$documents/books');
 
     if (!dir.existsSync()) {
       dir.createSync();
@@ -239,13 +238,13 @@ class FileSystem {
   // iOS won't work with full paths
   // we only save the file name, and get the path fresh each time.
   static Future<String> bookPath(String filename) async {
-    final Directory dir = await FileSystem.booksDirectory();
+    final dir = await FileSystem.booksDirectory();
 
     return '${dir.path}/$filename';
   }
 
   static Future<List<String>> recordingPaths() async {
-    final Directory dir = await recordingDirectory();
+    final dir = await recordingDirectory();
 
     if (!dir.existsSync()) {
       dir.createSync();
@@ -281,11 +280,11 @@ class FileSystem {
 
   static void delete(ServerFile serverFile) {
     if (serverFile.isDirectory!) {
-      final Directory dir = Directory(serverFile.path!);
+      final dir = Directory(serverFile.path!);
 
       dir.deleteSync(recursive: true);
     } else {
-      final File file = File(serverFile.path!);
+      final file = File(serverFile.path!);
 
       file.deleteSync();
     }
@@ -295,11 +294,11 @@ class FileSystem {
     final serverFile = ServerFiles.serverFileForPath(path)!;
 
     if (serverFile.isDirectory!) {
-      final Directory dir = Directory(path);
+      final dir = Directory(path);
 
       dir.renameSync(p.join(p.dirname(dir.path), name));
     } else {
-      final File file = File(path);
+      final file = File(path);
 
       file.renameSync(p.join(p.dirname(file.path), name));
     }
@@ -321,10 +320,10 @@ class FileSystem {
     FileStat stat;
 
     if (serverFile.isDirectory!) {
-      final Directory dir = Directory(serverFile.path!);
+      final dir = Directory(serverFile.path!);
       stat = dir.statSync();
     } else {
-      final File dir = File(serverFile.path!);
+      final dir = File(serverFile.path!);
       stat = dir.statSync();
     }
 
@@ -336,11 +335,11 @@ class FileSystem {
   }
 
   static Future<List<ServerFile>> getStorageList() async {
-    final List<String> dirs = await externalStorageDirectoryPaths;
-    final List<ServerFile> result = <ServerFile>[];
+    final dirs = await externalStorageDirectoryPaths;
+    final result = <ServerFile>[];
 
-    for (final String path in dirs) {
-      final ServerFile? file = ServerFiles.serverFileForPath(path);
+    for (final path in dirs) {
+      final file = ServerFiles.serverFileForPath(path);
 
       if (file != null) {
         result.add(file);

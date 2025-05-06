@@ -19,7 +19,7 @@ class BrowserDetect {
   }
 
   BrowserDetect._() {
-    String appVersion = '';
+    var appVersion = '';
     appVersion = web.window.navigator.appVersion;
 
     _detectBrowser(
@@ -70,7 +70,7 @@ class BrowserDetect {
     required String vendor,
     required String appVersion,
   }) {
-    final List<_BrowserDetection> detections = <_BrowserDetection>[
+    final detections = <_BrowserDetection>[
       _BrowserDetection(
         browserAgent: BrowserAgent.edgeChromium,
         string: userAgent,
@@ -111,14 +111,14 @@ class BrowserDetect {
       ),
     ];
 
-    for (final _BrowserDetection detection in detections) {
+    for (final detection in detections) {
       if (detection.string.contains(detection.subString)) {
         _detected = detection;
 
-        final String versionSearchString =
+        final versionSearchString =
             detection.versionSearch ?? detection.subString;
-        String versionFromString = userAgent;
-        int index = versionFromString.indexOf(versionSearchString);
+        var versionFromString = userAgent;
+        var index = versionFromString.indexOf(versionSearchString);
         if (index == -1) {
           versionFromString = appVersion;
           index = versionFromString.indexOf(versionSearchString);

@@ -35,7 +35,7 @@ class MarkdownText extends StatelessWidget {
     );
 
     // was showing white in light mode without this
-    final Color tableBorderColor =
+    final tableBorderColor =
         Theme.of(context).textTheme.displayLarge?.color ?? Colors.red;
 
     return MarkdownBody(

@@ -19,7 +19,7 @@ class TrianglePainter extends CustomPainter {
       ..style = PaintingStyle.fill
       ..color = color;
 
-    final Path path = Path();
+    final path = Path();
 
     if (downArrow) {
       path.moveTo(rect.topLeft.dx, rect.topLeft.dy);

@@ -77,7 +77,7 @@ class MenuButton<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<PopupMenuEntry<MenuButtonItem<T>>> menuItems = [];
+    final menuItems = <PopupMenuEntry<MenuButtonItem<T>>>[];
 
     for (final item in items) {
       if (Utils.isEmpty(item.title)) {

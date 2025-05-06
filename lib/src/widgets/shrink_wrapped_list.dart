@@ -17,8 +17,8 @@ class ShrinkWrappedList extends StatelessWidget {
     final showingSeparators = separatorBuilder != null;
 
     final numDividers = itemCount - 1;
-    int separatorIndex = 0;
-    int contentIndex = 0;
+    var separatorIndex = 0;
+    var contentIndex = 0;
 
     return CustomScrollView(
       primary: false,

@@ -115,11 +115,9 @@ class XpandableThemeData {
     BuildContext context, {
     bool rebuildOnChange = true,
   }) {
-    final notifier =
-        rebuildOnChange
-            ? context
-                .dependOnInheritedWidgetOfExactType<XpandableThemeNotifier>()
-            : context.findAncestorWidgetOfExactType<XpandableThemeNotifier>();
+    final notifier = rebuildOnChange
+        ? context.dependOnInheritedWidgetOfExactType<XpandableThemeNotifier>()
+        : context.findAncestorWidgetOfExactType<XpandableThemeNotifier>();
 
     return notifier?.themeData ?? defaults;
   }
@@ -132,7 +130,7 @@ class XpandableTheme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final XpandableThemeNotifier? n =
+    final n =
         context.dependOnInheritedWidgetOfExactType<XpandableThemeNotifier>();
 
     return XpandableThemeNotifier(

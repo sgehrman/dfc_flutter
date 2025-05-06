@@ -6,22 +6,19 @@ class Common {
   const Common();
 
   static Future<void> storageSet(String key, String value) async {
-    final SharedPreferences sharedPreferences =
-        await SharedPreferences.getInstance();
+    final sharedPreferences = await SharedPreferences.getInstance();
 
     await sharedPreferences.setString(key, value);
   }
 
   static Future<void> storageRemove(String key) async {
-    final SharedPreferences sharedPreferences =
-        await SharedPreferences.getInstance();
+    final sharedPreferences = await SharedPreferences.getInstance();
 
     await sharedPreferences.remove(key);
   }
 
   static Future<String?> storageGet(String key) async {
-    final SharedPreferences sharedPreferences =
-        await SharedPreferences.getInstance();
+    final sharedPreferences = await SharedPreferences.getInstance();
 
     return sharedPreferences.getString(key);
   }
@@ -54,7 +51,7 @@ class Common {
   }
 
   static Future<void> clear() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final prefs = await SharedPreferences.getInstance();
 
     await prefs.clear();
   }

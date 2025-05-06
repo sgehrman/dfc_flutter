@@ -6,7 +6,7 @@ extension ExtendedDuration on Duration {
   }
 
   String get shortElapsedString {
-    final Duration e = this;
+    final e = this;
 
     if (e.inHours == 0) {
       // no leading zero of first numbers
@@ -22,33 +22,33 @@ extension ExtendedDuration on Duration {
   }
 
   String get hoursString {
-    final Duration e = this;
+    final e = this;
 
-    final int hours = e.inHours;
+    final hours = e.inHours;
 
     return hours.remainder(24).twoDigitTime;
   }
 
   String get secondsString {
-    final Duration e = this;
+    final e = this;
 
-    final int secs = e.inSeconds;
+    final secs = e.inSeconds;
 
     return secs.remainder(60).twoDigitTime;
   }
 
   String get minutesString {
-    final Duration e = this;
+    final e = this;
 
-    final int mins = e.inMinutes;
+    final mins = e.inMinutes;
 
     return mins.remainder(60).twoDigitTime;
   }
 
   String get tenthsString {
-    final Duration e = this;
+    final e = this;
 
-    final int tenths = e.inMilliseconds;
+    final tenths = e.inMilliseconds;
 
     num tens = tenths.remainder(1000);
     tens = tens ~/ 10;

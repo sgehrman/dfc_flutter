@@ -197,9 +197,9 @@ class _DraggableScrollbarState extends State<DraggableScrollbar>
     }
 
     return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
+      builder: (context, constraints) {
         return NotificationListener<ScrollNotification>(
-          onNotification: (ScrollNotification notification) {
+          onNotification: (notification) {
             changePosition(notification);
 
             // false allows other listeners to get notifications
@@ -319,7 +319,7 @@ class _DraggableScrollbarState extends State<DraggableScrollbar>
           _barOffset = barMaxScrollExtent;
         }
 
-        final double viewDelta = getScrollViewDelta(
+        final viewDelta = getScrollViewDelta(
           details.delta.dy,
           barMaxScrollExtent,
           viewMaxScrollExtent,

@@ -64,7 +64,7 @@ class FireText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShaderMask(
-      shaderCallback: (Rect bounds) {
+      shaderCallback: (bounds) {
         return RadialGradient(
           center: Alignment.topLeft,
           radius: 1,

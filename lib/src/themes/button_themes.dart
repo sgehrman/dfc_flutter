@@ -44,8 +44,8 @@ class ButtonThemes {
       (states) => _buttonIconSize(),
     );
 
-    final ButtonStyle startStyle = startTheme.style ?? const ButtonStyle();
-    final ButtonStyle style = startStyle.copyWith(
+    final startStyle = startTheme.style ?? const ButtonStyle();
+    final style = startStyle.copyWith(
       textStyle: textStyle,
       backgroundColor: backColor,
       iconColor: foregroundColor,
@@ -86,8 +86,8 @@ class ButtonThemes {
       (states) => _buttonIconSize(),
     );
 
-    final ButtonStyle startStyle = startTheme.style ?? const ButtonStyle();
-    final ButtonStyle style = startStyle.copyWith(
+    final startStyle = startTheme.style ?? const ButtonStyle();
+    final style = startStyle.copyWith(
       textStyle: textStyle,
       backgroundColor: backColor,
       iconColor: foregroundColor,
@@ -125,7 +125,7 @@ class ButtonThemes {
     );
 
     final startStyle = startTheme.style ?? const ButtonStyle();
-    final ButtonStyle style = startStyle.copyWith(
+    final style = startStyle.copyWith(
       iconColor: foregroundColor,
       foregroundColor: foregroundColor,
       shape: _buttonShape(),
@@ -166,7 +166,7 @@ class ButtonThemes {
     );
 
     final startStyle = startTheme.style ?? const ButtonStyle();
-    final ButtonStyle style = startStyle.copyWith(
+    final style = startStyle.copyWith(
       side: borderSide,
       textStyle: textStyle,
       iconColor: foregroundColor,
@@ -207,9 +207,8 @@ class ButtonThemes {
     required Set<WidgetState> states,
     required bool filledButton,
   }) {
-    Color baseColor =
-        whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
-    Color baseColorLight = whiteButtons
+    var baseColor = whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
+    var baseColorLight = whiteButtons
         ? Colors.white.mix(baseTheme.colorScheme.surface, dimFactor)
         : baseTheme.colorScheme.primary.mix(
             baseTheme.colorScheme.surface,
@@ -258,7 +257,7 @@ class ButtonThemes {
   }
 
   BorderSide _borderSide(Set<WidgetState> states) {
-    Color color = whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
+    var color = whiteButtons ? Colors.white : baseTheme.colorScheme.primary;
 
     final darker = color.darker();
 

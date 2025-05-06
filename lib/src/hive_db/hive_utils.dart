@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dfc_flutter/src/hive_db/hive_box.dart';
 import 'package:dfc_flutter/src/hive_db/hive_data.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
@@ -19,13 +17,13 @@ class HiveUtils {
     if (!Utils.isWeb) {
       if (Utils.isMobile) {
         // data directory on android
-        Directory appDir = await getApplicationDocumentsDirectory();
+        var appDir = await getApplicationDocumentsDirectory();
 
         if (Utils.isIOS) {
           appDir = await getLibraryDirectory();
         }
 
-        String path = appDir.path;
+        var path = appDir.path;
         path = p.join(path, 'app_data');
         Hive.init(path);
       } else if (Utils.isDesktop) {
@@ -33,9 +31,9 @@ class HiveUtils {
         // /home/steve/.var/app/com.cocoatech.Driftwood/data/driftwood
         // normal:
         // /home/steve/.local/share/re.distantfutu.dashboard
-        final Directory appDir = await getApplicationSupportDirectory();
+        final appDir = await getApplicationSupportDirectory();
 
-        String path = appDir.path;
+        var path = appDir.path;
         path = p.join(path, 'app_data');
         Hive.init(path);
       } else {

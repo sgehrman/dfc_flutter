@@ -171,7 +171,7 @@ class Paragraf extends StatelessWidget {
       height: 1.3,
     );
 
-    String nls = '';
+    var nls = '';
     if (spec.newlines > 0) {
       nls = List.generate(spec.newlines, (index) => '\n').join();
     }
@@ -201,7 +201,7 @@ class Paragraf extends StatelessWidget {
       );
     }
 
-    String spaces = '';
+    var spaces = '';
     if (spec.spaces > 0) {
       spaces = List.generate(spec.spaces, (index) => ' ').join();
     }

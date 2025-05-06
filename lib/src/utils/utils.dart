@@ -27,14 +27,14 @@ class Utils {
   }
 
   static String uniqueFirestoreId() {
-    const int idLength = 20;
-    const String alphabet =
+    const idLength = 20;
+    const alphabet =
         'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    final StringBuffer stringBuffer = StringBuffer();
-    const int maxRandom = alphabet.length;
+    final stringBuffer = StringBuffer();
+    const maxRandom = alphabet.length;
 
-    for (int i = 0; i < idLength; ++i) {
+    for (var i = 0; i < idLength; ++i) {
       stringBuffer.write(alphabet[_random.nextInt(maxRandom)]);
     }
 
@@ -52,15 +52,15 @@ class Utils {
   }
 
   static String uniqueFileName(String name, String directoryPath) {
-    int nameIndex = 1;
-    final String fileName = name;
-    String tryDirName = fileName;
+    var nameIndex = 1;
+    final fileName = name;
+    var tryDirName = fileName;
 
-    String destFile = p.join(directoryPath, tryDirName);
+    var destFile = p.join(directoryPath, tryDirName);
     while (File(destFile).existsSync() || Directory(destFile).existsSync()) {
       // test-1.xyz
-      final String baseName = p.basenameWithoutExtension(fileName);
-      final String extension = p.extension(fileName);
+      final baseName = p.basenameWithoutExtension(fileName);
+      final extension = p.extension(fileName);
 
       tryDirName = '$baseName-$nameIndex$extension';
       destFile = p.join(directoryPath, tryDirName);
@@ -72,11 +72,11 @@ class Utils {
   }
 
   static String uniqueDirName(String name, String directoryPath) {
-    int nameIndex = 1;
-    final String dirName = p.basenameWithoutExtension(name);
-    String tryDirName = dirName;
+    var nameIndex = 1;
+    final dirName = p.basenameWithoutExtension(name);
+    var tryDirName = dirName;
 
-    String destFolder = p.join(directoryPath, tryDirName);
+    var destFolder = p.join(directoryPath, tryDirName);
     while (
         File(destFolder).existsSync() || Directory(destFolder).existsSync()) {
       tryDirName = '$dirName-$nameIndex';
@@ -201,15 +201,15 @@ class Utils {
     required String newVersion,
   }) {
     // version can be 1.2.3.4, or 1.2.3+4
-    final String oldV = oldVersion.replaceAll('+', '.');
-    final String newV = newVersion.replaceAll('+', '.');
+    final oldV = oldVersion.replaceAll('+', '.');
+    final newV = newVersion.replaceAll('+', '.');
 
     final oldDigits = oldV.split('.').map((e) => int.tryParse(e) ?? 0).toList();
     final newDigits = newV.split('.').map((e) => int.tryParse(e) ?? 0).toList();
 
     final int cnt = math.min(oldDigits.length, newDigits.length);
 
-    for (int i = 0; i < cnt; i++) {
+    for (var i = 0; i < cnt; i++) {
       if (newDigits[i] > oldDigits[i]) {
         return true;
       }
@@ -237,7 +237,7 @@ class Utils {
 
   static Future<String> getAppVersion() async {
     try {
-      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      final packageInfo = await PackageInfo.fromPlatform();
 
       return packageInfo.version;
     } catch (err) {
@@ -249,7 +249,7 @@ class Utils {
 
   static Future<String> getAppBuildNumber() async {
     try {
-      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      final packageInfo = await PackageInfo.fromPlatform();
 
       return packageInfo.buildNumber;
     } catch (err) {
@@ -261,7 +261,7 @@ class Utils {
 
   static Future<String> getAppID() async {
     try {
-      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      final packageInfo = await PackageInfo.fromPlatform();
 
       return packageInfo.packageName;
     } catch (err) {
@@ -279,7 +279,7 @@ class Utils {
     }
 
     try {
-      final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+      final packageInfo = await PackageInfo.fromPlatform();
 
       return packageInfo.appName;
     } catch (err) {
@@ -336,15 +336,15 @@ class Utils {
 
     Clipboard.setData(ClipboardData(text: text));
 
-    final String message = text.truncate(60).replaceAll('\n', ' ');
+    final message = text.truncate(60).replaceAll('\n', ' ');
 
     Utils.successSnackbar(title: l10n.copied, message: message);
   }
 
   static Future<ui.Image> loadUiImage(String imageAssetPath) async {
-    final ByteData data = await rootBundle.load(imageAssetPath);
-    final Completer<ui.Image> completer = Completer();
-    ui.decodeImageFromList(Uint8List.view(data.buffer), (ui.Image img) {
+    final data = await rootBundle.load(imageAssetPath);
+    final completer = Completer<ui.Image>();
+    ui.decodeImageFromList(Uint8List.view(data.buffer), (img) {
       return completer.complete(img);
     });
 
@@ -352,10 +352,10 @@ class Utils {
   }
 
   static Future<ui.Image> loadImageFromPath(String imagePath) {
-    final File file = File(imagePath);
+    final file = File(imagePath);
 
-    final Completer<ui.Image> completer = Completer();
-    ui.decodeImageFromList(file.readAsBytesSync(), (ui.Image img) {
+    final completer = Completer<ui.Image>();
+    ui.decodeImageFromList(file.readAsBytesSync(), (img) {
       return completer.complete(img);
     });
 
@@ -593,7 +593,7 @@ class HexColor extends Color {
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 
   static int _getColorFromHex(String hexColor) {
-    String hc = hexColor.toUpperCase().replaceAll('#', '');
+    var hc = hexColor.toUpperCase().replaceAll('#', '');
     if (hc.length == 6) {
       hc = 'FF$hc';
     }

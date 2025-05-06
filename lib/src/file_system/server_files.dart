@@ -6,16 +6,16 @@ import 'package:dfc_flutter/src/file_system/standard_directories.dart';
 
 class ServerFiles {
   static ServerFile? serverFileForPath(String path, {bool verify = false}) {
-    final bool isDirectory = FileSystemEntity.isDirectorySync(path);
+    final isDirectory = FileSystemEntity.isDirectorySync(path);
 
-    bool valid = true;
+    var valid = true;
 
     if (verify) {
       if (isDirectory) {
-        final Directory dir = Directory(path);
+        final dir = Directory(path);
         valid = dir.existsSync();
       } else {
-        final File file = File(path);
+        final file = File(path);
         valid = file.existsSync();
       }
     }
@@ -28,10 +28,9 @@ class ServerFiles {
   }
 
   static Future<List<Map<String, dynamic>>> mobileDirectories() async {
-    final List<Map<String, dynamic>> result = [];
+    final result = <Map<String, dynamic>>[];
 
-    final List<ServerFile> dirs =
-        await StandardDirectories().standardDirectories();
+    final dirs = await StandardDirectories().standardDirectories();
 
     // NOTE
     // THIS DATA is converted to Json, don't put in anything that can't be encoded

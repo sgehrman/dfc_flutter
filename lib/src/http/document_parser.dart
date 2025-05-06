@@ -7,11 +7,11 @@ class DocumentParser {
 
   static Future<String> htmlSource(String url) async {
     try {
-      final DocRecord docRec = await DocRecord.docRecordForUrl(url);
+      final docRec = await DocRecord.docRecordForUrl(url);
       const marker = '==========';
 
       if (docRec.document != null) {
-        String result = 'Source: $url\n\n';
+        var result = 'Source: $url\n\n';
         result += '$marker\n== HEAD ==\n$marker\n\n';
 
         result += _documentToString(docRec.head, 0);
@@ -32,12 +32,12 @@ class DocumentParser {
       return '';
     }
 
-    final StringBuffer buffer = StringBuffer();
-    String openTag = '';
+    final buffer = StringBuffer();
+    var openTag = '';
 
     final levelSpaces = List.generate(level, (index) => '  ').join();
 
-    String output = '';
+    var output = '';
 
     if (node is DocumentFragment) {
       // print('DocumentFragment');
@@ -83,7 +83,7 @@ class DocumentParser {
     }
 
     for (final node in node.nodes) {
-      String childResult = _documentToString(node, level + 1);
+      var childResult = _documentToString(node, level + 1);
 
       if (childResult.trimRight().isNotEmpty) {
         childResult = childResult.trimRight();

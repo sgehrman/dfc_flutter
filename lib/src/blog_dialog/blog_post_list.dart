@@ -22,7 +22,7 @@ class BlogPostList extends StatelessWidget {
       itemCount: postRecords.length + 1,
       itemBuilder: (context, index) {
         if (index >= postRecords.length) {
-          final bool loading = onLoadMore();
+          final loading = onLoadMore();
 
           if (loading) {
             return Padding(

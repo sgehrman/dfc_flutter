@@ -24,8 +24,7 @@ class _SvgImageState extends State<SvgImage> {
 
   Future<void> _fetchImage() async {
     try {
-      final http.Response response =
-          await http.get(Uri.dataFromString(widget.url));
+      final response = await http.get(Uri.dataFromString(widget.url));
 
       if (mounted) {
         setState(() {
@@ -45,7 +44,7 @@ class _SvgImageState extends State<SvgImage> {
       return SvgPicture.string(
         svgString!,
         semanticsLabel: svgString,
-        placeholderBuilder: (BuildContext context) =>
+        placeholderBuilder: (context) =>
             const Center(child: CircularProgressIndicator()),
       );
     }

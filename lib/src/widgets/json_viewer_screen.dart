@@ -34,7 +34,7 @@ class JsonViewerScreen extends StatelessWidget {
   Widget _copyButton(BuildContext context) {
     return IconButton(
       onPressed: () {
-        final String jsonStr = StrUtils.toPrettyString(map);
+        final jsonStr = StrUtils.toPrettyString(map);
 
         Utils.copyToClipboard(jsonStr);
       },
@@ -44,7 +44,7 @@ class JsonViewerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> actions = [];
+    var actions = <Widget>[];
     if (onDelete != null) {
       actions = [
         IconButton(
@@ -116,7 +116,7 @@ Future<void> showJsonViewerDialog({
         ),
         IconButton(
           onPressed: () {
-            final String jsonStr = StrUtils.toPrettyString(map);
+            final jsonStr = StrUtils.toPrettyString(map);
 
             Utils.copyToClipboard(jsonStr);
           },

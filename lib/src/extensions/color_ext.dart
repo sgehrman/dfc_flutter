@@ -8,7 +8,7 @@ extension ColorUtils on Color {
   Color lighter({double factor = 0.1}) {
     assert(factor >= 0 && factor <= 1, 'Factor must be between 0 and 1');
 
-    final HSLColor hslColor = HSLColor.fromColor(this);
+    final hslColor = HSLColor.fromColor(this);
 
     return hslColor
         .withLightness((hslColor.lightness * (1 + factor)).clamp(0.0, 1.0))
@@ -19,7 +19,7 @@ extension ColorUtils on Color {
   Color darker({double factor = 0.1}) {
     assert(factor >= 0 && factor <= 1, 'Factor must be between 0 and 1');
 
-    final HSLColor hslColor = HSLColor.fromColor(this);
+    final hslColor = HSLColor.fromColor(this);
 
     return hslColor
         .withLightness((hslColor.lightness * (1 - factor)).clamp(0.0, 1.0))
@@ -30,7 +30,7 @@ extension ColorUtils on Color {
   Color dimmer({double factor = 0.1}) {
     assert(factor >= 0 && factor <= 1, 'Factor must be between 0 and 1');
 
-    final HSLColor hslColor = HSLColor.fromColor(this);
+    final hslColor = HSLColor.fromColor(this);
     if (hslColor.lightness < 0.5) {
       return mix(Colors.white, factor);
     }

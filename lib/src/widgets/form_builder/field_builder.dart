@@ -12,7 +12,7 @@ class FieldBuilder {
     required bool autovalidate,
     bool outlinedBorders = false,
   }) {
-    final List<Widget> result = [];
+    final result = <Widget>[];
 
     builderParams.widgetKeys().forEach((mapKey) {
       final formParams = builderParams.formParams;
@@ -35,7 +35,7 @@ class FieldBuilder {
             ),
           );
         } else {
-          final Widget? customWidget = formParams[mapKey]!.createWidget();
+          final customWidget = formParams[mapKey]!.createWidget();
           if (customWidget != null) {
             result.add(customWidget);
           }
@@ -130,7 +130,7 @@ class FieldBuilder {
 
           return null;
         },
-        onSaved: (String? v) {
+        onSaved: (v) {
           formParam.formData[mapKey] = v!.trim();
         },
       ),

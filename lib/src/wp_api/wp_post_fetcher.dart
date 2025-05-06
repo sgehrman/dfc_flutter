@@ -10,7 +10,7 @@ class WpPostFetcher {
   int _nextPage = 1;
 
   bool hasMore() {
-    bool result = true;
+    var result = true;
 
     if (_pages.isNotEmpty) {
       result = _pages.last.hasMore();
@@ -25,7 +25,7 @@ class WpPostFetcher {
       _pages.add(page);
     }
 
-    final List<WpPostRecord> result = [];
+    final result = <WpPostRecord>[];
 
     for (final p in _pages) {
       result.addAll(await p.postRecords());

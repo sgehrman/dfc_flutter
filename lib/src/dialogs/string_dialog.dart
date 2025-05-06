@@ -16,7 +16,7 @@ Future<String?> showStringDialog({
   return showDialog<String>(
     context: context,
     barrierDismissible: barrierDismissible, // if true, null can be returned
-    builder: (BuildContext context) {
+    builder: (context) {
       return _DialogContents(
         title: title,
         message: message,
@@ -92,7 +92,7 @@ class __DialogContentsState extends State<_DialogContents> {
 
   @override
   Widget build(BuildContext context) {
-    const EdgeInsets actionsPadding = EdgeInsets.only(right: 10, bottom: 10);
+    const actionsPadding = EdgeInsets.only(right: 10, bottom: 10);
 
     return AlertDialog(
       shape: const RoundedRectangleBorder(

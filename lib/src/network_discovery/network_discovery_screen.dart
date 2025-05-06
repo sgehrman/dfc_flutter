@@ -1,5 +1,4 @@
 import 'package:dfc_flutter/src/network_discovery/bonjour.dart';
-import 'package:dfc_flutter/src/network_discovery/network_client.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -51,8 +50,8 @@ class _NetworkDiscoveryScreenState extends State<NetworkDiscoveryScreen> {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         itemCount: bonjour.clients.length,
-        itemBuilder: (BuildContext context, int index) {
-          final NetworkClient client = bonjour.clients[index];
+        itemBuilder: (context, index) {
+          final client = bonjour.clients[index];
 
           return ListTile(
             title: Text(client.name ?? '(no name)'),
@@ -62,7 +61,7 @@ class _NetworkDiscoveryScreenState extends State<NetworkDiscoveryScreen> {
             },
           );
         },
-        separatorBuilder: (BuildContext context, int index) {
+        separatorBuilder: (context, index) {
           return const Divider(height: 2);
         },
       );

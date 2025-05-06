@@ -5,7 +5,7 @@ import 'package:vector_math/vector_math_64.dart';
 
 class StarField {
   StarField(int starCount) {
-    for (int i = 0; i < starCount; i++) {
+    for (var i = 0; i < starCount; i++) {
       stars.add(Star());
     }
   }

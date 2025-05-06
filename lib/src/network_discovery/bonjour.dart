@@ -55,8 +55,7 @@ class Bonjour extends ChangeNotifier {
 
     discovery!.eventStream!.listen((event) {
       if (event.type == BonsoirDiscoveryEventType.discoveryServiceResolved) {
-        final ResolvedBonsoirService? service =
-            event.service as ResolvedBonsoirService?;
+        final service = event.service as ResolvedBonsoirService?;
 
         if (service != null) {
           print('Service found : ${service.toJson()}');

@@ -78,11 +78,11 @@ class Requests {
   static Map<String, String> _extractResponseCookies(
     Map<String, String> responseHeaders,
   ) {
-    final Map<String, String> cookies = {};
-    for (final String key in responseHeaders.keys) {
+    final cookies = <String, String>{};
+    for (final key in responseHeaders.keys) {
       if (Common.equalsIgnoreCase(key, 'set-cookie')) {
-        final String cookie = responseHeaders[key]!;
-        cookie.split(',').forEach((String one) {
+        final cookie = responseHeaders[key]!;
+        cookie.split(',').forEach((one) {
           one
               .split(';')
               .map((x) => x.trim().split('='))
@@ -104,9 +104,8 @@ class Requests {
     Map<String, String>? customHeaders,
   ) async {
     final cookies = await getStoredCookies(hostname);
-    final String cookie =
-        cookies.keys.map((key) => '$key=${cookies[key]}').join('; ');
-    final Map<String, String> requestHeaders = {};
+    final cookie = cookies.keys.map((key) => '$key=${cookies[key]}').join('; ');
+    final requestHeaders = <String, String>{};
     requestHeaders['cookie'] = cookie;
 
     if (customHeaders != null) {
@@ -118,13 +117,11 @@ class Requests {
 
   static Future<Map<String, String>> getStoredCookies(String hostname) async {
     try {
-      final String hostnameHash = StrUtils.hashStringSHA256(hostname);
-      final String? cookiesJson =
-          await Common.storageGet('cookies-$hostnameHash');
+      final hostnameHash = StrUtils.hashStringSHA256(hostname);
+      final cookiesJson = await Common.storageGet('cookies-$hostnameHash');
 
       if (cookiesJson != null) {
-        final Map<dynamic, dynamic> cookies =
-            Common.fromJson(cookiesJson) as Map;
+        final cookies = Common.fromJson(cookiesJson) as Map;
 
         return Map<String, String>.from(cookies);
       }
@@ -141,13 +138,13 @@ class Requests {
     String hostname,
     Map<String, String> cookies,
   ) async {
-    final String hostnameHash = StrUtils.hashStringSHA256(hostname);
-    final String cookiesJson = Common.toJson(cookies);
+    final hostnameHash = StrUtils.hashStringSHA256(hostname);
+    final cookiesJson = Common.toJson(cookies);
     await Common.storageSet('cookies-$hostnameHash', cookiesJson);
   }
 
   static Future<void> clearStoredCookies(String hostname) async {
-    final String hostnameHash = StrUtils.hashStringSHA256(hostname);
+    final hostnameHash = StrUtils.hashStringSHA256(hostname);
     await Common.storageRemove('cookies-$hostnameHash');
   }
 
@@ -342,8 +339,8 @@ class Requests {
     bool verify = true,
   }) async {
     dynamic localBody = body;
-    RequestBodyEncoding localBodyEncoding = bodyEncoding;
-    Map<String, String>? localHeaders = headers;
+    var localBodyEncoding = bodyEncoding;
+    var localHeaders = headers;
 
     http.Client client;
     if (!verify) {
@@ -356,7 +353,7 @@ class Requests {
       client = http.Client();
     }
 
-    Uri uri = Uri.parse(url);
+    var uri = Uri.parse(url);
 
     if (uri.scheme != 'http' && uri.scheme != 'https') {
       throw ArgumentError(
@@ -364,7 +361,7 @@ class Requests {
       );
     }
 
-    final String hostname = getHostname(url);
+    final hostname = getHostname(url);
     localHeaders = await _constructRequestHeaders(hostname, localHeaders);
     String? requestBody;
 

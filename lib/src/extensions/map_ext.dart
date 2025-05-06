@@ -25,7 +25,7 @@ extension MapCasting on Map<dynamic, dynamic> {
     }
 
     if (result is Map) {
-      Map<dynamic, dynamic> mapResult = result;
+      var mapResult = result;
 
       if (mapResult is! Map<K, V>) {
         mapResult = Map<K, V>.from(mapResult);
@@ -95,7 +95,7 @@ extension MapCasting on Map<dynamic, dynamic> {
     }
 
     if (result is List) {
-      List<dynamic> listResult = result;
+      var listResult = result;
 
       if (listResult is! List<T>) {
         listResult = List<T>.from(listResult);

@@ -17,7 +17,7 @@ class TransparentAppBarTheme extends StatelessWidget {
         color: Colors.transparent,
       );
 
-      final ThemeData newTheme = theme.copyWith(
+      final newTheme = theme.copyWith(
         appBarTheme: newAppBar,
       );
 
