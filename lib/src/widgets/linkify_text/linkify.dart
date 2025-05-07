@@ -1,5 +1,6 @@
 import 'dart:ui' as ui show BoxHeightStyle, BoxWidthStyle;
 
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/linkify_text/regex.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -252,7 +253,9 @@ TextSpan _linkify({
   final regExp = constructRegExpFromLinkType(linkTypes ?? [LinkType.url]);
 
   if (!regExp.hasMatch(text) || text.isEmpty) {
-    return TextSpan(text: text);
+    return TextSpan(
+      text: Utils.modifyTextForWrapping(text),
+    );
   }
 
   final texts = text.split(regExp);
@@ -260,14 +263,16 @@ TextSpan _linkify({
   final links = regExp.allMatches(text).toList();
 
   for (final text in texts) {
-    spans.add(TextSpan(text: text));
+    spans.add(TextSpan(
+      text: Utils.modifyTextForWrapping(text),
+    ));
     if (links.isNotEmpty) {
       final match = links.removeAt(0);
       final link = Link.fromMatch(match);
 
       spans.add(
         TextSpan(
-          text: link.value,
+          text: Utils.modifyTextForWrapping(link.value),
           style: customLinkStyles?[link.type] ?? linkStyle,
           recognizer: TapGestureRecognizer()
             ..onTap = () {

@@ -23,7 +23,7 @@ class TextWithLinks extends StatelessWidget {
   Widget build(BuildContext context) {
     if (selectable) {
       return LinkifySelectableText(
-        Utils.modifyTextForWrapping(text),
+        text,
         linkStyle: linkStyle ?? style.copyWith(color: context.primary),
         linkTypes: const [
           LinkType.url,
@@ -43,7 +43,7 @@ class TextWithLinks extends StatelessWidget {
     }
 
     return LinkifyText(
-      Utils.modifyTextForWrapping(text),
+      text,
       linkStyle: linkStyle ?? style.copyWith(color: context.primary),
       linkTypes: const [
         LinkType.url,
