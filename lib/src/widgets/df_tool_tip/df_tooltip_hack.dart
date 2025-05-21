@@ -598,8 +598,7 @@ class DFTooltipHackState extends State<DFTooltipHack>
     final tooltipTheme = _tooltipTheme;
     final overlayChild = _TooltipOverlay(
       richMessage: widget.richMessage ?? TextSpan(text: widget.message),
-      height:
-          widget.height ?? tooltipTheme.height ?? _getDefaultTooltipHeight(),
+      height: widget.height ?? _getDefaultTooltipHeight(),
       padding: widget.padding ?? tooltipTheme.padding ?? _getDefaultPadding(),
       margin: widget.margin ?? tooltipTheme.margin ?? _defaultMargin,
       onEnter: _handleMouseEnter,

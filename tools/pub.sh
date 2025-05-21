@@ -1,5 +1,5 @@
 #!/bin/bash
 
-flutter pub upgrade --major-versions --tighten
+flutter pub upgrade
 
 echo '## all done'
