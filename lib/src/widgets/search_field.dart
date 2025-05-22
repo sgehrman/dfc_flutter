@@ -31,8 +31,8 @@ class _SearchFieldState extends State<SearchField> {
     super.initState();
 
     _focusNode = FocusNode();
-    _focusNode!.addListener(_listener);
-    _focusNode!.skipTraversal = true;
+    _focusNode?.addListener(_listener);
+    _focusNode?.skipTraversal = true;
 
     _searchControllerConns = TextEditingController();
 
@@ -42,22 +42,26 @@ class _SearchFieldState extends State<SearchField> {
   void _listener() {
     // this focus node was added to prevent auto focus when the window is refocused
     // The keyboard comes up and is annoying even when the tab for this is off screen
-    if (!_focusNode!.hasFocus) {
-      _focusNode!.removeListener(_listener);
-      _focusNode = null;
+    if (_focusNode != null) {
+      if (!_focusNode!.hasFocus) {
+        _focusNode?.removeListener(_listener);
+        _focusNode?.dispose();
+        _focusNode = null;
 
-      _focusNode = FocusNode();
-      _focusNode!.addListener(_listener);
-      _focusNode!.skipTraversal = true;
+        _focusNode = FocusNode();
+        _focusNode?.addListener(_listener);
+        _focusNode?.skipTraversal = true;
 
-      setState(() {});
+        setState(() {});
+      }
     }
   }
 
   @override
   void dispose() {
     _searchControllerConns.dispose();
-    _focusNode!.removeListener(_listener);
+    _focusNode?.removeListener(_listener);
+    _focusNode?.dispose();
 
     super.dispose();
   }

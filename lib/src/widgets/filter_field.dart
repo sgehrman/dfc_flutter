@@ -54,6 +54,7 @@ class _FilterFieldState extends State<FilterField> {
   @override
   void dispose() {
     _focusNode.removeListener(focusListener);
+    _focusNode.dispose();
 
     super.dispose();
   }
