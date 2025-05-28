@@ -103,7 +103,8 @@ class MenuButtonBarUtils {
         // but we need vertical padding otherwise it's too compact
         child = Padding(
           padding: const EdgeInsets.only(left: 8, top: 7, bottom: 7),
-          child: Text(itemData.title!),
+          child: Text(itemData.title!,
+              maxLines: 1, overflow: TextOverflow.ellipsis),
         );
       }
 
