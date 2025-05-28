@@ -23,6 +23,7 @@ class SvgAsset extends StatelessWidget {
       width: width,
       height: height,
       package: package,
+      fit: fit,
     );
   }
 }
