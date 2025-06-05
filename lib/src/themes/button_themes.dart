@@ -37,7 +37,7 @@ class ButtonThemes {
     );
 
     final minSize = WidgetStateProperty.resolveWith<Size>(
-      (states) => _buttonMinSize(),
+      (states) => _buttonMinSize(textButton: false),
     );
 
     final iconSize = WidgetStateProperty.resolveWith<double>(
@@ -79,7 +79,7 @@ class ButtonThemes {
     );
 
     final minSize = WidgetStateProperty.resolveWith<Size>(
-      (states) => _buttonMinSize(),
+      (states) => _buttonMinSize(textButton: false),
     );
 
     final iconSize = WidgetStateProperty.resolveWith<double>(
@@ -117,7 +117,7 @@ class ButtonThemes {
     );
 
     final minSize = WidgetStateProperty.resolveWith<Size>(
-      (states) => _buttonMinSize(),
+      (states) => _buttonMinSize(textButton: true),
     );
 
     final iconSize = WidgetStateProperty.resolveWith<double>(
@@ -158,7 +158,7 @@ class ButtonThemes {
     );
 
     final minSize = WidgetStateProperty.resolveWith<Size>(
-      (states) => _buttonMinSize(),
+      (states) => _buttonMinSize(textButton: false),
     );
 
     final iconSize = WidgetStateProperty.resolveWith<double>(
@@ -252,8 +252,8 @@ class ButtonThemes {
     return 20;
   }
 
-  Size _buttonMinSize() {
-    return const Size(88, 0);
+  Size _buttonMinSize({required bool textButton}) {
+    return Size(textButton ? 44 : 88, 0);
   }
 
   BorderSide _borderSide(Set<WidgetState> states) {
