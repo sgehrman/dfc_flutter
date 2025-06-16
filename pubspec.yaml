@@ -13,9 +13,7 @@ dependencies:
   crypto: ^3.0.6
   date_time_format: ^2.0.1
   dfc_dart:
-    git:
-      url: https://github.com/sgehrman/dfc_dart.git
-      ref: "3.27.4"
+    git: https://github.com/sgehrman/dfc_dart.git
   dotted_border: ^2.1.0
   email_validator: ^3.0.0
   flutter:
@@ -63,9 +61,7 @@ dev_dependencies:
   dart_code_metrics:
     git: https://github.com/JonasWanke/dart-code-metrics
   dfc_lints:
-    git:
-      url: https://github.com/sgehrman/dfc_lints.git
-      ref: "3.27.4"
+    git: https://github.com/sgehrman/dfc_lints.git
   json_serializable: ^6.9.5
 
 flutter:
