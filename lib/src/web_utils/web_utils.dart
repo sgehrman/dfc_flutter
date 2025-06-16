@@ -27,4 +27,12 @@ class WebUtils {
   bool isFullscreen() {
     return _ba.isFullscreen();
   }
+
+  bool historyPushState(String url) {
+    return _ba.historyPushState(url);
+  }
+
+  String locationOrigin() {
+    return _ba.locationOrigin();
+  }
 }

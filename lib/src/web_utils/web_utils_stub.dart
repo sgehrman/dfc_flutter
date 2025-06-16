@@ -20,4 +20,14 @@ class WebUtilsImp implements WebUtilsInterface {
   bool isFullscreen() {
     throw UnimplementedError('isFullscreen not implemented');
   }
+
+  @override
+  bool historyPushState(String url) {
+    throw UnimplementedError('historyPushState not implemented');
+  }
+
+  @override
+  String locationOrigin() {
+    throw UnimplementedError('locationOrigin not implemented');
+  }
 }
