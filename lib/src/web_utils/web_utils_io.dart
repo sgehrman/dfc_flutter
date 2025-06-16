@@ -20,4 +20,14 @@ class WebUtilsImp implements WebUtilsInterface {
   bool isFullscreen() {
     return false;
   }
+
+  @override
+  bool historyPushState(String url) {
+    return false;
+  }
+
+  @override
+  String locationOrigin() {
+    return '';
+  }
 }
