@@ -120,8 +120,7 @@ class Translator {
 
     final body = <String, String>{
       'text': processedInput.processed,
-      // 'auth_key': 'faddb949-42f4-3695-d7c5-6316a360cb15:fx',  // free
-      'auth_key': 'd9d95494-f71a-46fb-8aa9-3073706622fc',
+      'auth_key': 'xxxxxxxxxxxx',
       'target_lang': languageCode,
       'source_lang': 'en',
       'format': 'text',
