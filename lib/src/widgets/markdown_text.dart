@@ -57,11 +57,17 @@ class MarkdownText extends StatelessWidget {
         h6Padding: const EdgeInsets.only(bottom: 4),
         pPadding: const EdgeInsets.only(bottom: 4),
         strong: boldStyle,
-        h1: Theme.of(context).textTheme.displayLarge,
-        h2: Theme.of(context).textTheme.displayMedium,
-        h3: Theme.of(context).textTheme.displaySmall,
-        h4: Theme.of(context).textTheme.headlineMedium,
-        h5: Theme.of(context).textTheme.headlineSmall,
+        h1: TextStyle(fontSize: fontSize * 1.5, fontWeight: Font.bold),
+        h2: TextStyle(fontSize: fontSize * 1.4, fontWeight: Font.bold),
+        h3: TextStyle(fontSize: fontSize * 1.3, fontWeight: Font.bold),
+        h4: TextStyle(fontSize: fontSize * 1.2, fontWeight: Font.bold),
+        h5: TextStyle(fontSize: fontSize * 1.1, fontWeight: Font.bold),
+        // ## was doing this before, but fonts very large
+        // h1: Theme.of(context).textTheme.displayLarge,
+        // h2: Theme.of(context).textTheme.displayMedium,
+        // h3: Theme.of(context).textTheme.displaySmall,
+        // h4: Theme.of(context).textTheme.headlineMedium,
+        // h5: Theme.of(context).textTheme.headlineSmall,
         tableBorder: TableBorder(
           top: BorderSide(
             color: tableBorderColor,
