@@ -36,6 +36,7 @@ class NothingFound extends StatelessWidget {
       contents = Center(
         child: Text(
           msg,
+          textAlign: TextAlign.center,
           style: TextStyle(
             color: context.dimTextColor,
             fontSize: fontSize,
