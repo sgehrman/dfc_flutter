@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/widgets/thumb_widget.dart';
 import 'package:flutter/material.dart';
 
 class ThumbsUpControl extends StatefulWidget {
@@ -20,65 +19,115 @@ class ThumbsUpControl extends StatefulWidget {
 class _ThumbsUpControlState extends State<ThumbsUpControl> {
   @override
   Widget build(BuildContext context) {
-    int? groupValue;
-    if (widget.value != null) {
-      groupValue = widget.value ?? false ? 1 : 0;
-    } else {
-      groupValue = null;
-    }
-
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        InkWell(
-          onTap: () {
-            bool? newResult;
+        Material(
+          type: MaterialType.transparency,
+          shape: const CircleBorder(),
+          child: InkWell(
+            onTap: () {
+              bool? newResult;
 
-            if (groupValue != 1) {
-              newResult = true;
-            }
+              switch (widget.value) {
+                case true:
+                  break;
+                case false:
+                case null:
+                  newResult = true;
+              }
 
-            widget.onChanged(newResult);
+              widget.onChanged(newResult);
 
-            setState(() {});
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8,
-              horizontal: 14,
-            ),
-            child: ThumbWidget(
-              selectedIndex: groupValue == 1 ? 2 : 10,
-              index: 2,
-              iconSize: widget.iconSize,
+              setState(() {});
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 14,
+              ),
+              child: _ThumbWidget(
+                selected: widget.value ?? false,
+                upThumb: true,
+                iconSize: widget.iconSize,
+              ),
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
-            bool? newResult;
+        Material(
+          type: MaterialType.transparency,
+          shape: const CircleBorder(),
+          child: InkWell(
+            onTap: () {
+              bool? newResult;
 
-            if (groupValue != 0) {
-              newResult = false;
-            }
+              switch (widget.value) {
+                case false:
+                  break;
+                case true:
+                case null:
+                  newResult = false;
+              }
 
-            widget.onChanged(newResult);
+              widget.onChanged(newResult);
 
-            setState(() {});
-          },
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8,
-              horizontal: 14,
-            ),
-            child: ThumbWidget(
-              selectedIndex: groupValue == 0 ? 1 : 10,
-              index: 1,
-              iconSize: widget.iconSize,
+              setState(() {});
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: _ThumbWidget(
+                selected: !(widget.value ?? false),
+                upThumb: false,
+                iconSize: widget.iconSize,
+              ),
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+// ==============================================================
+
+class _ThumbWidget extends StatelessWidget {
+  const _ThumbWidget({
+    required this.upThumb,
+    required this.selected,
+    this.iconSize = 32,
+  });
+
+  final bool upThumb;
+  final bool selected;
+  final double iconSize;
+
+  @override
+  Widget build(BuildContext context) {
+    const unselectedColor = Color.fromRGBO(180, 180, 180, 1);
+
+    IconData icon;
+    IconData outlinedIcon;
+
+    Color? iconColor;
+
+    if (!upThumb) {
+      icon = Icons.thumb_down;
+      outlinedIcon = Icons.thumb_down;
+
+      iconColor = Colors.red[600];
+    } else {
+      icon = Icons.thumb_up;
+      outlinedIcon = Icons.thumb_up;
+
+      iconColor = Colors.green[600];
+    }
+
+    final firstIconColor = selected ? iconColor : unselectedColor;
+
+    return Icon(
+      selected ? icon : outlinedIcon,
+      color: firstIconColor,
+      size: iconSize,
     );
   }
 }
