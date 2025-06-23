@@ -25,6 +25,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
         Material(
           type: MaterialType.transparency,
           shape: const CircleBorder(),
+          clipBehavior: Clip.antiAlias,
           child: InkWell(
             onTap: () {
               bool? newResult;
@@ -42,10 +43,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
               setState(() {});
             },
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 8,
-                horizontal: 14,
-              ),
+              padding: const EdgeInsets.all(8),
               child: _ThumbWidget(
                 selected: widget.value ?? false,
                 upThumb: true,
@@ -56,6 +54,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
         ),
         Material(
           type: MaterialType.transparency,
+          clipBehavior: Clip.antiAlias,
           shape: const CircleBorder(),
           child: InkWell(
             onTap: () {
