@@ -5,11 +5,13 @@ class ThumbsUpControl extends StatefulWidget {
   const ThumbsUpControl({
     required this.value,
     required this.onChanged,
+    this.iconSize = 32,
   });
 
   // or null if not set
   final bool? value;
   final ValueChanged<bool?> onChanged;
+  final double iconSize;
 
   @override
   State<ThumbsUpControl> createState() => _ThumbsUpControlState();
@@ -48,6 +50,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
             child: ThumbWidget(
               selectedIndex: groupValue == 1 ? 2 : 10,
               index: 2,
+              iconSize: widget.iconSize,
             ),
           ),
         ),
@@ -71,6 +74,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
             child: ThumbWidget(
               selectedIndex: groupValue == 0 ? 1 : 10,
               index: 1,
+              iconSize: widget.iconSize,
             ),
           ),
         ),
