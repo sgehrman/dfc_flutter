@@ -76,7 +76,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: _ThumbWidget(
-                selected: !(widget.value ?? false),
+                selected: widget.value == false,
                 upThumb: false,
                 iconSize: widget.iconSize,
               ),
