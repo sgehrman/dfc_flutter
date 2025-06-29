@@ -101,6 +101,7 @@ export 'src/widgets/generic_card.dart';
 export 'src/widgets/gradient_text.dart';
 export 'src/widgets/json_viewer_screen.dart';
 export 'src/widgets/json_widget.dart';
+export 'src/widgets/key_value_table.dart';
 export 'src/widgets/keyboard_and_mouse_events.dart';
 export 'src/widgets/list_row.dart';
 export 'src/widgets/loading_widget.dart';
