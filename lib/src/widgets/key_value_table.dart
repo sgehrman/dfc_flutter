@@ -11,6 +11,7 @@ class KeyValueTableRow {
     this.valueFontSize = 14,
     this.valueMaxLines = 4,
     this.valueIsUrl = false,
+    this.valueTextAlign,
   });
 
   final String name;
@@ -22,6 +23,7 @@ class KeyValueTableRow {
   final Color? valueColor;
   final double valueFontSize;
   final int valueMaxLines;
+  final TextAlign? valueTextAlign;
 }
 
 class KeyValueTable extends StatelessWidget {
@@ -39,46 +41,46 @@ class KeyValueTable extends StatelessWidget {
   Widget build(BuildContext context) {
     const height = 1.1;
 
-    final children =
-        tableRows.map((e) {
-          final valueWidget =
-              e.valueIsUrl
-                  ? TextWithLinks(
-                    e.value,
-                    style: TextStyle(
-                      color: e.color,
-                      fontSize: e.valueFontSize,
-                      height: height,
-                    ),
-                  )
-                  : TextWithSize(
-                    e.value,
-                    e.valueFontSize,
-                    color: e.valueColor,
-                    maxLines: e.valueMaxLines,
-                    height: height,
-                  );
+    final children = tableRows.map((e) {
+      final valueWidget = e.valueIsUrl
+          ? TextWithLinks(
+              e.value,
+              textAlign: e.valueTextAlign,
+              style: TextStyle(
+                color: e.color,
+                fontSize: e.valueFontSize,
+                height: height,
+              ),
+            )
+          : TextWithSize(
+              e.value,
+              textAlign: e.valueTextAlign,
+              e.valueFontSize,
+              color: e.valueColor,
+              maxLines: e.valueMaxLines,
+              height: height,
+            );
 
-          return TableRow(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(bottom: spaceBetweenRows),
-                alignment: Alignment.centerLeft,
-                child: TextWithSize(
-                  '${e.name}:',
-                  e.fontSize,
-                  color: e.color,
-                  height: height,
-                ),
-              ),
-              const SizedBox(),
-              Padding(
-                padding: EdgeInsets.only(bottom: spaceBetweenRows),
-                child: valueWidget,
-              ),
-            ],
-          );
-        }).toList();
+      return TableRow(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(bottom: spaceBetweenRows),
+            alignment: Alignment.centerLeft,
+            child: TextWithSize(
+              '${e.name}:',
+              e.fontSize,
+              color: e.color,
+              height: height,
+            ),
+          ),
+          const SizedBox(),
+          Padding(
+            padding: EdgeInsets.only(bottom: spaceBetweenRows),
+            child: valueWidget,
+          ),
+        ],
+      );
+    }).toList();
 
     return Table(
       columnWidths: const <int, TableColumnWidth>{
