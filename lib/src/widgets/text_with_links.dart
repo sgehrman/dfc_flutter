@@ -10,6 +10,7 @@ class TextWithLinks extends StatelessWidget {
     this.humanize = false,
     this.selectable = false,
     this.linkStyle,
+    this.textAlign,
     super.key,
   });
 
@@ -18,6 +19,7 @@ class TextWithLinks extends StatelessWidget {
   final TextStyle? linkStyle;
   final bool selectable;
   final bool humanize;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class TextWithLinks extends StatelessWidget {
           LinkType.file,
           // LinkType.userTag,
         ],
+        textAlign: textAlign,
         textStyle: style,
         onTap: (link) {
           if (Utils.isNotEmpty(link.value)) {
@@ -53,6 +56,7 @@ class TextWithLinks extends StatelessWidget {
         LinkType.file,
         // LinkType.userTag,
       ],
+      textAlign: textAlign,
       textStyle: style,
       onTap: (link) {
         if (Utils.isNotEmpty(link.value)) {
