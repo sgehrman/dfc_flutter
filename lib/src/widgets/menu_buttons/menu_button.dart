@@ -1,6 +1,6 @@
 import 'package:dfc_flutter/src/utils/menu_utils.dart';
 import 'package:dfc_flutter/src/utils/utils.dart';
-import 'package:dfc_flutter/src/widgets/menu_item_widget.dart';
+import 'package:dfc_flutter/src/widgets/menu_buttons/menu_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class MenuButtonItem<T> {
