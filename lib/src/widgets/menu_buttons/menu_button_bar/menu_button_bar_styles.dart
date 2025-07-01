@@ -1,44 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MenuButtonBarStyles {
-  static MenuStyle transparentMenuBarStyle(BuildContext context) {
-    return MenuStyle(
-      elevation: WidgetStateProperty.resolveWith<double>(
-        (states) => 0,
-      ),
-      backgroundColor: WidgetStateProperty.resolveWith<Color>(
-        (states) {
-          return Colors.transparent;
-        },
-      ),
-      padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>(
-        (states) {
-          return EdgeInsets.zero;
-        },
-      ),
-    );
-  }
-
-  static MenuStyle menuBarStyle(BuildContext context) {
-    return MenuStyle(
-      elevation: WidgetStateProperty.resolveWith<double>(
-        (states) => 2,
-      ),
-      shape: WidgetStateProperty.resolveWith<RoundedRectangleBorder>(
-        (states) {
-          return const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(24)),
-          );
-        },
-      ),
-      padding: WidgetStateProperty.resolveWith<EdgeInsetsGeometry>(
-        (states) {
-          return const EdgeInsets.symmetric(horizontal: 12);
-        },
-      ),
-    );
-  }
-
   static ButtonStyle menuBarItemStyle({
     required BuildContext context,
     required bool round,
