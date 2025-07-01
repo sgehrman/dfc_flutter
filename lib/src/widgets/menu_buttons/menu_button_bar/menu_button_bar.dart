@@ -45,7 +45,7 @@ class MenuButtonBar extends StatelessWidget {
       backgroundColor: WidgetStateProperty.resolveWith<Color?>(
         (states) {
           if (Utils.isDarkMode(context)) {
-            return Theme.of(context).colorScheme.surfaceContainerLowest;
+            return Theme.of(context).colorScheme.surfaceContainerHigh;
           }
 
           return null;
