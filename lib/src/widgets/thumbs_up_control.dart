@@ -9,7 +9,9 @@ class ThumbsUpControl extends StatefulWidget {
 
   // or null if not set
   final bool? value;
-  final ValueChanged<bool?> onChanged;
+
+  // pass null to disable
+  final ValueChanged<bool?>? onChanged;
   final double iconSize;
 
   @override
@@ -27,21 +29,23 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
           shape: const CircleBorder(),
           clipBehavior: Clip.antiAlias,
           child: InkWell(
-            onTap: () {
-              bool? newResult;
+            onTap: widget.onChanged == null
+                ? null
+                : () {
+                    bool? newResult;
 
-              switch (widget.value) {
-                case true:
-                  break;
-                case false:
-                case null:
-                  newResult = true;
-              }
+                    switch (widget.value) {
+                      case true:
+                        break;
+                      case false:
+                      case null:
+                        newResult = true;
+                    }
 
-              widget.onChanged(newResult);
+                    widget.onChanged?.call(newResult);
 
-              setState(() {});
-            },
+                    setState(() {});
+                  },
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: _ThumbWidget(
@@ -57,21 +61,23 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
           clipBehavior: Clip.antiAlias,
           shape: const CircleBorder(),
           child: InkWell(
-            onTap: () {
-              bool? newResult;
+            onTap: widget.onChanged == null
+                ? null
+                : () {
+                    bool? newResult;
 
-              switch (widget.value) {
-                case false:
-                  break;
-                case true:
-                case null:
-                  newResult = false;
-              }
+                    switch (widget.value) {
+                      case false:
+                        break;
+                      case true:
+                      case null:
+                        newResult = false;
+                    }
 
-              widget.onChanged(newResult);
+                    widget.onChanged?.call(newResult);
 
-              setState(() {});
-            },
+                    setState(() {});
+                  },
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: _ThumbWidget(
