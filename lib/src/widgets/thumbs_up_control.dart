@@ -52,6 +52,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
                 selected: widget.value ?? false,
                 upThumb: true,
                 iconSize: widget.iconSize,
+                disabled: widget.onChanged == null,
               ),
             ),
           ),
@@ -84,6 +85,7 @@ class _ThumbsUpControlState extends State<ThumbsUpControl> {
                 selected: widget.value == false,
                 upThumb: false,
                 iconSize: widget.iconSize,
+                disabled: widget.onChanged == null,
               ),
             ),
           ),
@@ -100,11 +102,13 @@ class _ThumbWidget extends StatelessWidget {
     required this.upThumb,
     required this.selected,
     this.iconSize = 32,
+    this.disabled = false,
   });
 
   final bool upThumb;
   final bool selected;
   final double iconSize;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -129,10 +133,13 @@ class _ThumbWidget extends StatelessWidget {
 
     final firstIconColor = selected ? iconColor : unselectedColor;
 
-    return Icon(
-      selected ? icon : outlinedIcon,
-      color: firstIconColor,
-      size: iconSize,
+    return Opacity(
+      opacity: disabled ? 0.5 : 1,
+      child: Icon(
+        selected ? icon : outlinedIcon,
+        color: firstIconColor,
+        size: iconSize,
+      ),
     );
   }
 }
