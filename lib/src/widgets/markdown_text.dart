@@ -7,6 +7,7 @@ class MarkdownText extends StatelessWidget {
   const MarkdownText(
     this.markdownText, {
     this.fontSize = 16,
+    this.color,
     this.onTapLink,
     this.textAlign = WrapAlignment.start,
     this.softLineBreak = false,
@@ -17,12 +18,14 @@ class MarkdownText extends StatelessWidget {
   final bool softLineBreak;
   final void Function(String text, String? href, String title)? onTapLink;
   final WrapAlignment textAlign;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     // bodyMedium since bodyLarge might be bold
     final textStyle = Theme.of(context).textTheme.bodyMedium!.copyWith(
           fontSize: fontSize,
+          color: color,
         );
 
     final aStyle = textStyle.copyWith(
@@ -57,11 +60,11 @@ class MarkdownText extends StatelessWidget {
         h6Padding: const EdgeInsets.only(bottom: 4),
         pPadding: const EdgeInsets.only(bottom: 4),
         strong: boldStyle,
-        h1: TextStyle(fontSize: fontSize * 1.5, fontWeight: Font.bold),
-        h2: TextStyle(fontSize: fontSize * 1.4, fontWeight: Font.bold),
-        h3: TextStyle(fontSize: fontSize * 1.3, fontWeight: Font.bold),
-        h4: TextStyle(fontSize: fontSize * 1.2, fontWeight: Font.bold),
-        h5: TextStyle(fontSize: fontSize * 1.1, fontWeight: Font.bold),
+        h1: boldStyle.copyWith(fontSize: fontSize * 1.5),
+        h2: boldStyle.copyWith(fontSize: fontSize * 1.4),
+        h3: boldStyle.copyWith(fontSize: fontSize * 1.3),
+        h4: textStyle.copyWith(fontSize: fontSize * 1.2),
+        h5: textStyle.copyWith(fontSize: fontSize * 1.1),
         // ## was doing this before, but fonts very large
         // h1: Theme.of(context).textTheme.displayLarge,
         // h2: Theme.of(context).textTheme.displayMedium,
