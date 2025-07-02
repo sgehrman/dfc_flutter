@@ -120,6 +120,7 @@ export 'src/widgets/paragraf.dart';
 export 'src/widgets/phone_input_utils.dart';
 export 'src/widgets/preview_dialog.dart';
 export 'src/widgets/primary_title.dart';
+export 'src/widgets/responsive_widget.dart';
 export 'src/widgets/search_field.dart';
 export 'src/widgets/shared_context.dart';
 export 'src/widgets/shared_snack_bar.dart';
