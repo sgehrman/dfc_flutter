@@ -176,9 +176,18 @@ class Paragraf extends StatelessWidget {
       nls = List.generate(spec.newlines, (index) => '\n').join();
     }
 
+    var spaces = '';
+    if (spec.spaces > 0) {
+      spaces = List.generate(spec.spaces, (index) => ' ').join();
+    }
+
     if (spec.href.isNotEmpty) {
       return TextSpan(
         children: [
+          if (spaces.isNotEmpty)
+            TextSpan(
+              text: spaces,
+            ),
           WidgetSpan(
             baseline: TextBaseline.alphabetic,
             alignment: ui.PlaceholderAlignment.baseline,
@@ -199,11 +208,6 @@ class Paragraf extends StatelessWidget {
             ),
         ],
       );
-    }
-
-    var spaces = '';
-    if (spec.spaces > 0) {
-      spaces = List.generate(spec.spaces, (index) => ' ').join();
     }
 
     return TextSpan(
