@@ -131,6 +131,7 @@ export 'src/widgets/stadium_button.dart';
 export 'src/widgets/stadium_tag.dart';
 export 'src/widgets/svg_asset.dart';
 export 'src/widgets/svg_image.dart';
+export 'src/widgets/team_widget.dart';
 export 'src/widgets/text.dart';
 export 'src/widgets/text_with_links.dart';
 export 'src/widgets/thumb_widget.dart';
