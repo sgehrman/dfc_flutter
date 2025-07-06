@@ -358,6 +358,7 @@ class _EmployeeCardState extends State<EmployeeCard>
                               child: Image.asset(
                                 widget.employee.imagePath,
                                 fit: BoxFit.cover,
+                                bundle: DefaultAssetBundle.of(context),
                                 errorBuilder: (context, error, stackTrace) {
                                   return ColoredBox(
                                     color: Colors.grey.shade200,
