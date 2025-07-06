@@ -71,4 +71,4 @@ flutter:
   generate: true
 
   assets:
-    - lib/assets/team_images/
+    - assets/team_images/
