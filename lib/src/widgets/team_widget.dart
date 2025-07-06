@@ -357,8 +357,8 @@ class _EmployeeCardState extends State<EmployeeCard>
                               aspectRatio: 1, // Square aspect ratio
                               child: Image.asset(
                                 widget.employee.imagePath,
+                                package: 'dfc_flutter',
                                 fit: BoxFit.cover,
-                                bundle: DefaultAssetBundle.of(context),
                                 errorBuilder: (context, error, stackTrace) {
                                   return ColoredBox(
                                     color: Colors.grey.shade200,
