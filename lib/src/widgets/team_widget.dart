@@ -417,9 +417,9 @@ Future<void> _showEmployeeDialog({
   return showDialog(
     context: context,
     builder: (context) => Dialog(
+      insetPadding: const EdgeInsets.all(20),
       child: SizedBox(
         width: 400,
-        height: 800,
         child: Card(
           child: Column(
             mainAxisSize: MainAxisSize.min,
