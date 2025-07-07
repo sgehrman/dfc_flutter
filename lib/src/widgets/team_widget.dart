@@ -416,50 +416,52 @@ Future<void> _showEmployeeDialog({
 }) {
   return showDialog(
     context: context,
-    builder: (context) => SizedBox(
-      width: 400,
-      height: 800,
-      child: Card(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              employee.imagePath,
-              package: 'dfc_flutter',
-              fit: BoxFit.cover,
-              height: 400,
-              errorBuilder: (context, error, stackTrace) {
-                return ColoredBox(
-                  color: Colors.grey.shade200,
-                  child: const Icon(
-                    Icons.person,
-                    size: 48,
-                    color: Colors.grey,
-                  ),
-                );
-              },
-            ),
-            Expanded(
-              child: ListView(
-                children: [
-                  Text(
-                    employee.name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
+    builder: (context) => Dialog(
+      child: SizedBox(
+        width: 400,
+        height: 800,
+        child: Card(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                employee.imagePath,
+                package: 'dfc_flutter',
+                fit: BoxFit.cover,
+                height: 400,
+                errorBuilder: (context, error, stackTrace) {
+                  return ColoredBox(
+                    color: Colors.grey.shade200,
+                    child: const Icon(
+                      Icons.person,
+                      size: 48,
+                      color: Colors.grey,
                     ),
-                  ),
-                  Text(
-                    employee.biography,
-                    style: TextStyle(
-                      color: context.lightTextColor,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
+                  );
+                },
               ),
-            ),
-          ],
+              Expanded(
+                child: ListView(
+                  children: [
+                    Text(
+                      employee.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    Text(
+                      employee.biography,
+                      style: TextStyle(
+                        color: context.lightTextColor,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     ),
