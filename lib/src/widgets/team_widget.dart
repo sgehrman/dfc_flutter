@@ -159,7 +159,7 @@ class _TeamWidgetState extends State<TeamWidget> {
               DragScrollWidget(
                 child: ContentOverflowFader(
                   color: widget.backgroundColor ?? Colors.transparent,
-                  gradientWidth: 100,
+                  gradientWidth: 60,
                   child: PageView.builder(
                     controller: _pageController,
                     onPageChanged: (index) {
