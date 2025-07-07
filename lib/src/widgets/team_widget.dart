@@ -308,109 +308,104 @@ class _EmployeeCardState extends State<_EmployeeCard>
       child: AnimatedBuilder(
         animation: _scaleAnimation,
         builder: (context, child) {
-          return OverflowBox(
-            // scale animation gets clipped by the parent, so we use OverflowBox
-            maxWidth: double.infinity,
-            maxHeight: double.infinity,
-            child: Transform.scale(
-              scale: _scaleAnimation.value,
-              child: DFTooltip(
-                message:
-                    '${widget.employee.name}\n\n${widget.employee.biography}',
-                child: Card(
-                  elevation: 8,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        flex: 3,
-                        child: Container(
-                          margin: const EdgeInsets.all(16),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(12)),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 8,
-                                offset: Offset(0, 4),
-                              ),
-                            ],
-                          ),
-                          child: ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(12)),
-                            child: AspectRatio(
-                              aspectRatio: 1, // Square aspect ratio
-                              child: Image.asset(
-                                widget.employee.imagePath,
-                                package: 'dfc_flutter',
-                                fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return ColoredBox(
-                                    color: Colors.grey.shade200,
-                                    child: const Icon(
-                                      Icons.person,
-                                      size: 48,
-                                      color: Colors.grey,
-                                    ),
-                                  );
-                                },
-                              ),
+          return Transform.scale(
+            scale: _scaleAnimation.value,
+            child: DFTooltip(
+              message:
+                  '${widget.employee.name}\n\n${widget.employee.biography}',
+              child: Card(
+                elevation: 8,
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        margin: const EdgeInsets.all(16),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 8,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(12)),
+                          child: AspectRatio(
+                            aspectRatio: 1, // Square aspect ratio
+                            child: Image.asset(
+                              widget.employee.imagePath,
+                              package: 'dfc_flutter',
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return ColoredBox(
+                                  color: Colors.grey.shade200,
+                                  child: const Icon(
+                                    Icons.person,
+                                    size: 48,
+                                    color: Colors.grey,
+                                  ),
+                                );
+                              },
                             ),
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                widget.employee.name,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
-                                textAlign: TextAlign.center,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 8,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              widget.employee.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
                               ),
-                              Text(
-                                widget.employee.position,
-                                style: TextStyle(
-                                  color: context.lightTextColor,
-                                  fontSize: 14,
-                                ),
-                                textAlign: TextAlign.center,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              widget.employee.position,
+                              style: TextStyle(
+                                color: context.lightTextColor,
+                                fontSize: 14,
                               ),
-                              const SizedBox(height: 4),
-                              Container(
-                                height: 2,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      Theme.of(context).primaryColor,
-                                      Theme.of(
-                                        context,
-                                      ).primaryColor.withValues(alpha: 0.5),
-                                    ],
-                                  ),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(1)),
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(height: 4),
+                            Container(
+                              height: 2,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Theme.of(context).primaryColor,
+                                    Theme.of(
+                                      context,
+                                    ).primaryColor.withValues(alpha: 0.5),
+                                  ],
                                 ),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(1)),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
