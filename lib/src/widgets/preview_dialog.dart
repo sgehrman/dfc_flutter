@@ -9,7 +9,7 @@ Future<bool?> showPreviewDialog({
 }) {
   return showDialog<bool>(
     context: context,
-    builder: (context) => CDialog(
+    builder: (context) => _DialogContent(
       backgroundColor: backgroundColor,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -19,20 +19,13 @@ Future<bool?> showPreviewDialog({
   );
 }
 
-class CDialog extends StatelessWidget {
-  const CDialog({
+class _DialogContent extends StatelessWidget {
+  const _DialogContent({
     this.backgroundColor,
-    this.insetAnimationDuration = const Duration(milliseconds: 100),
-    this.insetAnimationCurve = Curves.decelerate,
-    this.clipBehavior = Clip.none,
     this.child,
   });
 
   final Color? backgroundColor;
-  final Duration insetAnimationDuration;
-  final Curve insetAnimationCurve;
-  final Clip clipBehavior;
-
   final Widget? child;
 
   static const RoundedRectangleBorder _defaultDialogShape =
@@ -50,8 +43,8 @@ class CDialog extends StatelessWidget {
 
     return AnimatedPadding(
       padding: EdgeInsets.zero,
-      duration: insetAnimationDuration,
-      curve: insetAnimationCurve,
+      duration: const Duration(milliseconds: 100),
+      curve: Curves.decelerate,
       child: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(
@@ -63,7 +56,6 @@ class CDialog extends StatelessWidget {
             elevation: dialogTheme.elevation ?? _defaultElevation,
             shape: dialogTheme.shape ?? _defaultDialogShape,
             type: MaterialType.card,
-            clipBehavior: clipBehavior,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 border: Border.fromBorderSide(
