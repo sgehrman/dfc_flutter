@@ -203,7 +203,7 @@ class _TeamWidgetState extends State<TeamWidget> {
                           Icons.arrow_back_ios_new,
                           color: Colors.black87,
                         ),
-                        tooltip: 'Previous employee',
+                        tooltip: 'Previous',
                       ),
                     ),
                   ),
@@ -233,34 +233,34 @@ class _TeamWidgetState extends State<TeamWidget> {
                           Icons.arrow_forward_ios,
                           color: Colors.black87,
                         ),
-                        tooltip: 'Next employee',
+                        tooltip: 'Next',
                       ),
                     ),
                   ),
                 ),
               // Page indicator dots
-              Positioned(
-                bottom: 16,
-                left: 0,
-                right: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    TeamWidget.employees.length,
-                    (index) => Container(
-                      width: 8,
-                      height: 8,
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _currentIndex == index
-                            ? Theme.of(context).primaryColor
-                            : Colors.grey.withValues(alpha: 0.4),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   bottom: 16,
+              //   left: 0,
+              //   right: 0,
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: List.generate(
+              //       TeamWidget.employees.length,
+              //       (index) => Container(
+              //         width: 8,
+              //         height: 8,
+              //         margin: const EdgeInsets.symmetric(horizontal: 4),
+              //         decoration: BoxDecoration(
+              //           shape: BoxShape.circle,
+              //           color: _currentIndex == index
+              //               ? Theme.of(context).primaryColor
+              //               : Colors.grey.withValues(alpha: 0.4),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         );
@@ -398,13 +398,10 @@ class _EmployeeCardState extends State<EmployeeCard>
                             children: [
                               Text(
                                 widget.employee.name,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge
-                                    ?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color: context.textColor,
-                                    ),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                                 textAlign: TextAlign.center,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -412,12 +409,10 @@ class _EmployeeCardState extends State<EmployeeCard>
                               const SizedBox(height: 4),
                               Text(
                                 widget.employee.position,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.copyWith(
-                                      color: context.lightTextColor,
-                                    ),
+                                style: TextStyle(
+                                  color: context.lightTextColor,
+                                  fontSize: 14,
+                                ),
                                 textAlign: TextAlign.center,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
