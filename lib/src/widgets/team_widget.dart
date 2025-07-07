@@ -418,46 +418,43 @@ Future<void> _showEmployeeDialog({
     context: context,
     builder: (context) => Dialog(
       child: Container(
-        width: 400,
-        height: 800,
+        width: 500,
         padding: const EdgeInsets.all(20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              employee.imagePath,
-              package: 'dfc_flutter',
-              fit: BoxFit.cover,
-              height: 400,
-              errorBuilder: (context, error, stackTrace) {
-                return ColoredBox(
-                  color: Colors.grey.shade200,
-                  child: const Icon(
-                    Icons.person,
-                    size: 48,
-                    color: Colors.grey,
-                  ),
-                );
-              },
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+              child: Image.asset(
+                employee.imagePath,
+                package: 'dfc_flutter',
+                fit: BoxFit.cover,
+                height: 400,
+                errorBuilder: (context, error, stackTrace) {
+                  return ColoredBox(
+                    color: Colors.grey.shade200,
+                    child: const Icon(
+                      Icons.person,
+                      size: 48,
+                      color: Colors.grey,
+                    ),
+                  );
+                },
+              ),
             ),
-            Expanded(
-              child: ListView(
-                children: [
-                  Text(
-                    employee.name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  Text(
-                    employee.biography,
-                    style: TextStyle(
-                      color: context.lightTextColor,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
+            const SizedBox(height: 16),
+            Text(
+              employee.name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            Text(
+              employee.biography,
+              style: TextStyle(
+                color: context.lightTextColor,
+                fontSize: 14,
               ),
             ),
           ],
