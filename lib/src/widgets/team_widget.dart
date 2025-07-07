@@ -17,7 +17,9 @@ class Employee {
 // =======================================================
 
 class TeamWidget extends StatefulWidget {
-  const TeamWidget({super.key});
+  const TeamWidget({this.backgroundColor, super.key});
+
+  final Color? backgroundColor;
 
   // https://docs.google.com/document/d/1VMcpASB9O4Wxq2AppZ1TS-uR-k_9VMCcWRbmcxPDoB4/edit?tab=t.0
   static const List<Employee> employees = [
@@ -131,32 +133,33 @@ class _TeamWidgetState extends State<TeamWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          // Calculate responsive viewport fraction
-          final viewportFraction = _getViewportFraction(constraints.maxWidth);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Calculate responsive viewport fraction
+        final viewportFraction = _getViewportFraction(constraints.maxWidth);
 
-          // Recreate PageController if viewport fraction changed significantly
-          if ((_pageController.viewportFraction - viewportFraction).abs() >
-              0.01) {
-            final currentPage = _currentIndex;
-            _pageController.dispose();
-            _pageController = PageController(
-              viewportFraction: viewportFraction,
-              initialPage: currentPage,
-            );
-          }
+        // Recreate PageController if viewport fraction changed significantly
+        if ((_pageController.viewportFraction - viewportFraction).abs() >
+            0.01) {
+          final currentPage = _currentIndex;
+          _pageController.dispose();
+          _pageController = PageController(
+            viewportFraction: viewportFraction,
+            initialPage: currentPage,
+          );
+        }
 
-          // Calculate card height based on screen width to maintain aspect ratio
-          final cardHeight = constraints.maxWidth > 600.0 ? 400.0 : 350.0;
+        // Calculate card height based on screen width to maintain aspect ratio
+        final cardHeight = constraints.maxWidth > 600.0 ? 400.0 : 350.0;
 
-          return SizedBox(
-            height: cardHeight,
-            child: Stack(
-              children: [
-                DragScrollWidget(
+        return SizedBox(
+          height: cardHeight,
+          child: Stack(
+            children: [
+              DragScrollWidget(
+                child: ContentOverflowFader(
+                  color: widget.backgroundColor ?? Colors.transparent,
+                  gradientWidth: 100,
                   child: PageView.builder(
                     controller: _pageController,
                     onPageChanged: (index) {
@@ -174,94 +177,94 @@ class _TeamWidgetState extends State<TeamWidget> {
                     },
                   ),
                 ),
-                // Left scroll button
-                if (_canScrollLeft)
-                  Positioned(
-                    left: 8,
-                    top: 0,
-                    bottom: 0,
-                    child: Center(
-                      child: DecoratedBox(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 8,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: IconButton(
-                          onPressed: _scrollLeft,
-                          icon: const Icon(
-                            Icons.arrow_back_ios_new,
-                            color: Colors.black87,
-                          ),
-                          tooltip: 'Previous employee',
-                        ),
-                      ),
-                    ),
-                  ),
-                // Right scroll button
-                if (_canScrollRight)
-                  Positioned(
-                    right: 8,
-                    top: 0,
-                    bottom: 0,
-                    child: Center(
-                      child: DecoratedBox(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 8,
-                              offset: Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: IconButton(
-                          onPressed: _scrollRight,
-                          icon: const Icon(
-                            Icons.arrow_forward_ios,
-                            color: Colors.black87,
-                          ),
-                          tooltip: 'Next employee',
-                        ),
-                      ),
-                    ),
-                  ),
-                // Page indicator dots
+              ),
+              // Left scroll button
+              if (_canScrollLeft)
                 Positioned(
-                  bottom: 16,
-                  left: 0,
-                  right: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      TeamWidget.employees.length,
-                      (index) => Container(
-                        width: 8,
-                        height: 8,
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: _currentIndex == index
-                              ? Theme.of(context).primaryColor
-                              : Colors.grey.withValues(alpha: 0.4),
+                  left: 8,
+                  top: 0,
+                  bottom: 0,
+                  child: Center(
+                    child: DecoratedBox(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 8,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: IconButton(
+                        onPressed: _scrollLeft,
+                        icon: const Icon(
+                          Icons.arrow_back_ios_new,
+                          color: Colors.black87,
                         ),
+                        tooltip: 'Previous employee',
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
-          );
-        },
-      ),
+              // Right scroll button
+              if (_canScrollRight)
+                Positioned(
+                  right: 8,
+                  top: 0,
+                  bottom: 0,
+                  child: Center(
+                    child: DecoratedBox(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 8,
+                            offset: Offset(0, 2),
+                          ),
+                        ],
+                      ),
+                      child: IconButton(
+                        onPressed: _scrollRight,
+                        icon: const Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.black87,
+                        ),
+                        tooltip: 'Next employee',
+                      ),
+                    ),
+                  ),
+                ),
+              // Page indicator dots
+              Positioned(
+                bottom: 16,
+                left: 0,
+                right: 0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    TeamWidget.employees.length,
+                    (index) => Container(
+                      width: 8,
+                      height: 8,
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _currentIndex == index
+                            ? Theme.of(context).primaryColor
+                            : Colors.grey.withValues(alpha: 0.4),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

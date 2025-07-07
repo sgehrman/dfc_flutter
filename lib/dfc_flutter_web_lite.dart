@@ -72,6 +72,7 @@ export 'src/widgets/buttons.dart';
 export 'src/widgets/checkerboard_container.dart';
 export 'src/widgets/colored_button.dart';
 export 'src/widgets/colorized_text.dart';
+export 'src/widgets/content_overflow_fader.dart';
 export 'src/widgets/custom_markdown.dart';
 export 'src/widgets/date_picker.dart';
 export 'src/widgets/df_input_decoration.dart';
