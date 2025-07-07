@@ -417,9 +417,10 @@ Future<void> _showEmployeeDialog({
   return showDialog(
     context: context,
     builder: (context) => Dialog(
+      elevation: 20,
       child: Container(
         width: 500,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -454,7 +455,7 @@ Future<void> _showEmployeeDialog({
               employee.biography,
               style: TextStyle(
                 color: context.lightTextColor,
-                fontSize: 14,
+                fontSize: 16,
               ),
             ),
           ],
