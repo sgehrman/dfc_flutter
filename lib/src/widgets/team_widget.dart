@@ -416,93 +416,56 @@ Future<void> _showEmployeeDialog({
 }) {
   return showDialog(
     context: context,
-    builder: (context) => _DialogContent(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            employee.imagePath,
-            package: 'dfc_flutter',
-            fit: BoxFit.cover,
-            height: 400,
-            width: 400,
-            errorBuilder: (context, error, stackTrace) {
-              return ColoredBox(
-                color: Colors.grey.shade200,
-                child: const Icon(
-                  Icons.person,
-                  size: 48,
-                  color: Colors.grey,
+    builder: (context) => Card(
+      child: Flexible(
+        child: SizedBox(
+          width: 400,
+          height: 800,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                employee.imagePath,
+                package: 'dfc_flutter',
+                fit: BoxFit.cover,
+                height: 400,
+                errorBuilder: (context, error, stackTrace) {
+                  return ColoredBox(
+                    color: Colors.grey.shade200,
+                    child: const Icon(
+                      Icons.person,
+                      size: 48,
+                      color: Colors.grey,
+                    ),
+                  );
+                },
+              ),
+              Expanded(
+                child: ListView(
+                  children: [
+                    Text(
+                      employee.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                    Text(
+                      employee.biography,
+                      style: TextStyle(
+                        color: context.lightTextColor,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
                 ),
-              );
-            },
-          ),
-          Expanded(
-            child: ListView(
-              children: [
-                Text(
-                  employee.name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                ),
-                Text(
-                  employee.biography,
-                  style: TextStyle(
-                    color: context.lightTextColor,
-                    fontSize: 14,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
-// =======================================================
-
-class _DialogContent extends StatelessWidget {
-  const _DialogContent({
-    this.child,
-  });
-
-  final Widget? child;
-
-  static const RoundedRectangleBorder _defaultDialogShape =
-      RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(4)),
-  );
-  static const double _defaultElevation = 24;
-
-  @override
-  Widget build(BuildContext context) {
-    final dialogTheme = DialogTheme.of(context);
-
-    return AnimatedPadding(
-      padding: EdgeInsets.zero,
-      duration: const Duration(milliseconds: 100),
-      curve: Curves.decelerate,
-      child: Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height * 0.9,
-            maxWidth: MediaQuery.of(context).size.width * 0.95,
-          ),
-          child: Material(
-            color: Colors.transparent,
-            elevation: dialogTheme.elevation ?? _defaultElevation,
-            shape: dialogTheme.shape ?? _defaultDialogShape,
-            type: MaterialType.card,
-            child: child,
+              ),
+            ],
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
 
 // =======================================================
