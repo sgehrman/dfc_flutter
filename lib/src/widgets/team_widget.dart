@@ -313,7 +313,6 @@ class _EmployeeCardState extends State<EmployeeCard>
             child: DFTooltip(
               message:
                   '${widget.employee.name}\n\n${widget.employee.biography}',
-              preferBelow: false,
               child: Card(
                 elevation: 8,
                 child: Column(
