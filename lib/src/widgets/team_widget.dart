@@ -162,6 +162,7 @@ class _TeamWidgetState extends State<TeamWidget> {
                   gradientWidth: 60,
                   child: PageView.builder(
                     controller: _pageController,
+                    clipBehavior: Clip.none,
                     onPageChanged: (index) {
                       _currentIndex = index;
                       _updateScrollButtons();
