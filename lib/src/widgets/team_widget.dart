@@ -162,7 +162,6 @@ class _TeamWidgetState extends State<TeamWidget> {
                   gradientWidth: 60,
                   child: PageView.builder(
                     controller: _pageController,
-                    clipBehavior: Clip.none,
                     onPageChanged: (index) {
                       _currentIndex = index;
                       _updateScrollButtons();
@@ -170,7 +169,8 @@ class _TeamWidgetState extends State<TeamWidget> {
                     itemCount: TeamWidget.employees.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        // need space for the hover scale effect
+                        padding: const EdgeInsets.all(8),
                         child: _EmployeeCard(
                           employee: TeamWidget.employees[index],
                         ),
