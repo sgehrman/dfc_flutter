@@ -68,7 +68,7 @@ class _TeamWidgetState extends State<TeamWidget> {
   void initState() {
     super.initState();
 
-    _currentIndex = TeamWidget._employees.length ~/ 2;
+    _currentIndex = (TeamWidget._employees.length ~/ 2) - 1; // 0 based index
 
     _pageController = PageController(viewportFraction: 0.85);
     _updateScrollButtons();
@@ -109,8 +109,7 @@ class _TeamWidgetState extends State<TeamWidget> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Calculate card height based on screen width to maintain aspect ratio
-        final cardHeight = constraints.maxWidth > 600.0 ? 500.0 : 400.0;
+        final cardHeight = constraints.maxWidth > 900.0 ? 500.0 : 400.0;
 
         final cardWidth = cardHeight * 0.75; // Maintain a 4:3 aspect ratio
 
