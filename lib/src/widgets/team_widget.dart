@@ -1,6 +1,9 @@
 import 'dart:math' as math;
 
-import 'package:dfc_flutter/dfc_flutter_web_lite.dart';
+import 'package:dfc_flutter/src/extensions/build_context_ext.dart';
+import 'package:dfc_flutter/src/widgets/carousel_controls.dart';
+import 'package:dfc_flutter/src/widgets/df_tool_tip/df_tooltip.dart';
+import 'package:dfc_flutter/src/widgets/drag_scroll_widget.dart';
 import 'package:flutter/material.dart';
 
 class TeamWidget extends StatefulWidget {
@@ -131,111 +134,28 @@ class _TeamWidgetState extends State<TeamWidget> {
 
         return SizedBox(
           height: cardHeight,
-          child: Stack(
-            children: [
-              DragScrollWidget(
-                child: PageView.builder(
-                  controller: _pageController,
-                  onPageChanged: (index) {
-                    _currentIndex = index;
-                    _updateScrollButtons();
-                  },
-                  itemCount: TeamWidget._employees.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      // need space for the hover scale effect
-                      padding: const EdgeInsets.all(8),
-                      child: _EmployeeCard(
-                        employee: TeamWidget._employees[index],
-                      ),
-                    );
-                  },
-                ),
+          child: CarouselControls(
+            onPrevious: _canScrollLeft ? _scrollLeft : null,
+            onNext: _canScrollRight ? _scrollRight : null,
+            child: DragScrollWidget(
+              child: PageView.builder(
+                controller: _pageController,
+                onPageChanged: (index) {
+                  _currentIndex = index;
+                  _updateScrollButtons();
+                },
+                itemCount: TeamWidget._employees.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    // need space for the hover scale effect
+                    padding: const EdgeInsets.all(8),
+                    child: _EmployeeCard(
+                      employee: TeamWidget._employees[index],
+                    ),
+                  );
+                },
               ),
-              // Left scroll button
-              if (_canScrollLeft)
-                Positioned(
-                  left: 8,
-                  top: 0,
-                  bottom: 0,
-                  child: Center(
-                    child: DecoratedBox(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 8,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: IconButton(
-                        onPressed: _scrollLeft,
-                        icon: const Icon(
-                          Icons.arrow_back_ios_new,
-                          color: Colors.black87,
-                        ),
-                        tooltip: 'Previous',
-                      ),
-                    ),
-                  ),
-                ),
-              // Right scroll button
-              if (_canScrollRight)
-                Positioned(
-                  right: 8,
-                  top: 0,
-                  bottom: 0,
-                  child: Center(
-                    child: DecoratedBox(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 8,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: IconButton(
-                        onPressed: _scrollRight,
-                        icon: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black87,
-                        ),
-                        tooltip: 'Next',
-                      ),
-                    ),
-                  ),
-                ),
-              // Page indicator dots
-              // Positioned(
-              //   bottom: 16,
-              //   left: 0,
-              //   right: 0,
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: List.generate(
-              //       TeamWidget.employees.length,
-              //       (index) => Container(
-              //         width: 8,
-              //         height: 8,
-              //         margin: const EdgeInsets.symmetric(horizontal: 4),
-              //         decoration: BoxDecoration(
-              //           shape: BoxShape.circle,
-              //           color: _currentIndex == index
-              //               ? Theme.of(context).primaryColor
-              //               : Colors.grey.withValues(alpha: 0.4),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-            ],
+            ),
           ),
         );
       },
