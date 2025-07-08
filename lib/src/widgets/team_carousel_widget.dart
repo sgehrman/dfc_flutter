@@ -1,8 +1,8 @@
 import 'package:dfc_flutter/dfc_flutter_web_lite.dart';
 import 'package:flutter/material.dart';
 
-class TeamWidget extends StatefulWidget {
-  const TeamWidget({this.backgroundColor, super.key});
+class TeamCarouselWidget extends StatefulWidget {
+  const TeamCarouselWidget({this.backgroundColor, super.key});
 
   final Color? backgroundColor;
 
@@ -13,7 +13,7 @@ class TeamWidget extends StatefulWidget {
       imagePath: 'assets/team_images/alexandra.jpeg',
       position: 'Head of Operations',
       biography:
-          'Alexandra has been with Cocoatech since 2005, wearing many hats over the years before officially taking the reins as Head of Operations. She keeps the wheels turning behind the scenes — from managing payment systems and customer support to making sure things just work (and work well). She\'s passionate about clear communication, good user experience, and bringing structure to chaos. utside of Cocoatech, Alexandra lives in Germany with her husband and two children. When she’s not coordinating teams across time zones, you’ll likely find her lacing up for a figure skating session, switching between the five languages that she speaks, or digging into a new technical system just for fun.',
+          'Alexandra has been with Cocoatech since 2005, wearing many hats over the years before officially taking the reins as Head of Operations. She keeps the wheels turning behind the scenes — from managing payment systems and customer support to making sure things just work (and work well). She\'s passionate about clear communication, good user experience, and bringing structure to chaos. Outside of Cocoatech, Alexandra lives in Germany with her husband and two children. When she\'s not coordinating teams across time zones, you\'ll likely find her lacing up for a figure skating session, switching between the five languages that she speaks, or digging into a new technical system just for fun.',
     ),
     _Employee(
       name: 'Kim',
@@ -53,85 +53,26 @@ class TeamWidget extends StatefulWidget {
   ];
 
   @override
-  State<TeamWidget> createState() => _TeamWidgetState();
+  State<TeamCarouselWidget> createState() => _TeamCarouselWidgetState();
 }
 
-class _TeamWidgetState extends State<TeamWidget> {
-  late PageController _pageController;
-  int _currentIndex = 0;
-  bool _canScrollLeft = false;
-  bool _canScrollRight = true;
-
-  @override
-  void initState() {
-    super.initState();
-    // Initial controller - will be updated in build method
-    _pageController = PageController(viewportFraction: 0.85);
-    _updateScrollButtons();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
-  double _getViewportFraction(double screenWidth) {
-    // Calculate responsive viewport fraction based on screen width
-    if (screenWidth > 1400) {
-      return 0.2; // 5 cards visible on very large screens
-    } else if (screenWidth > 1200) {
-      return 0.25; // 4 cards visible on large screens
-    } else if (screenWidth > 900) {
-      return 0.33; // 3 cards visible on medium-large screens
-    } else if (screenWidth > 600) {
-      return 0.5; // 2 cards visible on medium screens
-    } else {
-      return 0.85; // 1 card (with peek) on small screens
-    }
-  }
-
-  void _updateScrollButtons() {
-    setState(() {
-      _canScrollLeft = _currentIndex > 0;
-      _canScrollRight = _currentIndex < TeamWidget._employees.length - 1;
-    });
-  }
-
-  void _scrollLeft() {
-    if (_canScrollLeft) {
-      _pageController.previousPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    }
-  }
-
-  void _scrollRight() {
-    if (_canScrollRight) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    }
-  }
-
+class _TeamCarouselWidgetState extends State<TeamCarouselWidget> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Calculate responsive viewport fraction
-        final viewportFraction = _getViewportFraction(constraints.maxWidth);
-
-        // Recreate PageController if viewport fraction changed significantly
-        if ((_pageController.viewportFraction - viewportFraction).abs() >
-            0.01) {
-          final currentPage = _currentIndex;
-          _pageController.dispose();
-          _pageController = PageController(
-            viewportFraction: viewportFraction,
-            initialPage: currentPage,
-          );
+        // Calculate responsive item extent based on screen width
+        double itemExtent;
+        if (constraints.maxWidth > 1400) {
+          itemExtent = constraints.maxWidth / 5; // 5 cards visible on very large screens
+        } else if (constraints.maxWidth > 1200) {
+          itemExtent = constraints.maxWidth / 4; // 4 cards visible on large screens
+        } else if (constraints.maxWidth > 900) {
+          itemExtent = constraints.maxWidth / 3; // 3 cards visible on medium-large screens
+        } else if (constraints.maxWidth > 600) {
+          itemExtent = constraints.maxWidth / 2; // 2 cards visible on medium screens
+        } else {
+          itemExtent = constraints.maxWidth * 0.85; // 1 card (with peek) on small screens
         }
 
         // Calculate card height based on screen width to maintain aspect ratio
@@ -139,111 +80,20 @@ class _TeamWidgetState extends State<TeamWidget> {
 
         return SizedBox(
           height: cardHeight,
-          child: Stack(
-            children: [
-              DragScrollWidget(
-                child: PageView.builder(
-                  controller: _pageController,
-                  onPageChanged: (index) {
-                    _currentIndex = index;
-                    _updateScrollButtons();
-                  },
-                  itemCount: TeamWidget._employees.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      // need space for the hover scale effect
-                      padding: const EdgeInsets.all(8),
-                      child: _EmployeeCard(
-                        employee: TeamWidget._employees[index],
-                      ),
-                    );
-                  },
+          child: CarouselView(
+            itemExtent: itemExtent,
+            shrinkExtent: itemExtent * 0.8, // Shrink items when not centered
+            itemSnapping: true,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            children: TeamCarouselWidget._employees.map((employee) {
+              return Padding(
+                // need space for the hover scale effect
+                padding: const EdgeInsets.all(8),
+                child: _EmployeeCard(
+                  employee: employee,
                 ),
-              ),
-              // Left scroll button
-              if (_canScrollLeft)
-                Positioned(
-                  left: 8,
-                  top: 0,
-                  bottom: 0,
-                  child: Center(
-                    child: DecoratedBox(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 8,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: IconButton(
-                        onPressed: _scrollLeft,
-                        icon: const Icon(
-                          Icons.arrow_back_ios_new,
-                          color: Colors.black87,
-                        ),
-                        tooltip: 'Previous',
-                      ),
-                    ),
-                  ),
-                ),
-              // Right scroll button
-              if (_canScrollRight)
-                Positioned(
-                  right: 8,
-                  top: 0,
-                  bottom: 0,
-                  child: Center(
-                    child: DecoratedBox(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 8,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: IconButton(
-                        onPressed: _scrollRight,
-                        icon: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.black87,
-                        ),
-                        tooltip: 'Next',
-                      ),
-                    ),
-                  ),
-                ),
-              // Page indicator dots
-              // Positioned(
-              //   bottom: 16,
-              //   left: 0,
-              //   right: 0,
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: List.generate(
-              //       TeamWidget.employees.length,
-              //       (index) => Container(
-              //         width: 8,
-              //         height: 8,
-              //         margin: const EdgeInsets.symmetric(horizontal: 4),
-              //         decoration: BoxDecoration(
-              //           shape: BoxShape.circle,
-              //           color: _currentIndex == index
-              //               ? Theme.of(context).primaryColor
-              //               : Colors.grey.withValues(alpha: 0.4),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-            ],
+              );
+            }).toList(),
           ),
         );
       },
