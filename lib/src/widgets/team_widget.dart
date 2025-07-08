@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:dfc_flutter/dfc_flutter_web_lite.dart';
 import 'package:flutter/material.dart';
 
@@ -77,18 +79,16 @@ class _TeamWidgetState extends State<TeamWidget> {
   }
 
   double _getViewportFraction(double screenWidth) {
-    // Calculate responsive viewport fraction based on screen width
-    if (screenWidth > 1400) {
-      return 0.2; // 5 cards visible on very large screens
-    } else if (screenWidth > 1200) {
-      return 0.25; // 4 cards visible on large screens
-    } else if (screenWidth > 900) {
-      return 0.33; // 3 cards visible on medium-large screens
-    } else if (screenWidth > 600) {
-      return 0.5; // 2 cards visible on medium screens
-    } else {
-      return 0.85; // 1 card (with peek) on small screens
-    }
+    return math.min(
+      0.9,
+      200 / screenWidth,
+    );
+
+    // we set it to 1 for purchase, but if not very wide, just make it 0
+    // var initialPage = widget.initialPage;
+    // if (viewportFraction >= 0.5) {
+    //   initialPage = 0;
+    // }
   }
 
   void _updateScrollButtons() {
