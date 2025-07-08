@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/dfc_flutter_web_lite.dart';
 import 'package:flutter/material.dart';
 
 class CarouselControls extends StatelessWidget {
@@ -23,10 +22,9 @@ class CarouselControls extends StatelessWidget {
           bottom: 0,
           child: Center(
             child: IconButton.filled(
-              color: context.primary,
-              iconSize: 44,
+              iconSize: 40,
               onPressed: onNext,
-              icon: Icon(Icons.chevron_right, color: context.onPrimary),
+              icon: const Icon(Icons.chevron_right),
             ),
           ),
         ),
@@ -36,10 +34,9 @@ class CarouselControls extends StatelessWidget {
           bottom: 0,
           child: Center(
             child: IconButton.filled(
-              color: context.primary,
-              iconSize: 44,
+              iconSize: 40,
               onPressed: onPrevious,
-              icon: Icon(Icons.chevron_left, color: context.onPrimary),
+              icon: const Icon(Icons.chevron_left),
             ),
           ),
         ),
