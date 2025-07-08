@@ -25,11 +25,11 @@ class TeamWidget extends StatefulWidget {
           'Kim is a native Californian, but she began traveling three years ago and now calls Mexico home. Raised up in the SF tech scene for over 15 years, she shifted to her marketing work from Tech to Psychedelics and Mental Health, an interest Steve and Kim share! She has been with Cocoatech for over five years alongside her other clients. When not behind her computer, you will find her walking on the beach or hopping in an ice bath under the Mexican sun.',
     ),
     _Employee(
-      name: 'Arman',
-      imagePath: 'assets/team_images/arman.jpeg',
-      position: 'Community Manager',
+      name: 'Steve',
+      imagePath: 'assets/team_images/steve.jpeg',
+      position: 'CEO',
       biography:
-          'Arman is a tech enthusiast with a passion for innovation, always on top of the latest trends and tools to provide efficient and effective support. Whether you\'re facing technical issues or just need some guidance in Discord, Arman has your back. When not in school earning his college degrees, he enjoys roaming around Armenia, where he calls home.',
+          'Steve has been coding since 1986. He has written and designed two popular macOS apps: Final Draft and Path Finder and is working on a third. A Los Angeles Native, he currently lives in San Francisco, where Cocoatech has its headquarters (in his home office!). His wife and two children travel frequently to Japan, where his daughter is a rising music star. When he is not rollerskating in Golden Gate Park or spending quality time with his family, he is working on Deckr, Cocoatech\'s newest app.',
     ),
     _Employee(
       name: 'Dragan',
@@ -39,18 +39,18 @@ class TeamWidget extends StatefulWidget {
           'Dragan got his first computing experience in 1983 on Sinclair ZX Spectrum and wrote his first code for it in BASIC a year later. He has been a Mac user since 1994, a Mac coder for fun since 2002, and has been doing it professionally since 2009. In his spare time, he loves to ride his bicycle through the Netherlands and makes fighter plane models for fun.',
     ),
     _Employee(
+      name: 'Arman',
+      imagePath: 'assets/team_images/arman.jpeg',
+      position: 'Community Manager',
+      biography:
+          'Arman is a tech enthusiast with a passion for innovation, always on top of the latest trends and tools to provide efficient and effective support. Whether you\'re facing technical issues or just need some guidance in Discord, Arman has your back. When not in school earning his college degrees, he enjoys roaming around Armenia, where he calls home.',
+    ),
+    _Employee(
       name: 'Naum',
       imagePath: 'assets/team_images/naum.jpeg',
       position: 'Customer Support Consultant',
       biography:
           'Naum has a love of for problem-solving and a drive to help others. He thrives in fast-paced environments and is dedicated to delivering quality service and ensuring clients have the best experience possible. Naum is an avid traveler and calls all of Europe home.',
-    ),
-    _Employee(
-      name: 'Steve',
-      imagePath: 'assets/team_images/steve.jpeg',
-      position: 'CEO',
-      biography:
-          'Steve has been coding since 1986. He has written and designed two popular macOS apps: Final Draft and Path Finder and is working on a third. A Los Angeles Native, he currently lives in San Francisco, where Cocoatech has its headquarters (in his home office!). His wife and two children travel frequently to Japan, where his daughter is a rising music star. When he is not rollerskating in Golden Gate Park or spending quality time with his family, he is working on Deckr, Cocoatech\'s newest app.',
     ),
   ];
 
