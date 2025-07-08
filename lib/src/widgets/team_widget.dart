@@ -67,7 +67,9 @@ class _TeamWidgetState extends State<TeamWidget> {
   @override
   void initState() {
     super.initState();
-    // Initial controller - will be updated in build method
+
+    _currentIndex = TeamWidget._employees.length ~/ 2;
+
     _pageController = PageController(viewportFraction: 0.85);
     _updateScrollButtons();
   }
@@ -76,19 +78,6 @@ class _TeamWidgetState extends State<TeamWidget> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
-  }
-
-  double _getViewportFraction(double screenWidth) {
-    return math.min(
-      0.9,
-      200 / screenWidth,
-    );
-
-    // we set it to 1 for purchase, but if not very wide, just make it 0
-    // var initialPage = widget.initialPage;
-    // if (viewportFraction >= 0.5) {
-    //   initialPage = 0;
-    // }
   }
 
   void _updateScrollButtons() {
@@ -120,22 +109,26 @@ class _TeamWidgetState extends State<TeamWidget> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        // Calculate card height based on screen width to maintain aspect ratio
+        final cardHeight = constraints.maxWidth > 600.0 ? 500.0 : 400.0;
+
+        final cardWidth = cardHeight * 0.75; // Maintain a 4:3 aspect ratio
+
         // Calculate responsive viewport fraction
-        final viewportFraction = _getViewportFraction(constraints.maxWidth);
+        final viewportFraction = math.min(
+          0.9,
+          cardWidth / constraints.maxWidth,
+        );
 
         // Recreate PageController if viewport fraction changed significantly
         if ((_pageController.viewportFraction - viewportFraction).abs() >
             0.01) {
-          final currentPage = _currentIndex;
           _pageController.dispose();
           _pageController = PageController(
             viewportFraction: viewportFraction,
-            initialPage: currentPage,
+            initialPage: _currentIndex,
           );
         }
-
-        // Calculate card height based on screen width to maintain aspect ratio
-        final cardHeight = constraints.maxWidth > 600.0 ? 400.0 : 350.0;
 
         return SizedBox(
           height: cardHeight,
