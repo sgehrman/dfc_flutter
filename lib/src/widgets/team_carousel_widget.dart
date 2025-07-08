@@ -63,16 +63,14 @@ class _TeamCarouselWidgetState extends State<TeamCarouselWidget> {
       builder: (context, constraints) {
         // Calculate responsive item extent based on screen width
         double itemExtent;
-        if (constraints.maxWidth > 1400) {
-          itemExtent = constraints.maxWidth / 5; // 5 cards visible on very large screens
-        } else if (constraints.maxWidth > 1200) {
-          itemExtent = constraints.maxWidth / 4; // 4 cards visible on large screens
-        } else if (constraints.maxWidth > 900) {
-          itemExtent = constraints.maxWidth / 3; // 3 cards visible on medium-large screens
+        if (constraints.maxWidth > 1200) {
+          itemExtent = 280; // Fixed size for larger screens
+        } else if (constraints.maxWidth > 800) {
+          itemExtent = 250; // Medium screens
         } else if (constraints.maxWidth > 600) {
-          itemExtent = constraints.maxWidth / 2; // 2 cards visible on medium screens
+          itemExtent = 220; // Smaller screens
         } else {
-          itemExtent = constraints.maxWidth * 0.85; // 1 card (with peek) on small screens
+          itemExtent = constraints.maxWidth * 0.8; // Mobile
         }
 
         // Calculate card height based on screen width to maintain aspect ratio
@@ -82,9 +80,8 @@ class _TeamCarouselWidgetState extends State<TeamCarouselWidget> {
           height: cardHeight,
           child: CarouselView(
             itemExtent: itemExtent,
-            shrinkExtent: itemExtent * 0.8, // Shrink items when not centered
+            shrinkExtent: itemExtent * 0.85,
             itemSnapping: true,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
             children: TeamCarouselWidget._employees.map((employee) {
               return Padding(
                 // need space for the hover scale effect
