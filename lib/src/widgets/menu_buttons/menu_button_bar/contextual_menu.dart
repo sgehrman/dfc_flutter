@@ -41,7 +41,15 @@ class _ContextMenuState extends State<ContextualMenu> {
               _handleRightClick(details, controller);
             }
           },
-          onTap: controller.isOpen ? controller.close : null,
+          onTap: () {
+            // on mac, left click with control key down is a right click
+            // so don't send a left click if control key is down
+            if (!Utils.isControlKeyDown()) {
+              if (controller.isOpen) {
+                controller.close();
+              }
+            }
+          },
           behavior: controller.isOpen
               ? HitTestBehavior.opaque
               : HitTestBehavior.deferToChild,

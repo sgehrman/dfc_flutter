@@ -71,7 +71,11 @@ class ContextualInkWell extends StatelessWidget {
               }
             },
             onTap: () {
-              _handleLeftClick(controller, child);
+              // on mac, left click with control key down is a right click
+              // so don't send a left click if control key is down
+              if (!Utils.isControlKeyDown()) {
+                _handleLeftClick(controller, child);
+              }
             },
             child: child,
           );
@@ -91,7 +95,11 @@ class ContextualInkWell extends StatelessWidget {
             }
           },
           onTap: () {
-            _handleLeftClick(controller, child);
+            // on mac, left click with control key down is a right click
+            // so don't send a left click if control key is down
+            if (!Utils.isControlKeyDown()) {
+              _handleLeftClick(controller, child);
+            }
           },
           child: child,
         );
