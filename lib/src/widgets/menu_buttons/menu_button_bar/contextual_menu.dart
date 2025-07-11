@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/dfc_menu_anchor.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/menu_button_bar/menu_button_bar_utils.dart';
@@ -34,6 +35,12 @@ class _ContextMenuState extends State<ContextualMenu> {
         return GestureDetector(
           onSecondaryTapDown: (details) =>
               _handleRightClick(details, controller),
+          onTapDown: (details) {
+            // on mac, left click with control key down is a right click
+            if (Utils.isControlKeyDown()) {
+              _handleRightClick(details, controller);
+            }
+          },
           onTap: controller.isOpen ? controller.close : null,
           behavior: controller.isOpen
               ? HitTestBehavior.opaque

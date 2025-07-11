@@ -343,6 +343,17 @@ class Utils {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
+  static bool isControlKeyDown() {
+    final keys = HardwareKeyboard.instance.logicalKeysPressed;
+
+    return keys.contains(
+          LogicalKeyboardKey.controlLeft,
+        ) ||
+        keys.contains(
+          LogicalKeyboardKey.controlRight,
+        );
+  }
+
   static void copyToClipboard(String text) {
     final l10n = AppLocalizations.of(SharedContext().scaffoldContext);
 

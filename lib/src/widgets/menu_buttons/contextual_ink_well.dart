@@ -1,3 +1,4 @@
+import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/dfc_menu_anchor.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/menu_button_bar/menu_button_bar_item_data.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/menu_button_bar/menu_button_bar_utils.dart';
@@ -34,7 +35,6 @@ class ContextualInkWell extends StatelessWidget {
   void _handleRightClick(
     TapDownDetails details,
     MenuController controller,
-    Widget? child,
   ) {
     if (controller.isOpen) {
       controller.close();
@@ -62,7 +62,13 @@ class ContextualInkWell extends StatelessWidget {
           return GestureDetector(
             behavior: HitTestBehavior.opaque,
             onSecondaryTapDown: (details) {
-              _handleRightClick(details, controller, child);
+              _handleRightClick(details, controller);
+            },
+            onTapDown: (details) {
+              // on mac, left click with control key down is a right click
+              if (Utils.isControlKeyDown()) {
+                _handleRightClick(details, controller);
+              }
             },
             onTap: () {
               _handleLeftClick(controller, child);
@@ -76,7 +82,13 @@ class ContextualInkWell extends StatelessWidget {
           hoverColor: disableHoverColor ? Colors.transparent : null,
           borderRadius: borderRadius,
           onSecondaryTapDown: (details) {
-            _handleRightClick(details, controller, child);
+            _handleRightClick(details, controller);
+          },
+          onTapDown: (details) {
+            // on mac, left click with control key down is a right click
+            if (Utils.isControlKeyDown()) {
+              _handleRightClick(details, controller);
+            }
           },
           onTap: () {
             _handleLeftClick(controller, child);
