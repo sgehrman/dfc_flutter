@@ -18,7 +18,7 @@ class TeamWidget extends StatefulWidget {
       imagePath: 'assets/team_images/alexandra.jpeg',
       position: 'Head of Operations',
       biography:
-          'Alexandra has been with Cocoatech since 2005, wearing many hats over the years before officially taking the reins as Head of Operations. She keeps the wheels turning behind the scenes — from managing payment systems and customer support to making sure things just work (and work well). She\'s passionate about clear communication, good user experience, and bringing structure to chaos. utside of Cocoatech, Alexandra lives in Germany with her husband and two children. When she’s not coordinating teams across time zones, you’ll likely find her lacing up for a figure skating session, switching between the five languages that she speaks, or digging into a new technical system just for fun.',
+          'Alexandra has been with Cocoatech since 2005, wearing many hats over the years before officially taking the reins as Head of Operations. She keeps the wheels turning behind the scenes — from managing payment systems and customer support to making sure things just work (and work well). She\'s passionate about clear communication, good user experience, and bringing structure to chaos. Outside of Cocoatech, Alexandra lives in Germany with her husband and two children. When she\'s not coordinating teams across time zones, you\'ll likely find her lacing up for a figure skating session, switching between the five languages that she speaks, or digging into a new technical system just for fun.',
     ),
     _Employee(
       name: 'Kim',
