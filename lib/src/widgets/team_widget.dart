@@ -358,7 +358,13 @@ Future<void> _showEmployeeDialog({
                     fontSize: 20,
                   ),
                 ),
-                const SizedBox(width: 20),
+                Text(
+                  '  -  ',
+                  style: TextStyle(
+                    color: context.lightTextColor,
+                    fontSize: 16,
+                  ),
+                ),
                 Text(
                   employee.position,
                   style: TextStyle(
