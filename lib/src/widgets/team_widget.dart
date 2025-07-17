@@ -1,9 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:dfc_flutter/src/extensions/build_context_ext.dart';
-import 'package:dfc_flutter/src/widgets/carousel_controls.dart';
-import 'package:dfc_flutter/src/widgets/df_tool_tip/df_tooltip.dart';
-import 'package:dfc_flutter/src/widgets/drag_scroll_widget.dart';
+import 'package:dfc_flutter/dfc_flutter_web_lite.dart';
 import 'package:flutter/material.dart';
 
 class TeamWidget extends StatefulWidget {
@@ -206,7 +203,7 @@ class _EmployeeCardState extends State<_EmployeeCard>
             scale: _scaleAnimation.value,
             child: DFTooltip(
               message:
-                  '${widget.employee.name}\n${widget.employee.position}\n\n${widget.employee.biography}',
+                  '${widget.employee.name}  -  ${widget.employee.position}\n\n${widget.employee.biography}',
               child: GestureDetector(
                 onTap: () {
                   _showEmployeeDialog(
@@ -361,12 +358,12 @@ Future<void> _showEmployeeDialog({
                     fontSize: 20,
                   ),
                 ),
-                const SizedBox(width: 14),
+                const SizedBox(width: 20),
                 Text(
                   employee.position,
                   style: TextStyle(
-                    color: context.lightTextColor,
-                    fontSize: 18,
+                    color: context.primary.mix(Colors.white, 0.5),
+                    fontSize: 16,
                   ),
                 ),
               ],
