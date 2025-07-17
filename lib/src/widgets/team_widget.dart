@@ -71,7 +71,7 @@ class _TeamWidgetState extends State<TeamWidget> {
   void initState() {
     super.initState();
 
-    _currentIndex = (TeamWidget._employees.length ~/ 2) - 1; // 0 based index
+    _currentIndex = (TeamWidget._employees.length ~/ 3) - 1; // 0 based index
 
     _pageController = PageController(viewportFraction: 0.85);
     _updateScrollButtons();
@@ -206,7 +206,7 @@ class _EmployeeCardState extends State<_EmployeeCard>
             scale: _scaleAnimation.value,
             child: DFTooltip(
               message:
-                  '${widget.employee.name} - ${widget.employee.position}\n\n${widget.employee.biography}',
+                  '${widget.employee.name}\n${widget.employee.position}\n\n${widget.employee.biography}',
               child: GestureDetector(
                 onTap: () {
                   _showEmployeeDialog(
@@ -371,6 +371,7 @@ Future<void> _showEmployeeDialog({
                 ),
               ],
             ),
+            const SizedBox(height: 10),
             Text(
               employee.biography,
               style: const TextStyle(
