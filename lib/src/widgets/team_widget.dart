@@ -206,7 +206,7 @@ class _EmployeeCardState extends State<_EmployeeCard>
             scale: _scaleAnimation.value,
             child: DFTooltip(
               message:
-                  '${widget.employee.name}\n\n${widget.employee.biography}',
+                  '${widget.employee.name} - ${widget.employee.position}\n\n${widget.employee.biography}',
               child: GestureDetector(
                 onTap: () {
                   _showEmployeeDialog(
@@ -352,17 +352,28 @@ Future<void> _showEmployeeDialog({
               ),
             ),
             const SizedBox(height: 16),
-            Text(
-              employee.name,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+            Row(
+              children: [
+                Text(
+                  employee.name,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                const SizedBox(width: 14),
+                Text(
+                  employee.position,
+                  style: TextStyle(
+                    color: context.lightTextColor,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
             ),
             Text(
               employee.biography,
-              style: TextStyle(
-                color: context.lightTextColor,
+              style: const TextStyle(
                 fontSize: 16,
               ),
             ),
