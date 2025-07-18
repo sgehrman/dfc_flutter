@@ -222,7 +222,8 @@ class LinkifySelectableText extends StatelessWidget {
       textScaler: textScaler,
       showCursor: showCursor,
       autofocus: autofocus,
-      contextMenuBuilder: contextMenuBuilder,
+      // this was blocking the default context menu
+      // contextMenuBuilder: contextMenuBuilder,
       minLines: minLines,
       maxLines: maxLines,
       cursorWidth: cursorWidth,
