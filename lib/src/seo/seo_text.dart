@@ -13,6 +13,7 @@ class SeoText extends StatelessWidget {
     this.textAlign = TextAlign.start,
     this.opacity = 1,
     this.color = ParagrafColor.none,
+    this.selectable = false,
   });
 
   final bool isMobile;
@@ -21,6 +22,7 @@ class SeoText extends StatelessWidget {
   final double opacity;
   final SeoTextType type;
   final ParagrafColor color;
+  final bool selectable;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +38,7 @@ class SeoText extends StatelessWidget {
           textAlign: textAlign,
           opacity: opacity,
           color: color,
+          selectable: selectable,
         );
         break;
       case SeoTextType.md:
@@ -45,6 +48,7 @@ class SeoText extends StatelessWidget {
           textAlign: textAlign,
           opacity: opacity,
           color: color,
+          selectable: selectable,
         );
         break;
       case SeoTextType.elg:
@@ -55,6 +59,7 @@ class SeoText extends StatelessWidget {
           textAlign: textAlign,
           opacity: opacity,
           color: color,
+          selectable: selectable,
         );
         break;
       case SeoTextType.elgb:
@@ -65,6 +70,7 @@ class SeoText extends StatelessWidget {
           textAlign: textAlign,
           opacity: opacity,
           color: color,
+          selectable: selectable,
         );
         break;
       case SeoTextType.hdrb:
@@ -75,6 +81,7 @@ class SeoText extends StatelessWidget {
           textAlign: textAlign,
           opacity: opacity,
           color: color,
+          selectable: selectable,
         );
         break;
       case SeoTextType.sm:
@@ -84,6 +91,7 @@ class SeoText extends StatelessWidget {
           textAlign: textAlign,
           opacity: opacity,
           color: color,
+          selectable: selectable,
         );
         break;
       case SeoTextType.lg:
@@ -94,6 +102,7 @@ class SeoText extends StatelessWidget {
           textAlign: textAlign,
           opacity: opacity,
           color: color,
+          selectable: selectable,
         );
         break;
     }
