@@ -8,6 +8,7 @@ class Paragraf extends StatelessWidget {
     required this.specs,
     required this.isMobile,
     this.textAlign = TextAlign.left,
+    this.selectable = false,
   });
 
   // ----------------------------------------------
@@ -19,6 +20,7 @@ class Paragraf extends StatelessWidget {
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.sm(
             text,
@@ -33,6 +35,7 @@ class Paragraf extends StatelessWidget {
     ParagrafColor color = ParagrafColor.none,
     this.textAlign = TextAlign.left,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.smb(
             text,
@@ -47,6 +50,7 @@ class Paragraf extends StatelessWidget {
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.lg(
             text,
@@ -61,6 +65,7 @@ class Paragraf extends StatelessWidget {
     ParagrafColor color = ParagrafColor.none,
     this.textAlign = TextAlign.left,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.lgb(
             text,
@@ -75,6 +80,7 @@ class Paragraf extends StatelessWidget {
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.elg(
             text,
@@ -89,6 +95,7 @@ class Paragraf extends StatelessWidget {
     ParagrafColor color = ParagrafColor.none,
     this.textAlign = TextAlign.left,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.elgb(
             text,
@@ -103,6 +110,7 @@ class Paragraf extends StatelessWidget {
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.hdr(
             text,
@@ -117,6 +125,7 @@ class Paragraf extends StatelessWidget {
     ParagrafColor color = ParagrafColor.none,
     this.textAlign = TextAlign.left,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.hdrb(
             text,
@@ -131,6 +140,7 @@ class Paragraf extends StatelessWidget {
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.md(
             text,
@@ -145,6 +155,7 @@ class Paragraf extends StatelessWidget {
     this.textAlign = TextAlign.left,
     ParagrafColor color = ParagrafColor.none,
     double opacity = 1,
+    this.selectable = false,
   }) : specs = [
           ParagrafSpec.mdb(
             text,
@@ -158,6 +169,7 @@ class Paragraf extends StatelessWidget {
   final List<ParagrafSpec> specs;
   final bool isMobile;
   final TextAlign textAlign;
+  final bool selectable;
 
   static TextSpan _generate({
     required BuildContext context,
@@ -238,19 +250,33 @@ class Paragraf extends StatelessWidget {
         isMobile: isMobile,
       );
 
+      if (selectable) {
+        return SelectableText.rich(
+          span,
+          textAlign: textAlign,
+        );
+      }
+
       return Text.rich(
         span,
         textAlign: textAlign,
       );
     }
 
-    final List<Widget> children = specs.map(
+    final children = specs.map(
       (e) {
         final span = _generate(
           context: context,
           spec: e,
           isMobile: isMobile,
         );
+
+        if (selectable) {
+          return SelectableText.rich(
+            span,
+            textAlign: textAlign,
+          );
+        }
 
         return Text.rich(
           span,
