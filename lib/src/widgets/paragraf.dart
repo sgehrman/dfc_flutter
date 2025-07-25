@@ -435,6 +435,18 @@ class ParagrafSpec {
   //   this.href = '',
   // });
 
+  const ParagrafSpec.linkElg(
+    this.text, {
+    required this.href,
+    this.hrefOnTap,
+    this.bold = true,
+    this.children = const [],
+    this.color = ParagrafColor.primary,
+    this.newlines = 0,
+    this.spaces = 0,
+    this.opacity = 1,
+  }) : fontSize = ParagrafSize.elg;
+
   const ParagrafSpec.linkLg(
     this.text, {
     required this.href,
