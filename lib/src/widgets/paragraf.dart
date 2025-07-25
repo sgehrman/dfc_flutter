@@ -159,7 +159,7 @@ class Paragraf extends StatelessWidget {
   final bool isMobile;
   final TextAlign textAlign;
 
-  static InlineSpan _generate({
+  static TextSpan _generate({
     required BuildContext context,
     required ParagrafSpec spec,
     required bool isMobile,
@@ -232,24 +232,28 @@ class Paragraf extends StatelessWidget {
     }
 
     if (specs.length == 1) {
+      final span = _generate(
+        context: context,
+        spec: specs.first,
+        isMobile: isMobile,
+      );
+
       return Text.rich(
-        _generate(
-          context: context,
-          spec: specs.first,
-          isMobile: isMobile,
-        ),
+        span,
         textAlign: textAlign,
       );
     }
 
     final List<Widget> children = specs.map(
       (e) {
+        final span = _generate(
+          context: context,
+          spec: e,
+          isMobile: isMobile,
+        );
+
         return Text.rich(
-          _generate(
-            context: context,
-            spec: e,
-            isMobile: isMobile,
-          ),
+          span,
           textAlign: textAlign,
         );
       },
