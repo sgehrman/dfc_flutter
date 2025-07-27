@@ -32,7 +32,7 @@ class _ContextMenuState extends State<ContextualMenu> {
         controller,
         child,
       ) {
-        return GestureDetector(
+        return InkWell(
           onSecondaryTapDown: (details) =>
               _handleRightClick(details, controller),
           onTapDown: (details) {
@@ -50,9 +50,6 @@ class _ContextMenuState extends State<ContextualMenu> {
               }
             }
           },
-          behavior: controller.isOpen
-              ? HitTestBehavior.opaque
-              : HitTestBehavior.deferToChild,
           child: child,
         );
       },

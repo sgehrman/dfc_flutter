@@ -13,7 +13,6 @@ class ContextualInkWell extends StatelessWidget {
     required this.child,
     required this.onTap,
     this.borderRadius,
-    this.useGestureDetector = false,
     this.disableHoverColor = false,
   });
 
@@ -21,7 +20,6 @@ class ContextualInkWell extends StatelessWidget {
   final Widget child;
   final void Function() onTap;
   final BorderRadius? borderRadius;
-  final bool useGestureDetector;
   final bool disableHoverColor;
 
   void _handleLeftClick(MenuController controller, Widget? child) {
@@ -58,31 +56,6 @@ class ContextualInkWell extends StatelessWidget {
         controller,
         child,
       ) {
-        if (useGestureDetector) {
-          return GestureDetector(
-            onSecondaryTapDown: (details) {
-              _handleRightClick(details, controller);
-            },
-            onTapDown: (details) {
-              // on mac, left click with control key down is a right click
-              if (Utils.isControlKeyDown()) {
-                _handleRightClick(details, controller);
-              }
-            },
-            onTap: () {
-              // on mac, left click with control key down is a right click
-              // so don't send a left click if control key is down
-              if (!Utils.isControlKeyDown()) {
-                _handleLeftClick(controller, child);
-              }
-            },
-            behavior: controller.isOpen
-                ? HitTestBehavior.opaque
-                : HitTestBehavior.deferToChild,
-            child: child,
-          );
-        }
-
         return InkWell(
           focusColor: disableHoverColor ? Colors.transparent : null,
           hoverColor: disableHoverColor ? Colors.transparent : null,
