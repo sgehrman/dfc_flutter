@@ -60,7 +60,6 @@ class ContextualInkWell extends StatelessWidget {
       ) {
         if (useGestureDetector) {
           return GestureDetector(
-            behavior: HitTestBehavior.opaque,
             onSecondaryTapDown: (details) {
               _handleRightClick(details, controller);
             },
@@ -77,6 +76,9 @@ class ContextualInkWell extends StatelessWidget {
                 _handleLeftClick(controller, child);
               }
             },
+            behavior: controller.isOpen
+                ? HitTestBehavior.opaque
+                : HitTestBehavior.deferToChild,
             child: child,
           );
         }
