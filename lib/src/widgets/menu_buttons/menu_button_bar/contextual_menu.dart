@@ -52,7 +52,7 @@ class _ContextMenuState extends State<ContextualMenu> {
           },
           behavior: controller.isOpen
               ? HitTestBehavior.opaque
-              : HitTestBehavior.translucent,
+              : HitTestBehavior.deferToChild,
           child: child,
         );
       },
