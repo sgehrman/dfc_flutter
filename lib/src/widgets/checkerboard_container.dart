@@ -1,4 +1,4 @@
-import 'package:dfc_flutter/src/utils/utils.dart';
+import 'package:dfc_flutter/dfc_flutter.dart';
 import 'package:flutter/material.dart';
 
 class CheckerboardContainer extends StatelessWidget {
@@ -22,7 +22,7 @@ class CheckerboardContainer extends StatelessWidget {
       children: <Widget>[
         Positioned.fill(
           child: CustomPaint(
-            painter: CheckerboardPainter(darkMode: Utils.isDarkMode(context)),
+            painter: CheckerboardPainter(blockColor: context.lightPrimary),
           ),
         ),
         child,
@@ -32,25 +32,19 @@ class CheckerboardContainer extends StatelessWidget {
 }
 
 class CheckerboardPainter extends CustomPainter {
-  const CheckerboardPainter({this.darkMode});
+  const CheckerboardPainter({required this.blockColor});
 
-  final bool? darkMode;
+  final Color blockColor;
 
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Offset.zero & size;
     canvas.clipRect(rect);
 
-    // final Color fillColor = darkMode! ? Colors.black : Colors.white;
-    final blockColor = darkMode!
-        ? const Color.fromRGBO(255, 255, 255, 0.08)
-        : const Color.fromRGBO(0, 0, 0, 0.08);
-
     final paint = Paint()
       ..strokeWidth = 1.0
-      ..style = PaintingStyle.fill;
-    // ..color = fillColor;
-    // canvas.drawRect(rect, paint);
+      ..style = PaintingStyle.fill
+      ..color = blockColor;
 
     const double blockDim = 15;
 
@@ -58,7 +52,6 @@ class CheckerboardPainter extends CustomPainter {
     const rectSize = Size(blockDim, blockDim);
     var yIndex = 0;
 
-    paint.color = blockColor;
     while (yOffset < size.height) {
       double xOffset = 0;
 
