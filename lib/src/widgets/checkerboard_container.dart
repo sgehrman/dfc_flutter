@@ -22,7 +22,8 @@ class CheckerboardContainer extends StatelessWidget {
       children: <Widget>[
         Positioned.fill(
           child: CustomPaint(
-            painter: CheckerboardPainter(blockColor: context.lightPrimary),
+            painter: CheckerboardPainter(
+                blockColor: context.primary.withValues(alpha: 0.3)),
           ),
         ),
         child,
