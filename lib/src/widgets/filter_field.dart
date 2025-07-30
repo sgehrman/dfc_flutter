@@ -40,7 +40,7 @@ class _FilterFieldState extends State<FilterField> {
     super.initState();
 
     _debouncer = DebounceLast<String>(
-      milliseconds: 350,
+      milliseconds: 250,
       action: (value) {
         widget.onChange(value);
       },
