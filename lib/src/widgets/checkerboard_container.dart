@@ -23,7 +23,7 @@ class CheckerboardContainer extends StatelessWidget {
         Positioned.fill(
           child: CustomPaint(
             painter: CheckerboardPainter(
-                blockColor: context.primary.withValues(alpha: 0.3)),
+                blockColor: context.primary.withValues(alpha: 0.2)),
           ),
         ),
         child,
@@ -49,11 +49,11 @@ class CheckerboardPainter extends CustomPainter {
 
     const double blockDim = 15;
 
-    var yOffset = size.height;
+    double yOffset = 0;
     const rectSize = Size(blockDim, blockDim);
     var yIndex = 0;
 
-    while (yOffset > -blockDim) {
+    while (yOffset < size.height) {
       double xOffset = 0;
 
       if (yIndex.isOdd) {
@@ -65,7 +65,7 @@ class CheckerboardPainter extends CustomPainter {
 
         xOffset += rectSize.width * 2;
       }
-      yOffset -= rectSize.height;
+      yOffset += rectSize.height;
       yIndex++;
     }
 
