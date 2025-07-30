@@ -68,9 +68,6 @@ class CheckerboardPainter extends CustomPainter {
       yOffset += rectSize.height;
       yIndex++;
     }
-
-    paint.style = PaintingStyle.stroke;
-    canvas.drawRect(rect, paint);
   }
 
   @override
