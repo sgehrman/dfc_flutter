@@ -49,14 +49,14 @@ class CheckerboardPainter extends CustomPainter {
 
     const double blockDim = 15;
 
-    double yOffset = 0;
+    var yOffset = size.height;
     const rectSize = Size(blockDim, blockDim);
     var yIndex = 0;
 
-    while (yOffset < size.height) {
+    while (yOffset > -blockDim) {
       double xOffset = 0;
 
-      if (yIndex % 2 != 0) {
+      if (yIndex.isOdd) {
         xOffset += rectSize.width;
       }
 
@@ -65,7 +65,7 @@ class CheckerboardPainter extends CustomPainter {
 
         xOffset += rectSize.width * 2;
       }
-      yOffset += rectSize.height;
+      yOffset -= rectSize.height;
       yIndex++;
     }
 
