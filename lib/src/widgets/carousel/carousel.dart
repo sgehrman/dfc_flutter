@@ -13,6 +13,8 @@ class Carousel extends StatefulWidget {
     required this.enlargeCenterPage,
     required this.itemWidth,
     this.initialPage = 0,
+    this.fillViewport = false,
+    this.showIndicator = true,
   });
 
   final List<Widget> items;
@@ -22,6 +24,8 @@ class Carousel extends StatefulWidget {
   final bool enlargeCenterPage;
   final double itemWidth;
   final int initialPage;
+  final bool fillViewport;
+  final bool showIndicator;
 
   @override
   State<Carousel> createState() => _CarouselState();
@@ -49,13 +53,14 @@ class _CarouselState extends State<Carousel> {
           child: FlutterCarousel(
             options: FlutterCarouselOptions(
               height: widget.height,
-              slideIndicator: CircularSlideIndicator(),
+              slideIndicator:
+                  widget.showIndicator ? CircularSlideIndicator() : null,
               autoPlay: widget.autoPlay,
               enableInfiniteScroll: widget.infiniteScroll,
               floatingIndicator: false,
               disableCenter: true,
               enlargeCenterPage: widget.enlargeCenterPage,
-              viewportFraction: viewportFraction,
+              viewportFraction: widget.fillViewport ? 1.0 : viewportFraction,
               indicatorMargin: 40,
               initialPage: initialPage,
               autoPlayCurve: Curves.easeInOut,
