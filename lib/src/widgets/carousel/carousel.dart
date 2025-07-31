@@ -53,12 +53,12 @@ class _CarouselState extends State<Carousel> {
           child: FlutterCarousel(
             options: FlutterCarouselOptions(
               height: widget.height,
-              slideIndicator:
-                  widget.showIndicator ? CircularSlideIndicator() : null,
+              slideIndicator: CircularSlideIndicator(),
               autoPlay: widget.autoPlay,
               enableInfiniteScroll: widget.infiniteScroll,
               floatingIndicator: false,
               disableCenter: true,
+              showIndicator: widget.showIndicator,
               enlargeCenterPage: widget.enlargeCenterPage,
               viewportFraction: widget.fillViewport ? 1.0 : viewportFraction,
               indicatorMargin: 40,
