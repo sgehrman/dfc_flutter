@@ -15,6 +15,7 @@ class Carousel extends StatefulWidget {
     this.initialPage = 0,
     this.fillViewport = false,
     this.showIndicator = true,
+    this.showControlsHover = false,
   });
 
   final List<Widget> items;
@@ -26,6 +27,7 @@ class Carousel extends StatefulWidget {
   final int initialPage;
   final bool fillViewport;
   final bool showIndicator;
+  final bool showControlsHover;
 
   @override
   State<Carousel> createState() => _CarouselState();
@@ -50,6 +52,7 @@ class _CarouselState extends State<Carousel> {
         }
 
         return CarouselControls(
+          showOnHover: widget.showControlsHover,
           child: FlutterCarousel(
             options: FlutterCarouselOptions(
               height: widget.height,
