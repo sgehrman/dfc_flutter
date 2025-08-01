@@ -41,7 +41,6 @@ class CarouselControls extends StatelessWidget {
               .fade(
                 curve: Curves.easeInOut,
                 duration: const Duration(milliseconds: 400),
-                delay: const Duration(milliseconds: 400),
                 begin: 0,
                 end: 1,
               ),
@@ -63,7 +62,6 @@ class CarouselControls extends StatelessWidget {
               .fade(
                 curve: Curves.easeInOut,
                 duration: const Duration(milliseconds: 400),
-                delay: const Duration(milliseconds: 400),
                 begin: 0,
                 end: 1,
               ),
