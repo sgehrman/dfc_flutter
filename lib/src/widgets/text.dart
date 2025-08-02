@@ -13,8 +13,10 @@ class _TextBase extends Text {
     bool bold = false,
     Color? color,
     String? fontFamily,
+    bool useNonBreakingSpaces = true,
   }) : super(
-          Utils.modifyTextForWrapping(text),
+          Utils.modifyTextForWrapping(text,
+              useNonBreakingSpaces: useNonBreakingSpaces),
           style: style != null
               ? style.copyWith(
                   fontSize: size,
@@ -156,6 +158,7 @@ class TextWithSize extends _TextBase {
     super.color,
     super.height,
     super.fontFamily,
+    super.useNonBreakingSpaces = true,
   }) : super(
           text: text,
           size: size,
