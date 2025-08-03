@@ -18,7 +18,8 @@ dependencies:
   email_validator: ^3.0.0
   flutter:
     sdk: flutter
-  flutter_animate: ^4.5.2
+  flutter_animate:
+    git: https://github.com/sgehrman/flutter_animate.git
   flutter_archive: ^6.0.3
   flutter_carousel_widget: ^3.1.0
   flutter_localizations:
