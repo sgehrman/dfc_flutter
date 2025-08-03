@@ -116,5 +116,5 @@ extension StringUtils on String {
     return result.trim();
   }
 
-  String get superTrimCompact => superTrim().replaceAll('\n', ' ');
+  String get superTrimCompact => replaceAll('\n', ' ').superTrim();
 }
