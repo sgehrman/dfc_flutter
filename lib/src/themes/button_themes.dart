@@ -271,6 +271,6 @@ class ButtonThemes {
       color = lighter;
     }
 
-    return BorderSide(color: color);
+    return BorderSide(color: color, width: 1.5);
   }
 }
