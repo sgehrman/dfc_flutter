@@ -219,6 +219,8 @@ class _ButtonText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
       style: color != null ? TextStyle(color: color) : null,
     );
   }
