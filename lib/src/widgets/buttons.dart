@@ -130,6 +130,11 @@ class DFButton extends StatelessWidget {
           onPressed: onPressed,
           label: _ButtonText(label),
           icon: icon,
+          style: FilledButton.styleFrom(
+            // We want the button contents flushed left if button is larger when
+            // used in a grid with a fixed width. only when icon is present.
+            alignment: Alignment.centerLeft,
+          ),
         );
       } else {
         b = FilledButton(
@@ -188,6 +193,11 @@ class DFOutlineButton extends StatelessWidget {
         onPressed: onPressed,
         label: _ButtonText(label),
         icon: icon,
+        style: OutlinedButton.styleFrom(
+          // We want the button contents flushed left if button is larger when
+          // used in a grid with a fixed width. only when icon is present.
+          alignment: Alignment.centerLeft,
+        ),
       );
     } else {
       b = OutlinedButton(
