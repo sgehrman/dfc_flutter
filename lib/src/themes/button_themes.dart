@@ -54,6 +54,9 @@ class ButtonThemes {
       minimumSize: minSize,
       padding: padding,
       iconSize: iconSize,
+      // We want the button contents flushed left if button is larger when
+      // used in a grid with a fixed width.
+      alignment: Alignment.centerLeft,
     );
 
     return ElevatedButtonThemeData(style: style);
@@ -96,6 +99,9 @@ class ButtonThemes {
       minimumSize: minSize,
       padding: padding,
       iconSize: iconSize,
+      // We want the button contents flushed left if button is larger when
+      // used in a grid with a fixed width.
+      alignment: Alignment.centerLeft,
     );
 
     return FilledButtonThemeData(style: style);
@@ -133,6 +139,9 @@ class ButtonThemes {
       minimumSize: minSize,
       padding: padding,
       iconSize: iconSize,
+      // We want the button contents flushed left if button is larger when
+      // used in a grid with a fixed width.
+      alignment: Alignment.centerLeft,
     );
 
     return TextButtonThemeData(style: style);
@@ -175,6 +184,9 @@ class ButtonThemes {
       minimumSize: minSize,
       padding: padding,
       iconSize: iconSize,
+      // We want the button contents flushed left if button is larger when
+      // used in a grid with a fixed width.
+      alignment: Alignment.centerLeft,
     );
 
     return OutlinedButtonThemeData(style: style);
