@@ -255,7 +255,7 @@ TextSpan _linkify({
 
   if (!regExp.hasMatch(text) || text.isEmpty) {
     return TextSpan(
-      text: Utils.modifyTextForWrapping(text),
+      text: Utils.modifyTextForWrapping(text, useNonBreakingSpaces: false),
     );
   }
 
@@ -265,7 +265,7 @@ TextSpan _linkify({
 
   for (final text in texts) {
     spans.add(TextSpan(
-      text: Utils.modifyTextForWrapping(text),
+      text: Utils.modifyTextForWrapping(text, useNonBreakingSpaces: false),
     ));
     if (links.isNotEmpty) {
       final match = links.removeAt(0);
@@ -273,7 +273,8 @@ TextSpan _linkify({
 
       spans.add(
         TextSpan(
-          text: Utils.modifyTextForWrapping(link.value),
+          text: Utils.modifyTextForWrapping(link.value,
+              useNonBreakingSpaces: false),
           style: customLinkStyles?[link.type] ?? linkStyle,
           recognizer: TapGestureRecognizer()
             ..onTap = () {
