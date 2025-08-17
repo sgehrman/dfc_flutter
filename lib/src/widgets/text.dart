@@ -49,6 +49,7 @@ class Text12 extends _TextBase {
     super.color,
     super.height,
     super.fontFamily,
+    super.useNonBreakingSpaces = true,
   }) : super(
           text: text,
           size: size,
@@ -67,6 +68,7 @@ class Text14 extends _TextBase {
     super.color,
     super.height,
     super.fontFamily,
+    super.useNonBreakingSpaces = true,
   }) : super(
           text: text,
           size: size,
@@ -85,6 +87,7 @@ class Text16 extends _TextBase {
     super.color,
     super.height,
     super.fontFamily,
+    super.useNonBreakingSpaces = true,
   }) : super(
           text: text,
           size: size,
@@ -103,6 +106,7 @@ class Text18 extends _TextBase {
     super.color,
     super.height,
     super.fontFamily,
+    super.useNonBreakingSpaces = true,
   }) : super(
           text: text,
           size: size,
@@ -121,6 +125,7 @@ class Text20 extends _TextBase {
     super.color,
     super.height,
     super.fontFamily,
+    super.useNonBreakingSpaces = true,
   }) : super(
           text: text,
           size: size,
@@ -139,6 +144,7 @@ class Text22 extends _TextBase {
     super.color,
     super.height,
     super.fontFamily,
+    super.useNonBreakingSpaces = true,
   }) : super(
           text: text,
           size: size,
