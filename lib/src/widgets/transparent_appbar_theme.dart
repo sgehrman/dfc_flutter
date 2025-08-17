@@ -14,7 +14,7 @@ class TransparentAppBarTheme extends StatelessWidget {
     // disable if elevation is set
     if (theme.appBarTheme.elevation == 0) {
       final newAppBar = theme.appBarTheme.copyWith(
-        color: Colors.transparent,
+        backgroundColor: Colors.transparent,
       );
 
       final newTheme = theme.copyWith(

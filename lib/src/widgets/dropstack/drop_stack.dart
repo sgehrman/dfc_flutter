@@ -123,7 +123,7 @@ class DropStack extends ChangeNotifier {
               children: [
                 SwitchListTile(
                   value: BrowserPrefs.copyOnDrop!,
-                  activeColor: color,
+                  activeThumbColor: color,
                   activeTrackColor: Colors.white,
                   inactiveTrackColor: Colors.white,
                   inactiveThumbColor: color,
@@ -139,7 +139,7 @@ class DropStack extends ChangeNotifier {
                 ),
                 SwitchListTile(
                   value: BrowserPrefs.replaceOnDrop!,
-                  activeColor: color,
+                  activeThumbColor: color,
                   activeTrackColor: Colors.white,
                   inactiveTrackColor: Colors.white,
                   inactiveThumbColor: color,
