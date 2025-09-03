@@ -74,6 +74,7 @@ class FadeImage extends StatelessWidget {
     this.width,
     this.duration = const Duration(milliseconds: 200),
     this.checkerboard = false,
+    this.contextualMenu = true,
     this.missingImage,
     super.key,
   });
@@ -85,6 +86,7 @@ class FadeImage extends StatelessWidget {
   final double? width;
   final Duration duration;
   final bool checkerboard;
+  final bool contextualMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -127,10 +129,16 @@ class FadeImage extends StatelessWidget {
       );
     }
 
-    return ContextualMenu(
-      buildMenu: () => _contextualMenuItems(context: context, url: cleanUrl),
-      child: CheckerboardContainer(enabled: checkerboard, child: image),
-    );
+    final child = CheckerboardContainer(enabled: checkerboard, child: image);
+
+    if (contextualMenu) {
+      return ContextualMenu(
+        buildMenu: () => _contextualMenuItems(context: context, url: cleanUrl),
+        child: child,
+      );
+    }
+
+    return child;
   }
 }
 
@@ -161,6 +169,7 @@ class NoFadeImage extends StatelessWidget {
     this.height,
     this.width,
     this.checkerboard = false,
+    this.contextualMenu = true,
     this.missingImage,
     super.key,
   });
@@ -171,6 +180,7 @@ class NoFadeImage extends StatelessWidget {
   final double? width;
   final bool checkerboard;
   final Widget? missingImage;
+  final bool contextualMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -179,6 +189,7 @@ class NoFadeImage extends StatelessWidget {
       fit: fit,
       checkerboard: checkerboard,
       duration: Duration.zero,
+      contextualMenu: contextualMenu,
       height: height,
       width: width,
       key: key,
