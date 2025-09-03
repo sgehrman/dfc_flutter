@@ -35,9 +35,7 @@ class _ContextMenuState extends State<ContextualMenu> {
           onSecondaryTapDown: (details) =>
               _handleRightClick(details, controller),
           onTap: controller.isOpen ? controller.close : null,
-          behavior: controller.isOpen
-              ? HitTestBehavior.opaque
-              : HitTestBehavior.deferToChild,
+          behavior: HitTestBehavior.opaque,
           child: child,
         );
       },
