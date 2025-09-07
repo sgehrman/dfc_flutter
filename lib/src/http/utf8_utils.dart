@@ -58,6 +58,9 @@ class Utf8Utils {
     return '';
   }
 
+  // bad utf8 was crashing wasm, added this to help.
+  // String.fromCharCodes(response.bodyBytes);
+  // seems to work in this case, not used currently, but kept for future
   static bool isValidUtf8(List<int> data) {
     var remainingBytes = 0;
 
