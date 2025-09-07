@@ -58,6 +58,45 @@ class Utf8Utils {
     return '';
   }
 
+  static bool isValidUtf8(List<int> data) {
+    var remainingBytes = 0;
+
+    for (final byte in data) {
+      if (remainingBytes > 0) {
+        // Continuation bytes must start with '10xxxxxx'
+        if ((byte >> 6) != 2) {
+          // 2 decimal == binary 10
+          return false;
+        }
+        remainingBytes--;
+      } else {
+        // Determine length from leading bits of first byte
+        if ((byte >> 7) == 0) {
+          // 1-byte char (ASCII)
+          remainingBytes = 0;
+        } else if ((byte >> 5) == 0x6) {
+          // 0x6 == binary 110
+          // 2-byte char
+          remainingBytes = 1;
+        } else if ((byte >> 4) == 0xE) {
+          // 0xE == binary 1110
+          // 3-byte char
+          remainingBytes = 2;
+        } else if ((byte >> 3) == 0x1E) {
+          // 0x1E == binary 11110
+          // 4-byte char
+          remainingBytes = 3;
+        } else {
+          return false; // Invalid leading byte
+        }
+      }
+    }
+    return remainingBytes == 0;
+  }
+
+  // ----------------------------------------------------------------------
+  // private
+
   static String? _utf8ComputeFunc(Map<String, dynamic> params) {
     final url = params['url'] as String? ?? 'http://uknown.com';
     final bytes = params['bytes'] as Uint8List?;
