@@ -1,7 +1,7 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomMarkdown extends StatelessWidget {
@@ -72,8 +72,7 @@ class CustomMarkdown extends StatelessWidget {
     return Markdown(
       shrinkWrap: shrinkWrap,
       padding: padding,
-      onTapLink:
-          onTapLink ??
+      onTapLink: onTapLink ??
           (text, href, title) {
             Utils.launchUrl(href!);
           },
@@ -103,7 +102,10 @@ class CustomMarkdown extends StatelessWidget {
         h4Align: textAlign,
         h5Align: textAlign,
         h6Align: textAlign,
+        unorderedListAlign: textAlign,
+        orderedListAlign: textAlign,
         blockquoteAlign: textAlign,
+        codeblockAlign: textAlign,
         textScaler: TextScaler.linear(textScaleFactor),
         a: textStyle.copyWith(
           decorationColor: Theme.of(context).colorScheme.primary,

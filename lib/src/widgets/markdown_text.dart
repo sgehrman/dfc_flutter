@@ -1,7 +1,7 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:dfc_flutter/src/widgets/txt.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 
 class MarkdownText extends StatelessWidget {
   const MarkdownText(
@@ -11,6 +11,7 @@ class MarkdownText extends StatelessWidget {
     this.onTapLink,
     this.textAlign = WrapAlignment.start,
     this.softLineBreak = false,
+    this.blockSpacing = 4.0,
   });
 
   final String markdownText;
@@ -19,6 +20,7 @@ class MarkdownText extends StatelessWidget {
   final void Function(String text, String? href, String title)? onTapLink;
   final WrapAlignment textAlign;
   final Color? color;
+  final double blockSpacing;
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +50,18 @@ class MarkdownText extends StatelessWidget {
           },
       softLineBreak: softLineBreak,
       styleSheet: MarkdownStyleSheet(
-        blockSpacing: 4,
+        blockSpacing: blockSpacing,
         textAlign: textAlign,
+        h1Align: textAlign,
+        h2Align: textAlign,
+        h3Align: textAlign,
+        h4Align: textAlign,
+        h5Align: textAlign,
+        h6Align: textAlign,
+        unorderedListAlign: textAlign,
+        orderedListAlign: textAlign,
+        blockquoteAlign: textAlign,
+        codeblockAlign: textAlign,
         a: aStyle,
         p: textStyle,
         h1Padding: const EdgeInsets.only(bottom: 4),
