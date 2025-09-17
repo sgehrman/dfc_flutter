@@ -240,13 +240,22 @@ class ButtonThemes {
     return const EdgeInsets.symmetric(horizontal: 10, vertical: 16);
   }
 
-  WidgetStateProperty<RoundedSuperellipseBorder> _buttonShape() {
-    return WidgetStateProperty.resolveWith<RoundedSuperellipseBorder>(
-      (states) => const RoundedSuperellipseBorder(
+  WidgetStateProperty<OutlinedBorder> _buttonShape() {
+    return WidgetStateProperty.resolveWith<OutlinedBorder>(
+      (states) => const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
   }
+
+  // TODO(SNG): held back for MAS 3.27.4 build
+  // WidgetStateProperty<RoundedSuperellipseBorder> _buttonShape() {
+  //   return WidgetStateProperty.resolveWith<RoundedSuperellipseBorder>(
+  //     (states) => const RoundedSuperellipseBorder(
+  //       borderRadius: BorderRadius.all(Radius.circular(12)),
+  //     ),
+  //   );
+  // }
 
   double _buttonIconSize() {
     return 20;
