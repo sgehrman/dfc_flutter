@@ -240,9 +240,9 @@ class ButtonThemes {
     return const EdgeInsets.symmetric(horizontal: 10, vertical: 16);
   }
 
-  WidgetStateProperty<OutlinedBorder> _buttonShape() {
-    return WidgetStateProperty.resolveWith<OutlinedBorder>(
-      (states) => const RoundedRectangleBorder(
+  WidgetStateProperty<RoundedSuperellipseBorder> _buttonShape() {
+    return WidgetStateProperty.resolveWith<RoundedSuperellipseBorder>(
+      (states) => const RoundedSuperellipseBorder(
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
