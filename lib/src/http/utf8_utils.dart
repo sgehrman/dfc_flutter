@@ -62,39 +62,90 @@ class Utf8Utils {
   // String.fromCharCodes(response.bodyBytes);
   // seems to work in this case, not used currently, but kept for future
   static bool isValidUtf8(List<int> data) {
-    var remainingBytes = 0;
+    var i = 0;
+    final len = data.length;
 
-    for (final byte in data) {
-      if (remainingBytes > 0) {
-        // Continuation bytes must start with '10xxxxxx'
-        if ((byte >> 6) != 2) {
-          // 2 decimal == binary 10
+    while (i < len) {
+      final byte = data[i];
+
+      if (byte <= 0x7F) {
+        // 1-byte ASCII
+        i++;
+      } else if (byte >= 0xC2 && byte <= 0xDF) {
+        // 2-byte sequence
+        if (i + 1 >= len || (data[i + 1] & 0xC0) != 0x80) {
           return false;
         }
-        remainingBytes--;
-      } else {
-        // Determine length from leading bits of first byte
-        if ((byte >> 7) == 0) {
-          // 1-byte char (ASCII)
-          remainingBytes = 0;
-        } else if ((byte >> 5) == 0x6) {
-          // 0x6 == binary 110
-          // 2-byte char
-          remainingBytes = 1;
-        } else if ((byte >> 4) == 0xE) {
-          // 0xE == binary 1110
-          // 3-byte char
-          remainingBytes = 2;
-        } else if ((byte >> 3) == 0x1E) {
-          // 0x1E == binary 11110
-          // 4-byte char
-          remainingBytes = 3;
-        } else {
-          return false; // Invalid leading byte
+        i += 2;
+      } else if (byte == 0xE0) {
+        // 3-byte sequence (special case for overlong encoding)
+        if (i + 2 >= len ||
+            data[i + 1] < 0xA0 ||
+            data[i + 1] > 0xBF ||
+            (data[i + 2] & 0xC0) != 0x80) {
+          return false;
         }
+        i += 3;
+      } else if (byte >= 0xE1 && byte <= 0xEC) {
+        // 3-byte sequence
+        if (i + 2 >= len ||
+            (data[i + 1] & 0xC0) != 0x80 ||
+            (data[i + 2] & 0xC0) != 0x80) {
+          return false;
+        }
+        i += 3;
+      } else if (byte == 0xED) {
+        // 3-byte sequence (special case for surrogates)
+        if (i + 2 >= len ||
+            data[i + 1] < 0x80 ||
+            data[i + 1] > 0x9F ||
+            (data[i + 2] & 0xC0) != 0x80) {
+          return false;
+        }
+        i += 3;
+      } else if (byte >= 0xEE && byte <= 0xEF) {
+        // 3-byte sequence
+        if (i + 2 >= len ||
+            (data[i + 1] & 0xC0) != 0x80 ||
+            (data[i + 2] & 0xC0) != 0x80) {
+          return false;
+        }
+        i += 3;
+      } else if (byte == 0xF0) {
+        // 4-byte sequence (special case for overlong encoding)
+        if (i + 3 >= len ||
+            data[i + 1] < 0x90 ||
+            data[i + 1] > 0xBF ||
+            (data[i + 2] & 0xC0) != 0x80 ||
+            (data[i + 3] & 0xC0) != 0x80) {
+          return false;
+        }
+        i += 4;
+      } else if (byte >= 0xF1 && byte <= 0xF3) {
+        // 4-byte sequence
+        if (i + 3 >= len ||
+            (data[i + 1] & 0xC0) != 0x80 ||
+            (data[i + 2] & 0xC0) != 0x80 ||
+            (data[i + 3] & 0xC0) != 0x80) {
+          return false;
+        }
+        i += 4;
+      } else if (byte == 0xF4) {
+        // 4-byte sequence (restrict to valid Unicode)
+        if (i + 3 >= len ||
+            data[i + 1] < 0x80 ||
+            data[i + 1] > 0x8F ||
+            (data[i + 2] & 0xC0) != 0x80 ||
+            (data[i + 3] & 0xC0) != 0x80) {
+          return false;
+        }
+        i += 4;
+      } else {
+        // Invalid leading byte
+        return false;
       }
     }
-    return remainingBytes == 0;
+    return true;
   }
 
   // ----------------------------------------------------------------------
