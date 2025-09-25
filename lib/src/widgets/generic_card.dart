@@ -223,13 +223,14 @@ class AddCard extends StatelessWidget {
     }
 
     return DottedBorder(
-      padding: EdgeInsets.all(strokeWidth / 2),
-      dashPattern: dashPattern,
-      strokeWidth: strokeWidth,
-      strokeCap: StrokeCap.round,
-      borderType: BorderType.RRect,
-      radius: Radius.circular(small ? _smallBorderRadius : _borderRadius),
-      color: cardColor,
+      options: RoundedRectDottedBorderOptions(
+        padding: EdgeInsets.all(strokeWidth / 2),
+        dashPattern: dashPattern,
+        strokeWidth: strokeWidth,
+        strokeCap: StrokeCap.round,
+        radius: Radius.circular(small ? _smallBorderRadius : _borderRadius),
+        color: cardColor,
+      ),
       child: BaseCard(
         elevation: 0,
         fill: false,

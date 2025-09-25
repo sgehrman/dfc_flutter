@@ -1,6 +1,6 @@
 import 'package:dfc_flutter/src/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:flutter_markdown_plus/flutter_markdown_plus.dart';
 
 class MarkdownThemeText extends StatelessWidget {
   const MarkdownThemeText(
