@@ -1,4 +1,3 @@
-import 'package:dfc_flutter/src/widgets/df_tool_tip/df_tooltip_hack.dart';
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart' as html_parser;
 
@@ -101,7 +100,7 @@ class DFTooltip extends StatelessWidget {
     msg = _wrapString(msg, 46);
 
     if (msg.isNotEmpty) {
-      return DFTooltipHack(
+      return Tooltip(
         message: msg,
         preferBelow: preferBelow,
         child: child,
