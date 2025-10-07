@@ -52,6 +52,7 @@ dependencies:
   vector_math: ^2.2.0
   video_player: ^2.10.0
   web: ^1.1.1
+  web_browser_detect: ^2.2.0
   widget_mask: ^1.0.0+0
   xml: ^6.5.0
 

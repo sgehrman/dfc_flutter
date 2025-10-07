@@ -1,21 +1,27 @@
-import 'package:dfc_flutter/src/web_utils/browser_detect.dart';
 import 'package:dfc_flutter/src/web_utils/web_utils_interface.dart';
 import 'package:web/web.dart' as web;
+import 'package:web_browser_detect/web_browser_detect.dart';
 
 class WebUtilsImp implements WebUtilsInterface {
   @override
   bool isChrome() {
-    return BrowserDetect().isChrome();
+    final browser = Browser();
+
+    return browser.browserAgent == BrowserAgent.chrome;
   }
 
   @override
   bool isSafari() {
-    return BrowserDetect().isSafari();
+    final browser = Browser();
+
+    return browser.browserAgent == BrowserAgent.safari;
   }
 
   @override
   bool isFireFox() {
-    return BrowserDetect().isFireFox();
+    final browser = Browser();
+
+    return browser.browserAgent == BrowserAgent.firefox;
   }
 
   @override
