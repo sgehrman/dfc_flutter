@@ -30,4 +30,7 @@ class WebUtilsImp implements WebUtilsInterface {
   String locationOrigin() {
     return '';
   }
+
+  @override
+  void injectSeo(String html) {}
 }

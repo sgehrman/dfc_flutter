@@ -61,6 +61,7 @@ export 'src/utils/sort_menu_button.dart';
 export 'src/utils/stack.dart';
 export 'src/utils/string_utils.dart';
 export 'src/utils/utils.dart';
+export 'src/web_utils/seo_injector.dart';
 export 'src/web_utils/web_utils.dart';
 export 'src/widgets/bottom_navbar/bottom_navbar.dart';
 export 'src/widgets/bottom_slideup_sheet.dart';

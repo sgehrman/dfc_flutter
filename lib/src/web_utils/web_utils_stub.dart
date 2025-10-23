@@ -30,4 +30,9 @@ class WebUtilsImp implements WebUtilsInterface {
   String locationOrigin() {
     throw UnimplementedError('locationOrigin not implemented');
   }
+
+  @override
+  void injectSeo(String html) {
+    throw UnimplementedError('locationOrigin not implemented');
+  }
 }

@@ -5,4 +5,5 @@ abstract class WebUtilsInterface {
   bool isFullscreen();
   bool historyPushState(String url);
   String locationOrigin();
+  void injectSeo(String html);
 }

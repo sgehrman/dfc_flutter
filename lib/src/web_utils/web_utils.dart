@@ -35,4 +35,8 @@ class WebUtils {
   String locationOrigin() {
     return _ba.locationOrigin();
   }
+
+  void injectSeo(String html) {
+    _ba.injectSeo(html);
+  }
 }
