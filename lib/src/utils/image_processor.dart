@@ -255,7 +255,6 @@ class ImageProcessor {
     // descriptor.dispose();
 
     print('bytesToImage: descriptor');
-    print(descriptor.bytesPerPixel);
     print(descriptor.width);
     print(descriptor.height);
 
