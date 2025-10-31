@@ -99,15 +99,13 @@ class ImageProcessor {
       final width = pictureImage.width;
 
       // SNG TESTING
+      print('pictureImage');
       print(pictureImage.height);
       print(pictureImage.width);
 
       // must dispose
       // SNG TESTING
       //  pictureImage.dispose();
-      print('pngFromBytes: descriptor');
-      print(decodedImage.width);
-      print(decodedImage.height);
 
       if (pngData != null) {
         final bs = pngData.buffer.asUint8List();
@@ -255,8 +253,6 @@ class ImageProcessor {
     // descriptor.dispose();
 
     print('bytesToImage: descriptor');
-    print(descriptor.width);
-    print(descriptor.height);
 
     return frameInfo.image;
   }
