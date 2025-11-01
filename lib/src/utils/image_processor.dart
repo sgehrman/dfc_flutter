@@ -230,10 +230,6 @@ class ImageProcessor {
         // targetHeight: _kWidth.toInt(),
         );
 
-    // SNG TESTING
-    print('codec.frameCount');
-    print(codec.frameCount);
-
     final frameInfo = await codec.getNextFrame();
 
     // not sure if this is necessary or even a good idea, but saw it in some flutter code
@@ -294,13 +290,15 @@ class ImageProcessor {
       image.height.toDouble() * scale,
     );
 
+    // SNG TESTING
+
     paintImage(
       canvas: canvas,
       rect: imageRect,
       image: image,
-      fit: BoxFit.scaleDown,
-      isAntiAlias: true,
-      filterQuality: FilterQuality.high,
+      // fit: BoxFit.scaleDown,
+      // isAntiAlias: true,
+      // filterQuality: FilterQuality.high,
     );
 
     final picture = recorder.endRecording();
