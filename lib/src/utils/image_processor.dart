@@ -296,9 +296,9 @@ class ImageProcessor {
       canvas: canvas,
       rect: imageRect,
       image: image,
-      // fit: BoxFit.scaleDown,
-      // isAntiAlias: true,
-      // filterQuality: FilterQuality.high,
+      fit: BoxFit.scaleDown,
+      isAntiAlias: true,
+      filterQuality: FilterQuality.high,
     );
 
     final picture = recorder.endRecording();
