@@ -230,6 +230,10 @@ class ImageProcessor {
         // targetHeight: _kWidth.toInt(),
         );
 
+    // SNG TESTING
+    print('codec.frameCount');
+    print(codec.frameCount);
+
     final frameInfo = await codec.getNextFrame();
 
     // not sure if this is necessary or even a good idea, but saw it in some flutter code
