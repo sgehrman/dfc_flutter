@@ -83,11 +83,7 @@ class ImageProcessor {
       );
 
       // must dispose
-      // SNG TESTING
-      // decodedImage.dispose();
-      print('pngFromBytes: descriptor');
-      print(decodedImage.width);
-      print(decodedImage.height);
+      decodedImage.dispose();
 
       // convert to png byte data
       final pngData = await pictureImage.toByteData(
@@ -98,21 +94,11 @@ class ImageProcessor {
       final height = pictureImage.height;
       final width = pictureImage.width;
 
-      // SNG TESTING
-      print('pictureImage');
-      print(pictureImage.height);
-      print(pictureImage.width);
-
       // must dispose
-      // SNG TESTING
-      //  pictureImage.dispose();
+      pictureImage.dispose();
 
       if (pngData != null) {
         final bs = pngData.buffer.asUint8List();
-
-        // SNG TESTING
-        print('bs.lengthInBytes');
-        print(bs.lengthInBytes);
 
         return PngImageBytesAndSize(bytes: bs, height: height, width: width);
       }
@@ -247,12 +233,9 @@ class ImageProcessor {
     final frameInfo = await codec.getNextFrame();
 
     // not sure if this is necessary or even a good idea, but saw it in some flutter code
-    // SNG TESTING
-    // buffer.dispose();
-    // codec.dispose();
-    // descriptor.dispose();
-
-    print('bytesToImage: descriptor');
+    buffer.dispose();
+    codec.dispose();
+    descriptor.dispose();
 
     return frameInfo.image;
   }
