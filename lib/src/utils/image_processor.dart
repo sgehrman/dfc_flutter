@@ -290,8 +290,6 @@ class ImageProcessor {
       image.height.toDouble() * scale,
     );
 
-    // SNG TESTING
-
     paintImage(
       canvas: canvas,
       rect: imageRect,
