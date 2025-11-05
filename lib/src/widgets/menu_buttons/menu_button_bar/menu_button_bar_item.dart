@@ -1,14 +1,14 @@
 import 'package:dfc_flutter/src/widgets/df_tool_tip/df_tooltip.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/menu_button_bar/menu_button_bar_item_data.dart';
-import 'package:dfc_flutter/src/widgets/menu_buttons/menu_button_bar/menu_button_bar_styles.dart';
 import 'package:dfc_flutter/src/widgets/menu_buttons/menu_button_bar/menu_button_bar_utils.dart';
 import 'package:flutter/material.dart';
+
+// Items for a MenuBar(), adds dynamic menu loading, tooltips and other stuff
 
 class MenuButtonBarItem extends StatefulWidget {
   const MenuButtonBarItem({
     required this.child,
     required this.menuBuilder,
-    this.round = false,
     this.tooltip = '',
   });
 
@@ -17,8 +17,7 @@ class MenuButtonBarItem extends StatefulWidget {
     required this.menuBuilder,
     this.tooltip = '',
     Color? color,
-  })  : round = true,
-        child = Icon(
+  }) : child = Icon(
           iconData,
           color: color,
         );
@@ -26,7 +25,6 @@ class MenuButtonBarItem extends StatefulWidget {
   final Widget child;
   final String tooltip;
   final List<MenuButtonBarItemData> Function() menuBuilder;
-  final bool round;
 
   @override
   State<MenuButtonBarItem> createState() => _MenuButtonBarItemState();
@@ -46,24 +44,17 @@ class _MenuButtonBarItemState extends State<MenuButtonBarItem> {
       ];
     }
 
-    return DFTooltip(
-      message: widget.tooltip,
-      child: SubmenuButton(
-        onOpen: () {
-          setState(() {
-            _menuItems = MenuButtonBarUtils.buildMenuItems(
-              context: context,
-              menuData: widget.menuBuilder(),
-            );
-          });
-        },
-        style: MenuButtonBarStyles.menuBarItemStyle(
-          context: context,
-          round: widget.round,
-        ),
-        menuChildren: _menuItems,
-        child: widget.child,
-      ),
+    return SubmenuButton(
+      onOpen: () {
+        setState(() {
+          _menuItems = MenuButtonBarUtils.buildMenuItems(
+            context: context,
+            menuData: widget.menuBuilder(),
+          );
+        });
+      },
+      menuChildren: _menuItems,
+      child: DFTooltip(message: widget.tooltip, child: widget.child),
     );
   }
 }

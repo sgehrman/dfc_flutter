@@ -109,7 +109,6 @@ export 'src/widgets/menu_buttons/menu_anchor_button.dart';
 export 'src/widgets/menu_buttons/menu_anchor_dynamic_button.dart';
 export 'src/widgets/menu_buttons/menu_button.dart';
 export 'src/widgets/menu_buttons/menu_button_bar/contextual_menu.dart';
-export 'src/widgets/menu_buttons/menu_button_bar/menu_button_bar.dart';
 export 'src/widgets/menu_buttons/menu_button_bar/menu_button_bar_item.dart';
 export 'src/widgets/menu_buttons/menu_button_bar/menu_button_bar_item_data.dart';
 export 'src/widgets/menu_buttons/menu_button_bar/menu_button_bar_styles.dart';
