@@ -6,6 +6,7 @@ import 'dart:ui' as ui;
 import 'package:dfc_dart/dfc_dart.dart';
 import 'package:dfc_flutter/src/http/http_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_avif/flutter_avif.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 enum ImgFormat {
@@ -69,38 +70,51 @@ class ImageProcessor {
 
   static Future<PngImageBytesAndSize> pngFromBytes(
     Uint8List imageData, {
+    String mimeType = '',
     double maxSize = 0,
   }) async {
     try {
+      ui.Image? decodedImage;
+
+      if (mimeType == 'image/avif') {
+        final frames = await decodeAvif(imageData.buffer.asUint8List());
+
+        if (frames.isNotEmpty) {
+          decodedImage = frames.first.image;
+        }
+      } else {
+        decodedImage = await bytesToImage(imageData);
+      }
+
       // could be any format so convert to png
-      final decodedImage = await bytesToImage(imageData);
+      if (decodedImage != null) {
+        // ## not sure why I did this. Could a gif or other weird format require this?
+        // or does it save memory?
+        final pictureImage = await _drawImageToCanvas(
+          image: decodedImage,
+          maxSize: maxSize,
+        );
 
-      // ## not sure why I did this. Could a gif or other weird format require this?
-      // or does it save memory?
-      final pictureImage = await _drawImageToCanvas(
-        image: decodedImage,
-        maxSize: maxSize,
-      );
+        // must dispose
+        decodedImage.dispose();
 
-      // must dispose
-      decodedImage.dispose();
+        // convert to png byte data
+        final pngData = await pictureImage.toByteData(
+          format: ui.ImageByteFormat.png,
+        );
 
-      // convert to png byte data
-      final pngData = await pictureImage.toByteData(
-        format: ui.ImageByteFormat.png,
-      );
+        // copy before we dispose the picture image
+        final height = pictureImage.height;
+        final width = pictureImage.width;
 
-      // copy before we dispose the picture image
-      final height = pictureImage.height;
-      final width = pictureImage.width;
+        // must dispose
+        pictureImage.dispose();
 
-      // must dispose
-      pictureImage.dispose();
+        if (pngData != null) {
+          final bs = pngData.buffer.asUint8List();
 
-      if (pngData != null) {
-        final bs = pngData.buffer.asUint8List();
-
-        return PngImageBytesAndSize(bytes: bs, height: height, width: width);
+          return PngImageBytesAndSize(bytes: bs, height: height, width: width);
+        }
       }
     } catch (err) {
       print(err);

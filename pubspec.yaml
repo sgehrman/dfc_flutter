@@ -20,6 +20,7 @@ dependencies:
   flutter_animate:
     git: https://github.com/sgehrman/flutter_animate.git
   flutter_archive: ^6.0.3
+  flutter_avif: ^3.1.0
   flutter_carousel_widget: ^3.1.0
   flutter_localizations:
     sdk: flutter
