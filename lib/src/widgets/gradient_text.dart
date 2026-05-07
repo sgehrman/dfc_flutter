@@ -57,6 +57,7 @@ class GradientText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShaderMask(
+      blendMode: BlendMode.srcIn,
       shaderCallback: (bounds) => gradient.createShader(
         Rect.fromLTWH(0, 0, bounds.width, bounds.height),
       ),
@@ -76,6 +77,7 @@ class FireText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShaderMask(
+      blendMode: BlendMode.srcIn,
       shaderCallback: (bounds) {
         return RadialGradient(
           center: Alignment.topLeft,
