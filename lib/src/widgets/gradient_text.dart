@@ -180,12 +180,25 @@ class _GradientSpanPainter extends CustomPainter {
       TextSelection(baseOffset: gradientStart, extentOffset: gradientEnd),
     );
 
+    var totalWidth = 0.0;
+    for (final box in boxes) {
+      totalWidth += box.right - box.left;
+    }
+
+    var cumulative = 0.0;
     for (final box in boxes) {
       final rect = box.toRect();
+      final shaderRect = Rect.fromLTWH(
+        rect.left - cumulative,
+        rect.top,
+        totalWidth,
+        rect.height,
+      );
       final paint = Paint()
-        ..shader = gradient.createShader(rect)
+        ..shader = gradient.createShader(shaderRect)
         ..blendMode = BlendMode.srcATop;
       canvas.drawRect(rect, paint);
+      cumulative += rect.width;
     }
 
     canvas.restore();
