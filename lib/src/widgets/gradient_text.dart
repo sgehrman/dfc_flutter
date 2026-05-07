@@ -5,12 +5,14 @@ class GradientText extends StatelessWidget {
     this.text, {
     required this.gradient,
     this.textStyle,
+    this.textAlign = TextAlign.start,
   });
 
   factory GradientText.rainbow(
     String text, {
     GradientTransform? transform,
     TextStyle? textStyle,
+    TextAlign textAlign = TextAlign.start,
   }) {
     final colors = <Color>[
       Colors.red,
@@ -33,7 +35,10 @@ class GradientText extends StatelessWidget {
     ];
 
     return GradientText.colors(text,
-        colors: colors, transform: transform, textStyle: textStyle);
+        colors: colors,
+        transform: transform,
+        textStyle: textStyle,
+        textAlign: textAlign);
   }
 
   factory GradientText.colors(
@@ -41,18 +46,21 @@ class GradientText extends StatelessWidget {
     required List<Color> colors,
     GradientTransform? transform,
     TextStyle? textStyle,
+    TextAlign textAlign = TextAlign.start,
   }) {
     final gradient = LinearGradient(
       colors: colors,
       transform: transform,
     );
 
-    return GradientText(text, gradient: gradient, textStyle: textStyle);
+    return GradientText(text,
+        gradient: gradient, textStyle: textStyle, textAlign: textAlign);
   }
 
   final String text;
   final TextStyle? textStyle;
   final Gradient gradient;
+  final TextAlign textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +73,7 @@ class GradientText extends StatelessWidget {
         final painter = TextPainter(
           text: TextSpan(text: text, style: baseStyle),
           textDirection: textDirection,
+          textAlign: textAlign,
         )..layout(maxWidth: constraints.maxWidth);
 
         return Semantics(
@@ -114,6 +123,7 @@ class GradientMultiText extends StatelessWidget {
     required this.colors,
     this.transform,
     this.textStyle,
+    this.textAlign = TextAlign.start,
   });
 
   final String firstText;
@@ -121,6 +131,7 @@ class GradientMultiText extends StatelessWidget {
   final List<Color> colors;
   final GradientTransform? transform;
   final TextStyle? textStyle;
+  final TextAlign textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +150,7 @@ class GradientMultiText extends StatelessWidget {
             ],
           ),
           textDirection: textDirection,
+          textAlign: textAlign,
         )..layout(maxWidth: constraints.maxWidth);
 
         return Semantics(
