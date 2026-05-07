@@ -45,6 +45,20 @@ class TeamWidget extends StatefulWidget {
       biography:
           'Naum has a love of for problem-solving and a drive to help others. He thrives in fast-paced environments and is dedicated to delivering quality service and ensuring clients have the best experience possible. Naum is an avid traveler and calls all of Europe home.',
     ),
+    _Employee(
+      name: 'Stefan',
+      imagePath: 'assets/team_images/stefan.png',
+      position: 'Developer',
+      biography:
+          'Stefan is a developer with a passion for creating efficient and effective solutions. He is dedicated to delivering quality service and ensuring clients have the best experience possible. Stefan is an avid traveler and calls all of Europe home.',
+    ),
+    _Employee(
+      name: 'Miho',
+      imagePath: 'assets/team_images/miho.png',
+      position: 'CFO',
+      biography:
+          'Miho is the CFO of the company, overseeing financial operations and strategy. She is dedicated to ensuring the financial health of the organization and enjoys traveling across Europe in her free time.',
+    ),
   ];
 
   @override
