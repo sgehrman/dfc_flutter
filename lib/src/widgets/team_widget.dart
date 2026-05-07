@@ -36,7 +36,7 @@ class TeamWidget extends StatefulWidget {
         imagePath: 'assets/team_images/arman.jpeg',
         position: 'Head of Marketing',
         biography:
-            'Arman is a tech-driven marketing leader passionate about branding, community growth, and digital innovation, always exploring the latest trends and tools to create impactful campaigns and engaging user experiences. With a strong background in marketing, design, and community management, he focuses on building meaningful connections between products and people while shaping brand identity across platforms. When he\'s not working on creative strategies or growing communities, he enjoys exploring Armenia and finding inspiration in its culture and landscapes.'),
+            'Arman started at Cocoatech as a community manager, supporting social channels as part of the marketing team. He also briefly assisted customer support, which allowed him to gain a solid understanding of the product and its technical workflows. Today, he focuses on marketing and design, working closely with developers on interface and visual direction, and collaborating on marketing and sales initiatives to turn ideas into practical implementation. Based in Armenia, Arman brings a hands-on approach to improving how Path Finder is presented and experienced.'),
     _Employee(
       name: 'Naum',
       imagePath: 'assets/team_images/naum.jpeg',
