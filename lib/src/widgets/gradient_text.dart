@@ -56,15 +56,30 @@ class GradientText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShaderMask(
-      blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) => gradient.createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
-      child: Text(
-        text,
-        style: textStyle,
-      ),
+    final defaultStyle = DefaultTextStyle.of(context).style;
+    final baseStyle = defaultStyle.merge(textStyle);
+    final textDirection = Directionality.of(context);
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final painter = TextPainter(
+          text: TextSpan(text: text, style: baseStyle),
+          textDirection: textDirection,
+        )..layout(maxWidth: constraints.maxWidth);
+
+        return Semantics(
+          label: text,
+          child: CustomPaint(
+            size: painter.size,
+            painter: _GradientSpanPainter(
+              painter: painter,
+              gradientStart: 0,
+              gradientEnd: text.length,
+              gradient: gradient,
+            ),
+          ),
+        );
+      },
     );
   }
 }
@@ -76,22 +91,17 @@ class FireText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShaderMask(
-      blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) {
-        return RadialGradient(
-          center: Alignment.topLeft,
-          radius: 1,
-          colors: <Color>[Colors.yellow, Colors.deepOrange.shade900],
-          tileMode: TileMode.mirror,
-        ).createShader(bounds);
-      },
-      child: Text(
-        text,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 40,
-        ),
+    return GradientText(
+      text,
+      gradient: RadialGradient(
+        center: Alignment.topLeft,
+        radius: 1,
+        colors: <Color>[Colors.yellow, Colors.deepOrange.shade900],
+        tileMode: TileMode.mirror,
+      ),
+      textStyle: const TextStyle(
+        color: Colors.white,
+        fontSize: 40,
       ),
     );
   }
@@ -135,12 +145,11 @@ class GradientMultiText extends StatelessWidget {
           label: '$firstText$secondText',
           child: CustomPaint(
             size: painter.size,
-            painter: _GradientMultiTextPainter(
+            painter: _GradientSpanPainter(
               painter: painter,
-              secondStart: firstText.length,
-              secondEnd: firstText.length + secondText.length,
-              colors: colors,
-              transform: transform,
+              gradientStart: firstText.length,
+              gradientEnd: firstText.length + secondText.length,
+              gradient: LinearGradient(colors: colors, transform: transform),
             ),
           ),
         );
@@ -149,20 +158,18 @@ class GradientMultiText extends StatelessWidget {
   }
 }
 
-class _GradientMultiTextPainter extends CustomPainter {
-  _GradientMultiTextPainter({
+class _GradientSpanPainter extends CustomPainter {
+  _GradientSpanPainter({
     required this.painter,
-    required this.secondStart,
-    required this.secondEnd,
-    required this.colors,
-    this.transform,
+    required this.gradientStart,
+    required this.gradientEnd,
+    required this.gradient,
   });
 
   final TextPainter painter;
-  final int secondStart;
-  final int secondEnd;
-  final List<Color> colors;
-  final GradientTransform? transform;
+  final int gradientStart;
+  final int gradientEnd;
+  final Gradient gradient;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -170,9 +177,8 @@ class _GradientMultiTextPainter extends CustomPainter {
     painter.paint(canvas, Offset.zero);
 
     final boxes = painter.getBoxesForSelection(
-      TextSelection(baseOffset: secondStart, extentOffset: secondEnd),
+      TextSelection(baseOffset: gradientStart, extentOffset: gradientEnd),
     );
-    final gradient = LinearGradient(colors: colors, transform: transform);
 
     for (final box in boxes) {
       final rect = box.toRect();
@@ -186,11 +192,10 @@ class _GradientMultiTextPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _GradientMultiTextPainter oldDelegate) {
+  bool shouldRepaint(covariant _GradientSpanPainter oldDelegate) {
     return oldDelegate.painter != painter ||
-        oldDelegate.secondStart != secondStart ||
-        oldDelegate.secondEnd != secondEnd ||
-        oldDelegate.colors != colors ||
-        oldDelegate.transform != transform;
+        oldDelegate.gradientStart != gradientStart ||
+        oldDelegate.gradientEnd != gradientEnd ||
+        oldDelegate.gradient != gradient;
   }
 }
