@@ -114,33 +114,83 @@ class GradientMultiText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultStyle = DefaultTextStyle.of(context).style;
+    final baseStyle = defaultStyle.merge(textStyle);
+    final textDirection = Directionality.of(context);
+
     return LayoutBuilder(
       builder: (context, constraints) {
-        final gradient = LinearGradient(
-          colors: colors,
-          transform: transform,
-        );
-
-        final shader = gradient.createShader(
-          Rect.fromLTWH(0, 0, constraints.maxWidth, constraints.maxWidth),
-        );
-
-        final baseStyle = textStyle ?? const TextStyle();
-
-        return Text.rich(
-          TextSpan(
+        final painter = TextPainter(
+          text: TextSpan(
+            style: baseStyle,
             children: [
-              TextSpan(text: firstText, style: baseStyle),
-              TextSpan(
-                text: secondText,
-                style: baseStyle.copyWith(
-                  foreground: Paint()..shader = shader,
-                ),
-              ),
+              TextSpan(text: firstText),
+              TextSpan(text: secondText),
             ],
+          ),
+          textDirection: textDirection,
+        )..layout(maxWidth: constraints.maxWidth);
+
+        return Semantics(
+          label: '$firstText$secondText',
+          child: CustomPaint(
+            size: painter.size,
+            painter: _GradientMultiTextPainter(
+              painter: painter,
+              secondStart: firstText.length,
+              secondEnd: firstText.length + secondText.length,
+              colors: colors,
+              transform: transform,
+            ),
           ),
         );
       },
     );
+  }
+}
+
+class _GradientMultiTextPainter extends CustomPainter {
+  _GradientMultiTextPainter({
+    required this.painter,
+    required this.secondStart,
+    required this.secondEnd,
+    required this.colors,
+    this.transform,
+  });
+
+  final TextPainter painter;
+  final int secondStart;
+  final int secondEnd;
+  final List<Color> colors;
+  final GradientTransform? transform;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.saveLayer(Offset.zero & size, Paint());
+    painter.paint(canvas, Offset.zero);
+
+    final boxes = painter.getBoxesForSelection(
+      TextSelection(baseOffset: secondStart, extentOffset: secondEnd),
+    );
+    final gradient = LinearGradient(colors: colors, transform: transform);
+
+    for (final box in boxes) {
+      final rect = box.toRect();
+      final paint = Paint()
+        ..shader = gradient.createShader(rect)
+        ..blendMode = BlendMode.srcATop;
+      canvas.drawRect(rect, paint);
+    }
+
+    canvas.restore();
+  }
+
+  @override
+  bool shouldRepaint(covariant _GradientMultiTextPainter oldDelegate) {
+    return oldDelegate.painter != painter ||
+        oldDelegate.secondStart != secondStart ||
+        oldDelegate.secondEnd != secondEnd ||
+        oldDelegate.colors != colors ||
+        oldDelegate.transform != transform;
   }
 }
