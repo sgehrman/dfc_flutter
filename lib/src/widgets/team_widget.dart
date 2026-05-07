@@ -18,13 +18,6 @@ class TeamWidget extends StatefulWidget {
           'Alexandra has been with Cocoatech since 2005, wearing many hats over the years before officially taking the reins as Head of Operations. She keeps the wheels turning behind the scenes — from managing payment systems and customer support to making sure things just work (and work well). She\'s passionate about clear communication, good user experience, and bringing structure to chaos. Outside of Cocoatech, Alexandra lives in Germany with her husband and two children. When she\'s not coordinating teams across time zones, you\'ll likely find her lacing up for a figure skating session, switching between the five languages that she speaks, or digging into a new technical system just for fun.',
     ),
     _Employee(
-      name: 'Kim',
-      imagePath: 'assets/team_images/kim.jpeg',
-      position: 'Marketing Manager',
-      biography:
-          'Kim is a native Californian, but she began traveling three years ago and now calls Mexico home. Raised up in the SF tech scene for over 15 years, she shifted to her marketing work from Tech to Psychedelics and Mental Health, an interest Steve and Kim share! She has been with Cocoatech for over five years alongside her other clients. When not behind her computer, you will find her walking on the beach or hopping in an ice bath under the Mexican sun.',
-    ),
-    _Employee(
       name: 'Steve',
       imagePath: 'assets/team_images/steve.jpeg',
       position: 'CEO',

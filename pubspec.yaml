@@ -19,19 +19,19 @@ dependencies:
     sdk: flutter
   flutter_animate:
     git: https://github.com/sgehrman/flutter_animate.git
-  flutter_archive: ^6.0.3
+  flutter_archive: ^6.0.4
   flutter_avif: ^3.1.0
   flutter_carousel_widget: ^3.1.0
   flutter_localizations:
     sdk: flutter
-  flutter_markdown_plus: ^1.0.5
+  flutter_markdown_plus: ^1.0.7
   flutter_multi_formatter: ^2.13.10
-  flutter_svg: ^2.2.2
-  flutter_widget_from_html: ^0.17.1
-  google_fonts: ^6.3.2
+  flutter_svg: ^2.2.4
+  flutter_widget_from_html: ^0.17.2
+  google_fonts: ^8.1.0
   hex: ^0.2.0
-  hive_ce: ^2.15.1
-  hive_ce_flutter: ^2.3.3
+  hive_ce: ^2.19.3
+  hive_ce_flutter: ^2.3.4
   html: ^0.15.6
   html2md: ^1.3.2
   http: ^1.6.0
@@ -39,21 +39,21 @@ dependencies:
   json_annotation: ^4.9.0
   loading_animation_widget: ^1.3.0
   mime_type: ^1.0.1
-  open_file: ^3.5.10
-  package_info_plus: ^9.0.0
-  pasteboard: ^0.4.0
+  open_file: ^3.5.11
+  package_info_plus: ^10.1.0
+  pasteboard: ^0.5.0
   path: ^1.9.1
   path_provider: ^2.1.5
   provider: ^6.1.5+1
   random_string: ^2.3.1
   seo: ^0.0.10
-  shared_preferences: ^2.5.3
+  shared_preferences: ^2.5.5
   url_launcher: ^6.3.2
-  vector_graphics: ^1.1.19
+  vector_graphics: ^1.2.0
   vector_math: ^2.2.0
-  video_player: ^2.10.1
+  video_player: ^2.11.1
   web: ^1.1.1
-  web_browser_detect: ^2.2.0
+  web_browser_detect: ^2.3.0
   widget_mask: ^1.0.0+0
   xml: ^6.6.1
 
@@ -64,7 +64,7 @@ dev_dependencies:
     git: https://github.com/JonasWanke/dart-code-metrics
   dfc_lints:
     git: https://github.com/sgehrman/dfc_lints.git
-  json_serializable: ^6.11.1
+  json_serializable: ^6.11.2
 
 flutter:
   uses-material-design: true
