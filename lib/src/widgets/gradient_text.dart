@@ -96,3 +96,51 @@ class FireText extends StatelessWidget {
     );
   }
 }
+
+class GradientMultiText extends StatelessWidget {
+  const GradientMultiText(
+    this.firstText,
+    this.secondText, {
+    required this.colors,
+    this.transform,
+    this.textStyle,
+  });
+
+  final String firstText;
+  final String secondText;
+  final List<Color> colors;
+  final GradientTransform? transform;
+  final TextStyle? textStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final gradient = LinearGradient(
+          colors: colors,
+          transform: transform,
+        );
+
+        final shader = gradient.createShader(
+          Rect.fromLTWH(0, 0, constraints.maxWidth, constraints.maxWidth),
+        );
+
+        final baseStyle = textStyle ?? const TextStyle();
+
+        return Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(text: firstText, style: baseStyle),
+              TextSpan(
+                text: secondText,
+                style: baseStyle.copyWith(
+                  foreground: Paint()..shader = shader,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
