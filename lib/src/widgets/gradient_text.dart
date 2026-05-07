@@ -12,26 +12,38 @@ class GradientText extends StatelessWidget {
     GradientTransform? transform,
     TextStyle? textStyle,
   }) {
+    final colors = <Color>[
+      Colors.red,
+      Colors.pink,
+      Colors.purple,
+      Colors.deepPurple,
+      Colors.indigo,
+      Colors.blue,
+      Colors.lightBlue,
+      Colors.cyan,
+      Colors.teal,
+      Colors.green,
+      Colors.lightGreen,
+      Colors.lime,
+      Colors.yellow,
+      Colors.amber,
+      Colors.orange,
+      Colors.deepOrange,
+      Colors.red,
+    ];
+
+    return GradientText.colors(text,
+        colors: colors, transform: transform, textStyle: textStyle);
+  }
+
+  factory GradientText.colors(
+    String text, {
+    required List<Color> colors,
+    GradientTransform? transform,
+    TextStyle? textStyle,
+  }) {
     final gradient = LinearGradient(
-      colors: const <Color>[
-        Colors.red,
-        Colors.pink,
-        Colors.purple,
-        Colors.deepPurple,
-        Colors.indigo,
-        Colors.blue,
-        Colors.lightBlue,
-        Colors.cyan,
-        Colors.teal,
-        Colors.green,
-        Colors.lightGreen,
-        Colors.lime,
-        Colors.yellow,
-        Colors.amber,
-        Colors.orange,
-        Colors.deepOrange,
-        Colors.red,
-      ],
+      colors: colors,
       transform: transform,
     );
 
