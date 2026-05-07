@@ -45,19 +45,17 @@ class TeamWidget extends StatefulWidget {
           'Naum has a love of for problem-solving and a drive to help others. He thrives in fast-paced environments and is dedicated to delivering quality service and ensuring clients have the best experience possible. Naum is an avid traveler and calls all of Europe home.',
     ),
     _Employee(
-      name: 'Stefan',
-      imagePath: 'assets/team_images/stefan.png',
-      position: 'Developer',
-      biography:
-          'Stefan is a developer with a passion for creating efficient and effective solutions. He is dedicated to delivering quality service and ensuring clients have the best experience possible. Stefan is an avid traveler and calls all of Europe home.',
-    ),
+        name: 'Stefan',
+        imagePath: 'assets/team_images/stefan.png',
+        position: 'QA Lead',
+        biography:
+            'Stefan leads quality assurance at Cocoatech, focusing on stability, reliability, and a smooth user experience across Path Finder. Based in Belgrade, Serbia, he brings a strong background in exploratory testing and a structured, detail-oriented approach to his work. He collaborates closely with development to identify issues early and verify fixes thoroughly. Working in the same city as Naum, Stefan regularly meets with him for hands-on testing sessions, helping improve quality through direct collaboration and real-world usage.'),
     _Employee(
-      name: 'Miho',
-      imagePath: 'assets/team_images/miho.png',
-      position: 'CFO',
-      biography:
-          'Miho is the CFO of the company, overseeing financial operations and strategy. She is dedicated to ensuring the financial health of the organization and enjoys traveling across Europe in her free time.',
-    ),
+        name: 'Miho',
+        imagePath: 'assets/team_images/miho.png',
+        position: 'Finance & Operations',
+        biography:
+            'Miho has been with Cocoatech from the early days, initially leading customer support and marketing efforts for the Japanese market. Over time, she transitioned into overseeing financial and legal operations, helping ensure the business runs smoothly behind the scenes. A trained pianist, she brings precision and discipline to her work, while also supporting her two children in their journey as singers. Based between Japan and the US, and working closely with her husband Steve, Cocoatech’s main developer, Miho plays a key role in coordinating across teams and keeping operations aligned.'),
   ];
 
   @override
