@@ -32,12 +32,11 @@ class TeamWidget extends StatefulWidget {
           'Dragan got his first computing experience in 1983 on Sinclair ZX Spectrum and wrote his first code for it in BASIC a year later. He has been a Mac user since 1994, a Mac coder for fun since 2002, and has been doing it professionally since 2009. In his spare time, he loves to ride his bicycle through the Netherlands and makes fighter plane models for fun.',
     ),
     _Employee(
-      name: 'Arman',
-      imagePath: 'assets/team_images/arman.jpeg',
-      position: 'Community Manager',
-      biography:
-          'Arman is a tech enthusiast with a passion for innovation, always on top of the latest trends and tools to provide efficient and effective support. Whether you\'re facing technical issues or just need some guidance in Discord, Arman has your back. When not in school earning his college degrees, he enjoys roaming around Armenia, where he calls home.',
-    ),
+        name: 'Arman',
+        imagePath: 'assets/team_images/arman.jpeg',
+        position: 'Head of Marketing',
+        biography:
+            'Arman is a tech-driven marketing leader passionate about branding, community growth, and digital innovation, always exploring the latest trends and tools to create impactful campaigns and engaging user experiences. With a strong background in marketing, design, and community management, he focuses on building meaningful connections between products and people while shaping brand identity across platforms. When he\'s not working on creative strategies or growing communities, he enjoys exploring Armenia and finding inspiration in its culture and landscapes.'),
     _Employee(
       name: 'Naum',
       imagePath: 'assets/team_images/naum.jpeg',
