@@ -209,7 +209,15 @@ class _GradientSpanPainter extends CustomPainter {
       final paint = Paint()
         ..shader = gradient.createShader(shaderRect)
         ..blendMode = BlendMode.srcATop;
-      canvas.drawRect(rect, paint);
+
+      // if the text's height is 1 for example, the gradient will bleed over
+      // to the line above and will look weird.
+      final delta = rect.height * 0.05;
+      final drawRect = Rect.fromLTRB(
+          rect.left, rect.top + delta, rect.right, rect.bottom - delta);
+
+      canvas.drawRect(drawRect, paint);
+
       cumulative += rect.width;
     }
 

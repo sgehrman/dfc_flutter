@@ -62,4 +62,6 @@ extension BuildContextUtils on BuildContext {
   // of surfaceContainerLowest, dark seems OK
   Color get surfaceContainerSuperLow =>
       Utils.isDarkMode(this) ? Colors.black : Colors.white;
+
+  bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
 }
